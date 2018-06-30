@@ -19754,18 +19754,38 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Video = exports.Video = function Video() {
-    var video = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+var Video = exports.Video = function () {
+    function Video() {
+        var video = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-    _classCallCheck(this, Video);
+        _classCallCheck(this, Video);
 
-    this.url = video.url;
-    this.nodeVideo = video.nodeVideo;
-    this.nodeDescription = video.nodeDescription;
-    this.textTitle = video.textTitle;
-};
+        this.url = video.url;
+        this.nodeVideo = video.nodeVideo;
+        this.nodeDescription = video.nodeDescription;
+        this.textTitle = video.textTitle;
+        this.isRemoved = video.isRemoved;
+        this.id = null;
+        this.creator = video.creator;
+        this.channelLink = video.channelLink;
+        this.viewCount = video.viewCount;
+
+        this.getId();
+    }
+
+    _createClass(Video, [{
+        key: "getId",
+        value: function getId() {
+            this.id = this.url.split("=")[1];
+        }
+    }]);
+
+    return Video;
+}();
 },{}],1:[function(require,module,exports) {
 'use strict';
 
@@ -19801,12 +19821,14 @@ var App = function (_React$Component) {
     _createClass(App, [{
         key: 'render',
         value: function render() {
-            console.log(this.props);
+            var videos = this.props.videos;
+
+            console.log({ videos: videos });
 
             return _react2.default.createElement(
                 'div',
                 null,
-                ' Your App injected to DOM correctly! '
+                ' App injected '
             );
         }
     }]);
@@ -19814,11 +19836,21 @@ var App = function (_React$Component) {
     return App;
 }(_react2.default.Component);
 
-var newDiv = document.createElement("div");
-newDiv.setAttribute("id", "chromeExtensionReactApp");
-document.getElementById('page-container').appendChild(newDiv);
+/**
+ * Inject my react App
+ */
 
-var list = document.getElementsByClassName('deputy-flag-item');
+
+var myReactApp = document.createElement("div");
+myReactApp.setAttribute("id", "TFs-Center");
+document.getElementById('page-container').appendChild(myReactApp);
+
+/**
+ * Getting my all videos to an array
+ * @return videos videos
+ */
+
+var list = document.getElementsByClassName('deputy-flag-item yt-tile-default');
 var videos = [];
 
 var _iteratorNormalCompletion = true;
@@ -19829,18 +19861,35 @@ try {
     for (var _iterator = list[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
         var item = _step.value;
 
+        var creator = void 0,
+            viewCount = void 0,
+            channelLink = null;
         var nodeDescription = item.getElementsByClassName('deputy-item-description-summary')[0].innerHTML.trim();
         var textTitle = item.getElementsByTagName('h3')[0].textContent.trim();
-        var url = 'https://www.youtube.com/' + item.getElementsByClassName('yt-uix-sessionlink ')[0].getAttribute('href');
+        var url = item.getElementsByClassName('yt-uix-sessionlink ')[0].getAttribute('href');
         var nodeVideo = item.getElementsByClassName('deputy-item-thumb-player')[0].innerHTML.trim();
+
+        var isRemoved = item.getElementsByClassName('removed-on-text').length > 0;
+
+        if (!isRemoved && item.getElementsByClassName('yt-user-name').length > 0) {
+            creator = item.getElementsByClassName('yt-user-name')[0].textContent;
+            channelLink = item.getElementsByClassName('yt-user-name')[0].getAttribute('href');
+            viewCount = item.getElementsByClassName('viewcount')[0].textContent.replace(/\D+/g, '');
+        } else {
+            textTitle = nodeDescription = null;
+        }
+
         videos.push(new _Video.Video({
             url: url,
             nodeVideo: nodeVideo,
             nodeDescription: nodeDescription,
-            textTitle: textTitle
+            textTitle: textTitle,
+            creator: creator,
+            channelLink: channelLink,
+            viewCount: viewCount,
+            isRemoved: item.getElementsByClassName('removed-on-text').length > 0
         }));
     }
-    // document.getElementById('page').style.display = 'none'
 } catch (err) {
     _didIteratorError = true;
     _iteratorError = err;
@@ -19856,6 +19905,7 @@ try {
     }
 }
 
+document.getElementById('page').style.display = 'none';
 _reactDom2.default.render(_react2.default.createElement(App, { videos: videos }), newDiv);
 },{"react":10,"react-dom":9,"./shared/models/Video.class":64}],3:[function(require,module,exports) {
 var global = arguments[3];
