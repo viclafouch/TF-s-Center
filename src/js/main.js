@@ -54,9 +54,9 @@ for (var item of list) {
         creator: creator,
         channelLink: channelLink,
         viewCount: viewCount,
-        isRemoved: item.getElementsByClassName('removed-on-text').length > 0
+        isRemoved: isRemoved
     }))
 }
 
 document.getElementById('page').style.display = 'none'
-ReactDOM.render(<App videos={videos} />, newDiv);
+ReactDOM.render(<App videos={videos} />, myReactApp);

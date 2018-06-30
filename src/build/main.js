@@ -19887,7 +19887,7 @@ try {
             creator: creator,
             channelLink: channelLink,
             viewCount: viewCount,
-            isRemoved: item.getElementsByClassName('removed-on-text').length > 0
+            isRemoved: isRemoved
         }));
     }
 } catch (err) {
@@ -19906,7 +19906,7 @@ try {
 }
 
 document.getElementById('page').style.display = 'none';
-_reactDom2.default.render(_react2.default.createElement(App, { videos: videos }), newDiv);
+_reactDom2.default.render(_react2.default.createElement(App, { videos: videos }), myReactApp);
 },{"react":10,"react-dom":9,"./shared/models/Video.class":64}],3:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
