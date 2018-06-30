@@ -11,6 +11,7 @@ export class Video {
         this.creator = video.creator
         this.channelLink = video.channelLink
         this.viewCount = video.viewCount
+        this.thumbnail = video.thumbnail
 
         this.getId();
     }

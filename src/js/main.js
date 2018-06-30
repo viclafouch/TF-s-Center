@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Video } from './shared/models/Video.class';
+import { FormFlagging } from './components/FormFlagging/FormFlagging';
+import { VideosList } from './components/VideosList/VideosList';
 
 class App extends React.Component {
     render() {
@@ -9,17 +11,21 @@ class App extends React.Component {
         console.log({videos});
 
         return (
-            <div> App injected </div>
+            <FormFlagging>
+                <VideosList videos={videos} canFlag />
+            </FormFlagging>
         )
     }
 }
 
+const { pathname } = window.location;
+const urlsAvailable = ['/flagging_history', '/deputy']
+const search = document.getElementById('masthead-search-term').value;
+
+
 /**
  * Inject my react App
  */
-const myReactApp = document.createElement("div");
-myReactApp.setAttribute("id", "TFs-Center");
-document.getElementById('page-container').appendChild(myReactApp);
 
 /**
  * Getting my all videos to an array
@@ -34,6 +40,7 @@ for (var item of list) {
     let nodeDescription = item.getElementsByClassName('deputy-item-description-summary')[0].innerHTML.trim();
     let textTitle = item.getElementsByTagName('h3')[0].textContent.trim();
     let url = item.getElementsByClassName('yt-uix-sessionlink ')[0].getAttribute('href');
+    let thumbnail = item.getElementsByTagName('img')[0].getAttribute('src');
     let nodeVideo = item.getElementsByClassName('deputy-item-thumb-player')[0].innerHTML.trim();
 
     let isRemoved = item.getElementsByClassName('removed-on-text').length > 0;
@@ -54,9 +61,20 @@ for (var item of list) {
         creator: creator,
         channelLink: channelLink,
         viewCount: viewCount,
-        isRemoved: isRemoved
+        isRemoved: isRemoved,
+        thumbnail: thumbnail
     }))
 }
 
-document.getElementById('page').style.display = 'none'
-ReactDOM.render(<App videos={videos} />, myReactApp);
+const myReactApp = document.createElement("div");
+myReactApp.setAttribute("id", "TFs-Center");
+document.getElementById('page-container').innerHTML = '';
+document.getElementById('page-container').appendChild(myReactApp);
+
+ReactDOM.render(
+    <App
+        videos={videos}
+        search={search}
+        pathname={pathname}
+    />,
+myReactApp);

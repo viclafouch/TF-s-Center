@@ -19773,6 +19773,7 @@ var Video = exports.Video = function () {
         this.creator = video.creator;
         this.channelLink = video.channelLink;
         this.viewCount = video.viewCount;
+        this.thumbnail = video.thumbnail;
 
         this.getId();
     }
@@ -19786,7 +19787,219 @@ var Video = exports.Video = function () {
 
     return Video;
 }();
-},{}],1:[function(require,module,exports) {
+},{}],135:[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Button = function Button(props) {
+    return _react2.default.createElement(
+        "button",
+        {
+            className: "yt-uix-button yt-uix-button-size-default yt-uix-button-primary",
+            id: props.id,
+            onClick: props.onClick,
+            type: props.type || "button"
+        },
+        props.children
+    );
+};
+
+exports.default = Button;
+},{"react":10}],133:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.FormFlagging = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Button = require('../Button');
+
+var _Button2 = _interopRequireDefault(_Button);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var FormFlagging = exports.FormFlagging = function (_Component) {
+    _inherits(FormFlagging, _Component);
+
+    function FormFlagging() {
+        _classCallCheck(this, FormFlagging);
+
+        return _possibleConstructorReturn(this, (FormFlagging.__proto__ || Object.getPrototypeOf(FormFlagging)).apply(this, arguments));
+    }
+
+    _createClass(FormFlagging, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'form',
+                { action: 'POST', method: '/deputy?action_submit' },
+                this.props.children,
+                _react2.default.createElement(
+                    _Button2.default,
+                    { id: 'deputy-flag-add-to-list', onClick: function onClick() {
+                            return false;
+                        } },
+                    'Flag'
+                )
+            );
+        }
+    }]);
+
+    return FormFlagging;
+}(_react.Component);
+
+exports.default = FormFlagging;
+},{"react":10,"../Button":135}],140:[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.VideoListItem = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var VideoListItem = exports.VideoListItem = function (_Component) {
+    _inherits(VideoListItem, _Component);
+
+    function VideoListItem() {
+        _classCallCheck(this, VideoListItem);
+
+        var _this = _possibleConstructorReturn(this, (VideoListItem.__proto__ || Object.getPrototypeOf(VideoListItem)).call(this));
+
+        _this.state = {
+            iframeActive: false
+        };
+        return _this;
+    }
+
+    _createClass(VideoListItem, [{
+        key: "render",
+        value: function render() {
+            var _this2 = this;
+
+            var video = this.props.video;
+
+            console.log(video);
+
+            return _react2.default.createElement(
+                "article",
+                null,
+                video.id,
+                _react2.default.createElement("input", {
+                    type: "checkbox",
+                    className: "yt-uix-form-input-checkbox deputy-flag-video-checkbox",
+                    value: video.id
+                }),
+                !this.state.iframeActive ? _react2.default.createElement("div", { style: {
+                        backgroundImage: "url(" + video.thumbnail + ")",
+                        height: 200,
+                        width: 200
+                    }, onClick: function onClick() {
+                        return _this2.setState({
+                            iframeActive: true
+                        });
+                    } }) : _react2.default.createElement("iframe", { width: "420", height: "315",
+                    src: "https://www.youtube.com/embed/" + video.id })
+            );
+        }
+    }]);
+
+    return VideoListItem;
+}(_react.Component);
+
+exports.default = VideoListItem;
+},{"react":10}],134:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.VideosList = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _VideoListItem = require('./VideoListItem');
+
+var _VideoListItem2 = _interopRequireDefault(_VideoListItem);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var VideosList = exports.VideosList = function (_Component) {
+    _inherits(VideosList, _Component);
+
+    function VideosList() {
+        _classCallCheck(this, VideosList);
+
+        return _possibleConstructorReturn(this, (VideosList.__proto__ || Object.getPrototypeOf(VideosList)).apply(this, arguments));
+    }
+
+    _createClass(VideosList, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'ul',
+                null,
+                this.props.videos.map(function (elem, index) {
+                    return _react2.default.createElement(
+                        'li',
+                        { key: index },
+                        _react2.default.createElement(_VideoListItem2.default, { video: elem })
+                    );
+                })
+            );
+        }
+    }]);
+
+    return VideosList;
+}(_react.Component);
+
+exports.default = VideosList;
+},{"react":10,"./VideoListItem":140}],1:[function(require,module,exports) {
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -19800,6 +20013,10 @@ var _reactDom = require('react-dom');
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _Video = require('./shared/models/Video.class');
+
+var _FormFlagging = require('./components/FormFlagging/FormFlagging');
+
+var _VideosList = require('./components/VideosList/VideosList');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19826,9 +20043,9 @@ var App = function (_React$Component) {
             console.log({ videos: videos });
 
             return _react2.default.createElement(
-                'div',
+                _FormFlagging.FormFlagging,
                 null,
-                ' App injected '
+                _react2.default.createElement(_VideosList.VideosList, { videos: videos, canFlag: true })
             );
         }
     }]);
@@ -19836,14 +20053,14 @@ var App = function (_React$Component) {
     return App;
 }(_react2.default.Component);
 
+var pathname = window.location.pathname;
+
+var urlsAvailable = ['/flagging_history', '/deputy'];
+var search = document.getElementById('masthead-search-term').value;
+
 /**
  * Inject my react App
  */
-
-
-var myReactApp = document.createElement("div");
-myReactApp.setAttribute("id", "TFs-Center");
-document.getElementById('page-container').appendChild(myReactApp);
 
 /**
  * Getting my all videos to an array
@@ -19867,6 +20084,7 @@ try {
         var nodeDescription = item.getElementsByClassName('deputy-item-description-summary')[0].innerHTML.trim();
         var textTitle = item.getElementsByTagName('h3')[0].textContent.trim();
         var url = item.getElementsByClassName('yt-uix-sessionlink ')[0].getAttribute('href');
+        var thumbnail = item.getElementsByTagName('img')[0].getAttribute('src');
         var nodeVideo = item.getElementsByClassName('deputy-item-thumb-player')[0].innerHTML.trim();
 
         var isRemoved = item.getElementsByClassName('removed-on-text').length > 0;
@@ -19887,7 +20105,8 @@ try {
             creator: creator,
             channelLink: channelLink,
             viewCount: viewCount,
-            isRemoved: isRemoved
+            isRemoved: isRemoved,
+            thumbnail: thumbnail
         }));
     }
 } catch (err) {
@@ -19905,9 +20124,17 @@ try {
     }
 }
 
-document.getElementById('page').style.display = 'none';
-_reactDom2.default.render(_react2.default.createElement(App, { videos: videos }), myReactApp);
-},{"react":10,"react-dom":9,"./shared/models/Video.class":64}],3:[function(require,module,exports) {
+var myReactApp = document.createElement("div");
+myReactApp.setAttribute("id", "TFs-Center");
+document.getElementById('page-container').innerHTML = '';
+document.getElementById('page-container').appendChild(myReactApp);
+
+_reactDom2.default.render(_react2.default.createElement(App, {
+    videos: videos,
+    search: search,
+    pathname: pathname
+}), myReactApp);
+},{"react":10,"react-dom":9,"./shared/models/Video.class":64,"./components/FormFlagging/FormFlagging":133,"./components/VideosList/VideosList":134}],3:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
