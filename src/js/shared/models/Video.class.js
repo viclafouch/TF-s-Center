@@ -5,7 +5,7 @@ export class Video {
         this.url = video.url
         this.nodeVideo = video.nodeVideo
         this.nodeDescription = video.nodeDescription
-        this.textTitle = video.textTitle
+        this.title = video.textTitle
         this.isRemoved = video.isRemoved
         this.id = null
         this.creator = video.creator

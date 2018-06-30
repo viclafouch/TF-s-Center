@@ -16,31 +16,14 @@ export class VideoListItem extends Component {
         console.log(video);
 
         return (
-            <article>
-                {video.id}
-                <input
-                    type="checkbox"
-                    className="yt-uix-form-input-checkbox deputy-flag-video-checkbox"
-                    value={video.id}
-                />
-
-                {
-                    !this.state.iframeActive
-                    ?
-                        <div style={{
-                            backgroundImage: `url(${video.thumbnail})`,
-                            height: 200,
-                            width: 200
-                        }} onClick={
-                            () => this.setState({
-                                iframeActive: true
-                            })
-                        }></div>
-                    :
-                        <iframe width="420" height="315"
-                            src={`https://www.youtube.com/embed/${video.id}`}>
-                        </iframe>
-                }
+            <article className="video-item">
+                <img className="thumbnail" src={!video.isRemoved ? video.thumbnail.replace('default', 'hqdefault') : video.thumbnail} />
+                <div className="video-item-text">
+                    <h3 className="mgi--bottom-8 mgi--top-8">
+                        <span className={video.isRemoved ? 'removed-on-text' : ''}>{video.title || 'This video is not longer available'}</span>
+                    </h3>
+                    <a className="video-item-creator" href={video.channelLink}>{video.creator}</a>
+                </div>
             </article>
         )
     }

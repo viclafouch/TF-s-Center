@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
-    "name": "Name of your chrome extension",
-    "description": "Description of your chrome extension.",
+    "name": "TFs Center",
+    "description": "A Chrome extension that remakes a new design for the TF tools.",
     "version": "1.0",
     "permissions": [
         "activeTab",
@@ -15,6 +15,9 @@
             ],
             "js": [
                 "src/build/main.js"
+            ],
+            "css": [
+                "src/build/styles.css"
             ]
         }
     ]

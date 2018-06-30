@@ -67,7 +67,7 @@ for (var item of list) {
 }
 
 const myReactApp = document.createElement("div");
-myReactApp.setAttribute("id", "TFs-Center");
+myReactApp.setAttribute("id", "TFsCenter");
 document.getElementById('page-container').innerHTML = '';
 document.getElementById('page-container').appendChild(myReactApp);
 

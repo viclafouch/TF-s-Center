@@ -103,7 +103,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   // Override the current require with this new one
   return newRequire;
-})({16:[function(require,module,exports) {
+})({24:[function(require,module,exports) {
 /*
 object-assign
 (c) Sindre Sorhus
@@ -194,7 +194,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 	return to;
 };
-},{}],14:[function(require,module,exports) {
+},{}],21:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -248,7 +248,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 }
 
 module.exports = invariant;
-},{}],13:[function(require,module,exports) {
+},{}],29:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -266,7 +266,7 @@ if ('development' !== 'production') {
 }
 
 module.exports = emptyObject;
-},{}],18:[function(require,module,exports) {
+},{}],25:[function(require,module,exports) {
 "use strict";
 
 /**
@@ -303,7 +303,7 @@ emptyFunction.thatReturnsArgument = function (arg) {
 };
 
 module.exports = emptyFunction;
-},{}],15:[function(require,module,exports) {
+},{}],22:[function(require,module,exports) {
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -366,7 +366,7 @@ if ('development' !== 'production') {
 }
 
 module.exports = warning;
-},{"./emptyFunction":18}],25:[function(require,module,exports) {
+},{"./emptyFunction":25}],33:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -380,7 +380,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
 
-},{}],17:[function(require,module,exports) {
+},{}],26:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -459,7 +459,7 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 }
 
 module.exports = checkPropTypes;
-},{"./lib/ReactPropTypesSecret":25}],11:[function(require,module,exports) {
+},{"./lib/ReactPropTypesSecret":33}],13:[function(require,module,exports) {
 /** @license React v16.4.1
  * react.development.js
  *
@@ -1940,7 +1940,7 @@ if ('development' !== "production") {
     module.exports = react;
   })();
 }
-},{"object-assign":16,"fbjs/lib/invariant":14,"fbjs/lib/emptyObject":13,"fbjs/lib/warning":15,"fbjs/lib/emptyFunction":18,"prop-types/checkPropTypes":17}],10:[function(require,module,exports) {
+},{"object-assign":24,"fbjs/lib/invariant":21,"fbjs/lib/emptyObject":29,"fbjs/lib/warning":22,"fbjs/lib/emptyFunction":25,"prop-types/checkPropTypes":26}],7:[function(require,module,exports) {
 'use strict';
 
 if ('development' === 'production') {
@@ -1948,7 +1948,7 @@ if ('development' === 'production') {
 } else {
   module.exports = require('./cjs/react.development.js');
 }
-},{"./cjs/react.development.js":11}],19:[function(require,module,exports) {
+},{"./cjs/react.development.js":13}],23:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1982,7 +1982,7 @@ var ExecutionEnvironment = {
 };
 
 module.exports = ExecutionEnvironment;
-},{}],20:[function(require,module,exports) {
+},{}],27:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2019,7 +2019,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 }
 
 module.exports = getActiveElement;
-},{}],21:[function(require,module,exports) {
+},{}],28:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2085,7 +2085,7 @@ function shallowEqual(objA, objB) {
 }
 
 module.exports = shallowEqual;
-},{}],29:[function(require,module,exports) {
+},{}],36:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2108,7 +2108,7 @@ function isNode(object) {
 }
 
 module.exports = isNode;
-},{}],27:[function(require,module,exports) {
+},{}],35:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2131,7 +2131,7 @@ function isTextNode(object) {
 }
 
 module.exports = isTextNode;
-},{"./isNode":29}],22:[function(require,module,exports) {
+},{"./isNode":36}],30:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2169,7 +2169,7 @@ function containsNode(outerNode, innerNode) {
 }
 
 module.exports = containsNode;
-},{"./isTextNode":27}],26:[function(require,module,exports) {
+},{"./isTextNode":35}],34:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2200,7 +2200,7 @@ function hyphenate(string) {
 }
 
 module.exports = hyphenate;
-},{}],23:[function(require,module,exports) {
+},{}],31:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2237,7 +2237,7 @@ function hyphenateStyleName(string) {
 }
 
 module.exports = hyphenateStyleName;
-},{"./hyphenate":26}],28:[function(require,module,exports) {
+},{"./hyphenate":34}],37:[function(require,module,exports) {
 "use strict";
 
 /**
@@ -2267,7 +2267,7 @@ function camelize(string) {
 }
 
 module.exports = camelize;
-},{}],24:[function(require,module,exports) {
+},{}],32:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2305,7 +2305,7 @@ function camelizeStyleName(string) {
 }
 
 module.exports = camelizeStyleName;
-},{"./camelize":28}],12:[function(require,module,exports) {
+},{"./camelize":37}],14:[function(require,module,exports) {
 /** @license React v16.4.1
  * react-dom.development.js
  *
@@ -19711,7 +19711,7 @@ if ('development' !== "production") {
     module.exports = reactDom;
   })();
 }
-},{"fbjs/lib/invariant":14,"react":10,"fbjs/lib/warning":15,"fbjs/lib/ExecutionEnvironment":19,"object-assign":16,"fbjs/lib/emptyFunction":18,"prop-types/checkPropTypes":17,"fbjs/lib/getActiveElement":20,"fbjs/lib/shallowEqual":21,"fbjs/lib/containsNode":22,"fbjs/lib/emptyObject":13,"fbjs/lib/hyphenateStyleName":23,"fbjs/lib/camelizeStyleName":24}],9:[function(require,module,exports) {
+},{"fbjs/lib/invariant":21,"react":7,"fbjs/lib/warning":22,"fbjs/lib/ExecutionEnvironment":23,"object-assign":24,"fbjs/lib/emptyFunction":25,"prop-types/checkPropTypes":26,"fbjs/lib/getActiveElement":27,"fbjs/lib/shallowEqual":28,"fbjs/lib/containsNode":30,"fbjs/lib/emptyObject":29,"fbjs/lib/hyphenateStyleName":31,"fbjs/lib/camelizeStyleName":32}],6:[function(require,module,exports) {
 'use strict';
 
 function checkDCE() {
@@ -19747,7 +19747,7 @@ if ('development' === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":12}],64:[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":14}],3:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -19767,7 +19767,7 @@ var Video = exports.Video = function () {
         this.url = video.url;
         this.nodeVideo = video.nodeVideo;
         this.nodeDescription = video.nodeDescription;
-        this.textTitle = video.textTitle;
+        this.title = video.textTitle;
         this.isRemoved = video.isRemoved;
         this.id = null;
         this.creator = video.creator;
@@ -19787,7 +19787,7 @@ var Video = exports.Video = function () {
 
     return Video;
 }();
-},{}],135:[function(require,module,exports) {
+},{}],19:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -19814,7 +19814,7 @@ var Button = function Button(props) {
 };
 
 exports.default = Button;
-},{"react":10}],133:[function(require,module,exports) {
+},{"react":7}],5:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -19871,7 +19871,7 @@ var FormFlagging = exports.FormFlagging = function (_Component) {
 }(_react.Component);
 
 exports.default = FormFlagging;
-},{"react":10,"../Button":135}],140:[function(require,module,exports) {
+},{"react":7,"../Button":19}],17:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -19910,31 +19910,32 @@ var VideoListItem = exports.VideoListItem = function (_Component) {
     _createClass(VideoListItem, [{
         key: "render",
         value: function render() {
-            var _this2 = this;
-
             var video = this.props.video;
 
             console.log(video);
 
             return _react2.default.createElement(
                 "article",
-                null,
-                video.id,
-                _react2.default.createElement("input", {
-                    type: "checkbox",
-                    className: "yt-uix-form-input-checkbox deputy-flag-video-checkbox",
-                    value: video.id
-                }),
-                !this.state.iframeActive ? _react2.default.createElement("div", { style: {
-                        backgroundImage: "url(" + video.thumbnail + ")",
-                        height: 200,
-                        width: 200
-                    }, onClick: function onClick() {
-                        return _this2.setState({
-                            iframeActive: true
-                        });
-                    } }) : _react2.default.createElement("iframe", { width: "420", height: "315",
-                    src: "https://www.youtube.com/embed/" + video.id })
+                { className: "video-item" },
+                _react2.default.createElement("img", { className: "thumbnail", src: !video.isRemoved ? video.thumbnail.replace('default', 'hqdefault') : video.thumbnail }),
+                _react2.default.createElement(
+                    "div",
+                    { className: "video-item-text" },
+                    _react2.default.createElement(
+                        "h3",
+                        { className: "mgi--bottom-8 mgi--top-8" },
+                        _react2.default.createElement(
+                            "span",
+                            { className: video.isRemoved ? 'removed-on-text' : '' },
+                            video.title || 'This video is not longer available'
+                        )
+                    ),
+                    _react2.default.createElement(
+                        "a",
+                        { className: "video-item-creator", href: video.channelLink },
+                        video.creator
+                    )
+                )
             );
         }
     }]);
@@ -19943,7 +19944,7 @@ var VideoListItem = exports.VideoListItem = function (_Component) {
 }(_react.Component);
 
 exports.default = VideoListItem;
-},{"react":10}],134:[function(require,module,exports) {
+},{"react":7}],4:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -19983,7 +19984,7 @@ var VideosList = exports.VideosList = function (_Component) {
         value: function render() {
             return _react2.default.createElement(
                 'ul',
-                null,
+                { className: 'videos-list' },
                 this.props.videos.map(function (elem, index) {
                     return _react2.default.createElement(
                         'li',
@@ -19999,7 +20000,7 @@ var VideosList = exports.VideosList = function (_Component) {
 }(_react.Component);
 
 exports.default = VideosList;
-},{"react":10,"./VideoListItem":140}],1:[function(require,module,exports) {
+},{"react":7,"./VideoListItem":17}],1:[function(require,module,exports) {
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -20125,7 +20126,7 @@ try {
 }
 
 var myReactApp = document.createElement("div");
-myReactApp.setAttribute("id", "TFs-Center");
+myReactApp.setAttribute("id", "TFsCenter");
 document.getElementById('page-container').innerHTML = '';
 document.getElementById('page-container').appendChild(myReactApp);
 
@@ -20134,7 +20135,7 @@ _reactDom2.default.render(_react2.default.createElement(App, {
     search: search,
     pathname: pathname
 }), myReactApp);
-},{"react":10,"react-dom":9,"./shared/models/Video.class":64,"./components/FormFlagging/FormFlagging":133,"./components/VideosList/VideosList":134}],3:[function(require,module,exports) {
+},{"react":7,"react-dom":6,"./shared/models/Video.class":3,"./components/FormFlagging/FormFlagging":5,"./components/VideosList/VideosList":4}],83:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -20163,7 +20164,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '57943' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '62959' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -20304,5 +20305,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[3,1], null)
+},{}]},{},[83,1], null)
 //# sourceMappingURL=/main.map
