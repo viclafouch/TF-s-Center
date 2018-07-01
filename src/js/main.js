@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Video } from './shared/models/Video.class';
 import { FormFlagging } from './components/FormFlagging/FormFlagging';
 import { VideosList } from './components/VideosList/VideosList';
+import { Sidebar } from './components/Sidebar/Sidebar';
 
 class App extends React.Component {
     render() {
@@ -11,9 +12,14 @@ class App extends React.Component {
         console.log({videos});
 
         return (
-            <FormFlagging>
-                <VideosList videos={videos} canFlag />
-            </FormFlagging>
+            <React.Fragment>
+                <Sidebar />
+                <div className="main-container">
+                    <FormFlagging>
+                        <VideosList videos={videos} canFlag />
+                    </FormFlagging>
+                </div>
+            </React.Fragment>
         )
     }
 }

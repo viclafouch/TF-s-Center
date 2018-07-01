@@ -20000,7 +20000,124 @@ var VideosList = exports.VideosList = function (_Component) {
 }(_react.Component);
 
 exports.default = VideosList;
-},{"react":7,"./VideoListItem":17}],1:[function(require,module,exports) {
+},{"react":7,"./VideoListItem":17}],31:[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Sidebar = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Sidebar = exports.Sidebar = function (_Component) {
+    _inherits(Sidebar, _Component);
+
+    function Sidebar() {
+        _classCallCheck(this, Sidebar);
+
+        return _possibleConstructorReturn(this, (Sidebar.__proto__ || Object.getPrototypeOf(Sidebar)).apply(this, arguments));
+    }
+
+    _createClass(Sidebar, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "aside",
+                { className: "sidebar" },
+                _react2.default.createElement(
+                    "div",
+                    { className: "profile-wrapper" },
+                    _react2.default.createElement("img", { src: "https://yt3.ggpht.com/-S2LcjnxOoXc/AAAAAAAAAAI/AAAAAAAAAAA/SfHM8F50Xo0/s900-mo-c-c0xffffffff-rj-k-no/photo.jpg", alt: "" })
+                ),
+                _react2.default.createElement(
+                    "nav",
+                    { className: "navbar" },
+                    _react2.default.createElement(
+                        "ul",
+                        { className: "nav-link" },
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                                "a",
+                                { href: "/", className: "youtube-link" },
+                                _react2.default.createElement(
+                                    "span",
+                                    { className: "span-icon mgi--right-16" },
+                                    "i"
+                                ),
+                                _react2.default.createElement(
+                                    "span",
+                                    { className: "text-link" },
+                                    "Dashboard"
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                                "a",
+                                { href: "/", className: "youtube-link" },
+                                _react2.default.createElement(
+                                    "span",
+                                    { className: "span-icon mgi--right-16" },
+                                    "i"
+                                ),
+                                _react2.default.createElement(
+                                    "span",
+                                    { className: "text-link" },
+                                    "Dashboard"
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                                "a",
+                                { href: "/", className: "youtube-link" },
+                                _react2.default.createElement(
+                                    "span",
+                                    { className: "span-icon mgi--right-16" },
+                                    "i"
+                                ),
+                                _react2.default.createElement(
+                                    "span",
+                                    { className: "text-link" },
+                                    "Dashboard"
+                                )
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        "ul",
+                        { className: "nav-link" },
+                        _react2.default.createElement("li", null)
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Sidebar;
+}(_react.Component);
+
+exports.default = Sidebar;
+},{"react":7}],1:[function(require,module,exports) {
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -20018,6 +20135,8 @@ var _Video = require('./shared/models/Video.class');
 var _FormFlagging = require('./components/FormFlagging/FormFlagging');
 
 var _VideosList = require('./components/VideosList/VideosList');
+
+var _Sidebar = require('./components/Sidebar/Sidebar');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20044,9 +20163,18 @@ var App = function (_React$Component) {
             console.log({ videos: videos });
 
             return _react2.default.createElement(
-                _FormFlagging.FormFlagging,
+                _react2.default.Fragment,
                 null,
-                _react2.default.createElement(_VideosList.VideosList, { videos: videos, canFlag: true })
+                _react2.default.createElement(_Sidebar.Sidebar, null),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'main-container' },
+                    _react2.default.createElement(
+                        _FormFlagging.FormFlagging,
+                        null,
+                        _react2.default.createElement(_VideosList.VideosList, { videos: videos, canFlag: true })
+                    )
+                )
             );
         }
     }]);
@@ -20135,7 +20263,7 @@ _reactDom2.default.render(_react2.default.createElement(App, {
     search: search,
     pathname: pathname
 }), myReactApp);
-},{"react":7,"react-dom":6,"./shared/models/Video.class":3,"./components/FormFlagging/FormFlagging":5,"./components/VideosList/VideosList":4}],83:[function(require,module,exports) {
+},{"react":7,"react-dom":6,"./shared/models/Video.class":3,"./components/FormFlagging/FormFlagging":5,"./components/VideosList/VideosList":4,"./components/Sidebar/Sidebar":31}],41:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -20164,7 +20292,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '62959' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '56268' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -20305,5 +20433,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[83,1], null)
+},{}]},{},[41,1], null)
 //# sourceMappingURL=/main.map
