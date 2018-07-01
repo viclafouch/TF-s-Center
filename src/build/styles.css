@@ -3028,12 +3028,32 @@
 .mgi--100 {
   margin: 100px !important; }
 
+body {
+  height: 100vh;
+  overflow: hidden; }
+
 div#TFsCenter {
   font-family: 'Roboto', 'Noto', sans-serif;
+  height: calc(100vh - 50px);
   display: grid;
   grid-template-columns: 256px auto;
   /* For devices larger than 400px */
   /* For devices larger than 550px */ }
+  div#TFsCenter > div.main-container {
+    position: relative;
+    height: inherit;
+    box-sizing: border-box; }
+    div#TFsCenter > div.main-container form {
+      position: relative;
+      height: inherit;
+      display: flex;
+      flex-direction: column; }
+      div#TFsCenter > div.main-container form > ul {
+        padding: 0 16px;
+        position: relative;
+        flex: 1 1;
+        position: relative;
+        overflow-y: scroll; }
   div#TFsCenter .container {
     position: relative;
     width: 100%;
@@ -3138,7 +3158,6 @@ div#TFsCenter {
   div#TFsCenter .thumbnail {
     width: 210px; }
   div#TFsCenter ul.videos-list {
-    margin-top: 24px;
     display: grid;
     grid-template-rows: auto;
     justify-content: center;
@@ -3155,6 +3174,8 @@ div#TFsCenter {
   div#TFsCenter .sidebar {
     background-color: #f4f4f4;
     display: flex;
+    height: inherit;
+    width: 100%;
     flex-direction: column;
     border-right: 1px solid rgba(0, 0, 0, 0.12); }
     div#TFsCenter .sidebar > .profile-wrapper {
@@ -3185,7 +3206,6 @@ div#TFsCenter {
           font-size: 13px;
           font-weight: 500;
           white-space: nowrap;
-          background: #e2e2e2;
           color: rgba(0, 0, 0, 0.87); }
           div#TFsCenter .sidebar > .navbar ul > li * {
             color: inherit; }

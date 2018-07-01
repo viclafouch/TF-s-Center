@@ -39,6 +39,7 @@ const search = document.getElementById('masthead-search-term').value;
  */
 
 const list = document.getElementsByClassName('deputy-flag-item yt-tile-default');
+
 const videos = []
 
 for (var item of list) {

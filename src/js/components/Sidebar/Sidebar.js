@@ -30,7 +30,16 @@ export class Sidebar extends Component {
                     </ul>
                     <ul className="nav-link">
                         <li>
-
+                            <a href="/" className="youtube-link">
+                                <span className="span-icon mgi--right-16">i</span>
+                                <span className="text-link">Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/" className="youtube-link">
+                                <span className="span-icon mgi--right-16">i</span>
+                                <span className="text-link">Dashboard</span>
+                            </a>
                         </li>
                     </ul>
                 </nav>
