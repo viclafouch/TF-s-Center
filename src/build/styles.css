@@ -3039,6 +3039,8 @@ div#TFsCenter {
   grid-template-columns: 256px auto;
   /* For devices larger than 400px */
   /* For devices larger than 550px */ }
+  div#TFsCenter * {
+    box-sizing: border-box; }
   div#TFsCenter > div.main-container {
     position: relative;
     height: inherit;
@@ -3159,8 +3161,11 @@ div#TFsCenter {
     display: grid;
     grid-template-rows: auto;
     justify-content: space-between;
-    gap: 18px 8px;
+    gap: 2px 8px;
+    grid-auto-flow: dense;
     grid-template-columns: repeat(auto-fill, 210px); }
+    div#TFsCenter ul.videos-list li {
+      margin-top: 18px; }
     div#TFsCenter ul.videos-list li input:checked + article > label.video-item-thumbnail {
       opacity: 0.45; }
   div#TFsCenter article.video-item.active {
@@ -3228,9 +3233,57 @@ div#TFsCenter {
             display: inline-block; }
   div#TFsCenter div.tools {
     margin: 0 auto;
+    z-index: 999;
     width: 100%;
-    padding: 20px 16px; }
+    padding: 20px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
   div#TFsCenter .span-icon {
     width: 24px;
     height: 24px;
     background: black; }
+  div#TFsCenter .popup {
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 99999;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition-delay: 0s;
+    transition-property: opacity, visibility;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    visibility: hidden;
+    opacity: 0; }
+    div#TFsCenter .popup.active {
+      visibility: visible;
+      opacity: 1; }
+    div#TFsCenter .popup > div.overlay {
+      height: 100%;
+      width: 100%;
+      background-color: transparent; }
+    div#TFsCenter .popup > div.container {
+      min-width: 300px;
+      max-width: 650px;
+      box-sizing: border-box;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      background-color: #fff; }
+  div#TFsCenter .form-reporting textarea {
+    resize: none;
+    padding: 12px 12px 32px 12px;
+    box-shadow: inset 0 0 0 1px #eeeeee;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    border-radius: 2px;
+    box-sizing: border-box; }

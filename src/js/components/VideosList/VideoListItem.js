@@ -16,8 +16,7 @@ export class VideoListItem extends Component {
         let { video } = this.props;
 
         return (
-            <article onDoubleClick={() => console.log('test')
-            } className="video-item">
+            <article className="video-item">
                 <label className="video-item-thumbnail" htmlFor={video.id}>
                     <img className="thumbnail" src={video.thumbnail.replace('default', 'hqdefault')} />
                 </label>

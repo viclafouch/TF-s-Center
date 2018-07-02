@@ -13,7 +13,7 @@ export class VideosList extends Component {
         e.stopPropagation();
         let id = e.target.id;
         let video = this.props.videos.find(x => x.id === id);
-        this.props.onSelect && this.props.onSelect(video);
+        this.props.onSelect && this.props.onSelect(video, e.target.checked);
     }
 
     render() {
@@ -28,6 +28,7 @@ export class VideosList extends Component {
                                 style={{position: 'absolute'}}
                                 className="yt-uix-form-input-checkbox deputy-flag-video-checkbox"
                                 value={elem.id}
+                                name="selected_vid"
                                 onChange={this.handleChange}
                             />
                             <VideoListItem video={elem} />

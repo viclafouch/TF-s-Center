@@ -13,6 +13,8 @@ export class Video {
         this.viewCount = video.viewCount
         this.thumbnail = video.thumbnail
 
+        this.active = false
+
         this.getId();
     }
 
