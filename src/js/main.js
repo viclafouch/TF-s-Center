@@ -15,9 +15,7 @@ class App extends React.Component {
             <React.Fragment>
                 <Sidebar />
                 <div className="main-container">
-                    <FormFlagging>
-                        <VideosList videos={videos} canFlag />
-                    </FormFlagging>
+                    <FormFlagging videos={videos} />
                 </div>
             </React.Fragment>
         )

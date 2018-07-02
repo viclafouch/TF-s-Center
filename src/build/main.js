@@ -19788,23 +19788,27 @@ var Video = exports.Video = function () {
     return Video;
 }();
 },{}],19:[function(require,module,exports) {
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Button = function Button(props) {
+
+    var className = 'yt-uix-button yt-uix-button-size-default yt-uix-button-primary ';
+    className = props.className ? className + props.className : className;
+
     return _react2.default.createElement(
-        "button",
+        'button',
         {
-            className: "yt-uix-button yt-uix-button-size-default yt-uix-button-primary",
+            className: className,
             id: props.id,
             onClick: props.onClick,
             type: props.type || "button"
@@ -19814,8 +19818,8 @@ var Button = function Button(props) {
 };
 
 exports.default = Button;
-},{"react":7}],37:[function(require,module,exports) {
-"use strict";
+},{"react":7}],9:[function(require,module,exports) {
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -19824,9 +19828,13 @@ exports.ToolsFlag = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
+
+var _Button = require('../Button');
+
+var _Button2 = _interopRequireDefault(_Button);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19846,12 +19854,26 @@ var ToolsFlag = exports.ToolsFlag = function (_Component) {
     }
 
     _createClass(ToolsFlag, [{
-        key: "render",
+        key: 'render',
         value: function render() {
             return _react2.default.createElement(
-                "div",
-                { className: "tools" },
-                "Test"
+                'div',
+                { className: 'tools' },
+                _react2.default.createElement(
+                    _Button2.default,
+                    { className: 'mgi--right-10' },
+                    'Ajouter \xE0 la liste'
+                ),
+                _react2.default.createElement(
+                    _Button2.default,
+                    { className: 'mgi--right-10' },
+                    'Cacher les vid\xE9os supprim\xE9es'
+                ),
+                _react2.default.createElement(
+                    _Button2.default,
+                    { className: 'mgi--right-10' },
+                    'Cacher les vid\xE9os d\xE9j\xE0 reviewed'
+                )
             );
         }
     }]);
@@ -19860,63 +19882,8 @@ var ToolsFlag = exports.ToolsFlag = function (_Component) {
 }(_react.Component);
 
 exports.default = ToolsFlag;
-},{"react":7}],5:[function(require,module,exports) {
+},{"react":7,"../Button":19}],17:[function(require,module,exports) {
 'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.FormFlagging = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Button = require('../Button');
-
-var _Button2 = _interopRequireDefault(_Button);
-
-var _ToolsFlag = require('../ToolsFlag/ToolsFlag');
-
-var _ToolsFlag2 = _interopRequireDefault(_ToolsFlag);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var FormFlagging = exports.FormFlagging = function (_Component) {
-    _inherits(FormFlagging, _Component);
-
-    function FormFlagging() {
-        _classCallCheck(this, FormFlagging);
-
-        return _possibleConstructorReturn(this, (FormFlagging.__proto__ || Object.getPrototypeOf(FormFlagging)).apply(this, arguments));
-    }
-
-    _createClass(FormFlagging, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'form',
-                { action: 'POST', method: '/deputy?action_submit' },
-                _react2.default.createElement(_ToolsFlag2.default, null),
-                this.props.children
-            );
-        }
-    }]);
-
-    return FormFlagging;
-}(_react.Component);
-
-exports.default = FormFlagging;
-},{"react":7,"../Button":19,"../ToolsFlag/ToolsFlag":37}],17:[function(require,module,exports) {
-"use strict";
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -19925,7 +19892,7 @@ exports.VideoListItem = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -19946,37 +19913,43 @@ var VideoListItem = exports.VideoListItem = function (_Component) {
         var _this = _possibleConstructorReturn(this, (VideoListItem.__proto__ || Object.getPrototypeOf(VideoListItem)).call(this));
 
         _this.state = {
-            iframeActive: false
+            iframeActive: false,
+            active: false
         };
         return _this;
     }
 
     _createClass(VideoListItem, [{
-        key: "render",
+        key: 'render',
         value: function render() {
             var video = this.props.video;
 
-            console.log(video);
 
             return _react2.default.createElement(
-                "article",
-                { className: "video-item" },
-                _react2.default.createElement("img", { className: "thumbnail", src: !video.isRemoved ? video.thumbnail.replace('default', 'hqdefault') : video.thumbnail }),
+                'article',
+                { onDoubleClick: function onDoubleClick() {
+                        return console.log('test');
+                    }, className: 'video-item' },
                 _react2.default.createElement(
-                    "div",
-                    { className: "video-item-text" },
+                    'label',
+                    { className: 'video-item-thumbnail', htmlFor: video.id },
+                    _react2.default.createElement('img', { className: 'thumbnail', src: video.thumbnail.replace('default', 'hqdefault') })
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'video-item-text' },
                     _react2.default.createElement(
-                        "h3",
-                        { className: "mgi--bottom-8 mgi--top-8" },
+                        'h3',
+                        { className: 'mgi--bottom-8 mgi--top-8' },
                         _react2.default.createElement(
-                            "span",
+                            'span',
                             { className: video.isRemoved ? 'removed-on-text' : '' },
                             video.title || 'This video is not longer available'
                         )
                     ),
                     _react2.default.createElement(
-                        "a",
-                        { className: "video-item-creator", href: video.channelLink },
+                        'a',
+                        { className: 'video-item-creator', href: video.channelLink },
                         video.creator
                     )
                 )
@@ -20020,19 +19993,42 @@ var VideosList = exports.VideosList = function (_Component) {
     function VideosList() {
         _classCallCheck(this, VideosList);
 
-        return _possibleConstructorReturn(this, (VideosList.__proto__ || Object.getPrototypeOf(VideosList)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (VideosList.__proto__ || Object.getPrototypeOf(VideosList)).call(this));
+
+        _this.handleChange = _this.handleChange.bind(_this);
+        return _this;
     }
 
     _createClass(VideosList, [{
+        key: 'handleChange',
+        value: function handleChange(e) {
+            e.stopPropagation();
+            var id = e.target.id;
+            var video = this.props.videos.find(function (x) {
+                return x.id === id;
+            });
+            this.props.onSelect && this.props.onSelect(video);
+        }
+    }, {
         key: 'render',
         value: function render() {
+            var _this2 = this;
+
             return _react2.default.createElement(
                 'ul',
-                { className: 'videos-list' },
+                { className: 'videos-list pdi--top-0' },
                 this.props.videos.map(function (elem, index) {
                     return _react2.default.createElement(
                         'li',
                         { key: index },
+                        _react2.default.createElement('input', {
+                            type: 'checkbox',
+                            id: elem.id,
+                            style: { position: 'absolute' },
+                            className: 'yt-uix-form-input-checkbox deputy-flag-video-checkbox',
+                            value: elem.id,
+                            onChange: _this2.handleChange
+                        }),
                         _react2.default.createElement(_VideoListItem2.default, { video: elem })
                     );
                 })
@@ -20044,7 +20040,94 @@ var VideosList = exports.VideosList = function (_Component) {
 }(_react.Component);
 
 exports.default = VideosList;
-},{"react":7,"./VideoListItem":17}],31:[function(require,module,exports) {
+},{"react":7,"./VideoListItem":17}],5:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.FormFlagging = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Button = require('../Button');
+
+var _Button2 = _interopRequireDefault(_Button);
+
+var _ToolsFlag = require('../ToolsFlag/ToolsFlag');
+
+var _ToolsFlag2 = _interopRequireDefault(_ToolsFlag);
+
+var _VideosList = require('../VideosList/VideosList');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var FormFlagging = exports.FormFlagging = function (_Component) {
+    _inherits(FormFlagging, _Component);
+
+    function FormFlagging(props) {
+        _classCallCheck(this, FormFlagging);
+
+        var _this = _possibleConstructorReturn(this, (FormFlagging.__proto__ || Object.getPrototypeOf(FormFlagging)).call(this, props));
+
+        _this.state = {
+            videosSelected: [],
+            videos: props.videos || []
+        };
+        return _this;
+    }
+
+    _createClass(FormFlagging, [{
+        key: 'handleSelectVideo',
+        value: function handleSelectVideo(video) {
+            var videos = this.state.videos;
+
+
+            var videoIndex = videos.findIndex(function (elem) {
+                return elem.id === video.id;
+            });
+
+            videos[videoIndex].selected = true;
+
+            this.setState({
+                videos: videos
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            return _react2.default.createElement(
+                'form',
+                { action: 'POST', method: '/deputy?action_submit' },
+                _react2.default.createElement(_ToolsFlag2.default, null),
+                _react2.default.createElement(_VideosList.VideosList, {
+                    videos: this.state.videos,
+                    canFlag: true,
+                    onSelect: function onSelect(video) {
+                        return _this2.handleSelectVideo(video);
+                    }
+                })
+            );
+        }
+    }]);
+
+    return FormFlagging;
+}(_react.Component);
+
+exports.default = FormFlagging;
+},{"react":7,"../Button":19,"../ToolsFlag/ToolsFlag":9,"../VideosList/VideosList":4}],31:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -20248,11 +20331,7 @@ var App = function (_React$Component) {
                 _react2.default.createElement(
                     'div',
                     { className: 'main-container' },
-                    _react2.default.createElement(
-                        _FormFlagging.FormFlagging,
-                        null,
-                        _react2.default.createElement(_VideosList.VideosList, { videos: videos, canFlag: true })
-                    )
+                    _react2.default.createElement(_FormFlagging.FormFlagging, { videos: videos })
                 )
             );
         }
@@ -20343,7 +20422,7 @@ _reactDom2.default.render(_react2.default.createElement(App, {
     search: search,
     pathname: pathname
 }), myReactApp);
-},{"react":7,"react-dom":6,"./shared/models/Video.class":3,"./components/FormFlagging/FormFlagging":5,"./components/VideosList/VideosList":4,"./components/Sidebar/Sidebar":31}],34:[function(require,module,exports) {
+},{"react":7,"react-dom":6,"./shared/models/Video.class":3,"./components/FormFlagging/FormFlagging":5,"./components/VideosList/VideosList":4,"./components/Sidebar/Sidebar":31}],44:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -20372,7 +20451,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '61231' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '59606' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -20513,5 +20592,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[34,1], null)
+},{}]},{},[44,1], null)
 //# sourceMappingURL=/main.map

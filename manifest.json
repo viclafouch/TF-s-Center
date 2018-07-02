@@ -10,8 +10,8 @@
     "content_scripts": [
         {
             "matches": [
-                "http://*/*",
-                "https://*/*"
+                "https://www.youtube.com/flagging_history",
+                "https://www.youtube.com/deputy*"
             ],
             "js": [
                 "src/build/main.js"

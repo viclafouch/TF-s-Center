@@ -3049,9 +3049,7 @@ div#TFsCenter {
       display: flex;
       flex-direction: column; }
       div#TFsCenter > div.main-container form > ul {
-        padding: 0 16px;
-        position: relative;
-        flex: 1 1;
+        padding: 20px 16px;
         position: relative;
         overflow-y: scroll; }
   div#TFsCenter .container {
@@ -3160,9 +3158,20 @@ div#TFsCenter {
   div#TFsCenter ul.videos-list {
     display: grid;
     grid-template-rows: auto;
-    justify-content: center;
+    justify-content: space-between;
     gap: 18px 8px;
-    grid-template-columns: repeat(4, 210px); }
+    grid-template-columns: repeat(auto-fill, 210px); }
+    div#TFsCenter ul.videos-list li input:checked + article > label.video-item-thumbnail {
+      opacity: 0.45; }
+  div#TFsCenter article.video-item.active {
+    opacity: 0.45; }
+  div#TFsCenter article.video-item .video-item-thumbnail {
+    cursor: default;
+    width: 210px;
+    height: 157px;
+    overflow: hidden;
+    position: relative;
+    display: block; }
   div#TFsCenter article.video-item .video-item-creator {
     color: rgba(17, 17, 17, 0.6);
     overflow: hidden;
@@ -3217,6 +3226,10 @@ div#TFsCenter {
             box-sizing: border-box; }
           div#TFsCenter .sidebar > .navbar ul > li span {
             display: inline-block; }
+  div#TFsCenter div.tools {
+    margin: 0 auto;
+    width: 100%;
+    padding: 20px 16px; }
   div#TFsCenter .span-icon {
     width: 24px;
     height: 24px;
