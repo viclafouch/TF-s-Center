@@ -14,12 +14,13 @@ export class ToolsFlag extends Component {
             <div className="tools">
                 <div>
                     <Button
+                        blue
                         disabled={videosSelected.length === 0}
                         className="mgi--right-10"
                         onClick={this.props.onSubmit}
                     >Ajouter à la liste</Button>
-                    <Button className="mgi--right-10">Cacher les vidéos supprimées</Button>
-                    <Button className="mgi--right-10">Cacher les vidéos déjà reviewed</Button>
+                    <Button blue className="mgi--right-10">Cacher les vidéos supprimées</Button>
+                    <Button blue className="mgi--right-10">Cacher les vidéos déjà reviewed</Button>
                 </div>
                 <div>
                     <div>{videosSelected.length} / {videos.length}</div>

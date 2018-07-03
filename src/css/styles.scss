@@ -27,6 +27,11 @@ body {
     overflow: hidden;
 }
 
+button.yt-uix-white-primary {
+    border-color: #ACACAC;
+    background: #fff;
+}
+
 div#TFsCenter {
 
     * { box-sizing: border-box; }
@@ -284,7 +289,7 @@ div#TFsCenter {
 
         & > div.container {
             min-width: 300px;
-            max-width: 650px;
+            max-width: 430px;
             box-sizing: border-box;
             position: absolute;
             top: 50%; left: 50%;
@@ -295,6 +300,20 @@ div#TFsCenter {
     }
 
     .form-reporting {
+
+        .form-reporting-fieldset {
+            margin-top: 16px;
+
+            &.buttons {
+                display: flex;
+                justify-content: flex-end;
+                align-items: flex-start;
+                border-top: 1px solid rgb(238, 238, 238);
+                margin: 0;
+                padding: 8px;
+            }
+        }
+
         textarea {
             resize: none;
             padding: 12px 12px 32px 12px;
@@ -302,6 +321,50 @@ div#TFsCenter {
             border: 1px solid rgba(0,0,0,0.16);
             border-radius: 2px;
             box-sizing: border-box;
+            width: 100%;
+            height: 126px;
+
+        }
+
+        ul.paper-list {
+            & > li.paper-item {
+                padding: 12px 12px 0 0;
+                margin: 0;
+                display: block;
+                white-space: nowrap;
+
+                label {
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                }
+
+                span.paper-radio {
+                    border: 2px solid rgb(136, 136, 136);
+                    border-radius: 50%;
+                    height: 20px;
+                    width: 20px;
+                    display: block;
+                    position: relative;
+                    input { visibility: hidden; position: absolute; }
+
+                    & > span.paper-radio-element {
+                        transform: translate(-50%, -50%) scale(0);
+                        height: inherit;
+                        transition: all 0.3s!important;
+                        width: inherit;
+                        background-color: rgb(136, 136, 136);
+                        border-radius: 50%;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                    }
+
+                    input:checked + span.paper-radio-element {
+                        transform: translate(-50%, -50%) scale(0.5);
+                    }
+                }
+            }
         }
     }
 }

@@ -19804,7 +19804,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Button = function Button(props) {
 
-    var className = 'yt-uix-button yt-uix-button-size-default yt-uix-button-primary ';
+    var className = 'yt-uix-button yt-uix-button-size-default ';
+    if (props.blue) className = className + 'yt-uix-button-primary ';else className = className + 'yt-uix-white-primary ';
     className = props.className ? className + props.className : className;
 
     return _react2.default.createElement(
@@ -19876,6 +19877,7 @@ var ToolsFlag = exports.ToolsFlag = function (_Component) {
                     _react2.default.createElement(
                         _Button2.default,
                         {
+                            blue: true,
                             disabled: videosSelected.length === 0,
                             className: 'mgi--right-10',
                             onClick: this.props.onSubmit
@@ -19884,12 +19886,12 @@ var ToolsFlag = exports.ToolsFlag = function (_Component) {
                     ),
                     _react2.default.createElement(
                         _Button2.default,
-                        { className: 'mgi--right-10' },
+                        { blue: true, className: 'mgi--right-10' },
                         'Cacher les vid\xE9os supprim\xE9es'
                     ),
                     _react2.default.createElement(
                         _Button2.default,
-                        { className: 'mgi--right-10' },
+                        { blue: true, className: 'mgi--right-10' },
                         'Cacher les vid\xE9os d\xE9j\xE0 reviewed'
                     )
                 ),
@@ -20192,56 +20194,92 @@ var FormReporting = exports.FormReporting = function (_Component) {
     _createClass(FormReporting, [{
         key: 'render',
         value: function render() {
+            var _this2 = this;
+
             return _react2.default.createElement(
                 'div',
                 { className: 'form-reporting' },
                 _react2.default.createElement(
-                    'fieldset',
-                    { className: 'yt-uix-form-fieldset' },
+                    'div',
+                    { className: 'pdi--20' },
                     _react2.default.createElement(
-                        'legend',
-                        { className: 'yt-uix-form-legend' },
-                        'Motif du signalement :'
+                        'h3',
+                        null,
+                        'Report videos (3)'
                     ),
                     _react2.default.createElement(
-                        'ul',
-                        { className: 'yt-uix-form-list-option' },
-                        this.labels.map(function (elem, index) {
-                            return _react2.default.createElement(
-                                'li',
-                                null,
-                                _react2.default.createElement(
-                                    'label',
-                                    null,
+                        'fieldset',
+                        { className: 'form-reporting-fieldset' },
+                        _react2.default.createElement(
+                            'legend',
+                            { className: 'yt-uix-form-legend' },
+                            'What is the issue ?'
+                        ),
+                        _react2.default.createElement(
+                            'ul',
+                            { className: 'yt-uix-form-list-option paper-list' },
+                            this.labels.map(function (elem, index) {
+                                return _react2.default.createElement(
+                                    'li',
+                                    { key: index, className: 'paper-item' },
                                     _react2.default.createElement(
-                                        'span',
-                                        { className: 'yt-uix-form-input-radio-container' },
-                                        _react2.default.createElement('input', { type: 'radio', 'class': 'yt-uix-form-input-radio deputy-flag-reason', name: 'reason', value: elem.value }),
-                                        _react2.default.createElement('span', { className: 'yt-uix-form-input-radio-element' })
-                                    ),
-                                    elem.text
-                                )
-                            );
+                                        'label',
+                                        null,
+                                        _react2.default.createElement(
+                                            'span',
+                                            { className: 'paper-radio' },
+                                            _react2.default.createElement('input', { type: 'radio', className: 'yt-uix-form-input-radio deputy-flag-reason', name: 'reason', value: elem.value }),
+                                            _react2.default.createElement('span', { className: 'paper-radio-element' })
+                                        ),
+                                        _react2.default.createElement(
+                                            'div',
+                                            { className: 'mgi--left-12' },
+                                            _react2.default.createElement(
+                                                'span',
+                                                null,
+                                                elem.text
+                                            )
+                                        )
+                                    )
+                                );
+                            })
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'fieldset',
+                        { className: 'form-reporting-fieldset' },
+                        _react2.default.createElement(_Textarea2.default, {
+                            className: 'csstudio-frm-input u-full-width',
+                            placeholder: 'Provide additional details',
+                            value: this.props.description,
+                            name: 'flag_comments',
+                            maxLength: '500',
+                            onChange: this.props.handleChange
                         })
                     )
                 ),
                 _react2.default.createElement(
-                    'fieldset',
-                    null,
-                    _react2.default.createElement(_Textarea2.default, {
-                        className: 'csstudio-frm-input u-full-width',
-                        placeholder: 'Description',
-                        value: '',
-                        onChange: this.handleChange
-                    })
-                ),
-                _react2.default.createElement(
-                    'fieldset',
-                    null,
+                    'div',
+                    { className: 'form-reporting-fieldset buttons' },
                     _react2.default.createElement(
-                        _Button2.default,
-                        { type: 'submit' },
-                        'Send'
+                        'div',
+                        { className: 'mgi--left-10' },
+                        _react2.default.createElement(
+                            _Button2.default,
+                            { type: 'button', white: true, onClick: function onClick() {
+                                    return _this2.props.onClosed();
+                                } },
+                            'Close'
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'mgi--left-10' },
+                        _react2.default.createElement(
+                            _Button2.default,
+                            { type: 'submit', blue: true },
+                            'Submit'
+                        )
                     )
                 )
             );
@@ -20286,6 +20324,8 @@ var _FormReporting2 = _interopRequireDefault(_FormReporting);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -20303,10 +20343,12 @@ var FormFlagging = exports.FormFlagging = function (_Component) {
         _this.state = {
             videosSelected: [],
             videos: props.videos || [],
-            isAdd: true
+            isAdd: true,
+            flag_comments: ''
         };
 
         _this.handleSubmit = _this.handleSubmit.bind(_this);
+        _this.handleChange = _this.handleChange.bind(_this);
         return _this;
     }
 
@@ -20325,6 +20367,14 @@ var FormFlagging = exports.FormFlagging = function (_Component) {
             return this.setState({
                 videos: videos
             });
+        }
+    }, {
+        key: 'handleChange',
+        value: function handleChange(e) {
+            var value = e.target.value;
+            var name = e.target.name;
+
+            this.setState(_defineProperty({}, name, value));
         }
     }, {
         key: 'handleSubmit',
@@ -20374,7 +20424,12 @@ var FormFlagging = exports.FormFlagging = function (_Component) {
                         }
                     },
                     _react2.default.createElement(_FormReporting2.default, {
-                        videos: videos
+                        videos: videos,
+                        description: this.state.flag_comments,
+                        handleChange: this.handleChange,
+                        onClosed: function onClosed() {
+                            return _this2.setState({ isAdd: false });
+                        }
                     })
                 )
             );
@@ -20792,7 +20847,7 @@ _reactDom2.default.render(_react2.default.createElement(App, {
     search: search,
     pathname: pathname
 }), myReactApp);
-},{"react":7,"react-dom":6,"./shared/models/Video.class":3,"./components/FormFlagging/FormFlagging":5,"./components/VideosList/VideosList":4,"./components/Sidebar/Sidebar":31}],47:[function(require,module,exports) {
+},{"react":7,"react-dom":6,"./shared/models/Video.class":3,"./components/FormFlagging/FormFlagging":5,"./components/VideosList/VideosList":4,"./components/Sidebar/Sidebar":31}],60:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -20821,7 +20876,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '60412' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '58739' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -20962,5 +21017,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[47,1], null)
+},{}]},{},[60,1], null)
 //# sourceMappingURL=/main.map

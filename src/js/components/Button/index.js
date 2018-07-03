@@ -2,7 +2,9 @@ import React from 'react'
 
 const Button = (props) => {
 
-    let className = 'yt-uix-button yt-uix-button-size-default yt-uix-button-primary '
+    let className = 'yt-uix-button yt-uix-button-size-default '
+    if (props.blue) className = className + 'yt-uix-button-primary '
+    else className = className + 'yt-uix-white-primary '
     className = (props.className) ? className+props.className : className
 
     return (

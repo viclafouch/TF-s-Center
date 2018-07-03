@@ -19,35 +19,47 @@ export class FormReporting extends Component {
     render() {
         return (
             <div className="form-reporting">
-                <fieldset className="yt-uix-form-fieldset">
-                    <legend className="yt-uix-form-legend">Motif du signalement :</legend>
-                    <ul className="yt-uix-form-list-option">
-                        {
-                            this.labels.map((elem, index) =>
-                                <li>
-                                    <label>
-                                        <span className="yt-uix-form-input-radio-container">
-                                            <input type="radio" class="yt-uix-form-input-radio deputy-flag-reason" name="reason" value={elem.value}/>
-                                            <span className="yt-uix-form-input-radio-element"></span>
-                                        </span>
-                                        {elem.text}
-                                    </label>
-                                </li>
-                            )
-                        }
-                    </ul>
-                </fieldset>
-                <fieldset>
-                    <Textarea
-                        className="csstudio-frm-input u-full-width"
-                        placeholder="Description"
-                        value=""
-                        onChange={this.handleChange}
-                    />
-                </fieldset>
-                <fieldset>
-                    <Button type="submit">Send</Button>
-                </fieldset>
+                <div className="pdi--20">
+                    <h3>Report videos (3)</h3>
+                    <fieldset className="form-reporting-fieldset">
+                        <legend className="yt-uix-form-legend">What is the issue ?</legend>
+                        <ul className="yt-uix-form-list-option paper-list">
+                            {
+                                this.labels.map((elem, index) =>
+                                    <li key={index} className="paper-item">
+                                        <label>
+                                            <span className="paper-radio">
+                                                <input type="radio" className="yt-uix-form-input-radio deputy-flag-reason" name="reason" value={elem.value}/>
+                                                <span className="paper-radio-element"></span>
+                                            </span>
+                                            <div className="mgi--left-12">
+                                                <span>{elem.text}</span>
+                                            </div>
+                                        </label>
+                                    </li>
+                                )
+                            }
+                        </ul>
+                    </fieldset>
+                    <fieldset className="form-reporting-fieldset">
+                        <Textarea
+                            className="csstudio-frm-input u-full-width"
+                            placeholder="Provide additional details"
+                            value={this.props.description}
+                            name="flag_comments"
+                            maxLength="500"
+                            onChange={this.props.handleChange}
+                        />
+                    </fieldset>
+                </div>
+                <div className="form-reporting-fieldset buttons">
+                    <div className="mgi--left-10">
+                        <Button type="button" white onClick={() => this.props.onClosed()}>Close</Button>
+                    </div>
+                    <div className="mgi--left-10">
+                        <Button type="submit" blue>Submit</Button>
+                    </div>
+                </div>
             </div>
         )
     }

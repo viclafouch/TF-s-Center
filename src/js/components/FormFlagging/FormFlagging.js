@@ -13,10 +13,12 @@ export class FormFlagging extends Component {
         this.state = {
             videosSelected: [],
             videos: props.videos || [],
-            isAdd: true
+            isAdd: true,
+            flag_comments: ''
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     handleSelectVideo(video, checked) {
@@ -29,6 +31,16 @@ export class FormFlagging extends Component {
         return this.setState({
             videos: videos,
         });
+    }
+
+    handleChange(e) {
+        let value = e.target.value;
+        let name = e.target.name;
+
+        this.setState({
+            [name]: value
+        });
+
     }
 
     handleSubmit(e) {
@@ -65,6 +77,9 @@ export class FormFlagging extends Component {
                 >
                     <FormReporting
                         videos={videos}
+                        description={this.state.flag_comments}
+                        handleChange={this.handleChange}
+                        onClosed={() => this.setState({ isAdd: false })}
                     />
                 </Popup>
             </form>
