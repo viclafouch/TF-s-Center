@@ -20,7 +20,7 @@ export class FormReporting extends Component {
         return (
             <div className="form-reporting">
                 <div className="pdi--20">
-                    <h3>Report videos (3)</h3>
+                    <h3>Report videos ({this.props.videosSelected.length})</h3>
                     <fieldset className="form-reporting-fieldset">
                         <legend className="yt-uix-form-legend">What is the issue ?</legend>
                         <ul className="yt-uix-form-list-option paper-list">

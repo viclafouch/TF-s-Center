@@ -20205,7 +20205,9 @@ var FormReporting = exports.FormReporting = function (_Component) {
                     _react2.default.createElement(
                         'h3',
                         null,
-                        'Report videos (3)'
+                        'Report videos (',
+                        this.props.videosSelected.length,
+                        ')'
                     ),
                     _react2.default.createElement(
                         'fieldset',
@@ -20343,7 +20345,7 @@ var FormFlagging = exports.FormFlagging = function (_Component) {
         _this.state = {
             videosSelected: [],
             videos: props.videos || [],
-            isAdd: true,
+            isAdd: false,
             flag_comments: ''
         };
 
@@ -20365,7 +20367,10 @@ var FormFlagging = exports.FormFlagging = function (_Component) {
             videos[videoIndex].selected = checked;
 
             return this.setState({
-                videos: videos
+                videos: videos,
+                videosSelected: videos.filter(function (elem) {
+                    return elem.selected;
+                })
             });
         }
     }, {
@@ -20397,7 +20402,8 @@ var FormFlagging = exports.FormFlagging = function (_Component) {
 
             var _state = this.state,
                 videos = _state.videos,
-                isAdd = _state.isAdd;
+                isAdd = _state.isAdd,
+                videosSelected = _state.videosSelected;
 
 
             return _react2.default.createElement(
@@ -20418,13 +20424,13 @@ var FormFlagging = exports.FormFlagging = function (_Component) {
                 _react2.default.createElement(
                     _Popup2.default,
                     {
-                        isOpen: isAdd,
+                        isOpen: isAdd && videosSelected.length > 0,
                         onClosed: function onClosed() {
                             return _this2.setState({ isAdd: false });
                         }
                     },
                     _react2.default.createElement(_FormReporting2.default, {
-                        videos: videos,
+                        videosSelected: videosSelected,
                         description: this.state.flag_comments,
                         handleChange: this.handleChange,
                         onClosed: function onClosed() {
