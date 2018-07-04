@@ -11,8 +11,8 @@ class App extends React.Component {
 
     constructor() {
         super();
-        this.state = {
-            hideRemoved: true,
+        this.state = this.baseState = {
+            hideRemoved: false,
             hideReviewed: false
         }
     }
@@ -33,7 +33,11 @@ class App extends React.Component {
                                 videos={videos}
                                 hideRemoved={this.state.hideRemoved}
                                 hideReviewed={this.state.hideReviewed}
-                                handleTools={e => this.setState({ [e.target.name]: !this.state[e.target.name]})}
+                                handleTools={e => {
+                                    const hides = Object.assign({}, this.baseState)
+                                    hides[e.target.name] = !this.state[e.target.name]
+                                    this.setState(hides)
+                                }}
                             />
                             <VideosList
                                 videos={videos}

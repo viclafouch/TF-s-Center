@@ -31,6 +31,39 @@ body {
     color: #f00;
 }
 
+.scrollBarOnHover {
+
+    &::-webkit-scrollbar {
+        width: 8px;
+        background-color: #F5F5F5;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: transparent;
+        box-shadow: none;
+        min-height: 36px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+        box-shadow: none;
+    }
+
+    &::-webkit-scrollbar-thumb, ::-webkit-scrollbar-track {
+        border-radius: 3px;
+        background-clip: padding-box !important;
+        color: rgba(177,191,206,0.35);
+    }
+
+    &:hover::-webkit-scrollbar-track {
+        background: rgba(177,191,206,0.35);
+    }
+
+    &:hover::-webkit-scrollbar-thumb {
+        background: #a1b2c4;
+    }
+}
+
 button.yt-uix-button {
     transition: all 0.3s;
 }

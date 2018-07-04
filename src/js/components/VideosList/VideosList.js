@@ -24,7 +24,7 @@ export class VideosList extends Component {
         });
 
         return (
-            <div className="container-list">
+            <div className="container-list scrollBarOnHover">
                 <ul className="videos-list pdi--top-0">
                     {videos.map((elem, index) => {
                         return (

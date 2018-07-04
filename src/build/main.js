@@ -20074,7 +20074,7 @@ var VideosList = exports.VideosList = function (_Component) {
 
             return _react2.default.createElement(
                 'div',
-                { className: 'container-list' },
+                { className: 'container-list scrollBarOnHover' },
                 _react2.default.createElement(
                     'ul',
                     { className: 'videos-list pdi--top-0' },
@@ -20682,8 +20682,6 @@ var _ToolsFlag = require('./components/ToolsFlag/ToolsFlag');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -20698,8 +20696,8 @@ var App = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
-        _this.state = {
-            hideRemoved: true,
+        _this.state = _this.baseState = {
+            hideRemoved: false,
             hideReviewed: false
         };
         return _this;
@@ -20732,7 +20730,9 @@ var App = function (_React$Component) {
                             hideRemoved: this.state.hideRemoved,
                             hideReviewed: this.state.hideReviewed,
                             handleTools: function handleTools(e) {
-                                return _this2.setState(_defineProperty({}, e.target.name, !_this2.state[e.target.name]));
+                                var hides = Object.assign({}, _this2.baseState);
+                                hides[e.target.name] = !_this2.state[e.target.name];
+                                _this2.setState(hides);
                             }
                         }),
                         _react2.default.createElement(_VideosList.VideosList, {
@@ -20858,7 +20858,7 @@ _reactDom2.default.render(_react2.default.createElement(App, {
     search: search,
     pathname: pathname
 }), myReactApp);
-},{"react":7,"react-dom":6,"./shared/models/Video.class":3,"./components/FormFlagging/FormFlagging":5,"./components/VideosList/VideosList":4,"./components/Sidebar/Sidebar":31,"./config":82,"./components/ToolsFlag/ToolsFlag":9}],66:[function(require,module,exports) {
+},{"react":7,"react-dom":6,"./shared/models/Video.class":3,"./components/FormFlagging/FormFlagging":5,"./components/VideosList/VideosList":4,"./components/Sidebar/Sidebar":31,"./config":82,"./components/ToolsFlag/ToolsFlag":9}],37:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -20887,7 +20887,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '53314' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '56958' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -21028,5 +21028,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[66,1], null)
+},{}]},{},[37,1], null)
 //# sourceMappingURL=/main.map
