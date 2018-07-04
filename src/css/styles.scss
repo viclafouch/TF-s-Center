@@ -27,6 +27,10 @@ body {
     overflow: hidden;
 }
 
+.red-color {
+    color: #f00;
+}
+
 button.yt-uix-white-primary {
     border-color: #ACACAC;
     background: #fff;
@@ -46,13 +50,13 @@ div#TFsCenter {
         height: inherit;
         box-sizing: border-box;
 
-        form {
+        .full-heigth {
             position: relative;
             height: inherit;
             display: flex;
             flex-direction: column;
 
-            & > ul {
+            ul.videos-list {
                 padding: 20px 16px;
                 position: relative;
                 overflow-y: scroll;

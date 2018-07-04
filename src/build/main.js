@@ -19866,7 +19866,9 @@ var ToolsFlag = exports.ToolsFlag = function (_Component) {
             var videosSelected = videos.filter(function (x) {
                 return x.selected === true;
             });
-            console.log(videosSelected.length === 0);
+            var videosRemoved = videos.filter(function (x) {
+                return x.isRemoved === true;
+            });
 
             return _react2.default.createElement(
                 'div',
@@ -19874,7 +19876,7 @@ var ToolsFlag = exports.ToolsFlag = function (_Component) {
                 _react2.default.createElement(
                     'div',
                     null,
-                    _react2.default.createElement(
+                    this.props.onSubmit && _react2.default.createElement(
                         _Button2.default,
                         {
                             blue: true,
@@ -19901,7 +19903,11 @@ var ToolsFlag = exports.ToolsFlag = function (_Component) {
                     _react2.default.createElement(
                         'div',
                         null,
-                        videosSelected.length,
+                        _react2.default.createElement(
+                            'span',
+                            { className: !this.props.onSubmit && videosRemoved.length > 0 ? 'red-color' : '' },
+                            this.props.onSubmit ? videosSelected.length : videosRemoved.length
+                        ),
                         ' / ',
                         videos.length
                     )
@@ -20051,7 +20057,7 @@ var VideosList = exports.VideosList = function (_Component) {
                     return _react2.default.createElement(
                         'li',
                         { key: index },
-                        _react2.default.createElement('input', {
+                        _this2.props.canFlag && _react2.default.createElement('input', {
                             type: 'checkbox',
                             id: elem.id,
                             style: { position: 'absolute' },
@@ -20408,7 +20414,7 @@ var FormFlagging = exports.FormFlagging = function (_Component) {
 
             return _react2.default.createElement(
                 'form',
-                { action: '/deputy?action_submit', id: 'formFlagging', method: 'POST', className: 'form-flagging', onSubmit: this.handleSubmit },
+                { action: '/deputy?action_submit', id: 'formFlagging', method: 'POST', className: 'form-flagging full-heigth', onSubmit: this.handleSubmit },
                 _react2.default.createElement('input', { type: 'hidden', name: 'search_query', value: this.props.search }),
                 _react2.default.createElement(_ToolsFlag2.default, {
                     videos: videos,
@@ -20481,7 +20487,7 @@ var Sidebar = exports.Sidebar = function (_Component) {
         key: "render",
         value: function render() {
             return _react2.default.createElement(
-                "aside",
+                "div",
                 { className: "sidebar" },
                 _react2.default.createElement(
                     "div",
@@ -20499,7 +20505,7 @@ var Sidebar = exports.Sidebar = function (_Component) {
                             null,
                             _react2.default.createElement(
                                 "a",
-                                { href: "/", className: "youtube-link" },
+                                { href: "/flagging_history", className: "youtube-link" },
                                 _react2.default.createElement(
                                     "span",
                                     { className: "span-icon mgi--right-16" },
@@ -20508,7 +20514,7 @@ var Sidebar = exports.Sidebar = function (_Component) {
                                 _react2.default.createElement(
                                     "span",
                                     { className: "text-link" },
-                                    "Dashboard"
+                                    "History"
                                 )
                             )
                         ),
@@ -20517,7 +20523,7 @@ var Sidebar = exports.Sidebar = function (_Component) {
                             null,
                             _react2.default.createElement(
                                 "a",
-                                { href: "/", className: "youtube-link" },
+                                { href: "/deputy", className: "youtube-link" },
                                 _react2.default.createElement(
                                     "span",
                                     { className: "span-icon mgi--right-16" },
@@ -20526,7 +20532,7 @@ var Sidebar = exports.Sidebar = function (_Component) {
                                 _react2.default.createElement(
                                     "span",
                                     { className: "text-link" },
-                                    "Dashboard"
+                                    "Statistics"
                                 )
                             )
                         ),
@@ -20535,7 +20541,7 @@ var Sidebar = exports.Sidebar = function (_Component) {
                             null,
                             _react2.default.createElement(
                                 "a",
-                                { href: "/", className: "youtube-link" },
+                                { href: "https://www.contributorscommunity.com/t5/Trusted-Flagger-Forum/bd-p/EN_Flaggers_Board", className: "youtube-link" },
                                 _react2.default.createElement(
                                     "span",
                                     { className: "span-icon mgi--right-16" },
@@ -20544,7 +20550,25 @@ var Sidebar = exports.Sidebar = function (_Component) {
                                 _react2.default.createElement(
                                     "span",
                                     { className: "text-link" },
-                                    "Dashboard"
+                                    "Contributor Forum"
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                                "a",
+                                { href: "", className: "youtube-link" },
+                                _react2.default.createElement(
+                                    "span",
+                                    { className: "span-icon mgi--right-16" },
+                                    "i"
+                                ),
+                                _react2.default.createElement(
+                                    "span",
+                                    { className: "text-link" },
+                                    "Send mail"
                                 )
                             )
                         )
@@ -20566,7 +20590,7 @@ var Sidebar = exports.Sidebar = function (_Component) {
                                 _react2.default.createElement(
                                     "span",
                                     { className: "text-link" },
-                                    "Dashboard"
+                                    "Help"
                                 )
                             )
                         ),
@@ -20575,7 +20599,7 @@ var Sidebar = exports.Sidebar = function (_Component) {
                             null,
                             _react2.default.createElement(
                                 "a",
-                                { href: "/", className: "youtube-link" },
+                                { href: "/logout", className: "youtube-link" },
                                 _react2.default.createElement(
                                     "span",
                                     { className: "span-icon mgi--right-16" },
@@ -20584,7 +20608,7 @@ var Sidebar = exports.Sidebar = function (_Component) {
                                 _react2.default.createElement(
                                     "span",
                                     { className: "text-link" },
-                                    "Dashboard"
+                                    "Logout"
                                 )
                             )
                         )
@@ -20598,7 +20622,14 @@ var Sidebar = exports.Sidebar = function (_Component) {
 }(_react.Component);
 
 exports.default = Sidebar;
-},{"react":7}],1:[function(require,module,exports) {
+},{"react":7}],82:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var urlsAvailable = exports.urlsAvailable = ['/flagging_history', '/deputy', '/stats'];
+},{}],1:[function(require,module,exports) {
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -20618,6 +20649,10 @@ var _FormFlagging = require('./components/FormFlagging/FormFlagging');
 var _VideosList = require('./components/VideosList/VideosList');
 
 var _Sidebar = require('./components/Sidebar/Sidebar');
+
+var _config = require('./config');
+
+var _ToolsFlag = require('./components/ToolsFlag/ToolsFlag');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20641,128 +20676,38 @@ var App = function (_React$Component) {
         value: function render() {
             var _props = this.props,
                 videos = _props.videos,
-                search = _props.search;
+                search = _props.search,
+                pathname = _props.pathname;
 
-            console.log({ videos: videos });
+            console.log({ pathname: pathname });
 
             return _react2.default.createElement(
                 _react2.default.Fragment,
                 null,
-                _react2.default.createElement(
-                    'aside',
-                    { className: 'sidebar' },
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'profile-wrapper' },
-                        _react2.default.createElement('img', { src: 'https://yt3.ggpht.com/-S2LcjnxOoXc/AAAAAAAAAAI/AAAAAAAAAAA/SfHM8F50Xo0/s900-mo-c-c0xffffffff-rj-k-no/photo.jpg', alt: '' })
-                    ),
-                    _react2.default.createElement(
-                        'nav',
-                        { className: 'navbar' },
-                        _react2.default.createElement(
-                            'ul',
-                            { className: 'nav-link' },
-                            _react2.default.createElement(
-                                'li',
-                                null,
-                                _react2.default.createElement(
-                                    'a',
-                                    { href: '/', className: 'youtube-link' },
-                                    _react2.default.createElement(
-                                        'span',
-                                        { className: 'span-icon mgi--right-16' },
-                                        'i'
-                                    ),
-                                    _react2.default.createElement(
-                                        'span',
-                                        { className: 'text-link' },
-                                        'Dashboard'
-                                    )
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'li',
-                                null,
-                                _react2.default.createElement(
-                                    'a',
-                                    { href: '/', className: 'youtube-link' },
-                                    _react2.default.createElement(
-                                        'span',
-                                        { className: 'span-icon mgi--right-16' },
-                                        'i'
-                                    ),
-                                    _react2.default.createElement(
-                                        'span',
-                                        { className: 'text-link' },
-                                        'Dashboard'
-                                    )
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'li',
-                                null,
-                                _react2.default.createElement(
-                                    'a',
-                                    { href: '/', className: 'youtube-link' },
-                                    _react2.default.createElement(
-                                        'span',
-                                        { className: 'span-icon mgi--right-16' },
-                                        'i'
-                                    ),
-                                    _react2.default.createElement(
-                                        'span',
-                                        { className: 'text-link' },
-                                        'Dashboard'
-                                    )
-                                )
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'ul',
-                            { className: 'nav-link' },
-                            _react2.default.createElement(
-                                'li',
-                                null,
-                                _react2.default.createElement(
-                                    'a',
-                                    { href: '/', className: 'youtube-link' },
-                                    _react2.default.createElement(
-                                        'span',
-                                        { className: 'span-icon mgi--right-16' },
-                                        'i'
-                                    ),
-                                    _react2.default.createElement(
-                                        'span',
-                                        { className: 'text-link' },
-                                        'Dashboard'
-                                    )
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'li',
-                                null,
-                                _react2.default.createElement(
-                                    'a',
-                                    { href: '/', className: 'youtube-link' },
-                                    _react2.default.createElement(
-                                        'span',
-                                        { className: 'span-icon mgi--right-16' },
-                                        'i'
-                                    ),
-                                    _react2.default.createElement(
-                                        'span',
-                                        { className: 'text-link' },
-                                        'Dashboard'
-                                    )
-                                )
-                            )
-                        )
-                    )
-                ),
+                _react2.default.createElement(_Sidebar.Sidebar, null),
                 _react2.default.createElement(
                     'div',
                     { className: 'main-container' },
-                    _react2.default.createElement(_FormFlagging.FormFlagging, { videos: videos, search: search })
+                    pathname === _config.urlsAvailable[0] && _react2.default.createElement(
+                        'div',
+                        { className: 'full-heigth' },
+                        _react2.default.createElement(_ToolsFlag.ToolsFlag, {
+                            videos: videos
+                        }),
+                        _react2.default.createElement(_VideosList.VideosList, {
+                            videos: videos
+                        })
+                    ),
+                    pathname === _config.urlsAvailable[1] && _react2.default.createElement(_FormFlagging.FormFlagging, { videos: videos, search: search }),
+                    pathname === _config.urlsAvailable[2] && _react2.default.createElement(
+                        'div',
+                        { className: 'full-heigth' },
+                        _react2.default.createElement(
+                            'div',
+                            null,
+                            'stats'
+                        )
+                    )
                 )
             );
         }
@@ -20771,10 +20716,27 @@ var App = function (_React$Component) {
     return App;
 }(_react2.default.Component);
 
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+
+var search = document.getElementById('masthead-search-term').value;
 var pathname = window.location.pathname;
 
-var urlsAvailable = ['/flagging_history', '/deputy'];
-var search = document.getElementById('masthead-search-term').value;
+if (pathname === _config.urlsAvailable[1] && !getUrlParameter('search_query')) {
+    pathname = '/stats';
+}
 
 /**
  * Inject my react App
@@ -20853,7 +20815,7 @@ _reactDom2.default.render(_react2.default.createElement(App, {
     search: search,
     pathname: pathname
 }), myReactApp);
-},{"react":7,"react-dom":6,"./shared/models/Video.class":3,"./components/FormFlagging/FormFlagging":5,"./components/VideosList/VideosList":4,"./components/Sidebar/Sidebar":31}],60:[function(require,module,exports) {
+},{"react":7,"react-dom":6,"./shared/models/Video.class":3,"./components/FormFlagging/FormFlagging":5,"./components/VideosList/VideosList":4,"./components/Sidebar/Sidebar":31,"./config":82,"./components/ToolsFlag/ToolsFlag":9}],35:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -20882,7 +20844,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '58739' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '59625' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -21023,5 +20985,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[60,1], null)
+},{}]},{},[35,1], null)
 //# sourceMappingURL=/main.map

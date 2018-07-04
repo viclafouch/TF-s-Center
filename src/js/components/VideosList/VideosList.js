@@ -5,7 +5,6 @@ export class VideosList extends Component {
 
     constructor() {
         super();
-
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -22,15 +21,19 @@ export class VideosList extends Component {
                 { this.props.videos.map((elem, index) => {
                     return (
                         <li key={index}>
-                            <input
-                                type="checkbox"
-                                id={elem.id}
-                                style={{position: 'absolute'}}
-                                className="yt-uix-form-input-checkbox deputy-flag-video-checkbox"
-                                value={elem.id}
-                                name="selected_vid"
-                                onChange={this.handleChange}
-                            />
+                            {
+                                this.props.canFlag &&
+                                <input
+                                    type="checkbox"
+                                    id={elem.id}
+                                    style={{ position: 'absolute' }}
+                                    className="yt-uix-form-input-checkbox deputy-flag-video-checkbox"
+                                    value={elem.id}
+                                    name="selected_vid"
+                                    onChange={this.handleChange}
+                                />
+                            }
+
                             <VideoListItem video={elem} />
                         </li>
                     )

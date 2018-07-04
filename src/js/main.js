@@ -4,67 +4,66 @@ import { Video } from './shared/models/Video.class';
 import { FormFlagging } from './components/FormFlagging/FormFlagging';
 import { VideosList } from './components/VideosList/VideosList';
 import { Sidebar } from './components/Sidebar/Sidebar';
+import { urlsAvailable } from './config';
+import { ToolsFlag } from './components/ToolsFlag/ToolsFlag';
 
 class App extends React.Component {
     render() {
 
-        let { videos, search } = this.props;
-        console.log({videos});
+        let { videos, search, pathname } = this.props;
+        console.log({ pathname});
 
         return (
             <React.Fragment>
-                <aside className="sidebar">
-                    <div className="profile-wrapper">
-                        <img src="https://yt3.ggpht.com/-S2LcjnxOoXc/AAAAAAAAAAI/AAAAAAAAAAA/SfHM8F50Xo0/s900-mo-c-c0xffffffff-rj-k-no/photo.jpg" alt="" />
-                    </div>
-                    <nav className="navbar">
-                        <ul className="nav-link">
-                            <li>
-                                <a href="/" className="youtube-link">
-                                    <span className="span-icon mgi--right-16">i</span>
-                                    <span className="text-link">Dashboard</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/" className="youtube-link">
-                                    <span className="span-icon mgi--right-16">i</span>
-                                    <span className="text-link">Dashboard</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/" className="youtube-link">
-                                    <span className="span-icon mgi--right-16">i</span>
-                                    <span className="text-link">Dashboard</span>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul className="nav-link">
-                            <li>
-                                <a href="/" className="youtube-link">
-                                    <span className="span-icon mgi--right-16">i</span>
-                                    <span className="text-link">Dashboard</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/" className="youtube-link">
-                                    <span className="span-icon mgi--right-16">i</span>
-                                    <span className="text-link">Dashboard</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </aside>
+                <Sidebar />
                 <div className="main-container">
-                    <FormFlagging videos={videos} search={search} />
+                    {
+                        pathname === urlsAvailable[0] &&
+                        <div className="full-heigth">
+                            <ToolsFlag
+                                videos={videos}
+                            />
+                            <VideosList
+                                videos={videos}
+                            />
+                        </div>
+                    }
+                    {
+                        pathname === urlsAvailable[1] &&
+                        <FormFlagging videos={videos} search={search} />
+                    }
+                    {
+                        pathname === urlsAvailable[2] &&
+                        <div className="full-heigth">
+                            <div>stats</div>
+                        </div>
+                    }
                 </div>
             </React.Fragment>
         )
     }
 }
 
-const { pathname } = window.location;
-const urlsAvailable = ['/flagging_history', '/deputy']
-const search = document.getElementById('masthead-search-term').value;
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'), sParameterName, i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+
+var search = document.getElementById('masthead-search-term').value;
+var { pathname } = window.location;
+if (pathname === urlsAvailable[1] && !getUrlParameter('search_query')) {
+    pathname = '/stats'
+}
+
+
 
 
 /**

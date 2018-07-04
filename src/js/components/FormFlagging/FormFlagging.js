@@ -61,7 +61,7 @@ export class FormFlagging extends Component {
         let { videos, isAdd, videosSelected } = this.state;
 
         return (
-            <form action="/deputy?action_submit" id="formFlagging" method="POST" className="form-flagging" onSubmit={this.handleSubmit}>
+            <form action="/deputy?action_submit" id="formFlagging" method="POST" className="form-flagging full-heigth" onSubmit={this.handleSubmit}>
                 <input type="hidden" name="search_query" value={this.props.search} />
                 <ToolsFlag
                     videos={videos}
