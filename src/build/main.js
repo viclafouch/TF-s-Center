@@ -19813,6 +19813,7 @@ var Button = function Button(props) {
         {
             className: className,
             id: props.id,
+            name: props.name || '',
             disabled: props.disabled || false,
             onClick: props.onClick,
             type: props.type || "button"
@@ -19888,12 +19889,22 @@ var ToolsFlag = exports.ToolsFlag = function (_Component) {
                     ),
                     _react2.default.createElement(
                         _Button2.default,
-                        { blue: true, className: 'mgi--right-10' },
+                        {
+                            blue: true,
+                            className: "mgi--right-10 " + (this.props.hideRemoved ? 'active' : ''),
+                            onClick: this.props.handleTools,
+                            name: 'hideRemoved'
+                        },
                         'Cacher les vid\xE9os supprim\xE9es'
                     ),
                     _react2.default.createElement(
                         _Button2.default,
-                        { blue: true, className: 'mgi--right-10' },
+                        {
+                            blue: true,
+                            className: "mgi--right-10 " + (this.props.hideReviewed ? 'active' : ''),
+                            onClick: this.props.handleTools,
+                            name: 'hideReviewed'
+                        },
                         'Cacher les vid\xE9os d\xE9j\xE0 reviewed'
                     )
                 ),
@@ -19920,7 +19931,7 @@ var ToolsFlag = exports.ToolsFlag = function (_Component) {
 }(_react.Component);
 
 exports.default = ToolsFlag;
-},{"react":7,"../Button":19}],17:[function(require,module,exports) {
+},{"react":7,"../Button":19}],10:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -19976,10 +19987,10 @@ var VideoListItem = exports.VideoListItem = function (_Component) {
                     { className: "video-item-text" },
                     _react2.default.createElement(
                         "h3",
-                        { className: "mgi--bottom-8 mgi--top-8" },
+                        { className: "mgi--bottom-8 mgi--top-8 video-item-title" },
                         _react2.default.createElement(
-                            "span",
-                            { className: video.isRemoved ? 'removed-on-text' : '' },
+                            "a",
+                            { href: video.url, target: "_blank", title: !video.isRemoved ? video.title : '', className: video.isRemoved ? 'removed-on-text' : '' },
                             video.title || 'This video is not longer available'
                         )
                     ),
@@ -20050,25 +20061,40 @@ var VideosList = exports.VideosList = function (_Component) {
         value: function render() {
             var _this2 = this;
 
+            var _props = this.props,
+                videos = _props.videos,
+                canFlag = _props.canFlag,
+                hideReviewed = _props.hideReviewed,
+                hideRemoved = _props.hideRemoved;
+
+
+            videos = videos.filter(function (elem) {
+                return hideReviewed ? true : hideRemoved ? !elem.isRemoved : true;
+            });
+
             return _react2.default.createElement(
-                'ul',
-                { className: 'videos-list pdi--top-0' },
-                this.props.videos.map(function (elem, index) {
-                    return _react2.default.createElement(
-                        'li',
-                        { key: index },
-                        _this2.props.canFlag && _react2.default.createElement('input', {
-                            type: 'checkbox',
-                            id: elem.id,
-                            style: { position: 'absolute' },
-                            className: 'yt-uix-form-input-checkbox deputy-flag-video-checkbox',
-                            value: elem.id,
-                            name: 'selected_vid',
-                            onChange: _this2.handleChange
-                        }),
-                        _react2.default.createElement(_VideoListItem2.default, { video: elem })
-                    );
-                })
+                'div',
+                { className: 'container-list' },
+                _react2.default.createElement(
+                    'ul',
+                    { className: 'videos-list pdi--top-0' },
+                    videos.map(function (elem, index) {
+                        return _react2.default.createElement(
+                            'li',
+                            { key: index },
+                            canFlag && _react2.default.createElement('input', {
+                                type: 'checkbox',
+                                id: elem.id,
+                                style: { position: 'absolute' },
+                                className: 'yt-uix-form-input-checkbox deputy-flag-video-checkbox',
+                                value: elem.id,
+                                name: 'selected_vid',
+                                onChange: _this2.handleChange
+                            }),
+                            _react2.default.createElement(_VideoListItem2.default, { video: elem })
+                        );
+                    })
+                )
             );
         }
     }]);
@@ -20077,7 +20103,7 @@ var VideosList = exports.VideosList = function (_Component) {
 }(_react.Component);
 
 exports.default = VideosList;
-},{"react":7,"./VideoListItem":17}],79:[function(require,module,exports) {
+},{"react":7,"./VideoListItem":10}],79:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -20656,6 +20682,8 @@ var _ToolsFlag = require('./components/ToolsFlag/ToolsFlag');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -20668,18 +20696,26 @@ var App = function (_React$Component) {
     function App() {
         _classCallCheck(this, App);
 
-        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+
+        _this.state = {
+            hideRemoved: true,
+            hideReviewed: false
+        };
+        return _this;
     }
 
     _createClass(App, [{
         key: 'render',
         value: function render() {
+            var _this2 = this;
+
             var _props = this.props,
                 videos = _props.videos,
                 search = _props.search,
                 pathname = _props.pathname;
 
-            console.log({ pathname: pathname });
+            console.log(this.state);
 
             return _react2.default.createElement(
                 _react2.default.Fragment,
@@ -20692,10 +20728,17 @@ var App = function (_React$Component) {
                         'div',
                         { className: 'full-heigth' },
                         _react2.default.createElement(_ToolsFlag.ToolsFlag, {
-                            videos: videos
+                            videos: videos,
+                            hideRemoved: this.state.hideRemoved,
+                            hideReviewed: this.state.hideReviewed,
+                            handleTools: function handleTools(e) {
+                                return _this2.setState(_defineProperty({}, e.target.name, !_this2.state[e.target.name]));
+                            }
                         }),
                         _react2.default.createElement(_VideosList.VideosList, {
-                            videos: videos
+                            videos: videos,
+                            hideRemoved: this.state.hideRemoved,
+                            hideReviewed: this.state.hideReviewed
                         })
                     ),
                     pathname === _config.urlsAvailable[1] && _react2.default.createElement(_FormFlagging.FormFlagging, { videos: videos, search: search }),
@@ -20815,7 +20858,7 @@ _reactDom2.default.render(_react2.default.createElement(App, {
     search: search,
     pathname: pathname
 }), myReactApp);
-},{"react":7,"react-dom":6,"./shared/models/Video.class":3,"./components/FormFlagging/FormFlagging":5,"./components/VideosList/VideosList":4,"./components/Sidebar/Sidebar":31,"./config":82,"./components/ToolsFlag/ToolsFlag":9}],35:[function(require,module,exports) {
+},{"react":7,"react-dom":6,"./shared/models/Video.class":3,"./components/FormFlagging/FormFlagging":5,"./components/VideosList/VideosList":4,"./components/Sidebar/Sidebar":31,"./config":82,"./components/ToolsFlag/ToolsFlag":9}],66:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -20844,7 +20887,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '59625' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '53314' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -20985,5 +21028,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[35,1], null)
+},{}]},{},[66,1], null)
 //# sourceMappingURL=/main.map

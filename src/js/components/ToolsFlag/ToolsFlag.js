@@ -21,8 +21,18 @@ export class ToolsFlag extends Component {
                             onClick={this.props.onSubmit}
                         >Ajouter à la liste</Button>
                     }
-                    <Button blue className="mgi--right-10">Cacher les vidéos supprimées</Button>
-                    <Button blue className="mgi--right-10">Cacher les vidéos déjà reviewed</Button>
+                    <Button
+                        blue
+                        className={"mgi--right-10 " + (this.props.hideRemoved ? 'active' : '')}
+                        onClick={this.props.handleTools}
+                        name="hideRemoved"
+                    >Cacher les vidéos supprimées</Button>
+                    <Button
+                        blue
+                        className={"mgi--right-10 " + (this.props.hideReviewed ? 'active' : '')}
+                        onClick={this.props.handleTools}
+                        name="hideReviewed"
+                    >Cacher les vidéos déjà reviewed</Button>
                 </div>
                 <div>
                     <div>

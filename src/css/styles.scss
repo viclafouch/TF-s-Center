@@ -31,9 +31,18 @@ body {
     color: #f00;
 }
 
+button.yt-uix-button {
+    transition: all 0.3s;
+}
+
 button.yt-uix-white-primary {
     border-color: #ACACAC;
     background: #fff;
+}
+
+button.yt-uix-button.active {
+    background: #fff;
+    color: #167ac6;
 }
 
 div#TFsCenter {
@@ -50,6 +59,11 @@ div#TFsCenter {
         height: inherit;
         box-sizing: border-box;
 
+        .container-list {
+            flex: 1 1;
+            overflow-y: scroll;
+        }
+
         .full-heigth {
             position: relative;
             height: inherit;
@@ -59,7 +73,6 @@ div#TFsCenter {
             ul.videos-list {
                 padding: 20px 16px;
                 position: relative;
-                overflow-y: scroll;
             }
         }
     }
@@ -168,6 +181,8 @@ div#TFsCenter {
 
     article.video-item {
 
+        overflow: hidden;
+
         &.active {
             opacity: 0.45;
         }
@@ -188,6 +203,19 @@ div#TFsCenter {
             text-decoration: none;
             white-space: nowrap;
             &:hover { color: rgba(17, 17, 17, 0.8); }
+        }
+
+        .video-item-text {
+            .video-item-title {
+                a {
+                    text-decoration: none;
+                    color: inherit;
+                    &.removed-on-text {
+                        color: red;
+                        font-weight: 500;
+                    }
+                }
+            }
         }
     }
 

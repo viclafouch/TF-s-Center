@@ -8,10 +8,19 @@ import { urlsAvailable } from './config';
 import { ToolsFlag } from './components/ToolsFlag/ToolsFlag';
 
 class App extends React.Component {
+
+    constructor() {
+        super();
+        this.state = {
+            hideRemoved: true,
+            hideReviewed: false
+        }
+    }
+
     render() {
 
         let { videos, search, pathname } = this.props;
-        console.log({ pathname});
+        console.log(this.state);
 
         return (
             <React.Fragment>
@@ -22,9 +31,14 @@ class App extends React.Component {
                         <div className="full-heigth">
                             <ToolsFlag
                                 videos={videos}
+                                hideRemoved={this.state.hideRemoved}
+                                hideReviewed={this.state.hideReviewed}
+                                handleTools={e => this.setState({ [e.target.name]: !this.state[e.target.name]})}
                             />
                             <VideosList
                                 videos={videos}
+                                hideRemoved={this.state.hideRemoved}
+                                hideReviewed={this.state.hideReviewed}
                             />
                         </div>
                     }

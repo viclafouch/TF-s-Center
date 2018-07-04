@@ -21,8 +21,8 @@ export class VideoListItem extends Component {
                     <img className="thumbnail" src={video.thumbnail.replace('default', 'hqdefault')} />
                 </label>
                 <div className="video-item-text">
-                    <h3 className="mgi--bottom-8 mgi--top-8">
-                        <span className={video.isRemoved ? 'removed-on-text' : ''}>{video.title || 'This video is not longer available'}</span>
+                    <h3 className="mgi--bottom-8 mgi--top-8 video-item-title">
+                        <a href={video.url} target="_blank" title={!video.isRemoved ? video.title : ''} className={video.isRemoved ? 'removed-on-text' : ''}>{video.title || 'This video is not longer available'}</a>
                     </h3>
                     <a className="video-item-creator" href={video.channelLink}>{video.creator}</a>
                 </div>

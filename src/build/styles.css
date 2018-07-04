@@ -3035,9 +3035,16 @@ body {
 .red-color {
   color: #f00; }
 
+button.yt-uix-button {
+  transition: all 0.3s; }
+
 button.yt-uix-white-primary {
   border-color: #ACACAC;
   background: #fff; }
+
+button.yt-uix-button.active {
+  background: #fff;
+  color: #167ac6; }
 
 div#TFsCenter {
   font-family: 'Roboto', 'Noto', sans-serif;
@@ -3052,6 +3059,9 @@ div#TFsCenter {
     position: relative;
     height: inherit;
     box-sizing: border-box; }
+    div#TFsCenter > div.main-container .container-list {
+      flex: 1 1;
+      overflow-y: scroll; }
     div#TFsCenter > div.main-container .full-heigth {
       position: relative;
       height: inherit;
@@ -3059,8 +3069,7 @@ div#TFsCenter {
       flex-direction: column; }
       div#TFsCenter > div.main-container .full-heigth ul.videos-list {
         padding: 20px 16px;
-        position: relative;
-        overflow-y: scroll; }
+        position: relative; }
   div#TFsCenter .container {
     position: relative;
     width: 100%;
@@ -3175,23 +3184,31 @@ div#TFsCenter {
       margin-top: 18px; }
     div#TFsCenter ul.videos-list li input:checked + article > label.video-item-thumbnail {
       opacity: 0.45; }
-  div#TFsCenter article.video-item.active {
-    opacity: 0.45; }
-  div#TFsCenter article.video-item .video-item-thumbnail {
-    cursor: default;
-    width: 210px;
-    height: 157px;
-    overflow: hidden;
-    position: relative;
-    display: block; }
-  div#TFsCenter article.video-item .video-item-creator {
-    color: rgba(17, 17, 17, 0.6);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-decoration: none;
-    white-space: nowrap; }
-    div#TFsCenter article.video-item .video-item-creator:hover {
-      color: rgba(17, 17, 17, 0.8); }
+  div#TFsCenter article.video-item {
+    overflow: hidden; }
+    div#TFsCenter article.video-item.active {
+      opacity: 0.45; }
+    div#TFsCenter article.video-item .video-item-thumbnail {
+      cursor: default;
+      width: 210px;
+      height: 157px;
+      overflow: hidden;
+      position: relative;
+      display: block; }
+    div#TFsCenter article.video-item .video-item-creator {
+      color: rgba(17, 17, 17, 0.6);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-decoration: none;
+      white-space: nowrap; }
+      div#TFsCenter article.video-item .video-item-creator:hover {
+        color: rgba(17, 17, 17, 0.8); }
+    div#TFsCenter article.video-item .video-item-text .video-item-title a {
+      text-decoration: none;
+      color: inherit; }
+      div#TFsCenter article.video-item .video-item-text .video-item-title a.removed-on-text {
+        color: red;
+        font-weight: 500; }
   div#TFsCenter .sidebar {
     background-color: #f4f4f4;
     display: flex;
