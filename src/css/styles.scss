@@ -64,16 +64,16 @@ body {
     }
 }
 
-button.yt-uix-button {
+.yt-uix-button {
     transition: all 0.3s;
 }
 
-button.yt-uix-white-primary {
+.yt-uix-white-primary {
     border-color: #ACACAC;
     background: #fff;
 }
 
-button.yt-uix-button.active {
+.yt-uix-button.active {
     background: #fff;
     color: #167ac6;
 }
@@ -195,10 +195,6 @@ div#TFsCenter {
 
     }
 
-    .thumbnail {
-        width: 210px;
-    }
-
     ul.videos-list {
         display: grid;
         grid-template-rows: auto;
@@ -227,6 +223,19 @@ div#TFsCenter {
             overflow: hidden;
             position: relative;
             display: block;
+
+            .thumbnail {
+                width: 210px;
+                transition: all 0.3s;
+            }
+        }
+
+        &.isAccess:hover {
+            .thumbnail {
+                cursor: pointer;
+                opacity: 0.750;
+                transform: scale(1.1);
+            }
         }
 
         .video-item-creator {
@@ -315,11 +324,14 @@ div#TFsCenter {
         z-index: 999;
         width: 100%;
         padding: 20px 16px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         position: relative;
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+        & > div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
     }
 
     .span-icon {

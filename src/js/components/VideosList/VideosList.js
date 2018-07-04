@@ -17,11 +17,7 @@ export class VideosList extends Component {
 
     render() {
 
-        let { videos, canFlag, hideReviewed, hideRemoved } = this.props;
-
-        videos = videos.filter(elem => {
-            return hideReviewed ? true : hideRemoved ? !elem.isRemoved : true
-        });
+        let { videos, canFlag } = this.props;
 
         return (
             <div className="container-list scrollBarOnHover">

@@ -19747,49 +19747,177 @@ if ('development' === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":14}],3:[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":14}],31:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.Sidebar = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Video = exports.Video = function () {
-    function Video() {
-        var video = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-        _classCallCheck(this, Video);
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-        this.url = video.url;
-        this.nodeVideo = video.nodeVideo;
-        this.nodeDescription = video.nodeDescription;
-        this.title = video.textTitle;
-        this.isRemoved = video.isRemoved;
-        this.id = null;
-        this.creator = video.creator;
-        this.channelLink = video.channelLink;
-        this.viewCount = video.viewCount;
-        this.thumbnail = video.thumbnail;
+var Sidebar = exports.Sidebar = function (_Component) {
+    _inherits(Sidebar, _Component);
 
-        this.active = false;
+    function Sidebar() {
+        _classCallCheck(this, Sidebar);
 
-        this.getId();
+        return _possibleConstructorReturn(this, (Sidebar.__proto__ || Object.getPrototypeOf(Sidebar)).apply(this, arguments));
     }
 
-    _createClass(Video, [{
-        key: "getId",
-        value: function getId() {
-            this.id = this.url.split("=")[1];
+    _createClass(Sidebar, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                { className: "sidebar" },
+                _react2.default.createElement(
+                    "div",
+                    { className: "profile-wrapper" },
+                    _react2.default.createElement("img", { src: "https://yt3.ggpht.com/-S2LcjnxOoXc/AAAAAAAAAAI/AAAAAAAAAAA/SfHM8F50Xo0/s900-mo-c-c0xffffffff-rj-k-no/photo.jpg", alt: "" })
+                ),
+                _react2.default.createElement(
+                    "nav",
+                    { className: "navbar" },
+                    _react2.default.createElement(
+                        "ul",
+                        { className: "nav-link" },
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                                "a",
+                                { href: "/flagging_history", className: "youtube-link" },
+                                _react2.default.createElement(
+                                    "span",
+                                    { className: "span-icon mgi--right-16" },
+                                    "i"
+                                ),
+                                _react2.default.createElement(
+                                    "span",
+                                    { className: "text-link" },
+                                    "History"
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                                "a",
+                                { href: "/deputy", className: "youtube-link" },
+                                _react2.default.createElement(
+                                    "span",
+                                    { className: "span-icon mgi--right-16" },
+                                    "i"
+                                ),
+                                _react2.default.createElement(
+                                    "span",
+                                    { className: "text-link" },
+                                    "Statistics"
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                                "a",
+                                { href: "https://www.contributorscommunity.com/t5/Trusted-Flagger-Forum/bd-p/EN_Flaggers_Board", className: "youtube-link" },
+                                _react2.default.createElement(
+                                    "span",
+                                    { className: "span-icon mgi--right-16" },
+                                    "i"
+                                ),
+                                _react2.default.createElement(
+                                    "span",
+                                    { className: "text-link" },
+                                    "Contributor Forum"
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                                "a",
+                                { href: "", className: "youtube-link" },
+                                _react2.default.createElement(
+                                    "span",
+                                    { className: "span-icon mgi--right-16" },
+                                    "i"
+                                ),
+                                _react2.default.createElement(
+                                    "span",
+                                    { className: "text-link" },
+                                    "Send mail"
+                                )
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        "ul",
+                        { className: "nav-link" },
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                                "a",
+                                { href: "/", className: "youtube-link" },
+                                _react2.default.createElement(
+                                    "span",
+                                    { className: "span-icon mgi--right-16" },
+                                    "i"
+                                ),
+                                _react2.default.createElement(
+                                    "span",
+                                    { className: "text-link" },
+                                    "Help"
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                                "a",
+                                { href: "/logout", className: "youtube-link" },
+                                _react2.default.createElement(
+                                    "span",
+                                    { className: "span-icon mgi--right-16" },
+                                    "i"
+                                ),
+                                _react2.default.createElement(
+                                    "span",
+                                    { className: "text-link" },
+                                    "Logout"
+                                )
+                            )
+                        )
+                    )
+                )
+            );
         }
     }]);
 
-    return Video;
-}();
-},{}],19:[function(require,module,exports) {
+    return Sidebar;
+}(_react.Component);
+
+exports.default = Sidebar;
+},{"react":7}],19:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -19876,36 +20004,59 @@ var ToolsFlag = exports.ToolsFlag = function (_Component) {
                 { className: 'tools' },
                 _react2.default.createElement(
                     'div',
-                    null,
-                    this.props.onSubmit && _react2.default.createElement(
-                        _Button2.default,
-                        {
-                            blue: true,
-                            disabled: videosSelected.length === 0,
-                            className: 'mgi--right-10',
-                            onClick: this.props.onSubmit
-                        },
-                        'Ajouter \xE0 la liste'
+                    { className: 'mgi--bottom-10' },
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        this.props.onSubmit && _react2.default.createElement(
+                            _Button2.default,
+                            {
+                                blue: true,
+                                disabled: videosSelected.length === 0,
+                                className: 'mgi--right-10',
+                                onClick: this.props.onSubmit
+                            },
+                            'Ajouter \xE0 la liste'
+                        ),
+                        !this.props.canFlag && _react2.default.createElement(
+                            _react2.default.Fragment,
+                            null,
+                            _react2.default.createElement(
+                                _Button2.default,
+                                {
+                                    blue: true,
+                                    className: "mgi--right-10 " + (this.props.hideRemoved ? 'active' : ''),
+                                    onClick: this.props.handleTools,
+                                    name: 'hideRemoved'
+                                },
+                                'Cacher les vid\xE9os supprim\xE9es'
+                            ),
+                            _react2.default.createElement(
+                                _Button2.default,
+                                {
+                                    blue: true,
+                                    className: "mgi--right-10 " + (this.props.hideReviewed ? 'active' : ''),
+                                    onClick: this.props.handleTools,
+                                    name: 'hideReviewed'
+                                },
+                                'Cacher les vid\xE9os d\xE9j\xE0 reviewed'
+                            )
+                        )
                     ),
                     _react2.default.createElement(
-                        _Button2.default,
-                        {
-                            blue: true,
-                            className: "mgi--right-10 " + (this.props.hideRemoved ? 'active' : ''),
-                            onClick: this.props.handleTools,
-                            name: 'hideRemoved'
-                        },
-                        'Cacher les vid\xE9os supprim\xE9es'
-                    ),
-                    _react2.default.createElement(
-                        _Button2.default,
-                        {
-                            blue: true,
-                            className: "mgi--right-10 " + (this.props.hideReviewed ? 'active' : ''),
-                            onClick: this.props.handleTools,
-                            name: 'hideReviewed'
-                        },
-                        'Cacher les vid\xE9os d\xE9j\xE0 reviewed'
+                        'div',
+                        null,
+                        _react2.default.createElement(
+                            'div',
+                            null,
+                            _react2.default.createElement(
+                                'span',
+                                { className: !this.props.onSubmit && videosRemoved.length > 0 ? 'red-color' : '' },
+                                this.props.onSubmit ? videosSelected.length : videosRemoved.length
+                            ),
+                            ' / ',
+                            videos.length
+                        )
                     )
                 ),
                 _react2.default.createElement(
@@ -19913,14 +20064,16 @@ var ToolsFlag = exports.ToolsFlag = function (_Component) {
                     null,
                     _react2.default.createElement(
                         'div',
-                        null,
+                        { className: 'tools-pagination' },
                         _react2.default.createElement(
-                            'span',
-                            { className: !this.props.onSubmit && videosRemoved.length > 0 ? 'red-color' : '' },
-                            this.props.onSubmit ? videosSelected.length : videosRemoved.length
-                        ),
-                        ' / ',
-                        videos.length
+                            'a',
+                            { href: '/' },
+                            _react2.default.createElement(
+                                _Button2.default,
+                                { blue: true },
+                                '1'
+                            )
+                        )
                     )
                 )
             );
@@ -19932,7 +20085,7 @@ var ToolsFlag = exports.ToolsFlag = function (_Component) {
 
 exports.default = ToolsFlag;
 },{"react":7,"../Button":19}],10:[function(require,module,exports) {
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -19941,7 +20094,7 @@ exports.VideoListItem = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -19969,34 +20122,34 @@ var VideoListItem = exports.VideoListItem = function (_Component) {
     }
 
     _createClass(VideoListItem, [{
-        key: "render",
+        key: 'render',
         value: function render() {
             var video = this.props.video;
 
 
             return _react2.default.createElement(
-                "article",
-                { className: "video-item" },
+                'article',
+                { className: "video-item " + (!video.isRemoved ? 'isAccess' : '') },
                 _react2.default.createElement(
-                    "label",
-                    { className: "video-item-thumbnail", htmlFor: video.id },
-                    _react2.default.createElement("img", { className: "thumbnail", src: video.thumbnail.replace('default', 'hqdefault') })
+                    'div',
+                    { className: 'video-item-thumbnail' },
+                    _react2.default.createElement('img', { className: 'thumbnail', src: video.thumbnail.replace('default', 'hqdefault') })
                 ),
                 _react2.default.createElement(
-                    "div",
-                    { className: "video-item-text" },
+                    'div',
+                    { className: 'video-item-text' },
                     _react2.default.createElement(
-                        "h3",
-                        { className: "mgi--bottom-8 mgi--top-8 video-item-title" },
+                        'h3',
+                        { className: 'mgi--bottom-8 mgi--top-8 video-item-title' },
                         _react2.default.createElement(
-                            "a",
-                            { href: video.url, target: "_blank", title: !video.isRemoved ? video.title : '', className: video.isRemoved ? 'removed-on-text' : '' },
+                            'a',
+                            { href: video.url, target: '_blank', title: !video.isRemoved ? video.title : '', className: video.isRemoved ? 'removed-on-text' : '' },
                             video.title || 'This video is not longer available'
                         )
                     ),
                     _react2.default.createElement(
-                        "a",
-                        { className: "video-item-creator", href: video.channelLink },
+                        'a',
+                        { className: 'video-item-creator', href: video.channelLink },
                         video.creator
                     )
                 )
@@ -20063,14 +20216,8 @@ var VideosList = exports.VideosList = function (_Component) {
 
             var _props = this.props,
                 videos = _props.videos,
-                canFlag = _props.canFlag,
-                hideReviewed = _props.hideReviewed,
-                hideRemoved = _props.hideRemoved;
+                canFlag = _props.canFlag;
 
-
-            videos = videos.filter(function (elem) {
-                return hideReviewed ? true : hideRemoved ? !elem.isRemoved : true;
-            });
 
             return _react2.default.createElement(
                 'div',
@@ -20444,6 +20591,7 @@ var FormFlagging = exports.FormFlagging = function (_Component) {
                 _react2.default.createElement('input', { type: 'hidden', name: 'search_query', value: this.props.search }),
                 _react2.default.createElement(_ToolsFlag2.default, {
                     videos: videos,
+                    canFlag: true,
                     onSubmit: this.handleSubmit
                 }),
                 _react2.default.createElement(_VideosList.VideosList, {
@@ -20478,185 +20626,21 @@ var FormFlagging = exports.FormFlagging = function (_Component) {
 }(_react.Component);
 
 exports.default = FormFlagging;
-},{"react":7,"../Button":19,"../ToolsFlag/ToolsFlag":9,"../VideosList/VideosList":4,"../Popup/Popup":79,"../FormReporting/FormReporting":42}],31:[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Sidebar = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require("react");
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Sidebar = exports.Sidebar = function (_Component) {
-    _inherits(Sidebar, _Component);
-
-    function Sidebar() {
-        _classCallCheck(this, Sidebar);
-
-        return _possibleConstructorReturn(this, (Sidebar.__proto__ || Object.getPrototypeOf(Sidebar)).apply(this, arguments));
-    }
-
-    _createClass(Sidebar, [{
-        key: "render",
-        value: function render() {
-            return _react2.default.createElement(
-                "div",
-                { className: "sidebar" },
-                _react2.default.createElement(
-                    "div",
-                    { className: "profile-wrapper" },
-                    _react2.default.createElement("img", { src: "https://yt3.ggpht.com/-S2LcjnxOoXc/AAAAAAAAAAI/AAAAAAAAAAA/SfHM8F50Xo0/s900-mo-c-c0xffffffff-rj-k-no/photo.jpg", alt: "" })
-                ),
-                _react2.default.createElement(
-                    "nav",
-                    { className: "navbar" },
-                    _react2.default.createElement(
-                        "ul",
-                        { className: "nav-link" },
-                        _react2.default.createElement(
-                            "li",
-                            null,
-                            _react2.default.createElement(
-                                "a",
-                                { href: "/flagging_history", className: "youtube-link" },
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "span-icon mgi--right-16" },
-                                    "i"
-                                ),
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "text-link" },
-                                    "History"
-                                )
-                            )
-                        ),
-                        _react2.default.createElement(
-                            "li",
-                            null,
-                            _react2.default.createElement(
-                                "a",
-                                { href: "/deputy", className: "youtube-link" },
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "span-icon mgi--right-16" },
-                                    "i"
-                                ),
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "text-link" },
-                                    "Statistics"
-                                )
-                            )
-                        ),
-                        _react2.default.createElement(
-                            "li",
-                            null,
-                            _react2.default.createElement(
-                                "a",
-                                { href: "https://www.contributorscommunity.com/t5/Trusted-Flagger-Forum/bd-p/EN_Flaggers_Board", className: "youtube-link" },
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "span-icon mgi--right-16" },
-                                    "i"
-                                ),
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "text-link" },
-                                    "Contributor Forum"
-                                )
-                            )
-                        ),
-                        _react2.default.createElement(
-                            "li",
-                            null,
-                            _react2.default.createElement(
-                                "a",
-                                { href: "", className: "youtube-link" },
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "span-icon mgi--right-16" },
-                                    "i"
-                                ),
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "text-link" },
-                                    "Send mail"
-                                )
-                            )
-                        )
-                    ),
-                    _react2.default.createElement(
-                        "ul",
-                        { className: "nav-link" },
-                        _react2.default.createElement(
-                            "li",
-                            null,
-                            _react2.default.createElement(
-                                "a",
-                                { href: "/", className: "youtube-link" },
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "span-icon mgi--right-16" },
-                                    "i"
-                                ),
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "text-link" },
-                                    "Help"
-                                )
-                            )
-                        ),
-                        _react2.default.createElement(
-                            "li",
-                            null,
-                            _react2.default.createElement(
-                                "a",
-                                { href: "/logout", className: "youtube-link" },
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "span-icon mgi--right-16" },
-                                    "i"
-                                ),
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "text-link" },
-                                    "Logout"
-                                )
-                            )
-                        )
-                    )
-                )
-            );
-        }
-    }]);
-
-    return Sidebar;
-}(_react.Component);
-
-exports.default = Sidebar;
-},{"react":7}],82:[function(require,module,exports) {
+},{"react":7,"../Button":19,"../ToolsFlag/ToolsFlag":9,"../VideosList/VideosList":4,"../Popup/Popup":79,"../FormReporting/FormReporting":42}],122:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var urlsAvailable = exports.urlsAvailable = ['/flagging_history', '/deputy', '/stats'];
-},{}],1:[function(require,module,exports) {
+
+var querys = exports.querys = ['search_query'];
+},{}],59:[function(require,module,exports) {
 'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -20664,21 +20648,15 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = require('react-dom');
+var _Sidebar = require('./Sidebar/Sidebar');
 
-var _reactDom2 = _interopRequireDefault(_reactDom);
+var _ToolsFlag = require('./ToolsFlag/ToolsFlag');
 
-var _Video = require('./shared/models/Video.class');
+var _VideosList = require('./VideosList/VideosList');
 
-var _FormFlagging = require('./components/FormFlagging/FormFlagging');
+var _FormFlagging = require('./FormFlagging/FormFlagging');
 
-var _VideosList = require('./components/VideosList/VideosList');
-
-var _Sidebar = require('./components/Sidebar/Sidebar');
-
-var _config = require('./config');
-
-var _ToolsFlag = require('./components/ToolsFlag/ToolsFlag');
+var _config = require('../config');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20688,13 +20666,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var App = function (_React$Component) {
-    _inherits(App, _React$Component);
+var App = function (_Component) {
+    _inherits(App, _Component);
 
-    function App() {
+    function App(props) {
         _classCallCheck(this, App);
 
-        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
         _this.state = _this.baseState = {
             hideRemoved: false,
@@ -20709,11 +20687,16 @@ var App = function (_React$Component) {
             var _this2 = this;
 
             var _props = this.props,
-                videos = _props.videos,
                 search = _props.search,
                 pathname = _props.pathname;
+            var _state = this.state,
+                hideRemoved = _state.hideRemoved,
+                hideReviewed = _state.hideReviewed;
 
-            console.log(this.state);
+
+            var videos = this.props.videos.filter(function (elem) {
+                return hideReviewed ? true : hideRemoved ? !elem.isRemoved : true;
+            });
 
             return _react2.default.createElement(
                 _react2.default.Fragment,
@@ -20722,7 +20705,7 @@ var App = function (_React$Component) {
                 _react2.default.createElement(
                     'div',
                     { className: 'main-container' },
-                    pathname === _config.urlsAvailable[0] && _react2.default.createElement(
+                    pathname === _config.urlsAvailable[0] ? _react2.default.createElement(
                         'div',
                         { className: 'full-heigth' },
                         _react2.default.createElement(_ToolsFlag.ToolsFlag, {
@@ -20736,13 +20719,9 @@ var App = function (_React$Component) {
                             }
                         }),
                         _react2.default.createElement(_VideosList.VideosList, {
-                            videos: videos,
-                            hideRemoved: this.state.hideRemoved,
-                            hideReviewed: this.state.hideReviewed
+                            videos: videos
                         })
-                    ),
-                    pathname === _config.urlsAvailable[1] && _react2.default.createElement(_FormFlagging.FormFlagging, { videos: videos, search: search }),
-                    pathname === _config.urlsAvailable[2] && _react2.default.createElement(
+                    ) : pathname === _config.urlsAvailable[1] ? _react2.default.createElement(_FormFlagging.FormFlagging, { videos: videos, search: search }) : pathname === _config.urlsAvailable[2] ? _react2.default.createElement(
                         'div',
                         { className: 'full-heigth' },
                         _react2.default.createElement(
@@ -20750,6 +20729,10 @@ var App = function (_React$Component) {
                             null,
                             'stats'
                         )
+                    ) : _react2.default.createElement(
+                        'div',
+                        null,
+                        'This page do not exist'
                     )
                 )
             );
@@ -20757,7 +20740,150 @@ var App = function (_React$Component) {
     }]);
 
     return App;
-}(_react2.default.Component);
+}(_react.Component);
+
+exports.default = App;
+},{"react":7,"./Sidebar/Sidebar":31,"./ToolsFlag/ToolsFlag":9,"./VideosList/VideosList":4,"./FormFlagging/FormFlagging":5,"../config":122}],3:[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Video = exports.Video = function () {
+    function Video() {
+        var video = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+        _classCallCheck(this, Video);
+
+        this.url = video.url;
+        this.nodeVideo = video.nodeVideo;
+        this.nodeDescription = video.nodeDescription;
+        this.title = video.textTitle;
+        this.isRemoved = video.isRemoved;
+        this.id = null;
+        this.creator = video.creator;
+        this.channelLink = video.channelLink;
+        this.viewCount = video.viewCount;
+        this.thumbnail = video.thumbnail;
+
+        this.active = false;
+
+        this.getId();
+    }
+
+    _createClass(Video, [{
+        key: "getId",
+        value: function getId() {
+            this.id = this.url.split("=")[1];
+        }
+    }]);
+
+    return Video;
+}();
+},{}],108:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _Video = require('../shared/models/Video.class');
+
+/**
+ * Getting my all videos to an array
+ * @return videos videos
+ */
+
+var videos = function getVideos() {
+    var list = document.getElementsByClassName('deputy-flag-item yt-tile-default');
+
+    var videos = [];
+
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+        for (var _iterator = list[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var item = _step.value;
+
+            var creator = void 0,
+                viewCount = void 0,
+                channelLink = null;
+            var nodeDescription = item.getElementsByClassName('deputy-item-description-summary')[0].innerHTML.trim();
+            var textTitle = item.getElementsByTagName('h3')[0].textContent.trim();
+            var url = item.getElementsByClassName('yt-uix-sessionlink ')[0].getAttribute('href');
+            var thumbnail = item.getElementsByTagName('img')[0].getAttribute('src');
+            var nodeVideo = item.getElementsByClassName('deputy-item-thumb-player')[0].innerHTML.trim();
+
+            var isRemoved = item.getElementsByClassName('removed-on-text').length > 0;
+
+            if (!isRemoved && item.getElementsByClassName('yt-user-name').length > 0) {
+                creator = item.getElementsByClassName('yt-user-name')[0].textContent;
+                channelLink = item.getElementsByClassName('yt-user-name')[0].getAttribute('href');
+                viewCount = item.getElementsByClassName('viewcount')[0].textContent.replace(/\D+/g, '');
+            } else {
+                textTitle = nodeDescription = null;
+            }
+
+            videos.push(new _Video.Video({
+                url: url,
+                nodeVideo: nodeVideo,
+                nodeDescription: nodeDescription,
+                textTitle: textTitle,
+                creator: creator,
+                channelLink: channelLink,
+                viewCount: viewCount,
+                isRemoved: isRemoved,
+                thumbnail: thumbnail
+            }));
+        }
+    } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+                _iterator.return();
+            }
+        } finally {
+            if (_didIteratorError) {
+                throw _iteratorError;
+            }
+        }
+    }
+
+    return videos;
+};
+
+exports.default = videos;
+},{"../shared/models/Video.class":3}],119:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var search = function getSearch() {
+    if (document.getElementById('masthead-search-term')) {
+        return document.getElementById('masthead-search-term').value;
+    }
+    return null;
+};
+
+exports.default = search;
+},{}],121:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _config = require('../config');
 
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
@@ -20774,91 +20900,62 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
 };
 
-var search = document.getElementById('masthead-search-term').value;
-var pathname = window.location.pathname;
+var pathname = function getPathname() {
+    var pathname = window.location.pathname;
 
-if (pathname === _config.urlsAvailable[1] && !getUrlParameter('search_query')) {
-    pathname = '/stats';
-}
 
-/**
- * Inject my react App
- */
-
-/**
- * Getting my all videos to an array
- * @return videos videos
- */
-
-var list = document.getElementsByClassName('deputy-flag-item yt-tile-default');
-
-var videos = [];
-
-var _iteratorNormalCompletion = true;
-var _didIteratorError = false;
-var _iteratorError = undefined;
-
-try {
-    for (var _iterator = list[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var item = _step.value;
-
-        var creator = void 0,
-            viewCount = void 0,
-            channelLink = null;
-        var nodeDescription = item.getElementsByClassName('deputy-item-description-summary')[0].innerHTML.trim();
-        var textTitle = item.getElementsByTagName('h3')[0].textContent.trim();
-        var url = item.getElementsByClassName('yt-uix-sessionlink ')[0].getAttribute('href');
-        var thumbnail = item.getElementsByTagName('img')[0].getAttribute('src');
-        var nodeVideo = item.getElementsByClassName('deputy-item-thumb-player')[0].innerHTML.trim();
-
-        var isRemoved = item.getElementsByClassName('removed-on-text').length > 0;
-
-        if (!isRemoved && item.getElementsByClassName('yt-user-name').length > 0) {
-            creator = item.getElementsByClassName('yt-user-name')[0].textContent;
-            channelLink = item.getElementsByClassName('yt-user-name')[0].getAttribute('href');
-            viewCount = item.getElementsByClassName('viewcount')[0].textContent.replace(/\D+/g, '');
-        } else {
-            textTitle = nodeDescription = null;
-        }
-
-        videos.push(new _Video.Video({
-            url: url,
-            nodeVideo: nodeVideo,
-            nodeDescription: nodeDescription,
-            textTitle: textTitle,
-            creator: creator,
-            channelLink: channelLink,
-            viewCount: viewCount,
-            isRemoved: isRemoved,
-            thumbnail: thumbnail
-        }));
-    }
-} catch (err) {
-    _didIteratorError = true;
-    _iteratorError = err;
-} finally {
-    try {
-        if (!_iteratorNormalCompletion && _iterator.return) {
-            _iterator.return();
-        }
-    } finally {
-        if (_didIteratorError) {
-            throw _iteratorError;
+    if (_config.urlsAvailable.length > 1 && _config.querys.length > 0) {
+        if (pathname === _config.urlsAvailable[1] && !getUrlParameter(_config.querys[0])) {
+            pathname = '/stats';
         }
     }
-}
+
+    return pathname;
+};
+
+exports.default = pathname;
+},{"../config":122}],1:[function(require,module,exports) {
+'use strict';
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _App = require('./components/App');
+
+var _App2 = _interopRequireDefault(_App);
+
+var _videos = require('./getDom/_videos');
+
+var _videos2 = _interopRequireDefault(_videos);
+
+var _search = require('./getDom/_search');
+
+var _search2 = _interopRequireDefault(_search);
+
+var _location = require('./getDom/_location');
+
+var _location2 = _interopRequireDefault(_location);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var youTubeDatas = {
+    pathname: (0, _location2.default)(),
+    videos: (0, _videos2.default)(),
+    search: (0, _search2.default)()
+};
 
 var myReactApp = document.createElement("div");
 myReactApp.setAttribute("id", "TFsCenter");
 document.getElementById('page-container').innerHTML = '';
 document.getElementById('page-container').appendChild(myReactApp);
 
-_reactDom2.default.render(_react2.default.createElement(App, {
-    videos: videos,
-    search: search,
-    pathname: pathname
-}), myReactApp);
-},{"react":7,"react-dom":6,"./shared/models/Video.class":3,"./components/FormFlagging/FormFlagging":5,"./components/VideosList/VideosList":4,"./components/Sidebar/Sidebar":31,"./config":82,"./components/ToolsFlag/ToolsFlag":9}],37:[function(require,module,exports) {
+_reactDom2.default.render(_react2.default.createElement(_App2.default, youTubeDatas), myReactApp);
+},{"react":7,"react-dom":6,"./components/App":59,"./getDom/_videos":108,"./getDom/_search":119,"./getDom/_location":121}],57:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -21028,5 +21125,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[37,1], null)
+},{}]},{},[57,1], null)
 //# sourceMappingURL=/main.map

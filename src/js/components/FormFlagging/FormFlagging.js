@@ -65,6 +65,7 @@ export class FormFlagging extends Component {
                 <input type="hidden" name="search_query" value={this.props.search} />
                 <ToolsFlag
                     videos={videos}
+                    canFlag
                     onSubmit={this.handleSubmit}
                 />
                 <VideosList

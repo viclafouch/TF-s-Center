@@ -3059,14 +3059,14 @@ body {
 .scrollBarOnHover:hover::-webkit-scrollbar-thumb {
   background: #a1b2c4; }
 
-button.yt-uix-button {
+.yt-uix-button {
   transition: all 0.3s; }
 
-button.yt-uix-white-primary {
+.yt-uix-white-primary {
   border-color: #ACACAC;
   background: #fff; }
 
-button.yt-uix-button.active {
+.yt-uix-button.active {
   background: #fff;
   color: #167ac6; }
 
@@ -3195,8 +3195,6 @@ div#TFsCenter {
       div#TFsCenter .offset-by-one-half.column,
       div#TFsCenter .offset-by-one-half.columns {
         margin-left: 52%; } }
-  div#TFsCenter .thumbnail {
-    width: 210px; }
   div#TFsCenter ul.videos-list {
     display: grid;
     grid-template-rows: auto;
@@ -3219,6 +3217,13 @@ div#TFsCenter {
       overflow: hidden;
       position: relative;
       display: block; }
+      div#TFsCenter article.video-item .video-item-thumbnail .thumbnail {
+        width: 210px;
+        transition: all 0.3s; }
+    div#TFsCenter article.video-item.isAccess:hover .thumbnail {
+      cursor: pointer;
+      opacity: 0.750;
+      transform: scale(1.1); }
     div#TFsCenter article.video-item .video-item-creator {
       color: rgba(17, 17, 17, 0.6);
       overflow: hidden;
@@ -3284,11 +3289,12 @@ div#TFsCenter {
     z-index: 999;
     width: 100%;
     padding: 20px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     position: relative;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
+    div#TFsCenter div.tools > div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
   div#TFsCenter .span-icon {
     width: 24px;
     height: 24px;
