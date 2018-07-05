@@ -19989,7 +19989,9 @@ var ToolsFlag = exports.ToolsFlag = function (_Component) {
     _createClass(ToolsFlag, [{
         key: 'render',
         value: function render() {
-            var videos = this.props.videos;
+            var _props = this.props,
+                videos = _props.videos,
+                pagination = _props.pagination;
 
 
             var videosSelected = videos.filter(function (x) {
@@ -20004,7 +20006,7 @@ var ToolsFlag = exports.ToolsFlag = function (_Component) {
                 { className: 'tools' },
                 _react2.default.createElement(
                     'div',
-                    { className: 'mgi--bottom-10' },
+                    null,
                     _react2.default.createElement(
                         'div',
                         null,
@@ -20059,21 +20061,23 @@ var ToolsFlag = exports.ToolsFlag = function (_Component) {
                         )
                     )
                 ),
-                _react2.default.createElement(
+                pagination.length !== 0 && _react2.default.createElement(
                     'div',
-                    null,
+                    { className: 'mgi--top-10' },
                     _react2.default.createElement(
                         'div',
                         { className: 'tools-pagination' },
-                        _react2.default.createElement(
-                            'a',
-                            { href: '/' },
-                            _react2.default.createElement(
-                                _Button2.default,
-                                { blue: true },
-                                '1'
-                            )
-                        )
+                        pagination.map(function (elem, index) {
+                            return _react2.default.createElement(
+                                'a',
+                                { href: elem.url, className: 'mgi--right-4', key: index },
+                                _react2.default.createElement(
+                                    _Button2.default,
+                                    { blue: true, className: elem.isActual ? 'active' : '' },
+                                    elem.isNext ? 'Next' : elem.isPrev ? 'Prev' : elem.numPage
+                                )
+                            );
+                        })
                     )
                 )
             );
@@ -20132,7 +20136,7 @@ var VideoListItem = exports.VideoListItem = function (_Component) {
                 { className: "video-item " + (!video.isRemoved ? 'isAccess' : '') },
                 _react2.default.createElement(
                     'div',
-                    { className: 'video-item-thumbnail' },
+                    { className: 'video-item-thumbnail', onClick: this.props.onSelect },
                     _react2.default.createElement('img', { className: 'thumbnail', src: video.thumbnail.replace('default', 'hqdefault') })
                 ),
                 _react2.default.createElement(
@@ -20161,96 +20165,7 @@ var VideoListItem = exports.VideoListItem = function (_Component) {
 }(_react.Component);
 
 exports.default = VideoListItem;
-},{"react":7}],4:[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.VideosList = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _VideoListItem = require('./VideoListItem');
-
-var _VideoListItem2 = _interopRequireDefault(_VideoListItem);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var VideosList = exports.VideosList = function (_Component) {
-    _inherits(VideosList, _Component);
-
-    function VideosList() {
-        _classCallCheck(this, VideosList);
-
-        var _this = _possibleConstructorReturn(this, (VideosList.__proto__ || Object.getPrototypeOf(VideosList)).call(this));
-
-        _this.handleChange = _this.handleChange.bind(_this);
-        return _this;
-    }
-
-    _createClass(VideosList, [{
-        key: 'handleChange',
-        value: function handleChange(e) {
-            e.stopPropagation();
-            var id = e.target.id;
-            var video = this.props.videos.find(function (x) {
-                return x.id === id;
-            });
-            this.props.onSelect && this.props.onSelect(video, e.target.checked);
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
-
-            var _props = this.props,
-                videos = _props.videos,
-                canFlag = _props.canFlag;
-
-
-            return _react2.default.createElement(
-                'div',
-                { className: 'container-list scrollBarOnHover' },
-                _react2.default.createElement(
-                    'ul',
-                    { className: 'videos-list pdi--top-0' },
-                    videos.map(function (elem, index) {
-                        return _react2.default.createElement(
-                            'li',
-                            { key: index },
-                            canFlag && _react2.default.createElement('input', {
-                                type: 'checkbox',
-                                id: elem.id,
-                                style: { position: 'absolute' },
-                                className: 'yt-uix-form-input-checkbox deputy-flag-video-checkbox',
-                                value: elem.id,
-                                name: 'selected_vid',
-                                onChange: _this2.handleChange
-                            }),
-                            _react2.default.createElement(_VideoListItem2.default, { video: elem })
-                        );
-                    })
-                )
-            );
-        }
-    }]);
-
-    return VideosList;
-}(_react.Component);
-
-exports.default = VideosList;
-},{"react":7,"./VideoListItem":10}],79:[function(require,module,exports) {
+},{"react":7}],79:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -20277,7 +20192,232 @@ var Popup = function Popup(props) {
 };
 
 exports.default = Popup;
-},{"react":7}],43:[function(require,module,exports) {
+},{"react":7}],3:[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Video = exports.Video = function () {
+    function Video() {
+        var video = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+        _classCallCheck(this, Video);
+
+        this.url = video.url;
+        this.nodeVideo = video.nodeVideo;
+        this.nodeDescription = video.nodeDescription;
+        this.title = video.textTitle;
+        this.isRemoved = video.isRemoved;
+        this.id = null;
+        this.creator = video.creator;
+        this.channelLink = video.channelLink;
+        this.viewCount = video.viewCount;
+        this.thumbnail = video.thumbnail;
+
+        this.active = false;
+
+        this.url && this.getId();
+    }
+
+    _createClass(Video, [{
+        key: "getId",
+        value: function getId() {
+            this.id = this.url.split("=")[1];
+        }
+    }]);
+
+    return Video;
+}();
+
+exports.default = Video;
+},{}],49:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var VideoDetail = function VideoDetail() {
+  return _react2.default.createElement(
+    'div',
+    null,
+    'video'
+  );
+};
+
+exports.default = VideoDetail;
+},{"react":7}],4:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.VideosList = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _VideoListItem = require('./VideoListItem');
+
+var _VideoListItem2 = _interopRequireDefault(_VideoListItem);
+
+var _Popup = require('../Popup/Popup');
+
+var _Popup2 = _interopRequireDefault(_Popup);
+
+var _Video = require('../../shared/models/Video.class');
+
+var _Video2 = _interopRequireDefault(_Video);
+
+var _VideoDetail = require('../VideoDetail/VideoDetail');
+
+var _VideoDetail2 = _interopRequireDefault(_VideoDetail);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var VideosList = exports.VideosList = function (_Component) {
+    _inherits(VideosList, _Component);
+
+    function VideosList() {
+        _classCallCheck(this, VideosList);
+
+        var _this = _possibleConstructorReturn(this, (VideosList.__proto__ || Object.getPrototypeOf(VideosList)).call(this));
+
+        _this.state = {
+            videoSelected: new _Video2.default()
+        };
+
+        _this.handleChange = _this.handleChange.bind(_this);
+        return _this;
+    }
+
+    _createClass(VideosList, [{
+        key: 'getVideo',
+        value: function () {
+            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(id) {
+                return regeneratorRuntime.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                if (id) {
+                                    _context.next = 2;
+                                    break;
+                                }
+
+                                return _context.abrupt('return');
+
+                            case 2:
+                                _context.next = 4;
+                                return new Promise(function (resolve) {
+                                    return setTimeout(resolve, 300);
+                                });
+
+                            case 4:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, this);
+            }));
+
+            function getVideo(_x) {
+                return _ref.apply(this, arguments);
+            }
+
+            return getVideo;
+        }()
+    }, {
+        key: 'handleChange',
+        value: function handleChange(e) {
+            e.stopPropagation();
+            var id = e.target.id;
+            var video = this.props.videos.find(function (x) {
+                return x.id === id;
+            });
+            this.props.onSelect && this.props.onSelect(video, e.target.checked);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            var _props = this.props,
+                videos = _props.videos,
+                canFlag = _props.canFlag;
+
+
+            console.log(this.state);
+
+            return _react2.default.createElement(
+                'div',
+                { className: 'container-list scrollBarOnHover' },
+                _react2.default.createElement(
+                    'ul',
+                    { className: 'videos-list pdi--top-0' },
+                    videos.map(function (elem, index) {
+                        return _react2.default.createElement(
+                            'li',
+                            { key: index },
+                            canFlag && _react2.default.createElement('input', {
+                                type: 'checkbox',
+                                id: elem.id,
+                                style: { position: 'absolute' },
+                                className: 'yt-uix-form-input-checkbox deputy-flag-video-checkbox',
+                                value: elem.id,
+                                name: 'selected_vid',
+                                onChange: _this2.handleChange
+                            }),
+                            _react2.default.createElement(_VideoListItem2.default, {
+                                video: elem,
+                                onSelect: function onSelect() {
+                                    return _this2.getVideo(elem.id);
+                                }
+                            })
+                        );
+                    })
+                ),
+                _react2.default.createElement(
+                    _Popup2.default,
+                    {
+                        isOpen: !!this.state.videoSelected.id,
+                        onClosed: function onClosed() {
+                            return _this2.setState({ videoSelected: new _Video2.default() });
+                        }
+                    },
+                    _react2.default.createElement(_VideoDetail2.default, null)
+                )
+            );
+        }
+    }]);
+
+    return VideosList;
+}(_react.Component);
+
+exports.default = VideosList;
+},{"react":7,"./VideoListItem":10,"../Popup/Popup":79,"../../shared/models/Video.class":3,"../VideoDetail/VideoDetail":49}],43:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20592,6 +20732,7 @@ var FormFlagging = exports.FormFlagging = function (_Component) {
                 _react2.default.createElement(_ToolsFlag2.default, {
                     videos: videos,
                     canFlag: true,
+                    pagination: this.props.pagination,
                     onSubmit: this.handleSubmit
                 }),
                 _react2.default.createElement(_VideosList.VideosList, {
@@ -20688,7 +20829,8 @@ var App = function (_Component) {
 
             var _props = this.props,
                 search = _props.search,
-                pathname = _props.pathname;
+                pathname = _props.pathname,
+                pagination = _props.pagination;
             var _state = this.state,
                 hideRemoved = _state.hideRemoved,
                 hideReviewed = _state.hideReviewed;
@@ -20716,12 +20858,17 @@ var App = function (_Component) {
                                 var hides = Object.assign({}, _this2.baseState);
                                 hides[e.target.name] = !_this2.state[e.target.name];
                                 _this2.setState(hides);
-                            }
+                            },
+                            pagination: pagination
                         }),
                         _react2.default.createElement(_VideosList.VideosList, {
                             videos: videos
                         })
-                    ) : pathname === _config.urlsAvailable[1] ? _react2.default.createElement(_FormFlagging.FormFlagging, { videos: videos, search: search }) : pathname === _config.urlsAvailable[2] ? _react2.default.createElement(
+                    ) : pathname === _config.urlsAvailable[1] ? _react2.default.createElement(_FormFlagging.FormFlagging, {
+                        videos: videos,
+                        search: search,
+                        pagination: pagination
+                    }) : pathname === _config.urlsAvailable[2] ? _react2.default.createElement(
                         'div',
                         { className: 'full-heigth' },
                         _react2.default.createElement(
@@ -20743,49 +20890,7 @@ var App = function (_Component) {
 }(_react.Component);
 
 exports.default = App;
-},{"react":7,"./Sidebar/Sidebar":31,"./ToolsFlag/ToolsFlag":9,"./VideosList/VideosList":4,"./FormFlagging/FormFlagging":5,"../config":122}],3:[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Video = exports.Video = function () {
-    function Video() {
-        var video = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-        _classCallCheck(this, Video);
-
-        this.url = video.url;
-        this.nodeVideo = video.nodeVideo;
-        this.nodeDescription = video.nodeDescription;
-        this.title = video.textTitle;
-        this.isRemoved = video.isRemoved;
-        this.id = null;
-        this.creator = video.creator;
-        this.channelLink = video.channelLink;
-        this.viewCount = video.viewCount;
-        this.thumbnail = video.thumbnail;
-
-        this.active = false;
-
-        this.getId();
-    }
-
-    _createClass(Video, [{
-        key: "getId",
-        value: function getId() {
-            this.id = this.url.split("=")[1];
-        }
-    }]);
-
-    return Video;
-}();
-},{}],108:[function(require,module,exports) {
+},{"react":7,"./Sidebar/Sidebar":31,"./ToolsFlag/ToolsFlag":9,"./VideosList/VideosList":4,"./FormFlagging/FormFlagging":5,"../config":122}],108:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20914,7 +21019,31 @@ var pathname = function getPathname() {
 };
 
 exports.default = pathname;
-},{"../config":122}],1:[function(require,module,exports) {
+},{"../config":122}],154:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var paginations = function getPagination() {
+
+    var pages = [];
+
+    document.querySelectorAll('[data-page]').forEach(function (e) {
+        pages.push({
+            numPage: parseInt(e.getAttribute('data-page')),
+            isNext: e.getAttribute('data-link-type') === 'next',
+            isPrev: e.getAttribute('data-link-type') === 'prev',
+            url: e.getAttribute('href'),
+            isActual: e.classList.contains('yt-uix-button-toggled')
+        });
+    });
+
+    return pages;
+};
+
+exports.default = paginations;
+},{}],1:[function(require,module,exports) {
 'use strict';
 
 var _react = require('react');
@@ -20941,12 +21070,17 @@ var _location = require('./getDom/_location');
 
 var _location2 = _interopRequireDefault(_location);
 
+var _pagination = require('./getDom/_pagination');
+
+var _pagination2 = _interopRequireDefault(_pagination);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var youTubeDatas = {
     pathname: (0, _location2.default)(),
     videos: (0, _videos2.default)(),
-    search: (0, _search2.default)()
+    search: (0, _search2.default)(),
+    pagination: (0, _pagination2.default)()
 };
 
 var myReactApp = document.createElement("div");
@@ -20955,7 +21089,7 @@ document.getElementById('page-container').innerHTML = '';
 document.getElementById('page-container').appendChild(myReactApp);
 
 _reactDom2.default.render(_react2.default.createElement(_App2.default, youTubeDatas), myReactApp);
-},{"react":7,"react-dom":6,"./components/App":59,"./getDom/_videos":108,"./getDom/_search":119,"./getDom/_location":121}],57:[function(require,module,exports) {
+},{"react":7,"react-dom":6,"./components/App":59,"./getDom/_videos":108,"./getDom/_search":119,"./getDom/_location":121,"./getDom/_pagination":154}],39:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -20984,7 +21118,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '56958' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '58092' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -21125,5 +21259,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[57,1], null)
+},{}]},{},[39,1], null)
 //# sourceMappingURL=/main.map

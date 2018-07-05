@@ -5,11 +5,13 @@ import App from './components/App'
 import getVideos from './getDom/_videos'
 import getSearch from './getDom/_search'
 import getPathname from './getDom/_location'
+import getPagination from './getDom/_pagination'
 
 let youTubeDatas = {
     pathname: getPathname(),
     videos: getVideos(),
-    search: getSearch()
+    search: getSearch(),
+    pagination: getPagination()
 }
 
 const myReactApp = document.createElement("div");

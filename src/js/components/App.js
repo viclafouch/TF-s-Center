@@ -18,7 +18,7 @@ class App extends Component {
 
     render() {
 
-        let { search, pathname } = this.props;
+        let { search, pathname, pagination } = this.props;
         let { hideRemoved, hideReviewed } = this.state;
 
         let videos = this.props.videos.filter(elem => {
@@ -41,6 +41,7 @@ class App extends Component {
                                     hides[e.target.name] = !this.state[e.target.name]
                                     this.setState(hides)
                                 }}
+                                pagination={pagination}
                             />
                             <VideosList
                                 videos={videos}
@@ -48,7 +49,11 @@ class App extends Component {
                         </div>
 
                         : pathname === urlsAvailable[1] ?
-                        <FormFlagging videos={videos} search={search} />
+                        <FormFlagging
+                            videos={videos}
+                            search={search}
+                            pagination={pagination}
+                        />
 
                         : pathname === urlsAvailable[2] ?
                         <div className="full-heigth">

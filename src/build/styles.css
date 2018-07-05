@@ -3066,7 +3066,7 @@ body {
   border-color: #ACACAC;
   background: #fff; }
 
-.yt-uix-button.active {
+.yt-uix-button.active, .yt-uix-button.active:hover {
   background: #fff;
   color: #167ac6; }
 

@@ -1,11 +1,28 @@
 import React, { Component } from 'react'
 import VideoListItem from './VideoListItem';
+import Popup from '../Popup/Popup'
+import Video from '../../shared/models/Video.class'
+import VideoDetail from '../VideoDetail/VideoDetail';
 
 export class VideosList extends Component {
 
     constructor() {
         super();
+
+        this.state = {
+            videoSelected: new Video()
+        }
+
         this.handleChange = this.handleChange.bind(this);
+    }
+
+    async getVideo(id) {
+        if (!id) return;
+
+        await new Promise(resolve => setTimeout(resolve, 300))
+
+        
+
     }
 
     handleChange(e) {
@@ -18,6 +35,9 @@ export class VideosList extends Component {
     render() {
 
         let { videos, canFlag } = this.props;
+
+        console.log(this.state);
+
 
         return (
             <div className="container-list scrollBarOnHover">
@@ -37,11 +57,20 @@ export class VideosList extends Component {
                                         onChange={this.handleChange}
                                     />
                                 }
-                                <VideoListItem video={elem} />
+                                <VideoListItem
+                                    video={elem}
+                                    onSelect={() => this.getVideo(elem.id)}
+                                />
                             </li>
                         )
                     })}
                 </ul>
+                <Popup
+                    isOpen={!!(this.state.videoSelected.id)}
+                    onClosed={() => this.setState({ videoSelected: new Video() })}
+                >
+                    <VideoDetail />
+                </Popup>
             </div>
         )
     }

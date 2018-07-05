@@ -4,14 +4,14 @@ import Button from '../Button';
 export class ToolsFlag extends Component {
     render() {
 
-        let { videos } = this.props;
+        let { videos, pagination } = this.props;
 
         let videosSelected = videos.filter(x => x.selected === true);
         let videosRemoved = videos.filter(x => x.isRemoved === true);
 
         return (
             <div className="tools">
-                <div className="mgi--bottom-10">
+                <div>
                     <div>
                         {
                             this.props.onSubmit &&
@@ -48,13 +48,23 @@ export class ToolsFlag extends Component {
                         </div>
                     </div>
                 </div>
-                <div>
-                    <div className="tools-pagination">
-                        <a href="/">
-                            <Button blue>1</Button>
-                        </a>
+                {
+                    pagination.length !== 0 &&
+                    <div className="mgi--top-10">
+                        <div className="tools-pagination">
+                            {
+                                pagination.map((elem, index) =>
+                                    <a href={elem.url} className="mgi--right-4" key={index}>
+                                        <Button blue className={elem.isActual ? 'active' : ''}>
+                                            {elem.isNext ? 'Next' : elem.isPrev ? 'Prev' : elem.numPage}
+                                        </Button>
+                                    </a>
+                                )
+                            }
+
+                        </div>
                     </div>
-                </div>
+                }
             </div>
         )
     }

@@ -15,10 +15,12 @@ export class Video {
 
         this.active = false
 
-        this.getId();
+        this.url && this.getId();
     }
 
     getId() {
         this.id = this.url.split("=")[1];
     }
 }
+
+export default Video

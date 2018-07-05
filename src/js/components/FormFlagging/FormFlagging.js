@@ -66,6 +66,7 @@ export class FormFlagging extends Component {
                 <ToolsFlag
                     videos={videos}
                     canFlag
+                    pagination={this.props.pagination}
                     onSubmit={this.handleSubmit}
                 />
                 <VideosList
