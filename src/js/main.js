@@ -22,6 +22,6 @@ myReactApp.setAttribute("id", "TFsCenter");
 document.getElementById('page-container').innerHTML = '';
 document.getElementById('page-container').appendChild(myReactApp);
 
-// ReactDOM.render(
-//     <App {...youTubeDatas} />,
-// myReactApp);
+ReactDOM.render(
+    <App {...youTubeDatas} />,
+myReactApp);
