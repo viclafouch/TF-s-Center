@@ -3,6 +3,7 @@ import VideoListItem from './VideoListItem';
 import Popup from '../Popup/Popup'
 import Video from '../../shared/models/Video.class'
 import VideoDetail from '../VideoDetail/VideoDetail';
+import Loader from '../layouts/Loader';
 
 export class VideosList extends Component {
 
@@ -11,7 +12,8 @@ export class VideosList extends Component {
 
         this.state = {
             videoSelected: new Video(),
-            videoLoaded: false
+            videoLoaded: false,
+            isLoading: false
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -27,32 +29,33 @@ export class VideosList extends Component {
                 return response.items[0].snippet
             })
             .then(video => {
-                return new Video({
-                    
-                })
+                video =  new Video(video)
+                video.id = id;
+                return video;
             })
             .catch(e => {
                 throw e
             })
     }
 
-    async getVideo(id) {
+    getVideo(id) {
         if (!id) return;
 
-        await new Promise(resolve => setTimeout(resolve, 300))
+        this.setState({
+            isLoading: true
+        }, async () => {
+            await new Promise(resolve => setTimeout(resolve, 300))
 
-        try {
-            let video = await this.callYouTube(id);
-        } catch (error) {
-            console.error(error);
+            try {
+                let video = await this.callYouTube(id);
 
-        }
-
-        // let video = new Video({id: id})
-
-        // this.setState({
-        //     videoSelected: video
-        // });
+                this.setState({
+                    videoSelected: video
+                });
+            } catch (error) {
+                console.error(error);
+            }
+        })
     }
 
     handleChange(e) {
@@ -92,13 +95,19 @@ export class VideosList extends Component {
                         )
                     })}
                 </ul>
+
+                {
+                    this.state.isLoading &&
+                    <Loader />
+                }
+
                 <Popup
-                    isOpen={this.state.videoLoaded && this.state.videoSelected.id }
+                    isOpen={this.state.videoLoaded && this.state.videoSelected.id && !this.state.isLoading}
                     onClosed={() => this.setState({ videoSelected: new Video(), videoLoaded: false })}
                 >
                     <VideoDetail
                         video={this.state.videoSelected}
-                        onLoad={() => this.setState({ videoLoaded: true })}
+                        onLoad={() => this.setState({ videoLoaded: true, isLoading: false })}
                     />
                 </Popup>
             </div>

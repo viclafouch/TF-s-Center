@@ -22927,7 +22927,7 @@ var VideoListItem = exports.VideoListItem = function (_Component) {
                 _react2.default.createElement(
                     'div',
                     { className: 'video-item-thumbnail', onClick: this.props.onSelect },
-                    _react2.default.createElement('img', { className: 'thumbnail', src: video.thumbnail.replace('default', 'hqdefault') })
+                    _react2.default.createElement('img', { className: 'thumbnail', src: video.isRemoved ? video.thumbnails.default.url : video.thumbnails.high.url })
                 ),
                 _react2.default.createElement(
                     'div',
@@ -22937,14 +22937,14 @@ var VideoListItem = exports.VideoListItem = function (_Component) {
                         { className: 'mgi--bottom-8 mgi--top-8 video-item-title' },
                         _react2.default.createElement(
                             'a',
-                            { href: video.url, target: '_blank', title: !video.isRemoved ? video.title : '', className: video.isRemoved ? 'removed-on-text' : '' },
+                            { href: video.getVideoUrl(), target: '_blank', title: !video.isRemoved ? video.title : '', className: video.isRemoved ? 'removed-on-text' : '' },
                             video.title || 'This video is not longer available'
                         )
                     ),
-                    _react2.default.createElement(
+                    !video.isRemoved && _react2.default.createElement(
                         'a',
-                        { className: 'video-item-creator', href: video.channelLink },
-                        video.creator
+                        { className: 'video-item-creator', href: video.getChannelUrl() },
+                        video.channelTitle
                     )
                 )
             );
@@ -22993,27 +22993,46 @@ var _classCallCheck2 = require("babel-runtime/helpers/classCallCheck");
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
+var _createClass2 = require("babel-runtime/helpers/createClass");
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Video = exports.Video = function Video() {
-    var video = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-    (0, _classCallCheck3.default)(this, Video);
+var Video = exports.Video = function () {
+    function Video() {
+        var video = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+        (0, _classCallCheck3.default)(this, Video);
 
-    this.categoryId = video.categoryId;
-    this.channelTitle = video.channelTitle;
-    this.description = video.description;
-    this.title = video.title;
-    this.isRemoved = video.isRemoved;
-    this.id = video.id;
-    this.channelId = video.channelId;
-    this.viewCount = video.viewCount;
-    this.publishedAt = video.publishedAt ? video.publishedAt : null;
-    this.thumbnails = video.thumbnails;
-    this.active = false;
-};
+        this.categoryId = video.categoryId;
+        this.channelTitle = video.channelTitle;
+        this.description = video.description;
+        this.title = video.title;
+        this.id = video.id;
+        this.channelId = video.channelId;
+        this.viewCount = video.viewCount;
+        this.publishedAt = video.publishedAt ? video.publishedAt : null;
+        this.thumbnails = video.thumbnails;
+        this.active = true;
+        this.isRemoved = video.isRemoved;
+    }
+
+    (0, _createClass3.default)(Video, [{
+        key: "getVideoUrl",
+        value: function getVideoUrl() {
+            return "/watch?v=" + this.id;
+        }
+    }, {
+        key: "getChannelUrl",
+        value: function getChannelUrl() {
+            return "" + this.channelId;
+        }
+    }]);
+    return Video;
+}();
 
 exports.default = Video;
-},{"babel-runtime/helpers/classCallCheck":27}],80:[function(require,module,exports) {
+},{"babel-runtime/helpers/classCallCheck":27,"babel-runtime/helpers/createClass":29}],80:[function(require,module,exports) {
 "use strict";
 
 exports.__esModule = true;
@@ -23132,7 +23151,29 @@ var VideoDetail = exports.VideoDetail = function (_Component) {
 }(_react.Component);
 
 exports.default = VideoDetail;
-},{"babel-runtime/helpers/defineProperty":80,"babel-runtime/helpers/classCallCheck":27,"babel-runtime/helpers/createClass":29,"babel-runtime/helpers/possibleConstructorReturn":28,"babel-runtime/helpers/inherits":30,"react":8}],24:[function(require,module,exports) {
+},{"babel-runtime/helpers/defineProperty":80,"babel-runtime/helpers/classCallCheck":27,"babel-runtime/helpers/createClass":29,"babel-runtime/helpers/possibleConstructorReturn":28,"babel-runtime/helpers/inherits":30,"react":8}],181:[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Loader = function Loader() {
+    return _react2.default.createElement(
+        "div",
+        { className: "loader-tfs" },
+        "loader"
+    );
+};
+
+exports.default = Loader;
+},{"react":8}],24:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -23184,6 +23225,10 @@ var _VideoDetail = require('../VideoDetail/VideoDetail');
 
 var _VideoDetail2 = _interopRequireDefault(_VideoDetail);
 
+var _Loader = require('../layouts/Loader');
+
+var _Loader2 = _interopRequireDefault(_Loader);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var VideosList = exports.VideosList = function (_Component) {
@@ -23196,7 +23241,8 @@ var VideosList = exports.VideosList = function (_Component) {
 
         _this.state = {
             videoSelected: new _Video2.default(),
-            videoLoaded: false
+            videoLoaded: false,
+            isLoading: false
         };
 
         _this.handleChange = _this.handleChange.bind(_this);
@@ -23214,63 +23260,62 @@ var VideosList = exports.VideosList = function (_Component) {
                 if (response.items.length === 0) throw new Error('NOT_FOUND_OR_REMOVED');
                 return response.items[0].snippet;
             }).then(function (video) {
-                return new _Video2.default({});
+                video = new _Video2.default(video);
+                video.id = id;
+                return video;
             }).catch(function (e) {
                 throw e;
             });
         }
     }, {
         key: 'getVideo',
-        value: function () {
-            var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(id) {
+        value: function getVideo(id) {
+            var _this2 = this;
+
+            if (!id) return;
+
+            this.setState({
+                isLoading: true
+            }, (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
                 var video;
                 return _regenerator2.default.wrap(function _callee$(_context) {
                     while (1) {
                         switch (_context.prev = _context.next) {
                             case 0:
-                                if (id) {
-                                    _context.next = 2;
-                                    break;
-                                }
-
-                                return _context.abrupt('return');
-
-                            case 2:
-                                _context.next = 4;
+                                _context.next = 2;
                                 return new Promise(function (resolve) {
                                     return setTimeout(resolve, 300);
                                 });
 
-                            case 4:
-                                _context.prev = 4;
-                                _context.next = 7;
-                                return this.callYouTube(id);
+                            case 2:
+                                _context.prev = 2;
+                                _context.next = 5;
+                                return _this2.callYouTube(id);
 
-                            case 7:
+                            case 5:
                                 video = _context.sent;
-                                _context.next = 13;
+
+
+                                _this2.setState({
+                                    videoSelected: video
+                                });
+                                _context.next = 12;
                                 break;
 
-                            case 10:
-                                _context.prev = 10;
-                                _context.t0 = _context['catch'](4);
+                            case 9:
+                                _context.prev = 9;
+                                _context.t0 = _context['catch'](2);
 
                                 console.error(_context.t0);
 
-                            case 13:
+                            case 12:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, this, [[4, 10]]);
-            }));
-
-            function getVideo(_x) {
-                return _ref.apply(this, arguments);
-            }
-
-            return getVideo;
-        }()
+                }, _callee, _this2, [[2, 9]]);
+            })));
+        }
     }, {
         key: 'handleChange',
         value: function handleChange(e) {
@@ -23284,7 +23329,7 @@ var VideosList = exports.VideosList = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            var _this2 = this;
+            var _this3 = this;
 
             var _props = this.props,
                 videos = _props.videos,
@@ -23308,29 +23353,30 @@ var VideosList = exports.VideosList = function (_Component) {
                                 className: 'yt-uix-form-input-checkbox deputy-flag-video-checkbox',
                                 value: elem.id,
                                 name: 'selected_vid',
-                                onChange: _this2.handleChange
+                                onChange: _this3.handleChange
                             }),
                             _react2.default.createElement(_VideoListItem2.default, {
                                 video: elem,
                                 onSelect: function onSelect() {
-                                    return _this2.getVideo(elem.id);
+                                    return _this3.getVideo(elem.id);
                                 }
                             })
                         );
                     })
                 ),
+                this.state.isLoading && _react2.default.createElement(_Loader2.default, null),
                 _react2.default.createElement(
                     _Popup2.default,
                     {
-                        isOpen: this.state.videoLoaded && this.state.videoSelected.id,
+                        isOpen: this.state.videoLoaded && this.state.videoSelected.id && !this.state.isLoading,
                         onClosed: function onClosed() {
-                            return _this2.setState({ videoSelected: new _Video2.default(), videoLoaded: false });
+                            return _this3.setState({ videoSelected: new _Video2.default(), videoLoaded: false });
                         }
                     },
                     _react2.default.createElement(_VideoDetail2.default, {
                         video: this.state.videoSelected,
                         onLoad: function onLoad() {
-                            return _this2.setState({ videoLoaded: true });
+                            return _this3.setState({ videoLoaded: true, isLoading: false });
                         }
                     })
                 )
@@ -23341,7 +23387,7 @@ var VideosList = exports.VideosList = function (_Component) {
 }(_react.Component);
 
 exports.default = VideosList;
-},{"babel-runtime/regenerator":109,"babel-runtime/helpers/asyncToGenerator":79,"babel-runtime/helpers/classCallCheck":27,"babel-runtime/helpers/createClass":29,"babel-runtime/helpers/possibleConstructorReturn":28,"babel-runtime/helpers/inherits":30,"react":8,"./VideoListItem":75,"../Popup/Popup":76,"../../shared/models/Video.class":26,"../VideoDetail/VideoDetail":77}],141:[function(require,module,exports) {
+},{"babel-runtime/regenerator":109,"babel-runtime/helpers/asyncToGenerator":79,"babel-runtime/helpers/classCallCheck":27,"babel-runtime/helpers/createClass":29,"babel-runtime/helpers/possibleConstructorReturn":28,"babel-runtime/helpers/inherits":30,"react":8,"./VideoListItem":75,"../Popup/Popup":76,"../../shared/models/Video.class":26,"../VideoDetail/VideoDetail":77,"../layouts/Loader":181}],141:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -23873,9 +23919,7 @@ var videos = function getVideos() {
 
             if (!isRemoved && item.getElementsByClassName('yt-user-name').length > 0) {
                 channelTitle = item.getElementsByClassName('yt-user-name')[0].textContent;
-                var channelLink = item.getElementsByClassName('yt-user-name')[0].getAttribute('href');
-
-                console.log(channelLink);
+                channelId = item.getElementsByClassName('yt-user-name')[0].getAttribute('href');
             } else {
                 title = null;
             }
@@ -24058,7 +24102,7 @@ document.getElementById('page-container').innerHTML = '';
 document.getElementById('page-container').appendChild(myReactApp);
 
 _reactDom2.default.render(_react2.default.createElement(_App2.default, youTubeDatas), myReactApp);
-},{"react":8,"react-dom":9,"./components/App":3,"./getDom/_videos":4,"./getDom/_search":5,"./getDom/_location":6,"./getDom/_pagination":7}],168:[function(require,module,exports) {
+},{"react":8,"react-dom":9,"./components/App":3,"./getDom/_videos":4,"./getDom/_search":5,"./getDom/_location":6,"./getDom/_pagination":7}],182:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -24228,5 +24272,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[168,1], null)
+},{}]},{},[182,1], null)
 //# sourceMappingURL=/main.map

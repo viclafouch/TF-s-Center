@@ -19,9 +19,7 @@ let videos = function getVideos() {
 
         if (!isRemoved && item.getElementsByClassName('yt-user-name').length > 0) {
             channelTitle = item.getElementsByClassName('yt-user-name')[0].textContent;
-            let channelLink = item.getElementsByClassName('yt-user-name')[0].getAttribute('href');
-
-            console.log(channelLink);
+            channelId = item.getElementsByClassName('yt-user-name')[0].getAttribute('href');
 
         } else {
             title = null;

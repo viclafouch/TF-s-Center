@@ -6,13 +6,21 @@ export class Video {
         this.channelTitle = video.channelTitle
         this.description = video.description
         this.title = video.title
-        this.isRemoved = video.isRemoved
         this.id = video.id
         this.channelId = video.channelId
         this.viewCount = video.viewCount
         this.publishedAt = video.publishedAt ? video.publishedAt : null
         this.thumbnails = video.thumbnails
-        this.active = false
+        this.active = true
+        this.isRemoved = video.isRemoved
+    }
+
+    getVideoUrl() {
+        return `/watch?v=${this.id}`
+    }
+
+    getChannelUrl() {
+        return `${this.channelId}`
     }
 }
 

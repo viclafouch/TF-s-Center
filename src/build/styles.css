@@ -3390,3 +3390,16 @@ div#TFsCenter {
         left: 50%; }
       div#TFsCenter .form-reporting ul.paper-list > li.paper-item span.paper-radio input:checked + span.paper-radio-element {
         transform: translate(-50%, -50%) scale(0.5); }
+  div#TFsCenter div.loader-tfs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.4);
+    z-index: 9999999;
+    display: flex;
+    justify-content: center;
+    align-items: center; }

@@ -452,4 +452,16 @@ div#TFsCenter {
             }
         }
     }
+
+    div.loader-tfs {
+        position: fixed;
+        top: 0;left: 0; right: 0;bottom: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba($color: #ffffff, $alpha: 0.4);
+        z-index: 9999999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

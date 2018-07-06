@@ -21,13 +21,17 @@ export class VideoListItem extends Component {
                     <img className="thumbnail" src={video.thumbnail.replace('default', 'hqdefault')} />
                 </label> */}
                 <div className="video-item-thumbnail" onClick={this.props.onSelect}>
-                    <img className="thumbnail" src={video.thumbnail.replace('default', 'hqdefault')} />
+                    <img className="thumbnail" src={video.isRemoved ? video.thumbnails.default.url : video.thumbnails.high.url} />
                 </div>
                 <div className="video-item-text">
                     <h3 className="mgi--bottom-8 mgi--top-8 video-item-title">
-                        <a href={video.url} target="_blank" title={!video.isRemoved ? video.title : ''} className={video.isRemoved ? 'removed-on-text' : ''}>{video.title || 'This video is not longer available'}</a>
+                        <a href={video.getVideoUrl()} target="_blank" title={!video.isRemoved ? video.title : ''} className={video.isRemoved ? 'removed-on-text' : ''}>{video.title || 'This video is not longer available'}</a>
                     </h3>
-                    <a className="video-item-creator" href={video.channelLink}>{video.creator}</a>
+                    {
+                        !video.isRemoved &&
+                        <a className="video-item-creator" href={video.getChannelUrl()}>{video.channelTitle}</a>
+                    }
+
                 </div>
             </article>
         )
