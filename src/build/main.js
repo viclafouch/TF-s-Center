@@ -103,7 +103,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   // Override the current require with this new one
   return newRequire;
-})({44:[function(require,module,exports) {
+})({42:[function(require,module,exports) {
 /*
 object-assign
 (c) Sindre Sorhus
@@ -248,7 +248,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 }
 
 module.exports = invariant;
-},{}],42:[function(require,module,exports) {
+},{}],44:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1940,7 +1940,7 @@ if ('development' !== "production") {
     module.exports = react;
   })();
 }
-},{"object-assign":44,"fbjs/lib/invariant":41,"fbjs/lib/emptyObject":42,"fbjs/lib/warning":43,"fbjs/lib/emptyFunction":45,"prop-types/checkPropTypes":46}],8:[function(require,module,exports) {
+},{"object-assign":42,"fbjs/lib/invariant":41,"fbjs/lib/emptyObject":44,"fbjs/lib/warning":43,"fbjs/lib/emptyFunction":45,"prop-types/checkPropTypes":46}],8:[function(require,module,exports) {
 'use strict';
 
 if ('development' === 'production') {
@@ -1948,7 +1948,7 @@ if ('development' === 'production') {
 } else {
   module.exports = require('./cjs/react.development.js');
 }
-},{"./cjs/react.development.js":17}],47:[function(require,module,exports) {
+},{"./cjs/react.development.js":17}],48:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1982,7 +1982,7 @@ var ExecutionEnvironment = {
 };
 
 module.exports = ExecutionEnvironment;
-},{}],48:[function(require,module,exports) {
+},{}],49:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2019,7 +2019,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 }
 
 module.exports = getActiveElement;
-},{}],49:[function(require,module,exports) {
+},{}],50:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2085,7 +2085,7 @@ function shallowEqual(objA, objB) {
 }
 
 module.exports = shallowEqual;
-},{}],64:[function(require,module,exports) {
+},{}],68:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2108,7 +2108,7 @@ function isNode(object) {
 }
 
 module.exports = isNode;
-},{}],58:[function(require,module,exports) {
+},{}],60:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2131,7 +2131,7 @@ function isTextNode(object) {
 }
 
 module.exports = isTextNode;
-},{"./isNode":64}],50:[function(require,module,exports) {
+},{"./isNode":68}],51:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2169,7 +2169,7 @@ function containsNode(outerNode, innerNode) {
 }
 
 module.exports = containsNode;
-},{"./isTextNode":58}],59:[function(require,module,exports) {
+},{"./isTextNode":60}],63:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2200,7 +2200,7 @@ function hyphenate(string) {
 }
 
 module.exports = hyphenate;
-},{}],51:[function(require,module,exports) {
+},{}],52:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2237,7 +2237,7 @@ function hyphenateStyleName(string) {
 }
 
 module.exports = hyphenateStyleName;
-},{"./hyphenate":59}],60:[function(require,module,exports) {
+},{"./hyphenate":63}],59:[function(require,module,exports) {
 "use strict";
 
 /**
@@ -2267,7 +2267,7 @@ function camelize(string) {
 }
 
 module.exports = camelize;
-},{}],52:[function(require,module,exports) {
+},{}],53:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2305,7 +2305,7 @@ function camelizeStyleName(string) {
 }
 
 module.exports = camelizeStyleName;
-},{"./camelize":60}],18:[function(require,module,exports) {
+},{"./camelize":59}],31:[function(require,module,exports) {
 /** @license React v16.4.1
  * react-dom.development.js
  *
@@ -19711,7 +19711,7 @@ if ('development' !== "production") {
     module.exports = reactDom;
   })();
 }
-},{"fbjs/lib/invariant":41,"react":8,"fbjs/lib/warning":43,"fbjs/lib/ExecutionEnvironment":47,"object-assign":44,"fbjs/lib/emptyFunction":45,"prop-types/checkPropTypes":46,"fbjs/lib/getActiveElement":48,"fbjs/lib/shallowEqual":49,"fbjs/lib/containsNode":50,"fbjs/lib/emptyObject":42,"fbjs/lib/hyphenateStyleName":51,"fbjs/lib/camelizeStyleName":52}],9:[function(require,module,exports) {
+},{"fbjs/lib/invariant":41,"react":8,"fbjs/lib/warning":43,"fbjs/lib/ExecutionEnvironment":48,"object-assign":42,"fbjs/lib/emptyFunction":45,"prop-types/checkPropTypes":46,"fbjs/lib/getActiveElement":49,"fbjs/lib/shallowEqual":50,"fbjs/lib/containsNode":51,"fbjs/lib/emptyObject":44,"fbjs/lib/hyphenateStyleName":52,"fbjs/lib/camelizeStyleName":53}],9:[function(require,module,exports) {
 'use strict';
 
 function checkDCE() {
@@ -19747,7 +19747,7 @@ if ('development' === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":18}],27:[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":31}],27:[function(require,module,exports) {
 "use strict";
 
 exports.__esModule = true;
@@ -19757,7 +19757,7 @@ exports.default = function (instance, Constructor) {
     throw new TypeError("Cannot call a class as a function");
   }
 };
-},{}],87:[function(require,module,exports) {
+},{}],89:[function(require,module,exports) {
 
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
 var global = module.exports = typeof window != 'undefined' && window.Math == Math
@@ -19766,17 +19766,17 @@ var global = module.exports = typeof window != 'undefined' && window.Math == Mat
   : Function('return this')();
 if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 
-},{}],68:[function(require,module,exports) {
+},{}],67:[function(require,module,exports) {
 var core = module.exports = { version: '2.5.7' };
 if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
-},{}],129:[function(require,module,exports) {
+},{}],109:[function(require,module,exports) {
 module.exports = function (it) {
   if (typeof it != 'function') throw TypeError(it + ' is not a function!');
   return it;
 };
 
-},{}],96:[function(require,module,exports) {
+},{}],90:[function(require,module,exports) {
 // optional / simple context binding
 var aFunction = require('./_a-function');
 module.exports = function (fn, that, length) {
@@ -19798,19 +19798,19 @@ module.exports = function (fn, that, length) {
   };
 };
 
-},{"./_a-function":129}],106:[function(require,module,exports) {
+},{"./_a-function":109}],105:[function(require,module,exports) {
 module.exports = function (it) {
   return typeof it === 'object' ? it !== null : typeof it === 'function';
 };
 
-},{}],98:[function(require,module,exports) {
+},{}],86:[function(require,module,exports) {
 var isObject = require('./_is-object');
 module.exports = function (it) {
   if (!isObject(it)) throw TypeError(it + ' is not an object!');
   return it;
 };
 
-},{"./_is-object":106}],94:[function(require,module,exports) {
+},{"./_is-object":105}],94:[function(require,module,exports) {
 module.exports = function (exec) {
   try {
     return !!exec();
@@ -19819,13 +19819,13 @@ module.exports = function (exec) {
   }
 };
 
-},{}],82:[function(require,module,exports) {
+},{}],78:[function(require,module,exports) {
 // Thank's IE8 for his funny defineProperty
 module.exports = !require('./_fails')(function () {
   return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
 });
 
-},{"./_fails":94}],104:[function(require,module,exports) {
+},{"./_fails":94}],107:[function(require,module,exports) {
 var isObject = require('./_is-object');
 var document = require('./_global').document;
 // typeof document.createElement is 'object' in old IE
@@ -19834,12 +19834,12 @@ module.exports = function (it) {
   return is ? document.createElement(it) : {};
 };
 
-},{"./_is-object":106,"./_global":87}],99:[function(require,module,exports) {
+},{"./_is-object":105,"./_global":89}],87:[function(require,module,exports) {
 module.exports = !require('./_descriptors') && !require('./_fails')(function () {
   return Object.defineProperty(require('./_dom-create')('div'), 'a', { get: function () { return 7; } }).a != 7;
 });
 
-},{"./_descriptors":82,"./_fails":94,"./_dom-create":104}],100:[function(require,module,exports) {
+},{"./_descriptors":78,"./_fails":94,"./_dom-create":107}],88:[function(require,module,exports) {
 // 7.1.1 ToPrimitive(input [, PreferredType])
 var isObject = require('./_is-object');
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
@@ -19853,7 +19853,7 @@ module.exports = function (it, S) {
   throw TypeError("Can't convert object to primitive value");
 };
 
-},{"./_is-object":106}],83:[function(require,module,exports) {
+},{"./_is-object":105}],77:[function(require,module,exports) {
 var anObject = require('./_an-object');
 var IE8_DOM_DEFINE = require('./_ie8-dom-define');
 var toPrimitive = require('./_to-primitive');
@@ -19871,7 +19871,7 @@ exports.f = require('./_descriptors') ? Object.defineProperty : function defineP
   return O;
 };
 
-},{"./_an-object":98,"./_ie8-dom-define":99,"./_to-primitive":100,"./_descriptors":82}],119:[function(require,module,exports) {
+},{"./_an-object":86,"./_ie8-dom-define":87,"./_to-primitive":88,"./_descriptors":78}],108:[function(require,module,exports) {
 module.exports = function (bitmap, value) {
   return {
     enumerable: !(bitmap & 1),
@@ -19891,13 +19891,13 @@ module.exports = require('./_descriptors') ? function (object, key, value) {
   return object;
 };
 
-},{"./_object-dp":83,"./_property-desc":119,"./_descriptors":82}],97:[function(require,module,exports) {
+},{"./_object-dp":77,"./_property-desc":108,"./_descriptors":78}],92:[function(require,module,exports) {
 var hasOwnProperty = {}.hasOwnProperty;
 module.exports = function (it, key) {
   return hasOwnProperty.call(it, key);
 };
 
-},{}],81:[function(require,module,exports) {
+},{}],79:[function(require,module,exports) {
 
 var global = require('./_global');
 var core = require('./_core');
@@ -19962,21 +19962,21 @@ $export.U = 64;  // safe
 $export.R = 128; // real proto method for `library`
 module.exports = $export;
 
-},{"./_global":87,"./_core":68,"./_ctx":96,"./_hide":91,"./_has":97}],69:[function(require,module,exports) {
+},{"./_global":89,"./_core":67,"./_ctx":90,"./_hide":91,"./_has":92}],66:[function(require,module,exports) {
 var $export = require('./_export');
 // 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
 $export($export.S + $export.F * !require('./_descriptors'), 'Object', { defineProperty: require('./_object-dp').f });
 
-},{"./_export":81,"./_descriptors":82,"./_object-dp":83}],63:[function(require,module,exports) {
+},{"./_export":79,"./_descriptors":78,"./_object-dp":77}],58:[function(require,module,exports) {
 require('../../modules/es6.object.define-property');
 var $Object = require('../../modules/_core').Object;
 module.exports = function defineProperty(it, key, desc) {
   return $Object.defineProperty(it, key, desc);
 };
 
-},{"../../modules/es6.object.define-property":69,"../../modules/_core":68}],54:[function(require,module,exports) {
+},{"../../modules/es6.object.define-property":66,"../../modules/_core":67}],47:[function(require,module,exports) {
 module.exports = { "default": require("core-js/library/fn/object/define-property"), __esModule: true };
-},{"core-js/library/fn/object/define-property":63}],29:[function(require,module,exports) {
+},{"core-js/library/fn/object/define-property":58}],28:[function(require,module,exports) {
 "use strict";
 
 exports.__esModule = true;
@@ -20004,7 +20004,7 @@ exports.default = function () {
     return Constructor;
   };
 }();
-},{"../core-js/object/define-property":54}],122:[function(require,module,exports) {
+},{"../core-js/object/define-property":47}],121:[function(require,module,exports) {
 // 7.1.4 ToInteger
 var ceil = Math.ceil;
 var floor = Math.floor;
@@ -20012,14 +20012,14 @@ module.exports = function (it) {
   return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
 };
 
-},{}],121:[function(require,module,exports) {
+},{}],122:[function(require,module,exports) {
 // 7.2.1 RequireObjectCoercible(argument)
 module.exports = function (it) {
   if (it == undefined) throw TypeError("Can't call method on  " + it);
   return it;
 };
 
-},{}],92:[function(require,module,exports) {
+},{}],100:[function(require,module,exports) {
 var toInteger = require('./_to-integer');
 var defined = require('./_defined');
 // true  -> String#at
@@ -20038,23 +20038,23 @@ module.exports = function (TO_STRING) {
   };
 };
 
-},{"./_to-integer":122,"./_defined":121}],124:[function(require,module,exports) {
+},{"./_to-integer":121,"./_defined":122}],124:[function(require,module,exports) {
 module.exports = true;
 
-},{}],127:[function(require,module,exports) {
+},{}],125:[function(require,module,exports) {
 module.exports = require('./_hide');
 
-},{"./_hide":91}],88:[function(require,module,exports) {
+},{"./_hide":91}],103:[function(require,module,exports) {
 module.exports = {};
 
-},{}],147:[function(require,module,exports) {
+},{}],164:[function(require,module,exports) {
 var toString = {}.toString;
 
 module.exports = function (it) {
   return toString.call(it).slice(8, -1);
 };
 
-},{}],139:[function(require,module,exports) {
+},{}],162:[function(require,module,exports) {
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
 var cof = require('./_cof');
 // eslint-disable-next-line no-prototype-builtins
@@ -20062,7 +20062,7 @@ module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
   return cof(it) == 'String' ? it.split('') : Object(it);
 };
 
-},{"./_cof":147}],118:[function(require,module,exports) {
+},{"./_cof":164}],132:[function(require,module,exports) {
 // to indexed object, toObject with fallback for non-array-like ES3 strings
 var IObject = require('./_iobject');
 var defined = require('./_defined');
@@ -20070,7 +20070,7 @@ module.exports = function (it) {
   return IObject(defined(it));
 };
 
-},{"./_iobject":139,"./_defined":121}],162:[function(require,module,exports) {
+},{"./_iobject":162,"./_defined":122}],167:[function(require,module,exports) {
 // 7.1.15 ToLength
 var toInteger = require('./_to-integer');
 var min = Math.min;
@@ -20078,7 +20078,7 @@ module.exports = function (it) {
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
 };
 
-},{"./_to-integer":122}],163:[function(require,module,exports) {
+},{"./_to-integer":121}],172:[function(require,module,exports) {
 var toInteger = require('./_to-integer');
 var max = Math.max;
 var min = Math.min;
@@ -20087,7 +20087,7 @@ module.exports = function (index, length) {
   return index < 0 ? max(index + length, 0) : min(index, length);
 };
 
-},{"./_to-integer":122}],148:[function(require,module,exports) {
+},{"./_to-integer":121}],171:[function(require,module,exports) {
 // false -> Array#indexOf
 // true  -> Array#includes
 var toIObject = require('./_to-iobject');
@@ -20112,7 +20112,7 @@ module.exports = function (IS_INCLUDES) {
   };
 };
 
-},{"./_to-iobject":118,"./_to-length":162,"./_to-absolute-index":163}],114:[function(require,module,exports) {
+},{"./_to-iobject":132,"./_to-length":167,"./_to-absolute-index":172}],134:[function(require,module,exports) {
 
 var core = require('./_core');
 var global = require('./_global');
@@ -20127,21 +20127,21 @@ var store = global[SHARED] || (global[SHARED] = {});
   copyright: '© 2018 Denis Pushkarev (zloirock.ru)'
 });
 
-},{"./_core":68,"./_global":87,"./_library":124}],115:[function(require,module,exports) {
+},{"./_core":67,"./_global":89,"./_library":124}],135:[function(require,module,exports) {
 var id = 0;
 var px = Math.random();
 module.exports = function (key) {
   return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
 };
 
-},{}],103:[function(require,module,exports) {
+},{}],116:[function(require,module,exports) {
 var shared = require('./_shared')('keys');
 var uid = require('./_uid');
 module.exports = function (key) {
   return shared[key] || (shared[key] = uid(key));
 };
 
-},{"./_shared":114,"./_uid":115}],140:[function(require,module,exports) {
+},{"./_shared":134,"./_uid":135}],169:[function(require,module,exports) {
 var has = require('./_has');
 var toIObject = require('./_to-iobject');
 var arrayIndexOf = require('./_array-includes')(false);
@@ -20160,13 +20160,13 @@ module.exports = function (object, names) {
   return result;
 };
 
-},{"./_has":97,"./_to-iobject":118,"./_array-includes":148,"./_shared-key":103}],102:[function(require,module,exports) {
+},{"./_has":92,"./_to-iobject":132,"./_array-includes":171,"./_shared-key":116}],115:[function(require,module,exports) {
 // IE 8- don't enum bug keys
 module.exports = (
   'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'
 ).split(',');
 
-},{}],120:[function(require,module,exports) {
+},{}],151:[function(require,module,exports) {
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
 var $keys = require('./_object-keys-internal');
 var enumBugKeys = require('./_enum-bug-keys');
@@ -20175,7 +20175,7 @@ module.exports = Object.keys || function keys(O) {
   return $keys(O, enumBugKeys);
 };
 
-},{"./_object-keys-internal":140,"./_enum-bug-keys":102}],101:[function(require,module,exports) {
+},{"./_object-keys-internal":169,"./_enum-bug-keys":115}],114:[function(require,module,exports) {
 var dP = require('./_object-dp');
 var anObject = require('./_an-object');
 var getKeys = require('./_object-keys');
@@ -20190,11 +20190,11 @@ module.exports = require('./_descriptors') ? Object.defineProperties : function 
   return O;
 };
 
-},{"./_object-dp":83,"./_an-object":98,"./_object-keys":120,"./_descriptors":82}],105:[function(require,module,exports) {
+},{"./_object-dp":77,"./_an-object":86,"./_object-keys":151,"./_descriptors":78}],117:[function(require,module,exports) {
 var document = require('./_global').document;
 module.exports = document && document.documentElement;
 
-},{"./_global":87}],84:[function(require,module,exports) {
+},{"./_global":89}],93:[function(require,module,exports) {
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = require('./_an-object');
 var dPs = require('./_object-dps');
@@ -20237,7 +20237,7 @@ module.exports = Object.create || function create(O, Properties) {
   return Properties === undefined ? result : dPs(result, Properties);
 };
 
-},{"./_an-object":98,"./_object-dps":101,"./_enum-bug-keys":102,"./_shared-key":103,"./_dom-create":104,"./_html":105}],90:[function(require,module,exports) {
+},{"./_an-object":86,"./_object-dps":114,"./_enum-bug-keys":115,"./_shared-key":116,"./_dom-create":107,"./_html":117}],104:[function(require,module,exports) {
 var store = require('./_shared')('wks');
 var uid = require('./_uid');
 var Symbol = require('./_global').Symbol;
@@ -20250,7 +20250,7 @@ var $exports = module.exports = function (name) {
 
 $exports.store = store;
 
-},{"./_shared":114,"./_uid":115,"./_global":87}],126:[function(require,module,exports) {
+},{"./_shared":134,"./_uid":135,"./_global":89}],128:[function(require,module,exports) {
 var def = require('./_object-dp').f;
 var has = require('./_has');
 var TAG = require('./_wks')('toStringTag');
@@ -20259,7 +20259,7 @@ module.exports = function (it, tag, stat) {
   if (it && !has(it = stat ? it : it.prototype, TAG)) def(it, TAG, { configurable: true, value: tag });
 };
 
-},{"./_object-dp":83,"./_has":97,"./_wks":90}],128:[function(require,module,exports) {
+},{"./_object-dp":77,"./_has":92,"./_wks":104}],126:[function(require,module,exports) {
 'use strict';
 var create = require('./_object-create');
 var descriptor = require('./_property-desc');
@@ -20274,14 +20274,14 @@ module.exports = function (Constructor, NAME, next) {
   setToStringTag(Constructor, NAME + ' Iterator');
 };
 
-},{"./_object-create":84,"./_property-desc":119,"./_set-to-string-tag":126,"./_hide":91,"./_wks":90}],146:[function(require,module,exports) {
+},{"./_object-create":93,"./_property-desc":108,"./_set-to-string-tag":128,"./_hide":91,"./_wks":104}],160:[function(require,module,exports) {
 // 7.1.13 ToObject(argument)
 var defined = require('./_defined');
 module.exports = function (it) {
   return Object(defined(it));
 };
 
-},{"./_defined":121}],125:[function(require,module,exports) {
+},{"./_defined":122}],129:[function(require,module,exports) {
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
 var has = require('./_has');
 var toObject = require('./_to-object');
@@ -20296,7 +20296,7 @@ module.exports = Object.getPrototypeOf || function (O) {
   } return O instanceof Object ? ObjectProto : null;
 };
 
-},{"./_has":97,"./_to-object":146,"./_shared-key":103}],93:[function(require,module,exports) {
+},{"./_has":92,"./_to-object":160,"./_shared-key":116}],101:[function(require,module,exports) {
 'use strict';
 var LIBRARY = require('./_library');
 var $export = require('./_export');
@@ -20367,7 +20367,7 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
   return methods;
 };
 
-},{"./_library":124,"./_export":81,"./_redefine":127,"./_hide":91,"./_iterators":88,"./_iter-create":128,"./_set-to-string-tag":126,"./_object-gpo":125,"./_wks":90}],72:[function(require,module,exports) {
+},{"./_library":124,"./_export":79,"./_redefine":125,"./_hide":91,"./_iterators":103,"./_iter-create":126,"./_set-to-string-tag":128,"./_object-gpo":129,"./_wks":104}],82:[function(require,module,exports) {
 'use strict';
 var $at = require('./_string-at')(true);
 
@@ -20386,15 +20386,15 @@ require('./_iter-define')(String, 'String', function (iterated) {
   return { value: point, done: false };
 });
 
-},{"./_string-at":92,"./_iter-define":93}],116:[function(require,module,exports) {
+},{"./_string-at":100,"./_iter-define":101}],130:[function(require,module,exports) {
 module.exports = function () { /* empty */ };
 
-},{}],117:[function(require,module,exports) {
+},{}],131:[function(require,module,exports) {
 module.exports = function (done, value) {
   return { value: value, done: !!done };
 };
 
-},{}],89:[function(require,module,exports) {
+},{}],102:[function(require,module,exports) {
 'use strict';
 var addToUnscopables = require('./_add-to-unscopables');
 var step = require('./_iter-step');
@@ -20430,7 +20430,7 @@ addToUnscopables('keys');
 addToUnscopables('values');
 addToUnscopables('entries');
 
-},{"./_add-to-unscopables":116,"./_iter-step":117,"./_iterators":88,"./_to-iobject":118,"./_iter-define":93}],73:[function(require,module,exports) {
+},{"./_add-to-unscopables":130,"./_iter-step":131,"./_iterators":103,"./_to-iobject":132,"./_iter-define":101}],83:[function(require,module,exports) {
 
 require('./es6.array.iterator');
 var global = require('./_global');
@@ -20452,17 +20452,17 @@ for (var i = 0; i < DOMIterables.length; i++) {
   Iterators[NAME] = Iterators.Array;
 }
 
-},{"./es6.array.iterator":89,"./_global":87,"./_hide":91,"./_iterators":88,"./_wks":90}],74:[function(require,module,exports) {
+},{"./es6.array.iterator":102,"./_global":89,"./_hide":91,"./_iterators":103,"./_wks":104}],84:[function(require,module,exports) {
 exports.f = require('./_wks');
 
-},{"./_wks":90}],67:[function(require,module,exports) {
+},{"./_wks":104}],73:[function(require,module,exports) {
 require('../../modules/es6.string.iterator');
 require('../../modules/web.dom.iterable');
 module.exports = require('../../modules/_wks-ext').f('iterator');
 
-},{"../../modules/es6.string.iterator":72,"../../modules/web.dom.iterable":73,"../../modules/_wks-ext":74}],62:[function(require,module,exports) {
+},{"../../modules/es6.string.iterator":82,"../../modules/web.dom.iterable":83,"../../modules/_wks-ext":84}],62:[function(require,module,exports) {
 module.exports = { "default": require("core-js/library/fn/symbol/iterator"), __esModule: true };
-},{"core-js/library/fn/symbol/iterator":67}],133:[function(require,module,exports) {
+},{"core-js/library/fn/symbol/iterator":73}],152:[function(require,module,exports) {
 var META = require('./_uid')('meta');
 var isObject = require('./_is-object');
 var has = require('./_has');
@@ -20517,7 +20517,7 @@ var meta = module.exports = {
   onFreeze: onFreeze
 };
 
-},{"./_uid":115,"./_is-object":106,"./_has":97,"./_object-dp":83,"./_fails":94}],131:[function(require,module,exports) {
+},{"./_uid":135,"./_is-object":105,"./_has":92,"./_object-dp":77,"./_fails":94}],153:[function(require,module,exports) {
 
 var global = require('./_global');
 var core = require('./_core');
@@ -20529,13 +20529,13 @@ module.exports = function (name) {
   if (name.charAt(0) != '_' && !(name in $Symbol)) defineProperty($Symbol, name, { value: wksExt.f(name) });
 };
 
-},{"./_global":87,"./_core":68,"./_library":124,"./_wks-ext":74,"./_object-dp":83}],138:[function(require,module,exports) {
+},{"./_global":89,"./_core":67,"./_library":124,"./_wks-ext":84,"./_object-dp":77}],158:[function(require,module,exports) {
 exports.f = Object.getOwnPropertySymbols;
 
-},{}],130:[function(require,module,exports) {
+},{}],136:[function(require,module,exports) {
 exports.f = {}.propertyIsEnumerable;
 
-},{}],134:[function(require,module,exports) {
+},{}],154:[function(require,module,exports) {
 // all enumerable object keys, includes symbols
 var getKeys = require('./_object-keys');
 var gOPS = require('./_object-gops');
@@ -20552,14 +20552,14 @@ module.exports = function (it) {
   } return result;
 };
 
-},{"./_object-keys":120,"./_object-gops":138,"./_object-pie":130}],135:[function(require,module,exports) {
+},{"./_object-keys":151,"./_object-gops":158,"./_object-pie":136}],155:[function(require,module,exports) {
 // 7.2.2 IsArray(argument)
 var cof = require('./_cof');
 module.exports = Array.isArray || function isArray(arg) {
   return cof(arg) == 'Array';
 };
 
-},{"./_cof":147}],137:[function(require,module,exports) {
+},{"./_cof":164}],157:[function(require,module,exports) {
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
 var $keys = require('./_object-keys-internal');
 var hiddenKeys = require('./_enum-bug-keys').concat('length', 'prototype');
@@ -20568,7 +20568,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
   return $keys(O, hiddenKeys);
 };
 
-},{"./_object-keys-internal":140,"./_enum-bug-keys":102}],136:[function(require,module,exports) {
+},{"./_object-keys-internal":169,"./_enum-bug-keys":115}],156:[function(require,module,exports) {
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
 var toIObject = require('./_to-iobject');
 var gOPN = require('./_object-gopn').f;
@@ -20589,7 +20589,7 @@ module.exports.f = function getOwnPropertyNames(it) {
   return windowNames && toString.call(it) == '[object Window]' ? getWindowNames(it) : gOPN(toIObject(it));
 };
 
-},{"./_to-iobject":118,"./_object-gopn":137}],107:[function(require,module,exports) {
+},{"./_to-iobject":132,"./_object-gopn":157}],106:[function(require,module,exports) {
 var pIE = require('./_object-pie');
 var createDesc = require('./_property-desc');
 var toIObject = require('./_to-iobject');
@@ -20607,7 +20607,7 @@ exports.f = require('./_descriptors') ? gOPD : function getOwnPropertyDescriptor
   if (has(O, P)) return createDesc(!pIE.f.call(O, P), O[P]);
 };
 
-},{"./_object-pie":130,"./_property-desc":119,"./_to-iobject":118,"./_to-primitive":100,"./_has":97,"./_ie8-dom-define":99,"./_descriptors":82}],110:[function(require,module,exports) {
+},{"./_object-pie":136,"./_property-desc":108,"./_to-iobject":132,"./_to-primitive":88,"./_has":92,"./_ie8-dom-define":87,"./_descriptors":78}],118:[function(require,module,exports) {
 
 'use strict';
 // ECMAScript 6 symbols shim
@@ -20844,24 +20844,24 @@ setToStringTag(Math, 'Math', true);
 // 24.3.3 JSON[@@toStringTag]
 setToStringTag(global.JSON, 'JSON', true);
 
-},{"./_global":87,"./_has":97,"./_descriptors":82,"./_export":81,"./_redefine":127,"./_meta":133,"./_fails":94,"./_shared":114,"./_set-to-string-tag":126,"./_uid":115,"./_wks":90,"./_wks-ext":74,"./_wks-define":131,"./_enum-keys":134,"./_is-array":135,"./_an-object":98,"./_is-object":106,"./_to-iobject":118,"./_to-primitive":100,"./_property-desc":119,"./_object-create":84,"./_object-gopn-ext":136,"./_object-gopd":107,"./_object-dp":83,"./_object-keys":120,"./_object-gopn":137,"./_object-pie":130,"./_object-gops":138,"./_library":124,"./_hide":91}],111:[function(require,module,exports) {
+},{"./_global":89,"./_has":92,"./_descriptors":78,"./_export":79,"./_redefine":125,"./_meta":152,"./_fails":94,"./_shared":134,"./_set-to-string-tag":128,"./_uid":135,"./_wks":104,"./_wks-ext":84,"./_wks-define":153,"./_enum-keys":154,"./_is-array":155,"./_an-object":86,"./_is-object":105,"./_to-iobject":132,"./_to-primitive":88,"./_property-desc":108,"./_object-create":93,"./_object-gopn-ext":156,"./_object-gopd":106,"./_object-dp":77,"./_object-keys":151,"./_object-gopn":157,"./_object-pie":136,"./_object-gops":158,"./_library":124,"./_hide":91}],110:[function(require,module,exports) {
 
-},{}],112:[function(require,module,exports) {
+},{}],119:[function(require,module,exports) {
 require('./_wks-define')('asyncIterator');
 
-},{"./_wks-define":131}],113:[function(require,module,exports) {
+},{"./_wks-define":153}],120:[function(require,module,exports) {
 require('./_wks-define')('observable');
 
-},{"./_wks-define":131}],86:[function(require,module,exports) {
+},{"./_wks-define":153}],96:[function(require,module,exports) {
 require('../../modules/es6.symbol');
 require('../../modules/es6.object.to-string');
 require('../../modules/es7.symbol.async-iterator');
 require('../../modules/es7.symbol.observable');
 module.exports = require('../../modules/_core').Symbol;
 
-},{"../../modules/es6.symbol":110,"../../modules/es6.object.to-string":111,"../../modules/es7.symbol.async-iterator":112,"../../modules/es7.symbol.observable":113,"../../modules/_core":68}],61:[function(require,module,exports) {
+},{"../../modules/es6.symbol":118,"../../modules/es6.object.to-string":110,"../../modules/es7.symbol.async-iterator":119,"../../modules/es7.symbol.observable":120,"../../modules/_core":67}],61:[function(require,module,exports) {
 module.exports = { "default": require("core-js/library/fn/symbol"), __esModule: true };
-},{"core-js/library/fn/symbol":86}],53:[function(require,module,exports) {
+},{"core-js/library/fn/symbol":96}],54:[function(require,module,exports) {
 "use strict";
 
 exports.__esModule = true;
@@ -20883,7 +20883,7 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 } : function (obj) {
   return obj && typeof _symbol2.default === "function" && obj.constructor === _symbol2.default && obj !== _symbol2.default.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof(obj);
 };
-},{"../core-js/symbol/iterator":62,"../core-js/symbol":61}],28:[function(require,module,exports) {
+},{"../core-js/symbol/iterator":62,"../core-js/symbol":61}],29:[function(require,module,exports) {
 "use strict";
 
 exports.__esModule = true;
@@ -20901,7 +20901,7 @@ exports.default = function (self, call) {
 
   return call && ((typeof call === "undefined" ? "undefined" : (0, _typeof3.default)(call)) === "object" || typeof call === "function") ? call : self;
 };
-},{"../helpers/typeof":53}],85:[function(require,module,exports) {
+},{"../helpers/typeof":54}],85:[function(require,module,exports) {
 // Works with __proto__ only. Old v8 can't work with null proto objects.
 /* eslint-disable no-proto */
 var isObject = require('./_is-object');
@@ -20928,32 +20928,32 @@ module.exports = {
   check: check
 };
 
-},{"./_is-object":106,"./_an-object":98,"./_ctx":96,"./_object-gopd":107}],71:[function(require,module,exports) {
+},{"./_is-object":105,"./_an-object":86,"./_ctx":90,"./_object-gopd":106}],75:[function(require,module,exports) {
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
 var $export = require('./_export');
 $export($export.S, 'Object', { setPrototypeOf: require('./_set-proto').set });
 
-},{"./_export":81,"./_set-proto":85}],65:[function(require,module,exports) {
+},{"./_export":79,"./_set-proto":85}],64:[function(require,module,exports) {
 require('../../modules/es6.object.set-prototype-of');
 module.exports = require('../../modules/_core').Object.setPrototypeOf;
 
-},{"../../modules/es6.object.set-prototype-of":71,"../../modules/_core":68}],55:[function(require,module,exports) {
+},{"../../modules/es6.object.set-prototype-of":75,"../../modules/_core":67}],55:[function(require,module,exports) {
 module.exports = { "default": require("core-js/library/fn/object/set-prototype-of"), __esModule: true };
-},{"core-js/library/fn/object/set-prototype-of":65}],70:[function(require,module,exports) {
+},{"core-js/library/fn/object/set-prototype-of":64}],80:[function(require,module,exports) {
 var $export = require('./_export');
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 $export($export.S, 'Object', { create: require('./_object-create') });
 
-},{"./_export":81,"./_object-create":84}],66:[function(require,module,exports) {
+},{"./_export":79,"./_object-create":93}],65:[function(require,module,exports) {
 require('../../modules/es6.object.create');
 var $Object = require('../../modules/_core').Object;
 module.exports = function create(P, D) {
   return $Object.create(P, D);
 };
 
-},{"../../modules/es6.object.create":70,"../../modules/_core":68}],56:[function(require,module,exports) {
+},{"../../modules/es6.object.create":80,"../../modules/_core":67}],56:[function(require,module,exports) {
 module.exports = { "default": require("core-js/library/fn/object/create"), __esModule: true };
-},{"core-js/library/fn/object/create":66}],30:[function(require,module,exports) {
+},{"core-js/library/fn/object/create":65}],30:[function(require,module,exports) {
 "use strict";
 
 exports.__esModule = true;
@@ -20987,7 +20987,7 @@ exports.default = function (subClass, superClass) {
   });
   if (superClass) _setPrototypeOf2.default ? (0, _setPrototypeOf2.default)(subClass, superClass) : subClass.__proto__ = superClass;
 };
-},{"../core-js/object/set-prototype-of":55,"../core-js/object/create":56,"../helpers/typeof":53}],22:[function(require,module,exports) {
+},{"../core-js/object/set-prototype-of":55,"../core-js/object/create":56,"../helpers/typeof":54}],21:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21163,7 +21163,7 @@ var Sidebar = exports.Sidebar = function (_Component) {
 }(_react.Component);
 
 exports.default = Sidebar;
-},{"babel-runtime/helpers/classCallCheck":27,"babel-runtime/helpers/createClass":29,"babel-runtime/helpers/possibleConstructorReturn":28,"babel-runtime/helpers/inherits":30,"react":8}],108:[function(require,module,exports) {
+},{"babel-runtime/helpers/classCallCheck":27,"babel-runtime/helpers/createClass":28,"babel-runtime/helpers/possibleConstructorReturn":29,"babel-runtime/helpers/inherits":30,"react":8}],99:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -21197,7 +21197,7 @@ var Button = function Button(props) {
 };
 
 exports.default = Button;
-},{"react":8}],23:[function(require,module,exports) {
+},{"react":8}],22:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -21340,7 +21340,7 @@ var ToolsFlag = exports.ToolsFlag = function (_Component) {
 }(_react.Component);
 
 exports.default = ToolsFlag;
-},{"babel-runtime/helpers/classCallCheck":27,"babel-runtime/helpers/createClass":29,"babel-runtime/helpers/possibleConstructorReturn":28,"babel-runtime/helpers/inherits":30,"react":8,"../Button":108}],142:[function(require,module,exports) {
+},{"babel-runtime/helpers/classCallCheck":27,"babel-runtime/helpers/createClass":28,"babel-runtime/helpers/possibleConstructorReturn":29,"babel-runtime/helpers/inherits":30,"react":8,"../Button":99}],150:[function(require,module,exports) {
 var global = arguments[3];
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
@@ -22070,7 +22070,7 @@ var global = arguments[3];
   (function() { return this })() || Function("return this")()
 );
 
-},{}],132:[function(require,module,exports) {
+},{}],127:[function(require,module,exports) {
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -22107,10 +22107,10 @@ if (hadRuntime) {
   }
 }
 
-},{"./runtime":142}],109:[function(require,module,exports) {
+},{"./runtime":150}],98:[function(require,module,exports) {
 module.exports = require("regenerator-runtime");
 
-},{"regenerator-runtime":132}],153:[function(require,module,exports) {
+},{"regenerator-runtime":127}],141:[function(require,module,exports) {
 // getting tag from 19.1.3.6 Object.prototype.toString()
 var cof = require('./_cof');
 var TAG = require('./_wks')('toStringTag');
@@ -22135,14 +22135,14 @@ module.exports = function (it) {
     : (B = cof(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : B;
 };
 
-},{"./_cof":147,"./_wks":90}],154:[function(require,module,exports) {
+},{"./_cof":164,"./_wks":104}],142:[function(require,module,exports) {
 module.exports = function (it, Constructor, name, forbiddenField) {
   if (!(it instanceof Constructor) || (forbiddenField !== undefined && forbiddenField in it)) {
     throw TypeError(name + ': incorrect invocation!');
   } return it;
 };
 
-},{}],164:[function(require,module,exports) {
+},{}],165:[function(require,module,exports) {
 // call something on iterator step with safe closing on error
 var anObject = require('./_an-object');
 module.exports = function (iterator, fn, value, entries) {
@@ -22156,7 +22156,7 @@ module.exports = function (iterator, fn, value, entries) {
   }
 };
 
-},{"./_an-object":98}],165:[function(require,module,exports) {
+},{"./_an-object":86}],166:[function(require,module,exports) {
 // check on default Array iterator
 var Iterators = require('./_iterators');
 var ITERATOR = require('./_wks')('iterator');
@@ -22166,7 +22166,7 @@ module.exports = function (it) {
   return it !== undefined && (Iterators.Array === it || ArrayProto[ITERATOR] === it);
 };
 
-},{"./_iterators":88,"./_wks":90}],166:[function(require,module,exports) {
+},{"./_iterators":103,"./_wks":104}],168:[function(require,module,exports) {
 var classof = require('./_classof');
 var ITERATOR = require('./_wks')('iterator');
 var Iterators = require('./_iterators');
@@ -22176,7 +22176,7 @@ module.exports = require('./_core').getIteratorMethod = function (it) {
     || Iterators[classof(it)];
 };
 
-},{"./_classof":153,"./_wks":90,"./_iterators":88,"./_core":68}],155:[function(require,module,exports) {
+},{"./_classof":141,"./_wks":104,"./_iterators":103,"./_core":67}],143:[function(require,module,exports) {
 var ctx = require('./_ctx');
 var call = require('./_iter-call');
 var isArrayIter = require('./_is-array-iter');
@@ -22203,7 +22203,7 @@ var exports = module.exports = function (iterable, entries, fn, that, ITERATOR) 
 exports.BREAK = BREAK;
 exports.RETURN = RETURN;
 
-},{"./_ctx":96,"./_iter-call":164,"./_is-array-iter":165,"./_an-object":98,"./_to-length":162,"./core.get-iterator-method":166}],149:[function(require,module,exports) {
+},{"./_ctx":90,"./_iter-call":165,"./_is-array-iter":166,"./_an-object":86,"./_to-length":167,"./core.get-iterator-method":168}],137:[function(require,module,exports) {
 // 7.3.20 SpeciesConstructor(O, defaultConstructor)
 var anObject = require('./_an-object');
 var aFunction = require('./_a-function');
@@ -22214,7 +22214,7 @@ module.exports = function (O, D) {
   return C === undefined || (S = anObject(C)[SPECIES]) == undefined ? D : aFunction(S);
 };
 
-},{"./_an-object":98,"./_a-function":129,"./_wks":90}],167:[function(require,module,exports) {
+},{"./_an-object":86,"./_a-function":109,"./_wks":104}],163:[function(require,module,exports) {
 // fast apply, http://jsperf.lnkit.com/fast-apply/5
 module.exports = function (fn, args, that) {
   var un = that === undefined;
@@ -22232,7 +22232,7 @@ module.exports = function (fn, args, that) {
   } return fn.apply(that, args);
 };
 
-},{}],156:[function(require,module,exports) {
+},{}],144:[function(require,module,exports) {
 
 
 var ctx = require('./_ctx');
@@ -22320,7 +22320,7 @@ module.exports = {
   clear: clearTask
 };
 
-},{"./_ctx":96,"./_invoke":167,"./_html":105,"./_dom-create":104,"./_global":87,"./_cof":147}],157:[function(require,module,exports) {
+},{"./_ctx":90,"./_invoke":163,"./_html":117,"./_dom-create":107,"./_global":89,"./_cof":164}],145:[function(require,module,exports) {
 
 
 var global = require('./_global');
@@ -22393,7 +22393,7 @@ module.exports = function () {
   };
 };
 
-},{"./_global":87,"./_task":156,"./_cof":147}],151:[function(require,module,exports) {
+},{"./_global":89,"./_task":144,"./_cof":164}],139:[function(require,module,exports) {
 'use strict';
 // 25.4.1.5 NewPromiseCapability(C)
 var aFunction = require('./_a-function');
@@ -22413,7 +22413,7 @@ module.exports.f = function (C) {
   return new PromiseCapability(C);
 };
 
-},{"./_a-function":129}],152:[function(require,module,exports) {
+},{"./_a-function":109}],140:[function(require,module,exports) {
 module.exports = function (exec) {
   try {
     return { e: false, v: exec() };
@@ -22422,14 +22422,14 @@ module.exports = function (exec) {
   }
 };
 
-},{}],158:[function(require,module,exports) {
+},{}],146:[function(require,module,exports) {
 
 var global = require('./_global');
 var navigator = global.navigator;
 
 module.exports = navigator && navigator.userAgent || '';
 
-},{"./_global":87}],150:[function(require,module,exports) {
+},{"./_global":89}],138:[function(require,module,exports) {
 var anObject = require('./_an-object');
 var isObject = require('./_is-object');
 var newPromiseCapability = require('./_new-promise-capability');
@@ -22443,7 +22443,7 @@ module.exports = function (C, x) {
   return promiseCapability.promise;
 };
 
-},{"./_an-object":98,"./_is-object":106,"./_new-promise-capability":151}],159:[function(require,module,exports) {
+},{"./_an-object":86,"./_is-object":105,"./_new-promise-capability":139}],147:[function(require,module,exports) {
 var hide = require('./_hide');
 module.exports = function (target, src, safe) {
   for (var key in src) {
@@ -22452,7 +22452,7 @@ module.exports = function (target, src, safe) {
   } return target;
 };
 
-},{"./_hide":91}],160:[function(require,module,exports) {
+},{"./_hide":91}],148:[function(require,module,exports) {
 
 'use strict';
 var global = require('./_global');
@@ -22469,7 +22469,7 @@ module.exports = function (KEY) {
   });
 };
 
-},{"./_global":87,"./_core":68,"./_object-dp":83,"./_descriptors":82,"./_wks":90}],161:[function(require,module,exports) {
+},{"./_global":89,"./_core":67,"./_object-dp":77,"./_descriptors":78,"./_wks":104}],149:[function(require,module,exports) {
 var ITERATOR = require('./_wks')('iterator');
 var SAFE_CLOSING = false;
 
@@ -22493,7 +22493,7 @@ module.exports = function (exec, skipClosing) {
   return safe;
 };
 
-},{"./_wks":90}],143:[function(require,module,exports) {
+},{"./_wks":104}],111:[function(require,module,exports) {
 
 
 'use strict';
@@ -22783,7 +22783,7 @@ $export($export.S + $export.F * !(USE_NATIVE && require('./_iter-detect')(functi
   }
 });
 
-},{"./_library":124,"./_global":87,"./_ctx":96,"./_classof":153,"./_export":81,"./_is-object":106,"./_a-function":129,"./_an-instance":154,"./_for-of":155,"./_species-constructor":149,"./_task":156,"./_microtask":157,"./_new-promise-capability":151,"./_perform":152,"./_user-agent":158,"./_promise-resolve":150,"./_wks":90,"./_redefine-all":159,"./_set-to-string-tag":126,"./_set-species":160,"./_core":68,"./_iter-detect":161}],144:[function(require,module,exports) {
+},{"./_library":124,"./_global":89,"./_ctx":90,"./_classof":141,"./_export":79,"./_is-object":105,"./_a-function":109,"./_an-instance":142,"./_for-of":143,"./_species-constructor":137,"./_task":144,"./_microtask":145,"./_new-promise-capability":139,"./_perform":140,"./_user-agent":146,"./_promise-resolve":138,"./_wks":104,"./_redefine-all":147,"./_set-to-string-tag":128,"./_set-species":148,"./_core":67,"./_iter-detect":149}],112:[function(require,module,exports) {
 
 // https://github.com/tc39/proposal-promise-finally
 'use strict';
@@ -22806,7 +22806,7 @@ $export($export.P + $export.R, 'Promise', { 'finally': function (onFinally) {
   );
 } });
 
-},{"./_export":81,"./_core":68,"./_global":87,"./_species-constructor":149,"./_promise-resolve":150}],145:[function(require,module,exports) {
+},{"./_export":79,"./_core":67,"./_global":89,"./_species-constructor":137,"./_promise-resolve":138}],113:[function(require,module,exports) {
 'use strict';
 // https://github.com/tc39/proposal-promise-try
 var $export = require('./_export');
@@ -22820,7 +22820,7 @@ $export($export.S, 'Promise', { 'try': function (callbackfn) {
   return promiseCapability.promise;
 } });
 
-},{"./_export":81,"./_new-promise-capability":151,"./_perform":152}],123:[function(require,module,exports) {
+},{"./_export":79,"./_new-promise-capability":139,"./_perform":140}],95:[function(require,module,exports) {
 require('../modules/es6.object.to-string');
 require('../modules/es6.string.iterator');
 require('../modules/web.dom.iterable');
@@ -22829,9 +22829,9 @@ require('../modules/es7.promise.finally');
 require('../modules/es7.promise.try');
 module.exports = require('../modules/_core').Promise;
 
-},{"../modules/es6.object.to-string":111,"../modules/es6.string.iterator":72,"../modules/web.dom.iterable":73,"../modules/es6.promise":143,"../modules/es7.promise.finally":144,"../modules/es7.promise.try":145,"../modules/_core":68}],95:[function(require,module,exports) {
+},{"../modules/es6.object.to-string":110,"../modules/es6.string.iterator":82,"../modules/web.dom.iterable":83,"../modules/es6.promise":111,"../modules/es7.promise.finally":112,"../modules/es7.promise.try":113,"../modules/_core":67}],81:[function(require,module,exports) {
 module.exports = { "default": require("core-js/library/fn/promise"), __esModule: true };
-},{"core-js/library/fn/promise":123}],79:[function(require,module,exports) {
+},{"core-js/library/fn/promise":95}],72:[function(require,module,exports) {
 "use strict";
 
 exports.__esModule = true;
@@ -22870,7 +22870,7 @@ exports.default = function (fn) {
     });
   };
 };
-},{"../core-js/promise":95}],75:[function(require,module,exports) {
+},{"../core-js/promise":81}],69:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -22954,7 +22954,7 @@ var VideoListItem = exports.VideoListItem = function (_Component) {
 }(_react.Component);
 
 exports.default = VideoListItem;
-},{"babel-runtime/helpers/classCallCheck":27,"babel-runtime/helpers/createClass":29,"babel-runtime/helpers/possibleConstructorReturn":28,"babel-runtime/helpers/inherits":30,"react":8}],76:[function(require,module,exports) {
+},{"babel-runtime/helpers/classCallCheck":27,"babel-runtime/helpers/createClass":28,"babel-runtime/helpers/possibleConstructorReturn":29,"babel-runtime/helpers/inherits":30,"react":8}],70:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22981,7 +22981,7 @@ var Popup = function Popup(props) {
 };
 
 exports.default = Popup;
-},{"react":8}],26:[function(require,module,exports) {
+},{"react":8}],20:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23032,7 +23032,7 @@ var Video = exports.Video = function () {
 }();
 
 exports.default = Video;
-},{"babel-runtime/helpers/classCallCheck":27,"babel-runtime/helpers/createClass":29}],80:[function(require,module,exports) {
+},{"babel-runtime/helpers/classCallCheck":27,"babel-runtime/helpers/createClass":28}],76:[function(require,module,exports) {
 "use strict";
 
 exports.__esModule = true;
@@ -23057,7 +23057,7 @@ exports.default = function (obj, key, value) {
 
   return obj;
 };
-},{"../core-js/object/define-property":54}],77:[function(require,module,exports) {
+},{"../core-js/object/define-property":47}],71:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23151,29 +23151,2948 @@ var VideoDetail = exports.VideoDetail = function (_Component) {
 }(_react.Component);
 
 exports.default = VideoDetail;
-},{"babel-runtime/helpers/defineProperty":80,"babel-runtime/helpers/classCallCheck":27,"babel-runtime/helpers/createClass":29,"babel-runtime/helpers/possibleConstructorReturn":28,"babel-runtime/helpers/inherits":30,"react":8}],181:[function(require,module,exports) {
-"use strict";
+},{"babel-runtime/helpers/defineProperty":76,"babel-runtime/helpers/classCallCheck":27,"babel-runtime/helpers/createClass":28,"babel-runtime/helpers/possibleConstructorReturn":29,"babel-runtime/helpers/inherits":30,"react":8}],161:[function(require,module,exports) {
+
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
+});
+/*!
+ * Font Awesome Free 5.1.0-11 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+var noop = function noop() {};
+
+var _WINDOW = {};
+var _DOCUMENT = {};
+var _MUTATION_OBSERVER$1 = null;
+var _PERFORMANCE = { mark: noop, measure: noop };
+
+try {
+  if (typeof window !== 'undefined') _WINDOW = window;
+  if (typeof document !== 'undefined') _DOCUMENT = document;
+  if (typeof MutationObserver !== 'undefined') _MUTATION_OBSERVER$1 = MutationObserver;
+  if (typeof performance !== 'undefined') _PERFORMANCE = performance;
+} catch (e) {}
+
+var _ref = _WINDOW.navigator || {};
+var _ref$userAgent = _ref.userAgent;
+var userAgent = _ref$userAgent === undefined ? '' : _ref$userAgent;
+
+var WINDOW = _WINDOW;
+var DOCUMENT = _DOCUMENT;
+var MUTATION_OBSERVER = _MUTATION_OBSERVER$1;
+var PERFORMANCE = _PERFORMANCE;
+
+var IS_DOM = !!DOCUMENT.documentElement && !!DOCUMENT.head && typeof DOCUMENT.addEventListener === 'function' && typeof DOCUMENT.createElement === 'function';
+var IS_IE = ~userAgent.indexOf('MSIE') || ~userAgent.indexOf('Trident/');
+
+var NAMESPACE_IDENTIFIER = '___FONT_AWESOME___';
+var UNITS_IN_GRID = 16;
+var DEFAULT_FAMILY_PREFIX = 'fa';
+var DEFAULT_REPLACEMENT_CLASS = 'svg-inline--fa';
+var DATA_FA_I2SVG = 'data-fa-i2svg';
+var DATA_FA_PSEUDO_ELEMENT = 'data-fa-pseudo-element';
+var DATA_PREFIX = 'data-prefix';
+var DATA_ICON = 'data-icon';
+var HTML_CLASS_I2SVG_BASE_CLASS = 'fontawesome-i2svg';
+var TAGNAMES_TO_SKIP_FOR_PSEUDOELEMENTS = ['HTML', 'HEAD', 'STYLE', 'SCRIPT'];
+var PRODUCTION = function () {
+  try {
+    return 'development' === 'production';
+  } catch (e) {
+    return false;
+  }
+}();
+
+var oneToTen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var oneToTwenty = oneToTen.concat([11, 12, 13, 14, 15, 16, 17, 18, 19, 20]);
+
+var ATTRIBUTES_WATCHED_FOR_MUTATION = ['class', 'data-prefix', 'data-icon', 'data-fa-transform', 'data-fa-mask'];
+
+var RESERVED_CLASSES = ['xs', 'sm', 'lg', 'fw', 'ul', 'li', 'border', 'pull-left', 'pull-right', 'spin', 'pulse', 'rotate-90', 'rotate-180', 'rotate-270', 'flip-horizontal', 'flip-vertical', 'stack', 'stack-1x', 'stack-2x', 'inverse', 'layers', 'layers-text', 'layers-counter'].concat(oneToTen.map(function (n) {
+  return n + 'x';
+})).concat(oneToTwenty.map(function (n) {
+  return 'w-' + n;
+}));
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+var slicedToArray = function () {
+  function sliceIterator(arr, i) {
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _e = undefined;
+
+    try {
+      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+        _arr.push(_s.value);
+
+        if (i && _arr.length === i) break;
+      }
+    } catch (err) {
+      _d = true;
+      _e = err;
+    } finally {
+      try {
+        if (!_n && _i["return"]) _i["return"]();
+      } finally {
+        if (_d) throw _e;
+      }
+    }
+
+    return _arr;
+  }
+
+  return function (arr, i) {
+    if (Array.isArray(arr)) {
+      return arr;
+    } else if (Symbol.iterator in Object(arr)) {
+      return sliceIterator(arr, i);
+    } else {
+      throw new TypeError("Invalid attempt to destructure non-iterable instance");
+    }
+  };
+}();
+
+var toConsumableArray = function (arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }return arr2;
+  } else {
+    return Array.from(arr);
+  }
+};
+
+var initial = WINDOW.FontAwesomeConfig || {};
+
+function getAttrConfig(attr) {
+  var element = DOCUMENT.querySelector('script[' + attr + ']');
+
+  if (element) {
+    return element.getAttribute(attr);
+  }
+}
+
+function coerce(val) {
+  // Getting an empty string will occur if the attribute is set on the HTML tag but without a value
+  // We'll assume that this is an indication that it should be toggled to true
+  // For example <script data-search-pseudo-elements src="..."></script>
+  if (val === '') return true;
+  if (val === 'false') return false;
+  if (val === 'true') return true;
+  return val;
+}
+
+if (DOCUMENT && typeof DOCUMENT.querySelector === 'function') {
+  var attrs = [['data-family-prefix', 'familyPrefix'], ['data-replacement-class', 'replacementClass'], ['data-auto-replace-svg', 'autoReplaceSvg'], ['data-auto-add-css', 'autoAddCss'], ['data-auto-a11y', 'autoA11y'], ['data-search-pseudo-elements', 'searchPseudoElements'], ['data-observe-mutations', 'observeMutations'], ['data-keep-original-source', 'keepOriginalSource'], ['data-measure-performance', 'measurePerformance'], ['data-show-missing-icons', 'showMissingIcons']];
+
+  attrs.forEach(function (_ref) {
+    var _ref2 = slicedToArray(_ref, 2),
+        attr = _ref2[0],
+        key = _ref2[1];
+
+    var val = coerce(getAttrConfig(attr));
+
+    if (val !== undefined && val !== null) {
+      initial[key] = val;
+    }
+  });
+}
+
+var _default = _extends({
+  familyPrefix: DEFAULT_FAMILY_PREFIX,
+  replacementClass: DEFAULT_REPLACEMENT_CLASS,
+  autoReplaceSvg: true,
+  autoAddCss: true,
+  autoA11y: true,
+  searchPseudoElements: false,
+  observeMutations: true,
+  keepOriginalSource: true,
+  measurePerformance: false,
+  showMissingIcons: true
+}, initial);
+
+if (!_default.autoReplaceSvg) _default.observeMutations = false;
+
+var config = _extends({}, _default);
+
+WINDOW.FontAwesomeConfig = config;
+
+var w = WINDOW || {};
+
+if (!w[NAMESPACE_IDENTIFIER]) w[NAMESPACE_IDENTIFIER] = {};
+if (!w[NAMESPACE_IDENTIFIER].styles) w[NAMESPACE_IDENTIFIER].styles = {};
+if (!w[NAMESPACE_IDENTIFIER].hooks) w[NAMESPACE_IDENTIFIER].hooks = {};
+if (!w[NAMESPACE_IDENTIFIER].shims) w[NAMESPACE_IDENTIFIER].shims = [];
+
+var namespace = w[NAMESPACE_IDENTIFIER];
+
+var functions = [];
+var listener = function listener() {
+  DOCUMENT.removeEventListener('DOMContentLoaded', listener);
+  loaded = 1;
+  functions.map(function (fn) {
+    return fn();
+  });
+};
+
+var loaded = false;
+
+if (IS_DOM) {
+  loaded = (DOCUMENT.documentElement.doScroll ? /^loaded|^c/ : /^loaded|^i|^c/).test(DOCUMENT.readyState);
+
+  if (!loaded) DOCUMENT.addEventListener('DOMContentLoaded', listener);
+}
+
+var domready = function (fn) {
+  if (!IS_DOM) return;
+  loaded ? setTimeout(fn, 0) : functions.push(fn);
+};
+
+var d = UNITS_IN_GRID;
+
+var meaninglessTransform = {
+  size: 16,
+  x: 0,
+  y: 0,
+  rotate: 0,
+  flipX: false,
+  flipY: false
+};
+
+function isReserved(name) {
+  return ~RESERVED_CLASSES.indexOf(name);
+}
+
+function insertCss(css) {
+  if (!css || !IS_DOM) {
+    return;
+  }
+
+  var style = DOCUMENT.createElement('style');
+  style.setAttribute('type', 'text/css');
+  style.innerHTML = css;
+
+  var headChildren = DOCUMENT.head.childNodes;
+  var beforeChild = null;
+
+  for (var i = headChildren.length - 1; i > -1; i--) {
+    var child = headChildren[i];
+    var tagName = (child.tagName || '').toUpperCase();
+    if (['STYLE', 'LINK'].indexOf(tagName) > -1) {
+      beforeChild = child;
+    }
+  }
+
+  DOCUMENT.head.insertBefore(style, beforeChild);
+
+  return css;
+}
+
+var _uniqueId = 0;
+
+function nextUniqueId() {
+  _uniqueId++;
+
+  return _uniqueId;
+}
+
+function toArray(obj) {
+  var array = [];
+
+  for (var i = (obj || []).length >>> 0; i--;) {
+    array[i] = obj[i];
+  }
+
+  return array;
+}
+
+function classArray(node) {
+  if (node.classList) {
+    return toArray(node.classList);
+  } else {
+    return (node.getAttribute('class') || '').split(' ').filter(function (i) {
+      return i;
+    });
+  }
+}
+
+function getIconName(familyPrefix, cls) {
+  var parts = cls.split('-');
+  var prefix = parts[0];
+  var iconName = parts.slice(1).join('-');
+
+  if (prefix === familyPrefix && iconName !== '' && !isReserved(iconName)) {
+    return iconName;
+  } else {
+    return null;
+  }
+}
+
+function htmlEscape(str) {
+  return ('' + str).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function joinAttributes(attributes) {
+  return Object.keys(attributes || {}).reduce(function (acc, attributeName) {
+    return acc + (attributeName + '="' + htmlEscape(attributes[attributeName]) + '" ');
+  }, '').trim();
+}
+
+function joinStyles(styles) {
+  return Object.keys(styles || {}).reduce(function (acc, styleName) {
+    return acc + (styleName + ': ' + styles[styleName] + ';');
+  }, '');
+}
+
+function transformIsMeaningful(transform) {
+  return transform.size !== meaninglessTransform.size || transform.x !== meaninglessTransform.x || transform.y !== meaninglessTransform.y || transform.rotate !== meaninglessTransform.rotate || transform.flipX || transform.flipY;
+}
+
+function transformForSvg(_ref) {
+  var transform = _ref.transform,
+      containerWidth = _ref.containerWidth,
+      iconWidth = _ref.iconWidth;
+
+  var outer = {
+    transform: 'translate(' + containerWidth / 2 + ' 256)'
+  };
+  var innerTranslate = 'translate(' + transform.x * 32 + ', ' + transform.y * 32 + ') ';
+  var innerScale = 'scale(' + transform.size / 16 * (transform.flipX ? -1 : 1) + ', ' + transform.size / 16 * (transform.flipY ? -1 : 1) + ') ';
+  var innerRotate = 'rotate(' + transform.rotate + ' 0 0)';
+  var inner = {
+    transform: innerTranslate + ' ' + innerScale + ' ' + innerRotate
+  };
+  var path = {
+    transform: 'translate(' + iconWidth / 2 * -1 + ' -256)'
+  };
+  return {
+    outer: outer,
+    inner: inner,
+    path: path
+  };
+}
+
+function transformForCss(_ref2) {
+  var transform = _ref2.transform,
+      _ref2$width = _ref2.width,
+      width = _ref2$width === undefined ? UNITS_IN_GRID : _ref2$width,
+      _ref2$height = _ref2.height,
+      height = _ref2$height === undefined ? UNITS_IN_GRID : _ref2$height,
+      _ref2$startCentered = _ref2.startCentered,
+      startCentered = _ref2$startCentered === undefined ? false : _ref2$startCentered;
+
+  var val = '';
+
+  if (startCentered && IS_IE) {
+    val += 'translate(' + (transform.x / d - width / 2) + 'em, ' + (transform.y / d - height / 2) + 'em) ';
+  } else if (startCentered) {
+    val += 'translate(calc(-50% + ' + transform.x / d + 'em), calc(-50% + ' + transform.y / d + 'em)) ';
+  } else {
+    val += 'translate(' + transform.x / d + 'em, ' + transform.y / d + 'em) ';
+  }
+
+  val += 'scale(' + transform.size / d * (transform.flipX ? -1 : 1) + ', ' + transform.size / d * (transform.flipY ? -1 : 1) + ') ';
+  val += 'rotate(' + transform.rotate + 'deg) ';
+
+  return val;
+}
+
+var ALL_SPACE = {
+  x: 0,
+  y: 0,
+  width: '100%',
+  height: '100%'
+};
+
+var makeIconMasking = function (_ref) {
+  var children = _ref.children,
+      attributes = _ref.attributes,
+      main = _ref.main,
+      mask = _ref.mask,
+      transform = _ref.transform;
+  var mainWidth = main.width,
+      mainPath = main.icon;
+  var maskWidth = mask.width,
+      maskPath = mask.icon;
+
+  var trans = transformForSvg({ transform: transform, containerWidth: maskWidth, iconWidth: mainWidth });
+
+  var maskRect = {
+    tag: 'rect',
+    attributes: _extends({}, ALL_SPACE, {
+      fill: 'white'
+    })
+  };
+  var maskInnerGroup = {
+    tag: 'g',
+    attributes: _extends({}, trans.inner),
+    children: [{ tag: 'path', attributes: _extends({}, mainPath.attributes, trans.path, { fill: 'black' }) }]
+  };
+  var maskOuterGroup = {
+    tag: 'g',
+    attributes: _extends({}, trans.outer),
+    children: [maskInnerGroup]
+  };
+  var maskId = 'mask-' + nextUniqueId();
+  var clipId = 'clip-' + nextUniqueId();
+  var maskTag = {
+    tag: 'mask',
+    attributes: _extends({}, ALL_SPACE, {
+      id: maskId,
+      maskUnits: 'userSpaceOnUse',
+      maskContentUnits: 'userSpaceOnUse'
+    }),
+    children: [maskRect, maskOuterGroup]
+  };
+  var defs = {
+    tag: 'defs',
+    children: [{ tag: 'clipPath', attributes: { id: clipId }, children: [maskPath] }, maskTag]
+  };
+
+  children.push(defs, { tag: 'rect', attributes: _extends({ fill: 'currentColor', 'clip-path': 'url(#' + clipId + ')', mask: 'url(#' + maskId + ')' }, ALL_SPACE) });
+
+  return {
+    children: children,
+    attributes: attributes
+  };
+};
+
+var makeIconStandard = function (_ref) {
+  var children = _ref.children,
+      attributes = _ref.attributes,
+      main = _ref.main,
+      transform = _ref.transform,
+      styles = _ref.styles;
+
+  var styleString = joinStyles(styles);
+
+  if (styleString.length > 0) {
+    attributes['style'] = styleString;
+  }
+
+  if (transformIsMeaningful(transform)) {
+    var trans = transformForSvg({ transform: transform, containerWidth: main.width, iconWidth: main.width });
+    children.push({
+      tag: 'g',
+      attributes: _extends({}, trans.outer),
+      children: [{
+        tag: 'g',
+        attributes: _extends({}, trans.inner),
+        children: [{
+          tag: main.icon.tag,
+          children: main.icon.children,
+          attributes: _extends({}, main.icon.attributes, trans.path)
+        }]
+      }]
+    });
+  } else {
+    children.push(main.icon);
+  }
+
+  return {
+    children: children,
+    attributes: attributes
+  };
+};
+
+var asIcon = function (_ref) {
+  var children = _ref.children,
+      main = _ref.main,
+      mask = _ref.mask,
+      attributes = _ref.attributes,
+      styles = _ref.styles,
+      transform = _ref.transform;
+
+  if (transformIsMeaningful(transform) && main.found && !mask.found) {
+    var width = main.width,
+        height = main.height;
+
+    var offset = {
+      x: width / height / 2,
+      y: 0.5
+    };
+    attributes['style'] = joinStyles(_extends({}, styles, {
+      'transform-origin': offset.x + transform.x / 16 + 'em ' + (offset.y + transform.y / 16) + 'em'
+    }));
+  }
+
+  return [{
+    tag: 'svg',
+    attributes: attributes,
+    children: children
+  }];
+};
+
+var asSymbol = function (_ref) {
+  var prefix = _ref.prefix,
+      iconName = _ref.iconName,
+      children = _ref.children,
+      attributes = _ref.attributes,
+      symbol = _ref.symbol;
+
+  var id = symbol === true ? prefix + '-' + config.familyPrefix + '-' + iconName : symbol;
+
+  return [{
+    tag: 'svg',
+    attributes: {
+      style: 'display: none;'
+    },
+    children: [{
+      tag: 'symbol',
+      attributes: _extends({}, attributes, { id: id }),
+      children: children
+    }]
+  }];
+};
+
+function makeInlineSvgAbstract(params) {
+  var _params$icons = params.icons,
+      main = _params$icons.main,
+      mask = _params$icons.mask,
+      prefix = params.prefix,
+      iconName = params.iconName,
+      transform = params.transform,
+      symbol = params.symbol,
+      title = params.title,
+      extra = params.extra,
+      _params$watchable = params.watchable,
+      watchable = _params$watchable === undefined ? false : _params$watchable;
+
+  var _ref = mask.found ? mask : main,
+      width = _ref.width,
+      height = _ref.height;
+
+  var widthClass = 'fa-w-' + Math.ceil(width / height * 16);
+  var attrClass = [config.replacementClass, iconName ? config.familyPrefix + '-' + iconName : '', widthClass].filter(function (c) {
+    return extra.classes.indexOf(c) === -1;
+  }).concat(extra.classes).join(' ');
+
+  var content = {
+    children: [],
+    attributes: _extends({}, extra.attributes, {
+      'data-prefix': prefix,
+      'data-icon': iconName,
+      'class': attrClass,
+      'role': 'img',
+      'xmlns': 'http://www.w3.org/2000/svg',
+      'viewBox': '0 0 ' + width + ' ' + height
+    })
+  };
+
+  if (watchable) {
+    content.attributes[DATA_FA_I2SVG] = '';
+  }
+
+  if (title) content.children.push({ tag: 'title', attributes: { id: content.attributes['aria-labelledby'] || 'title-' + nextUniqueId() }, children: [title] });
+
+  var args = _extends({}, content, {
+    prefix: prefix,
+    iconName: iconName,
+    main: main,
+    mask: mask,
+    transform: transform,
+    symbol: symbol,
+    styles: extra.styles
+  });
+
+  var _ref2 = mask.found && main.found ? makeIconMasking(args) : makeIconStandard(args),
+      children = _ref2.children,
+      attributes = _ref2.attributes;
+
+  args.children = children;
+  args.attributes = attributes;
+
+  if (symbol) {
+    return asSymbol(args);
+  } else {
+    return asIcon(args);
+  }
+}
+
+function makeLayersTextAbstract(params) {
+  var content = params.content,
+      width = params.width,
+      height = params.height,
+      transform = params.transform,
+      title = params.title,
+      extra = params.extra,
+      _params$watchable2 = params.watchable,
+      watchable = _params$watchable2 === undefined ? false : _params$watchable2;
+
+  var attributes = _extends({}, extra.attributes, title ? { 'title': title } : {}, {
+    'class': extra.classes.join(' ')
+  });
+
+  if (watchable) {
+    attributes[DATA_FA_I2SVG] = '';
+  }
+
+  var styles = _extends({}, extra.styles);
+
+  if (transformIsMeaningful(transform)) {
+    styles['transform'] = transformForCss({ transform: transform, startCentered: true, width: width, height: height });
+    styles['-webkit-transform'] = styles['transform'];
+  }
+
+  var styleString = joinStyles(styles);
+
+  if (styleString.length > 0) {
+    attributes['style'] = styleString;
+  }
+
+  var val = [];
+
+  val.push({
+    tag: 'span',
+    attributes: attributes,
+    children: [content]
+  });
+
+  if (title) {
+    val.push({ tag: 'span', attributes: { class: 'sr-only' }, children: [title] });
+  }
+
+  return val;
+}
+
+function makeLayersCounterAbstract(params) {
+  var content = params.content,
+      title = params.title,
+      extra = params.extra;
+
+  var attributes = _extends({}, extra.attributes, title ? { 'title': title } : {}, {
+    'class': extra.classes.join(' ')
+  });
+
+  var styleString = joinStyles(extra.styles);
+
+  if (styleString.length > 0) {
+    attributes['style'] = styleString;
+  }
+
+  var val = [];
+
+  val.push({
+    tag: 'span',
+    attributes: attributes,
+    children: [content]
+  });
+
+  if (title) {
+    val.push({ tag: 'span', attributes: { class: 'sr-only' }, children: [title] });
+  }
+
+  return val;
+}
+
+var noop$2 = function noop() {};
+var p = config.measurePerformance && PERFORMANCE && PERFORMANCE.mark && PERFORMANCE.measure ? PERFORMANCE : { mark: noop$2, measure: noop$2 };
+var preamble = 'FA "5.1.0-11"';
+
+var begin = function begin(name) {
+  p.mark(preamble + ' ' + name + ' begins');
+  return function () {
+    return end(name);
+  };
+};
+
+var end = function end(name) {
+  p.mark(preamble + ' ' + name + ' ends');
+  p.measure(preamble + ' ' + name, preamble + ' ' + name + ' begins', preamble + ' ' + name + ' ends');
+};
+
+var perf = { begin: begin, end: end };
+
+'use strict';
+
+/**
+ * Internal helper to bind a function known to have 4 arguments
+ * to a given context.
+ */
+var bindInternal4 = function bindInternal4(func, thisContext) {
+  return function (a, b, c, d) {
+    return func.call(thisContext, a, b, c, d);
+  };
+};
+
+'use strict';
+
+/**
+ * # Reduce
+ *
+ * A fast object `.reduce()` implementation.
+ *
+ * @param  {Object}   subject      The object to reduce over.
+ * @param  {Function} fn           The reducer function.
+ * @param  {mixed}    initialValue The initial value for the reducer, defaults to subject[0].
+ * @param  {Object}   thisContext  The context for the reducer.
+ * @return {mixed}                 The final result.
+ */
+var reduce = function fastReduceObject(subject, fn, initialValue, thisContext) {
+  var keys = Object.keys(subject),
+      length = keys.length,
+      iterator = thisContext !== undefined ? bindInternal4(fn, thisContext) : fn,
+      i,
+      key,
+      result;
+
+  if (initialValue === undefined) {
+    i = 1;
+    result = subject[keys[0]];
+  } else {
+    i = 0;
+    result = initialValue;
+  }
+
+  for (; i < length; i++) {
+    key = keys[i];
+    result = iterator(result, subject[key], key, subject);
+  }
+
+  return result;
+};
+
+var styles$2 = namespace.styles;
+var shims = namespace.shims;
+
+var _byUnicode = {};
+var _byLigature = {};
+var _byOldName = {};
+
+var build = function build() {
+  var lookup = function lookup(reducer) {
+    return reduce(styles$2, function (o, style, prefix) {
+      o[prefix] = reduce(style, reducer, {});
+      return o;
+    }, {});
+  };
+
+  _byUnicode = lookup(function (acc, icon, iconName) {
+    acc[icon[3]] = iconName;
+
+    return acc;
+  });
+
+  _byLigature = lookup(function (acc, icon, iconName) {
+    var ligatures = icon[2];
+
+    acc[iconName] = iconName;
+
+    ligatures.forEach(function (ligature) {
+      acc[ligature] = iconName;
+    });
+
+    return acc;
+  });
+
+  var hasRegular = 'far' in styles$2;
+
+  _byOldName = reduce(shims, function (acc, shim) {
+    var oldName = shim[0];
+    var prefix = shim[1];
+    var iconName = shim[2];
+
+    if (prefix === 'far' && !hasRegular) {
+      prefix = 'fas';
+    }
+
+    acc[oldName] = { prefix: prefix, iconName: iconName };
+
+    return acc;
+  }, {});
+};
+
+build();
+
+function byUnicode(prefix, unicode) {
+  return _byUnicode[prefix][unicode];
+}
+
+function byLigature(prefix, ligature) {
+  return _byLigature[prefix][ligature];
+}
+
+function byOldName(name) {
+  return _byOldName[name] || { prefix: null, iconName: null };
+}
+
+var styles$1 = namespace.styles;
+
+var emptyCanonicalIcon = function emptyCanonicalIcon() {
+  return { prefix: null, iconName: null, rest: [] };
+};
+
+function getCanonicalIcon(values) {
+  return values.reduce(function (acc, cls) {
+    var iconName = getIconName(config.familyPrefix, cls);
+
+    if (styles$1[cls]) {
+      acc.prefix = cls;
+    } else if (iconName) {
+      var shim = acc.prefix === 'fa' ? byOldName(iconName) : {};
+
+      acc.iconName = shim.iconName || iconName;
+      acc.prefix = shim.prefix || acc.prefix;
+    } else if (cls !== config.replacementClass && cls.indexOf('fa-w-') !== 0) {
+      acc.rest.push(cls);
+    }
+
+    return acc;
+  }, emptyCanonicalIcon());
+}
+
+function iconFromMapping(mapping, prefix, iconName) {
+  if (mapping && mapping[prefix] && mapping[prefix][iconName]) {
+    return {
+      prefix: prefix,
+      iconName: iconName,
+      icon: mapping[prefix][iconName]
+    };
+  }
+}
+
+function toHtml(abstractNodes) {
+  var tag = abstractNodes.tag,
+      _abstractNodes$attrib = abstractNodes.attributes,
+      attributes = _abstractNodes$attrib === undefined ? {} : _abstractNodes$attrib,
+      _abstractNodes$childr = abstractNodes.children,
+      children = _abstractNodes$childr === undefined ? [] : _abstractNodes$childr;
+
+  if (typeof abstractNodes === 'string') {
+    return htmlEscape(abstractNodes);
+  } else {
+    return '<' + tag + ' ' + joinAttributes(attributes) + '>' + children.map(toHtml).join('') + '</' + tag + '>';
+  }
+}
+
+var noop$1 = function noop() {};
+
+function isWatched(node) {
+  var i2svg = node.getAttribute ? node.getAttribute(DATA_FA_I2SVG) : null;
+
+  return typeof i2svg === 'string';
+}
+
+function getMutator() {
+  if (config.autoReplaceSvg === true) {
+    return mutators.replace;
+  }
+
+  var mutator = mutators[config.autoReplaceSvg];
+
+  return mutator || mutators.replace;
+}
+
+var mutators = {
+  replace: function replace(mutation) {
+    var node = mutation[0];
+    var abstract = mutation[1];
+    var newOuterHTML = abstract.map(function (a) {
+      return toHtml(a);
+    }).join('\n');
+
+    if (node.parentNode && node.outerHTML) {
+      node.outerHTML = newOuterHTML + (config.keepOriginalSource && node.tagName.toLowerCase() !== 'svg' ? '<!-- ' + node.outerHTML + ' -->' : '');
+    } else if (node.parentNode) {
+      var newNode = document.createElement('span');
+      node.parentNode.replaceChild(newNode, node);
+      newNode.outerHTML = newOuterHTML;
+    }
+  },
+  nest: function nest(mutation) {
+    var node = mutation[0];
+    var abstract = mutation[1];
+
+    // If we already have a replaced node we do not want to continue nesting within it.
+    // Short-circuit to the standard replacement
+    if (~classArray(node).indexOf(config.replacementClass)) {
+      return mutators.replace(mutation);
+    }
+
+    var forSvg = new RegExp(config.familyPrefix + '-.*');
+
+    delete abstract[0].attributes.style;
+
+    var splitClasses = abstract[0].attributes.class.split(' ').reduce(function (acc, cls) {
+      if (cls === config.replacementClass || cls.match(forSvg)) {
+        acc.toSvg.push(cls);
+      } else {
+        acc.toNode.push(cls);
+      }
+
+      return acc;
+    }, { toNode: [], toSvg: [] });
+
+    abstract[0].attributes.class = splitClasses.toSvg.join(' ');
+
+    var newInnerHTML = abstract.map(function (a) {
+      return toHtml(a);
+    }).join('\n');
+    node.setAttribute('class', splitClasses.toNode.join(' '));
+    node.setAttribute(DATA_FA_I2SVG, '');
+    node.innerHTML = newInnerHTML;
+  }
+};
+
+function perform(mutations, callback) {
+  var callbackFunction = typeof callback === 'function' ? callback : noop$1;
+
+  if (mutations.length === 0) {
+    callbackFunction();
+  } else {
+    var frame = WINDOW.requestAnimationFrame || function (op) {
+      return op();
+    };
+
+    frame(function () {
+      var mutator = getMutator();
+      var mark = perf.begin('mutate');
+
+      mutations.map(mutator);
+
+      mark();
+
+      callbackFunction();
+    });
+  }
+}
+
+var disabled = false;
+
+function disableObservation(operation) {
+  disabled = true;
+  operation();
+  disabled = false;
+}
+
+var mo = null;
+
+function observe(options) {
+  if (!MUTATION_OBSERVER) {
+    return;
+  }
+
+  if (!config.observeMutations) {
+    return;
+  }
+
+  var treeCallback = options.treeCallback,
+      nodeCallback = options.nodeCallback,
+      pseudoElementsCallback = options.pseudoElementsCallback,
+      _options$observeMutat = options.observeMutationsRoot,
+      observeMutationsRoot = _options$observeMutat === undefined ? DOCUMENT.body : _options$observeMutat;
+
+  mo = new MUTATION_OBSERVER(function (objects) {
+    if (disabled) return;
+
+    toArray(objects).forEach(function (mutationRecord) {
+      if (mutationRecord.type === 'childList' && mutationRecord.addedNodes.length > 0 && !isWatched(mutationRecord.addedNodes[0])) {
+        if (config.searchPseudoElements) {
+          pseudoElementsCallback(mutationRecord.target);
+        }
+
+        treeCallback(mutationRecord.target);
+      }
+
+      if (mutationRecord.type === 'attributes' && mutationRecord.target.parentNode && config.searchPseudoElements) {
+        pseudoElementsCallback(mutationRecord.target.parentNode);
+      }
+
+      if (mutationRecord.type === 'attributes' && isWatched(mutationRecord.target) && ~ATTRIBUTES_WATCHED_FOR_MUTATION.indexOf(mutationRecord.attributeName)) {
+        if (mutationRecord.attributeName === 'class') {
+          var _getCanonicalIcon = getCanonicalIcon(classArray(mutationRecord.target)),
+              prefix = _getCanonicalIcon.prefix,
+              iconName = _getCanonicalIcon.iconName;
+
+          if (prefix) mutationRecord.target.setAttribute('data-prefix', prefix);
+          if (iconName) mutationRecord.target.setAttribute('data-icon', iconName);
+        } else {
+          nodeCallback(mutationRecord.target);
+        }
+      }
+    });
+  });
+
+  if (!IS_DOM) return;
+
+  mo.observe(observeMutationsRoot, {
+    childList: true, attributes: true, characterData: true, subtree: true
+  });
+}
+
+function disconnect() {
+  if (!mo) return;
+
+  mo.disconnect();
+}
+
+var styleParser = function (node) {
+  var style = node.getAttribute('style');
+
+  var val = [];
+
+  if (style) {
+    val = style.split(';').reduce(function (acc, style) {
+      var styles = style.split(':');
+      var prop = styles[0];
+      var value = styles.slice(1);
+
+      if (prop && value.length > 0) {
+        acc[prop] = value.join(':').trim();
+      }
+
+      return acc;
+    }, {});
+  }
+
+  return val;
+};
+
+function toHex(unicode) {
+  var result = '';
+
+  for (var i = 0; i < unicode.length; i++) {
+    var hex = unicode.charCodeAt(i).toString(16);
+    result += ('000' + hex).slice(-4);
+  }
+
+  return result;
+}
+
+var classParser = function (node) {
+  var existingPrefix = node.getAttribute('data-prefix');
+  var existingIconName = node.getAttribute('data-icon');
+  var innerText = node.innerText !== undefined ? node.innerText.trim() : '';
+
+  var val = getCanonicalIcon(classArray(node));
+
+  if (existingPrefix && existingIconName) {
+    val.prefix = existingPrefix;
+    val.iconName = existingIconName;
+  }
+
+  if (val.prefix && innerText.length > 1) {
+    val.iconName = byLigature(val.prefix, node.innerText);
+  } else if (val.prefix && innerText.length === 1) {
+    val.iconName = byUnicode(val.prefix, toHex(node.innerText));
+  }
+
+  return val;
+};
+
+var parseTransformString = function parseTransformString(transformString) {
+  var transform = {
+    size: 16,
+    x: 0,
+    y: 0,
+    flipX: false,
+    flipY: false,
+    rotate: 0
+  };
+
+  if (!transformString) {
+    return transform;
+  } else {
+    return transformString.toLowerCase().split(' ').reduce(function (acc, n) {
+      var parts = n.toLowerCase().split('-');
+      var first = parts[0];
+      var rest = parts.slice(1).join('-');
+
+      if (first && rest === 'h') {
+        acc.flipX = true;
+        return acc;
+      }
+
+      if (first && rest === 'v') {
+        acc.flipY = true;
+        return acc;
+      }
+
+      rest = parseFloat(rest);
+
+      if (isNaN(rest)) {
+        return acc;
+      }
+
+      switch (first) {
+        case 'grow':
+          acc.size = acc.size + rest;
+          break;
+        case 'shrink':
+          acc.size = acc.size - rest;
+          break;
+        case 'left':
+          acc.x = acc.x - rest;
+          break;
+        case 'right':
+          acc.x = acc.x + rest;
+          break;
+        case 'up':
+          acc.y = acc.y - rest;
+          break;
+        case 'down':
+          acc.y = acc.y + rest;
+          break;
+        case 'rotate':
+          acc.rotate = acc.rotate + rest;
+          break;
+      }
+
+      return acc;
+    }, transform);
+  }
+};
+
+var transformParser = function (node) {
+  return parseTransformString(node.getAttribute('data-fa-transform'));
+};
+
+var symbolParser = function (node) {
+  var symbol = node.getAttribute('data-fa-symbol');
+
+  return symbol === null ? false : symbol === '' ? true : symbol;
+};
+
+var attributesParser = function (node) {
+  var extraAttributes = toArray(node.attributes).reduce(function (acc, attr) {
+    if (acc.name !== 'class' && acc.name !== 'style') {
+      acc[attr.name] = attr.value;
+    }
+    return acc;
+  }, {});
+
+  var title = node.getAttribute('title');
+
+  if (config.autoA11y) {
+    if (title) {
+      extraAttributes['aria-labelledby'] = config.replacementClass + '-title-' + nextUniqueId();
+    } else {
+      extraAttributes['aria-hidden'] = 'true';
+    }
+  }
+
+  return extraAttributes;
+};
+
+var maskParser = function (node) {
+  var mask = node.getAttribute('data-fa-mask');
+
+  if (!mask) {
+    return emptyCanonicalIcon();
+  } else {
+    return getCanonicalIcon(mask.split(' ').map(function (i) {
+      return i.trim();
+    }));
+  }
+};
+
+var blankMeta = {
+  iconName: null,
+  title: null,
+  prefix: null,
+  transform: meaninglessTransform,
+  symbol: false,
+  mask: null,
+  extra: { classes: [], styles: {}, attributes: {} }
+};
+
+function parseMeta(node) {
+  var _classParser = classParser(node),
+      iconName = _classParser.iconName,
+      prefix = _classParser.prefix,
+      extraClasses = _classParser.rest;
+
+  var extraStyles = styleParser(node);
+  var transform = transformParser(node);
+  var symbol = symbolParser(node);
+  var extraAttributes = attributesParser(node);
+  var mask = maskParser(node);
+
+  return {
+    iconName: iconName,
+    title: node.getAttribute('title'),
+    prefix: prefix,
+    transform: transform,
+    symbol: symbol,
+    mask: mask,
+    extra: {
+      classes: extraClasses,
+      styles: extraStyles,
+      attributes: extraAttributes
+    }
+  };
+}
+
+function MissingIcon(error) {
+  this.name = 'MissingIcon';
+  this.message = error || 'Icon unavailable';
+  this.stack = new Error().stack;
+}
+
+MissingIcon.prototype = Object.create(Error.prototype);
+MissingIcon.prototype.constructor = MissingIcon;
+
+var FILL = { fill: 'currentColor' };
+var ANIMATION_BASE = {
+  attributeType: 'XML',
+  repeatCount: 'indefinite',
+  dur: '2s'
+};
+var RING = {
+  tag: 'path',
+  attributes: _extends({}, FILL, {
+    d: 'M156.5,447.7l-12.6,29.5c-18.7-9.5-35.9-21.2-51.5-34.9l22.7-22.7C127.6,430.5,141.5,440,156.5,447.7z M40.6,272H8.5 c1.4,21.2,5.4,41.7,11.7,61.1L50,321.2C45.1,305.5,41.8,289,40.6,272z M40.6,240c1.4-18.8,5.2-37,11.1-54.1l-29.5-12.6 C14.7,194.3,10,216.7,8.5,240H40.6z M64.3,156.5c7.8-14.9,17.2-28.8,28.1-41.5L69.7,92.3c-13.7,15.6-25.5,32.8-34.9,51.5 L64.3,156.5z M397,419.6c-13.9,12-29.4,22.3-46.1,30.4l11.9,29.8c20.7-9.9,39.8-22.6,56.9-37.6L397,419.6z M115,92.4 c13.9-12,29.4-22.3,46.1-30.4l-11.9-29.8c-20.7,9.9-39.8,22.6-56.8,37.6L115,92.4z M447.7,355.5c-7.8,14.9-17.2,28.8-28.1,41.5 l22.7,22.7c13.7-15.6,25.5-32.9,34.9-51.5L447.7,355.5z M471.4,272c-1.4,18.8-5.2,37-11.1,54.1l29.5,12.6 c7.5-21.1,12.2-43.5,13.6-66.8H471.4z M321.2,462c-15.7,5-32.2,8.2-49.2,9.4v32.1c21.2-1.4,41.7-5.4,61.1-11.7L321.2,462z M240,471.4c-18.8-1.4-37-5.2-54.1-11.1l-12.6,29.5c21.1,7.5,43.5,12.2,66.8,13.6V471.4z M462,190.8c5,15.7,8.2,32.2,9.4,49.2h32.1 c-1.4-21.2-5.4-41.7-11.7-61.1L462,190.8z M92.4,397c-12-13.9-22.3-29.4-30.4-46.1l-29.8,11.9c9.9,20.7,22.6,39.8,37.6,56.9 L92.4,397z M272,40.6c18.8,1.4,36.9,5.2,54.1,11.1l12.6-29.5C317.7,14.7,295.3,10,272,8.5V40.6z M190.8,50 c15.7-5,32.2-8.2,49.2-9.4V8.5c-21.2,1.4-41.7,5.4-61.1,11.7L190.8,50z M442.3,92.3L419.6,115c12,13.9,22.3,29.4,30.5,46.1 l29.8-11.9C470,128.5,457.3,109.4,442.3,92.3z M397,92.4l22.7-22.7c-15.6-13.7-32.8-25.5-51.5-34.9l-12.6,29.5 C370.4,72.1,384.4,81.5,397,92.4z'
+  })
+};
+var OPACITY_ANIMATE = _extends({}, ANIMATION_BASE, {
+  attributeName: 'opacity'
+});
+var DOT = {
+  tag: 'circle',
+  attributes: _extends({}, FILL, {
+    cx: '256',
+    cy: '364',
+    r: '28'
+  }),
+  children: [{ tag: 'animate', attributes: _extends({}, ANIMATION_BASE, { attributeName: 'r', values: '28;14;28;28;14;28;' }) }, { tag: 'animate', attributes: _extends({}, OPACITY_ANIMATE, { values: '1;0;1;1;0;1;' }) }]
+};
+var QUESTION = {
+  tag: 'path',
+  attributes: _extends({}, FILL, {
+    opacity: '1',
+    d: 'M263.7,312h-16c-6.6,0-12-5.4-12-12c0-71,77.4-63.9,77.4-107.8c0-20-17.8-40.2-57.4-40.2c-29.1,0-44.3,9.6-59.2,28.7 c-3.9,5-11.1,6-16.2,2.4l-13.1-9.2c-5.6-3.9-6.9-11.8-2.6-17.2c21.2-27.2,46.4-44.7,91.2-44.7c52.3,0,97.4,29.8,97.4,80.2 c0,67.6-77.4,63.5-77.4,107.8C275.7,306.6,270.3,312,263.7,312z'
+  }),
+  children: [{ tag: 'animate', attributes: _extends({}, OPACITY_ANIMATE, { values: '1;0;0;0;0;1;' }) }]
+};
+var EXCLAMATION = {
+  tag: 'path',
+  attributes: _extends({}, FILL, {
+    opacity: '0',
+    d: 'M232.5,134.5l7,168c0.3,6.4,5.6,11.5,12,11.5h9c6.4,0,11.7-5.1,12-11.5l7-168c0.3-6.8-5.2-12.5-12-12.5h-23 C237.7,122,232.2,127.7,232.5,134.5z'
+  }),
+  children: [{ tag: 'animate', attributes: _extends({}, OPACITY_ANIMATE, { values: '0;0;1;1;0;0;' }) }]
+};
+
+var missing = { tag: 'g', children: [RING, DOT, QUESTION, EXCLAMATION] };
+
+var styles = namespace.styles;
+
+var LAYERS_TEXT_CLASSNAME = 'fa-layers-text';
+var FONT_FAMILY_PATTERN = /Font Awesome 5 (Solid|Regular|Light|Brands)/;
+var STYLE_TO_PREFIX = {
+  'Solid': 'fas',
+  'Regular': 'far',
+  'Light': 'fal',
+  'Brands': 'fab'
+};
+
+function findIcon(iconName, prefix) {
+  var val = {
+    found: false,
+    width: 512,
+    height: 512,
+    icon: missing
+  };
+
+  if (iconName && prefix && styles[prefix] && styles[prefix][iconName]) {
+    var icon = styles[prefix][iconName];
+    var width = icon[0];
+    var height = icon[1];
+    var vectorData = icon.slice(4);
+
+    val = {
+      found: true,
+      width: width,
+      height: height,
+      icon: { tag: 'path', attributes: { fill: 'currentColor', d: vectorData[0] } }
+    };
+  } else if (iconName && prefix && !config.showMissingIcons) {
+    throw new MissingIcon('Icon is missing for prefix ' + prefix + ' with icon name ' + iconName);
+  }
+
+  return val;
+}
+
+function generateSvgReplacementMutation(node, nodeMeta) {
+  var iconName = nodeMeta.iconName,
+      title = nodeMeta.title,
+      prefix = nodeMeta.prefix,
+      transform = nodeMeta.transform,
+      symbol = nodeMeta.symbol,
+      mask = nodeMeta.mask,
+      extra = nodeMeta.extra;
+
+  return [node, makeInlineSvgAbstract({
+    icons: {
+      main: findIcon(iconName, prefix),
+      mask: findIcon(mask.iconName, mask.prefix)
+    },
+    prefix: prefix,
+    iconName: iconName,
+    transform: transform,
+    symbol: symbol,
+    mask: mask,
+    title: title,
+    extra: extra,
+    watchable: true
+  })];
+}
+
+function generateLayersText(node, nodeMeta) {
+  var title = nodeMeta.title,
+      transform = nodeMeta.transform,
+      extra = nodeMeta.extra;
+
+  var width = null;
+  var height = null;
+
+  if (IS_IE) {
+    var computedFontSize = parseInt(getComputedStyle(node).fontSize, 10);
+    var boundingClientRect = node.getBoundingClientRect();
+    width = boundingClientRect.width / computedFontSize;
+    height = boundingClientRect.height / computedFontSize;
+  }
+
+  if (config.autoA11y && !title) {
+    extra.attributes['aria-hidden'] = 'true';
+  }
+
+  return [node, makeLayersTextAbstract({
+    content: node.innerHTML,
+    width: width,
+    height: height,
+    transform: transform,
+    title: title,
+    extra: extra,
+    watchable: true
+  })];
+}
+
+function generateMutation(node) {
+  var nodeMeta = parseMeta(node);
+
+  if (~nodeMeta.extra.classes.indexOf(LAYERS_TEXT_CLASSNAME)) {
+    return generateLayersText(node, nodeMeta);
+  } else {
+    return generateSvgReplacementMutation(node, nodeMeta);
+  }
+}
+
+function searchPseudoElements(root) {
+  if (!IS_DOM) return;
+
+  var end = perf.begin('searchPseudoElements');
+
+  disableObservation(function () {
+    toArray(root.querySelectorAll('*')).filter(function (n) {
+      return n.parentNode !== document.head && !~TAGNAMES_TO_SKIP_FOR_PSEUDOELEMENTS.indexOf(n.tagName.toUpperCase()) && !n.getAttribute(DATA_FA_PSEUDO_ELEMENT) && (!n.parentNode || n.parentNode.tagName !== 'svg');
+    }).forEach(function (node) {
+      [':before', ':after'].forEach(function (pos) {
+        var children = toArray(node.children);
+        var alreadyProcessedPseudoElement = children.filter(function (c) {
+          return c.getAttribute(DATA_FA_PSEUDO_ELEMENT) === pos;
+        })[0];
+
+        var styles = WINDOW.getComputedStyle(node, pos);
+        var fontFamily = styles.getPropertyValue('font-family').match(FONT_FAMILY_PATTERN);
+
+        if (alreadyProcessedPseudoElement && !fontFamily) {
+          // If we've already processed it but the current computed style does not result in a font-family,
+          // that probably means that a class name that was previously present to make the icon has been
+          // removed. So we now should delete the icon.
+          node.removeChild(alreadyProcessedPseudoElement);
+        } else if (fontFamily) {
+          var content = styles.getPropertyValue('content');
+          var prefix = STYLE_TO_PREFIX[fontFamily[1]];
+          var iconName = byUnicode(prefix, toHex(content.length === 3 ? content.substr(1, 1) : content));
+          // Only convert the pseudo element in this :before/:after position into an icon if we haven't
+          // already done so with the same prefix and iconName
+          if (!alreadyProcessedPseudoElement || alreadyProcessedPseudoElement.getAttribute(DATA_PREFIX) !== prefix || alreadyProcessedPseudoElement.getAttribute(DATA_ICON) !== iconName) {
+            if (alreadyProcessedPseudoElement) {
+              // Delete the old one, since we're replacing it with a new one
+              node.removeChild(alreadyProcessedPseudoElement);
+            }
+
+            var extra = blankMeta.extra;
+
+            extra.attributes[DATA_FA_PSEUDO_ELEMENT] = pos;
+            var abstract = makeInlineSvgAbstract(_extends({}, blankMeta, {
+              icons: {
+                main: findIcon(iconName, prefix),
+                mask: emptyCanonicalIcon()
+              },
+              prefix: prefix,
+              iconName: iconName,
+              extra: extra,
+              watchable: true
+            }));
+
+            var element = DOCUMENT.createElement('svg');
+
+            if (pos === ':before') {
+              node.insertBefore(element, node.firstChild);
+            } else {
+              node.appendChild(element);
+            }
+
+            element.outerHTML = abstract.map(function (a) {
+              return toHtml(a);
+            }).join('\n');
+          }
+        }
+      });
+    });
+  });
+
+  end();
+}
+
+function onTree(root) {
+  var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+  if (!IS_DOM) return;
+
+  var htmlClassList = DOCUMENT.documentElement.classList;
+  var hclAdd = function hclAdd(suffix) {
+    return htmlClassList.add(HTML_CLASS_I2SVG_BASE_CLASS + '-' + suffix);
+  };
+  var hclRemove = function hclRemove(suffix) {
+    return htmlClassList.remove(HTML_CLASS_I2SVG_BASE_CLASS + '-' + suffix);
+  };
+  var prefixes = Object.keys(styles);
+  var prefixesDomQuery = ['.' + LAYERS_TEXT_CLASSNAME + ':not([' + DATA_FA_I2SVG + '])'].concat(prefixes.map(function (p) {
+    return '.' + p + ':not([' + DATA_FA_I2SVG + '])';
+  })).join(', ');
+
+  if (prefixesDomQuery.length === 0) {
+    return;
+  }
+
+  var candidates = toArray(root.querySelectorAll(prefixesDomQuery));
+
+  if (candidates.length > 0) {
+    hclAdd('pending');
+    hclRemove('complete');
+  } else {
+    return;
+  }
+
+  var mark = perf.begin('onTree');
+
+  var mutations = candidates.reduce(function (acc, node) {
+    try {
+      var mutation = generateMutation(node);
+
+      if (mutation) {
+        acc.push(mutation);
+      }
+    } catch (e) {
+      if (!PRODUCTION) {
+        if (e instanceof MissingIcon) {
+          console.error(e);
+        }
+      }
+    }
+
+    return acc;
+  }, []);
+
+  mark();
+
+  perform(mutations, function () {
+    hclAdd('active');
+    hclAdd('complete');
+    hclRemove('pending');
+
+    if (typeof callback === 'function') callback();
+  });
+}
+
+function onNode(node) {
+  var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+  var mutation = generateMutation(node);
+
+  if (mutation) {
+    perform([mutation], callback);
+  }
+}
+
+var baseStyles = "svg:not(:root).svg-inline--fa {\n  overflow: visible; }\n\n.svg-inline--fa {\n  display: inline-block;\n  font-size: inherit;\n  height: 1em;\n  overflow: visible;\n  vertical-align: -.125em; }\n  .svg-inline--fa.fa-lg {\n    vertical-align: -.225em; }\n  .svg-inline--fa.fa-w-1 {\n    width: 0.0625em; }\n  .svg-inline--fa.fa-w-2 {\n    width: 0.125em; }\n  .svg-inline--fa.fa-w-3 {\n    width: 0.1875em; }\n  .svg-inline--fa.fa-w-4 {\n    width: 0.25em; }\n  .svg-inline--fa.fa-w-5 {\n    width: 0.3125em; }\n  .svg-inline--fa.fa-w-6 {\n    width: 0.375em; }\n  .svg-inline--fa.fa-w-7 {\n    width: 0.4375em; }\n  .svg-inline--fa.fa-w-8 {\n    width: 0.5em; }\n  .svg-inline--fa.fa-w-9 {\n    width: 0.5625em; }\n  .svg-inline--fa.fa-w-10 {\n    width: 0.625em; }\n  .svg-inline--fa.fa-w-11 {\n    width: 0.6875em; }\n  .svg-inline--fa.fa-w-12 {\n    width: 0.75em; }\n  .svg-inline--fa.fa-w-13 {\n    width: 0.8125em; }\n  .svg-inline--fa.fa-w-14 {\n    width: 0.875em; }\n  .svg-inline--fa.fa-w-15 {\n    width: 0.9375em; }\n  .svg-inline--fa.fa-w-16 {\n    width: 1em; }\n  .svg-inline--fa.fa-w-17 {\n    width: 1.0625em; }\n  .svg-inline--fa.fa-w-18 {\n    width: 1.125em; }\n  .svg-inline--fa.fa-w-19 {\n    width: 1.1875em; }\n  .svg-inline--fa.fa-w-20 {\n    width: 1.25em; }\n  .svg-inline--fa.fa-pull-left {\n    margin-right: .3em;\n    width: auto; }\n  .svg-inline--fa.fa-pull-right {\n    margin-left: .3em;\n    width: auto; }\n  .svg-inline--fa.fa-border {\n    height: 1.5em; }\n  .svg-inline--fa.fa-li {\n    width: 2em; }\n  .svg-inline--fa.fa-fw {\n    width: 1.25em; }\n\n.fa-layers svg.svg-inline--fa {\n  bottom: 0;\n  left: 0;\n  margin: auto;\n  position: absolute;\n  right: 0;\n  top: 0; }\n\n.fa-layers {\n  display: inline-block;\n  height: 1em;\n  position: relative;\n  text-align: center;\n  vertical-align: -.125em;\n  width: 1em; }\n  .fa-layers svg.svg-inline--fa {\n    -webkit-transform-origin: center center;\n            transform-origin: center center; }\n\n.fa-layers-text, .fa-layers-counter {\n  display: inline-block;\n  position: absolute;\n  text-align: center; }\n\n.fa-layers-text {\n  left: 50%;\n  top: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  -webkit-transform-origin: center center;\n          transform-origin: center center; }\n\n.fa-layers-counter {\n  background-color: #ff253a;\n  border-radius: 1em;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  color: #fff;\n  height: 1.5em;\n  line-height: 1;\n  max-width: 5em;\n  min-width: 1.5em;\n  overflow: hidden;\n  padding: .25em;\n  right: 0;\n  text-overflow: ellipsis;\n  top: 0;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: top right;\n          transform-origin: top right; }\n\n.fa-layers-bottom-right {\n  bottom: 0;\n  right: 0;\n  top: auto;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: bottom right;\n          transform-origin: bottom right; }\n\n.fa-layers-bottom-left {\n  bottom: 0;\n  left: 0;\n  right: auto;\n  top: auto;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: bottom left;\n          transform-origin: bottom left; }\n\n.fa-layers-top-right {\n  right: 0;\n  top: 0;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: top right;\n          transform-origin: top right; }\n\n.fa-layers-top-left {\n  left: 0;\n  right: auto;\n  top: 0;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: top left;\n          transform-origin: top left; }\n\n.fa-lg {\n  font-size: 1.33333em;\n  line-height: 0.75em;\n  vertical-align: -.0667em; }\n\n.fa-xs {\n  font-size: .75em; }\n\n.fa-sm {\n  font-size: .875em; }\n\n.fa-1x {\n  font-size: 1em; }\n\n.fa-2x {\n  font-size: 2em; }\n\n.fa-3x {\n  font-size: 3em; }\n\n.fa-4x {\n  font-size: 4em; }\n\n.fa-5x {\n  font-size: 5em; }\n\n.fa-6x {\n  font-size: 6em; }\n\n.fa-7x {\n  font-size: 7em; }\n\n.fa-8x {\n  font-size: 8em; }\n\n.fa-9x {\n  font-size: 9em; }\n\n.fa-10x {\n  font-size: 10em; }\n\n.fa-fw {\n  text-align: center;\n  width: 1.25em; }\n\n.fa-ul {\n  list-style-type: none;\n  margin-left: 2.5em;\n  padding-left: 0; }\n  .fa-ul > li {\n    position: relative; }\n\n.fa-li {\n  left: -2em;\n  position: absolute;\n  text-align: center;\n  width: 2em;\n  line-height: inherit; }\n\n.fa-border {\n  border: solid 0.08em #eee;\n  border-radius: .1em;\n  padding: .2em .25em .15em; }\n\n.fa-pull-left {\n  float: left; }\n\n.fa-pull-right {\n  float: right; }\n\n.fa.fa-pull-left,\n.fas.fa-pull-left,\n.far.fa-pull-left,\n.fal.fa-pull-left,\n.fab.fa-pull-left {\n  margin-right: .3em; }\n\n.fa.fa-pull-right,\n.fas.fa-pull-right,\n.far.fa-pull-right,\n.fal.fa-pull-right,\n.fab.fa-pull-right {\n  margin-left: .3em; }\n\n.fa-spin {\n  -webkit-animation: fa-spin 2s infinite linear;\n          animation: fa-spin 2s infinite linear; }\n\n.fa-pulse {\n  -webkit-animation: fa-spin 1s infinite steps(8);\n          animation: fa-spin 1s infinite steps(8); }\n\n@-webkit-keyframes fa-spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n\n@keyframes fa-spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n\n.fa-rotate-90 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=1)\";\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg); }\n\n.fa-rotate-180 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2)\";\n  -webkit-transform: rotate(180deg);\n          transform: rotate(180deg); }\n\n.fa-rotate-270 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=3)\";\n  -webkit-transform: rotate(270deg);\n          transform: rotate(270deg); }\n\n.fa-flip-horizontal {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)\";\n  -webkit-transform: scale(-1, 1);\n          transform: scale(-1, 1); }\n\n.fa-flip-vertical {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\n  -webkit-transform: scale(1, -1);\n          transform: scale(1, -1); }\n\n.fa-flip-horizontal.fa-flip-vertical {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\n  -webkit-transform: scale(-1, -1);\n          transform: scale(-1, -1); }\n\n:root .fa-rotate-90,\n:root .fa-rotate-180,\n:root .fa-rotate-270,\n:root .fa-flip-horizontal,\n:root .fa-flip-vertical {\n  -webkit-filter: none;\n          filter: none; }\n\n.fa-stack {\n  display: inline-block;\n  height: 2em;\n  position: relative;\n  width: 2em; }\n\n.fa-stack-1x,\n.fa-stack-2x {\n  bottom: 0;\n  left: 0;\n  margin: auto;\n  position: absolute;\n  right: 0;\n  top: 0; }\n\n.svg-inline--fa.fa-stack-1x {\n  height: 1em;\n  width: 1em; }\n\n.svg-inline--fa.fa-stack-2x {\n  height: 2em;\n  width: 2em; }\n\n.fa-inverse {\n  color: #fff; }\n\n.sr-only {\n  border: 0;\n  clip: rect(0, 0, 0, 0);\n  height: 1px;\n  margin: -1px;\n  overflow: hidden;\n  padding: 0;\n  position: absolute;\n  width: 1px; }\n\n.sr-only-focusable:active, .sr-only-focusable:focus {\n  clip: auto;\n  height: auto;\n  margin: 0;\n  overflow: visible;\n  position: static;\n  width: auto; }\n";
+
+var css = function () {
+  var dfp = DEFAULT_FAMILY_PREFIX;
+  var drc = DEFAULT_REPLACEMENT_CLASS;
+  var fp = config.familyPrefix;
+  var rc = config.replacementClass;
+  var s = baseStyles;
+
+  if (fp !== dfp || rc !== drc) {
+    var dPatt = new RegExp('\\.' + dfp + '\\-', 'g');
+    var rPatt = new RegExp('\\.' + drc, 'g');
+
+    s = s.replace(dPatt, '.' + fp + '-').replace(rPatt, '.' + rc);
+  }
+
+  return s;
+};
+
+function define(prefix, icons) {
+  var normalized = Object.keys(icons).reduce(function (acc, iconName) {
+    var icon = icons[iconName];
+    var expanded = !!icon.icon;
+
+    if (expanded) {
+      acc[icon.iconName] = icon.icon;
+    } else {
+      acc[iconName] = icon;
+    }
+    return acc;
+  }, {});
+
+  if (typeof namespace.hooks.addPack === 'function') {
+    namespace.hooks.addPack(prefix, normalized);
+  } else {
+    namespace.styles[prefix] = _extends({}, namespace.styles[prefix] || {}, normalized);
+  }
+
+  /**
+   * Font Awesome 4 used the prefix of `fa` for all icons. With the introduction
+   * of new styles we needed to differentiate between them. Prefix `fa` is now an alias
+   * for `fas` so we'll easy the upgrade process for our users by automatically defining
+   * this as well.
+   */
+  if (prefix === 'fas') {
+    define('fa', icons);
+  }
+}
+
+var Library = function () {
+  function Library() {
+    classCallCheck(this, Library);
+
+    this.definitions = {};
+  }
+
+  createClass(Library, [{
+    key: 'add',
+    value: function add() {
+      var _this = this;
+
+      for (var _len = arguments.length, definitions = Array(_len), _key = 0; _key < _len; _key++) {
+        definitions[_key] = arguments[_key];
+      }
+
+      var additions = definitions.reduce(this._pullDefinitions, {});
+
+      Object.keys(additions).forEach(function (key) {
+        _this.definitions[key] = _extends({}, _this.definitions[key] || {}, additions[key]);
+        define(key, additions[key]);
+      });
+    }
+  }, {
+    key: 'reset',
+    value: function reset() {
+      this.definitions = {};
+    }
+  }, {
+    key: '_pullDefinitions',
+    value: function _pullDefinitions(additions, definition) {
+      var normalized = definition.prefix && definition.iconName && definition.icon ? { 0: definition } : definition;
+
+      Object.keys(normalized).map(function (key) {
+        var _normalized$key = normalized[key],
+            prefix = _normalized$key.prefix,
+            iconName = _normalized$key.iconName,
+            icon = _normalized$key.icon;
+
+        if (!additions[prefix]) additions[prefix] = {};
+
+        additions[prefix][iconName] = icon;
+      });
+
+      return additions;
+    }
+  }]);
+  return Library;
+}();
+
+function prepIcon(icon) {
+  var width = icon[0];
+  var height = icon[1];
+  var vectorData = icon.slice(4);
+
+  return {
+    found: true,
+    width: width,
+    height: height,
+    icon: { tag: 'path', attributes: { fill: 'currentColor', d: vectorData[0] } }
+  };
+}
+
+function ensureCss() {
+  if (config.autoAddCss && !_cssInserted) {
+    insertCss(css());
+    _cssInserted = true;
+  }
+}
+
+function apiObject(val, abstractCreator) {
+  Object.defineProperty(val, 'abstract', {
+    get: abstractCreator
+  });
+
+  Object.defineProperty(val, 'html', {
+    get: function get() {
+      return val.abstract.map(function (a) {
+        return toHtml(a);
+      });
+    }
+  });
+
+  Object.defineProperty(val, 'node', {
+    get: function get() {
+      if (!IS_DOM) return;
+
+      var container = DOCUMENT.createElement('div');
+      container.innerHTML = val.html;
+      return container.children;
+    }
+  });
+
+  return val;
+}
+
+function findIconDefinition(params) {
+  var _params$prefix = params.prefix,
+      prefix = _params$prefix === undefined ? 'fa' : _params$prefix,
+      iconName = params.iconName;
+
+  if (!iconName) return;
+
+  return iconFromMapping(library.definitions, prefix, iconName) || iconFromMapping(namespace.styles, prefix, iconName);
+}
+
+function resolveIcons(next) {
+  return function (maybeIconDefinition) {
+    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    var iconDefinition = (maybeIconDefinition || {}).icon ? maybeIconDefinition : findIconDefinition(maybeIconDefinition || {});
+
+    var mask = params.mask;
+
+    if (mask) {
+      mask = (mask || {}).icon ? mask : findIconDefinition(mask || {});
+    }
+
+    return next(iconDefinition, _extends({}, params, { mask: mask }));
+  };
+}
+
+var library = new Library();
+
+var noAuto = function noAuto() {
+  config.autoReplaceSvg = false;
+  config.observeMutations = false;
+
+  disconnect();
+};
+
+var _cssInserted = false;
+
+var dom = {
+  i2svg: function i2svg() {
+    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+    if (IS_DOM) {
+      ensureCss();
+
+      var _params$node = params.node,
+          node = _params$node === undefined ? DOCUMENT : _params$node,
+          _params$callback = params.callback,
+          callback = _params$callback === undefined ? function () {} : _params$callback;
+
+      if (config.searchPseudoElements) {
+        searchPseudoElements(node);
+      }
+
+      onTree(node, callback);
+    }
+  },
+
+  css: css,
+
+  insertCss: function insertCss$$1() {
+    if (!_cssInserted) {
+      insertCss(css());
+      _cssInserted = true;
+    }
+  },
+
+  watch: function watch() {
+    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var autoReplaceSvgRoot = params.autoReplaceSvgRoot,
+        observeMutationsRoot = params.observeMutationsRoot;
+
+    if (config.autoReplaceSvg === false) {
+      config.autoReplaceSvg = true;
+    }
+
+    config.observeMutations = true;
+
+    domready(function () {
+      autoReplace({
+        autoReplaceSvgRoot: autoReplaceSvgRoot
+      });
+
+      observe({
+        treeCallback: onTree,
+        nodeCallback: onNode,
+        pseudoElementsCallback: searchPseudoElements,
+        observeMutationsRoot: observeMutationsRoot
+      });
+    });
+  }
+};
+
+var parse = {
+  transform: function transform(transformString) {
+    return parseTransformString(transformString);
+  }
+};
+
+var icon = resolveIcons(function (iconDefinition) {
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var _params$transform = params.transform,
+      transform = _params$transform === undefined ? meaninglessTransform : _params$transform,
+      _params$symbol = params.symbol,
+      symbol = _params$symbol === undefined ? false : _params$symbol,
+      _params$mask = params.mask,
+      mask = _params$mask === undefined ? null : _params$mask,
+      _params$title = params.title,
+      title = _params$title === undefined ? null : _params$title,
+      _params$classes = params.classes,
+      classes = _params$classes === undefined ? [] : _params$classes,
+      _params$attributes = params.attributes,
+      attributes = _params$attributes === undefined ? {} : _params$attributes,
+      _params$styles = params.styles,
+      styles = _params$styles === undefined ? {} : _params$styles;
+
+  if (!iconDefinition) return;
+
+  var prefix = iconDefinition.prefix,
+      iconName = iconDefinition.iconName,
+      icon = iconDefinition.icon;
+
+  return apiObject(_extends({ type: 'icon' }, iconDefinition), function () {
+    ensureCss();
+
+    if (config.autoA11y) {
+      if (title) {
+        attributes['aria-labelledby'] = config.replacementClass + '-title-' + nextUniqueId();
+      } else {
+        attributes['aria-hidden'] = 'true';
+      }
+    }
+
+    return makeInlineSvgAbstract({
+      icons: {
+        main: prepIcon(icon),
+        mask: mask ? prepIcon(mask.icon) : { found: false, width: null, height: null, icon: {} }
+      },
+      prefix: prefix,
+      iconName: iconName,
+      transform: _extends({}, meaninglessTransform, transform),
+      symbol: symbol,
+      title: title,
+      extra: {
+        attributes: attributes,
+        styles: styles,
+        classes: classes
+      }
+    });
+  });
 });
 
-var _react = require("react");
+var text = function text(content) {
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var _params$transform2 = params.transform,
+      transform = _params$transform2 === undefined ? meaninglessTransform : _params$transform2,
+      _params$title2 = params.title,
+      title = _params$title2 === undefined ? null : _params$title2,
+      _params$classes2 = params.classes,
+      classes = _params$classes2 === undefined ? [] : _params$classes2,
+      _params$attributes2 = params.attributes,
+      attributes = _params$attributes2 === undefined ? {} : _params$attributes2,
+      _params$styles2 = params.styles,
+      styles = _params$styles2 === undefined ? {} : _params$styles2;
+
+  return apiObject({ type: 'text', content: content }, function () {
+    ensureCss();
+
+    return makeLayersTextAbstract({
+      content: content,
+      transform: _extends({}, meaninglessTransform, transform),
+      title: title,
+      extra: {
+        attributes: attributes,
+        styles: styles,
+        classes: [config.familyPrefix + '-layers-text'].concat(toConsumableArray(classes))
+      }
+    });
+  });
+};
+
+var counter = function counter(content) {
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var _params$title3 = params.title,
+      title = _params$title3 === undefined ? null : _params$title3,
+      _params$classes3 = params.classes,
+      classes = _params$classes3 === undefined ? [] : _params$classes3,
+      _params$attributes3 = params.attributes,
+      attributes = _params$attributes3 === undefined ? {} : _params$attributes3,
+      _params$styles3 = params.styles,
+      styles = _params$styles3 === undefined ? {} : _params$styles3;
+
+  return apiObject({ type: 'counter', content: content }, function () {
+    ensureCss();
+
+    return makeLayersCounterAbstract({
+      content: content.toString(),
+      title: title,
+      extra: {
+        attributes: attributes,
+        styles: styles,
+        classes: [config.familyPrefix + '-layers-counter'].concat(toConsumableArray(classes))
+      }
+    });
+  });
+};
+
+var layer = function layer(assembler) {
+  return apiObject({ type: 'layer' }, function () {
+    ensureCss();
+
+    var children = [];
+
+    assembler(function (args) {
+      Array.isArray(args) ? args.map(function (a) {
+        children = children.concat(a.abstract);
+      }) : children = children.concat(args.abstract);
+    });
+
+    return [{
+      tag: 'span',
+      attributes: { class: config.familyPrefix + '-layers' },
+      children: children
+    }];
+  });
+};
+
+var api = {
+  noAuto: noAuto,
+  config: config,
+  dom: dom,
+  library: library,
+  parse: parse,
+  findIconDefinition: findIconDefinition,
+  icon: icon,
+  text: text,
+  counter: counter,
+  layer: layer,
+  toHtml: toHtml
+};
+
+var autoReplace = function autoReplace() {
+  var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var _params$autoReplaceSv = params.autoReplaceSvgRoot,
+      autoReplaceSvgRoot = _params$autoReplaceSv === undefined ? DOCUMENT : _params$autoReplaceSv;
+
+  if (Object.keys(namespace.styles).length > 0 && IS_DOM && config.autoReplaceSvg) api.dom.i2svg({ node: autoReplaceSvgRoot });
+};
+
+exports.icon = icon;
+exports.noAuto = noAuto;
+exports.config = config;
+exports.toHtml = toHtml;
+exports.layer = layer;
+exports.text = text;
+exports.counter = counter;
+exports.library = library;
+exports.dom = dom;
+exports.parse = parse;
+exports.findIconDefinition = findIconDefinition;
+},{}],170:[function(require,module,exports) {
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+'use strict';
+
+var assign = require('object-assign');
+
+var ReactPropTypesSecret = require('./lib/ReactPropTypesSecret');
+var checkPropTypes = require('./checkPropTypes');
+
+var printWarning = function () {};
+
+if ('development' !== 'production') {
+  printWarning = function (text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+}
+
+function emptyFunctionThatReturnsNull() {
+  return null;
+}
+
+module.exports = function (isValidElement, throwOnDirectAccess) {
+  /* global Symbol */
+  var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+  var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
+
+  /**
+   * Returns the iterator method function contained on the iterable object.
+   *
+   * Be sure to invoke the function with the iterable as context:
+   *
+   *     var iteratorFn = getIteratorFn(myIterable);
+   *     if (iteratorFn) {
+   *       var iterator = iteratorFn.call(myIterable);
+   *       ...
+   *     }
+   *
+   * @param {?object} maybeIterable
+   * @return {?function}
+   */
+  function getIteratorFn(maybeIterable) {
+    var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
+    if (typeof iteratorFn === 'function') {
+      return iteratorFn;
+    }
+  }
+
+  /**
+   * Collection of methods that allow declaration and validation of props that are
+   * supplied to React components. Example usage:
+   *
+   *   var Props = require('ReactPropTypes');
+   *   var MyArticle = React.createClass({
+   *     propTypes: {
+   *       // An optional string prop named "description".
+   *       description: Props.string,
+   *
+   *       // A required enum prop named "category".
+   *       category: Props.oneOf(['News','Photos']).isRequired,
+   *
+   *       // A prop named "dialog" that requires an instance of Dialog.
+   *       dialog: Props.instanceOf(Dialog).isRequired
+   *     },
+   *     render: function() { ... }
+   *   });
+   *
+   * A more formal specification of how these methods are used:
+   *
+   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
+   *   decl := ReactPropTypes.{type}(.isRequired)?
+   *
+   * Each and every declaration produces a function with the same signature. This
+   * allows the creation of custom validation functions. For example:
+   *
+   *  var MyLink = React.createClass({
+   *    propTypes: {
+   *      // An optional string or URI prop named "href".
+   *      href: function(props, propName, componentName) {
+   *        var propValue = props[propName];
+   *        if (propValue != null && typeof propValue !== 'string' &&
+   *            !(propValue instanceof URI)) {
+   *          return new Error(
+   *            'Expected a string or an URI for ' + propName + ' in ' +
+   *            componentName
+   *          );
+   *        }
+   *      }
+   *    },
+   *    render: function() {...}
+   *  });
+   *
+   * @internal
+   */
+
+  var ANONYMOUS = '<<anonymous>>';
+
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
+  var ReactPropTypes = {
+    array: createPrimitiveTypeChecker('array'),
+    bool: createPrimitiveTypeChecker('boolean'),
+    func: createPrimitiveTypeChecker('function'),
+    number: createPrimitiveTypeChecker('number'),
+    object: createPrimitiveTypeChecker('object'),
+    string: createPrimitiveTypeChecker('string'),
+    symbol: createPrimitiveTypeChecker('symbol'),
+
+    any: createAnyTypeChecker(),
+    arrayOf: createArrayOfTypeChecker,
+    element: createElementTypeChecker(),
+    instanceOf: createInstanceTypeChecker,
+    node: createNodeChecker(),
+    objectOf: createObjectOfTypeChecker,
+    oneOf: createEnumTypeChecker,
+    oneOfType: createUnionTypeChecker,
+    shape: createShapeTypeChecker,
+    exact: createStrictShapeTypeChecker
+  };
+
+  /**
+   * inlined Object.is polyfill to avoid requiring consumers ship their own
+   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+   */
+  /*eslint-disable no-self-compare*/
+  function is(x, y) {
+    // SameValue algorithm
+    if (x === y) {
+      // Steps 1-5, 7-10
+      // Steps 6.b-6.e: +0 != -0
+      return x !== 0 || 1 / x === 1 / y;
+    } else {
+      // Step 6.a: NaN == NaN
+      return x !== x && y !== y;
+    }
+  }
+  /*eslint-enable no-self-compare*/
+
+  /**
+   * We use an Error-like object for backward compatibility as people may call
+   * PropTypes directly and inspect their output. However, we don't use real
+   * Errors anymore. We don't inspect their stack anyway, and creating them
+   * is prohibitively expensive if they are created too often, such as what
+   * happens in oneOfType() for any type before the one that matched.
+   */
+  function PropTypeError(message) {
+    this.message = message;
+    this.stack = '';
+  }
+  // Make `instanceof Error` still work for returned errors.
+  PropTypeError.prototype = Error.prototype;
+
+  function createChainableTypeChecker(validate) {
+    if ('development' !== 'production') {
+      var manualPropTypeCallCache = {};
+      var manualPropTypeWarningCount = 0;
+    }
+    function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
+      componentName = componentName || ANONYMOUS;
+      propFullName = propFullName || propName;
+
+      if (secret !== ReactPropTypesSecret) {
+        if (throwOnDirectAccess) {
+          // New behavior only for users of `prop-types` package
+          var err = new Error('Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use `PropTypes.checkPropTypes()` to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
+          err.name = 'Invariant Violation';
+          throw err;
+        } else if ('development' !== 'production' && typeof console !== 'undefined') {
+          // Old behavior for people using React.PropTypes
+          var cacheKey = componentName + ':' + propName;
+          if (!manualPropTypeCallCache[cacheKey] &&
+          // Avoid spamming the console because they are often not actionable except for lib authors
+          manualPropTypeWarningCount < 3) {
+            printWarning('You are manually calling a React.PropTypes validation ' + 'function for the `' + propFullName + '` prop on `' + componentName + '`. This is deprecated ' + 'and will throw in the standalone `prop-types` package. ' + 'You may be seeing this warning due to a third-party PropTypes ' + 'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.');
+            manualPropTypeCallCache[cacheKey] = true;
+            manualPropTypeWarningCount++;
+          }
+        }
+      }
+      if (props[propName] == null) {
+        if (isRequired) {
+          if (props[propName] === null) {
+            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
+          }
+          return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
+        }
+        return null;
+      } else {
+        return validate(props, propName, componentName, location, propFullName);
+      }
+    }
+
+    var chainedCheckType = checkType.bind(null, false);
+    chainedCheckType.isRequired = checkType.bind(null, true);
+
+    return chainedCheckType;
+  }
+
+  function createPrimitiveTypeChecker(expectedType) {
+    function validate(props, propName, componentName, location, propFullName, secret) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== expectedType) {
+        // `propValue` being instance of, say, date/regexp, pass the 'object'
+        // check, but we can offer a more precise error message here rather than
+        // 'of type `object`'.
+        var preciseType = getPreciseType(propValue);
+
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createAnyTypeChecker() {
+    return createChainableTypeChecker(emptyFunctionThatReturnsNull);
+  }
+
+  function createArrayOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
+      }
+      var propValue = props[propName];
+      if (!Array.isArray(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
+      }
+      for (var i = 0; i < propValue.length; i++) {
+        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
+        if (error instanceof Error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!isValidElement(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createInstanceTypeChecker(expectedClass) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!(props[propName] instanceof expectedClass)) {
+        var expectedClassName = expectedClass.name || ANONYMOUS;
+        var actualClassName = getClassName(props[propName]);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createEnumTypeChecker(expectedValues) {
+    if (!Array.isArray(expectedValues)) {
+      'development' !== 'production' ? printWarning('Invalid argument supplied to oneOf, expected an instance of array.') : void 0;
+      return emptyFunctionThatReturnsNull;
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      for (var i = 0; i < expectedValues.length; i++) {
+        if (is(propValue, expectedValues[i])) {
+          return null;
+        }
+      }
+
+      var valuesString = JSON.stringify(expectedValues);
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + propValue + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createObjectOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
+      }
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
+      }
+      for (var key in propValue) {
+        if (propValue.hasOwnProperty(key)) {
+          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+          if (error instanceof Error) {
+            return error;
+          }
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createUnionTypeChecker(arrayOfTypeCheckers) {
+    if (!Array.isArray(arrayOfTypeCheckers)) {
+      'development' !== 'production' ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
+      return emptyFunctionThatReturnsNull;
+    }
+
+    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+      var checker = arrayOfTypeCheckers[i];
+      if (typeof checker !== 'function') {
+        printWarning('Invalid argument supplied to oneOfType. Expected an array of check functions, but ' + 'received ' + getPostfixForTypeWarning(checker) + ' at index ' + i + '.');
+        return emptyFunctionThatReturnsNull;
+      }
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+        var checker = arrayOfTypeCheckers[i];
+        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) {
+          return null;
+        }
+      }
+
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createNodeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!isNode(props[propName])) {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      for (var key in shapeTypes) {
+        var checker = shapeTypes[key];
+        if (!checker) {
+          continue;
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createStrictShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      // We need to check all keys in case some are required but missing from
+      // props.
+      var allKeys = assign({}, props[propName], shapeTypes);
+      for (var key in allKeys) {
+        var checker = shapeTypes[key];
+        if (!checker) {
+          return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' + '\nBad object: ' + JSON.stringify(props[propName], null, '  ') + '\nValid keys: ' + JSON.stringify(Object.keys(shapeTypes), null, '  '));
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+
+    return createChainableTypeChecker(validate);
+  }
+
+  function isNode(propValue) {
+    switch (typeof propValue) {
+      case 'number':
+      case 'string':
+      case 'undefined':
+        return true;
+      case 'boolean':
+        return !propValue;
+      case 'object':
+        if (Array.isArray(propValue)) {
+          return propValue.every(isNode);
+        }
+        if (propValue === null || isValidElement(propValue)) {
+          return true;
+        }
+
+        var iteratorFn = getIteratorFn(propValue);
+        if (iteratorFn) {
+          var iterator = iteratorFn.call(propValue);
+          var step;
+          if (iteratorFn !== propValue.entries) {
+            while (!(step = iterator.next()).done) {
+              if (!isNode(step.value)) {
+                return false;
+              }
+            }
+          } else {
+            // Iterator will provide entry [k,v] tuples rather than values.
+            while (!(step = iterator.next()).done) {
+              var entry = step.value;
+              if (entry) {
+                if (!isNode(entry[1])) {
+                  return false;
+                }
+              }
+            }
+          }
+        } else {
+          return false;
+        }
+
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  function isSymbol(propType, propValue) {
+    // Native Symbol.
+    if (propType === 'symbol') {
+      return true;
+    }
+
+    // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
+    if (propValue['@@toStringTag'] === 'Symbol') {
+      return true;
+    }
+
+    // Fallback for non-spec compliant Symbols which are polyfilled.
+    if (typeof Symbol === 'function' && propValue instanceof Symbol) {
+      return true;
+    }
+
+    return false;
+  }
+
+  // Equivalent of `typeof` but with special handling for array and regexp.
+  function getPropType(propValue) {
+    var propType = typeof propValue;
+    if (Array.isArray(propValue)) {
+      return 'array';
+    }
+    if (propValue instanceof RegExp) {
+      // Old webkits (at least until Android 4.0) return 'function' rather than
+      // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
+      // passes PropTypes.object.
+      return 'object';
+    }
+    if (isSymbol(propType, propValue)) {
+      return 'symbol';
+    }
+    return propType;
+  }
+
+  // This handles more types than `getPropType`. Only used for error messages.
+  // See `createPrimitiveTypeChecker`.
+  function getPreciseType(propValue) {
+    if (typeof propValue === 'undefined' || propValue === null) {
+      return '' + propValue;
+    }
+    var propType = getPropType(propValue);
+    if (propType === 'object') {
+      if (propValue instanceof Date) {
+        return 'date';
+      } else if (propValue instanceof RegExp) {
+        return 'regexp';
+      }
+    }
+    return propType;
+  }
+
+  // Returns a string that is postfixed to a warning about an invalid type.
+  // For example, "undefined" or "of type array"
+  function getPostfixForTypeWarning(value) {
+    var type = getPreciseType(value);
+    switch (type) {
+      case 'array':
+      case 'object':
+        return 'an ' + type;
+      case 'boolean':
+      case 'date':
+      case 'regexp':
+        return 'a ' + type;
+      default:
+        return type;
+    }
+  }
+
+  // Returns class name of the object, if any.
+  function getClassName(propValue) {
+    if (!propValue.constructor || !propValue.constructor.name) {
+      return ANONYMOUS;
+    }
+    return propValue.constructor.name;
+  }
+
+  ReactPropTypes.checkPropTypes = checkPropTypes;
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+},{"object-assign":42,"./lib/ReactPropTypesSecret":57,"./checkPropTypes":46}],159:[function(require,module,exports) {
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if ('development' !== 'production') {
+  var REACT_ELEMENT_TYPE = typeof Symbol === 'function' && Symbol.for && Symbol.for('react.element') || 0xeac7;
+
+  var isValidElement = function (object) {
+    return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+  };
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = require('./factoryWithTypeCheckers')(isValidElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = require('./factoryWithThrowingShims')();
+}
+},{"./factoryWithTypeCheckers":170}],133:[function(require,module,exports) {
+var global = arguments[3];
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.FontAwesomeIcon = undefined;
+
+var _fontawesomeSvgCore = require('@fortawesome/fontawesome-svg-core');
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+function createCommonjsModule(fn, module) {
+  return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
+
+var humps = createCommonjsModule(function (module) {
+  (function (global) {
+
+    var _processKeys = function (convert, obj, options) {
+      if (!_isObject(obj) || _isDate(obj) || _isRegExp(obj) || _isBoolean(obj) || _isFunction(obj)) {
+        return obj;
+      }
+
+      var output,
+          i = 0,
+          l = 0;
+
+      if (_isArray(obj)) {
+        output = [];
+        for (l = obj.length; i < l; i++) {
+          output.push(_processKeys(convert, obj[i], options));
+        }
+      } else {
+        output = {};
+        for (var key in obj) {
+          if (Object.prototype.hasOwnProperty.call(obj, key)) {
+            output[convert(key, options)] = _processKeys(convert, obj[key], options);
+          }
+        }
+      }
+      return output;
+    };
+
+    // String conversion methods
+
+    var separateWords = function (string, options) {
+      options = options || {};
+      var separator = options.separator || '_';
+      var split = options.split || /(?=[A-Z])/;
+
+      return string.split(split).join(separator);
+    };
+
+    var camelize = function (string) {
+      if (_isNumerical(string)) {
+        return string;
+      }
+      string = string.replace(/[\-_\s]+(.)?/g, function (match, chr) {
+        return chr ? chr.toUpperCase() : '';
+      });
+      // Ensure 1st char is always lowercase
+      return string.substr(0, 1).toLowerCase() + string.substr(1);
+    };
+
+    var pascalize = function (string) {
+      var camelized = camelize(string);
+      // Ensure 1st char is always uppercase
+      return camelized.substr(0, 1).toUpperCase() + camelized.substr(1);
+    };
+
+    var decamelize = function (string, options) {
+      return separateWords(string, options).toLowerCase();
+    };
+
+    // Utilities
+    // Taken from Underscore.js
+
+    var toString = Object.prototype.toString;
+
+    var _isFunction = function (obj) {
+      return typeof obj === 'function';
+    };
+    var _isObject = function (obj) {
+      return obj === Object(obj);
+    };
+    var _isArray = function (obj) {
+      return toString.call(obj) == '[object Array]';
+    };
+    var _isDate = function (obj) {
+      return toString.call(obj) == '[object Date]';
+    };
+    var _isRegExp = function (obj) {
+      return toString.call(obj) == '[object RegExp]';
+    };
+    var _isBoolean = function (obj) {
+      return toString.call(obj) == '[object Boolean]';
+    };
+
+    // Performant way to determine if obj coerces to a number
+    var _isNumerical = function (obj) {
+      obj = obj - 0;
+      return obj === obj;
+    };
+
+    // Sets up function which handles processing keys
+    // allowing the convert function to be modified by a callback
+    var _processor = function (convert, options) {
+      var callback = options && 'process' in options ? options.process : options;
+
+      if (typeof callback !== 'function') {
+        return convert;
+      }
+
+      return function (string, options) {
+        return callback(string, convert, options);
+      };
+    };
+
+    var humps = {
+      camelize: camelize,
+      decamelize: decamelize,
+      pascalize: pascalize,
+      depascalize: decamelize,
+      camelizeKeys: function (object, options) {
+        return _processKeys(_processor(camelize, options), object);
+      },
+      decamelizeKeys: function (object, options) {
+        return _processKeys(_processor(decamelize, options), object, options);
+      },
+      pascalizeKeys: function (object, options) {
+        return _processKeys(_processor(pascalize, options), object);
+      },
+      depascalizeKeys: function () {
+        return this.decamelizeKeys.apply(this, arguments);
+      }
+    };
+
+    if (typeof undefined === 'function' && undefined.amd) {
+      undefined(humps);
+    } else if ('object' !== 'undefined' && module.exports) {
+      module.exports = humps;
+    } else {
+      global.humps = humps;
+    }
+  })(commonjsGlobal);
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
+
+var defineProperty = function (obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+};
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+var objectWithoutProperties = function (obj, keys) {
+  var target = {};
+
+  for (var i in obj) {
+    if (keys.indexOf(i) >= 0) continue;
+    if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
+    target[i] = obj[i];
+  }
+
+  return target;
+};
+
+var toConsumableArray = function (arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+    return arr2;
+  } else {
+    return Array.from(arr);
+  }
+};
+
+function capitalize(val) {
+  return val.charAt(0).toUpperCase() + val.slice(1);
+}
+
+function styleToObject(style) {
+  return style.split(';').map(function (s) {
+    return s.trim();
+  }).filter(function (s) {
+    return s;
+  }).reduce(function (acc, pair) {
+    var i = pair.indexOf(':');
+    var prop = humps.camelize(pair.slice(0, i));
+    var value = pair.slice(i + 1).trim();
+
+    prop.startsWith('webkit') ? acc[capitalize(prop)] = value : acc[prop] = value;
+
+    return acc;
+  }, {});
+}
+
+function convert(createElement, element) {
+  var extraProps = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+  var children = (element.children || []).map(convert.bind(null, createElement));
+
+  var mixins = Object.keys(element.attributes || {}).reduce(function (acc, key) {
+    var val = element.attributes[key];
+
+    switch (key) {
+      case 'class':
+        acc.attrs['className'] = val;
+        delete element.attributes['class'];
+        break;
+      case 'style':
+        acc.attrs['style'] = styleToObject(val);
+        break;
+      default:
+        if (key.indexOf('aria-') === 0 || key.indexOf('data-') === 0) {
+          acc.attrs[key.toLowerCase()] = val;
+        } else {
+          acc.attrs[humps.camelize(key)] = val;
+        }
+    }
+
+    return acc;
+  }, { attrs: {} });
+
+  var _extraProps$style = extraProps.style,
+      existingStyle = _extraProps$style === undefined ? {} : _extraProps$style,
+      remaining = objectWithoutProperties(extraProps, ['style']);
+
+  mixins.attrs['style'] = _extends({}, mixins.attrs['style'], existingStyle);
+
+  return createElement.apply(undefined, [element.tag, _extends({}, mixins.attrs, remaining)].concat(toConsumableArray(children)));
+}
+
+var PRODUCTION = false;
+
+try {
+  PRODUCTION = 'development' === 'production';
+} catch (e) {}
+
+function log() {
+  if (!PRODUCTION && console && typeof console.error === 'function') {
+    var _console;
+
+    (_console = console).error.apply(_console, arguments);
+  }
+}
+
+function objectWithKey(key, value) {
+  return Array.isArray(value) && value.length > 0 || !Array.isArray(value) && value ? defineProperty({}, key, value) : {};
+}
+
+function classList(props) {
+  var _classes;
+
+  var classes = (_classes = {
+    'fa-spin': props.spin,
+    'fa-pulse': props.pulse,
+    'fa-fw': props.fixedWidth,
+    'fa-inverse': props.inverse,
+    'fa-border': props.border,
+    'fa-li': props.listItem,
+    'fa-flip-horizontal': props.flip === 'horizontal' || props.flip === 'both',
+    'fa-flip-vertical': props.flip === 'vertical' || props.flip === 'both'
+  }, defineProperty(_classes, 'fa-' + props.size, props.size !== null), defineProperty(_classes, 'fa-rotate-' + props.rotation, props.rotation !== null), defineProperty(_classes, 'fa-pull-' + props.pull, props.pull !== null), _classes);
+
+  return Object.keys(classes).map(function (key) {
+    return classes[key] ? key : null;
+  }).filter(function (key) {
+    return key;
+  });
+}
+
+function normalizeIconArgs(icon$$1) {
+  if (icon$$1 === null) {
+    return null;
+  }
+
+  if ((typeof icon$$1 === 'undefined' ? 'undefined' : _typeof(icon$$1)) === 'object' && icon$$1.prefix && icon$$1.iconName) {
+    return icon$$1;
+  }
+
+  if (Array.isArray(icon$$1) && icon$$1.length === 2) {
+    return { prefix: icon$$1[0], iconName: icon$$1[1] };
+  }
+
+  if (typeof icon$$1 === 'string') {
+    return { prefix: 'fas', iconName: icon$$1 };
+  }
+}
+
+function FontAwesomeIcon(props) {
+  var iconArgs = props.icon,
+      maskArgs = props.mask,
+      symbol = props.symbol,
+      className = props.className;
+
+  var iconLookup = normalizeIconArgs(iconArgs);
+  var classes = objectWithKey('classes', [].concat(toConsumableArray(classList(props)), toConsumableArray(className.split(' '))));
+  var transform = objectWithKey('transform', typeof props.transform === 'string' ? _fontawesomeSvgCore.parse.transform(props.transform) : props.transform);
+  var mask = objectWithKey('mask', normalizeIconArgs(maskArgs));
+
+  var renderedIcon = (0, _fontawesomeSvgCore.icon)(iconLookup, _extends({}, classes, transform, mask, {
+    symbol: symbol
+  }));
+
+  if (!renderedIcon) {
+    log('Could not find icon', iconLookup);
+    return null;
+  }
+
+  var abstract = renderedIcon.abstract;
+
+  var extraProps = {};
+
+  Object.keys(props).forEach(function (key) {
+    if (!FontAwesomeIcon.defaultProps.hasOwnProperty(key)) {
+      extraProps[key] = props[key];
+    }
+  });
+
+  return convertCurry(abstract[0], extraProps);
+}
+
+FontAwesomeIcon.displayName = 'FontAwesomeIcon';
+
+FontAwesomeIcon.propTypes = {
+  border: _propTypes2.default.bool,
+
+  className: _propTypes2.default.string,
+
+  mask: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.array, _propTypes2.default.string]),
+
+  fixedWidth: _propTypes2.default.bool,
+
+  inverse: _propTypes2.default.bool,
+
+  flip: _propTypes2.default.oneOf(['horizontal', 'vertical', 'both']),
+
+  icon: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.array, _propTypes2.default.string]),
+
+  listItem: _propTypes2.default.bool,
+
+  pull: _propTypes2.default.oneOf(['right', 'left']),
+
+  pulse: _propTypes2.default.bool,
+
+  rotation: _propTypes2.default.oneOf([90, 180, 270]),
+
+  size: _propTypes2.default.oneOf(['lg', 'xs', 'sm', '1x', '2x', '3x', '4x', '5x', '6x', '7x', '8x', '9x', '10x']),
+
+  spin: _propTypes2.default.bool,
+
+  symbol: _propTypes2.default.oneOfType([_propTypes2.default.bool, _propTypes2.default.string]),
+
+  transform: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.object])
+};
+
+FontAwesomeIcon.defaultProps = {
+  border: false,
+  className: '',
+  mask: null,
+  fixedWidth: false,
+  inverse: false,
+  flip: null,
+  icon: null,
+  listItem: false,
+  pull: null,
+  pulse: false,
+  rotation: null,
+  size: null,
+  spin: false,
+  symbol: false,
+  transform: null
+};
+
+var convertCurry = convert.bind(null, _react2.default.createElement);
+
+exports.FontAwesomeIcon = FontAwesomeIcon;
+},{"@fortawesome/fontawesome-svg-core":161,"prop-types":159,"react":8}],310:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+var prefix = 'fas';
+var iconName = 'spinner';
+var width = 512;
+var height = 512;
+var ligatures = [];
+var unicode = 'f110';
+var svgPathData = 'M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z';
+
+exports.definition = {
+  prefix: prefix,
+  iconName: iconName,
+  icon: [width, height, ligatures, unicode, svgPathData] };
+
+exports.faSpinner = exports.definition;
+exports.prefix = prefix;
+exports.iconName = iconName;
+exports.width = width;
+exports.height = height;
+exports.ligatures = ligatures;
+exports.unicode = unicode;
+exports.svgPathData = svgPathData;
+},{}],97:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactFontawesome = require('@fortawesome/react-fontawesome');
+
+var _faSpinner = require('@fortawesome/free-solid-svg-icons/faSpinner');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var Loader = function Loader() {
     return _react2.default.createElement(
-        "div",
-        { className: "loader-tfs" },
-        "loader"
+        'div',
+        { className: 'loader-tfs' },
+        _react2.default.createElement(_reactFontawesome.FontAwesomeIcon, { icon: _faSpinner.faSpinner, pulse: true, size: 'lg' })
     );
 };
 
 exports.default = Loader;
-},{"react":8}],24:[function(require,module,exports) {
+},{"react":8,"@fortawesome/react-fontawesome":133,"@fortawesome/free-solid-svg-icons/faSpinner":310}],23:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -23387,7 +26306,7 @@ var VideosList = exports.VideosList = function (_Component) {
 }(_react.Component);
 
 exports.default = VideosList;
-},{"babel-runtime/regenerator":109,"babel-runtime/helpers/asyncToGenerator":79,"babel-runtime/helpers/classCallCheck":27,"babel-runtime/helpers/createClass":29,"babel-runtime/helpers/possibleConstructorReturn":28,"babel-runtime/helpers/inherits":30,"react":8,"./VideoListItem":75,"../Popup/Popup":76,"../../shared/models/Video.class":26,"../VideoDetail/VideoDetail":77,"../layouts/Loader":181}],141:[function(require,module,exports) {
+},{"babel-runtime/regenerator":98,"babel-runtime/helpers/asyncToGenerator":72,"babel-runtime/helpers/classCallCheck":27,"babel-runtime/helpers/createClass":28,"babel-runtime/helpers/possibleConstructorReturn":29,"babel-runtime/helpers/inherits":30,"react":8,"./VideoListItem":69,"../Popup/Popup":70,"../../shared/models/Video.class":20,"../VideoDetail/VideoDetail":71,"../layouts/Loader":97}],123:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -23438,7 +26357,7 @@ var Textarea = function Textarea(props) {
 };
 
 exports.default = Textarea;
-},{"react":8}],78:[function(require,module,exports) {
+},{"react":8}],74:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -23588,7 +26507,7 @@ var FormReporting = exports.FormReporting = function (_Component) {
 }(_react.Component);
 
 exports.default = FormReporting;
-},{"babel-runtime/helpers/classCallCheck":27,"babel-runtime/helpers/createClass":29,"babel-runtime/helpers/possibleConstructorReturn":28,"babel-runtime/helpers/inherits":30,"react":8,"../layouts/Textarea":141,"../Button":108}],25:[function(require,module,exports) {
+},{"babel-runtime/helpers/classCallCheck":27,"babel-runtime/helpers/createClass":28,"babel-runtime/helpers/possibleConstructorReturn":29,"babel-runtime/helpers/inherits":30,"react":8,"../layouts/Textarea":123,"../Button":99}],24:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -23753,7 +26672,7 @@ var FormFlagging = exports.FormFlagging = function (_Component) {
 }(_react.Component);
 
 exports.default = FormFlagging;
-},{"babel-runtime/helpers/defineProperty":80,"babel-runtime/helpers/classCallCheck":27,"babel-runtime/helpers/createClass":29,"babel-runtime/helpers/possibleConstructorReturn":28,"babel-runtime/helpers/inherits":30,"react":8,"../Button":108,"../ToolsFlag/ToolsFlag":23,"../VideosList/VideosList":24,"../Popup/Popup":76,"../FormReporting/FormReporting":78}],21:[function(require,module,exports) {
+},{"babel-runtime/helpers/defineProperty":76,"babel-runtime/helpers/classCallCheck":27,"babel-runtime/helpers/createClass":28,"babel-runtime/helpers/possibleConstructorReturn":29,"babel-runtime/helpers/inherits":30,"react":8,"../Button":99,"../ToolsFlag/ToolsFlag":22,"../VideosList/VideosList":23,"../Popup/Popup":70,"../FormReporting/FormReporting":74}],19:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -23883,7 +26802,7 @@ var App = function (_Component) {
 }(_react.Component);
 
 exports.default = App;
-},{"babel-runtime/helpers/classCallCheck":27,"babel-runtime/helpers/createClass":29,"babel-runtime/helpers/possibleConstructorReturn":28,"babel-runtime/helpers/inherits":30,"react":8,"./Sidebar/Sidebar":22,"./ToolsFlag/ToolsFlag":23,"./VideosList/VideosList":24,"./FormFlagging/FormFlagging":25,"../config":21}],4:[function(require,module,exports) {
+},{"babel-runtime/helpers/classCallCheck":27,"babel-runtime/helpers/createClass":28,"babel-runtime/helpers/possibleConstructorReturn":29,"babel-runtime/helpers/inherits":30,"react":8,"./Sidebar/Sidebar":21,"./ToolsFlag/ToolsFlag":22,"./VideosList/VideosList":23,"./FormFlagging/FormFlagging":24,"../config":19}],4:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -23978,7 +26897,7 @@ var videos = function getVideos() {
 };
 
 exports.default = videos;
-},{"../shared/models/Video.class":26}],5:[function(require,module,exports) {
+},{"../shared/models/Video.class":20}],5:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -24030,7 +26949,7 @@ var pathname = function getPathname() {
 };
 
 exports.default = pathname;
-},{"../config":21}],7:[function(require,module,exports) {
+},{"../config":19}],7:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -24102,7 +27021,7 @@ document.getElementById('page-container').innerHTML = '';
 document.getElementById('page-container').appendChild(myReactApp);
 
 _reactDom2.default.render(_react2.default.createElement(_App2.default, youTubeDatas), myReactApp);
-},{"react":8,"react-dom":9,"./components/App":3,"./getDom/_videos":4,"./getDom/_search":5,"./getDom/_location":6,"./getDom/_pagination":7}],182:[function(require,module,exports) {
+},{"react":8,"react-dom":9,"./components/App":3,"./getDom/_videos":4,"./getDom/_search":5,"./getDom/_location":6,"./getDom/_pagination":7}],154:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -24131,7 +27050,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '50529' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '53848' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -24272,5 +27191,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[182,1], null)
+},{}]},{},[154,1], null)
 //# sourceMappingURL=/main.map
