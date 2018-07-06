@@ -2,24 +2,17 @@ export class Video {
     constructor(
         video = {}
     ) {
-        this.url = video.url
-        this.nodeVideo = video.nodeVideo
-        this.nodeDescription = video.nodeDescription
-        this.title = video.textTitle
+        this.categoryId = video.categoryId
+        this.channelTitle = video.channelTitle
+        this.description = video.description
+        this.title = video.title
         this.isRemoved = video.isRemoved
         this.id = video.id
-        this.creator = video.creator
-        this.channelLink = video.channelLink
+        this.channelId = video.channelId
         this.viewCount = video.viewCount
-        this.thumbnail = video.thumbnail
-
+        this.publishedAt = video.publishedAt ? video.publishedAt : null
+        this.thumbnails = video.thumbnails
         this.active = false
-
-        this.url && this.getId();
-    }
-
-    getId() {
-        this.id = this.url.split("=")[1];
     }
 }
 

@@ -11,33 +11,55 @@ let videos = function getVideos() {
     const videos = []
 
     for (var item of list) {
-        let creator, viewCount, channelLink = null;
-        let nodeDescription = item.getElementsByClassName('deputy-item-description-summary')[0].innerHTML.trim();
-        let textTitle = item.getElementsByTagName('h3')[0].textContent.trim();
-        let url = item.getElementsByClassName('yt-uix-sessionlink ')[0].getAttribute('href');
-        let thumbnail = item.getElementsByTagName('img')[0].getAttribute('src');
-        let nodeVideo = item.getElementsByClassName('deputy-item-thumb-player')[0].innerHTML.trim();
+        let channelTitle, channelId = null;
+        let title = item.getElementsByTagName('h3')[0].textContent.trim();
+        let id = item.getElementsByClassName('yt-uix-sessionlink ')[0].getAttribute('href').split('=')[1]
 
         let isRemoved = item.getElementsByClassName('removed-on-text').length > 0;
 
         if (!isRemoved && item.getElementsByClassName('yt-user-name').length > 0) {
-            creator = item.getElementsByClassName('yt-user-name')[0].textContent;
-            channelLink = item.getElementsByClassName('yt-user-name')[0].getAttribute('href');
-            viewCount = item.getElementsByClassName('viewcount')[0].textContent.replace(/\D+/g, '');
+            channelTitle = item.getElementsByClassName('yt-user-name')[0].textContent;
+            let channelLink = item.getElementsByClassName('yt-user-name')[0].getAttribute('href');
+
+            console.log(channelLink);
+
         } else {
-            textTitle = nodeDescription = null;
+            title = null;
         }
 
         videos.push(new Video({
-            url: url,
-            nodeVideo: nodeVideo,
-            nodeDescription: nodeDescription,
-            textTitle: textTitle,
-            creator: creator,
-            channelLink: channelLink,
-            viewCount: viewCount,
+            title: title,
+            channelTitle: channelTitle,
+            channelId: channelId,
+            id: id,
+            thumbnails: {
+                default: {
+                    url: "https://i.ytimg.com/vi/"+id+"/default.jpg",
+                    width: 120,
+                    height: 90
+                },
+                medium: {
+                    url: "https://i.ytimg.com/vi/"+id+"/mqdefault.jpg",
+                    width: 320,
+                    height: 180
+                },
+                high: {
+                    url: "https://i.ytimg.com/vi/"+id+"/hqdefault.jpg",
+                    width: 480,
+                    height: 360
+                },
+                standard: {
+                    url: "https://i.ytimg.com/vi/"+id+"/sddefault.jpg",
+                    width: 640,
+                    height: 480
+                },
+                maxres: {
+                    url: "https://i.ytimg.com/vi/"+id+"/maxresdefault.jpg",
+                    width: 1280,
+                    height: 720
+                }
+            },
             isRemoved: isRemoved,
-            thumbnail: thumbnail
         }))
     }
 

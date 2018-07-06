@@ -17,16 +17,42 @@ export class VideosList extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
+    callYouTube(id) {
+        let whyDoUSearchMyKey = 'AIzaSyBo4cXAPoLRFpiLi-l2Sj8OQpU3gQPUSko'
+        return fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${id}&key=${whyDoUSearchMyKey}`)
+            .then(response => response.json())
+            .then(response => {
+                if (!response.items) throw new Error('UNKNOWN')
+                if (response.items.length === 0) throw new Error('NOT_FOUND_OR_REMOVED')
+                return response.items[0].snippet
+            })
+            .then(video => {
+                return new Video({
+                    
+                })
+            })
+            .catch(e => {
+                throw e
+            })
+    }
+
     async getVideo(id) {
         if (!id) return;
 
         await new Promise(resolve => setTimeout(resolve, 300))
 
-        let video = new Video({id: id})
+        try {
+            let video = await this.callYouTube(id);
+        } catch (error) {
+            console.error(error);
 
-        this.setState({
-            videoSelected: video
-        });
+        }
+
+        // let video = new Video({id: id})
+
+        // this.setState({
+        //     videoSelected: video
+        // });
     }
 
     handleChange(e) {
@@ -39,9 +65,6 @@ export class VideosList extends Component {
     render() {
 
         let { videos, canFlag } = this.props;
-
-        console.log(this.state);
-
 
         return (
             <div className="container-list scrollBarOnHover">
