@@ -103,7 +103,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   // Override the current require with this new one
   return newRequire;
-})({55:[function(require,module,exports) {
+})({41:[function(require,module,exports) {
 /*
 object-assign
 (c) Sindre Sorhus
@@ -194,7 +194,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 	return to;
 };
-},{}],58:[function(require,module,exports) {
+},{}],42:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -248,7 +248,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 }
 
 module.exports = invariant;
-},{}],59:[function(require,module,exports) {
+},{}],43:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -266,7 +266,7 @@ if ('development' !== 'production') {
 }
 
 module.exports = emptyObject;
-},{}],56:[function(require,module,exports) {
+},{}],46:[function(require,module,exports) {
 "use strict";
 
 /**
@@ -303,7 +303,7 @@ emptyFunction.thatReturnsArgument = function (arg) {
 };
 
 module.exports = emptyFunction;
-},{}],57:[function(require,module,exports) {
+},{}],44:[function(require,module,exports) {
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -366,7 +366,7 @@ if ('development' !== 'production') {
 }
 
 module.exports = warning;
-},{"./emptyFunction":56}],78:[function(require,module,exports) {
+},{"./emptyFunction":46}],57:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -380,7 +380,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
 
-},{}],60:[function(require,module,exports) {
+},{}],45:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -459,7 +459,7 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 }
 
 module.exports = checkPropTypes;
-},{"./lib/ReactPropTypesSecret":78}],19:[function(require,module,exports) {
+},{"./lib/ReactPropTypesSecret":57}],17:[function(require,module,exports) {
 /** @license React v16.4.1
  * react.development.js
  *
@@ -1940,7 +1940,7 @@ if ('development' !== "production") {
     module.exports = react;
   })();
 }
-},{"object-assign":55,"fbjs/lib/invariant":58,"fbjs/lib/emptyObject":59,"fbjs/lib/warning":57,"fbjs/lib/emptyFunction":56,"prop-types/checkPropTypes":60}],8:[function(require,module,exports) {
+},{"object-assign":41,"fbjs/lib/invariant":42,"fbjs/lib/emptyObject":43,"fbjs/lib/warning":44,"fbjs/lib/emptyFunction":46,"prop-types/checkPropTypes":45}],8:[function(require,module,exports) {
 'use strict';
 
 if ('development' === 'production') {
@@ -1948,7 +1948,7 @@ if ('development' === 'production') {
 } else {
   module.exports = require('./cjs/react.development.js');
 }
-},{"./cjs/react.development.js":19}],61:[function(require,module,exports) {
+},{"./cjs/react.development.js":17}],47:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1982,7 +1982,7 @@ var ExecutionEnvironment = {
 };
 
 module.exports = ExecutionEnvironment;
-},{}],62:[function(require,module,exports) {
+},{}],48:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2019,7 +2019,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 }
 
 module.exports = getActiveElement;
-},{}],63:[function(require,module,exports) {
+},{}],49:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2085,7 +2085,7 @@ function shallowEqual(objA, objB) {
 }
 
 module.exports = shallowEqual;
-},{}],91:[function(require,module,exports) {
+},{}],66:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2108,7 +2108,7 @@ function isNode(object) {
 }
 
 module.exports = isNode;
-},{}],81:[function(require,module,exports) {
+},{}],60:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2131,7 +2131,7 @@ function isTextNode(object) {
 }
 
 module.exports = isTextNode;
-},{"./isNode":91}],64:[function(require,module,exports) {
+},{"./isNode":66}],50:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2169,7 +2169,7 @@ function containsNode(outerNode, innerNode) {
 }
 
 module.exports = containsNode;
-},{"./isTextNode":81}],80:[function(require,module,exports) {
+},{"./isTextNode":60}],58:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2200,7 +2200,7 @@ function hyphenate(string) {
 }
 
 module.exports = hyphenate;
-},{}],65:[function(require,module,exports) {
+},{}],51:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2237,7 +2237,7 @@ function hyphenateStyleName(string) {
 }
 
 module.exports = hyphenateStyleName;
-},{"./hyphenate":80}],82:[function(require,module,exports) {
+},{"./hyphenate":58}],59:[function(require,module,exports) {
 "use strict";
 
 /**
@@ -2267,7 +2267,7 @@ function camelize(string) {
 }
 
 module.exports = camelize;
-},{}],66:[function(require,module,exports) {
+},{}],52:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2305,7 +2305,7 @@ function camelizeStyleName(string) {
 }
 
 module.exports = camelizeStyleName;
-},{"./camelize":82}],20:[function(require,module,exports) {
+},{"./camelize":59}],18:[function(require,module,exports) {
 /** @license React v16.4.1
  * react-dom.development.js
  *
@@ -19711,7 +19711,7 @@ if ('development' !== "production") {
     module.exports = reactDom;
   })();
 }
-},{"fbjs/lib/invariant":58,"react":8,"fbjs/lib/warning":57,"fbjs/lib/ExecutionEnvironment":61,"object-assign":55,"fbjs/lib/emptyFunction":56,"prop-types/checkPropTypes":60,"fbjs/lib/getActiveElement":62,"fbjs/lib/shallowEqual":63,"fbjs/lib/containsNode":64,"fbjs/lib/emptyObject":59,"fbjs/lib/hyphenateStyleName":65,"fbjs/lib/camelizeStyleName":66}],9:[function(require,module,exports) {
+},{"fbjs/lib/invariant":42,"react":8,"fbjs/lib/warning":44,"fbjs/lib/ExecutionEnvironment":47,"object-assign":41,"fbjs/lib/emptyFunction":46,"prop-types/checkPropTypes":45,"fbjs/lib/getActiveElement":48,"fbjs/lib/shallowEqual":49,"fbjs/lib/containsNode":50,"fbjs/lib/emptyObject":43,"fbjs/lib/hyphenateStyleName":51,"fbjs/lib/camelizeStyleName":52}],9:[function(require,module,exports) {
 'use strict';
 
 function checkDCE() {
@@ -19747,7 +19747,7 @@ if ('development' === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":20}],39:[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":18}],29:[function(require,module,exports) {
 "use strict";
 
 exports.__esModule = true;
@@ -19757,7 +19757,7 @@ exports.default = function (instance, Constructor) {
     throw new TypeError("Cannot call a class as a function");
   }
 };
-},{}],132:[function(require,module,exports) {
+},{}],85:[function(require,module,exports) {
 
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
 var global = module.exports = typeof window != 'undefined' && window.Math == Math
@@ -19766,17 +19766,17 @@ var global = module.exports = typeof window != 'undefined' && window.Math == Mat
   : Function('return this')();
 if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 
-},{}],103:[function(require,module,exports) {
+},{}],72:[function(require,module,exports) {
 var core = module.exports = { version: '2.5.7' };
 if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
-},{}],152:[function(require,module,exports) {
+},{}],144:[function(require,module,exports) {
 module.exports = function (it) {
   if (typeof it != 'function') throw TypeError(it + ' is not a function!');
   return it;
 };
 
-},{}],125:[function(require,module,exports) {
+},{}],111:[function(require,module,exports) {
 // optional / simple context binding
 var aFunction = require('./_a-function');
 module.exports = function (fn, that, length) {
@@ -19798,19 +19798,19 @@ module.exports = function (fn, that, length) {
   };
 };
 
-},{"./_a-function":152}],124:[function(require,module,exports) {
+},{"./_a-function":144}],127:[function(require,module,exports) {
 module.exports = function (it) {
   return typeof it === 'object' ? it !== null : typeof it === 'function';
 };
 
-},{}],121:[function(require,module,exports) {
+},{}],116:[function(require,module,exports) {
 var isObject = require('./_is-object');
 module.exports = function (it) {
   if (!isObject(it)) throw TypeError(it + ' is not an object!');
   return it;
 };
 
-},{"./_is-object":124}],114:[function(require,module,exports) {
+},{"./_is-object":127}],110:[function(require,module,exports) {
 module.exports = function (exec) {
   try {
     return !!exec();
@@ -19819,13 +19819,13 @@ module.exports = function (exec) {
   }
 };
 
-},{}],110:[function(require,module,exports) {
+},{}],92:[function(require,module,exports) {
 // Thank's IE8 for his funny defineProperty
 module.exports = !require('./_fails')(function () {
   return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
 });
 
-},{"./_fails":114}],151:[function(require,module,exports) {
+},{"./_fails":110}],123:[function(require,module,exports) {
 var isObject = require('./_is-object');
 var document = require('./_global').document;
 // typeof document.createElement is 'object' in old IE
@@ -19834,12 +19834,12 @@ module.exports = function (it) {
   return is ? document.createElement(it) : {};
 };
 
-},{"./_is-object":124,"./_global":132}],122:[function(require,module,exports) {
+},{"./_is-object":127,"./_global":85}],117:[function(require,module,exports) {
 module.exports = !require('./_descriptors') && !require('./_fails')(function () {
   return Object.defineProperty(require('./_dom-create')('div'), 'a', { get: function () { return 7; } }).a != 7;
 });
 
-},{"./_descriptors":110,"./_fails":114,"./_dom-create":151}],123:[function(require,module,exports) {
+},{"./_descriptors":92,"./_fails":110,"./_dom-create":123}],118:[function(require,module,exports) {
 // 7.1.1 ToPrimitive(input [, PreferredType])
 var isObject = require('./_is-object');
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
@@ -19853,7 +19853,7 @@ module.exports = function (it, S) {
   throw TypeError("Can't convert object to primitive value");
 };
 
-},{"./_is-object":124}],111:[function(require,module,exports) {
+},{"./_is-object":127}],93:[function(require,module,exports) {
 var anObject = require('./_an-object');
 var IE8_DOM_DEFINE = require('./_ie8-dom-define');
 var toPrimitive = require('./_to-primitive');
@@ -19871,7 +19871,7 @@ exports.f = require('./_descriptors') ? Object.defineProperty : function defineP
   return O;
 };
 
-},{"./_an-object":121,"./_ie8-dom-define":122,"./_to-primitive":123,"./_descriptors":110}],143:[function(require,module,exports) {
+},{"./_an-object":116,"./_ie8-dom-define":117,"./_to-primitive":118,"./_descriptors":92}],103:[function(require,module,exports) {
 module.exports = function (bitmap, value) {
   return {
     enumerable: !(bitmap & 1),
@@ -19881,7 +19881,7 @@ module.exports = function (bitmap, value) {
   };
 };
 
-},{}],150:[function(require,module,exports) {
+},{}],86:[function(require,module,exports) {
 var dP = require('./_object-dp');
 var createDesc = require('./_property-desc');
 module.exports = require('./_descriptors') ? function (object, key, value) {
@@ -19891,13 +19891,13 @@ module.exports = require('./_descriptors') ? function (object, key, value) {
   return object;
 };
 
-},{"./_object-dp":111,"./_property-desc":143,"./_descriptors":110}],133:[function(require,module,exports) {
+},{"./_object-dp":93,"./_property-desc":103,"./_descriptors":92}],112:[function(require,module,exports) {
 var hasOwnProperty = {}.hasOwnProperty;
 module.exports = function (it, key) {
   return hasOwnProperty.call(it, key);
 };
 
-},{}],106:[function(require,module,exports) {
+},{}],91:[function(require,module,exports) {
 
 var global = require('./_global');
 var core = require('./_core');
@@ -19962,21 +19962,21 @@ $export.U = 64;  // safe
 $export.R = 128; // real proto method for `library`
 module.exports = $export;
 
-},{"./_global":132,"./_core":103,"./_ctx":125,"./_hide":150,"./_has":133}],104:[function(require,module,exports) {
+},{"./_global":85,"./_core":72,"./_ctx":111,"./_hide":86,"./_has":112}],71:[function(require,module,exports) {
 var $export = require('./_export');
 // 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
 $export($export.S + $export.F * !require('./_descriptors'), 'Object', { defineProperty: require('./_object-dp').f });
 
-},{"./_export":106,"./_descriptors":110,"./_object-dp":111}],93:[function(require,module,exports) {
+},{"./_export":91,"./_descriptors":92,"./_object-dp":93}],64:[function(require,module,exports) {
 require('../../modules/es6.object.define-property');
 var $Object = require('../../modules/_core').Object;
 module.exports = function defineProperty(it, key, desc) {
   return $Object.defineProperty(it, key, desc);
 };
 
-},{"../../modules/es6.object.define-property":104,"../../modules/_core":103}],76:[function(require,module,exports) {
+},{"../../modules/es6.object.define-property":71,"../../modules/_core":72}],54:[function(require,module,exports) {
 module.exports = { "default": require("core-js/library/fn/object/define-property"), __esModule: true };
-},{"core-js/library/fn/object/define-property":93}],42:[function(require,module,exports) {
+},{"core-js/library/fn/object/define-property":64}],31:[function(require,module,exports) {
 "use strict";
 
 exports.__esModule = true;
@@ -20004,7 +20004,7 @@ exports.default = function () {
     return Constructor;
   };
 }();
-},{"../core-js/object/define-property":76}],184:[function(require,module,exports) {
+},{"../core-js/object/define-property":54}],113:[function(require,module,exports) {
 // 7.1.4 ToInteger
 var ceil = Math.ceil;
 var floor = Math.floor;
@@ -20012,14 +20012,14 @@ module.exports = function (it) {
   return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
 };
 
-},{}],166:[function(require,module,exports) {
+},{}],114:[function(require,module,exports) {
 // 7.2.1 RequireObjectCoercible(argument)
 module.exports = function (it) {
   if (it == undefined) throw TypeError("Can't call method on  " + it);
   return it;
 };
 
-},{}],160:[function(require,module,exports) {
+},{}],98:[function(require,module,exports) {
 var toInteger = require('./_to-integer');
 var defined = require('./_defined');
 // true  -> String#at
@@ -20038,23 +20038,23 @@ module.exports = function (TO_STRING) {
   };
 };
 
-},{"./_to-integer":184,"./_defined":166}],149:[function(require,module,exports) {
+},{"./_to-integer":113,"./_defined":114}],125:[function(require,module,exports) {
 module.exports = true;
 
-},{}],134:[function(require,module,exports) {
+},{}],129:[function(require,module,exports) {
 module.exports = require('./_hide');
 
-},{"./_hide":150}],154:[function(require,module,exports) {
+},{"./_hide":86}],87:[function(require,module,exports) {
 module.exports = {};
 
-},{}],168:[function(require,module,exports) {
+},{}],145:[function(require,module,exports) {
 var toString = {}.toString;
 
 module.exports = function (it) {
   return toString.call(it).slice(8, -1);
 };
 
-},{}],165:[function(require,module,exports) {
+},{}],115:[function(require,module,exports) {
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
 var cof = require('./_cof');
 // eslint-disable-next-line no-prototype-builtins
@@ -20062,7 +20062,7 @@ module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
   return cof(it) == 'String' ? it.split('') : Object(it);
 };
 
-},{"./_cof":168}],142:[function(require,module,exports) {
+},{"./_cof":145}],102:[function(require,module,exports) {
 // to indexed object, toObject with fallback for non-array-like ES3 strings
 var IObject = require('./_iobject');
 var defined = require('./_defined');
@@ -20070,7 +20070,7 @@ module.exports = function (it) {
   return IObject(defined(it));
 };
 
-},{"./_iobject":165,"./_defined":166}],192:[function(require,module,exports) {
+},{"./_iobject":115,"./_defined":114}],163:[function(require,module,exports) {
 // 7.1.15 ToLength
 var toInteger = require('./_to-integer');
 var min = Math.min;
@@ -20078,7 +20078,7 @@ module.exports = function (it) {
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
 };
 
-},{"./_to-integer":184}],194:[function(require,module,exports) {
+},{"./_to-integer":113}],167:[function(require,module,exports) {
 var toInteger = require('./_to-integer');
 var max = Math.max;
 var min = Math.min;
@@ -20087,7 +20087,7 @@ module.exports = function (index, length) {
   return index < 0 ? max(index + length, 0) : min(index, length);
 };
 
-},{"./_to-integer":184}],188:[function(require,module,exports) {
+},{"./_to-integer":113}],165:[function(require,module,exports) {
 // false -> Array#indexOf
 // true  -> Array#includes
 var toIObject = require('./_to-iobject');
@@ -20112,7 +20112,7 @@ module.exports = function (IS_INCLUDES) {
   };
 };
 
-},{"./_to-iobject":142,"./_to-length":192,"./_to-absolute-index":194}],136:[function(require,module,exports) {
+},{"./_to-iobject":102,"./_to-length":163,"./_to-absolute-index":167}],95:[function(require,module,exports) {
 
 var core = require('./_core');
 var global = require('./_global');
@@ -20127,21 +20127,21 @@ var store = global[SHARED] || (global[SHARED] = {});
   copyright: '© 2018 Denis Pushkarev (zloirock.ru)'
 });
 
-},{"./_core":103,"./_global":132,"./_library":149}],138:[function(require,module,exports) {
+},{"./_core":72,"./_global":85,"./_library":125}],96:[function(require,module,exports) {
 var id = 0;
 var px = Math.random();
 module.exports = function (key) {
   return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
 };
 
-},{}],157:[function(require,module,exports) {
+},{}],122:[function(require,module,exports) {
 var shared = require('./_shared')('keys');
 var uid = require('./_uid');
 module.exports = function (key) {
   return shared[key] || (shared[key] = uid(key));
 };
 
-},{"./_shared":136,"./_uid":138}],167:[function(require,module,exports) {
+},{"./_shared":95,"./_uid":96}],146:[function(require,module,exports) {
 var has = require('./_has');
 var toIObject = require('./_to-iobject');
 var arrayIndexOf = require('./_array-includes')(false);
@@ -20160,13 +20160,13 @@ module.exports = function (object, names) {
   return result;
 };
 
-},{"./_has":133,"./_to-iobject":142,"./_array-includes":188,"./_shared-key":157}],156:[function(require,module,exports) {
+},{"./_has":112,"./_to-iobject":102,"./_array-includes":165,"./_shared-key":122}],121:[function(require,module,exports) {
 // IE 8- don't enum bug keys
 module.exports = (
   'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'
 ).split(',');
 
-},{}],145:[function(require,module,exports) {
+},{}],135:[function(require,module,exports) {
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
 var $keys = require('./_object-keys-internal');
 var enumBugKeys = require('./_enum-bug-keys');
@@ -20175,7 +20175,7 @@ module.exports = Object.keys || function keys(O) {
   return $keys(O, enumBugKeys);
 };
 
-},{"./_object-keys-internal":167,"./_enum-bug-keys":156}],155:[function(require,module,exports) {
+},{"./_object-keys-internal":146,"./_enum-bug-keys":121}],120:[function(require,module,exports) {
 var dP = require('./_object-dp');
 var anObject = require('./_an-object');
 var getKeys = require('./_object-keys');
@@ -20190,11 +20190,11 @@ module.exports = require('./_descriptors') ? Object.defineProperties : function 
   return O;
 };
 
-},{"./_object-dp":111,"./_an-object":121,"./_object-keys":145,"./_descriptors":110}],158:[function(require,module,exports) {
+},{"./_object-dp":93,"./_an-object":116,"./_object-keys":135,"./_descriptors":92}],124:[function(require,module,exports) {
 var document = require('./_global').document;
 module.exports = document && document.documentElement;
 
-},{"./_global":132}],107:[function(require,module,exports) {
+},{"./_global":85}],104:[function(require,module,exports) {
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = require('./_an-object');
 var dPs = require('./_object-dps');
@@ -20237,7 +20237,7 @@ module.exports = Object.create || function create(O, Properties) {
   return Properties === undefined ? result : dPs(result, Properties);
 };
 
-},{"./_an-object":121,"./_object-dps":155,"./_enum-bug-keys":156,"./_shared-key":157,"./_dom-create":151,"./_html":158}],139:[function(require,module,exports) {
+},{"./_an-object":116,"./_object-dps":120,"./_enum-bug-keys":121,"./_shared-key":122,"./_dom-create":123,"./_html":124}],88:[function(require,module,exports) {
 var store = require('./_shared')('wks');
 var uid = require('./_uid');
 var Symbol = require('./_global').Symbol;
@@ -20250,7 +20250,7 @@ var $exports = module.exports = function (name) {
 
 $exports.store = store;
 
-},{"./_shared":136,"./_uid":138,"./_global":132}],137:[function(require,module,exports) {
+},{"./_shared":95,"./_uid":96,"./_global":85}],131:[function(require,module,exports) {
 var def = require('./_object-dp').f;
 var has = require('./_has');
 var TAG = require('./_wks')('toStringTag');
@@ -20259,7 +20259,7 @@ module.exports = function (it, tag, stat) {
   if (it && !has(it = stat ? it : it.prototype, TAG)) def(it, TAG, { configurable: true, value: tag });
 };
 
-},{"./_object-dp":111,"./_has":133,"./_wks":139}],186:[function(require,module,exports) {
+},{"./_object-dp":93,"./_has":112,"./_wks":88}],139:[function(require,module,exports) {
 'use strict';
 var create = require('./_object-create');
 var descriptor = require('./_property-desc');
@@ -20274,14 +20274,14 @@ module.exports = function (Constructor, NAME, next) {
   setToStringTag(Constructor, NAME + ' Iterator');
 };
 
-},{"./_object-create":107,"./_property-desc":143,"./_set-to-string-tag":137,"./_hide":150,"./_wks":139}],189:[function(require,module,exports) {
+},{"./_object-create":104,"./_property-desc":103,"./_set-to-string-tag":131,"./_hide":86,"./_wks":88}],159:[function(require,module,exports) {
 // 7.1.13 ToObject(argument)
 var defined = require('./_defined');
 module.exports = function (it) {
   return Object(defined(it));
 };
 
-},{"./_defined":166}],187:[function(require,module,exports) {
+},{"./_defined":114}],140:[function(require,module,exports) {
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
 var has = require('./_has');
 var toObject = require('./_to-object');
@@ -20296,7 +20296,7 @@ module.exports = Object.getPrototypeOf || function (O) {
   } return O instanceof Object ? ObjectProto : null;
 };
 
-},{"./_has":133,"./_to-object":189,"./_shared-key":157}],161:[function(require,module,exports) {
+},{"./_has":112,"./_to-object":159,"./_shared-key":122}],99:[function(require,module,exports) {
 'use strict';
 var LIBRARY = require('./_library');
 var $export = require('./_export');
@@ -20367,7 +20367,7 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
   return methods;
 };
 
-},{"./_library":149,"./_export":106,"./_redefine":134,"./_hide":150,"./_iterators":154,"./_iter-create":186,"./_set-to-string-tag":137,"./_object-gpo":187,"./_wks":139}],127:[function(require,module,exports) {
+},{"./_library":125,"./_export":91,"./_redefine":129,"./_hide":86,"./_iterators":87,"./_iter-create":139,"./_set-to-string-tag":131,"./_object-gpo":140,"./_wks":88}],78:[function(require,module,exports) {
 'use strict';
 var $at = require('./_string-at')(true);
 
@@ -20386,15 +20386,15 @@ require('./_iter-define')(String, 'String', function (iterated) {
   return { value: point, done: false };
 });
 
-},{"./_string-at":160,"./_iter-define":161}],169:[function(require,module,exports) {
+},{"./_string-at":98,"./_iter-define":99}],100:[function(require,module,exports) {
 module.exports = function () { /* empty */ };
 
-},{}],170:[function(require,module,exports) {
+},{}],101:[function(require,module,exports) {
 module.exports = function (done, value) {
   return { value: value, done: !!done };
 };
 
-},{}],153:[function(require,module,exports) {
+},{}],84:[function(require,module,exports) {
 'use strict';
 var addToUnscopables = require('./_add-to-unscopables');
 var step = require('./_iter-step');
@@ -20430,7 +20430,7 @@ addToUnscopables('keys');
 addToUnscopables('values');
 addToUnscopables('entries');
 
-},{"./_add-to-unscopables":169,"./_iter-step":170,"./_iterators":154,"./_to-iobject":142,"./_iter-define":161}],129:[function(require,module,exports) {
+},{"./_add-to-unscopables":100,"./_iter-step":101,"./_iterators":87,"./_to-iobject":102,"./_iter-define":99}],79:[function(require,module,exports) {
 
 require('./es6.array.iterator');
 var global = require('./_global');
@@ -20452,17 +20452,17 @@ for (var i = 0; i < DOMIterables.length; i++) {
   Iterators[NAME] = Iterators.Array;
 }
 
-},{"./es6.array.iterator":153,"./_global":132,"./_hide":150,"./_iterators":154,"./_wks":139}],128:[function(require,module,exports) {
+},{"./es6.array.iterator":84,"./_global":85,"./_hide":86,"./_iterators":87,"./_wks":88}],80:[function(require,module,exports) {
 exports.f = require('./_wks');
 
-},{"./_wks":139}],101:[function(require,module,exports) {
+},{"./_wks":88}],67:[function(require,module,exports) {
 require('../../modules/es6.string.iterator');
 require('../../modules/web.dom.iterable');
 module.exports = require('../../modules/_wks-ext').f('iterator');
 
-},{"../../modules/es6.string.iterator":127,"../../modules/web.dom.iterable":129,"../../modules/_wks-ext":128}],90:[function(require,module,exports) {
+},{"../../modules/es6.string.iterator":78,"../../modules/web.dom.iterable":79,"../../modules/_wks-ext":80}],62:[function(require,module,exports) {
 module.exports = { "default": require("core-js/library/fn/symbol/iterator"), __esModule: true };
-},{"core-js/library/fn/symbol/iterator":101}],135:[function(require,module,exports) {
+},{"core-js/library/fn/symbol/iterator":67}],130:[function(require,module,exports) {
 var META = require('./_uid')('meta');
 var isObject = require('./_is-object');
 var has = require('./_has');
@@ -20517,7 +20517,7 @@ var meta = module.exports = {
   onFreeze: onFreeze
 };
 
-},{"./_uid":138,"./_is-object":124,"./_has":133,"./_object-dp":111,"./_fails":114}],131:[function(require,module,exports) {
+},{"./_uid":96,"./_is-object":127,"./_has":112,"./_object-dp":93,"./_fails":110}],126:[function(require,module,exports) {
 
 var global = require('./_global');
 var core = require('./_core');
@@ -20529,13 +20529,13 @@ module.exports = function (name) {
   if (name.charAt(0) != '_' && !(name in $Symbol)) defineProperty($Symbol, name, { value: wksExt.f(name) });
 };
 
-},{"./_global":132,"./_core":103,"./_library":149,"./_wks-ext":128,"./_object-dp":111}],148:[function(require,module,exports) {
+},{"./_global":85,"./_core":72,"./_library":125,"./_wks-ext":80,"./_object-dp":93}],138:[function(require,module,exports) {
 exports.f = Object.getOwnPropertySymbols;
 
-},{}],147:[function(require,module,exports) {
+},{}],137:[function(require,module,exports) {
 exports.f = {}.propertyIsEnumerable;
 
-},{}],140:[function(require,module,exports) {
+},{}],132:[function(require,module,exports) {
 // all enumerable object keys, includes symbols
 var getKeys = require('./_object-keys');
 var gOPS = require('./_object-gops');
@@ -20552,14 +20552,14 @@ module.exports = function (it) {
   } return result;
 };
 
-},{"./_object-keys":145,"./_object-gops":148,"./_object-pie":147}],141:[function(require,module,exports) {
+},{"./_object-keys":135,"./_object-gops":138,"./_object-pie":137}],133:[function(require,module,exports) {
 // 7.2.2 IsArray(argument)
 var cof = require('./_cof');
 module.exports = Array.isArray || function isArray(arg) {
   return cof(arg) == 'Array';
 };
 
-},{"./_cof":168}],146:[function(require,module,exports) {
+},{"./_cof":145}],136:[function(require,module,exports) {
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
 var $keys = require('./_object-keys-internal');
 var hiddenKeys = require('./_enum-bug-keys').concat('length', 'prototype');
@@ -20568,7 +20568,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
   return $keys(O, hiddenKeys);
 };
 
-},{"./_object-keys-internal":167,"./_enum-bug-keys":156}],144:[function(require,module,exports) {
+},{"./_object-keys-internal":146,"./_enum-bug-keys":121}],134:[function(require,module,exports) {
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
 var toIObject = require('./_to-iobject');
 var gOPN = require('./_object-gopn').f;
@@ -20589,7 +20589,7 @@ module.exports.f = function getOwnPropertyNames(it) {
   return windowNames && toString.call(it) == '[object Window]' ? getWindowNames(it) : gOPN(toIObject(it));
 };
 
-},{"./_to-iobject":142,"./_object-gopn":146}],126:[function(require,module,exports) {
+},{"./_to-iobject":102,"./_object-gopn":136}],128:[function(require,module,exports) {
 var pIE = require('./_object-pie');
 var createDesc = require('./_property-desc');
 var toIObject = require('./_to-iobject');
@@ -20607,7 +20607,7 @@ exports.f = require('./_descriptors') ? gOPD : function getOwnPropertyDescriptor
   if (has(O, P)) return createDesc(!pIE.f.call(O, P), O[P]);
 };
 
-},{"./_object-pie":147,"./_property-desc":143,"./_to-iobject":142,"./_to-primitive":123,"./_has":133,"./_ie8-dom-define":122,"./_descriptors":110}],116:[function(require,module,exports) {
+},{"./_object-pie":137,"./_property-desc":103,"./_to-iobject":102,"./_to-primitive":118,"./_has":112,"./_ie8-dom-define":117,"./_descriptors":92}],105:[function(require,module,exports) {
 
 'use strict';
 // ECMAScript 6 symbols shim
@@ -20844,24 +20844,24 @@ setToStringTag(Math, 'Math', true);
 // 24.3.3 JSON[@@toStringTag]
 setToStringTag(global.JSON, 'JSON', true);
 
-},{"./_global":132,"./_has":133,"./_descriptors":110,"./_export":106,"./_redefine":134,"./_meta":135,"./_fails":114,"./_shared":136,"./_set-to-string-tag":137,"./_uid":138,"./_wks":139,"./_wks-ext":128,"./_wks-define":131,"./_enum-keys":140,"./_is-array":141,"./_an-object":121,"./_is-object":124,"./_to-iobject":142,"./_to-primitive":123,"./_property-desc":143,"./_object-create":107,"./_object-gopn-ext":144,"./_object-gopd":126,"./_object-dp":111,"./_object-keys":145,"./_object-gopn":146,"./_object-pie":147,"./_object-gops":148,"./_library":149,"./_hide":150}],118:[function(require,module,exports) {
+},{"./_global":85,"./_has":112,"./_descriptors":92,"./_export":91,"./_redefine":129,"./_meta":130,"./_fails":110,"./_shared":95,"./_set-to-string-tag":131,"./_uid":96,"./_wks":88,"./_wks-ext":80,"./_wks-define":126,"./_enum-keys":132,"./_is-array":133,"./_an-object":116,"./_is-object":127,"./_to-iobject":102,"./_to-primitive":118,"./_property-desc":103,"./_object-create":104,"./_object-gopn-ext":134,"./_object-gopd":128,"./_object-dp":93,"./_object-keys":135,"./_object-gopn":136,"./_object-pie":137,"./_object-gops":138,"./_library":125,"./_hide":86}],106:[function(require,module,exports) {
 
-},{}],117:[function(require,module,exports) {
+},{}],107:[function(require,module,exports) {
 require('./_wks-define')('asyncIterator');
 
-},{"./_wks-define":131}],119:[function(require,module,exports) {
+},{"./_wks-define":126}],108:[function(require,module,exports) {
 require('./_wks-define')('observable');
 
-},{"./_wks-define":131}],108:[function(require,module,exports) {
+},{"./_wks-define":126}],81:[function(require,module,exports) {
 require('../../modules/es6.symbol');
 require('../../modules/es6.object.to-string');
 require('../../modules/es7.symbol.async-iterator');
 require('../../modules/es7.symbol.observable');
 module.exports = require('../../modules/_core').Symbol;
 
-},{"../../modules/es6.symbol":116,"../../modules/es6.object.to-string":118,"../../modules/es7.symbol.async-iterator":117,"../../modules/es7.symbol.observable":119,"../../modules/_core":103}],89:[function(require,module,exports) {
+},{"../../modules/es6.symbol":105,"../../modules/es6.object.to-string":106,"../../modules/es7.symbol.async-iterator":107,"../../modules/es7.symbol.observable":108,"../../modules/_core":72}],61:[function(require,module,exports) {
 module.exports = { "default": require("core-js/library/fn/symbol"), __esModule: true };
-},{"core-js/library/fn/symbol":108}],75:[function(require,module,exports) {
+},{"core-js/library/fn/symbol":81}],53:[function(require,module,exports) {
 "use strict";
 
 exports.__esModule = true;
@@ -20883,7 +20883,7 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 } : function (obj) {
   return obj && typeof _symbol2.default === "function" && obj.constructor === _symbol2.default && obj !== _symbol2.default.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof(obj);
 };
-},{"../core-js/symbol/iterator":90,"../core-js/symbol":89}],41:[function(require,module,exports) {
+},{"../core-js/symbol/iterator":62,"../core-js/symbol":61}],32:[function(require,module,exports) {
 "use strict";
 
 exports.__esModule = true;
@@ -20901,7 +20901,7 @@ exports.default = function (self, call) {
 
   return call && ((typeof call === "undefined" ? "undefined" : (0, _typeof3.default)(call)) === "object" || typeof call === "function") ? call : self;
 };
-},{"../helpers/typeof":75}],109:[function(require,module,exports) {
+},{"../helpers/typeof":53}],94:[function(require,module,exports) {
 // Works with __proto__ only. Old v8 can't work with null proto objects.
 /* eslint-disable no-proto */
 var isObject = require('./_is-object');
@@ -20928,32 +20928,32 @@ module.exports = {
   check: check
 };
 
-},{"./_is-object":124,"./_an-object":121,"./_ctx":125,"./_object-gopd":126}],105:[function(require,module,exports) {
+},{"./_is-object":127,"./_an-object":116,"./_ctx":111,"./_object-gopd":128}],76:[function(require,module,exports) {
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
 var $export = require('./_export');
 $export($export.S, 'Object', { setPrototypeOf: require('./_set-proto').set });
 
-},{"./_export":106,"./_set-proto":109}],94:[function(require,module,exports) {
+},{"./_export":91,"./_set-proto":94}],65:[function(require,module,exports) {
 require('../../modules/es6.object.set-prototype-of');
 module.exports = require('../../modules/_core').Object.setPrototypeOf;
 
-},{"../../modules/es6.object.set-prototype-of":105,"../../modules/_core":103}],77:[function(require,module,exports) {
+},{"../../modules/es6.object.set-prototype-of":76,"../../modules/_core":72}],55:[function(require,module,exports) {
 module.exports = { "default": require("core-js/library/fn/object/set-prototype-of"), __esModule: true };
-},{"core-js/library/fn/object/set-prototype-of":94}],102:[function(require,module,exports) {
+},{"core-js/library/fn/object/set-prototype-of":65}],77:[function(require,module,exports) {
 var $export = require('./_export');
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 $export($export.S, 'Object', { create: require('./_object-create') });
 
-},{"./_export":106,"./_object-create":107}],92:[function(require,module,exports) {
+},{"./_export":91,"./_object-create":104}],63:[function(require,module,exports) {
 require('../../modules/es6.object.create');
 var $Object = require('../../modules/_core').Object;
 module.exports = function create(P, D) {
   return $Object.create(P, D);
 };
 
-},{"../../modules/es6.object.create":102,"../../modules/_core":103}],79:[function(require,module,exports) {
+},{"../../modules/es6.object.create":77,"../../modules/_core":72}],56:[function(require,module,exports) {
 module.exports = { "default": require("core-js/library/fn/object/create"), __esModule: true };
-},{"core-js/library/fn/object/create":92}],40:[function(require,module,exports) {
+},{"core-js/library/fn/object/create":63}],30:[function(require,module,exports) {
 "use strict";
 
 exports.__esModule = true;
@@ -20987,7 +20987,7 @@ exports.default = function (subClass, superClass) {
   });
   if (superClass) _setPrototypeOf2.default ? (0, _setPrototypeOf2.default)(subClass, superClass) : subClass.__proto__ = superClass;
 };
-},{"../core-js/object/set-prototype-of":77,"../core-js/object/create":79,"../helpers/typeof":75}],35:[function(require,module,exports) {
+},{"../core-js/object/set-prototype-of":55,"../core-js/object/create":56,"../helpers/typeof":53}],24:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21163,7 +21163,7 @@ var Sidebar = exports.Sidebar = function (_Component) {
 }(_react.Component);
 
 exports.default = Sidebar;
-},{"babel-runtime/helpers/classCallCheck":39,"babel-runtime/helpers/createClass":42,"babel-runtime/helpers/possibleConstructorReturn":41,"babel-runtime/helpers/inherits":40,"react":8}],112:[function(require,module,exports) {
+},{"babel-runtime/helpers/classCallCheck":29,"babel-runtime/helpers/createClass":31,"babel-runtime/helpers/possibleConstructorReturn":32,"babel-runtime/helpers/inherits":30,"react":8}],82:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -21197,7 +21197,7 @@ var Button = function Button(props) {
 };
 
 exports.default = Button;
-},{"react":8}],36:[function(require,module,exports) {
+},{"react":8}],25:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -21340,7 +21340,7 @@ var ToolsFlag = exports.ToolsFlag = function (_Component) {
 }(_react.Component);
 
 exports.default = ToolsFlag;
-},{"babel-runtime/helpers/classCallCheck":39,"babel-runtime/helpers/createClass":42,"babel-runtime/helpers/possibleConstructorReturn":41,"babel-runtime/helpers/inherits":40,"react":8,"../Button":112}],159:[function(require,module,exports) {
+},{"babel-runtime/helpers/classCallCheck":29,"babel-runtime/helpers/createClass":31,"babel-runtime/helpers/possibleConstructorReturn":32,"babel-runtime/helpers/inherits":30,"react":8,"../Button":82}],119:[function(require,module,exports) {
 var global = arguments[3];
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
@@ -22070,7 +22070,7 @@ var global = arguments[3];
   (function() { return this })() || Function("return this")()
 );
 
-},{}],115:[function(require,module,exports) {
+},{}],97:[function(require,module,exports) {
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -22107,10 +22107,10 @@ if (hadRuntime) {
   }
 }
 
-},{"./runtime":159}],113:[function(require,module,exports) {
+},{"./runtime":119}],83:[function(require,module,exports) {
 module.exports = require("regenerator-runtime");
 
-},{"regenerator-runtime":115}],171:[function(require,module,exports) {
+},{"regenerator-runtime":97}],147:[function(require,module,exports) {
 // getting tag from 19.1.3.6 Object.prototype.toString()
 var cof = require('./_cof');
 var TAG = require('./_wks')('toStringTag');
@@ -22135,14 +22135,14 @@ module.exports = function (it) {
     : (B = cof(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : B;
 };
 
-},{"./_cof":168,"./_wks":139}],172:[function(require,module,exports) {
+},{"./_cof":145,"./_wks":88}],148:[function(require,module,exports) {
 module.exports = function (it, Constructor, name, forbiddenField) {
   if (!(it instanceof Constructor) || (forbiddenField !== undefined && forbiddenField in it)) {
     throw TypeError(name + ': incorrect invocation!');
   } return it;
 };
 
-},{}],190:[function(require,module,exports) {
+},{}],161:[function(require,module,exports) {
 // call something on iterator step with safe closing on error
 var anObject = require('./_an-object');
 module.exports = function (iterator, fn, value, entries) {
@@ -22156,7 +22156,7 @@ module.exports = function (iterator, fn, value, entries) {
   }
 };
 
-},{"./_an-object":121}],191:[function(require,module,exports) {
+},{"./_an-object":116}],162:[function(require,module,exports) {
 // check on default Array iterator
 var Iterators = require('./_iterators');
 var ITERATOR = require('./_wks')('iterator');
@@ -22166,7 +22166,7 @@ module.exports = function (it) {
   return it !== undefined && (Iterators.Array === it || ArrayProto[ITERATOR] === it);
 };
 
-},{"./_iterators":154,"./_wks":139}],193:[function(require,module,exports) {
+},{"./_iterators":87,"./_wks":88}],164:[function(require,module,exports) {
 var classof = require('./_classof');
 var ITERATOR = require('./_wks')('iterator');
 var Iterators = require('./_iterators');
@@ -22176,7 +22176,7 @@ module.exports = require('./_core').getIteratorMethod = function (it) {
     || Iterators[classof(it)];
 };
 
-},{"./_classof":171,"./_wks":139,"./_iterators":154,"./_core":103}],173:[function(require,module,exports) {
+},{"./_classof":147,"./_wks":88,"./_iterators":87,"./_core":72}],149:[function(require,module,exports) {
 var ctx = require('./_ctx');
 var call = require('./_iter-call');
 var isArrayIter = require('./_is-array-iter');
@@ -22203,7 +22203,7 @@ var exports = module.exports = function (iterable, entries, fn, that, ITERATOR) 
 exports.BREAK = BREAK;
 exports.RETURN = RETURN;
 
-},{"./_ctx":125,"./_iter-call":190,"./_is-array-iter":191,"./_an-object":121,"./_to-length":192,"./core.get-iterator-method":193}],174:[function(require,module,exports) {
+},{"./_ctx":111,"./_iter-call":161,"./_is-array-iter":162,"./_an-object":116,"./_to-length":163,"./core.get-iterator-method":164}],150:[function(require,module,exports) {
 // 7.3.20 SpeciesConstructor(O, defaultConstructor)
 var anObject = require('./_an-object');
 var aFunction = require('./_a-function');
@@ -22214,7 +22214,7 @@ module.exports = function (O, D) {
   return C === undefined || (S = anObject(C)[SPECIES]) == undefined ? D : aFunction(S);
 };
 
-},{"./_an-object":121,"./_a-function":152,"./_wks":139}],195:[function(require,module,exports) {
+},{"./_an-object":116,"./_a-function":144,"./_wks":88}],166:[function(require,module,exports) {
 // fast apply, http://jsperf.lnkit.com/fast-apply/5
 module.exports = function (fn, args, that) {
   var un = that === undefined;
@@ -22232,7 +22232,7 @@ module.exports = function (fn, args, that) {
   } return fn.apply(that, args);
 };
 
-},{}],175:[function(require,module,exports) {
+},{}],151:[function(require,module,exports) {
 
 
 var ctx = require('./_ctx');
@@ -22320,7 +22320,7 @@ module.exports = {
   clear: clearTask
 };
 
-},{"./_ctx":125,"./_invoke":195,"./_html":158,"./_dom-create":151,"./_global":132,"./_cof":168}],176:[function(require,module,exports) {
+},{"./_ctx":111,"./_invoke":166,"./_html":124,"./_dom-create":123,"./_global":85,"./_cof":145}],152:[function(require,module,exports) {
 
 
 var global = require('./_global');
@@ -22393,7 +22393,7 @@ module.exports = function () {
   };
 };
 
-},{"./_global":132,"./_task":175,"./_cof":168}],177:[function(require,module,exports) {
+},{"./_global":85,"./_task":151,"./_cof":145}],160:[function(require,module,exports) {
 'use strict';
 // 25.4.1.5 NewPromiseCapability(C)
 var aFunction = require('./_a-function');
@@ -22413,7 +22413,7 @@ module.exports.f = function (C) {
   return new PromiseCapability(C);
 };
 
-},{"./_a-function":152}],178:[function(require,module,exports) {
+},{"./_a-function":144}],153:[function(require,module,exports) {
 module.exports = function (exec) {
   try {
     return { e: false, v: exec() };
@@ -22422,14 +22422,14 @@ module.exports = function (exec) {
   }
 };
 
-},{}],179:[function(require,module,exports) {
+},{}],154:[function(require,module,exports) {
 
 var global = require('./_global');
 var navigator = global.navigator;
 
 module.exports = navigator && navigator.userAgent || '';
 
-},{"./_global":132}],180:[function(require,module,exports) {
+},{"./_global":85}],157:[function(require,module,exports) {
 var anObject = require('./_an-object');
 var isObject = require('./_is-object');
 var newPromiseCapability = require('./_new-promise-capability');
@@ -22443,7 +22443,7 @@ module.exports = function (C, x) {
   return promiseCapability.promise;
 };
 
-},{"./_an-object":121,"./_is-object":124,"./_new-promise-capability":177}],181:[function(require,module,exports) {
+},{"./_an-object":116,"./_is-object":127,"./_new-promise-capability":160}],155:[function(require,module,exports) {
 var hide = require('./_hide');
 module.exports = function (target, src, safe) {
   for (var key in src) {
@@ -22452,7 +22452,7 @@ module.exports = function (target, src, safe) {
   } return target;
 };
 
-},{"./_hide":150}],182:[function(require,module,exports) {
+},{"./_hide":86}],156:[function(require,module,exports) {
 
 'use strict';
 var global = require('./_global');
@@ -22469,7 +22469,7 @@ module.exports = function (KEY) {
   });
 };
 
-},{"./_global":132,"./_core":103,"./_object-dp":111,"./_descriptors":110,"./_wks":139}],183:[function(require,module,exports) {
+},{"./_global":85,"./_core":72,"./_object-dp":93,"./_descriptors":92,"./_wks":88}],158:[function(require,module,exports) {
 var ITERATOR = require('./_wks')('iterator');
 var SAFE_CLOSING = false;
 
@@ -22493,7 +22493,7 @@ module.exports = function (exec, skipClosing) {
   return safe;
 };
 
-},{"./_wks":139}],162:[function(require,module,exports) {
+},{"./_wks":88}],141:[function(require,module,exports) {
 
 
 'use strict';
@@ -22783,7 +22783,7 @@ $export($export.S + $export.F * !(USE_NATIVE && require('./_iter-detect')(functi
   }
 });
 
-},{"./_library":149,"./_global":132,"./_ctx":125,"./_classof":171,"./_export":106,"./_is-object":124,"./_a-function":152,"./_an-instance":172,"./_for-of":173,"./_species-constructor":174,"./_task":175,"./_microtask":176,"./_new-promise-capability":177,"./_perform":178,"./_user-agent":179,"./_promise-resolve":180,"./_wks":139,"./_redefine-all":181,"./_set-to-string-tag":137,"./_set-species":182,"./_core":103,"./_iter-detect":183}],163:[function(require,module,exports) {
+},{"./_library":125,"./_global":85,"./_ctx":111,"./_classof":147,"./_export":91,"./_is-object":127,"./_a-function":144,"./_an-instance":148,"./_for-of":149,"./_species-constructor":150,"./_task":151,"./_microtask":152,"./_new-promise-capability":160,"./_perform":153,"./_user-agent":154,"./_promise-resolve":157,"./_wks":88,"./_redefine-all":155,"./_set-to-string-tag":131,"./_set-species":156,"./_core":72,"./_iter-detect":158}],142:[function(require,module,exports) {
 
 // https://github.com/tc39/proposal-promise-finally
 'use strict';
@@ -22806,7 +22806,7 @@ $export($export.P + $export.R, 'Promise', { 'finally': function (onFinally) {
   );
 } });
 
-},{"./_export":106,"./_core":103,"./_global":132,"./_species-constructor":174,"./_promise-resolve":180}],164:[function(require,module,exports) {
+},{"./_export":91,"./_core":72,"./_global":85,"./_species-constructor":150,"./_promise-resolve":157}],143:[function(require,module,exports) {
 'use strict';
 // https://github.com/tc39/proposal-promise-try
 var $export = require('./_export');
@@ -22820,7 +22820,7 @@ $export($export.S, 'Promise', { 'try': function (callbackfn) {
   return promiseCapability.promise;
 } });
 
-},{"./_export":106,"./_new-promise-capability":177,"./_perform":178}],130:[function(require,module,exports) {
+},{"./_export":91,"./_new-promise-capability":160,"./_perform":153}],109:[function(require,module,exports) {
 require('../modules/es6.object.to-string');
 require('../modules/es6.string.iterator');
 require('../modules/web.dom.iterable');
@@ -22829,9 +22829,9 @@ require('../modules/es7.promise.finally');
 require('../modules/es7.promise.try');
 module.exports = require('../modules/_core').Promise;
 
-},{"../modules/es6.object.to-string":118,"../modules/es6.string.iterator":127,"../modules/web.dom.iterable":129,"../modules/es6.promise":162,"../modules/es7.promise.finally":163,"../modules/es7.promise.try":164,"../modules/_core":103}],120:[function(require,module,exports) {
+},{"../modules/es6.object.to-string":106,"../modules/es6.string.iterator":78,"../modules/web.dom.iterable":79,"../modules/es6.promise":141,"../modules/es7.promise.finally":142,"../modules/es7.promise.try":143,"../modules/_core":72}],90:[function(require,module,exports) {
 module.exports = { "default": require("core-js/library/fn/promise"), __esModule: true };
-},{"core-js/library/fn/promise":130}],100:[function(require,module,exports) {
+},{"core-js/library/fn/promise":109}],74:[function(require,module,exports) {
 "use strict";
 
 exports.__esModule = true;
@@ -22870,7 +22870,7 @@ exports.default = function (fn) {
     });
   };
 };
-},{"../core-js/promise":120}],97:[function(require,module,exports) {
+},{"../core-js/promise":90}],68:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -22954,7 +22954,7 @@ var VideoListItem = exports.VideoListItem = function (_Component) {
 }(_react.Component);
 
 exports.default = VideoListItem;
-},{"babel-runtime/helpers/classCallCheck":39,"babel-runtime/helpers/createClass":42,"babel-runtime/helpers/possibleConstructorReturn":41,"babel-runtime/helpers/inherits":40,"react":8}],95:[function(require,module,exports) {
+},{"babel-runtime/helpers/classCallCheck":29,"babel-runtime/helpers/createClass":31,"babel-runtime/helpers/possibleConstructorReturn":32,"babel-runtime/helpers/inherits":30,"react":8}],69:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22981,7 +22981,7 @@ var Popup = function Popup(props) {
 };
 
 exports.default = Popup;
-},{"react":8}],34:[function(require,module,exports) {
+},{"react":8}],22:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23030,3800 +23030,111 @@ var Video = exports.Video = function () {
 }();
 
 exports.default = Video;
-},{"babel-runtime/helpers/classCallCheck":39,"babel-runtime/helpers/createClass":42}],83:[function(require,module,exports) {
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
+},{"babel-runtime/helpers/classCallCheck":29,"babel-runtime/helpers/createClass":31}],75:[function(require,module,exports) {
+"use strict";
 
-'use strict';
+exports.__esModule = true;
 
-var assign = require('object-assign');
+var _defineProperty = require("../core-js/object/define-property");
 
-var ReactPropTypesSecret = require('./lib/ReactPropTypesSecret');
-var checkPropTypes = require('./checkPropTypes');
+var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
-var printWarning = function () {};
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-if ('development' !== 'production') {
-  printWarning = function (text) {
-    var message = 'Warning: ' + text;
-    if (typeof console !== 'undefined') {
-      console.error(message);
-    }
-    try {
-      // --- Welcome to debugging React ---
-      // This error was thrown as a convenience so that you can use this stack
-      // to find the callsite that caused this warning to fire.
-      throw new Error(message);
-    } catch (x) {}
-  };
-}
-
-function emptyFunctionThatReturnsNull() {
-  return null;
-}
-
-module.exports = function (isValidElement, throwOnDirectAccess) {
-  /* global Symbol */
-  var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
-  var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
-
-  /**
-   * Returns the iterator method function contained on the iterable object.
-   *
-   * Be sure to invoke the function with the iterable as context:
-   *
-   *     var iteratorFn = getIteratorFn(myIterable);
-   *     if (iteratorFn) {
-   *       var iterator = iteratorFn.call(myIterable);
-   *       ...
-   *     }
-   *
-   * @param {?object} maybeIterable
-   * @return {?function}
-   */
-  function getIteratorFn(maybeIterable) {
-    var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
-    if (typeof iteratorFn === 'function') {
-      return iteratorFn;
-    }
-  }
-
-  /**
-   * Collection of methods that allow declaration and validation of props that are
-   * supplied to React components. Example usage:
-   *
-   *   var Props = require('ReactPropTypes');
-   *   var MyArticle = React.createClass({
-   *     propTypes: {
-   *       // An optional string prop named "description".
-   *       description: Props.string,
-   *
-   *       // A required enum prop named "category".
-   *       category: Props.oneOf(['News','Photos']).isRequired,
-   *
-   *       // A prop named "dialog" that requires an instance of Dialog.
-   *       dialog: Props.instanceOf(Dialog).isRequired
-   *     },
-   *     render: function() { ... }
-   *   });
-   *
-   * A more formal specification of how these methods are used:
-   *
-   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
-   *   decl := ReactPropTypes.{type}(.isRequired)?
-   *
-   * Each and every declaration produces a function with the same signature. This
-   * allows the creation of custom validation functions. For example:
-   *
-   *  var MyLink = React.createClass({
-   *    propTypes: {
-   *      // An optional string or URI prop named "href".
-   *      href: function(props, propName, componentName) {
-   *        var propValue = props[propName];
-   *        if (propValue != null && typeof propValue !== 'string' &&
-   *            !(propValue instanceof URI)) {
-   *          return new Error(
-   *            'Expected a string or an URI for ' + propName + ' in ' +
-   *            componentName
-   *          );
-   *        }
-   *      }
-   *    },
-   *    render: function() {...}
-   *  });
-   *
-   * @internal
-   */
-
-  var ANONYMOUS = '<<anonymous>>';
-
-  // Important!
-  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
-  var ReactPropTypes = {
-    array: createPrimitiveTypeChecker('array'),
-    bool: createPrimitiveTypeChecker('boolean'),
-    func: createPrimitiveTypeChecker('function'),
-    number: createPrimitiveTypeChecker('number'),
-    object: createPrimitiveTypeChecker('object'),
-    string: createPrimitiveTypeChecker('string'),
-    symbol: createPrimitiveTypeChecker('symbol'),
-
-    any: createAnyTypeChecker(),
-    arrayOf: createArrayOfTypeChecker,
-    element: createElementTypeChecker(),
-    instanceOf: createInstanceTypeChecker,
-    node: createNodeChecker(),
-    objectOf: createObjectOfTypeChecker,
-    oneOf: createEnumTypeChecker,
-    oneOfType: createUnionTypeChecker,
-    shape: createShapeTypeChecker,
-    exact: createStrictShapeTypeChecker
-  };
-
-  /**
-   * inlined Object.is polyfill to avoid requiring consumers ship their own
-   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
-   */
-  /*eslint-disable no-self-compare*/
-  function is(x, y) {
-    // SameValue algorithm
-    if (x === y) {
-      // Steps 1-5, 7-10
-      // Steps 6.b-6.e: +0 != -0
-      return x !== 0 || 1 / x === 1 / y;
-    } else {
-      // Step 6.a: NaN == NaN
-      return x !== x && y !== y;
-    }
-  }
-  /*eslint-enable no-self-compare*/
-
-  /**
-   * We use an Error-like object for backward compatibility as people may call
-   * PropTypes directly and inspect their output. However, we don't use real
-   * Errors anymore. We don't inspect their stack anyway, and creating them
-   * is prohibitively expensive if they are created too often, such as what
-   * happens in oneOfType() for any type before the one that matched.
-   */
-  function PropTypeError(message) {
-    this.message = message;
-    this.stack = '';
-  }
-  // Make `instanceof Error` still work for returned errors.
-  PropTypeError.prototype = Error.prototype;
-
-  function createChainableTypeChecker(validate) {
-    if ('development' !== 'production') {
-      var manualPropTypeCallCache = {};
-      var manualPropTypeWarningCount = 0;
-    }
-    function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
-      componentName = componentName || ANONYMOUS;
-      propFullName = propFullName || propName;
-
-      if (secret !== ReactPropTypesSecret) {
-        if (throwOnDirectAccess) {
-          // New behavior only for users of `prop-types` package
-          var err = new Error('Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use `PropTypes.checkPropTypes()` to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
-          err.name = 'Invariant Violation';
-          throw err;
-        } else if ('development' !== 'production' && typeof console !== 'undefined') {
-          // Old behavior for people using React.PropTypes
-          var cacheKey = componentName + ':' + propName;
-          if (!manualPropTypeCallCache[cacheKey] &&
-          // Avoid spamming the console because they are often not actionable except for lib authors
-          manualPropTypeWarningCount < 3) {
-            printWarning('You are manually calling a React.PropTypes validation ' + 'function for the `' + propFullName + '` prop on `' + componentName + '`. This is deprecated ' + 'and will throw in the standalone `prop-types` package. ' + 'You may be seeing this warning due to a third-party PropTypes ' + 'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.');
-            manualPropTypeCallCache[cacheKey] = true;
-            manualPropTypeWarningCount++;
-          }
-        }
-      }
-      if (props[propName] == null) {
-        if (isRequired) {
-          if (props[propName] === null) {
-            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
-          }
-          return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
-        }
-        return null;
-      } else {
-        return validate(props, propName, componentName, location, propFullName);
-      }
-    }
-
-    var chainedCheckType = checkType.bind(null, false);
-    chainedCheckType.isRequired = checkType.bind(null, true);
-
-    return chainedCheckType;
-  }
-
-  function createPrimitiveTypeChecker(expectedType) {
-    function validate(props, propName, componentName, location, propFullName, secret) {
-      var propValue = props[propName];
-      var propType = getPropType(propValue);
-      if (propType !== expectedType) {
-        // `propValue` being instance of, say, date/regexp, pass the 'object'
-        // check, but we can offer a more precise error message here rather than
-        // 'of type `object`'.
-        var preciseType = getPreciseType(propValue);
-
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createAnyTypeChecker() {
-    return createChainableTypeChecker(emptyFunctionThatReturnsNull);
-  }
-
-  function createArrayOfTypeChecker(typeChecker) {
-    function validate(props, propName, componentName, location, propFullName) {
-      if (typeof typeChecker !== 'function') {
-        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
-      }
-      var propValue = props[propName];
-      if (!Array.isArray(propValue)) {
-        var propType = getPropType(propValue);
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
-      }
-      for (var i = 0; i < propValue.length; i++) {
-        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
-        if (error instanceof Error) {
-          return error;
-        }
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createElementTypeChecker() {
-    function validate(props, propName, componentName, location, propFullName) {
-      var propValue = props[propName];
-      if (!isValidElement(propValue)) {
-        var propType = getPropType(propValue);
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createInstanceTypeChecker(expectedClass) {
-    function validate(props, propName, componentName, location, propFullName) {
-      if (!(props[propName] instanceof expectedClass)) {
-        var expectedClassName = expectedClass.name || ANONYMOUS;
-        var actualClassName = getClassName(props[propName]);
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createEnumTypeChecker(expectedValues) {
-    if (!Array.isArray(expectedValues)) {
-      'development' !== 'production' ? printWarning('Invalid argument supplied to oneOf, expected an instance of array.') : void 0;
-      return emptyFunctionThatReturnsNull;
-    }
-
-    function validate(props, propName, componentName, location, propFullName) {
-      var propValue = props[propName];
-      for (var i = 0; i < expectedValues.length; i++) {
-        if (is(propValue, expectedValues[i])) {
-          return null;
-        }
-      }
-
-      var valuesString = JSON.stringify(expectedValues);
-      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + propValue + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createObjectOfTypeChecker(typeChecker) {
-    function validate(props, propName, componentName, location, propFullName) {
-      if (typeof typeChecker !== 'function') {
-        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
-      }
-      var propValue = props[propName];
-      var propType = getPropType(propValue);
-      if (propType !== 'object') {
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
-      }
-      for (var key in propValue) {
-        if (propValue.hasOwnProperty(key)) {
-          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
-          if (error instanceof Error) {
-            return error;
-          }
-        }
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createUnionTypeChecker(arrayOfTypeCheckers) {
-    if (!Array.isArray(arrayOfTypeCheckers)) {
-      'development' !== 'production' ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
-      return emptyFunctionThatReturnsNull;
-    }
-
-    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
-      var checker = arrayOfTypeCheckers[i];
-      if (typeof checker !== 'function') {
-        printWarning('Invalid argument supplied to oneOfType. Expected an array of check functions, but ' + 'received ' + getPostfixForTypeWarning(checker) + ' at index ' + i + '.');
-        return emptyFunctionThatReturnsNull;
-      }
-    }
-
-    function validate(props, propName, componentName, location, propFullName) {
-      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
-        var checker = arrayOfTypeCheckers[i];
-        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) {
-          return null;
-        }
-      }
-
-      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`.'));
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createNodeChecker() {
-    function validate(props, propName, componentName, location, propFullName) {
-      if (!isNode(props[propName])) {
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createShapeTypeChecker(shapeTypes) {
-    function validate(props, propName, componentName, location, propFullName) {
-      var propValue = props[propName];
-      var propType = getPropType(propValue);
-      if (propType !== 'object') {
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
-      }
-      for (var key in shapeTypes) {
-        var checker = shapeTypes[key];
-        if (!checker) {
-          continue;
-        }
-        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
-        if (error) {
-          return error;
-        }
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createStrictShapeTypeChecker(shapeTypes) {
-    function validate(props, propName, componentName, location, propFullName) {
-      var propValue = props[propName];
-      var propType = getPropType(propValue);
-      if (propType !== 'object') {
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
-      }
-      // We need to check all keys in case some are required but missing from
-      // props.
-      var allKeys = assign({}, props[propName], shapeTypes);
-      for (var key in allKeys) {
-        var checker = shapeTypes[key];
-        if (!checker) {
-          return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' + '\nBad object: ' + JSON.stringify(props[propName], null, '  ') + '\nValid keys: ' + JSON.stringify(Object.keys(shapeTypes), null, '  '));
-        }
-        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
-        if (error) {
-          return error;
-        }
-      }
-      return null;
-    }
-
-    return createChainableTypeChecker(validate);
-  }
-
-  function isNode(propValue) {
-    switch (typeof propValue) {
-      case 'number':
-      case 'string':
-      case 'undefined':
-        return true;
-      case 'boolean':
-        return !propValue;
-      case 'object':
-        if (Array.isArray(propValue)) {
-          return propValue.every(isNode);
-        }
-        if (propValue === null || isValidElement(propValue)) {
-          return true;
-        }
-
-        var iteratorFn = getIteratorFn(propValue);
-        if (iteratorFn) {
-          var iterator = iteratorFn.call(propValue);
-          var step;
-          if (iteratorFn !== propValue.entries) {
-            while (!(step = iterator.next()).done) {
-              if (!isNode(step.value)) {
-                return false;
-              }
-            }
-          } else {
-            // Iterator will provide entry [k,v] tuples rather than values.
-            while (!(step = iterator.next()).done) {
-              var entry = step.value;
-              if (entry) {
-                if (!isNode(entry[1])) {
-                  return false;
-                }
-              }
-            }
-          }
-        } else {
-          return false;
-        }
-
-        return true;
-      default:
-        return false;
-    }
-  }
-
-  function isSymbol(propType, propValue) {
-    // Native Symbol.
-    if (propType === 'symbol') {
-      return true;
-    }
-
-    // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
-    if (propValue['@@toStringTag'] === 'Symbol') {
-      return true;
-    }
-
-    // Fallback for non-spec compliant Symbols which are polyfilled.
-    if (typeof Symbol === 'function' && propValue instanceof Symbol) {
-      return true;
-    }
-
-    return false;
-  }
-
-  // Equivalent of `typeof` but with special handling for array and regexp.
-  function getPropType(propValue) {
-    var propType = typeof propValue;
-    if (Array.isArray(propValue)) {
-      return 'array';
-    }
-    if (propValue instanceof RegExp) {
-      // Old webkits (at least until Android 4.0) return 'function' rather than
-      // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
-      // passes PropTypes.object.
-      return 'object';
-    }
-    if (isSymbol(propType, propValue)) {
-      return 'symbol';
-    }
-    return propType;
-  }
-
-  // This handles more types than `getPropType`. Only used for error messages.
-  // See `createPrimitiveTypeChecker`.
-  function getPreciseType(propValue) {
-    if (typeof propValue === 'undefined' || propValue === null) {
-      return '' + propValue;
-    }
-    var propType = getPropType(propValue);
-    if (propType === 'object') {
-      if (propValue instanceof Date) {
-        return 'date';
-      } else if (propValue instanceof RegExp) {
-        return 'regexp';
-      }
-    }
-    return propType;
-  }
-
-  // Returns a string that is postfixed to a warning about an invalid type.
-  // For example, "undefined" or "of type array"
-  function getPostfixForTypeWarning(value) {
-    var type = getPreciseType(value);
-    switch (type) {
-      case 'array':
-      case 'object':
-        return 'an ' + type;
-      case 'boolean':
-      case 'date':
-      case 'regexp':
-        return 'a ' + type;
-      default:
-        return type;
-    }
-  }
-
-  // Returns class name of the object, if any.
-  function getClassName(propValue) {
-    if (!propValue.constructor || !propValue.constructor.name) {
-      return ANONYMOUS;
-    }
-    return propValue.constructor.name;
-  }
-
-  ReactPropTypes.checkPropTypes = checkPropTypes;
-  ReactPropTypes.PropTypes = ReactPropTypes;
-
-  return ReactPropTypes;
-};
-},{"object-assign":55,"./lib/ReactPropTypesSecret":78,"./checkPropTypes":60}],67:[function(require,module,exports) {
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-if ('development' !== 'production') {
-  var REACT_ELEMENT_TYPE = typeof Symbol === 'function' && Symbol.for && Symbol.for('react.element') || 0xeac7;
-
-  var isValidElement = function (object) {
-    return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
-  };
-
-  // By explicitly using `prop-types` you are opting into new development behavior.
-  // http://fb.me/prop-types-in-prod
-  var throwOnDirectAccess = true;
-  module.exports = require('./factoryWithTypeCheckers')(isValidElement, throwOnDirectAccess);
-} else {
-  // By explicitly using `prop-types` you are opting into new production behavior.
-  // http://fb.me/prop-types-in-prod
-  module.exports = require('./factoryWithThrowingShims')();
-}
-},{"./factoryWithTypeCheckers":83}],23:[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.DEPRECATED_CONFIG_PROPS = exports.defaultProps = exports.propTypes = undefined;
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-var string = _propTypes2['default'].string,
-    bool = _propTypes2['default'].bool,
-    number = _propTypes2['default'].number,
-    array = _propTypes2['default'].array,
-    oneOfType = _propTypes2['default'].oneOfType,
-    shape = _propTypes2['default'].shape,
-    object = _propTypes2['default'].object,
-    func = _propTypes2['default'].func;
-var propTypes = exports.propTypes = {
-  url: oneOfType([string, array, object]),
-  playing: bool,
-  loop: bool,
-  controls: bool,
-  volume: number,
-  muted: bool,
-  playbackRate: number,
-  width: oneOfType([string, number]),
-  height: oneOfType([string, number]),
-  style: object,
-  progressInterval: number,
-  playsinline: bool,
-  wrapper: oneOfType([string, func]),
-  config: shape({
-    soundcloud: shape({
-      options: object
-    }),
-    youtube: shape({
-      playerVars: object,
-      preload: bool
-    }),
-    facebook: shape({
-      appId: string
-    }),
-    dailymotion: shape({
-      params: object,
-      preload: bool
-    }),
-    vimeo: shape({
-      playerOptions: object,
-      preload: bool
-    }),
-    file: shape({
-      attributes: object,
-      tracks: array,
-      forceVideo: bool,
-      forceAudio: bool,
-      forceHLS: bool,
-      forceDASH: bool,
-      hlsOptions: object
-    }),
-    wistia: shape({
-      options: object
-    }),
-    mixcloud: shape({
-      options: object
-    }),
-    twitch: shape({
-      options: object
-    })
-  }),
-  onReady: func,
-  onStart: func,
-  onPlay: func,
-  onPause: func,
-  onBuffer: func,
-  onEnded: func,
-  onError: func,
-  onDuration: func,
-  onSeek: func,
-  onProgress: func
-};
-
-var defaultProps = exports.defaultProps = {
-  playing: false,
-  loop: false,
-  controls: false,
-  volume: null,
-  muted: false,
-  playbackRate: 1,
-  width: '640px',
-  height: '360px',
-  style: {},
-  progressInterval: 1000,
-  playsinline: false,
-  wrapper: 'div',
-  config: {
-    soundcloud: {
-      options: {
-        visual: true, // Undocumented, but makes player fill container and look better
-        buying: false,
-        liking: false,
-        download: false,
-        sharing: false,
-        show_comments: false,
-        show_playcount: false
-      }
-    },
-    youtube: {
-      playerVars: {
-        playsinline: 1,
-        showinfo: 0,
-        rel: 0,
-        iv_load_policy: 3,
-        modestbranding: 1
-      },
-      preload: false
-    },
-    facebook: {
-      appId: '1309697205772819'
-    },
-    dailymotion: {
-      params: {
-        api: 1,
-        'endscreen-enable': false
-      },
-      preload: false
-    },
-    vimeo: {
-      playerOptions: {
-        autopause: false,
-        byline: false,
-        portrait: false,
-        title: false
-      },
-      preload: false
-    },
-    file: {
-      attributes: {},
-      tracks: [],
-      forceVideo: false,
-      forceAudio: false,
-      forceHLS: false,
-      forceDASH: false,
-      hlsOptions: {}
-    },
-    wistia: {
-      options: {}
-    },
-    mixcloud: {
-      options: {
-        hide_cover: 1
-      }
-    },
-    twitch: {
-      options: {}
-    }
-  },
-  onReady: function onReady() {},
-  onStart: function onStart() {},
-  onPlay: function onPlay() {},
-  onPause: function onPause() {},
-  onBuffer: function onBuffer() {},
-  onEnded: function onEnded() {},
-  onError: function onError() {},
-  onDuration: function onDuration() {},
-  onSeek: function onSeek() {},
-  onProgress: function onProgress() {}
-};
-
-var DEPRECATED_CONFIG_PROPS = exports.DEPRECATED_CONFIG_PROPS = ['soundcloudConfig', 'youtubeConfig', 'facebookConfig', 'dailymotionConfig', 'vimeoConfig', 'fileConfig', 'wistiaConfig'];
-},{"prop-types":67}],73:[function(require,module,exports) {
-
-module.exports = function load (src, opts, cb) {
-  var head = document.head || document.getElementsByTagName('head')[0]
-  var script = document.createElement('script')
-
-  if (typeof opts === 'function') {
-    cb = opts
-    opts = {}
-  }
-
-  opts = opts || {}
-  cb = cb || function() {}
-
-  script.type = opts.type || 'text/javascript'
-  script.charset = opts.charset || 'utf8';
-  script.async = 'async' in opts ? !!opts.async : true
-  script.src = src
-
-  if (opts.attrs) {
-    setAttributes(script, opts.attrs)
-  }
-
-  if (opts.text) {
-    script.text = '' + opts.text
-  }
-
-  var onend = 'onload' in script ? stdOnEnd : ieOnEnd
-  onend(script, cb)
-
-  // some good legacy browsers (firefox) fail the 'in' detection above
-  // so as a fallback we always set onload
-  // old IE will ignore this and new IE will set onload
-  if (!script.onload) {
-    stdOnEnd(script, cb);
-  }
-
-  head.appendChild(script)
-}
-
-function setAttributes(script, attrs) {
-  for (var attr in attrs) {
-    script.setAttribute(attr, attrs[attr]);
-  }
-}
-
-function stdOnEnd (script, cb) {
-  script.onload = function () {
-    this.onerror = this.onload = null
-    cb(null, script)
-  }
-  script.onerror = function () {
-    // this.onload = null here is necessary
-    // because even IE9 works not like others
-    this.onerror = this.onload = null
-    cb(new Error('Failed to load ' + this.src), script)
-  }
-}
-
-function ieOnEnd (script, cb) {
-  script.onreadystatechange = function () {
-    if (this.readyState != 'complete' && this.readyState != 'loaded') return
-    this.onreadystatechange = null
-    cb(null, script) // there is no way to catch loading errors in IE8
-  }
-}
-
-},{}],72:[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-var isMergeableObject = function isMergeableObject(value) {
-	return isNonNullObject(value) && !isSpecial(value);
-};
-
-function isNonNullObject(value) {
-	return !!value && typeof value === 'object';
-}
-
-function isSpecial(value) {
-	var stringValue = Object.prototype.toString.call(value);
-
-	return stringValue === '[object RegExp]' || stringValue === '[object Date]' || isReactElement(value);
-}
-
-// see https://github.com/facebook/react/blob/b5ac963fb791d1298e7f396236383bc955f916c1/src/isomorphic/classic/element/ReactElement.js#L21-L25
-var canUseSymbol = typeof Symbol === 'function' && Symbol.for;
-var REACT_ELEMENT_TYPE = canUseSymbol ? Symbol.for('react.element') : 0xeac7;
-
-function isReactElement(value) {
-	return value.$$typeof === REACT_ELEMENT_TYPE;
-}
-
-function emptyTarget(val) {
-	return Array.isArray(val) ? [] : {};
-}
-
-function cloneUnlessOtherwiseSpecified(value, options) {
-	return options.clone !== false && options.isMergeableObject(value) ? deepmerge(emptyTarget(value), value, options) : value;
-}
-
-function defaultArrayMerge(target, source, options) {
-	return target.concat(source).map(function (element) {
-		return cloneUnlessOtherwiseSpecified(element, options);
-	});
-}
-
-function mergeObject(target, source, options) {
-	var destination = {};
-	if (options.isMergeableObject(target)) {
-		Object.keys(target).forEach(function (key) {
-			destination[key] = cloneUnlessOtherwiseSpecified(target[key], options);
-		});
-	}
-	Object.keys(source).forEach(function (key) {
-		if (!options.isMergeableObject(source[key]) || !target[key]) {
-			destination[key] = cloneUnlessOtherwiseSpecified(source[key], options);
-		} else {
-			destination[key] = deepmerge(target[key], source[key], options);
-		}
-	});
-	return destination;
-}
-
-function deepmerge(target, source, options) {
-	options = options || {};
-	options.arrayMerge = options.arrayMerge || defaultArrayMerge;
-	options.isMergeableObject = options.isMergeableObject || isMergeableObject;
-
-	var sourceIsArray = Array.isArray(source);
-	var targetIsArray = Array.isArray(target);
-	var sourceAndTargetTypesMatch = sourceIsArray === targetIsArray;
-
-	if (!sourceAndTargetTypesMatch) {
-		return cloneUnlessOtherwiseSpecified(source, options);
-	} else if (sourceIsArray) {
-		return options.arrayMerge(target, source, options);
-	} else {
-		return mergeObject(target, source, options);
-	}
-}
-
-deepmerge.all = function deepmergeAll(array, options) {
-	if (!Array.isArray(array)) {
-		throw new Error('first argument should be an array');
-	}
-
-	return array.reduce(function (prev, next) {
-		return deepmerge(prev, next, options);
-	}, {});
-};
-
-var deepmerge_1 = deepmerge;
-
-exports.default = deepmerge_1;
-},{}],24:[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-exports.parseStartTime = parseStartTime;
-exports.parseEndTime = parseEndTime;
-exports.randomString = randomString;
-exports.queryString = queryString;
-exports.getSDK = getSDK;
-exports.getConfig = getConfig;
-exports.omit = omit;
-exports.callPlayer = callPlayer;
-exports.isObject = isObject;
-exports.isEqual = isEqual;
-exports.isMediaStream = isMediaStream;
-
-var _loadScript = require('load-script');
-
-var _loadScript2 = _interopRequireDefault(_loadScript);
-
-var _deepmerge = require('deepmerge');
-
-var _deepmerge2 = _interopRequireDefault(_deepmerge);
-
-var _props = require('./props');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var MATCH_START_QUERY = /[?&#](?:start|t)=([0-9hms]+)/;
-var MATCH_END_QUERY = /[?&#]end=([0-9hms]+)/;
-var MATCH_START_STAMP = /(\d+)(h|m|s)/g;
-var MATCH_NUMERIC = /^\d+$/;
-
-// Parse YouTube URL for a start time param, ie ?t=1h14m30s
-// and return the start time in seconds
-function parseTimeParam(url, pattern) {
-  var match = url.match(pattern);
-  if (match) {
-    var stamp = match[1];
-    if (stamp.match(MATCH_START_STAMP)) {
-      return parseTimeString(stamp);
-    }
-    if (MATCH_NUMERIC.test(stamp)) {
-      return parseInt(stamp);
-    }
-  }
-  return undefined;
-}
-
-function parseTimeString(stamp) {
-  var seconds = 0;
-  var array = MATCH_START_STAMP.exec(stamp);
-  while (array !== null) {
-    var _array = array,
-        _array2 = _slicedToArray(_array, 3),
-        count = _array2[1],
-        period = _array2[2];
-
-    if (period === 'h') seconds += parseInt(count, 10) * 60 * 60;
-    if (period === 'm') seconds += parseInt(count, 10) * 60;
-    if (period === 's') seconds += parseInt(count, 10);
-    array = MATCH_START_STAMP.exec(stamp);
-  }
-  return seconds;
-}
-
-function parseStartTime(url) {
-  return parseTimeParam(url, MATCH_START_QUERY);
-}
-
-function parseEndTime(url) {
-  return parseTimeParam(url, MATCH_END_QUERY);
-}
-
-// http://stackoverflow.com/a/38622545
-function randomString() {
-  return Math.random().toString(36).substr(2, 5);
-}
-
-function queryString(object) {
-  return Object.keys(object).map(function (key) {
-    return key + '=' + object[key];
-  }).join('&');
-}
-
-// Util function to load an external SDK
-// or return the SDK if it is already loaded
-var resolves = {};
-function getSDK(url, sdkGlobal) {
-  var sdkReady = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-  var isLoaded = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : function () {
-    return true;
-  };
-  var fetchScript = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : _loadScript2['default'];
-
-  if (window[sdkGlobal] && isLoaded(window[sdkGlobal])) {
-    return Promise.resolve(window[sdkGlobal]);
-  }
-  return new Promise(function (resolve, reject) {
-    // If we are already loading the SDK, add the resolve
-    // function to the existing array of resolve functions
-    if (resolves[url]) {
-      resolves[url].push(resolve);
-      return;
-    }
-    resolves[url] = [resolve];
-    var onLoaded = function onLoaded(sdk) {
-      // When loaded, resolve all pending promises
-      resolves[url].forEach(function (resolve) {
-        return resolve(sdk);
-      });
-    };
-    if (sdkReady) {
-      var previousOnReady = window[sdkReady];
-      window[sdkReady] = function () {
-        if (previousOnReady) previousOnReady();
-        onLoaded(window[sdkGlobal]);
-      };
-    }
-    fetchScript(url, function (err) {
-      if (err) reject(err);
-      if (!sdkReady) {
-        onLoaded(window[sdkGlobal]);
-      }
+exports.default = function (obj, key, value) {
+  if (key in obj) {
+    (0, _defineProperty2.default)(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
     });
-  });
-}
-
-function getConfig(props, defaultProps, showWarning) {
-  var config = (0, _deepmerge2['default'])(defaultProps.config, props.config);
-  var _iteratorNormalCompletion = true;
-  var _didIteratorError = false;
-  var _iteratorError = undefined;
-
-  try {
-    for (var _iterator = _props.DEPRECATED_CONFIG_PROPS[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-      var p = _step.value;
-
-      if (props[p]) {
-        var key = p.replace(/Config$/, '');
-        config = (0, _deepmerge2['default'])(config, _defineProperty({}, key, props[p]));
-        if (showWarning) {
-          var link = 'https://github.com/CookPete/react-player#config-prop';
-          var message = 'ReactPlayer: %c' + p + ' %cis deprecated, please use the config prop instead \u2013 ' + link;
-          console.warn(message, 'font-weight: bold', '');
-        }
-      }
-    }
-  } catch (err) {
-    _didIteratorError = true;
-    _iteratorError = err;
-  } finally {
-    try {
-      if (!_iteratorNormalCompletion && _iterator['return']) {
-        _iterator['return']();
-      }
-    } finally {
-      if (_didIteratorError) {
-        throw _iteratorError;
-      }
-    }
+  } else {
+    obj[key] = value;
   }
 
-  return config;
-}
-
-function omit(object) {
-  var _ref;
-
-  for (var _len = arguments.length, arrays = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-    arrays[_key - 1] = arguments[_key];
-  }
-
-  var omitKeys = (_ref = []).concat.apply(_ref, arrays);
-  var output = {};
-  var keys = Object.keys(object);
-  var _iteratorNormalCompletion2 = true;
-  var _didIteratorError2 = false;
-  var _iteratorError2 = undefined;
-
-  try {
-    for (var _iterator2 = keys[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-      var key = _step2.value;
-
-      if (omitKeys.indexOf(key) === -1) {
-        output[key] = object[key];
-      }
-    }
-  } catch (err) {
-    _didIteratorError2 = true;
-    _iteratorError2 = err;
-  } finally {
-    try {
-      if (!_iteratorNormalCompletion2 && _iterator2['return']) {
-        _iterator2['return']();
-      }
-    } finally {
-      if (_didIteratorError2) {
-        throw _iteratorError2;
-      }
-    }
-  }
-
-  return output;
-}
-
-function callPlayer(method) {
-  var _player;
-
-  // Util method for calling a method on this.player
-  // but guard against errors and console.warn instead
-  if (!this.player || !this.player[method]) {
-    var message = 'ReactPlayer: ' + this.constructor.displayName + ' player could not call %c' + method + '%c \u2013 ';
-    if (!this.player) {
-      message += 'The player was not available';
-    } else if (!this.player[method]) {
-      message += 'The method was not available';
-    }
-    console.warn(message, 'font-weight: bold', '');
-    return null;
-  }
-
-  for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-    args[_key2 - 1] = arguments[_key2];
-  }
-
-  return (_player = this.player)[method].apply(_player, args);
-}
-
-function isObject(val) {
-  return val !== null && (typeof val === 'undefined' ? 'undefined' : _typeof(val)) === 'object';
-}
-
-// Deep comparison of two objects but ignoring
-// functions, for use in shouldComponentUpdate
-function isEqual(a, b) {
-  if (typeof a === 'function' && typeof b === 'function') {
-    return true;
-  }
-  if (a instanceof Array && b instanceof Array) {
-    if (a.length !== b.length) {
-      return false;
-    }
-    for (var i = 0; i !== a.length; i++) {
-      if (!isEqual(a[i], b[i])) {
-        return false;
-      }
-    }
-    return true;
-  }
-  if (isObject(a) && isObject(b)) {
-    if (Object.keys(a).length !== Object.keys(b).length) {
-      return false;
-    }
-    var _iteratorNormalCompletion3 = true;
-    var _didIteratorError3 = false;
-    var _iteratorError3 = undefined;
-
-    try {
-      for (var _iterator3 = Object.keys(a)[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-        var key = _step3.value;
-
-        if (!isEqual(a[key], b[key])) {
-          return false;
-        }
-      }
-    } catch (err) {
-      _didIteratorError3 = true;
-      _iteratorError3 = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion3 && _iterator3['return']) {
-          _iterator3['return']();
-        }
-      } finally {
-        if (_didIteratorError3) {
-          throw _iteratorError3;
-        }
-      }
-    }
-
-    return true;
-  }
-  return a === b;
-}
-
-function isMediaStream(url) {
-  return typeof window !== 'undefined' && typeof window.MediaStream !== 'undefined' && url instanceof window.MediaStream;
-}
-},{"load-script":73,"deepmerge":72,"./props":23}],25:[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _props2 = require('./props');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var SEEK_ON_PLAY_EXPIRY = 5000;
-
-var Player = function (_Component) {
-  _inherits(Player, _Component);
-
-  function Player() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, Player);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Player.__proto__ || Object.getPrototypeOf(Player)).call.apply(_ref, [this].concat(args))), _this), _this.mounted = false, _this.isReady = false, _this.isPlaying = false, _this.isLoading = true, _this.loadOnReady = null, _this.startOnPlay = true, _this.seekOnPlay = null, _this.onDurationCalled = false, _this.getInternalPlayer = function (key) {
-      if (!_this.player) return null;
-      return _this.player[key];
-    }, _this.progress = function () {
-      if (_this.props.url && _this.player && _this.isReady) {
-        var playedSeconds = _this.getCurrentTime() || 0;
-        var loadedSeconds = _this.getSecondsLoaded();
-        var duration = _this.getDuration();
-        if (duration) {
-          var progress = {
-            playedSeconds: playedSeconds,
-            played: playedSeconds / duration
-          };
-          if (loadedSeconds !== null) {
-            progress.loadedSeconds = loadedSeconds;
-            progress.loaded = loadedSeconds / duration;
-          }
-          // Only call onProgress if values have changed
-          if (progress.played !== _this.prevPlayed || progress.loaded !== _this.prevLoaded) {
-            _this.props.onProgress(progress);
-          }
-          _this.prevPlayed = progress.played;
-          _this.prevLoaded = progress.loaded;
-        }
-      }
-      _this.progressTimeout = setTimeout(_this.progress, _this.props.progressFrequency || _this.props.progressInterval);
-    }, _this.onReady = function () {
-      if (!_this.mounted) return;
-      _this.isReady = true;
-      _this.isLoading = false;
-      var _this$props = _this.props,
-          onReady = _this$props.onReady,
-          playing = _this$props.playing,
-          volume = _this$props.volume,
-          muted = _this$props.muted;
-
-      onReady();
-      if (!muted && volume !== null) {
-        _this.player.setVolume(volume);
-      }
-      if (_this.loadOnReady) {
-        _this.player.load(_this.loadOnReady, true);
-        _this.loadOnReady = null;
-      } else if (playing) {
-        _this.player.play();
-      }
-      _this.onDurationCheck();
-    }, _this.onPlay = function () {
-      _this.isPlaying = true;
-      _this.isLoading = false;
-      var _this$props2 = _this.props,
-          onStart = _this$props2.onStart,
-          onPlay = _this$props2.onPlay,
-          playbackRate = _this$props2.playbackRate;
-
-      if (_this.startOnPlay) {
-        if (_this.player.setPlaybackRate) {
-          _this.player.setPlaybackRate(playbackRate);
-        }
-        onStart();
-        _this.startOnPlay = false;
-      }
-      onPlay();
-      if (_this.seekOnPlay) {
-        _this.seekTo(_this.seekOnPlay);
-        _this.seekOnPlay = null;
-      }
-      _this.onDurationCheck();
-    }, _this.onPause = function (e) {
-      _this.isPlaying = false;
-      if (!_this.isLoading) {
-        _this.props.onPause(e);
-      }
-    }, _this.onEnded = function () {
-      var _this$props3 = _this.props,
-          activePlayer = _this$props3.activePlayer,
-          loop = _this$props3.loop,
-          onEnded = _this$props3.onEnded;
-
-      if (activePlayer.loopOnEnded && loop) {
-        _this.seekTo(0);
-      }
-      if (!loop) {
-        _this.isPlaying = false;
-      }
-      onEnded();
-    }, _this.onDurationCheck = function () {
-      clearTimeout(_this.durationCheckTimeout);
-      var duration = _this.getDuration();
-      if (duration) {
-        if (!_this.onDurationCalled) {
-          _this.props.onDuration(duration);
-          _this.onDurationCalled = true;
-        }
-      } else {
-        _this.durationCheckTimeout = setTimeout(_this.onDurationCheck, 100);
-      }
-    }, _this.ref = function (player) {
-      if (player) {
-        _this.player = player;
-      }
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  } // Track playing state internally to prevent bugs
-  // Use isLoading to prevent onPause when switching URL
-
-
-  _createClass(Player, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      this.mounted = true;
-      this.player.load(this.props.url);
-      this.progress();
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      clearTimeout(this.progressTimeout);
-      clearTimeout(this.durationCheckTimeout);
-      if (this.isReady) {
-        this.player.stop();
-      }
-      this.mounted = false;
-    }
-  }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      var _this2 = this;
-
-      // Invoke player methods based on incoming props
-      var _props = this.props,
-          url = _props.url,
-          playing = _props.playing,
-          volume = _props.volume,
-          muted = _props.muted,
-          playbackRate = _props.playbackRate;
-
-      if (url !== nextProps.url) {
-        if (this.isLoading) {
-          console.warn('ReactPlayer: the attempt to load ' + nextProps.url + ' is being deferred until the player has loaded');
-          this.loadOnReady = nextProps.url;
-          return;
-        }
-        this.isLoading = true;
-        this.startOnPlay = true;
-        this.onDurationCalled = false;
-        this.player.load(nextProps.url, this.isReady);
-      }
-      if (!playing && nextProps.playing && !this.isPlaying) {
-        this.player.play();
-      }
-      if (playing && !nextProps.playing && this.isPlaying) {
-        this.player.pause();
-      }
-      if (volume !== nextProps.volume && nextProps.volume !== null) {
-        this.player.setVolume(nextProps.volume);
-      }
-      if (muted !== nextProps.muted) {
-        if (nextProps.muted) {
-          this.player.mute();
-        } else {
-          this.player.unmute();
-          if (nextProps.volume !== null) {
-            // Set volume next tick to fix a bug with DailyMotion
-            setTimeout(function () {
-              return _this2.player.setVolume(nextProps.volume);
-            });
-          }
-        }
-      }
-      if (playbackRate !== nextProps.playbackRate && this.player.setPlaybackRate) {
-        this.player.setPlaybackRate(nextProps.playbackRate);
-      }
-    }
-  }, {
-    key: 'getDuration',
-    value: function getDuration() {
-      if (!this.isReady) return null;
-      return this.player.getDuration();
-    }
-  }, {
-    key: 'getCurrentTime',
-    value: function getCurrentTime() {
-      if (!this.isReady) return null;
-      return this.player.getCurrentTime();
-    }
-  }, {
-    key: 'getSecondsLoaded',
-    value: function getSecondsLoaded() {
-      if (!this.isReady) return null;
-      return this.player.getSecondsLoaded();
-    }
-  }, {
-    key: 'seekTo',
-    value: function seekTo(amount) {
-      var _this3 = this;
-
-      // When seeking before player is ready, store value and seek later
-      if (!this.isReady && amount !== 0) {
-        this.seekOnPlay = amount;
-        setTimeout(function () {
-          _this3.seekOnPlay = null;
-        }, SEEK_ON_PLAY_EXPIRY);
-        return;
-      }
-      if (amount > 0 && amount < 1) {
-        // Convert fraction to seconds based on duration
-        var duration = this.player.getDuration();
-        if (!duration) {
-          console.warn('ReactPlayer: could not seek using fraction – duration not yet available');
-          return;
-        }
-        this.player.seekTo(duration * amount);
-        return;
-      }
-      this.player.seekTo(amount);
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var Player = this.props.activePlayer;
-      if (!Player) {
-        return null;
-      }
-      return _react2['default'].createElement(Player, _extends({}, this.props, {
-        ref: this.ref,
-        onReady: this.onReady,
-        onPlay: this.onPlay,
-        onPause: this.onPause,
-        onEnded: this.onEnded
-      }));
-    }
-  }]);
-
-  return Player;
-}(_react.Component);
-
-Player.displayName = 'Player';
-Player.propTypes = _props2.propTypes;
-Player.defaultProps = _props2.defaultProps;
-exports['default'] = Player;
-},{"react":8,"./props":23}],74:[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-exports['default'] = createSinglePlayer;
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _props2 = require('./props');
-
-var _utils = require('./utils');
-
-var _Player = require('./Player');
-
-var _Player2 = _interopRequireDefault(_Player);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var SUPPORTED_PROPS = Object.keys(_props2.propTypes);
-
-function createSinglePlayer(activePlayer) {
-  var _class, _temp2;
-
-  return _temp2 = _class = function (_Component) {
-    _inherits(SinglePlayer, _Component);
-
-    function SinglePlayer() {
-      var _ref;
-
-      var _temp, _this, _ret;
-
-      _classCallCheck(this, SinglePlayer);
-
-      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-
-      return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = SinglePlayer.__proto__ || Object.getPrototypeOf(SinglePlayer)).call.apply(_ref, [this].concat(args))), _this), _this.config = (0, _utils.getConfig)(_this.props, _props2.defaultProps, true), _this.getDuration = function () {
-        if (!_this.player) return null;
-        return _this.player.getDuration();
-      }, _this.getCurrentTime = function () {
-        if (!_this.player) return null;
-        return _this.player.getCurrentTime();
-      }, _this.getSecondsLoaded = function () {
-        if (!_this.player) return null;
-        return _this.player.getSecondsLoaded();
-      }, _this.getInternalPlayer = function () {
-        var key = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'player';
-
-        if (!_this.player) return null;
-        return _this.player.getInternalPlayer(key);
-      }, _this.seekTo = function (fraction) {
-        if (!_this.player) return null;
-        _this.player.seekTo(fraction);
-      }, _this.ref = function (player) {
-        _this.player = player;
-      }, _temp), _possibleConstructorReturn(_this, _ret);
-    }
-
-    _createClass(SinglePlayer, [{
-      key: 'shouldComponentUpdate',
-      value: function shouldComponentUpdate(nextProps) {
-        return !(0, _utils.isEqual)(this.props, nextProps);
-      }
-    }, {
-      key: 'componentWillUpdate',
-      value: function componentWillUpdate(nextProps) {
-        this.config = (0, _utils.getConfig)(nextProps, _props2.defaultProps);
-      }
-    }, {
-      key: 'render',
-      value: function render() {
-        if (!activePlayer.canPlay(this.props.url)) {
-          return null;
-        }
-        var _props = this.props,
-            style = _props.style,
-            width = _props.width,
-            height = _props.height,
-            Wrapper = _props.wrapper;
-
-        var otherProps = (0, _utils.omit)(this.props, SUPPORTED_PROPS, _props2.DEPRECATED_CONFIG_PROPS);
-        return _react2['default'].createElement(
-          Wrapper,
-          _extends({ style: _extends({}, style, { width: width, height: height }) }, otherProps),
-          _react2['default'].createElement(_Player2['default'], _extends({}, this.props, {
-            ref: this.ref,
-            activePlayer: activePlayer,
-            config: this.config
-          }))
-        );
-      }
-    }]);
-
-    return SinglePlayer;
-  }(_react.Component), _class.displayName = activePlayer.displayName + 'Player', _class.propTypes = _props2.propTypes, _class.defaultProps = _props2.defaultProps, _class.canPlay = activePlayer.canPlay, _temp2;
-}
-},{"react":8,"./props":23,"./utils":24,"./Player":25}],68:[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.YouTube = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _utils = require('../utils');
-
-var _singlePlayer = require('../singlePlayer');
-
-var _singlePlayer2 = _interopRequireDefault(_singlePlayer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var SDK_URL = 'https://www.youtube.com/iframe_api';
-var SDK_GLOBAL = 'YT';
-var SDK_GLOBAL_READY = 'onYouTubeIframeAPIReady';
-var MATCH_URL = /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})/;
-
-var YouTube = exports.YouTube = function (_Component) {
-  _inherits(YouTube, _Component);
-
-  function YouTube() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, YouTube);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = YouTube.__proto__ || Object.getPrototypeOf(YouTube)).call.apply(_ref, [this].concat(args))), _this), _this.callPlayer = _utils.callPlayer, _this.onStateChange = function (_ref2) {
-      var data = _ref2.data;
-      var _this$props = _this.props,
-          onPlay = _this$props.onPlay,
-          onPause = _this$props.onPause,
-          onBuffer = _this$props.onBuffer,
-          onEnded = _this$props.onEnded,
-          onReady = _this$props.onReady;
-      var _window$SDK_GLOBAL$Pl = window[SDK_GLOBAL].PlayerState,
-          PLAYING = _window$SDK_GLOBAL$Pl.PLAYING,
-          PAUSED = _window$SDK_GLOBAL$Pl.PAUSED,
-          BUFFERING = _window$SDK_GLOBAL$Pl.BUFFERING,
-          ENDED = _window$SDK_GLOBAL$Pl.ENDED,
-          CUED = _window$SDK_GLOBAL$Pl.CUED;
-
-      if (data === PLAYING) onPlay();
-      if (data === PAUSED) onPause();
-      if (data === BUFFERING) onBuffer();
-      if (data === ENDED) onEnded();
-      if (data === CUED) onReady();
-    }, _this.mute = function () {
-      _this.callPlayer('mute');
-    }, _this.unmute = function () {
-      _this.callPlayer('unMute');
-    }, _this.ref = function (container) {
-      _this.container = container;
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  _createClass(YouTube, [{
-    key: 'load',
-    value: function load(url, isReady) {
-      var _this2 = this;
-
-      var _props = this.props,
-          playing = _props.playing,
-          muted = _props.muted,
-          playsinline = _props.playsinline,
-          controls = _props.controls,
-          config = _props.config,
-          _onError = _props.onError;
-      var playerVars = config.youtube.playerVars;
-
-      var id = url && url.match(MATCH_URL)[1];
-      if (isReady) {
-        this.player.cueVideoById({
-          videoId: id,
-          startSeconds: (0, _utils.parseStartTime)(url) || playerVars.start,
-          endSeconds: (0, _utils.parseEndTime)(url) || playerVars.end
-        });
-        return;
-      }
-      (0, _utils.getSDK)(SDK_URL, SDK_GLOBAL, SDK_GLOBAL_READY, function (YT) {
-        return YT.loaded;
-      }).then(function (YT) {
-        if (!_this2.container) return;
-        _this2.player = new YT.Player(_this2.container, {
-          width: '100%',
-          height: '100%',
-          videoId: id,
-          playerVars: _extends({
-            autoplay: playing ? 1 : 0,
-            mute: muted ? 1 : 0,
-            controls: controls ? 1 : 0,
-            start: (0, _utils.parseStartTime)(url),
-            end: (0, _utils.parseEndTime)(url),
-            origin: window.location.origin,
-            playsinline: playsinline
-          }, playerVars),
-          events: {
-            onReady: _this2.props.onReady,
-            onStateChange: _this2.onStateChange,
-            onError: function onError(event) {
-              return _onError(event.data);
-            }
-          }
-        });
-      }, _onError);
-    }
-  }, {
-    key: 'play',
-    value: function play() {
-      this.callPlayer('playVideo');
-    }
-  }, {
-    key: 'pause',
-    value: function pause() {
-      this.callPlayer('pauseVideo');
-    }
-  }, {
-    key: 'stop',
-    value: function stop() {
-      if (!document.body.contains(this.callPlayer('getIframe'))) return;
-      this.callPlayer('stopVideo');
-    }
-  }, {
-    key: 'seekTo',
-    value: function seekTo(amount) {
-      this.callPlayer('seekTo', amount);
-    }
-  }, {
-    key: 'setVolume',
-    value: function setVolume(fraction) {
-      this.callPlayer('setVolume', fraction * 100);
-    }
-  }, {
-    key: 'setPlaybackRate',
-    value: function setPlaybackRate(rate) {
-      this.callPlayer('setPlaybackRate', rate);
-    }
-  }, {
-    key: 'getDuration',
-    value: function getDuration() {
-      return this.callPlayer('getDuration');
-    }
-  }, {
-    key: 'getCurrentTime',
-    value: function getCurrentTime() {
-      return this.callPlayer('getCurrentTime');
-    }
-  }, {
-    key: 'getSecondsLoaded',
-    value: function getSecondsLoaded() {
-      return this.callPlayer('getVideoLoadedFraction') * this.getDuration();
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var style = _extends({
-        width: '100%',
-        height: '100%'
-      }, this.props.style);
-      return _react2['default'].createElement(
-        'div',
-        { style: style },
-        _react2['default'].createElement('div', { ref: this.ref })
-      );
-    }
-  }]);
-
-  return YouTube;
-}(_react.Component);
-
-YouTube.displayName = 'YouTube';
-
-YouTube.canPlay = function (url) {
-  return MATCH_URL.test(url);
+  return obj;
 };
-
-YouTube.loopOnEnded = true;
-exports['default'] = (0, _singlePlayer2['default'])(YouTube);
-},{"react":8,"../utils":24,"../singlePlayer":74}],69:[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SoundCloud = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _utils = require('../utils');
-
-var _singlePlayer = require('../singlePlayer');
-
-var _singlePlayer2 = _interopRequireDefault(_singlePlayer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var SDK_URL = 'https://w.soundcloud.com/player/api.js';
-var SDK_GLOBAL = 'SC';
-var MATCH_URL = /(soundcloud\.com|snd\.sc)\/.+$/;
-
-var SoundCloud = exports.SoundCloud = function (_Component) {
-  _inherits(SoundCloud, _Component);
-
-  function SoundCloud() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, SoundCloud);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = SoundCloud.__proto__ || Object.getPrototypeOf(SoundCloud)).call.apply(_ref, [this].concat(args))), _this), _this.callPlayer = _utils.callPlayer, _this.duration = null, _this.currentTime = null, _this.fractionLoaded = null, _this.mute = function () {
-      _this.setVolume(0);
-    }, _this.unmute = function () {
-      if (_this.props.volume !== null) {
-        _this.setVolume(_this.props.volume);
-      }
-    }, _this.ref = function (iframe) {
-      _this.iframe = iframe;
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  _createClass(SoundCloud, [{
-    key: 'load',
-    value: function load(url, isReady) {
-      var _this2 = this;
-
-      (0, _utils.getSDK)(SDK_URL, SDK_GLOBAL).then(function (SC) {
-        if (!_this2.iframe) return;
-        var _SC$Widget$Events = SC.Widget.Events,
-            PLAY = _SC$Widget$Events.PLAY,
-            PLAY_PROGRESS = _SC$Widget$Events.PLAY_PROGRESS,
-            PAUSE = _SC$Widget$Events.PAUSE,
-            FINISH = _SC$Widget$Events.FINISH,
-            ERROR = _SC$Widget$Events.ERROR;
-
-        if (!isReady) {
-          _this2.player = SC.Widget(_this2.iframe);
-          _this2.player.bind(PLAY, _this2.props.onPlay);
-          _this2.player.bind(PAUSE, _this2.props.onPause);
-          _this2.player.bind(PLAY_PROGRESS, function (e) {
-            _this2.currentTime = e.currentPosition / 1000;
-            _this2.fractionLoaded = e.loadedProgress;
-          });
-          _this2.player.bind(FINISH, function () {
-            return _this2.props.onEnded();
-          });
-          _this2.player.bind(ERROR, function (e) {
-            return _this2.props.onError(e);
-          });
-        }
-        _this2.player.load(url, _extends({}, _this2.props.config.soundcloud.options, {
-          callback: function callback() {
-            _this2.player.getDuration(function (duration) {
-              _this2.duration = duration / 1000;
-              _this2.props.onReady();
-            });
-          }
-        }));
-      });
-    }
-  }, {
-    key: 'play',
-    value: function play() {
-      this.callPlayer('play');
-    }
-  }, {
-    key: 'pause',
-    value: function pause() {
-      this.callPlayer('pause');
-    }
-  }, {
-    key: 'stop',
-    value: function stop() {
-      // Nothing to do
-    }
-  }, {
-    key: 'seekTo',
-    value: function seekTo(seconds) {
-      this.callPlayer('seekTo', seconds * 1000);
-    }
-  }, {
-    key: 'setVolume',
-    value: function setVolume(fraction) {
-      this.callPlayer('setVolume', fraction * 100);
-    }
-  }, {
-    key: 'getDuration',
-    value: function getDuration() {
-      return this.duration;
-    }
-  }, {
-    key: 'getCurrentTime',
-    value: function getCurrentTime() {
-      return this.currentTime;
-    }
-  }, {
-    key: 'getSecondsLoaded',
-    value: function getSecondsLoaded() {
-      return this.fractionLoaded * this.duration;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var style = _extends({
-        width: '100%',
-        height: '100%'
-      }, this.props.style);
-      return _react2['default'].createElement('iframe', {
-        ref: this.ref,
-        src: 'https://w.soundcloud.com/player/?url=' + encodeURIComponent(this.props.url),
-        style: style,
-        frameBorder: 0
-      });
-    }
-  }]);
-
-  return SoundCloud;
-}(_react.Component);
-
-SoundCloud.displayName = 'SoundCloud';
-
-SoundCloud.canPlay = function (url) {
-  return MATCH_URL.test(url);
-};
-
-SoundCloud.loopOnEnded = true;
-exports['default'] = (0, _singlePlayer2['default'])(SoundCloud);
-},{"react":8,"../utils":24,"../singlePlayer":74}],70:[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Vimeo = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _utils = require('../utils');
-
-var _singlePlayer = require('../singlePlayer');
-
-var _singlePlayer2 = _interopRequireDefault(_singlePlayer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var SDK_URL = 'https://player.vimeo.com/api/player.js';
-var SDK_GLOBAL = 'Vimeo';
-var MATCH_URL = /vimeo\.com\/.+/;
-var MATCH_FILE_URL = /vimeo\.com\/external\/.+\.mp4/;
-
-var Vimeo = exports.Vimeo = function (_Component) {
-  _inherits(Vimeo, _Component);
-
-  function Vimeo() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, Vimeo);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Vimeo.__proto__ || Object.getPrototypeOf(Vimeo)).call.apply(_ref, [this].concat(args))), _this), _this.callPlayer = _utils.callPlayer, _this.duration = null, _this.currentTime = null, _this.secondsLoaded = null, _this.mute = function () {
-      _this.setVolume(0);
-    }, _this.unmute = function () {
-      if (_this.props.volume !== null) {
-        _this.setVolume(_this.props.volume);
-      }
-    }, _this.ref = function (container) {
-      _this.container = container;
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  _createClass(Vimeo, [{
-    key: 'load',
-    value: function load(url) {
-      var _this2 = this;
-
-      this.duration = null;
-      (0, _utils.getSDK)(SDK_URL, SDK_GLOBAL).then(function (Vimeo) {
-        if (!_this2.container) return;
-        _this2.player = new Vimeo.Player(_this2.container, _extends({}, _this2.props.config.vimeo.playerOptions, {
-          url: url,
-          autoplay: _this2.props.playing,
-          muted: _this2.props.muted,
-          loop: _this2.props.loop
-        }));
-        _this2.player.ready().then(function () {
-          var iframe = _this2.container.querySelector('iframe');
-          iframe.style.width = '100%';
-          iframe.style.height = '100%';
-        })['catch'](_this2.props.onError);
-        _this2.player.on('loaded', function () {
-          _this2.props.onReady();
-          _this2.player.getDuration().then(function (duration) {
-            _this2.duration = duration;
-          });
-        });
-        _this2.player.on('play', _this2.props.onPlay);
-        _this2.player.on('pause', _this2.props.onPause);
-        _this2.player.on('seeked', function (e) {
-          return _this2.props.onSeek(e.seconds);
-        });
-        _this2.player.on('ended', _this2.props.onEnded);
-        _this2.player.on('error', _this2.props.onError);
-        _this2.player.on('timeupdate', function (_ref2) {
-          var seconds = _ref2.seconds;
-
-          _this2.currentTime = seconds;
-        });
-        _this2.player.on('progress', function (_ref3) {
-          var seconds = _ref3.seconds;
-
-          _this2.secondsLoaded = seconds;
-        });
-      }, this.props.onError);
-    }
-  }, {
-    key: 'play',
-    value: function play() {
-      this.callPlayer('play');
-    }
-  }, {
-    key: 'pause',
-    value: function pause() {
-      this.callPlayer('pause');
-    }
-  }, {
-    key: 'stop',
-    value: function stop() {
-      this.callPlayer('unload');
-    }
-  }, {
-    key: 'seekTo',
-    value: function seekTo(seconds) {
-      this.callPlayer('setCurrentTime', seconds);
-    }
-  }, {
-    key: 'setVolume',
-    value: function setVolume(fraction) {
-      this.callPlayer('setVolume', fraction);
-    }
-  }, {
-    key: 'getDuration',
-    value: function getDuration() {
-      return this.duration;
-    }
-  }, {
-    key: 'getCurrentTime',
-    value: function getCurrentTime() {
-      return this.currentTime;
-    }
-  }, {
-    key: 'getSecondsLoaded',
-    value: function getSecondsLoaded() {
-      return this.secondsLoaded;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var style = _extends({
-        width: '100%',
-        height: '100%',
-        overflow: 'hidden',
-        backgroundColor: 'black'
-      }, this.props.style);
-      return _react2['default'].createElement('div', {
-        key: this.props.url,
-        ref: this.ref,
-        style: style
-      });
-    }
-  }]);
-
-  return Vimeo;
-}(_react.Component);
-
-Vimeo.displayName = 'Vimeo';
-
-Vimeo.canPlay = function (url) {
-  if (MATCH_FILE_URL.test(url)) {
-    return false;
-  }
-  return MATCH_URL.test(url);
-};
-
-exports['default'] = (0, _singlePlayer2['default'])(Vimeo);
-},{"react":8,"../utils":24,"../singlePlayer":74}],84:[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Facebook = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _utils = require('../utils');
-
-var _singlePlayer = require('../singlePlayer');
-
-var _singlePlayer2 = _interopRequireDefault(_singlePlayer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var SDK_URL = '//connect.facebook.net/en_US/sdk.js';
-var SDK_GLOBAL = 'FB';
-var SDK_GLOBAL_READY = 'fbAsyncInit';
-var MATCH_URL = /facebook\.com\/([^/?].+\/)?video(s|\.php)[/?].*$/;
-var PLAYER_ID_PREFIX = 'facebook-player-';
-
-var Facebook = exports.Facebook = function (_Component) {
-  _inherits(Facebook, _Component);
-
-  function Facebook() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, Facebook);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Facebook.__proto__ || Object.getPrototypeOf(Facebook)).call.apply(_ref, [this].concat(args))), _this), _this.callPlayer = _utils.callPlayer, _this.playerID = PLAYER_ID_PREFIX + (0, _utils.randomString)(), _this.mute = function () {
-      _this.callPlayer('mute');
-    }, _this.unmute = function () {
-      _this.callPlayer('unmute');
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  _createClass(Facebook, [{
-    key: 'load',
-    value: function load(url, isReady) {
-      var _this2 = this;
-
-      if (isReady) {
-        (0, _utils.getSDK)(SDK_URL, SDK_GLOBAL, SDK_GLOBAL_READY).then(function (FB) {
-          return FB.XFBML.parse();
-        });
-        return;
-      }
-      (0, _utils.getSDK)(SDK_URL, SDK_GLOBAL, SDK_GLOBAL_READY).then(function (FB) {
-        FB.init({
-          appId: _this2.props.config.facebook.appId,
-          xfbml: true,
-          version: 'v2.5'
-        });
-        FB.Event.subscribe('xfbml.ready', function (msg) {
-          if (msg.type === 'video' && msg.id === _this2.playerID) {
-            _this2.player = msg.instance;
-            _this2.player.subscribe('startedPlaying', _this2.props.onPlay);
-            _this2.player.subscribe('paused', _this2.props.onPause);
-            _this2.player.subscribe('finishedPlaying', _this2.props.onEnded);
-            _this2.player.subscribe('startedBuffering', _this2.props.onBuffer);
-            _this2.player.subscribe('error', _this2.props.onError);
-            if (!_this2.props.muted) {
-              // Player is muted by default
-              _this2.callPlayer('unmute');
-            }
-            _this2.props.onReady();
-          }
-        });
-      });
-    }
-  }, {
-    key: 'play',
-    value: function play() {
-      this.callPlayer('play');
-    }
-  }, {
-    key: 'pause',
-    value: function pause() {
-      this.callPlayer('pause');
-    }
-  }, {
-    key: 'stop',
-    value: function stop() {
-      // Nothing to do
-    }
-  }, {
-    key: 'seekTo',
-    value: function seekTo(seconds) {
-      this.callPlayer('seek', seconds);
-    }
-  }, {
-    key: 'setVolume',
-    value: function setVolume(fraction) {
-      this.callPlayer('setVolume', fraction);
-    }
-  }, {
-    key: 'getDuration',
-    value: function getDuration() {
-      return this.callPlayer('getDuration');
-    }
-  }, {
-    key: 'getCurrentTime',
-    value: function getCurrentTime() {
-      return this.callPlayer('getCurrentPosition');
-    }
-  }, {
-    key: 'getSecondsLoaded',
-    value: function getSecondsLoaded() {
-      return null;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var style = {
-        width: '100%',
-        height: '100%',
-        backgroundColor: 'black'
-      };
-      return _react2['default'].createElement('div', {
-        style: style,
-        id: this.playerID,
-        className: 'fb-video',
-        'data-href': this.props.url,
-        'data-autoplay': this.props.playing ? 'true' : 'false',
-        'data-allowfullscreen': 'true',
-        'data-controls': this.props.controls ? 'true' : 'false'
-      });
-    }
-  }]);
-
-  return Facebook;
-}(_react.Component);
-
-Facebook.displayName = 'Facebook';
-
-Facebook.canPlay = function (url) {
-  return MATCH_URL.test(url);
-};
-
-Facebook.loopOnEnded = true;
-exports['default'] = (0, _singlePlayer2['default'])(Facebook);
-},{"react":8,"../utils":24,"../singlePlayer":74}],85:[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Streamable = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _utils = require('../utils');
-
-var _singlePlayer = require('../singlePlayer');
-
-var _singlePlayer2 = _interopRequireDefault(_singlePlayer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var SDK_URL = '//cdn.embed.ly/player-0.1.0.min.js';
-var SDK_GLOBAL = 'playerjs';
-var MATCH_URL = /streamable\.com\/([a-z0-9]+)$/;
-
-var Streamable = exports.Streamable = function (_Component) {
-  _inherits(Streamable, _Component);
-
-  function Streamable() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, Streamable);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Streamable.__proto__ || Object.getPrototypeOf(Streamable)).call.apply(_ref, [this].concat(args))), _this), _this.callPlayer = _utils.callPlayer, _this.duration = null, _this.currentTime = null, _this.secondsLoaded = null, _this.mute = function () {
-      _this.callPlayer('mute');
-    }, _this.unmute = function () {
-      _this.callPlayer('unmute');
-    }, _this.ref = function (iframe) {
-      _this.iframe = iframe;
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  _createClass(Streamable, [{
-    key: 'load',
-    value: function load(url) {
-      var _this2 = this;
-
-      (0, _utils.getSDK)(SDK_URL, SDK_GLOBAL).then(function (playerjs) {
-        if (!_this2.iframe) return;
-        _this2.player = new playerjs.Player(_this2.iframe);
-        _this2.player.setLoop(_this2.props.loop);
-        _this2.player.on('ready', _this2.props.onReady);
-        _this2.player.on('play', _this2.props.onPlay);
-        _this2.player.on('pause', _this2.props.onPause);
-        _this2.player.on('seeked', _this2.props.onSeek);
-        _this2.player.on('ended', _this2.props.onEnded);
-        _this2.player.on('error', _this2.props.onError);
-        _this2.player.on('timeupdate', function (_ref2) {
-          var duration = _ref2.duration,
-              seconds = _ref2.seconds;
-
-          _this2.duration = duration;
-          _this2.currentTime = seconds;
-        });
-        _this2.player.on('buffered', function (_ref3) {
-          var percent = _ref3.percent;
-
-          if (_this2.duration) {
-            _this2.secondsLoaded = _this2.duration * percent;
-          }
-        });
-        if (_this2.props.muted) {
-          _this2.player.mute();
-        }
-      }, this.props.onError);
-    }
-  }, {
-    key: 'play',
-    value: function play() {
-      this.callPlayer('play');
-    }
-  }, {
-    key: 'pause',
-    value: function pause() {
-      this.callPlayer('pause');
-    }
-  }, {
-    key: 'stop',
-    value: function stop() {
-      // Nothing to do
-    }
-  }, {
-    key: 'seekTo',
-    value: function seekTo(seconds) {
-      this.callPlayer('setCurrentTime', seconds);
-    }
-  }, {
-    key: 'setVolume',
-    value: function setVolume(fraction) {
-      this.callPlayer('setVolume', fraction * 100);
-    }
-  }, {
-    key: 'getDuration',
-    value: function getDuration() {
-      return this.duration;
-    }
-  }, {
-    key: 'getCurrentTime',
-    value: function getCurrentTime() {
-      return this.currentTime;
-    }
-  }, {
-    key: 'getSecondsLoaded',
-    value: function getSecondsLoaded() {
-      return this.secondsLoaded;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var id = this.props.url.match(MATCH_URL)[1];
-      var style = {
-        width: '100%',
-        height: '100%'
-      };
-      return _react2['default'].createElement('iframe', {
-        ref: this.ref,
-        src: 'https://streamable.com/o/' + id,
-        frameBorder: '0',
-        scrolling: 'no',
-        style: style,
-        allowFullScreen: true
-      });
-    }
-  }]);
-
-  return Streamable;
-}(_react.Component);
-
-Streamable.displayName = 'Streamable';
-
-Streamable.canPlay = function (url) {
-  return MATCH_URL.test(url);
-};
-
-exports['default'] = (0, _singlePlayer2['default'])(Streamable);
-},{"react":8,"../utils":24,"../singlePlayer":74}],86:[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Wistia = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _utils = require('../utils');
-
-var _singlePlayer = require('../singlePlayer');
-
-var _singlePlayer2 = _interopRequireDefault(_singlePlayer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var SDK_URL = '//fast.wistia.com/assets/external/E-v1.js';
-var SDK_GLOBAL = 'Wistia';
-var MATCH_URL = /(?:wistia\.com|wi\.st)\/(?:medias|embed)\/(.*)$/;
-
-var Wistia = exports.Wistia = function (_Component) {
-  _inherits(Wistia, _Component);
-
-  function Wistia() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, Wistia);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Wistia.__proto__ || Object.getPrototypeOf(Wistia)).call.apply(_ref, [this].concat(args))), _this), _this.callPlayer = _utils.callPlayer, _this.mute = function () {
-      _this.callPlayer('mute');
-    }, _this.unmute = function () {
-      _this.callPlayer('unmute');
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  _createClass(Wistia, [{
-    key: 'getID',
-    value: function getID(url) {
-      return url && url.match(MATCH_URL)[1];
-    }
-  }, {
-    key: 'load',
-    value: function load(url) {
-      var _this2 = this;
-
-      var _props = this.props,
-          playing = _props.playing,
-          muted = _props.muted,
-          controls = _props.controls,
-          _onReady = _props.onReady,
-          onPlay = _props.onPlay,
-          onPause = _props.onPause,
-          onSeek = _props.onSeek,
-          onEnded = _props.onEnded,
-          config = _props.config;
-
-      (0, _utils.getSDK)(SDK_URL, SDK_GLOBAL).then(function () {
-        window._wq = window._wq || [];
-        window._wq.push({
-          id: _this2.getID(url),
-          options: _extends({
-            autoPlay: playing,
-            silentAutoPlay: 'allow',
-            muted: muted,
-            controlsVisibleOnLoad: controls
-          }, config.wistia.options),
-          onReady: function onReady(player) {
-            _this2.player = player;
-            _this2.player.bind('play', onPlay);
-            _this2.player.bind('pause', onPause);
-            _this2.player.bind('seek', onSeek);
-            _this2.player.bind('end', onEnded);
-            _onReady();
-          }
-        });
-      });
-    }
-  }, {
-    key: 'play',
-    value: function play() {
-      this.callPlayer('play');
-    }
-  }, {
-    key: 'pause',
-    value: function pause() {
-      this.callPlayer('pause');
-    }
-  }, {
-    key: 'stop',
-    value: function stop() {
-      this.callPlayer('remove');
-    }
-  }, {
-    key: 'seekTo',
-    value: function seekTo(seconds) {
-      this.callPlayer('time', seconds);
-    }
-  }, {
-    key: 'setVolume',
-    value: function setVolume(fraction) {
-      this.callPlayer('volume', fraction);
-    }
-  }, {
-    key: 'setPlaybackRate',
-    value: function setPlaybackRate(rate) {
-      this.callPlayer('playbackRate', rate);
-    }
-  }, {
-    key: 'getDuration',
-    value: function getDuration() {
-      return this.callPlayer('duration');
-    }
-  }, {
-    key: 'getCurrentTime',
-    value: function getCurrentTime() {
-      return this.callPlayer('time');
-    }
-  }, {
-    key: 'getSecondsLoaded',
-    value: function getSecondsLoaded() {
-      return null;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var id = this.getID(this.props.url);
-      var className = 'wistia_embed wistia_async_' + id;
-      var style = {
-        width: '100%',
-        height: '100%'
-      };
-      return _react2['default'].createElement('div', { key: id, className: className, style: style });
-    }
-  }]);
-
-  return Wistia;
-}(_react.Component);
-
-Wistia.displayName = 'Wistia';
-
-Wistia.canPlay = function (url) {
-  return MATCH_URL.test(url);
-};
-
-Wistia.loopOnEnded = true;
-exports['default'] = (0, _singlePlayer2['default'])(Wistia);
-},{"react":8,"../utils":24,"../singlePlayer":74}],87:[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Twitch = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _utils = require('../utils');
-
-var _singlePlayer = require('../singlePlayer');
-
-var _singlePlayer2 = _interopRequireDefault(_singlePlayer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var SDK_URL = 'https://player.twitch.tv/js/embed/v1.js';
-var SDK_GLOBAL = 'Twitch';
-var MATCH_VIDEO_URL = /(?:www\.|go\.)?twitch\.tv\/videos\/(\d+)($|\?)/;
-var MATCH_CHANNEL_URL = /(?:www\.|go\.)?twitch\.tv\/([a-z0-9_]+)($|\?)/;
-var PLAYER_ID_PREFIX = 'twitch-player-';
-
-var Twitch = exports.Twitch = function (_Component) {
-  _inherits(Twitch, _Component);
-
-  function Twitch() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, Twitch);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Twitch.__proto__ || Object.getPrototypeOf(Twitch)).call.apply(_ref, [this].concat(args))), _this), _this.callPlayer = _utils.callPlayer, _this.playerID = PLAYER_ID_PREFIX + (0, _utils.randomString)(), _this.mute = function () {
-      _this.callPlayer('setMuted', true);
-    }, _this.unmute = function () {
-      _this.callPlayer('setMuted', false);
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  _createClass(Twitch, [{
-    key: 'load',
-    value: function load(url, isReady) {
-      var _this2 = this;
-
-      var _props = this.props,
-          playsinline = _props.playsinline,
-          onError = _props.onError,
-          config = _props.config;
-
-      var isChannel = MATCH_CHANNEL_URL.test(url);
-      var id = isChannel ? url.match(MATCH_CHANNEL_URL)[1] : url.match(MATCH_VIDEO_URL)[1];
-      if (isReady) {
-        if (isChannel) {
-          this.player.setChannel(id);
-        } else {
-          this.player.setVideo('v' + id);
-        }
-        return;
-      }
-      (0, _utils.getSDK)(SDK_URL, SDK_GLOBAL).then(function (Twitch) {
-        _this2.player = new Twitch.Player(_this2.playerID, _extends({
-          video: isChannel ? '' : id,
-          channel: isChannel ? id : '',
-          height: '100%',
-          width: '100%',
-          playsinline: playsinline,
-          autoplay: _this2.props.playing,
-          muted: _this2.props.muted
-        }, config.twitch.options));
-        var _Twitch$Player = Twitch.Player,
-            READY = _Twitch$Player.READY,
-            PLAY = _Twitch$Player.PLAY,
-            PAUSE = _Twitch$Player.PAUSE,
-            ENDED = _Twitch$Player.ENDED;
-
-        _this2.player.addEventListener(READY, _this2.props.onReady);
-        _this2.player.addEventListener(PLAY, _this2.props.onPlay);
-        _this2.player.addEventListener(PAUSE, _this2.props.onPause);
-        _this2.player.addEventListener(ENDED, _this2.props.onEnded);
-      }, onError);
-    }
-  }, {
-    key: 'play',
-    value: function play() {
-      this.callPlayer('play');
-    }
-  }, {
-    key: 'pause',
-    value: function pause() {
-      this.callPlayer('pause');
-    }
-  }, {
-    key: 'stop',
-    value: function stop() {
-      this.callPlayer('pause');
-    }
-  }, {
-    key: 'seekTo',
-    value: function seekTo(seconds) {
-      this.callPlayer('seek', seconds);
-    }
-  }, {
-    key: 'setVolume',
-    value: function setVolume(fraction) {
-      this.callPlayer('setVolume', fraction);
-    }
-  }, {
-    key: 'getDuration',
-    value: function getDuration() {
-      return this.callPlayer('getDuration');
-    }
-  }, {
-    key: 'getCurrentTime',
-    value: function getCurrentTime() {
-      return this.callPlayer('getCurrentTime');
-    }
-  }, {
-    key: 'getSecondsLoaded',
-    value: function getSecondsLoaded() {
-      return null;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var style = {
-        width: '100%',
-        height: '100%'
-      };
-      return _react2['default'].createElement('div', { style: style, id: this.playerID });
-    }
-  }]);
-
-  return Twitch;
-}(_react.Component);
-
-Twitch.displayName = 'Twitch';
-
-Twitch.canPlay = function (url) {
-  return MATCH_VIDEO_URL.test(url) || MATCH_CHANNEL_URL.test(url);
-};
-
-Twitch.loopOnEnded = true;
-exports['default'] = (0, _singlePlayer2['default'])(Twitch);
-},{"react":8,"../utils":24,"../singlePlayer":74}],71:[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.DailyMotion = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _utils = require('../utils');
-
-var _singlePlayer = require('../singlePlayer');
-
-var _singlePlayer2 = _interopRequireDefault(_singlePlayer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var SDK_URL = 'https://api.dmcdn.net/all.js';
-var SDK_GLOBAL = 'DM';
-var SDK_GLOBAL_READY = 'dmAsyncInit';
-var MATCH_URL = /dailymotion\.com\/(video|hub)\/([^_]+)[^#]*(#video=([^_&]+))?/;
-
-var DailyMotion = exports.DailyMotion = function (_Component) {
-  _inherits(DailyMotion, _Component);
-
-  function DailyMotion() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, DailyMotion);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = DailyMotion.__proto__ || Object.getPrototypeOf(DailyMotion)).call.apply(_ref, [this].concat(args))), _this), _this.callPlayer = _utils.callPlayer, _this.onDurationChange = function () {
-      var duration = _this.getDuration();
-      _this.props.onDuration(duration);
-    }, _this.mute = function () {
-      _this.callPlayer('setMuted', true);
-    }, _this.unmute = function () {
-      _this.callPlayer('setMuted', false);
-    }, _this.ref = function (container) {
-      _this.container = container;
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  _createClass(DailyMotion, [{
-    key: 'parseId',
-    value: function parseId(url) {
-      var m = url.match(MATCH_URL);
-      return m[4] || m[2];
-    }
-  }, {
-    key: 'load',
-    value: function load(url) {
-      var _this2 = this;
-
-      var _props = this.props,
-          controls = _props.controls,
-          config = _props.config,
-          onError = _props.onError,
-          playing = _props.playing;
-
-      var id = this.parseId(url);
-      if (this.player) {
-        this.player.load(id, {
-          start: (0, _utils.parseStartTime)(url),
-          autoplay: playing
-        });
-        return;
-      }
-      (0, _utils.getSDK)(SDK_URL, SDK_GLOBAL, SDK_GLOBAL_READY, function (DM) {
-        return DM.player;
-      }).then(function (DM) {
-        if (!_this2.container) return;
-        var Player = DM.player;
-        _this2.player = new Player(_this2.container, {
-          width: '100%',
-          height: '100%',
-          video: id,
-          params: _extends({
-            controls: controls,
-            autoplay: _this2.props.playing,
-            mute: _this2.props.muted,
-            start: (0, _utils.parseStartTime)(url),
-            origin: window.location.origin
-          }, config.dailymotion.params),
-          events: {
-            apiready: _this2.props.onReady,
-            seeked: function seeked() {
-              return _this2.props.onSeek(_this2.player.currentTime);
-            },
-            video_end: _this2.props.onEnded,
-            durationchange: _this2.onDurationChange,
-            pause: _this2.props.onPause,
-            playing: _this2.props.onPlay,
-            waiting: _this2.props.onBuffer,
-            error: function error(event) {
-              return onError(event);
-            }
-          }
-        });
-      }, onError);
-    }
-  }, {
-    key: 'play',
-    value: function play() {
-      this.callPlayer('play');
-    }
-  }, {
-    key: 'pause',
-    value: function pause() {
-      this.callPlayer('pause');
-    }
-  }, {
-    key: 'stop',
-    value: function stop() {
-      // Nothing to do
-    }
-  }, {
-    key: 'seekTo',
-    value: function seekTo(seconds) {
-      this.callPlayer('seek', seconds);
-    }
-  }, {
-    key: 'setVolume',
-    value: function setVolume(fraction) {
-      this.callPlayer('setVolume', fraction);
-    }
-  }, {
-    key: 'getDuration',
-    value: function getDuration() {
-      return this.player.duration || null;
-    }
-  }, {
-    key: 'getCurrentTime',
-    value: function getCurrentTime() {
-      return this.player.currentTime;
-    }
-  }, {
-    key: 'getSecondsLoaded',
-    value: function getSecondsLoaded() {
-      return this.player.bufferedTime;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var style = _extends({
-        width: '100%',
-        height: '100%',
-        backgroundColor: 'black'
-      }, this.props.style);
-      return _react2['default'].createElement(
-        'div',
-        { style: style },
-        _react2['default'].createElement('div', { ref: this.ref })
-      );
-    }
-  }]);
-
-  return DailyMotion;
-}(_react.Component);
-
-DailyMotion.displayName = 'DailyMotion';
-
-DailyMotion.canPlay = function (url) {
-  return MATCH_URL.test(url);
-};
-
-DailyMotion.loopOnEnded = true;
-exports['default'] = (0, _singlePlayer2['default'])(DailyMotion);
-},{"react":8,"../utils":24,"../singlePlayer":74}],88:[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Mixcloud = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _utils = require('../utils');
-
-var _singlePlayer = require('../singlePlayer');
-
-var _singlePlayer2 = _interopRequireDefault(_singlePlayer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var SDK_URL = '//widget.mixcloud.com/media/js/widgetApi.js';
-var SDK_GLOBAL = 'Mixcloud';
-var MATCH_URL = /mixcloud\.com\/([^/]+\/[^/]+)/;
-
-var Mixcloud = exports.Mixcloud = function (_Component) {
-  _inherits(Mixcloud, _Component);
-
-  function Mixcloud() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, Mixcloud);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Mixcloud.__proto__ || Object.getPrototypeOf(Mixcloud)).call.apply(_ref, [this].concat(args))), _this), _this.callPlayer = _utils.callPlayer, _this.duration = null, _this.currentTime = null, _this.secondsLoaded = null, _this.mute = function () {
-      // No volume support
-    }, _this.unmute = function () {
-      // No volume support
-    }, _this.ref = function (iframe) {
-      _this.iframe = iframe;
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  _createClass(Mixcloud, [{
-    key: 'load',
-    value: function load(url) {
-      var _this2 = this;
-
-      (0, _utils.getSDK)(SDK_URL, SDK_GLOBAL).then(function (Mixcloud) {
-        _this2.player = Mixcloud.PlayerWidget(_this2.iframe);
-        _this2.player.ready.then(function () {
-          _this2.player.events.play.on(_this2.props.onPlay);
-          _this2.player.events.pause.on(_this2.props.onPause);
-          _this2.player.events.ended.on(_this2.props.onEnded);
-          _this2.player.events.error.on(_this2.props.error);
-          _this2.player.events.progress.on(function (seconds, duration) {
-            _this2.currentTime = seconds;
-            _this2.duration = duration;
-          });
-          _this2.props.onReady();
-        });
-      }, this.props.onError);
-    }
-  }, {
-    key: 'play',
-    value: function play() {
-      this.callPlayer('play');
-    }
-  }, {
-    key: 'pause',
-    value: function pause() {
-      this.callPlayer('pause');
-    }
-  }, {
-    key: 'stop',
-    value: function stop() {
-      // Nothing to do
-    }
-  }, {
-    key: 'seekTo',
-    value: function seekTo(seconds) {
-      this.callPlayer('seek', seconds);
-    }
-  }, {
-    key: 'setVolume',
-    value: function setVolume(fraction) {
-      // No volume support
-    }
-  }, {
-    key: 'getDuration',
-    value: function getDuration() {
-      return this.duration;
-    }
-  }, {
-    key: 'getCurrentTime',
-    value: function getCurrentTime() {
-      return this.currentTime;
-    }
-  }, {
-    key: 'getSecondsLoaded',
-    value: function getSecondsLoaded() {
-      return null;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          url = _props.url,
-          config = _props.config;
-
-      var id = url.match(MATCH_URL)[1];
-      var style = {
-        width: '100%',
-        height: '100%'
-      };
-      var query = (0, _utils.queryString)(_extends({}, config.mixcloud.options, {
-        feed: '/' + id + '/'
-      }));
-      // We have to give the iframe a key here to prevent a
-      // weird dialog appearing when loading a new track
-      return _react2['default'].createElement('iframe', {
-        key: id,
-        ref: this.ref,
-        style: style,
-        src: 'https://www.mixcloud.com/widget/iframe/?' + query,
-        frameBorder: '0'
-      });
-    }
-  }]);
-
-  return Mixcloud;
-}(_react.Component);
-
-Mixcloud.displayName = 'Mixcloud';
-
-Mixcloud.canPlay = function (url) {
-  return MATCH_URL.test(url);
-};
-
-exports['default'] = (0, _singlePlayer2['default'])(Mixcloud);
-},{"react":8,"../utils":24,"../singlePlayer":74}],27:[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.FilePlayer = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _utils = require('../utils');
-
-var _singlePlayer = require('../singlePlayer');
-
-var _singlePlayer2 = _interopRequireDefault(_singlePlayer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-var AUDIO_EXTENSIONS = /\.(m4a|mp4a|mpga|mp2|mp2a|mp3|m2a|m3a|wav|weba|aac|oga|spx)($|\?)/i;
-var VIDEO_EXTENSIONS = /\.(mp4|og[gv]|webm|mov|m4v)($|\?)/i;
-var HLS_EXTENSIONS = /\.(m3u8)($|\?)/i;
-var HLS_SDK_URL = 'https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.9.1/hls.min.js';
-var HLS_GLOBAL = 'Hls';
-var DASH_EXTENSIONS = /\.(mpd)($|\?)/i;
-var DASH_SDK_URL = 'https://cdnjs.cloudflare.com/ajax/libs/dashjs/2.6.5/dash.all.min.js';
-var DASH_GLOBAL = 'dashjs';
-var MATCH_DROPBOX_URL = /www\.dropbox\.com\/.+/;
-
-function canPlay(url) {
-  if (url instanceof Array) {
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
-
-    try {
-      for (var _iterator = url[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var item = _step.value;
-
-        if (typeof item === 'string' && canPlay(item)) {
-          return true;
-        }
-        if (canPlay(item.src)) {
-          return true;
-        }
-      }
-    } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion && _iterator['return']) {
-          _iterator['return']();
-        }
-      } finally {
-        if (_didIteratorError) {
-          throw _iteratorError;
-        }
-      }
-    }
-
-    return false;
-  }
-  if ((0, _utils.isMediaStream)(url)) {
-    return true;
-  }
-  return AUDIO_EXTENSIONS.test(url) || VIDEO_EXTENSIONS.test(url) || HLS_EXTENSIONS.test(url) || DASH_EXTENSIONS.test(url);
-}
-
-var FilePlayer = exports.FilePlayer = function (_Component) {
-  _inherits(FilePlayer, _Component);
-
-  function FilePlayer() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, FilePlayer);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = FilePlayer.__proto__ || Object.getPrototypeOf(FilePlayer)).call.apply(_ref, [this].concat(args))), _this), _this.onSeek = function (e) {
-      _this.props.onSeek(e.target.currentTime);
-    }, _this.mute = function () {
-      _this.player.muted = true;
-    }, _this.unmute = function () {
-      _this.player.muted = false;
-    }, _this.renderSourceElement = function (source, index) {
-      if (typeof source === 'string') {
-        return _react2['default'].createElement('source', { key: index, src: source });
-      }
-      return _react2['default'].createElement('source', _extends({ key: index }, source));
-    }, _this.renderTrack = function (track, index) {
-      return _react2['default'].createElement('track', _extends({ key: index }, track));
-    }, _this.ref = function (player) {
-      _this.player = player;
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  _createClass(FilePlayer, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      this.addListeners();
-      if (IOS) {
-        this.player.load();
-      }
-    }
-  }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      if (this.shouldUseAudio(this.props) !== this.shouldUseAudio(nextProps)) {
-        this.removeListeners();
-      }
-    }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate(prevProps) {
-      if (this.shouldUseAudio(this.props) !== this.shouldUseAudio(prevProps)) {
-        this.addListeners();
-      }
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      this.removeListeners();
-    }
-  }, {
-    key: 'addListeners',
-    value: function addListeners() {
-      var _props = this.props,
-          onReady = _props.onReady,
-          onPlay = _props.onPlay,
-          onPause = _props.onPause,
-          onEnded = _props.onEnded,
-          onError = _props.onError,
-          playsinline = _props.playsinline;
-
-      this.player.addEventListener('canplay', onReady);
-      this.player.addEventListener('play', onPlay);
-      this.player.addEventListener('pause', onPause);
-      this.player.addEventListener('seeked', this.onSeek);
-      this.player.addEventListener('ended', onEnded);
-      this.player.addEventListener('error', onError);
-      if (playsinline) {
-        this.player.setAttribute('playsinline', '');
-        this.player.setAttribute('webkit-playsinline', '');
-      }
-    }
-  }, {
-    key: 'removeListeners',
-    value: function removeListeners() {
-      var _props2 = this.props,
-          onReady = _props2.onReady,
-          onPlay = _props2.onPlay,
-          onPause = _props2.onPause,
-          onEnded = _props2.onEnded,
-          onError = _props2.onError;
-
-      this.player.removeEventListener('canplay', onReady);
-      this.player.removeEventListener('play', onPlay);
-      this.player.removeEventListener('pause', onPause);
-      this.player.removeEventListener('seeked', this.onSeek);
-      this.player.removeEventListener('ended', onEnded);
-      this.player.removeEventListener('error', onError);
-    }
-  }, {
-    key: 'shouldUseAudio',
-    value: function shouldUseAudio(props) {
-      if (props.config.file.forceVideo) {
-        return false;
-      }
-      if (props.config.file.attributes.poster) {
-        return false; // Use <video> so that poster is shown
-      }
-      return AUDIO_EXTENSIONS.test(props.url) || props.config.file.forceAudio;
-    }
-  }, {
-    key: 'shouldUseHLS',
-    value: function shouldUseHLS(url) {
-      return HLS_EXTENSIONS.test(url) && !IOS || this.props.config.file.forceHLS;
-    }
-  }, {
-    key: 'shouldUseDASH',
-    value: function shouldUseDASH(url) {
-      return DASH_EXTENSIONS.test(url) || this.props.config.file.forceDASH;
-    }
-  }, {
-    key: 'load',
-    value: function load(url) {
-      var _this2 = this;
-
-      if (this.shouldUseHLS(url)) {
-        (0, _utils.getSDK)(HLS_SDK_URL, HLS_GLOBAL).then(function (Hls) {
-          _this2.hls = new Hls(_this2.props.config.file.hlsOptions);
-          _this2.hls.on(Hls.Events.ERROR, function (e, data) {
-            _this2.props.onError(e, data, _this2.hls, Hls);
-          });
-          _this2.hls.loadSource(url);
-          _this2.hls.attachMedia(_this2.player);
-        });
-      }
-      if (this.shouldUseDASH(url)) {
-        (0, _utils.getSDK)(DASH_SDK_URL, DASH_GLOBAL).then(function (dashjs) {
-          _this2.dash = dashjs.MediaPlayer().create();
-          _this2.dash.initialize(_this2.player, url, _this2.props.playing);
-          _this2.dash.getDebug().setLogToBrowserConsole(false);
-        });
-      }
-      if ((0, _utils.isMediaStream)(url)) {
-        try {
-          this.player.srcObject = url;
-        } catch (e) {
-          this.player.src = window.URL.createObjectURL(url);
-        }
-      }
-    }
-  }, {
-    key: 'play',
-    value: function play() {
-      var promise = this.player.play();
-      if (promise) {
-        promise['catch'](this.props.onError);
-      }
-    }
-  }, {
-    key: 'pause',
-    value: function pause() {
-      this.player.pause();
-    }
-  }, {
-    key: 'stop',
-    value: function stop() {
-      this.player.removeAttribute('src');
-      if (this.hls) {
-        this.hls.destroy();
-      }
-      if (this.dash) {
-        this.dash.reset();
-      }
-    }
-  }, {
-    key: 'seekTo',
-    value: function seekTo(seconds) {
-      this.player.currentTime = seconds;
-    }
-  }, {
-    key: 'setVolume',
-    value: function setVolume(fraction) {
-      this.player.volume = fraction;
-    }
-  }, {
-    key: 'setPlaybackRate',
-    value: function setPlaybackRate(rate) {
-      this.player.playbackRate = rate;
-    }
-  }, {
-    key: 'getDuration',
-    value: function getDuration() {
-      return this.player.duration;
-    }
-  }, {
-    key: 'getCurrentTime',
-    value: function getCurrentTime() {
-      return this.player.currentTime;
-    }
-  }, {
-    key: 'getSecondsLoaded',
-    value: function getSecondsLoaded() {
-      var buffered = this.player.buffered;
-
-      if (buffered.length === 0) {
-        return 0;
-      }
-      var end = buffered.end(buffered.length - 1);
-      var duration = this.getDuration();
-      if (end > duration) {
-        return duration;
-      }
-      return end;
-    }
-  }, {
-    key: 'getSource',
-    value: function getSource(url) {
-      var useHLS = this.shouldUseHLS(url);
-      var useDASH = this.shouldUseDASH(url);
-      if (url instanceof Array || (0, _utils.isMediaStream)(url) || useHLS || useDASH) {
-        return undefined;
-      }
-      if (MATCH_DROPBOX_URL.test(url)) {
-        return url.replace('www.dropbox.com', 'dl.dropboxusercontent.com');
-      }
-      return url;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props3 = this.props,
-          url = _props3.url,
-          playing = _props3.playing,
-          loop = _props3.loop,
-          controls = _props3.controls,
-          muted = _props3.muted,
-          config = _props3.config,
-          width = _props3.width,
-          height = _props3.height;
-
-      var useAudio = this.shouldUseAudio(this.props);
-      var Element = useAudio ? 'audio' : 'video';
-      var style = {
-        width: width === 'auto' ? width : '100%',
-        height: height === 'auto' ? height : '100%'
-      };
-      return _react2['default'].createElement(
-        Element,
-        _extends({
-          ref: this.ref,
-          src: this.getSource(url),
-          style: style,
-          preload: 'auto',
-          autoPlay: playing || undefined,
-          controls: controls,
-          muted: muted,
-          loop: loop
-        }, config.file.attributes),
-        url instanceof Array && url.map(this.renderSourceElement),
-        config.file.tracks.map(this.renderTrack)
-      );
-    }
-  }]);
-
-  return FilePlayer;
-}(_react.Component);
-
-FilePlayer.displayName = 'FilePlayer';
-FilePlayer.canPlay = canPlay;
-exports['default'] = (0, _singlePlayer2['default'])(FilePlayer);
-},{"react":8,"../utils":24,"../singlePlayer":74}],49:[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _YouTube = require('./YouTube');
-
-var _SoundCloud = require('./SoundCloud');
-
-var _Vimeo = require('./Vimeo');
-
-var _Facebook = require('./Facebook');
-
-var _Streamable = require('./Streamable');
-
-var _Wistia = require('./Wistia');
-
-var _Twitch = require('./Twitch');
-
-var _DailyMotion = require('./DailyMotion');
-
-var _Mixcloud = require('./Mixcloud');
-
-var _FilePlayer = require('./FilePlayer');
-
-exports['default'] = [_YouTube.YouTube, _SoundCloud.SoundCloud, _Vimeo.Vimeo, _Facebook.Facebook, _Streamable.Streamable, _Wistia.Wistia, _Twitch.Twitch, _DailyMotion.DailyMotion, _Mixcloud.Mixcloud, _FilePlayer.FilePlayer];
-},{"./YouTube":68,"./SoundCloud":69,"./Vimeo":70,"./Facebook":84,"./Streamable":85,"./Wistia":86,"./Twitch":87,"./DailyMotion":71,"./Mixcloud":88,"./FilePlayer":27}],26:[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports['default'] = renderPreloadPlayers;
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Player = require('./Player');
-
-var _Player2 = _interopRequireDefault(_Player);
-
-var _YouTube = require('./players/YouTube');
-
-var _SoundCloud = require('./players/SoundCloud');
-
-var _Vimeo = require('./players/Vimeo');
-
-var _DailyMotion = require('./players/DailyMotion');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-var PRELOAD_PLAYERS = [{
-  Player: _YouTube.YouTube,
-  configKey: 'youtube',
-  url: 'https://www.youtube.com/watch?v=GlCmAC4MHek'
-}, {
-  Player: _SoundCloud.SoundCloud,
-  configKey: 'soundcloud',
-  url: 'https://soundcloud.com/seucheu/john-cage-433-8-bit-version'
-}, {
-  Player: _Vimeo.Vimeo,
-  configKey: 'vimeo',
-  url: 'https://vimeo.com/127250231'
-}, {
-  Player: _DailyMotion.DailyMotion,
-  configKey: 'dailymotion',
-  url: 'http://www.dailymotion.com/video/xqdpyk'
-}];
-
-function renderPreloadPlayers(url, config) {
-  var players = [];
-
-  var _iteratorNormalCompletion = true;
-  var _didIteratorError = false;
-  var _iteratorError = undefined;
-
-  try {
-    for (var _iterator = PRELOAD_PLAYERS[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-      var player = _step.value;
-
-      if (!player.Player.canPlay(url) && config[player.configKey].preload) {
-        players.push(_react2['default'].createElement(_Player2['default'], {
-          key: player.Player.displayName,
-          activePlayer: player.Player,
-          url: player.url,
-          playing: true,
-          muted: true,
-          style: { display: 'none' }
-        }));
-      }
-    }
-  } catch (err) {
-    _didIteratorError = true;
-    _iteratorError = err;
-  } finally {
-    try {
-      if (!_iteratorNormalCompletion && _iterator['return']) {
-        _iterator['return']();
-      }
-    } finally {
-      if (_didIteratorError) {
-        throw _iteratorError;
-      }
-    }
-  }
-
-  return players;
-}
-},{"react":8,"./Player":25,"./players/YouTube":68,"./players/SoundCloud":69,"./players/Vimeo":70,"./players/DailyMotion":71}],10:[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _props2 = require('./props');
-
-var _utils = require('./utils');
-
-var _players = require('./players');
-
-var _players2 = _interopRequireDefault(_players);
-
-var _Player3 = require('./Player');
-
-var _Player4 = _interopRequireDefault(_Player3);
-
-var _FilePlayer = require('./players/FilePlayer');
-
-var _preload = require('./preload');
-
-var _preload2 = _interopRequireDefault(_preload);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var SUPPORTED_PROPS = Object.keys(_props2.propTypes);
-
-var customPlayers = [];
-
-var ReactPlayer = function (_Component) {
-  _inherits(ReactPlayer, _Component);
-
-  function ReactPlayer() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, ReactPlayer);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ReactPlayer.__proto__ || Object.getPrototypeOf(ReactPlayer)).call.apply(_ref, [this].concat(args))), _this), _this.config = (0, _utils.getConfig)(_this.props, _props2.defaultProps, true), _this.getDuration = function () {
-      if (!_this.player) return null;
-      return _this.player.getDuration();
-    }, _this.getCurrentTime = function () {
-      if (!_this.player) return null;
-      return _this.player.getCurrentTime();
-    }, _this.getSecondsLoaded = function () {
-      if (!_this.player) return null;
-      return _this.player.getSecondsLoaded();
-    }, _this.getInternalPlayer = function () {
-      var key = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'player';
-
-      if (!_this.player) return null;
-      return _this.player.getInternalPlayer(key);
-    }, _this.seekTo = function (fraction) {
-      if (!_this.player) return null;
-      _this.player.seekTo(fraction);
-    }, _this.onReady = function () {
-      _this.props.onReady(_this);
-    }, _this.wrapperRef = function (wrapper) {
-      _this.wrapper = wrapper;
-    }, _this.activePlayerRef = function (player) {
-      _this.player = player;
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  _createClass(ReactPlayer, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      if (this.props.progressFrequency) {
-        var message = 'ReactPlayer: %cprogressFrequency%c is deprecated, please use %cprogressInterval%c instead';
-        console.warn(message, 'font-weight: bold', '', 'font-weight: bold', '');
-      }
-    }
-  }, {
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps) {
-      return !(0, _utils.isEqual)(this.props, nextProps);
-    }
-  }, {
-    key: 'componentWillUpdate',
-    value: function componentWillUpdate(nextProps) {
-      this.config = (0, _utils.getConfig)(nextProps, _props2.defaultProps);
-    }
-  }, {
-    key: 'getActivePlayer',
-    value: function getActivePlayer(url) {
-      var _arr = [].concat(_toConsumableArray(customPlayers), _toConsumableArray(_players2['default']));
-
-      for (var _i = 0; _i < _arr.length; _i++) {
-        var _Player = _arr[_i];
-        if (_Player.canPlay(url)) {
-          return _Player;
-        }
-      }
-      // Fall back to FilePlayer if nothing else can play the URL
-      return _FilePlayer.FilePlayer;
-    }
-  }, {
-    key: 'renderActivePlayer',
-    value: function renderActivePlayer(url) {
-      if (!url) return null;
-      var activePlayer = this.getActivePlayer(url);
-      return _react2['default'].createElement(_Player4['default'], _extends({}, this.props, {
-        key: activePlayer.displayName,
-        ref: this.activePlayerRef,
-        config: this.config,
-        activePlayer: activePlayer,
-        onReady: this.onReady
-      }));
-    }
-  }, {
-    key: 'sortPlayers',
-    value: function sortPlayers(a, b) {
-      // Retain player order to prevent weird iframe behaviour when switching players
-      if (a && b) {
-        return a.key < b.key ? -1 : 1;
-      }
-      return 0;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          url = _props.url,
-          style = _props.style,
-          width = _props.width,
-          height = _props.height,
-          Wrapper = _props.wrapper;
-
-      var otherProps = (0, _utils.omit)(this.props, SUPPORTED_PROPS, _props2.DEPRECATED_CONFIG_PROPS);
-      var activePlayer = this.renderActivePlayer(url);
-      var preloadPlayers = (0, _preload2['default'])(url, this.config);
-      var players = [activePlayer].concat(_toConsumableArray(preloadPlayers)).sort(this.sortPlayers);
-      return _react2['default'].createElement(
-        Wrapper,
-        _extends({ ref: this.wrapperRef, style: _extends({}, style, { width: width, height: height }) }, otherProps),
-        players
-      );
-    }
-  }]);
-
-  return ReactPlayer;
-}(_react.Component);
-
-ReactPlayer.addCustomPlayer = function (player) {
-  customPlayers.push(player);
-};
-
-ReactPlayer.removeCustomPlayers = function () {
-  customPlayers = [];
-};
-
-ReactPlayer.displayName = 'ReactPlayer';
-ReactPlayer.propTypes = _props2.propTypes;
-ReactPlayer.defaultProps = _props2.defaultProps;
-
-ReactPlayer.canPlay = function (url) {
-  var _arr2 = [].concat(_toConsumableArray(customPlayers), _toConsumableArray(_players2['default']));
-
-  for (var _i2 = 0; _i2 < _arr2.length; _i2++) {
-    var _Player2 = _arr2[_i2];
-    if (_Player2.canPlay(url)) {
-      return true;
-    }
-  }
-  return false;
-};
-
-exports['default'] = ReactPlayer;
-},{"react":8,"./props":23,"./utils":24,"./players":49,"./Player":25,"./players/FilePlayer":27,"./preload":26}],98:[function(require,module,exports) {
-'use strict';
+},{"../core-js/object/define-property":54}],70:[function(require,module,exports) {
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.VideoDetail = undefined;
 
-var _react = require('react');
+var _defineProperty2 = require("babel-runtime/helpers/defineProperty");
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
+var _classCallCheck2 = require("babel-runtime/helpers/classCallCheck");
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require("babel-runtime/helpers/createClass");
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require("babel-runtime/helpers/possibleConstructorReturn");
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require("babel-runtime/helpers/inherits");
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactPlayer = require('react-player');
-
-var _reactPlayer2 = _interopRequireDefault(_reactPlayer);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var VideoDetail = function VideoDetail(_ref) {
-    var video = _ref.video;
+var VideoDetail = exports.VideoDetail = function (_Component) {
+    (0, _inherits3.default)(VideoDetail, _Component);
 
-    return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(_reactPlayer2.default, {
-            url: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
-            playing: true,
-            onError: function onError(error) {
-                return console.log(error);
-            }
-        })
-    );
-};
+    function VideoDetail() {
+        (0, _classCallCheck3.default)(this, VideoDetail);
+
+        var _this = (0, _possibleConstructorReturn3.default)(this, (VideoDetail.__proto__ || Object.getPrototypeOf(VideoDetail)).call(this));
+
+        _this.loadListener = _this.loadListener.bind(_this);
+        return _this;
+    }
+
+    (0, _createClass3.default)(VideoDetail, [{
+        key: "loadListener",
+        value: function loadListener() {
+            this.props.onLoad();
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _React$createElement;
+
+            var video = this.props.video;
+
+            var youTubeUrl = "https://www.youtube.com/embed/";
+            var videoParams = "?autoplay=1&rel=0&showinfo=0";
+            return _react2.default.createElement(
+                "div",
+                { style: {
+                        width: 560,
+                        height: 315
+                    } },
+                video.id && _react2.default.createElement("iframe", (_React$createElement = {
+                    src: youTubeUrl + video.id + videoParams,
+                    onLoad: this.loadListener,
+                    frameBorder: 0,
+                    className: "youtube-iframe"
+                }, (0, _defineProperty3.default)(_React$createElement, "frameBorder", "0"), (0, _defineProperty3.default)(_React$createElement, "allow", "autoplay; encrypted-media"), (0, _defineProperty3.default)(_React$createElement, "allowFullScreen", true), _React$createElement))
+            );
+        }
+    }]);
+    return VideoDetail;
+}(_react.Component);
 
 exports.default = VideoDetail;
-},{"react":8,"react-player":10}],38:[function(require,module,exports) {
+},{"babel-runtime/helpers/defineProperty":75,"babel-runtime/helpers/classCallCheck":29,"babel-runtime/helpers/createClass":31,"babel-runtime/helpers/possibleConstructorReturn":32,"babel-runtime/helpers/inherits":30,"react":8}],26:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26886,7 +23197,8 @@ var VideosList = exports.VideosList = function (_Component) {
         var _this = (0, _possibleConstructorReturn3.default)(this, (VideosList.__proto__ || Object.getPrototypeOf(VideosList)).call(this));
 
         _this.state = {
-            videoSelected: new _Video2.default()
+            videoSelected: new _Video2.default(),
+            videoLoaded: false
         };
 
         _this.handleChange = _this.handleChange.bind(_this);
@@ -26910,15 +23222,12 @@ var VideosList = exports.VideosList = function (_Component) {
                                 return _context.abrupt('return');
 
                             case 2:
-
-                                console.log(id);
-
-                                _context.next = 5;
+                                _context.next = 4;
                                 return new Promise(function (resolve) {
                                     return setTimeout(resolve, 300);
                                 });
 
-                            case 5:
+                            case 4:
                                 video = new _Video2.default({ id: id });
 
 
@@ -26926,7 +23235,7 @@ var VideosList = exports.VideosList = function (_Component) {
                                     videoSelected: video
                                 });
 
-                            case 7:
+                            case 6:
                             case 'end':
                                 return _context.stop();
                         }
@@ -26993,13 +23302,16 @@ var VideosList = exports.VideosList = function (_Component) {
                 _react2.default.createElement(
                     _Popup2.default,
                     {
-                        isOpen: !!this.state.videoSelected.id,
+                        isOpen: this.state.videoLoaded && this.state.videoSelected.id,
                         onClosed: function onClosed() {
-                            return _this2.setState({ videoSelected: new _Video2.default() });
+                            return _this2.setState({ videoSelected: new _Video2.default(), videoLoaded: false });
                         }
                     },
                     _react2.default.createElement(_VideoDetail2.default, {
-                        video: this.state.videoSelected
+                        video: this.state.videoSelected,
+                        onLoad: function onLoad() {
+                            return _this2.setState({ videoLoaded: true });
+                        }
                     })
                 )
             );
@@ -27009,32 +23321,7 @@ var VideosList = exports.VideosList = function (_Component) {
 }(_react.Component);
 
 exports.default = VideosList;
-},{"babel-runtime/regenerator":113,"babel-runtime/helpers/asyncToGenerator":100,"babel-runtime/helpers/classCallCheck":39,"babel-runtime/helpers/createClass":42,"babel-runtime/helpers/possibleConstructorReturn":41,"babel-runtime/helpers/inherits":40,"react":8,"./VideoListItem":97,"../Popup/Popup":95,"../../shared/models/Video.class":34,"../VideoDetail/VideoDetail":98}],99:[function(require,module,exports) {
-"use strict";
-
-exports.__esModule = true;
-
-var _defineProperty = require("../core-js/object/define-property");
-
-var _defineProperty2 = _interopRequireDefault(_defineProperty);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = function (obj, key, value) {
-  if (key in obj) {
-    (0, _defineProperty2.default)(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-};
-},{"../core-js/object/define-property":76}],185:[function(require,module,exports) {
+},{"babel-runtime/regenerator":83,"babel-runtime/helpers/asyncToGenerator":74,"babel-runtime/helpers/classCallCheck":29,"babel-runtime/helpers/createClass":31,"babel-runtime/helpers/possibleConstructorReturn":32,"babel-runtime/helpers/inherits":30,"react":8,"./VideoListItem":68,"../Popup/Popup":69,"../../shared/models/Video.class":22,"../VideoDetail/VideoDetail":70}],89:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27085,7 +23372,7 @@ var Textarea = function Textarea(props) {
 };
 
 exports.default = Textarea;
-},{"react":8}],96:[function(require,module,exports) {
+},{"react":8}],73:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27235,7 +23522,7 @@ var FormReporting = exports.FormReporting = function (_Component) {
 }(_react.Component);
 
 exports.default = FormReporting;
-},{"babel-runtime/helpers/classCallCheck":39,"babel-runtime/helpers/createClass":42,"babel-runtime/helpers/possibleConstructorReturn":41,"babel-runtime/helpers/inherits":40,"react":8,"../layouts/Textarea":185,"../Button":112}],37:[function(require,module,exports) {
+},{"babel-runtime/helpers/classCallCheck":29,"babel-runtime/helpers/createClass":31,"babel-runtime/helpers/possibleConstructorReturn":32,"babel-runtime/helpers/inherits":30,"react":8,"../layouts/Textarea":89,"../Button":82}],27:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27400,7 +23687,7 @@ var FormFlagging = exports.FormFlagging = function (_Component) {
 }(_react.Component);
 
 exports.default = FormFlagging;
-},{"babel-runtime/helpers/defineProperty":99,"babel-runtime/helpers/classCallCheck":39,"babel-runtime/helpers/createClass":42,"babel-runtime/helpers/possibleConstructorReturn":41,"babel-runtime/helpers/inherits":40,"react":8,"../Button":112,"../ToolsFlag/ToolsFlag":36,"../VideosList/VideosList":38,"../Popup/Popup":95,"../FormReporting/FormReporting":96}],33:[function(require,module,exports) {
+},{"babel-runtime/helpers/defineProperty":75,"babel-runtime/helpers/classCallCheck":29,"babel-runtime/helpers/createClass":31,"babel-runtime/helpers/possibleConstructorReturn":32,"babel-runtime/helpers/inherits":30,"react":8,"../Button":82,"../ToolsFlag/ToolsFlag":25,"../VideosList/VideosList":26,"../Popup/Popup":69,"../FormReporting/FormReporting":73}],21:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27530,7 +23817,7 @@ var App = function (_Component) {
 }(_react.Component);
 
 exports.default = App;
-},{"babel-runtime/helpers/classCallCheck":39,"babel-runtime/helpers/createClass":42,"babel-runtime/helpers/possibleConstructorReturn":41,"babel-runtime/helpers/inherits":40,"react":8,"./Sidebar/Sidebar":35,"./ToolsFlag/ToolsFlag":36,"./VideosList/VideosList":38,"./FormFlagging/FormFlagging":37,"../config":33}],4:[function(require,module,exports) {
+},{"babel-runtime/helpers/classCallCheck":29,"babel-runtime/helpers/createClass":31,"babel-runtime/helpers/possibleConstructorReturn":32,"babel-runtime/helpers/inherits":30,"react":8,"./Sidebar/Sidebar":24,"./ToolsFlag/ToolsFlag":25,"./VideosList/VideosList":26,"./FormFlagging/FormFlagging":27,"../config":21}],4:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27607,7 +23894,7 @@ var videos = function getVideos() {
 };
 
 exports.default = videos;
-},{"../shared/models/Video.class":34}],5:[function(require,module,exports) {
+},{"../shared/models/Video.class":22}],5:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27659,7 +23946,7 @@ var pathname = function getPathname() {
 };
 
 exports.default = pathname;
-},{"../config":33}],7:[function(require,module,exports) {
+},{"../config":21}],7:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27714,10 +24001,6 @@ var _pagination = require('./getDom/_pagination');
 
 var _pagination2 = _interopRequireDefault(_pagination);
 
-var _reactPlayer = require('react-player');
-
-var _reactPlayer2 = _interopRequireDefault(_reactPlayer);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var youTubeDatas = {
@@ -27733,7 +24016,7 @@ document.getElementById('page-container').innerHTML = '';
 document.getElementById('page-container').appendChild(myReactApp);
 
 _reactDom2.default.render(_react2.default.createElement(_App2.default, youTubeDatas), myReactApp);
-},{"react":8,"react-dom":9,"./components/App":3,"./getDom/_videos":4,"./getDom/_search":5,"./getDom/_location":6,"./getDom/_pagination":7,"react-player":10}],196:[function(require,module,exports) {
+},{"react":8,"react-dom":9,"./components/App":3,"./getDom/_videos":4,"./getDom/_search":5,"./getDom/_location":6,"./getDom/_pagination":7}],151:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -27762,7 +24045,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '53035' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '55545' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -27903,5 +24186,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[196,1], null)
+},{}]},{},[151,1], null)
 //# sourceMappingURL=/main.map

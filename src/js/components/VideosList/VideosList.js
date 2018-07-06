@@ -10,7 +10,8 @@ export class VideosList extends Component {
         super();
 
         this.state = {
-            videoSelected: new Video()
+            videoSelected: new Video(),
+            videoLoaded: false
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -18,9 +19,6 @@ export class VideosList extends Component {
 
     async getVideo(id) {
         if (!id) return;
-
-        console.log(id);
-
 
         await new Promise(resolve => setTimeout(resolve, 300))
 
@@ -72,11 +70,12 @@ export class VideosList extends Component {
                     })}
                 </ul>
                 <Popup
-                    isOpen={!!(this.state.videoSelected.id)}
-                    onClosed={() => this.setState({ videoSelected: new Video() })}
+                    isOpen={this.state.videoLoaded && this.state.videoSelected.id }
+                    onClosed={() => this.setState({ videoSelected: new Video(), videoLoaded: false })}
                 >
                     <VideoDetail
                         video={this.state.videoSelected}
+                        onLoad={() => this.setState({ videoLoaded: true })}
                     />
                 </Popup>
             </div>
