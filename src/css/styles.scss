@@ -224,7 +224,7 @@ div#TFsCenter {
 
         li { margin-top: 18px; }
 
-        li input:checked + article > label.video-item-thumbnail { opacity: 0.45; }
+        li input:checked + article > .video-item-thumbnail { opacity: 0.45; }
     }
 
     article.video-item {

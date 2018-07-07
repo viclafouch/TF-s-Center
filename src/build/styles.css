@@ -3221,7 +3221,7 @@ div#TFsCenter {
     grid-template-columns: repeat(auto-fill, 210px); }
     div#TFsCenter ul.videos-list li {
       margin-top: 18px; }
-    div#TFsCenter ul.videos-list li input:checked + article > label.video-item-thumbnail {
+    div#TFsCenter ul.videos-list li input:checked + article > .video-item-thumbnail {
       opacity: 0.45; }
   div#TFsCenter article.video-item {
     overflow: hidden; }

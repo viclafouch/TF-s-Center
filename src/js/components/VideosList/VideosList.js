@@ -17,6 +17,8 @@ export class VideosList extends Component {
         }
 
         this.handleChange = this.handleChange.bind(this);
+        this.closePopup = this.closePopup.bind(this);
+        this.checkedVideo = this.checkedVideo.bind(this);
     }
 
     getChannel(id) {
@@ -78,6 +80,19 @@ export class VideosList extends Component {
         })
     }
 
+    checkedVideo(event, video) {
+        event.preventDefault();
+        document.getElementById(video.id).click();
+        this.closePopup();
+    }
+
+    closePopup() {
+        return this.setState({
+            videoSelected: new Video(),
+            videoLoaded: false
+        });
+    }
+
     handleChange(e) {
         e.stopPropagation();
         let id = e.target.id;
@@ -110,6 +125,7 @@ export class VideosList extends Component {
                                 <VideoListItem
                                     video={elem}
                                     onSelect={() => this.getInfoVideo(elem)}
+                                    onCheck={e => this.checkedVideo(e, elem)}
                                 />
                             </li>
                         )
@@ -123,11 +139,12 @@ export class VideosList extends Component {
 
                 <Popup
                     isOpen={this.state.videoLoaded && this.state.videoSelected.id && !this.state.isLoading}
-                    onClosed={() => this.setState({ videoSelected: new Video(), videoLoaded: false })}
+                    onClosed={this.closePopup}
                 >
                     <VideoDetail
                         video={this.state.videoSelected}
                         onLoad={() => this.setState({ videoLoaded: true, isLoading: false })}
+                        onCheck={(e, video) => this.checkedVideo(e, video)}
                     />
                 </Popup>
             </div>

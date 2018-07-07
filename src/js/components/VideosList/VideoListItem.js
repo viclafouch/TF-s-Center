@@ -20,7 +20,7 @@ export class VideoListItem extends Component {
                 {/* <label className="video-item-thumbnail" htmlFor={video.id}>
                     <img className="thumbnail" src={video.thumbnail.replace('default', 'hqdefault')} />
                 </label> */}
-                <div className="video-item-thumbnail" onClick={this.props.onSelect}>
+                <div className="video-item-thumbnail" onClick={this.props.onSelect} onContextMenu={this.props.onCheck}>
                     <img className="thumbnail" src={video.isRemoved ? video.thumbnails.default.url : video.thumbnails.high.url} />
                 </div>
                 <div className="video-item-text">

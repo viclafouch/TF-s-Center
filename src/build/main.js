@@ -22926,7 +22926,7 @@ var VideoListItem = exports.VideoListItem = function (_Component) {
                 { className: "video-item " + (!video.isRemoved ? 'isAccess' : '') },
                 _react2.default.createElement(
                     'div',
-                    { className: 'video-item-thumbnail', onClick: this.props.onSelect },
+                    { className: 'video-item-thumbnail', onClick: this.props.onSelect, onContextMenu: this.props.onCheck },
                     _react2.default.createElement('img', { className: 'thumbnail', src: video.isRemoved ? video.thumbnails.default.url : video.thumbnails.high.url })
                 ),
                 _react2.default.createElement(
@@ -23142,7 +23142,8 @@ var VideoDetail = exports.VideoDetail = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            var _React$createElement;
+            var _React$createElement,
+                _this2 = this;
 
             var video = this.props.video;
 
@@ -23211,7 +23212,9 @@ var VideoDetail = exports.VideoDetail = function (_Component) {
                             ),
                             _react2.default.createElement(
                                 _Button2.default,
-                                { blue: true },
+                                { blue: true, onClick: function onClick(e) {
+                                        return _this2.props.onCheck(e, video);
+                                    } },
                                 'Add to list'
                             )
                         )
@@ -26283,6 +26286,8 @@ var VideosList = exports.VideosList = function (_Component) {
         };
 
         _this.handleChange = _this.handleChange.bind(_this);
+        _this.closePopup = _this.closePopup.bind(_this);
+        _this.checkedVideo = _this.checkedVideo.bind(_this);
         return _this;
     }
 
@@ -26378,6 +26383,21 @@ var VideosList = exports.VideosList = function (_Component) {
             })));
         }
     }, {
+        key: 'checkedVideo',
+        value: function checkedVideo(event, video) {
+            event.preventDefault();
+            document.getElementById(video.id).click();
+            this.closePopup();
+        }
+    }, {
+        key: 'closePopup',
+        value: function closePopup() {
+            return this.setState({
+                videoSelected: new _Video2.default(),
+                videoLoaded: false
+            });
+        }
+    }, {
         key: 'handleChange',
         value: function handleChange(e) {
             e.stopPropagation();
@@ -26420,6 +26440,9 @@ var VideosList = exports.VideosList = function (_Component) {
                                 video: elem,
                                 onSelect: function onSelect() {
                                     return _this3.getInfoVideo(elem);
+                                },
+                                onCheck: function onCheck(e) {
+                                    return _this3.checkedVideo(e, elem);
                                 }
                             })
                         );
@@ -26430,14 +26453,15 @@ var VideosList = exports.VideosList = function (_Component) {
                     _Popup2.default,
                     {
                         isOpen: this.state.videoLoaded && this.state.videoSelected.id && !this.state.isLoading,
-                        onClosed: function onClosed() {
-                            return _this3.setState({ videoSelected: new _Video2.default(), videoLoaded: false });
-                        }
+                        onClosed: this.closePopup
                     },
                     _react2.default.createElement(_VideoDetail2.default, {
                         video: this.state.videoSelected,
                         onLoad: function onLoad() {
                             return _this3.setState({ videoLoaded: true, isLoading: false });
+                        },
+                        onCheck: function onCheck(e, video) {
+                            return _this3.checkedVideo(e, video);
                         }
                     })
                 )
@@ -27161,7 +27185,7 @@ document.getElementById('page-container').innerHTML = '';
 document.getElementById('page-container').appendChild(myReactApp);
 
 _reactDom2.default.render(_react2.default.createElement(_App2.default, youTubeDatas), myReactApp);
-},{"react":13,"react-dom":14,"./components/App":3,"./getDom/_videos":4,"./getDom/_search":5,"./getDom/_location":6,"./getDom/_pagination":7}],195:[function(require,module,exports) {
+},{"react":13,"react-dom":14,"./components/App":3,"./getDom/_videos":4,"./getDom/_search":5,"./getDom/_location":6,"./getDom/_pagination":7}],201:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -27331,5 +27355,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[195,1], null)
+},{}]},{},[201,1], null)
 //# sourceMappingURL=/main.map

@@ -83,7 +83,7 @@ export class VideoDetail extends Component {
                         </section>
                         <section className="action-section">
                             <Button blue>Copy video Url</Button>
-                            <Button blue>Add to list</Button>
+                            <Button blue onClick={e => this.props.onCheck(e, video)}>Add to list</Button>
                         </section>
                     </div>
                 </div>
