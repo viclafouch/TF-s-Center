@@ -22,7 +22,7 @@ export class VideoListItem extends Component {
                 </div>
                 <div className="video-item-text">
                     <h3 className="mgi--bottom-8 mgi--top-8 video-item-title">
-                        <a href={video.getVideoUrl()} target="_blank" title={!video.isRemoved ? video.title : ''} className={video.isRemoved ? 'removed-on-text' : ''}>{video.title || 'This video is not longer available'}</a>
+                        <a href={video.getVideoUrl()} target="_blank" title={!video.isRemoved ? video.title : ''} className={video.isRemoved ? 'removed-on-text' : video.isReviewed ? 'reviewed-on-text' : ''}>{video.title || 'This video is not longer available'}</a>
                     </h3>
                     {
                         !video.isRemoved &&

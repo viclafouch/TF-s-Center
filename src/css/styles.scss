@@ -27,8 +27,9 @@ body {
     overflow: hidden;
 }
 
-.red-color {
-    color: #f00;
+.reviewed-on-text {
+    color: green!important;
+    font-weight: 500;
 }
 
 .scrollBarOnHover {
@@ -98,7 +99,17 @@ img.channel-logo {
     color: #167ac6;
 }
 
+#alerts {
+    z-index: 99999999;
+    position: fixed;
+    right: 0;
+    width: calc(100vw - 256px);
+    padding: 0 10px;
+}
+
 div#TFsCenter {
+
+    a { color: inherit; }
 
     * { box-sizing: border-box; }
 
@@ -271,7 +282,6 @@ div#TFsCenter {
             .video-item-title {
                 a {
                     text-decoration: none;
-                    color: inherit;
                     &.removed-on-text {
                         color: red;
                         font-weight: 500;

@@ -22,7 +22,7 @@ class App extends Component {
         let { hideRemoved, hideReviewed } = this.state;
 
         let videos = this.props.videos.filter(elem => {
-            return hideReviewed ? true : hideRemoved ? !elem.isRemoved : true
+            return hideReviewed ? !elem.isReviewed : hideRemoved ? !elem.isRemoved : true
         });
 
         return (

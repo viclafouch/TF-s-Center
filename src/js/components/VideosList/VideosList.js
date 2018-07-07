@@ -62,8 +62,6 @@ export class VideosList extends Component {
         return this.setState({
             isLoading: true
         }, async () => {
-            await new Promise(resolve => setTimeout(resolve, 300))
-
             try {
                 video = await this.getVideo(video.id);
                 let channel = await this.getChannel(video.channelId);

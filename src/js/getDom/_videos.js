@@ -16,6 +16,7 @@ let videos = function getVideos() {
         let id = item.getElementsByClassName('yt-uix-sessionlink ')[0].getAttribute('href').split('=')[1]
 
         let isRemoved = item.getElementsByClassName('removed-on-text').length > 0;
+        let isReviewed = item.getElementsByClassName('reviewed-on-text').length > 0;
 
         if (!isRemoved && item.getElementsByClassName('yt-user-name').length > 0) {
             channelTitle = item.getElementsByClassName('yt-user-name')[0].textContent;
@@ -30,6 +31,7 @@ let videos = function getVideos() {
             channelTitle: channelTitle,
             channelUrl: channelUrl,
             id: id,
+            isReviewed: isReviewed,
             thumbnails: {
                 default: {
                     url: "https://i.ytimg.com/vi/"+id+"/default.jpg",

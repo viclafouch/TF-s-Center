@@ -11,12 +11,12 @@ export class Video {
         this.id = video.id
         this.channelUrl = video.channelUrl
         this.channelId = video.channelId
-        this.viewCount = video.viewCount
         this.publishedAt = video.publishedAt ? moment(video.publishedAt) : null
         this.thumbnails = video.thumbnails
         this.tags = video.tags || []
         this.active = true
-        this.isRemoved = video.isRemoved
+        this.isRemoved = video.isRemoved || false
+        this.isReviewed = video.isReviewed || false
     }
 
     getVideoUrl() {
