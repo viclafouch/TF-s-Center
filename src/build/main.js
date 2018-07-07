@@ -26298,12 +26298,7 @@ var VideosList = exports.VideosList = function (_Component) {
             return fetch('https://www.googleapis.com/youtube/v3/channels?part=snippet&id=' + id + '&key=' + whyDoUSearchMyKey).then(function (response) {
                 return response.json();
             }).then(function (response) {
-                console.log(response);
                 return response.items[0].snippet;
-
-                // if (!response.items) throw new Error('UNKNOWN')
-                // if (response.items.length === 0) throw new Error('NOT_FOUND_OR_REMOVED')
-                // return response.items[0].snippet
             }).catch(function (e) {
                 throw e;
             });
@@ -26327,13 +26322,20 @@ var VideosList = exports.VideosList = function (_Component) {
             });
         }
     }, {
+        key: 'redirectToWebCache',
+        value: function redirectToWebCache(video) {
+            return window.open('http://webcache.googleusercontent.com/search?q=cache:https://www.youtube.com/watch?v=' + video.id, '_blank');
+        }
+    }, {
         key: 'getInfoVideo',
         value: function getInfoVideo(video) {
             var _this2 = this;
 
             if (!video.id) return;
 
-            this.setState({
+            if (video.isRemoved) return this.redirectToWebCache(video);
+
+            return this.setState({
                 isLoading: true
             }, (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
                 var channel;
@@ -26362,19 +26364,20 @@ var VideosList = exports.VideosList = function (_Component) {
 
                                 video.channel = channel;
 
-                                _this2.setState({
+                                return _context.abrupt('return', _this2.setState({
                                     videoSelected: video
-                                });
-                                _context.next = 16;
-                                break;
+                                }));
 
                             case 13:
                                 _context.prev = 13;
                                 _context.t0 = _context['catch'](2);
 
                                 console.error(_context.t0);
+                                _this2.setState({
+                                    isLoading: false
+                                });
 
-                            case 16:
+                            case 17:
                             case 'end':
                                 return _context.stop();
                         }
@@ -26386,7 +26389,7 @@ var VideosList = exports.VideosList = function (_Component) {
         key: 'checkedVideo',
         value: function checkedVideo(event, video) {
             event.preventDefault();
-            document.getElementById(video.id).click();
+            if (this.props.canFlag) document.getElementById(video.id).click();
             this.closePopup();
         }
     }, {
@@ -26414,8 +26417,11 @@ var VideosList = exports.VideosList = function (_Component) {
 
             var _props = this.props,
                 videos = _props.videos,
-                canFlag = _props.canFlag;
+                _props$canFlag = _props.canFlag,
+                canFlag = _props$canFlag === undefined ? false : _props$canFlag;
 
+
+            console.log(canFlag);
 
             return _react2.default.createElement(
                 'div',
@@ -27185,7 +27191,7 @@ document.getElementById('page-container').innerHTML = '';
 document.getElementById('page-container').appendChild(myReactApp);
 
 _reactDom2.default.render(_react2.default.createElement(_App2.default, youTubeDatas), myReactApp);
-},{"react":13,"react-dom":14,"./components/App":3,"./getDom/_videos":4,"./getDom/_search":5,"./getDom/_location":6,"./getDom/_pagination":7}],201:[function(require,module,exports) {
+},{"react":13,"react-dom":14,"./components/App":3,"./getDom/_videos":4,"./getDom/_search":5,"./getDom/_location":6,"./getDom/_pagination":7}],212:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -27355,5 +27361,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[201,1], null)
+},{}]},{},[212,1], null)
 //# sourceMappingURL=/main.map

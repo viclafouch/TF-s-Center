@@ -81,6 +81,7 @@ img.channel-logo {
     margin-right: 16px;
     height: 48px;
     border-radius: 50%;
+    display: inline-block;
 }
 
 .yt-uix-button {
@@ -561,6 +562,9 @@ div#TFsCenter {
                 font-size: 1.35em;
                 font-weight: 400;
                 padding: 10px 0;
+                &:empty:before {
+                    content: "\200b";
+                }
             }
         }
 
@@ -571,6 +575,7 @@ div#TFsCenter {
             margin-bottom: 15px;
             & > div#description-content {
                 hyphens: auto;
+                padding-right: 5px;
                 a { color: #15c; text-decoration: none; }
             }
         }

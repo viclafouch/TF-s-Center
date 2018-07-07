@@ -25,14 +25,7 @@ export class VideosList extends Component {
         let whyDoUSearchMyKey = 'AIzaSyBo4cXAPoLRFpiLi-l2Sj8OQpU3gQPUSko'
         return fetch(`https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${id}&key=${whyDoUSearchMyKey}`)
             .then(response => response.json())
-            .then(response => {
-                console.log(response);
-                return response.items[0].snippet
-
-                // if (!response.items) throw new Error('UNKNOWN')
-                // if (response.items.length === 0) throw new Error('NOT_FOUND_OR_REMOVED')
-                // return response.items[0].snippet
-            })
+            .then(response => response.items[0].snippet)
             .catch(e => {
                 throw e
             })
@@ -57,10 +50,16 @@ export class VideosList extends Component {
             })
     }
 
+    redirectToWebCache(video) {
+        return window.open(`http://webcache.googleusercontent.com/search?q=cache:https://www.youtube.com/watch?v=${video.id}`, '_blank');
+    }
+
     getInfoVideo(video) {
         if (!video.id) return;
 
-        this.setState({
+        if (video.isRemoved) return this.redirectToWebCache(video);
+
+        return this.setState({
             isLoading: true
         }, async () => {
             await new Promise(resolve => setTimeout(resolve, 300))
@@ -71,18 +70,21 @@ export class VideosList extends Component {
 
                 video.channel = channel;
 
-                this.setState({
+                return this.setState({
                     videoSelected: video
                 });
             } catch (error) {
                 console.error(error);
+                this.setState({
+                    isLoading: false
+                });
             }
         })
     }
 
     checkedVideo(event, video) {
         event.preventDefault();
-        document.getElementById(video.id).click();
+        if (this.props.canFlag) document.getElementById(video.id).click();
         this.closePopup();
     }
 
@@ -102,7 +104,10 @@ export class VideosList extends Component {
 
     render() {
 
-        let { videos, canFlag } = this.props;
+        let { videos, canFlag = false } = this.props;
+
+        console.log(canFlag);
+
 
         return (
             <div className="container-list scrollBarOnHover">
@@ -132,10 +137,7 @@ export class VideosList extends Component {
                     })}
                 </ul>
 
-                {
-                    this.state.isLoading &&
-                    <Loader />
-                }
+                { this.state.isLoading && <Loader /> }
 
                 <Popup
                     isOpen={this.state.videoLoaded && this.state.videoSelected.id && !this.state.isLoading}
