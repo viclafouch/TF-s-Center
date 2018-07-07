@@ -23024,6 +23024,11 @@ var Video = exports.Video = function () {
         value: function getVideoUrl() {
             return "/watch?v=" + this.id;
         }
+    }, {
+        key: "reduceDescription",
+        value: function reduceDescription() {
+            console.log(this.description);
+        }
     }]);
     return Video;
 }();
@@ -23086,6 +23091,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _Button = require('../Button');
+
+var _Button2 = _interopRequireDefault(_Button);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var VideoDetail = exports.VideoDetail = function (_Component) {
@@ -23104,10 +23113,16 @@ var VideoDetail = exports.VideoDetail = function (_Component) {
         key: 'loadListener',
         value: function loadListener() {
             this.props.onLoad();
-            var description = document.createElement('p');
-            description.innerHTML = this.wrapURLs(this.props.video.description, true);
-            document.getElementById('description').innerHTML = '';
-            document.getElementById('description').appendChild(description);
+            var description = this.props.video.description;
+
+
+            description = this.wrapURLs(description, true);
+            description = description.replace(/(?:\r\n|\r|\n)/g, '<br>');
+
+            var pDescription = document.createElement('p');
+            pDescription.innerHTML = description;
+            document.getElementById('description-content').innerHTML = '';
+            document.getElementById('description-content').appendChild(pDescription);
         }
     }, {
         key: 'wrapURLs',
@@ -23131,6 +23146,8 @@ var VideoDetail = exports.VideoDetail = function (_Component) {
 
             var video = this.props.video;
 
+
+            console.log({ video: video });
 
             var youTubeUrl = "https://www.youtube.com/embed/";
             var videoParams = "?autoplay=1&rel=0&showinfo=0";
@@ -23175,7 +23192,7 @@ var VideoDetail = exports.VideoDetail = function (_Component) {
                             _react2.default.createElement(
                                 'ul',
                                 { className: 'list-tags' },
-                                video.tags.map(function (elem, index) {
+                                video.tags.slice(0, 10).map(function (elem, index) {
                                     return _react2.default.createElement(
                                         'li',
                                         { className: 'tag', key: index },
@@ -23186,8 +23203,17 @@ var VideoDetail = exports.VideoDetail = function (_Component) {
                         ),
                         _react2.default.createElement(
                             'section',
-                            { className: 'channel-section' },
-                            _react2.default.createElement('img', { src: 'http://www.smigiba.fr/wp-content/uploads/2018/05/youtube-variation.png', alt: '', className: 'channel-logo' })
+                            { className: 'action-section' },
+                            _react2.default.createElement(
+                                _Button2.default,
+                                { blue: true },
+                                'Copy video Url'
+                            ),
+                            _react2.default.createElement(
+                                _Button2.default,
+                                { blue: true },
+                                'Add to list'
+                            )
                         )
                     )
                 ),
@@ -23203,7 +23229,38 @@ var VideoDetail = exports.VideoDetail = function (_Component) {
                             video.title
                         )
                     ),
-                    _react2.default.createElement('div', { className: 'title', id: 'description' })
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'channel-user mgi--bottom-15' },
+                        _react2.default.createElement(
+                            'a',
+                            { href: '/channel/' + video.channelId, target: '_blank' },
+                            _react2.default.createElement('img', { src: video.channel ? video.channel.thumbnails.default.url : '', alt: '', className: 'channel-logo' })
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            null,
+                            _react2.default.createElement(
+                                'p',
+                                { className: 'channel-name' },
+                                _react2.default.createElement(
+                                    'a',
+                                    { href: '/channel/' + video.channelId, target: '_blank' },
+                                    video.channelTitle
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'p',
+                                { className: 'video-published' },
+                                'Published on Feb 17, 2015'
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'description scrollBarOnHover' },
+                        _react2.default.createElement('div', { id: 'description-content' })
+                    )
                 )
             );
         }
@@ -23212,7 +23269,7 @@ var VideoDetail = exports.VideoDetail = function (_Component) {
 }(_react.Component);
 
 exports.default = VideoDetail;
-},{"babel-runtime/helpers/defineProperty":82,"babel-runtime/helpers/classCallCheck":33,"babel-runtime/helpers/createClass":34,"babel-runtime/helpers/possibleConstructorReturn":36,"babel-runtime/helpers/inherits":35,"react":13}],166:[function(require,module,exports) {
+},{"babel-runtime/helpers/defineProperty":82,"babel-runtime/helpers/classCallCheck":33,"babel-runtime/helpers/createClass":34,"babel-runtime/helpers/possibleConstructorReturn":36,"babel-runtime/helpers/inherits":35,"react":13,"../Button":129}],166:[function(require,module,exports) {
 
 'use strict';
 
@@ -26237,18 +26294,12 @@ var VideosList = exports.VideosList = function (_Component) {
                 return response.json();
             }).then(function (response) {
                 console.log(response);
-                return response;
+                return response.items[0].snippet;
 
                 // if (!response.items) throw new Error('UNKNOWN')
                 // if (response.items.length === 0) throw new Error('NOT_FOUND_OR_REMOVED')
                 // return response.items[0].snippet
-            })
-            // .then(video => {
-            //     video = new Video(video)
-            //     video.id = id;
-            //     return video;
-            // })
-            .catch(function (e) {
+            }).catch(function (e) {
                 throw e;
             });
         }
@@ -26304,28 +26355,26 @@ var VideosList = exports.VideosList = function (_Component) {
                                 channel = _context.sent;
 
 
-                                console.log(video);
+                                video.channel = channel;
 
-                                // let video = await this.callYouTube(id);
-
-                                // this.setState({
-                                //     videoSelected: video
-                                // });
-                                _context.next = 15;
+                                _this2.setState({
+                                    videoSelected: video
+                                });
+                                _context.next = 16;
                                 break;
 
-                            case 12:
-                                _context.prev = 12;
+                            case 13:
+                                _context.prev = 13;
                                 _context.t0 = _context['catch'](2);
 
                                 console.error(_context.t0);
 
-                            case 15:
+                            case 16:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, _this2, [[2, 12]]);
+                }, _callee, _this2, [[2, 13]]);
             })));
         }
     }, {
@@ -27106,15 +27155,13 @@ var youTubeDatas = {
     pagination: (0, _pagination2.default)()
 };
 
-console.log(youTubeDatas.videos);
-
 var myReactApp = document.createElement("div");
 myReactApp.setAttribute("id", "TFsCenter");
 document.getElementById('page-container').innerHTML = '';
 document.getElementById('page-container').appendChild(myReactApp);
 
 _reactDom2.default.render(_react2.default.createElement(_App2.default, youTubeDatas), myReactApp);
-},{"react":13,"react-dom":14,"./components/App":3,"./getDom/_videos":4,"./getDom/_search":5,"./getDom/_location":6,"./getDom/_pagination":7}],174:[function(require,module,exports) {
+},{"react":13,"react-dom":14,"./components/App":3,"./getDom/_videos":4,"./getDom/_search":5,"./getDom/_location":6,"./getDom/_pagination":7}],195:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -27284,5 +27331,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[174,1], null)
+},{}]},{},[195,1], null)
 //# sourceMappingURL=/main.map

@@ -25,17 +25,12 @@ export class VideosList extends Component {
             .then(response => response.json())
             .then(response => {
                 console.log(response);
-                return response;
+                return response.items[0].snippet
 
                 // if (!response.items) throw new Error('UNKNOWN')
                 // if (response.items.length === 0) throw new Error('NOT_FOUND_OR_REMOVED')
                 // return response.items[0].snippet
             })
-            // .then(video => {
-            //     video = new Video(video)
-            //     video.id = id;
-            //     return video;
-            // })
             .catch(e => {
                 throw e
             })
@@ -72,13 +67,11 @@ export class VideosList extends Component {
                 video = await this.getVideo(video.id);
                 let channel = await this.getChannel(video.channelId);
 
-                console.log(video);
+                video.channel = channel;
 
-                // let video = await this.callYouTube(id);
-
-                // this.setState({
-                //     videoSelected: video
-                // });
+                this.setState({
+                    videoSelected: video
+                });
             } catch (error) {
                 console.error(error);
             }

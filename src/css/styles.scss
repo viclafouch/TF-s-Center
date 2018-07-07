@@ -73,7 +73,14 @@ iframe.youtube-iframe {
     position: absolute;
     top:0;
     left: 0;
-    // min-height: 315px;
+}
+
+img.channel-logo {
+    overflow: hidden;
+    width: 48px;
+    margin-right: 16px;
+    height: 48px;
+    border-radius: 50%;
 }
 
 .yt-uix-button {
@@ -480,8 +487,9 @@ div#TFsCenter {
             grid-template-columns: auto 320px;
             grid-gap: 10px;
 
-            &-body-main, &-body-aside {
-                display: block;
+            &-main, &-aside {
+                display: flex;
+                flex-direction: column;
                 border: 0;
             }
         }
@@ -506,16 +514,45 @@ div#TFsCenter {
                         border-radius: 2px;
                         padding: 5px;
                         margin: 6px 6px 6px 0px;
+                        max-width: 115px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
                     }
                 }
             }
 
-            section.channel-section {
-                img.channel-logo {
-                    width: 48px;
-                    height: 48px;
-                    border-radius: 50%;
+            section.action-section {
+                display: flex;
+                flex: 1;
+                flex-direction: column-reverse;
+                button {
+                    display: block;
+                    margin-top: 10px;
+                    font-size: 13px;
+                    width: 150px;
                 }
+            }
+        }
+
+        .channel-user {
+            display: flex;
+            align-items: center;
+
+            .channel-name {
+                color: #000;
+                a {
+                    color: inherit;
+                    font-weight: 500;
+                    text-decoration: none;
+                }
+            }
+
+            .video-published {
+                color: rgba(17, 17, 17, 0.6);
+                font-size: 13px;
+                font-weight: 400;
+                line-height: 1.5rem;
+                text-transform: none;
             }
         }
 
@@ -523,7 +560,18 @@ div#TFsCenter {
             h3 {
                 font-size: 1.35em;
                 font-weight: 400;
-                line-height: 2.4rem;
+                padding: 10px 0;
+            }
+        }
+
+        .description {
+            height: 160px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            margin-bottom: 15px;
+            & > div#description-content {
+                hyphens: auto;
+                a { color: #15c; text-decoration: none; }
             }
         }
     }

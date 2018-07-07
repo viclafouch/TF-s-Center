@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-    
+import Button from '../Button'
+
 export class VideoDetail extends Component {
 
     constructor() {
@@ -10,10 +11,15 @@ export class VideoDetail extends Component {
 
     loadListener() {
         this.props.onLoad();
-        let description = document.createElement('p');
-        description.innerHTML = this.wrapURLs(this.props.video.description, true)
-        document.getElementById('description').innerHTML = '';
-        document.getElementById('description').appendChild(description);
+        let { description } = this.props.video
+
+        description = this.wrapURLs(description, true);
+        description = description.replace(/(?:\r\n|\r|\n)/g, '<br>');
+
+        let pDescription = document.createElement('p');
+        pDescription.innerHTML = description;
+        document.getElementById('description-content').innerHTML = '';
+        document.getElementById('description-content').appendChild(pDescription);
     }
 
     wrapURLs(text = '', new_window) {
@@ -29,6 +35,10 @@ export class VideoDetail extends Component {
 
     render() {
         let { video } = this.props;
+
+
+        console.log({video});
+
 
         let youTubeUrl = "https://www.youtube.com/embed/"
         let videoParams = "?autoplay=1&rel=0&showinfo=0"
@@ -65,14 +75,15 @@ export class VideoDetail extends Component {
                         <section className="tags-section">
                             <ul className="list-tags">
                                 {
-                                    video.tags.map((elem, index) =>
+                                    video.tags.slice(0, 10).map((elem, index) =>
                                         <li className="tag" key={index}>{elem}</li>
                                     )
                                 }
                             </ul>
                         </section>
-                        <section className="channel-section">
-                            <img src="http://www.smigiba.fr/wp-content/uploads/2018/05/youtube-variation.png" alt="" className="channel-logo"/>
+                        <section className="action-section">
+                            <Button blue>Copy video Url</Button>
+                            <Button blue>Add to list</Button>
                         </section>
                     </div>
                 </div>
@@ -80,8 +91,19 @@ export class VideoDetail extends Component {
                     <div className="title">
                         <h3>{video.title}</h3>
                     </div>
-                    <div className="title" id="description">
-                        {/* <p>{description}</p> */}
+                    <div className="channel-user mgi--bottom-15">
+                        <a href={`/channel/${video.channelId}`} target="_blank">
+                            <img src={video.channel ? video.channel.thumbnails.default.url : ''} alt="" className="channel-logo" />
+                        </a>
+                        <div>
+                            <p className="channel-name">
+                                <a href={`/channel/${video.channelId}`} target="_blank">{video.channelTitle}</a>
+                            </p>
+                            <p className="video-published">Published on Feb 17, 2015</p>
+                        </div>
+                    </div>
+                    <div className="description scrollBarOnHover">
+                        <div id="description-content"></div>
                     </div>
                 </div>
             </div>
