@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Button from '../Button'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { YouTubeContext } from '../../main';
 
 export class VideoDetail extends Component {
 
@@ -47,13 +48,11 @@ export class VideoDetail extends Component {
     };
 
     render() {
-        let { video, canFlag } = this.props;
-
-        console.log(video);
-
+        let { video } = this.props;
 
         let youTubeUrl = "https://www.youtube.com/embed/"
         let videoParams = "?autoplay=1&rel=0&showinfo=0"
+
         return (
             <div className="video-popup">
                 <div className="video-popup-body">
@@ -103,12 +102,14 @@ export class VideoDetail extends Component {
                                     {this.state.copied && <span>Copied</span>}
                                 </div>
                             </div>
-
-                            { canFlag &&
-                                <div className="action-btn">
-                                    <Button blue onClick={e => this.props.onCheck(e, video)}>Add to list</Button>
-                                </div>
-                            }
+                            <YouTubeContext.Consumer>
+                                {(context) => (
+                                    context.state.canFlag &&
+                                    <div className="action-btn">
+                                        <Button blue onClick={e => this.props.onCheck(e, video)}>Add to list</Button>
+                                    </div>
+                                )}
+                            </YouTubeContext.Consumer>
                         </section>
                     </div>
                 </div>

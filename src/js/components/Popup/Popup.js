@@ -4,7 +4,9 @@ const Popup = (props) => {
     return (
         <div className={"popup " + (props.isOpen ? "active" : '')}>
             <div className="overlay" onClick={props.onClosed}></div>
-            <div className="container">
+            <div className="container" style={{
+                maxWidth: props.maxWidth || ''
+            }}>
                 {props.children}
             </div>
         </div>

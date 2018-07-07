@@ -22,6 +22,43 @@ $tblr: "top" "bottom" "left" "right";
     }
 }
 
+.flex-me{
+    display: flex!important;
+    &.inline-flex{
+        display: inline-flex;
+    }
+    &.flex-align{
+        align-items: center;
+    }
+    &.flex-align-start{
+        align-items: flex-start;
+    }
+    &.flex-align-end{
+        align-items: flex-end;
+    }
+    &.flex-vertical{
+        flex-direction: column;
+    }
+    &.flex-horizontal{
+        flex-direction: row;
+    }
+    &.flex-justify-start{
+        justify-content: flex-start;
+    }
+    &.flex-justify-end{
+        justify-content: flex-end;
+    }
+    &.flex-justify-center{
+        justify-content: center;
+    }
+    &.flex-justify-between{
+        justify-content: space-between;
+    }
+    &.flex-justify-around{
+        justify-content: space-around;
+    }
+}
+
 body {
     height: 100vh;
     overflow: hidden;
@@ -30,6 +67,10 @@ body {
 .reviewed-on-text {
     color: green!important;
     font-weight: 500;
+}
+
+.red-color {
+    color: red!important;
 }
 
 .scrollBarOnHover {
@@ -258,12 +299,12 @@ div#TFsCenter {
             .thumbnail {
                 width: 210px;
                 transition: all 0.3s;
+                cursor: pointer;
             }
         }
 
         &.isAccess:hover {
             .thumbnail {
-                cursor: pointer;
                 opacity: 0.750;
                 transform: scale(1.1);
             }
@@ -356,12 +397,6 @@ div#TFsCenter {
         padding: 20px 16px;
         position: relative;
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-
-        & > div {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
     }
 
     .span-icon {
@@ -492,11 +527,9 @@ div#TFsCenter {
         background: #fff;
 
         &-body {
-            max-width: 100%;
             display: grid;
             grid-template-columns:  minmax(675px, auto) 320px;
             grid-gap: 10px;
-            flex-wrap: wrap;
             padding-bottom: 10px;
             border-bottom: 1px solid rgb(238, 238, 238);
 

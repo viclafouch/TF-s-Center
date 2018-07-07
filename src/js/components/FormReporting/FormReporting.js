@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Textarea from '../layouts/Textarea'
 import Button from '../Button';
+import { YouTubeContext } from '../../main';
 
 export class FormReporting extends Component {
     constructor() {
@@ -20,16 +21,20 @@ export class FormReporting extends Component {
         return (
             <div className="form-reporting">
                 <div className="pdi--20">
-                    <h3>Report videos ({this.props.videosSelected.length})</h3>
+                    <YouTubeContext.Consumer>
+                        {(context) => (
+                            <h3>Report videos ({context.state.videosDisplayed.filter(x => x.selected === true).length})</h3>
+                        )}
+                    </YouTubeContext.Consumer>
                     <fieldset className="form-reporting-fieldset">
                         <legend className="yt-uix-form-legend">What is the issue ?</legend>
                         <ul className="yt-uix-form-list-option paper-list">
                             {
-                                this.labels.map((elem, index) =>
+                                this.labels.map((elem, index) => (
                                     <li key={index} className="paper-item">
                                         <label>
                                             <span className="paper-radio">
-                                                <input type="radio" className="yt-uix-form-input-radio deputy-flag-reason" name="reason" value={elem.value}/>
+                                                <input type="radio" className="yt-uix-form-input-radio deputy-flag-reason" name="reason" value={elem.value} />
                                                 <span className="paper-radio-element"></span>
                                             </span>
                                             <div className="mgi--left-12">
@@ -37,7 +42,7 @@ export class FormReporting extends Component {
                                             </div>
                                         </label>
                                     </li>
-                                )
+                                ))
                             }
                         </ul>
                     </fieldset>

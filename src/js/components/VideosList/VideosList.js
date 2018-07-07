@@ -4,6 +4,7 @@ import Popup from '../Popup/Popup'
 import Video from '../../shared/models/Video.class'
 import VideoDetail from '../VideoDetail/VideoDetail';
 import Loader from '../layouts/Loader';
+import { YouTubeContext } from '../../main';
 
 export class VideosList extends Component {
 
@@ -82,7 +83,7 @@ export class VideosList extends Component {
 
     checkedVideo(event, video) {
         event.preventDefault();
-        if (this.props.canFlag) document.getElementById(video.id).click();
+        document.getElementById(video.id).click();
         this.closePopup();
     }
 
@@ -102,32 +103,36 @@ export class VideosList extends Component {
 
     render() {
 
-        let { videos, canFlag = false } = this.props;
+        let { videos } = this.props;
 
         return (
             <div className="container-list scrollBarOnHover">
                 <ul className="videos-list pdi--top-0">
                     {videos.map((elem, index) => {
                         return (
-                            <li key={index}>
-                                {
-                                    canFlag &&
-                                    <input
-                                        type="checkbox"
-                                        id={elem.id}
-                                        style={{ position: 'absolute' }}
-                                        className="yt-uix-form-input-checkbox deputy-flag-video-checkbox"
-                                        value={elem.id}
-                                        name="selected_vid"
-                                        onChange={this.handleChange}
-                                    />
-                                }
-                                <VideoListItem
-                                    video={elem}
-                                    onSelect={() => this.getInfoVideo(elem)}
-                                    onCheck={e => this.checkedVideo(e, elem)}
-                                />
-                            </li>
+                            <YouTubeContext.Consumer key={index}>
+                                {(context) => (
+                                    <li>
+                                        {
+                                            context.state.canFlag &&
+                                            <input
+                                                type="checkbox"
+                                                id={elem.id}
+                                                style={{ position: 'absolute' }}
+                                                className="yt-uix-form-input-checkbox deputy-flag-video-checkbox"
+                                                value={elem.id}
+                                                name="selected_vid"
+                                                onChange={this.handleChange}
+                                            />
+                                        }
+                                        <VideoListItem
+                                            video={elem}
+                                            onSelect={() => this.getInfoVideo(elem)}
+                                            onCheck={e => context.state.canFlag && this.checkedVideo(e, elem)}
+                                        />
+                                    </li>
+                                )}
+                            </YouTubeContext.Consumer>
                         )
                     })}
                 </ul>
@@ -137,13 +142,17 @@ export class VideosList extends Component {
                 <Popup
                     isOpen={this.state.videoLoaded && this.state.videoSelected.id && !this.state.isLoading}
                     onClosed={this.closePopup}
+                    maxWidth={1100}
                 >
-                    <VideoDetail
-                        video={this.state.videoSelected}
-                        onLoad={() => this.setState({ videoLoaded: true, isLoading: false })}
-                        onCheck={(e, video) => this.checkedVideo(e, video)}
-                        canFlag={canFlag}
-                    />
+                    <YouTubeContext.Provider>
+                        {(context) => (
+                            <VideoDetail
+                                video={this.state.videoSelected}
+                                onLoad={() => this.setState({ videoLoaded: true, isLoading: false })}
+                                onCheck={(e, video) => context.state.canFlag && this.checkedVideo(e, video)}
+                            />
+                        )}
+                    </YouTubeContext.Provider>
                 </Popup>
             </div>
         )
