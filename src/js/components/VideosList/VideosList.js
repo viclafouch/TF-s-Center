@@ -19,7 +19,29 @@ export class VideosList extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    callYouTube(id) {
+    getChannel(id) {
+        let whyDoUSearchMyKey = 'AIzaSyBo4cXAPoLRFpiLi-l2Sj8OQpU3gQPUSko'
+        return fetch(`https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${id}&key=${whyDoUSearchMyKey}`)
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                return response;
+
+                // if (!response.items) throw new Error('UNKNOWN')
+                // if (response.items.length === 0) throw new Error('NOT_FOUND_OR_REMOVED')
+                // return response.items[0].snippet
+            })
+            // .then(video => {
+            //     video = new Video(video)
+            //     video.id = id;
+            //     return video;
+            // })
+            .catch(e => {
+                throw e
+            })
+    }
+
+    getVideo(id) {
         let whyDoUSearchMyKey = 'AIzaSyBo4cXAPoLRFpiLi-l2Sj8OQpU3gQPUSko'
         return fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${id}&key=${whyDoUSearchMyKey}`)
             .then(response => response.json())
@@ -38,8 +60,8 @@ export class VideosList extends Component {
             })
     }
 
-    getVideo(id) {
-        if (!id) return;
+    getInfoVideo(video) {
+        if (!video.id) return;
 
         this.setState({
             isLoading: true
@@ -47,11 +69,16 @@ export class VideosList extends Component {
             await new Promise(resolve => setTimeout(resolve, 300))
 
             try {
-                let video = await this.callYouTube(id);
+                video = await this.getVideo(video.id);
+                let channel = await this.getChannel(video.channelId);
 
-                this.setState({
-                    videoSelected: video
-                });
+                console.log(video);
+
+                // let video = await this.callYouTube(id);
+
+                // this.setState({
+                //     videoSelected: video
+                // });
             } catch (error) {
                 console.error(error);
             }
@@ -89,7 +116,7 @@ export class VideosList extends Component {
                                 }
                                 <VideoListItem
                                     video={elem}
-                                    onSelect={() => this.getVideo(elem.id)}
+                                    onSelect={() => this.getInfoVideo(elem)}
                                 />
                             </li>
                         )

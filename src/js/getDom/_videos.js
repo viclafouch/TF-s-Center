@@ -11,7 +11,7 @@ let videos = function getVideos() {
     const videos = []
 
     for (var item of list) {
-        let channelTitle, channelId = null;
+        let channelTitle, channelUrl = null;
         let title = item.getElementsByTagName('h3')[0].textContent.trim();
         let id = item.getElementsByClassName('yt-uix-sessionlink ')[0].getAttribute('href').split('=')[1]
 
@@ -19,7 +19,7 @@ let videos = function getVideos() {
 
         if (!isRemoved && item.getElementsByClassName('yt-user-name').length > 0) {
             channelTitle = item.getElementsByClassName('yt-user-name')[0].textContent;
-            channelId = item.getElementsByClassName('yt-user-name')[0].getAttribute('href');
+            channelUrl = item.getElementsByClassName('yt-user-name')[0].getAttribute('href');
 
         } else {
             title = null;
@@ -28,7 +28,7 @@ let videos = function getVideos() {
         videos.push(new Video({
             title: title,
             channelTitle: channelTitle,
-            channelId: channelId,
+            channelUrl: channelUrl,
             id: id,
             thumbnails: {
                 default: {

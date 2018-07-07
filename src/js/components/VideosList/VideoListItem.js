@@ -29,7 +29,7 @@ export class VideoListItem extends Component {
                     </h3>
                     {
                         !video.isRemoved &&
-                        <a className="video-item-creator" href={video.getChannelUrl()}>{video.channelTitle}</a>
+                        <a className="video-item-creator" href={video.channelUrl}>{video.channelTitle}</a>
                     }
 
                 </div>
