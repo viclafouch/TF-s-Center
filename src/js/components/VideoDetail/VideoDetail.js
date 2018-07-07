@@ -49,6 +49,9 @@ export class VideoDetail extends Component {
     render() {
         let { video, canFlag } = this.props;
 
+        console.log(video);
+
+
         let youTubeUrl = "https://www.youtube.com/embed/"
         let videoParams = "?autoplay=1&rel=0&showinfo=0"
         return (
@@ -85,7 +88,7 @@ export class VideoDetail extends Component {
                             <ul className="list-tags scrollBarOnHover">
                                 {
                                     video.tags.map((elem, index) =>
-                                        <li className="tag" key={index}>{elem}</li>
+                                        <li className="tag" title={elem} key={index}>{elem}</li>
                                     )
                                 }
                             </ul>
@@ -121,7 +124,7 @@ export class VideoDetail extends Component {
                             <p className="channel-name">
                                 <a href={`/channel/${video.channelId}`} target="_blank">{video.channelTitle}</a>
                             </p>
-                            <p className="video-published">Published on Feb 17, 2015</p>
+                            <p className="video-published">Published on {video.publishedAt ? video.publishedAt.format("ll") : ''}</p>
                         </div>
                     </div>
                     <div className="description scrollBarOnHover">

@@ -3344,7 +3344,6 @@ div#TFsCenter {
       background-color: transparent; }
     div#TFsCenter .popup > div.container {
       min-width: 300px;
-      max-width: 1100px;
       box-sizing: border-box;
       position: absolute;
       top: 50%;
@@ -3423,7 +3422,9 @@ div#TFsCenter {
       display: grid;
       grid-template-columns: minmax(675px, auto) 320px;
       grid-gap: 10px;
-      flex-wrap: wrap; }
+      flex-wrap: wrap;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eeeeee; }
       div#TFsCenter div.video-popup-body-main, div#TFsCenter div.video-popup-body-aside {
         display: flex;
         flex-direction: column;

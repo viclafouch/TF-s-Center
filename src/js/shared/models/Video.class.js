@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 export class Video {
     constructor(
         video = {}
@@ -10,7 +12,7 @@ export class Video {
         this.channelUrl = video.channelUrl
         this.channelId = video.channelId
         this.viewCount = video.viewCount
-        this.publishedAt = video.publishedAt ? video.publishedAt : null
+        this.publishedAt = video.publishedAt ? moment(video.publishedAt) : null
         this.thumbnails = video.thumbnails
         this.tags = video.tags || []
         this.active = true
