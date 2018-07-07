@@ -3421,8 +3421,9 @@ div#TFsCenter {
     div#TFsCenter div.video-popup-body {
       max-width: 100%;
       display: grid;
-      grid-template-columns: auto 320px;
-      grid-gap: 10px; }
+      grid-template-columns: minmax(675px, auto) 320px;
+      grid-gap: 10px;
+      flex-wrap: wrap; }
       div#TFsCenter div.video-popup-body-main, div#TFsCenter div.video-popup-body-aside {
         display: flex;
         flex-direction: column;
@@ -3434,7 +3435,10 @@ div#TFsCenter {
       display: flex;
       margin: 5px 0;
       flex-flow: row wrap;
-      justify-content: flex-start; }
+      justify-content: flex-start;
+      max-height: calc(38px * 3);
+      overflow-y: scroll;
+      overflow-x: hidden; }
       div#TFsCenter div.video-popup-body-aside section.tags-section ul.list-tags > li.tag {
         background-color: rgba(0, 0, 0, 0.2);
         color: #444444;
@@ -3449,9 +3453,15 @@ div#TFsCenter {
       display: flex;
       flex: 1;
       flex-direction: column-reverse; }
+      div#TFsCenter div.video-popup-body-aside section.action-section .action-btn {
+        margin-top: 10px; }
+      div#TFsCenter div.video-popup-body-aside section.action-section .copied-action {
+        display: flex;
+        align-items: center; }
+        div#TFsCenter div.video-popup-body-aside section.action-section .copied-action span {
+          color: green; }
       div#TFsCenter div.video-popup-body-aside section.action-section button {
         display: block;
-        margin-top: 10px;
         font-size: 13px;
         width: 150px; }
     div#TFsCenter div.video-popup .channel-user {

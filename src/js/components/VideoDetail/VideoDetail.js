@@ -1,12 +1,25 @@
 import React, { Component } from 'react'
 import Button from '../Button'
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 export class VideoDetail extends Component {
 
     constructor() {
         super();
 
+        this.state = {
+            copied: false
+        }
         this.loadListener = this.loadListener.bind(this);
+    }
+
+    static getDerivedStateFromProps(props, state) {
+        if (!props.video.id && state.copied) {
+            return {
+                copied: false
+            }
+        }
+        return null;
     }
 
     loadListener() {
@@ -34,11 +47,7 @@ export class VideoDetail extends Component {
     };
 
     render() {
-        let { video } = this.props;
-
-
-        console.log({video});
-
+        let { video, canFlag } = this.props;
 
         let youTubeUrl = "https://www.youtube.com/embed/"
         let videoParams = "?autoplay=1&rel=0&showinfo=0"
@@ -73,17 +82,30 @@ export class VideoDetail extends Component {
                             {video.thumbnails && <img src={video.thumbnails.medium.url} />}
                         </section>
                         <section className="tags-section">
-                            <ul className="list-tags">
+                            <ul className="list-tags scrollBarOnHover">
                                 {
-                                    video.tags.slice(0, 10).map((elem, index) =>
+                                    video.tags.map((elem, index) =>
                                         <li className="tag" key={index}>{elem}</li>
                                     )
                                 }
                             </ul>
                         </section>
                         <section className="action-section">
-                            <Button blue>Copy video Url</Button>
-                            <Button blue onClick={e => this.props.onCheck(e, video)}>Add to list</Button>
+                            <div className="action-btn">
+                                <div className="copied-action">
+                                    <CopyToClipboard text={`https://www.youtube.com/watch?v=${video.id}`}
+                                        onCopy={() => this.setState({ copied: true })}>
+                                        <Button blue className="mgi--top-0 mgi--right-6">Copy video Url</Button>
+                                    </CopyToClipboard>
+                                    {this.state.copied && <span>Copied</span>}
+                                </div>
+                            </div>
+
+                            { canFlag &&
+                                <div className="action-btn">
+                                    <Button blue onClick={e => this.props.onCheck(e, video)}>Add to list</Button>
+                                </div>
+                            }
                         </section>
                     </div>
                 </div>

@@ -106,9 +106,6 @@ export class VideosList extends Component {
 
         let { videos, canFlag = false } = this.props;
 
-        console.log(canFlag);
-
-
         return (
             <div className="container-list scrollBarOnHover">
                 <ul className="videos-list pdi--top-0">
@@ -147,6 +144,7 @@ export class VideosList extends Component {
                         video={this.state.videoSelected}
                         onLoad={() => this.setState({ videoLoaded: true, isLoading: false })}
                         onCheck={(e, video) => this.checkedVideo(e, video)}
+                        canFlag={canFlag}
                     />
                 </Popup>
             </div>
