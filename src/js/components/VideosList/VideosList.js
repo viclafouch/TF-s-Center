@@ -67,6 +67,9 @@ export class VideosList extends Component {
                 video = await this.getVideo(video.id);
                 let channel = await this.getChannel(video.channelId);
 
+                console.log({video});
+
+
                 video.channel = channel;
 
                 return this.setState({
@@ -144,15 +147,11 @@ export class VideosList extends Component {
                     onClosed={this.closePopup}
                     maxWidth={1100}
                 >
-                    <YouTubeContext.Provider>
-                        {(context) => (
-                            <VideoDetail
-                                video={this.state.videoSelected}
-                                onLoad={() => this.setState({ videoLoaded: true, isLoading: false })}
-                                onCheck={(e, video) => context.state.canFlag && this.checkedVideo(e, video)}
-                            />
-                        )}
-                    </YouTubeContext.Provider>
+                    <VideoDetail
+                        video={this.state.videoSelected}
+                        onLoad={() => this.setState({ videoLoaded: true, isLoading: false })}
+                        onCheck={(e, video) => this.checkedVideo(e, video)}
+                    />
                 </Popup>
             </div>
         )

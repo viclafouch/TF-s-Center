@@ -21247,7 +21247,7 @@ var Pagination = function Pagination(_ref) {
         null,
         pages.length !== 0 && _react2.default.createElement(
             'div',
-            { className: 'tools-pagination' },
+            { className: 'tools-pagination mgi--top-10' },
             pages.map(function (elem, index) {
                 return _react2.default.createElement(
                     'a',
@@ -21324,7 +21324,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var FlagTools = function FlagTools(context) {
     return _react2.default.createElement(
         'div',
-        { className: 'flex-me flex-justify-between' },
+        { className: 'flex-me flex-justify-between flex-align' },
         _react2.default.createElement(
             _Button2.default,
             {
@@ -21472,7 +21472,7 @@ var ToolsFlag = exports.ToolsFlag = function (_Component) {
                         { className: 'tools' },
                         _react2.default.createElement(
                             'div',
-                            { className: 'mgi--bottom-10' },
+                            null,
                             context.state.canFlag ? _react2.default.createElement(_FlagTools2.default, context) : _react2.default.createElement(_HistoryTools2.default, null)
                         ),
                         _react2.default.createElement(
@@ -23117,6 +23117,8 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Popup = function Popup(props) {
+    console.log(props);
+
     return _react2.default.createElement(
         "div",
         { className: "popup " + (props.isOpen ? "active" : '') },
@@ -31264,14 +31266,16 @@ var VideosList = exports.VideosList = function (_Component) {
                                 channel = _context.sent;
 
 
+                                console.log({ video: video });
+
                                 video.channel = channel;
 
                                 return _context.abrupt('return', _this2.setState({
                                     videoSelected: video
                                 }));
 
-                            case 11:
-                                _context.prev = 11;
+                            case 12:
+                                _context.prev = 12;
                                 _context.t0 = _context['catch'](0);
 
                                 console.error(_context.t0);
@@ -31279,12 +31283,12 @@ var VideosList = exports.VideosList = function (_Component) {
                                     isLoading: false
                                 });
 
-                            case 15:
+                            case 16:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, _this2, [[0, 11]]);
+                }, _callee, _this2, [[0, 12]]);
             })));
         }
     }, {
@@ -31365,21 +31369,15 @@ var VideosList = exports.VideosList = function (_Component) {
                         onClosed: this.closePopup,
                         maxWidth: 1100
                     },
-                    _react2.default.createElement(
-                        _main.YouTubeContext.Provider,
-                        null,
-                        function (context) {
-                            return _react2.default.createElement(_VideoDetail2.default, {
-                                video: _this3.state.videoSelected,
-                                onLoad: function onLoad() {
-                                    return _this3.setState({ videoLoaded: true, isLoading: false });
-                                },
-                                onCheck: function onCheck(e, video) {
-                                    return context.state.canFlag && _this3.checkedVideo(e, video);
-                                }
-                            });
+                    _react2.default.createElement(_VideoDetail2.default, {
+                        video: this.state.videoSelected,
+                        onLoad: function onLoad() {
+                            return _this3.setState({ videoLoaded: true, isLoading: false });
+                        },
+                        onCheck: function onCheck(e, video) {
+                            return _this3.checkedVideo(e, video);
                         }
-                    )
+                    })
                 )
             );
         }
@@ -32157,7 +32155,7 @@ _reactDom2.default.render(_react2.default.createElement(
     null,
     _react2.default.createElement(_App2.default, null)
 ), myReactApp);
-},{"babel-runtime/helpers/defineProperty":68,"babel-runtime/helpers/classCallCheck":27,"babel-runtime/helpers/createClass":28,"babel-runtime/helpers/possibleConstructorReturn":29,"babel-runtime/helpers/inherits":30,"react":9,"react-dom":8,"./components/App":3,"./getDom/_videos":4,"./getDom/_search":5,"./getDom/_location":6,"./getDom/_pagination":7,"./config":21}],253:[function(require,module,exports) {
+},{"babel-runtime/helpers/defineProperty":68,"babel-runtime/helpers/classCallCheck":27,"babel-runtime/helpers/createClass":28,"babel-runtime/helpers/possibleConstructorReturn":29,"babel-runtime/helpers/inherits":30,"react":9,"react-dom":8,"./components/App":3,"./getDom/_videos":4,"./getDom/_search":5,"./getDom/_location":6,"./getDom/_pagination":7,"./config":21}],272:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -32327,5 +32325,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[253,1], null)
+},{}]},{},[272,1], null)
 //# sourceMappingURL=/main.map

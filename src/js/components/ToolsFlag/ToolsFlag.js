@@ -10,10 +10,10 @@ export class ToolsFlag extends Component {
             <YouTubeContext.Consumer>
                 {(context) => (
                     <div className="tools">
-                        <div className="mgi--bottom-10">
+                        <div>
                             { context.state.canFlag ? <FlagTools {...context} /> : <HistoryTools /> }
                         </div>
-                        <div>
+                        <div>   
                             <Pagination pages={context.state.pagination} />
                         </div>
                     </div>

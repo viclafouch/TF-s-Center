@@ -6,7 +6,7 @@ const Pagination = ({pages}) => {
         <React.Fragment>
             {
                 pages.length !== 0 &&
-                    <div className="tools-pagination">
+                    <div className="tools-pagination mgi--top-10">
                         {
                             pages.map((elem, index) =>
                                 <a href={elem.url} className="mgi--right-4" key={index}>
