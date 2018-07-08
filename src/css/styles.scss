@@ -1,3 +1,5 @@
+@import './datepicker.scss';
+
 $tblr: "top" "bottom" "left" "right";
 
 @each $pos in $tblr{
@@ -397,6 +399,16 @@ div#TFsCenter {
         padding: 20px 16px;
         position: relative;
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+        &-choosing-time {
+            form > * {
+                margin-right: 5px;
+            }
+
+            input {
+                padding: 4px 4px;
+            }
+        }
     }
 
     .span-icon {
