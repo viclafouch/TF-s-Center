@@ -1,8 +1,24 @@
 {
+    "name": "TF's Center",
+    "short_name": "TFs Center",
     "manifest_version": 2,
-    "name": "TFs Center",
     "description": "A Chrome extension that remakes a new design for the TF tools.",
+    "author": "Victor de la Fouchardiere",
     "version": "1.0",
+    "background": {
+        "scripts": [
+            "background.js"
+        ]
+    },
+    "icons": {
+        "16": "src/icon/icon16.png",
+        "48": "src/icon/icon48.png",
+        "128": "src/icon/icon128.png"
+    },
+    "page_action": {
+        "default_icon": "src/icon/icon16.png",
+        "default_title": "TFs Center"
+    },
     "permissions": [
         "activeTab",
         "tabs"
@@ -11,7 +27,8 @@
         {
             "matches": [
                 "https://www.youtube.com/flagging_history*",
-                "https://www.youtube.com/deputy*"
+                "https://www.youtube.com/deputy*",
+                "http://www.youtube.com/deputy*"
             ],
             "js": [
                 "src/build/main.js"

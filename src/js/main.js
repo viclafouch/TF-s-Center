@@ -10,6 +10,8 @@ import getStatistics from './getDom/_statistics'
 import getUser from './getDom/_user'
 import { urlsAvailable } from './config';
 
+chrome.runtime.sendMessage({ type: 'showPageAction' });
+
 let youTubeDatas = {
     pathname: getPathname(),
     videos: getVideos(),

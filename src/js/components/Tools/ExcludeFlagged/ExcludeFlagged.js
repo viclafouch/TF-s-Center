@@ -27,7 +27,7 @@ export class ExcludeFlagged extends Component {
     };
 
     componentDidMount() {
-        let isExcluded = this.getUrlParameter('exclude_flagged_videos') == 'true'
+        let isExcluded = !(this.getUrlParameter('exclude_flagged_videos') == 'false')
 
         return this.setState((prevState) => {
             return {
