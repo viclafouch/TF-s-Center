@@ -32794,8 +32794,6 @@ var SelectingTime = exports.SelectingTime = function (_Component) {
 
         var _this = (0, _possibleConstructorReturn3.default)(this, (SelectingTime.__proto__ || Object.getPrototypeOf(SelectingTime)).call(this));
 
-        _this.maxDate = (0, _moment2.default)().add(1, 'days');
-
         _this.state = {
             date_from: (0, _moment2.default)().subtract(7, 'days'),
             date_to: (0, _moment2.default)()
@@ -32807,8 +32805,11 @@ var SelectingTime = exports.SelectingTime = function (_Component) {
 
     (0, _createClass3.default)(SelectingTime, [{
         key: 'handleChange',
-        value: function handleChange(date, type) {
-            this.setState((0, _defineProperty3.default)({}, type, date));
+        value: function handleChange() {
+            var date = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+            var type = arguments[1];
+
+            date !== null && this.setState((0, _defineProperty3.default)({}, type, date));
         }
     }, {
         key: 'updateQueryStringParameter',
@@ -32864,21 +32865,21 @@ var SelectingTime = exports.SelectingTime = function (_Component) {
             var url = this.updateQueryStringParameter(window.location.href, 'start_time', timestamp_from);
             url = this.updateQueryStringParameter(url, 'end_time', timestamp_to);
 
-            window.location.href = url;
+            return window.location.href = url;
         }
     }, {
         key: 'render',
         value: function render() {
             var _this2 = this;
 
-            var maxDate = {
-                date_from: (0, _moment2.default)(this.state.date_to).subtract(1, 'days'),
-                date_to: this.maxDate
-            };
-
             var minDate = {
                 date_from: null,
                 date_to: (0, _moment2.default)(this.state.date_from).add(1, 'days')
+            };
+
+            var maxDate = {
+                date_from: (0, _moment2.default)(this.state.date_to).subtract(1, 'days'),
+                date_to: (0, _moment2.default)()
             };
 
             return _react2.default.createElement(

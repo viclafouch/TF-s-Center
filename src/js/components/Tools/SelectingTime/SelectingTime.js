@@ -8,8 +8,6 @@ export class SelectingTime extends Component {
     constructor() {
         super();
 
-        this.maxDate = moment().add(1, 'days');
-
         this.state = {
             date_from: moment().subtract(7, 'days'),
             date_to: moment()
@@ -18,8 +16,8 @@ export class SelectingTime extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(date, type) {
-        this.setState({
+    handleChange(date = {}, type) {
+        date !== null && this.setState({
             [type]: date
         });
     }
@@ -73,19 +71,19 @@ export class SelectingTime extends Component {
         let url = this.updateQueryStringParameter(window.location.href, 'start_time', timestamp_from)
         url = this.updateQueryStringParameter(url, 'end_time', timestamp_to);
 
-        window.location.href = url;
+        return window.location.href = url;
     }
 
     render() {
 
-        let maxDate = {
-            date_from: moment(this.state.date_to).subtract(1, 'days'),
-            date_to: this.maxDate
-        }
-
         let minDate = {
             date_from: null,
             date_to: moment(this.state.date_from).add(1, 'days')
+        }
+
+        let maxDate = {
+            date_from: moment(this.state.date_to).subtract(1, 'days'),
+            date_to: moment()
         }
 
         return (
