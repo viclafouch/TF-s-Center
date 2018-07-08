@@ -15,12 +15,12 @@ const HistoryTools = () => {
                                 blue
                                 className={"mgi--right-10 " + (context.state.hideRemoved ? 'active' : '')}
                                 onClick={() => context.filterVideos('hideRemoved')}
-                            >Cacher les vidéos supprimées</Button>
+                            >Hide removed videos</Button>
                             <Button
                                 blue
                                 className={"mgi--right-10 " + (context.state.hideReviewed ? 'active' : '')}
                                 onClick={() => context.filterVideos('hideReviewed')}
-                            >Cacher les vidéos déjà reviewed</Button>
+                            >Hide reviewed videos</Button>
                         </div>
                         <CountVideos {...context} />
                     </div>

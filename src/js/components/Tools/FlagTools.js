@@ -13,7 +13,7 @@ const FlagTools = (context) => {
                         blue
                         disabled={context.state.videosDisplayed.filter(x => x.selected === true).length === 0}
                         onClick={() => context.setState('popupReportingOpened', true)}
-                    >Ajouter à la liste</Button>
+                    >Flag</Button>
                 </div>
                 <div className="mgi--right-10">
                     <FilterPeriod />

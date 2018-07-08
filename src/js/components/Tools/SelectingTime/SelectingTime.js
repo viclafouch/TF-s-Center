@@ -89,14 +89,14 @@ export class SelectingTime extends Component {
         return (
             <div className="tools-choosing-time">
                 <form action="" onSubmit={this.handleSubmit} className="flex-me flex-align">
-                    <span>Vidéos signalées entre le</span>
+                    <span>View flagging history from to</span>
                     <DatePicker
                         selected={this.state.date_from}
                         onChange={date => this.handleChange(date, 'date_from')}
                         maxDate={maxDate.date_from}
                         minDate={minDate.date_from}
                     />
-                    <span>et le</span>
+                    <span>to</span>
                     <DatePicker
                         selected={this.state.date_to}
                         onChange={date => this.handleChange(date, 'date_to')}
@@ -104,7 +104,7 @@ export class SelectingTime extends Component {
                         minDate={minDate.date_to}
                     />
                     <Button blue type="submit">
-                        Rechercher
+                        Go
                     </Button>
                 </form>
             </div>

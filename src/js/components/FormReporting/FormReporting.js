@@ -8,11 +8,11 @@ export class FormReporting extends Component {
         super();
 
         this.labels = [
-            { value: 'P', text: 'Contenu à caractère sexuel' },
-            { value: 'G', text: 'Contenu violent ou abject' },
-            { value: 'R', text: 'Contenu violent ou incitant à la haine' },
-            { value: 'X', text: 'Actes dangereux et pernicieux' },
-            { value: 'J', text: 'Maltraitance d\'enfants' },
+            { value: 'P', text: 'Sexual Content' },
+            { value: 'G', text: 'Violent or Repulsive Content' },
+            { value: 'R', text: 'Hateful or Abusive Content' },
+            { value: 'X', text: 'Harmful Dangerous Acts' },
+            { value: 'J', text: 'Child Abuse' },
             { value: 'Z', text: 'Spam' },
         ]
     }
@@ -27,7 +27,7 @@ export class FormReporting extends Component {
                         )}
                     </YouTubeContext.Consumer>
                     <fieldset className="form-reporting-fieldset">
-                        <legend className="yt-uix-form-legend">What is the issue ?</legend>
+                        <legend className="yt-uix-form-legend">What's the issue ?</legend>
                         <ul className="yt-uix-form-list-option paper-list">
                             {
                                 this.labels.map((elem, index) => (
