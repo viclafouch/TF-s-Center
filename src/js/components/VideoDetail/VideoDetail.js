@@ -20,11 +20,11 @@ export class VideoDetail extends Component {
                 copied: false
             }
         }
+
         return null;
     }
 
     loadListener() {
-        this.props.onLoad();
         let { description } = this.props.video
 
         description = this.wrapURLs(description, true);
@@ -62,7 +62,10 @@ export class VideoDetail extends Component {
                             position: 'relative',
                             height: 0,
                             overflow: 'hidden',
-                            backgroundColor: 'black',
+                            background: !!(video.id) ? `#000 url('${video.thumbnails.maxres ? video.thumbnails.maxres.url : video.thumbnails.high.url}')` : '#000',
+                            backgroundAttachment: 'scroll',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundPosition: 'center',
                             paddingBottom: '56.25%'
                         }}>
                             {
@@ -80,7 +83,7 @@ export class VideoDetail extends Component {
                         </div>
                     </div>
                     <div className="video-popup-body-aside">
-                        <section className="thumbs-section" style={{ height: 180, width: 320 }}>
+                        <section className="thumbs-section">
                             {video.thumbnails && <img src={video.thumbnails.medium.url} />}
                         </section>
                         <section className="tags-section">

@@ -14,7 +14,6 @@ export class VideosList extends Component {
 
         this.state = {
             videoSelected: new Video(),
-            videoLoaded: false,
             isLoading: false
         }
 
@@ -68,13 +67,11 @@ export class VideosList extends Component {
                 video = await this.getVideo(video.id);
                 let channel = await this.getChannel(video.channelId);
 
-                console.log({video});
-
-
                 video.channel = channel;
 
                 return this.setState({
-                    videoSelected: video
+                    videoSelected: video,
+                    isLoading: false
                 });
             } catch (error) {
                 console.error(error);
@@ -144,13 +141,12 @@ export class VideosList extends Component {
                 { this.state.isLoading && <Loader /> }
 
                 <Popup
-                    isOpen={this.state.videoLoaded && this.state.videoSelected.id && !this.state.isLoading}
+                    isOpen={this.state.videoSelected.id && !this.state.isLoading}
                     onClosed={this.closePopup}
                     maxWidth={1100}
                 >
                     <VideoDetail
                         video={this.state.videoSelected}
-                        onLoad={() => this.setState({ videoLoaded: true, isLoading: false })}
                         onCheck={(e, video) => this.checkedVideo(e, video)}
                     />
                 </Popup>

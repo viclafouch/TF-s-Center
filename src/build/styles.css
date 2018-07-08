@@ -3943,7 +3943,7 @@ div#TFsCenter {
     background: #fff; }
     div#TFsCenter div.video-popup-body {
       display: grid;
-      grid-template-columns: minmax(675px, auto) 320px;
+      grid-template-columns: minmax(675px, auto) minmax(100px, 320px);
       grid-gap: 10px;
       padding-bottom: 10px;
       border-bottom: 1px solid #eeeeee; }
@@ -3952,8 +3952,10 @@ div#TFsCenter {
         flex-direction: column;
         border: 0; }
     div#TFsCenter div.video-popup-body-aside section.thumbs-section {
-      overflow: hidden;
-      border: 1px solid rgba(0, 0, 0, 0.4); }
+      overflow: hidden; }
+      div#TFsCenter div.video-popup-body-aside section.thumbs-section img {
+        max-width: 100%;
+        border: 1px solid rgba(0, 0, 0, 0.3); }
     div#TFsCenter div.video-popup-body-aside section.tags-section ul.list-tags {
       display: flex;
       margin: 5px 0;

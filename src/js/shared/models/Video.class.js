@@ -22,11 +22,6 @@ export class Video {
     getVideoUrl() {
         return `/watch?v=${this.id}`
     }
-
-    reduceDescription() {
-        console.log(this.description);
-
-    }
 }
 
 export default Video

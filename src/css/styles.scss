@@ -546,7 +546,7 @@ div#TFsCenter {
 
         &-body {
             display: grid;
-            grid-template-columns:  minmax(675px, auto) 320px;
+            grid-template-columns:  minmax(675px, auto) minmax(100px, 320px);
             grid-gap: 10px;
             padding-bottom: 10px;
             border-bottom: 1px solid rgb(238, 238, 238);
@@ -561,7 +561,10 @@ div#TFsCenter {
         &-body-aside {
             section.thumbs-section {
                 overflow: hidden;
-                border: 1px solid rgba(0, 0, 0, 0.4);
+                img {
+                    max-width: 100%;
+                    border: 1px solid rgba(0, 0, 0, 0.3);
+                }
             }
 
             section.tags-section {
