@@ -21477,7 +21477,167 @@ var FilterPeriod = exports.FilterPeriod = function (_Component) {
 }(_react.Component);
 
 exports.default = FilterPeriod;
-},{"babel-runtime/helpers/classCallCheck":18,"babel-runtime/helpers/createClass":19,"babel-runtime/helpers/possibleConstructorReturn":20,"babel-runtime/helpers/inherits":21,"react":15,"../../layouts/Select":204}],135:[function(require,module,exports) {
+},{"babel-runtime/helpers/classCallCheck":18,"babel-runtime/helpers/createClass":19,"babel-runtime/helpers/possibleConstructorReturn":20,"babel-runtime/helpers/inherits":21,"react":15,"../../layouts/Select":204}],221:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Checkbox = function Checkbox(props) {
+    return _react2.default.createElement(
+        'span',
+        { className: 'yt-uix-form-input-checkbox-container', style: {
+                height: 16,
+                backgroundColor: '#F0F0F0'
+            } },
+        _react2.default.createElement('input', {
+            className: 'yt-uix-form-input-checkbox',
+            type: 'checkbox',
+            checked: props.checked,
+            name: props.name,
+            id: props.id || props.name,
+            onChange: props.onChange,
+            disabled: props.disabled || false
+        }),
+        _react2.default.createElement('span', { className: 'yt-uix-form-input-checkbox-element', style: {
+                boxSizing: 'content-box'
+            } })
+    );
+};
+
+exports.default = Checkbox;
+},{"react":15}],220:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.ExcludeFlagged = undefined;
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Checkbox = require('../../layouts/Checkbox');
+
+var _Checkbox2 = _interopRequireDefault(_Checkbox);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ExcludeFlagged = exports.ExcludeFlagged = function (_Component) {
+    (0, _inherits3.default)(ExcludeFlagged, _Component);
+
+    function ExcludeFlagged() {
+        (0, _classCallCheck3.default)(this, ExcludeFlagged);
+
+        var _this = (0, _possibleConstructorReturn3.default)(this, (ExcludeFlagged.__proto__ || Object.getPrototypeOf(ExcludeFlagged)).call(this));
+
+        _this.state = {
+            isExcluded: true
+        };
+
+        _this.handleChange = _this.handleChange.bind(_this);
+        return _this;
+    }
+
+    (0, _createClass3.default)(ExcludeFlagged, [{
+        key: 'getUrlParameter',
+        value: function getUrlParameter(sParam) {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : sParameterName[1];
+                }
+            }
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var isExcluded = this.getUrlParameter('exclude_flagged_videos') == 'true';
+
+            return this.setState(function (prevState) {
+                return {
+                    isExcluded: !!isExcluded
+                };
+            });
+        }
+    }, {
+        key: 'updateQueryStringParameter',
+        value: function updateQueryStringParameter(uri, key, value) {
+            var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+            var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+            if (uri.match(re)) {
+                return uri.replace(re, '$1' + key + "=" + value + '$2');
+            } else {
+                return uri + separator + key + "=" + value;
+            }
+        }
+    }, {
+        key: 'handleChange',
+        value: function handleChange(e) {
+            var value = e.target.checked;
+
+            var url = this.updateQueryStringParameter(window.location.href, 'exclude_flagged_videos', value);
+
+            return window.location.href = url;
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'tools-exclude-flagged' },
+                _react2.default.createElement(
+                    'label',
+                    { className: 'yt-uix-button yt-uix-button-size-default yt-uix-button-primary flex-me flex-align', htmlFor: 'excluded-flagged' },
+                    _react2.default.createElement(
+                        'span',
+                        { className: 'mgi--right-6' },
+                        'Exclude previously flagged videos'
+                    ),
+                    _react2.default.createElement(_Checkbox2.default, {
+                        checked: this.state.isExcluded,
+                        onChange: this.handleChange,
+                        name: 'excluded-flagged'
+                    })
+                )
+            );
+        }
+    }]);
+    return ExcludeFlagged;
+}(_react.Component);
+
+exports.default = ExcludeFlagged;
+},{"babel-runtime/helpers/classCallCheck":18,"babel-runtime/helpers/createClass":19,"babel-runtime/helpers/possibleConstructorReturn":20,"babel-runtime/helpers/inherits":21,"react":15,"../../layouts/Checkbox":221}],135:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -21498,6 +21658,8 @@ var _CountVideos2 = _interopRequireDefault(_CountVideos);
 
 var _FilterPeriod = require('./FilterPeriod/FilterPeriod');
 
+var _ExcludeFlagged = require('./ExcludeFlagged/ExcludeFlagged');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var FlagTools = function FlagTools(context) {
@@ -21508,27 +21670,39 @@ var FlagTools = function FlagTools(context) {
             'div',
             { className: 'flex-me' },
             _react2.default.createElement(
-                _Button2.default,
-                {
-                    blue: true,
-                    disabled: context.state.videosDisplayed.filter(function (x) {
-                        return x.selected === true;
-                    }).length === 0,
-                    className: 'mgi--right-10',
-                    onClick: function onClick() {
-                        return context.setState('popupReportingOpened', true);
-                    }
-                },
-                'Ajouter \xE0 la liste'
+                'div',
+                { className: 'mgi--right-10' },
+                _react2.default.createElement(
+                    _Button2.default,
+                    {
+                        blue: true,
+                        disabled: context.state.videosDisplayed.filter(function (x) {
+                            return x.selected === true;
+                        }).length === 0,
+                        onClick: function onClick() {
+                            return context.setState('popupReportingOpened', true);
+                        }
+                    },
+                    'Ajouter \xE0 la liste'
+                )
             ),
-            _react2.default.createElement(_FilterPeriod.FilterPeriod, null)
+            _react2.default.createElement(
+                'div',
+                { className: 'mgi--right-10' },
+                _react2.default.createElement(_FilterPeriod.FilterPeriod, null)
+            ),
+            _react2.default.createElement(
+                'div',
+                { className: 'mgi--right-10' },
+                _react2.default.createElement(_ExcludeFlagged.ExcludeFlagged, null)
+            )
         ),
         _react2.default.createElement(_CountVideos2.default, context)
     );
 };
 
 exports.default = FlagTools;
-},{"react":15,"../Button":153,"./CountVideos/CountVideos":148,"./FilterPeriod/FilterPeriod":149}],165:[function(require,module,exports) {
+},{"react":15,"../Button":153,"./CountVideos/CountVideos":148,"./FilterPeriod/FilterPeriod":149,"./ExcludeFlagged/ExcludeFlagged":220}],165:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
