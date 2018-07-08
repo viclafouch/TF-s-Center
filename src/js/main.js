@@ -6,13 +6,15 @@ import getVideos from './getDom/_videos'
 import getSearch from './getDom/_search'
 import getPathname from './getDom/_location'
 import getPagination from './getDom/_pagination'
+import getStatistics from './getDom/_statistics'
 import { urlsAvailable } from './config';
 
 let youTubeDatas = {
     pathname: getPathname(),
     videos: getVideos(),
     search: getSearch(),
-    pagination: getPagination()
+    pagination: getPagination(),
+    statistics: getStatistics()
 }
 
 const myReactApp = document.createElement("div");

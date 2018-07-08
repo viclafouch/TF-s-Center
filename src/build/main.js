@@ -38904,6 +38904,32 @@ var paginations = function getPagination() {
 };
 
 exports.default = paginations;
+},{}],246:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var statistics = function getStatistics() {
+    if (document.getElementsByTagName("a[href='/flagging_history']")) {
+        var h1 = document.getElementsByTagName('h1')[0];
+
+        var allFlagsNode = h1.nextSibling.nextSibling;
+        var allActionedNode = allFlagsNode.nextSibling.nextSibling;
+
+        var allFlagsNumber = parseInt(allFlagsNode.textContent.replace(/\D+/g, ''));
+        var allActionedNumber = parseInt(allActionedNode.textContent.replace(/\D+/g, ''));
+
+        return {
+            allFlagged: allFlagsNumber,
+            allActioned: allActionedNumber
+        };
+    }
+
+    return null;
+};
+
+exports.default = statistics;
 },{}],1:[function(require,module,exports) {
 'use strict';
 
@@ -38960,6 +38986,10 @@ var _pagination = require('./getDom/_pagination');
 
 var _pagination2 = _interopRequireDefault(_pagination);
 
+var _statistics = require('./getDom/_statistics');
+
+var _statistics2 = _interopRequireDefault(_statistics);
+
 var _config = require('./config');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -38968,7 +38998,8 @@ var youTubeDatas = {
     pathname: (0, _location2.default)(),
     videos: (0, _videos2.default)(),
     search: (0, _search2.default)(),
-    pagination: (0, _pagination2.default)()
+    pagination: (0, _pagination2.default)(),
+    statistics: (0, _statistics2.default)()
 };
 
 var myReactApp = document.createElement("div");
@@ -39044,7 +39075,7 @@ _reactDom2.default.render(_react2.default.createElement(
     null,
     _react2.default.createElement(_App2.default, null)
 ), myReactApp);
-},{"babel-runtime/helpers/defineProperty":17,"babel-runtime/helpers/classCallCheck":18,"babel-runtime/helpers/createClass":19,"babel-runtime/helpers/possibleConstructorReturn":20,"babel-runtime/helpers/inherits":21,"react":15,"react-dom":16,"./components/App":4,"./getDom/_videos":5,"./getDom/_search":6,"./getDom/_location":7,"./getDom/_pagination":8,"./config":3}],199:[function(require,module,exports) {
+},{"babel-runtime/helpers/defineProperty":17,"babel-runtime/helpers/classCallCheck":18,"babel-runtime/helpers/createClass":19,"babel-runtime/helpers/possibleConstructorReturn":20,"babel-runtime/helpers/inherits":21,"react":15,"react-dom":16,"./components/App":4,"./getDom/_videos":5,"./getDom/_search":6,"./getDom/_location":7,"./getDom/_pagination":8,"./getDom/_statistics":246,"./config":3}],199:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
