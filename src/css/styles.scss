@@ -384,6 +384,12 @@ div#TFsCenter {
                         line-height: 24px;
                         width: 100%;
                         box-sizing: border-box;
+                        &:hover { background-color: rgba(0, 0, 0, 0.04); }
+                        &.active {
+                            background-color: rgba(0, 0, 0, 0.10)!important;
+                            span.text-link { font-weight: 600; }
+                            span.span-icon { color: red; }
+                        }
                     }
 
                     span { display: inline-block; }
@@ -414,7 +420,7 @@ div#TFsCenter {
     .span-icon {
         width: 24px;
         height: 24px;
-        background: black;
+        text-align: center;
     }
 
     .popup {

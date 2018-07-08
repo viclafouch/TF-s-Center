@@ -7,6 +7,7 @@ import getSearch from './getDom/_search'
 import getPathname from './getDom/_location'
 import getPagination from './getDom/_pagination'
 import getStatistics from './getDom/_statistics'
+import getUser from './getDom/_user'
 import { urlsAvailable } from './config';
 
 let youTubeDatas = {
@@ -14,7 +15,8 @@ let youTubeDatas = {
     videos: getVideos(),
     search: getSearch(),
     pagination: getPagination(),
-    statistics: getStatistics()
+    statistics: getPathname() === '/stats' ? getStatistics() : null,
+    user: getUser()
 }
 
 const myReactApp = document.createElement("div");
@@ -32,7 +34,6 @@ class YouTubeProvider extends React.Component {
         this.baseHide = {}
 
         this.state.videosDisplayed = youTubeDatas.videos
-        this.state.videosSelected = []
         this.state.hideRemoved = this.baseHide.hideRemoved = false
         this.state.hideReviewed = this.baseHide.hideReviewed = false
         this.state.canFlag = youTubeDatas.pathname === urlsAvailable[1]

@@ -3816,6 +3816,14 @@ div#TFsCenter {
             line-height: 24px;
             width: 100%;
             box-sizing: border-box; }
+            div#TFsCenter .sidebar > .navbar ul > li a:hover {
+              background-color: rgba(0, 0, 0, 0.04); }
+            div#TFsCenter .sidebar > .navbar ul > li a.active {
+              background-color: rgba(0, 0, 0, 0.1) !important; }
+              div#TFsCenter .sidebar > .navbar ul > li a.active span.text-link {
+                font-weight: 600; }
+              div#TFsCenter .sidebar > .navbar ul > li a.active span.span-icon {
+                color: red; }
           div#TFsCenter .sidebar > .navbar ul > li span {
             display: inline-block; }
   div#TFsCenter div.tools {
@@ -3832,7 +3840,7 @@ div#TFsCenter {
   div#TFsCenter .span-icon {
     width: 24px;
     height: 24px;
-    background: black; }
+    text-align: center; }
   div#TFsCenter .popup {
     margin: 0;
     padding: 0;

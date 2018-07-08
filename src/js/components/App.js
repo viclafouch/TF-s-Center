@@ -5,6 +5,7 @@ import { VideosList } from './VideosList/VideosList';
 import { FormFlagging } from './FormFlagging/FormFlagging';
 import { urlsAvailable } from '../config';
 import { YouTubeContext } from '../main';
+import { Statistics } from './Statistics/Statistics';
 
 class App extends Component {
 
@@ -32,7 +33,7 @@ class App extends Component {
                                 <FormFlagging videos={context.state.videosDisplayed} />
                             : context.state.pathname === urlsAvailable[2] ?
                                 <div className="full-heigth">
-                                    <div>stats</div>
+                                    <Statistics />
                                 </div>
                             : <div>This page do not exist</div>
                         )}

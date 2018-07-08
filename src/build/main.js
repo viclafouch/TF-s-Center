@@ -103,7 +103,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   // Override the current require with this new one
   return newRequire;
-})({91:[function(require,module,exports) {
+})({114:[function(require,module,exports) {
 
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
 var global = module.exports = typeof window != 'undefined' && window.Math == Math
@@ -112,17 +112,17 @@ var global = module.exports = typeof window != 'undefined' && window.Math == Mat
   : Function('return this')();
 if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 
-},{}],75:[function(require,module,exports) {
+},{}],103:[function(require,module,exports) {
 var core = module.exports = { version: '2.5.7' };
 if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
-},{}],126:[function(require,module,exports) {
+},{}],119:[function(require,module,exports) {
 module.exports = function (it) {
   if (typeof it != 'function') throw TypeError(it + ' is not a function!');
   return it;
 };
 
-},{}],96:[function(require,module,exports) {
+},{}],115:[function(require,module,exports) {
 // optional / simple context binding
 var aFunction = require('./_a-function');
 module.exports = function (fn, that, length) {
@@ -144,19 +144,19 @@ module.exports = function (fn, that, length) {
   };
 };
 
-},{"./_a-function":126}],94:[function(require,module,exports) {
+},{"./_a-function":119}],118:[function(require,module,exports) {
 module.exports = function (it) {
   return typeof it === 'object' ? it !== null : typeof it === 'function';
 };
 
-},{}],95:[function(require,module,exports) {
+},{}],152:[function(require,module,exports) {
 var isObject = require('./_is-object');
 module.exports = function (it) {
   if (!isObject(it)) throw TypeError(it + ' is not an object!');
   return it;
 };
 
-},{"./_is-object":94}],106:[function(require,module,exports) {
+},{"./_is-object":118}],176:[function(require,module,exports) {
 module.exports = function (exec) {
   try {
     return !!exec();
@@ -165,13 +165,13 @@ module.exports = function (exec) {
   }
 };
 
-},{}],84:[function(require,module,exports) {
+},{}],158:[function(require,module,exports) {
 // Thank's IE8 for his funny defineProperty
 module.exports = !require('./_fails')(function () {
   return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
 });
 
-},{"./_fails":106}],102:[function(require,module,exports) {
+},{"./_fails":176}],168:[function(require,module,exports) {
 var isObject = require('./_is-object');
 var document = require('./_global').document;
 // typeof document.createElement is 'object' in old IE
@@ -180,12 +180,12 @@ module.exports = function (it) {
   return is ? document.createElement(it) : {};
 };
 
-},{"./_is-object":94,"./_global":91}],104:[function(require,module,exports) {
+},{"./_is-object":118,"./_global":114}],174:[function(require,module,exports) {
 module.exports = !require('./_descriptors') && !require('./_fails')(function () {
   return Object.defineProperty(require('./_dom-create')('div'), 'a', { get: function () { return 7; } }).a != 7;
 });
 
-},{"./_descriptors":84,"./_fails":106,"./_dom-create":102}],105:[function(require,module,exports) {
+},{"./_descriptors":158,"./_fails":176,"./_dom-create":168}],175:[function(require,module,exports) {
 // 7.1.1 ToPrimitive(input [, PreferredType])
 var isObject = require('./_is-object');
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
@@ -199,7 +199,7 @@ module.exports = function (it, S) {
   throw TypeError("Can't convert object to primitive value");
 };
 
-},{"./_is-object":94}],85:[function(require,module,exports) {
+},{"./_is-object":118}],157:[function(require,module,exports) {
 var anObject = require('./_an-object');
 var IE8_DOM_DEFINE = require('./_ie8-dom-define');
 var toPrimitive = require('./_to-primitive');
@@ -217,7 +217,7 @@ exports.f = require('./_descriptors') ? Object.defineProperty : function defineP
   return O;
 };
 
-},{"./_an-object":95,"./_ie8-dom-define":104,"./_to-primitive":105,"./_descriptors":84}],113:[function(require,module,exports) {
+},{"./_an-object":152,"./_ie8-dom-define":174,"./_to-primitive":175,"./_descriptors":158}],169:[function(require,module,exports) {
 module.exports = function (bitmap, value) {
   return {
     enumerable: !(bitmap & 1),
@@ -227,7 +227,7 @@ module.exports = function (bitmap, value) {
   };
 };
 
-},{}],92:[function(require,module,exports) {
+},{}],136:[function(require,module,exports) {
 var dP = require('./_object-dp');
 var createDesc = require('./_property-desc');
 module.exports = require('./_descriptors') ? function (object, key, value) {
@@ -237,13 +237,13 @@ module.exports = require('./_descriptors') ? function (object, key, value) {
   return object;
 };
 
-},{"./_object-dp":85,"./_property-desc":113,"./_descriptors":84}],98:[function(require,module,exports) {
+},{"./_object-dp":157,"./_property-desc":169,"./_descriptors":158}],149:[function(require,module,exports) {
 var hasOwnProperty = {}.hasOwnProperty;
 module.exports = function (it, key) {
   return hasOwnProperty.call(it, key);
 };
 
-},{}],81:[function(require,module,exports) {
+},{}],117:[function(require,module,exports) {
 
 var global = require('./_global');
 var core = require('./_core');
@@ -308,21 +308,21 @@ $export.U = 64;  // safe
 $export.R = 128; // real proto method for `library`
 module.exports = $export;
 
-},{"./_global":91,"./_core":75,"./_ctx":96,"./_hide":92,"./_has":98}],77:[function(require,module,exports) {
+},{"./_global":114,"./_core":103,"./_ctx":115,"./_hide":136,"./_has":149}],146:[function(require,module,exports) {
 var $export = require('./_export');
 // 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
 $export($export.S + $export.F * !require('./_descriptors'), 'Object', { defineProperty: require('./_object-dp').f });
 
-},{"./_export":81,"./_descriptors":84,"./_object-dp":85}],72:[function(require,module,exports) {
+},{"./_export":117,"./_descriptors":158,"./_object-dp":157}],95:[function(require,module,exports) {
 require('../../modules/es6.object.define-property');
 var $Object = require('../../modules/_core').Object;
 module.exports = function defineProperty(it, key, desc) {
   return $Object.defineProperty(it, key, desc);
 };
 
-},{"../../modules/es6.object.define-property":77,"../../modules/_core":75}],34:[function(require,module,exports) {
+},{"../../modules/es6.object.define-property":146,"../../modules/_core":103}],36:[function(require,module,exports) {
 module.exports = { "default": require("core-js/library/fn/object/define-property"), __esModule: true };
-},{"core-js/library/fn/object/define-property":72}],17:[function(require,module,exports) {
+},{"core-js/library/fn/object/define-property":95}],19:[function(require,module,exports) {
 "use strict";
 
 exports.__esModule = true;
@@ -347,7 +347,7 @@ exports.default = function (obj, key, value) {
 
   return obj;
 };
-},{"../core-js/object/define-property":34}],18:[function(require,module,exports) {
+},{"../core-js/object/define-property":36}],21:[function(require,module,exports) {
 "use strict";
 
 exports.__esModule = true;
@@ -357,7 +357,7 @@ exports.default = function (instance, Constructor) {
     throw new TypeError("Cannot call a class as a function");
   }
 };
-},{}],19:[function(require,module,exports) {
+},{}],20:[function(require,module,exports) {
 "use strict";
 
 exports.__esModule = true;
@@ -385,7 +385,7 @@ exports.default = function () {
     return Constructor;
   };
 }();
-},{"../core-js/object/define-property":34}],112:[function(require,module,exports) {
+},{"../core-js/object/define-property":36}],140:[function(require,module,exports) {
 // 7.1.4 ToInteger
 var ceil = Math.ceil;
 var floor = Math.floor;
@@ -393,14 +393,14 @@ module.exports = function (it) {
   return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
 };
 
-},{}],111:[function(require,module,exports) {
+},{}],141:[function(require,module,exports) {
 // 7.2.1 RequireObjectCoercible(argument)
 module.exports = function (it) {
   if (it == undefined) throw TypeError("Can't call method on  " + it);
   return it;
 };
 
-},{}],87:[function(require,module,exports) {
+},{}],110:[function(require,module,exports) {
 var toInteger = require('./_to-integer');
 var defined = require('./_defined');
 // true  -> String#at
@@ -419,23 +419,23 @@ module.exports = function (TO_STRING) {
   };
 };
 
-},{"./_to-integer":112,"./_defined":111}],114:[function(require,module,exports) {
+},{"./_to-integer":140,"./_defined":141}],113:[function(require,module,exports) {
 module.exports = true;
 
-},{}],115:[function(require,module,exports) {
+},{}],142:[function(require,module,exports) {
 module.exports = require('./_hide');
 
-},{"./_hide":92}],93:[function(require,module,exports) {
+},{"./_hide":136}],137:[function(require,module,exports) {
 module.exports = {};
 
-},{}],146:[function(require,module,exports) {
+},{}],148:[function(require,module,exports) {
 var toString = {}.toString;
 
 module.exports = function (it) {
   return toString.call(it).slice(8, -1);
 };
 
-},{}],137:[function(require,module,exports) {
+},{}],177:[function(require,module,exports) {
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
 var cof = require('./_cof');
 // eslint-disable-next-line no-prototype-builtins
@@ -443,7 +443,7 @@ module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
   return cof(it) == 'String' ? it.split('') : Object(it);
 };
 
-},{"./_cof":146}],119:[function(require,module,exports) {
+},{"./_cof":148}],165:[function(require,module,exports) {
 // to indexed object, toObject with fallback for non-array-like ES3 strings
 var IObject = require('./_iobject');
 var defined = require('./_defined');
@@ -451,7 +451,7 @@ module.exports = function (it) {
   return IObject(defined(it));
 };
 
-},{"./_iobject":137,"./_defined":111}],163:[function(require,module,exports) {
+},{"./_iobject":177,"./_defined":141}],161:[function(require,module,exports) {
 // 7.1.15 ToLength
 var toInteger = require('./_to-integer');
 var min = Math.min;
@@ -459,7 +459,7 @@ module.exports = function (it) {
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
 };
 
-},{"./_to-integer":112}],164:[function(require,module,exports) {
+},{"./_to-integer":140}],206:[function(require,module,exports) {
 var toInteger = require('./_to-integer');
 var max = Math.max;
 var min = Math.min;
@@ -468,7 +468,7 @@ module.exports = function (index, length) {
   return index < 0 ? max(index + length, 0) : min(index, length);
 };
 
-},{"./_to-integer":112}],147:[function(require,module,exports) {
+},{"./_to-integer":140}],204:[function(require,module,exports) {
 // false -> Array#indexOf
 // true  -> Array#includes
 var toIObject = require('./_to-iobject');
@@ -493,7 +493,7 @@ module.exports = function (IS_INCLUDES) {
   };
 };
 
-},{"./_to-iobject":119,"./_to-length":163,"./_to-absolute-index":164}],121:[function(require,module,exports) {
+},{"./_to-iobject":165,"./_to-length":161,"./_to-absolute-index":206}],155:[function(require,module,exports) {
 
 var core = require('./_core');
 var global = require('./_global');
@@ -508,21 +508,21 @@ var store = global[SHARED] || (global[SHARED] = {});
   copyright: '© 2018 Denis Pushkarev (zloirock.ru)'
 });
 
-},{"./_core":75,"./_global":91,"./_library":114}],122:[function(require,module,exports) {
+},{"./_core":103,"./_global":114,"./_library":113}],156:[function(require,module,exports) {
 var id = 0;
 var px = Math.random();
 module.exports = function (key) {
   return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
 };
 
-},{}],101:[function(require,module,exports) {
+},{}],172:[function(require,module,exports) {
 var shared = require('./_shared')('keys');
 var uid = require('./_uid');
 module.exports = function (key) {
   return shared[key] || (shared[key] = uid(key));
 };
 
-},{"./_shared":121,"./_uid":122}],144:[function(require,module,exports) {
+},{"./_shared":155,"./_uid":156}],199:[function(require,module,exports) {
 var has = require('./_has');
 var toIObject = require('./_to-iobject');
 var arrayIndexOf = require('./_array-includes')(false);
@@ -541,13 +541,13 @@ module.exports = function (object, names) {
   return result;
 };
 
-},{"./_has":98,"./_to-iobject":119,"./_array-includes":147,"./_shared-key":101}],100:[function(require,module,exports) {
+},{"./_has":149,"./_to-iobject":165,"./_array-includes":204,"./_shared-key":172}],182:[function(require,module,exports) {
 // IE 8- don't enum bug keys
 module.exports = (
   'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'
 ).split(',');
 
-},{}],127:[function(require,module,exports) {
+},{}],192:[function(require,module,exports) {
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
 var $keys = require('./_object-keys-internal');
 var enumBugKeys = require('./_enum-bug-keys');
@@ -556,7 +556,7 @@ module.exports = Object.keys || function keys(O) {
   return $keys(O, enumBugKeys);
 };
 
-},{"./_object-keys-internal":144,"./_enum-bug-keys":100}],99:[function(require,module,exports) {
+},{"./_object-keys-internal":199,"./_enum-bug-keys":182}],181:[function(require,module,exports) {
 var dP = require('./_object-dp');
 var anObject = require('./_an-object');
 var getKeys = require('./_object-keys');
@@ -571,11 +571,11 @@ module.exports = require('./_descriptors') ? Object.defineProperties : function 
   return O;
 };
 
-},{"./_object-dp":85,"./_an-object":95,"./_object-keys":127,"./_descriptors":84}],103:[function(require,module,exports) {
+},{"./_object-dp":157,"./_an-object":152,"./_object-keys":192,"./_descriptors":158}],167:[function(require,module,exports) {
 var document = require('./_global').document;
 module.exports = document && document.documentElement;
 
-},{"./_global":91}],83:[function(require,module,exports) {
+},{"./_global":114}],170:[function(require,module,exports) {
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = require('./_an-object');
 var dPs = require('./_object-dps');
@@ -618,7 +618,7 @@ module.exports = Object.create || function create(O, Properties) {
   return Properties === undefined ? result : dPs(result, Properties);
 };
 
-},{"./_an-object":95,"./_object-dps":99,"./_enum-bug-keys":100,"./_shared-key":101,"./_dom-create":102,"./_html":103}],89:[function(require,module,exports) {
+},{"./_an-object":152,"./_object-dps":181,"./_enum-bug-keys":182,"./_shared-key":172,"./_dom-create":168,"./_html":167}],129:[function(require,module,exports) {
 var store = require('./_shared')('wks');
 var uid = require('./_uid');
 var Symbol = require('./_global').Symbol;
@@ -631,7 +631,7 @@ var $exports = module.exports = function (name) {
 
 $exports.store = store;
 
-},{"./_shared":121,"./_uid":122,"./_global":91}],117:[function(require,module,exports) {
+},{"./_shared":155,"./_uid":156,"./_global":114}],131:[function(require,module,exports) {
 var def = require('./_object-dp').f;
 var has = require('./_has');
 var TAG = require('./_wks')('toStringTag');
@@ -640,7 +640,7 @@ module.exports = function (it, tag, stat) {
   if (it && !has(it = stat ? it : it.prototype, TAG)) def(it, TAG, { configurable: true, value: tag });
 };
 
-},{"./_object-dp":85,"./_has":98,"./_wks":89}],116:[function(require,module,exports) {
+},{"./_object-dp":157,"./_has":149,"./_wks":129}],143:[function(require,module,exports) {
 'use strict';
 var create = require('./_object-create');
 var descriptor = require('./_property-desc');
@@ -655,14 +655,14 @@ module.exports = function (Constructor, NAME, next) {
   setToStringTag(Constructor, NAME + ' Iterator');
 };
 
-},{"./_object-create":83,"./_property-desc":113,"./_set-to-string-tag":117,"./_hide":92,"./_wks":89}],134:[function(require,module,exports) {
+},{"./_object-create":170,"./_property-desc":169,"./_set-to-string-tag":131,"./_hide":136,"./_wks":129}],171:[function(require,module,exports) {
 // 7.1.13 ToObject(argument)
 var defined = require('./_defined');
 module.exports = function (it) {
   return Object(defined(it));
 };
 
-},{"./_defined":111}],118:[function(require,module,exports) {
+},{"./_defined":141}],144:[function(require,module,exports) {
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
 var has = require('./_has');
 var toObject = require('./_to-object');
@@ -677,7 +677,7 @@ module.exports = Object.getPrototypeOf || function (O) {
   } return O instanceof Object ? ObjectProto : null;
 };
 
-},{"./_has":98,"./_to-object":134,"./_shared-key":101}],88:[function(require,module,exports) {
+},{"./_has":149,"./_to-object":171,"./_shared-key":172}],111:[function(require,module,exports) {
 'use strict';
 var LIBRARY = require('./_library');
 var $export = require('./_export');
@@ -748,7 +748,7 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
   return methods;
 };
 
-},{"./_library":114,"./_export":81,"./_redefine":115,"./_hide":92,"./_iterators":93,"./_iter-create":116,"./_set-to-string-tag":117,"./_object-gpo":118,"./_wks":89}],79:[function(require,module,exports) {
+},{"./_library":113,"./_export":117,"./_redefine":142,"./_hide":136,"./_iterators":137,"./_iter-create":143,"./_set-to-string-tag":131,"./_object-gpo":144,"./_wks":129}],98:[function(require,module,exports) {
 'use strict';
 var $at = require('./_string-at')(true);
 
@@ -767,15 +767,15 @@ require('./_iter-define')(String, 'String', function (iterated) {
   return { value: point, done: false };
 });
 
-},{"./_string-at":87,"./_iter-define":88}],123:[function(require,module,exports) {
+},{"./_string-at":110,"./_iter-define":111}],163:[function(require,module,exports) {
 module.exports = function () { /* empty */ };
 
-},{}],124:[function(require,module,exports) {
+},{}],164:[function(require,module,exports) {
 module.exports = function (done, value) {
   return { value: value, done: !!done };
 };
 
-},{}],90:[function(require,module,exports) {
+},{}],135:[function(require,module,exports) {
 'use strict';
 var addToUnscopables = require('./_add-to-unscopables');
 var step = require('./_iter-step');
@@ -811,7 +811,7 @@ addToUnscopables('keys');
 addToUnscopables('values');
 addToUnscopables('entries');
 
-},{"./_add-to-unscopables":123,"./_iter-step":124,"./_iterators":93,"./_to-iobject":119,"./_iter-define":88}],78:[function(require,module,exports) {
+},{"./_add-to-unscopables":163,"./_iter-step":164,"./_iterators":137,"./_to-iobject":165,"./_iter-define":111}],99:[function(require,module,exports) {
 
 require('./es6.array.iterator');
 var global = require('./_global');
@@ -833,17 +833,17 @@ for (var i = 0; i < DOMIterables.length; i++) {
   Iterators[NAME] = Iterators.Array;
 }
 
-},{"./es6.array.iterator":90,"./_global":91,"./_hide":92,"./_iterators":93,"./_wks":89}],80:[function(require,module,exports) {
+},{"./es6.array.iterator":135,"./_global":114,"./_hide":136,"./_iterators":137,"./_wks":129}],147:[function(require,module,exports) {
 exports.f = require('./_wks');
 
-},{"./_wks":89}],73:[function(require,module,exports) {
+},{"./_wks":129}],112:[function(require,module,exports) {
 require('../../modules/es6.string.iterator');
 require('../../modules/web.dom.iterable');
 module.exports = require('../../modules/_wks-ext').f('iterator');
 
-},{"../../modules/es6.string.iterator":79,"../../modules/web.dom.iterable":78,"../../modules/_wks-ext":80}],64:[function(require,module,exports) {
+},{"../../modules/es6.string.iterator":98,"../../modules/web.dom.iterable":99,"../../modules/_wks-ext":147}],84:[function(require,module,exports) {
 module.exports = { "default": require("core-js/library/fn/symbol/iterator"), __esModule: true };
-},{"core-js/library/fn/symbol/iterator":73}],128:[function(require,module,exports) {
+},{"core-js/library/fn/symbol/iterator":112}],188:[function(require,module,exports) {
 var META = require('./_uid')('meta');
 var isObject = require('./_is-object');
 var has = require('./_has');
@@ -898,7 +898,7 @@ var meta = module.exports = {
   onFreeze: onFreeze
 };
 
-},{"./_uid":122,"./_is-object":94,"./_has":98,"./_object-dp":85,"./_fails":106}],125:[function(require,module,exports) {
+},{"./_uid":156,"./_is-object":118,"./_has":149,"./_object-dp":157,"./_fails":176}],187:[function(require,module,exports) {
 
 var global = require('./_global');
 var core = require('./_core');
@@ -910,13 +910,13 @@ module.exports = function (name) {
   if (name.charAt(0) != '_' && !(name in $Symbol)) defineProperty($Symbol, name, { value: wksExt.f(name) });
 };
 
-},{"./_global":91,"./_core":75,"./_library":114,"./_wks-ext":80,"./_object-dp":85}],133:[function(require,module,exports) {
+},{"./_global":114,"./_core":103,"./_library":113,"./_wks-ext":147,"./_object-dp":157}],195:[function(require,module,exports) {
 exports.f = Object.getOwnPropertySymbols;
 
-},{}],120:[function(require,module,exports) {
+},{}],194:[function(require,module,exports) {
 exports.f = {}.propertyIsEnumerable;
 
-},{}],129:[function(require,module,exports) {
+},{}],189:[function(require,module,exports) {
 // all enumerable object keys, includes symbols
 var getKeys = require('./_object-keys');
 var gOPS = require('./_object-gops');
@@ -933,14 +933,14 @@ module.exports = function (it) {
   } return result;
 };
 
-},{"./_object-keys":127,"./_object-gops":133,"./_object-pie":120}],130:[function(require,module,exports) {
+},{"./_object-keys":192,"./_object-gops":195,"./_object-pie":194}],190:[function(require,module,exports) {
 // 7.2.2 IsArray(argument)
 var cof = require('./_cof');
 module.exports = Array.isArray || function isArray(arg) {
   return cof(arg) == 'Array';
 };
 
-},{"./_cof":146}],132:[function(require,module,exports) {
+},{"./_cof":148}],193:[function(require,module,exports) {
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
 var $keys = require('./_object-keys-internal');
 var hiddenKeys = require('./_enum-bug-keys').concat('length', 'prototype');
@@ -949,7 +949,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
   return $keys(O, hiddenKeys);
 };
 
-},{"./_object-keys-internal":144,"./_enum-bug-keys":100}],131:[function(require,module,exports) {
+},{"./_object-keys-internal":199,"./_enum-bug-keys":182}],191:[function(require,module,exports) {
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
 var toIObject = require('./_to-iobject');
 var gOPN = require('./_object-gopn').f;
@@ -970,7 +970,7 @@ module.exports.f = function getOwnPropertyNames(it) {
   return windowNames && toString.call(it) == '[object Window]' ? getWindowNames(it) : gOPN(toIObject(it));
 };
 
-},{"./_to-iobject":119,"./_object-gopn":132}],97:[function(require,module,exports) {
+},{"./_to-iobject":165,"./_object-gopn":193}],185:[function(require,module,exports) {
 var pIE = require('./_object-pie');
 var createDesc = require('./_property-desc');
 var toIObject = require('./_to-iobject');
@@ -988,7 +988,7 @@ exports.f = require('./_descriptors') ? gOPD : function getOwnPropertyDescriptor
   if (has(O, P)) return createDesc(!pIE.f.call(O, P), O[P]);
 };
 
-},{"./_object-pie":120,"./_property-desc":113,"./_to-iobject":119,"./_to-primitive":105,"./_has":98,"./_ie8-dom-define":104,"./_descriptors":84}],107:[function(require,module,exports) {
+},{"./_object-pie":194,"./_property-desc":169,"./_to-iobject":165,"./_to-primitive":175,"./_has":149,"./_ie8-dom-define":174,"./_descriptors":158}],178:[function(require,module,exports) {
 
 'use strict';
 // ECMAScript 6 symbols shim
@@ -1225,24 +1225,24 @@ setToStringTag(Math, 'Math', true);
 // 24.3.3 JSON[@@toStringTag]
 setToStringTag(global.JSON, 'JSON', true);
 
-},{"./_global":91,"./_has":98,"./_descriptors":84,"./_export":81,"./_redefine":115,"./_meta":128,"./_fails":106,"./_shared":121,"./_set-to-string-tag":117,"./_uid":122,"./_wks":89,"./_wks-ext":80,"./_wks-define":125,"./_enum-keys":129,"./_is-array":130,"./_an-object":95,"./_is-object":94,"./_to-iobject":119,"./_to-primitive":105,"./_property-desc":113,"./_object-create":83,"./_object-gopn-ext":131,"./_object-gopd":97,"./_object-dp":85,"./_object-keys":127,"./_object-gopn":132,"./_object-pie":120,"./_object-gops":133,"./_library":114,"./_hide":92}],108:[function(require,module,exports) {
+},{"./_global":114,"./_has":149,"./_descriptors":158,"./_export":117,"./_redefine":142,"./_meta":188,"./_fails":176,"./_shared":155,"./_set-to-string-tag":131,"./_uid":156,"./_wks":129,"./_wks-ext":147,"./_wks-define":187,"./_enum-keys":189,"./_is-array":190,"./_an-object":152,"./_is-object":118,"./_to-iobject":165,"./_to-primitive":175,"./_property-desc":169,"./_object-create":170,"./_object-gopn-ext":191,"./_object-gopd":185,"./_object-dp":157,"./_object-keys":192,"./_object-gopn":193,"./_object-pie":194,"./_object-gops":195,"./_library":113,"./_hide":136}],97:[function(require,module,exports) {
 
-},{}],109:[function(require,module,exports) {
+},{}],180:[function(require,module,exports) {
 require('./_wks-define')('asyncIterator');
 
-},{"./_wks-define":125}],110:[function(require,module,exports) {
+},{"./_wks-define":187}],179:[function(require,module,exports) {
 require('./_wks-define')('observable');
 
-},{"./_wks-define":125}],86:[function(require,module,exports) {
+},{"./_wks-define":187}],151:[function(require,module,exports) {
 require('../../modules/es6.symbol');
 require('../../modules/es6.object.to-string');
 require('../../modules/es7.symbol.async-iterator');
 require('../../modules/es7.symbol.observable');
 module.exports = require('../../modules/_core').Symbol;
 
-},{"../../modules/es6.symbol":107,"../../modules/es6.object.to-string":108,"../../modules/es7.symbol.async-iterator":109,"../../modules/es7.symbol.observable":110,"../../modules/_core":75}],63:[function(require,module,exports) {
+},{"../../modules/es6.symbol":178,"../../modules/es6.object.to-string":97,"../../modules/es7.symbol.async-iterator":180,"../../modules/es7.symbol.observable":179,"../../modules/_core":103}],80:[function(require,module,exports) {
 module.exports = { "default": require("core-js/library/fn/symbol"), __esModule: true };
-},{"core-js/library/fn/symbol":86}],33:[function(require,module,exports) {
+},{"core-js/library/fn/symbol":151}],35:[function(require,module,exports) {
 "use strict";
 
 exports.__esModule = true;
@@ -1264,7 +1264,7 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 } : function (obj) {
   return obj && typeof _symbol2.default === "function" && obj.constructor === _symbol2.default && obj !== _symbol2.default.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof(obj);
 };
-},{"../core-js/symbol/iterator":64,"../core-js/symbol":63}],20:[function(require,module,exports) {
+},{"../core-js/symbol/iterator":84,"../core-js/symbol":80}],22:[function(require,module,exports) {
 "use strict";
 
 exports.__esModule = true;
@@ -1282,7 +1282,7 @@ exports.default = function (self, call) {
 
   return call && ((typeof call === "undefined" ? "undefined" : (0, _typeof3.default)(call)) === "object" || typeof call === "function") ? call : self;
 };
-},{"../helpers/typeof":33}],82:[function(require,module,exports) {
+},{"../helpers/typeof":35}],173:[function(require,module,exports) {
 // Works with __proto__ only. Old v8 can't work with null proto objects.
 /* eslint-disable no-proto */
 var isObject = require('./_is-object');
@@ -1309,32 +1309,32 @@ module.exports = {
   check: check
 };
 
-},{"./_is-object":94,"./_an-object":95,"./_ctx":96,"./_object-gopd":97}],74:[function(require,module,exports) {
+},{"./_is-object":118,"./_an-object":152,"./_ctx":115,"./_object-gopd":185}],145:[function(require,module,exports) {
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
 var $export = require('./_export');
 $export($export.S, 'Object', { setPrototypeOf: require('./_set-proto').set });
 
-},{"./_export":81,"./_set-proto":82}],68:[function(require,module,exports) {
+},{"./_export":117,"./_set-proto":173}],94:[function(require,module,exports) {
 require('../../modules/es6.object.set-prototype-of');
 module.exports = require('../../modules/_core').Object.setPrototypeOf;
 
-},{"../../modules/es6.object.set-prototype-of":74,"../../modules/_core":75}],35:[function(require,module,exports) {
+},{"../../modules/es6.object.set-prototype-of":145,"../../modules/_core":103}],37:[function(require,module,exports) {
 module.exports = { "default": require("core-js/library/fn/object/set-prototype-of"), __esModule: true };
-},{"core-js/library/fn/object/set-prototype-of":68}],76:[function(require,module,exports) {
+},{"core-js/library/fn/object/set-prototype-of":94}],138:[function(require,module,exports) {
 var $export = require('./_export');
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 $export($export.S, 'Object', { create: require('./_object-create') });
 
-},{"./_export":81,"./_object-create":83}],69:[function(require,module,exports) {
+},{"./_export":117,"./_object-create":170}],90:[function(require,module,exports) {
 require('../../modules/es6.object.create');
 var $Object = require('../../modules/_core').Object;
 module.exports = function create(P, D) {
   return $Object.create(P, D);
 };
 
-},{"../../modules/es6.object.create":76,"../../modules/_core":75}],36:[function(require,module,exports) {
+},{"../../modules/es6.object.create":138,"../../modules/_core":103}],38:[function(require,module,exports) {
 module.exports = { "default": require("core-js/library/fn/object/create"), __esModule: true };
-},{"core-js/library/fn/object/create":69}],21:[function(require,module,exports) {
+},{"core-js/library/fn/object/create":90}],23:[function(require,module,exports) {
 "use strict";
 
 exports.__esModule = true;
@@ -1368,7 +1368,7 @@ exports.default = function (subClass, superClass) {
   });
   if (superClass) _setPrototypeOf2.default ? (0, _setPrototypeOf2.default)(subClass, superClass) : subClass.__proto__ = superClass;
 };
-},{"../core-js/object/set-prototype-of":35,"../core-js/object/create":36,"../helpers/typeof":33}],55:[function(require,module,exports) {
+},{"../core-js/object/set-prototype-of":37,"../core-js/object/create":38,"../helpers/typeof":35}],60:[function(require,module,exports) {
 /*
 object-assign
 (c) Sindre Sorhus
@@ -1459,7 +1459,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 	return to;
 };
-},{}],51:[function(require,module,exports) {
+},{}],56:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1513,7 +1513,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 }
 
 module.exports = invariant;
-},{}],60:[function(require,module,exports) {
+},{}],64:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1531,7 +1531,7 @@ if ('development' !== 'production') {
 }
 
 module.exports = emptyObject;
-},{}],54:[function(require,module,exports) {
+},{}],58:[function(require,module,exports) {
 "use strict";
 
 /**
@@ -1568,7 +1568,7 @@ emptyFunction.thatReturnsArgument = function (arg) {
 };
 
 module.exports = emptyFunction;
-},{}],52:[function(require,module,exports) {
+},{}],57:[function(require,module,exports) {
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -1631,7 +1631,7 @@ if ('development' !== 'production') {
 }
 
 module.exports = warning;
-},{"./emptyFunction":54}],65:[function(require,module,exports) {
+},{"./emptyFunction":58}],74:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1645,7 +1645,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
 
-},{}],56:[function(require,module,exports) {
+},{}],67:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1724,7 +1724,7 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 }
 
 module.exports = checkPropTypes;
-},{"./lib/ReactPropTypesSecret":65}],29:[function(require,module,exports) {
+},{"./lib/ReactPropTypesSecret":74}],32:[function(require,module,exports) {
 /** @license React v16.4.1
  * react.development.js
  *
@@ -3205,7 +3205,7 @@ if ('development' !== "production") {
     module.exports = react;
   })();
 }
-},{"object-assign":55,"fbjs/lib/invariant":51,"fbjs/lib/emptyObject":60,"fbjs/lib/warning":52,"fbjs/lib/emptyFunction":54,"prop-types/checkPropTypes":56}],15:[function(require,module,exports) {
+},{"object-assign":60,"fbjs/lib/invariant":56,"fbjs/lib/emptyObject":64,"fbjs/lib/warning":57,"fbjs/lib/emptyFunction":58,"prop-types/checkPropTypes":67}],18:[function(require,module,exports) {
 'use strict';
 
 if ('development' === 'production') {
@@ -3213,7 +3213,7 @@ if ('development' === 'production') {
 } else {
   module.exports = require('./cjs/react.development.js');
 }
-},{"./cjs/react.development.js":29}],53:[function(require,module,exports) {
+},{"./cjs/react.development.js":32}],59:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -3247,7 +3247,7 @@ var ExecutionEnvironment = {
 };
 
 module.exports = ExecutionEnvironment;
-},{}],57:[function(require,module,exports) {
+},{}],61:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -3284,7 +3284,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 }
 
 module.exports = getActiveElement;
-},{}],58:[function(require,module,exports) {
+},{}],62:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -3350,7 +3350,7 @@ function shallowEqual(objA, objB) {
 }
 
 module.exports = shallowEqual;
-},{}],71:[function(require,module,exports) {
+},{}],107:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -3373,7 +3373,7 @@ function isNode(object) {
 }
 
 module.exports = isNode;
-},{}],66:[function(require,module,exports) {
+},{}],88:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -3396,7 +3396,7 @@ function isTextNode(object) {
 }
 
 module.exports = isTextNode;
-},{"./isNode":71}],59:[function(require,module,exports) {
+},{"./isNode":107}],63:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -3434,7 +3434,7 @@ function containsNode(outerNode, innerNode) {
 }
 
 module.exports = containsNode;
-},{"./isTextNode":66}],67:[function(require,module,exports) {
+},{"./isTextNode":88}],89:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -3465,7 +3465,7 @@ function hyphenate(string) {
 }
 
 module.exports = hyphenate;
-},{}],61:[function(require,module,exports) {
+},{}],65:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -3502,7 +3502,7 @@ function hyphenateStyleName(string) {
 }
 
 module.exports = hyphenateStyleName;
-},{"./hyphenate":67}],70:[function(require,module,exports) {
+},{"./hyphenate":89}],73:[function(require,module,exports) {
 "use strict";
 
 /**
@@ -3532,7 +3532,7 @@ function camelize(string) {
 }
 
 module.exports = camelize;
-},{}],62:[function(require,module,exports) {
+},{}],66:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -3570,7 +3570,7 @@ function camelizeStyleName(string) {
 }
 
 module.exports = camelizeStyleName;
-},{"./camelize":70}],30:[function(require,module,exports) {
+},{"./camelize":73}],31:[function(require,module,exports) {
 /** @license React v16.4.1
  * react-dom.development.js
  *
@@ -20976,7 +20976,7 @@ if ('development' !== "production") {
     module.exports = reactDom;
   })();
 }
-},{"fbjs/lib/invariant":51,"react":15,"fbjs/lib/warning":52,"fbjs/lib/ExecutionEnvironment":53,"object-assign":55,"fbjs/lib/emptyFunction":54,"prop-types/checkPropTypes":56,"fbjs/lib/getActiveElement":57,"fbjs/lib/shallowEqual":58,"fbjs/lib/containsNode":59,"fbjs/lib/emptyObject":60,"fbjs/lib/hyphenateStyleName":61,"fbjs/lib/camelizeStyleName":62}],16:[function(require,module,exports) {
+},{"fbjs/lib/invariant":56,"react":18,"fbjs/lib/warning":57,"fbjs/lib/ExecutionEnvironment":59,"object-assign":60,"fbjs/lib/emptyFunction":58,"prop-types/checkPropTypes":67,"fbjs/lib/getActiveElement":61,"fbjs/lib/shallowEqual":62,"fbjs/lib/containsNode":63,"fbjs/lib/emptyObject":64,"fbjs/lib/hyphenateStyleName":65,"fbjs/lib/camelizeStyleName":66}],17:[function(require,module,exports) {
 'use strict';
 
 function checkDCE() {
@@ -21012,697 +21012,1925 @@ if ('development' === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":30}],42:[function(require,module,exports) {
-"use strict";
+},{"./cjs/react-dom.development.js":31}],105:[function(require,module,exports) {
+
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-exports.Sidebar = undefined;
+/*!
+ * Font Awesome Free 5.1.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+var noop = function noop() {};
 
-var _classCallCheck2 = require("babel-runtime/helpers/classCallCheck");
+var _WINDOW = {};
+var _DOCUMENT = {};
+var _MUTATION_OBSERVER$1 = null;
+var _PERFORMANCE = { mark: noop, measure: noop };
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+try {
+  if (typeof window !== 'undefined') _WINDOW = window;
+  if (typeof document !== 'undefined') _DOCUMENT = document;
+  if (typeof MutationObserver !== 'undefined') _MUTATION_OBSERVER$1 = MutationObserver;
+  if (typeof performance !== 'undefined') _PERFORMANCE = performance;
+} catch (e) {}
 
-var _createClass2 = require("babel-runtime/helpers/createClass");
+var _ref = _WINDOW.navigator || {};
+var _ref$userAgent = _ref.userAgent;
+var userAgent = _ref$userAgent === undefined ? '' : _ref$userAgent;
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var WINDOW = _WINDOW;
+var DOCUMENT = _DOCUMENT;
+var MUTATION_OBSERVER = _MUTATION_OBSERVER$1;
+var PERFORMANCE = _PERFORMANCE;
 
-var _possibleConstructorReturn2 = require("babel-runtime/helpers/possibleConstructorReturn");
+var IS_DOM = !!DOCUMENT.documentElement && !!DOCUMENT.head && typeof DOCUMENT.addEventListener === 'function' && typeof DOCUMENT.createElement === 'function';
+var IS_IE = ~userAgent.indexOf('MSIE') || ~userAgent.indexOf('Trident/');
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var NAMESPACE_IDENTIFIER = '___FONT_AWESOME___';
+var UNITS_IN_GRID = 16;
+var DEFAULT_FAMILY_PREFIX = 'fa';
+var DEFAULT_REPLACEMENT_CLASS = 'svg-inline--fa';
+var DATA_FA_I2SVG = 'data-fa-i2svg';
+var DATA_FA_PSEUDO_ELEMENT = 'data-fa-pseudo-element';
+var DATA_PREFIX = 'data-prefix';
+var DATA_ICON = 'data-icon';
+var HTML_CLASS_I2SVG_BASE_CLASS = 'fontawesome-i2svg';
+var TAGNAMES_TO_SKIP_FOR_PSEUDOELEMENTS = ['HTML', 'HEAD', 'STYLE', 'SCRIPT'];
+var PRODUCTION = function () {
+  try {
+    return 'development' === 'production';
+  } catch (e) {
+    return false;
+  }
+}();
 
-var _inherits2 = require("babel-runtime/helpers/inherits");
+var oneToTen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var oneToTwenty = oneToTen.concat([11, 12, 13, 14, 15, 16, 17, 18, 19, 20]);
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var ATTRIBUTES_WATCHED_FOR_MUTATION = ['class', 'data-prefix', 'data-icon', 'data-fa-transform', 'data-fa-mask'];
 
-var _react = require("react");
+var RESERVED_CLASSES = ['xs', 'sm', 'lg', 'fw', 'ul', 'li', 'border', 'pull-left', 'pull-right', 'spin', 'pulse', 'rotate-90', 'rotate-180', 'rotate-270', 'flip-horizontal', 'flip-vertical', 'stack', 'stack-1x', 'stack-2x', 'inverse', 'layers', 'layers-text', 'layers-counter'].concat(oneToTen.map(function (n) {
+  return n + 'x';
+})).concat(oneToTwenty.map(function (n) {
+  return 'w-' + n;
+}));
 
-var _react2 = _interopRequireDefault(_react);
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
 
-var Sidebar = exports.Sidebar = function (_Component) {
-    (0, _inherits3.default)(Sidebar, _Component);
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
 
-    function Sidebar() {
-        (0, _classCallCheck3.default)(this, Sidebar);
-        return (0, _possibleConstructorReturn3.default)(this, (Sidebar.__proto__ || Object.getPrototypeOf(Sidebar)).apply(this, arguments));
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+var slicedToArray = function () {
+  function sliceIterator(arr, i) {
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _e = undefined;
+
+    try {
+      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+        _arr.push(_s.value);
+
+        if (i && _arr.length === i) break;
+      }
+    } catch (err) {
+      _d = true;
+      _e = err;
+    } finally {
+      try {
+        if (!_n && _i["return"]) _i["return"]();
+      } finally {
+        if (_d) throw _e;
+      }
     }
 
-    (0, _createClass3.default)(Sidebar, [{
-        key: "render",
-        value: function render() {
-            return _react2.default.createElement(
-                "div",
-                { className: "sidebar" },
-                _react2.default.createElement(
-                    "div",
-                    { className: "profile-wrapper" },
-                    _react2.default.createElement("img", { src: "https://yt3.ggpht.com/-S2LcjnxOoXc/AAAAAAAAAAI/AAAAAAAAAAA/SfHM8F50Xo0/s900-mo-c-c0xffffffff-rj-k-no/photo.jpg", alt: "" })
-                ),
-                _react2.default.createElement(
-                    "nav",
-                    { className: "navbar" },
-                    _react2.default.createElement(
-                        "ul",
-                        { className: "nav-link" },
-                        _react2.default.createElement(
-                            "li",
-                            null,
-                            _react2.default.createElement(
-                                "a",
-                                { href: "/flagging_history", className: "youtube-link" },
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "span-icon mgi--right-16" },
-                                    "i"
-                                ),
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "text-link" },
-                                    "History"
-                                )
-                            )
-                        ),
-                        _react2.default.createElement(
-                            "li",
-                            null,
-                            _react2.default.createElement(
-                                "a",
-                                { href: "/deputy", className: "youtube-link" },
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "span-icon mgi--right-16" },
-                                    "i"
-                                ),
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "text-link" },
-                                    "Statistics"
-                                )
-                            )
-                        ),
-                        _react2.default.createElement(
-                            "li",
-                            null,
-                            _react2.default.createElement(
-                                "a",
-                                { href: "https://www.contributorscommunity.com/t5/Trusted-Flagger-Forum/bd-p/EN_Flaggers_Board", className: "youtube-link" },
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "span-icon mgi--right-16" },
-                                    "i"
-                                ),
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "text-link" },
-                                    "Contributor Forum"
-                                )
-                            )
-                        ),
-                        _react2.default.createElement(
-                            "li",
-                            null,
-                            _react2.default.createElement(
-                                "a",
-                                { href: "", className: "youtube-link" },
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "span-icon mgi--right-16" },
-                                    "i"
-                                ),
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "text-link" },
-                                    "Send mail"
-                                )
-                            )
-                        )
-                    ),
-                    _react2.default.createElement(
-                        "ul",
-                        { className: "nav-link" },
-                        _react2.default.createElement(
-                            "li",
-                            null,
-                            _react2.default.createElement(
-                                "a",
-                                { href: "/", className: "youtube-link" },
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "span-icon mgi--right-16" },
-                                    "i"
-                                ),
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "text-link" },
-                                    "Help"
-                                )
-                            )
-                        ),
-                        _react2.default.createElement(
-                            "li",
-                            null,
-                            _react2.default.createElement(
-                                "a",
-                                { href: "/logout", className: "youtube-link" },
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "span-icon mgi--right-16" },
-                                    "i"
-                                ),
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "text-link" },
-                                    "Logout"
-                                )
-                            )
-                        )
-                    )
-                )
-            );
-        }
-    }]);
-    return Sidebar;
-}(_react.Component);
+    return _arr;
+  }
 
-exports.default = Sidebar;
-},{"babel-runtime/helpers/classCallCheck":18,"babel-runtime/helpers/createClass":19,"babel-runtime/helpers/possibleConstructorReturn":20,"babel-runtime/helpers/inherits":21,"react":15}],153:[function(require,module,exports) {
-'use strict';
+  return function (arr, i) {
+    if (Array.isArray(arr)) {
+      return arr;
+    } else if (Symbol.iterator in Object(arr)) {
+      return sliceIterator(arr, i);
+    } else {
+      throw new TypeError("Invalid attempt to destructure non-iterable instance");
+    }
+  };
+}();
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Button = function Button(props) {
-
-    var className = 'yt-uix-button yt-uix-button-size-default ';
-    if (props.blue) className = className + 'yt-uix-button-primary ';else className = className + 'yt-uix-white-primary ';
-    className = props.className ? className + props.className : className;
-
-    return _react2.default.createElement(
-        'button',
-        {
-            className: className,
-            id: props.id,
-            name: props.name || '',
-            disabled: props.disabled || false,
-            onClick: props.onClick,
-            type: props.type || "button"
-        },
-        props.children
-    );
+var toConsumableArray = function (arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }return arr2;
+  } else {
+    return Array.from(arr);
+  }
 };
 
-exports.default = Button;
-},{"react":15}],138:[function(require,module,exports) {
-'use strict';
+var initial = WINDOW.FontAwesomeConfig || {};
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
+function getAttrConfig(attr) {
+  var element = DOCUMENT.querySelector('script[' + attr + ']');
 
-var _react = require('react');
+  if (element) {
+    return element.getAttribute(attr);
+  }
+}
 
-var _react2 = _interopRequireDefault(_react);
+function coerce(val) {
+  // Getting an empty string will occur if the attribute is set on the HTML tag but without a value
+  // We'll assume that this is an indication that it should be toggled to true
+  // For example <script data-search-pseudo-elements src="..."></script>
+  if (val === '') return true;
+  if (val === 'false') return false;
+  if (val === 'true') return true;
+  return val;
+}
 
-var _Button = require('../../Button');
+if (DOCUMENT && typeof DOCUMENT.querySelector === 'function') {
+  var attrs = [['data-family-prefix', 'familyPrefix'], ['data-replacement-class', 'replacementClass'], ['data-auto-replace-svg', 'autoReplaceSvg'], ['data-auto-add-css', 'autoAddCss'], ['data-auto-a11y', 'autoA11y'], ['data-search-pseudo-elements', 'searchPseudoElements'], ['data-observe-mutations', 'observeMutations'], ['data-keep-original-source', 'keepOriginalSource'], ['data-measure-performance', 'measurePerformance'], ['data-show-missing-icons', 'showMissingIcons']];
 
-var _Button2 = _interopRequireDefault(_Button);
+  attrs.forEach(function (_ref) {
+    var _ref2 = slicedToArray(_ref, 2),
+        attr = _ref2[0],
+        key = _ref2[1];
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+    var val = coerce(getAttrConfig(attr));
 
-var Pagination = function Pagination(_ref) {
-    var pages = _ref.pages;
+    if (val !== undefined && val !== null) {
+      initial[key] = val;
+    }
+  });
+}
 
-    return _react2.default.createElement(
-        _react2.default.Fragment,
-        null,
-        pages.length !== 0 && _react2.default.createElement(
-            'div',
-            { className: 'tools-pagination mgi--top-10' },
-            pages.map(function (elem, index) {
-                return _react2.default.createElement(
-                    'a',
-                    { href: elem.url, className: 'mgi--right-4', key: index },
-                    _react2.default.createElement(
-                        _Button2.default,
-                        { blue: true, className: elem.isActual ? 'active' : '' },
-                        elem.isNext ? 'Next' : elem.isPrev ? 'Prev' : elem.numPage
-                    )
-                );
-            })
-        )
-    );
+var _default = _extends({
+  familyPrefix: DEFAULT_FAMILY_PREFIX,
+  replacementClass: DEFAULT_REPLACEMENT_CLASS,
+  autoReplaceSvg: true,
+  autoAddCss: true,
+  autoA11y: true,
+  searchPseudoElements: false,
+  observeMutations: true,
+  keepOriginalSource: true,
+  measurePerformance: false,
+  showMissingIcons: true
+}, initial);
+
+if (!_default.autoReplaceSvg) _default.observeMutations = false;
+
+var config = _extends({}, _default);
+
+WINDOW.FontAwesomeConfig = config;
+
+var w = WINDOW || {};
+
+if (!w[NAMESPACE_IDENTIFIER]) w[NAMESPACE_IDENTIFIER] = {};
+if (!w[NAMESPACE_IDENTIFIER].styles) w[NAMESPACE_IDENTIFIER].styles = {};
+if (!w[NAMESPACE_IDENTIFIER].hooks) w[NAMESPACE_IDENTIFIER].hooks = {};
+if (!w[NAMESPACE_IDENTIFIER].shims) w[NAMESPACE_IDENTIFIER].shims = [];
+
+var namespace = w[NAMESPACE_IDENTIFIER];
+
+var functions = [];
+var listener = function listener() {
+  DOCUMENT.removeEventListener('DOMContentLoaded', listener);
+  loaded = 1;
+  functions.map(function (fn) {
+    return fn();
+  });
 };
 
-exports.default = Pagination;
-},{"react":15,"../../Button":153}],148:[function(require,module,exports) {
-'use strict';
+var loaded = false;
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
+if (IS_DOM) {
+  loaded = (DOCUMENT.documentElement.doScroll ? /^loaded|^c/ : /^loaded|^i|^c/).test(DOCUMENT.readyState);
 
-var _react = require('react');
+  if (!loaded) DOCUMENT.addEventListener('DOMContentLoaded', listener);
+}
 
-var _react2 = _interopRequireDefault(_react);
+var domready = function (fn) {
+  if (!IS_DOM) return;
+  loaded ? setTimeout(fn, 0) : functions.push(fn);
+};
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var d = UNITS_IN_GRID;
 
-var CountVideos = function CountVideos(context) {
+var meaninglessTransform = {
+  size: 16,
+  x: 0,
+  y: 0,
+  rotate: 0,
+  flipX: false,
+  flipY: false
+};
 
-    var videosSelected = context.state.videosDisplayed.filter(function (x) {
-        return x.selected === true;
+function isReserved(name) {
+  return ~RESERVED_CLASSES.indexOf(name);
+}
+
+function insertCss(css) {
+  if (!css || !IS_DOM) {
+    return;
+  }
+
+  var style = DOCUMENT.createElement('style');
+  style.setAttribute('type', 'text/css');
+  style.innerHTML = css;
+
+  var headChildren = DOCUMENT.head.childNodes;
+  var beforeChild = null;
+
+  for (var i = headChildren.length - 1; i > -1; i--) {
+    var child = headChildren[i];
+    var tagName = (child.tagName || '').toUpperCase();
+    if (['STYLE', 'LINK'].indexOf(tagName) > -1) {
+      beforeChild = child;
+    }
+  }
+
+  DOCUMENT.head.insertBefore(style, beforeChild);
+
+  return css;
+}
+
+var _uniqueId = 0;
+
+function nextUniqueId() {
+  _uniqueId++;
+
+  return _uniqueId;
+}
+
+function toArray(obj) {
+  var array = [];
+
+  for (var i = (obj || []).length >>> 0; i--;) {
+    array[i] = obj[i];
+  }
+
+  return array;
+}
+
+function classArray(node) {
+  if (node.classList) {
+    return toArray(node.classList);
+  } else {
+    return (node.getAttribute('class') || '').split(' ').filter(function (i) {
+      return i;
     });
-    var videosRemoved = context.state.videosDisplayed.filter(function (x) {
-        return x.isRemoved === true;
-    });
+  }
+}
 
-    return _react2.default.createElement(
-        'div',
-        { className: 'box-count-videos' },
-        _react2.default.createElement(
-            'span',
-            { className: !context.state.canFlag && videosRemoved.length > 0 ? 'red-color' : '' },
-            context.state.canFlag ? videosSelected.length : videosRemoved.length
-        ),
-        ' / ',
-        context.state.videosDisplayed.length
-    );
+function getIconName(familyPrefix, cls) {
+  var parts = cls.split('-');
+  var prefix = parts[0];
+  var iconName = parts.slice(1).join('-');
+
+  if (prefix === familyPrefix && iconName !== '' && !isReserved(iconName)) {
+    return iconName;
+  } else {
+    return null;
+  }
+}
+
+function htmlEscape(str) {
+  return ('' + str).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function joinAttributes(attributes) {
+  return Object.keys(attributes || {}).reduce(function (acc, attributeName) {
+    return acc + (attributeName + '="' + htmlEscape(attributes[attributeName]) + '" ');
+  }, '').trim();
+}
+
+function joinStyles(styles) {
+  return Object.keys(styles || {}).reduce(function (acc, styleName) {
+    return acc + (styleName + ': ' + styles[styleName] + ';');
+  }, '');
+}
+
+function transformIsMeaningful(transform) {
+  return transform.size !== meaninglessTransform.size || transform.x !== meaninglessTransform.x || transform.y !== meaninglessTransform.y || transform.rotate !== meaninglessTransform.rotate || transform.flipX || transform.flipY;
+}
+
+function transformForSvg(_ref) {
+  var transform = _ref.transform,
+      containerWidth = _ref.containerWidth,
+      iconWidth = _ref.iconWidth;
+
+  var outer = {
+    transform: 'translate(' + containerWidth / 2 + ' 256)'
+  };
+  var innerTranslate = 'translate(' + transform.x * 32 + ', ' + transform.y * 32 + ') ';
+  var innerScale = 'scale(' + transform.size / 16 * (transform.flipX ? -1 : 1) + ', ' + transform.size / 16 * (transform.flipY ? -1 : 1) + ') ';
+  var innerRotate = 'rotate(' + transform.rotate + ' 0 0)';
+  var inner = {
+    transform: innerTranslate + ' ' + innerScale + ' ' + innerRotate
+  };
+  var path = {
+    transform: 'translate(' + iconWidth / 2 * -1 + ' -256)'
+  };
+  return {
+    outer: outer,
+    inner: inner,
+    path: path
+  };
+}
+
+function transformForCss(_ref2) {
+  var transform = _ref2.transform,
+      _ref2$width = _ref2.width,
+      width = _ref2$width === undefined ? UNITS_IN_GRID : _ref2$width,
+      _ref2$height = _ref2.height,
+      height = _ref2$height === undefined ? UNITS_IN_GRID : _ref2$height,
+      _ref2$startCentered = _ref2.startCentered,
+      startCentered = _ref2$startCentered === undefined ? false : _ref2$startCentered;
+
+  var val = '';
+
+  if (startCentered && IS_IE) {
+    val += 'translate(' + (transform.x / d - width / 2) + 'em, ' + (transform.y / d - height / 2) + 'em) ';
+  } else if (startCentered) {
+    val += 'translate(calc(-50% + ' + transform.x / d + 'em), calc(-50% + ' + transform.y / d + 'em)) ';
+  } else {
+    val += 'translate(' + transform.x / d + 'em, ' + transform.y / d + 'em) ';
+  }
+
+  val += 'scale(' + transform.size / d * (transform.flipX ? -1 : 1) + ', ' + transform.size / d * (transform.flipY ? -1 : 1) + ') ';
+  val += 'rotate(' + transform.rotate + 'deg) ';
+
+  return val;
+}
+
+var ALL_SPACE = {
+  x: 0,
+  y: 0,
+  width: '100%',
+  height: '100%'
 };
 
-exports.default = CountVideos;
-},{"react":15}],204:[function(require,module,exports) {
+var makeIconMasking = function (_ref) {
+  var children = _ref.children,
+      attributes = _ref.attributes,
+      main = _ref.main,
+      mask = _ref.mask,
+      transform = _ref.transform;
+  var mainWidth = main.width,
+      mainPath = main.icon;
+  var maskWidth = mask.width,
+      maskPath = mask.icon;
+
+  var trans = transformForSvg({ transform: transform, containerWidth: maskWidth, iconWidth: mainWidth });
+
+  var maskRect = {
+    tag: 'rect',
+    attributes: _extends({}, ALL_SPACE, {
+      fill: 'white'
+    })
+  };
+  var maskInnerGroup = {
+    tag: 'g',
+    attributes: _extends({}, trans.inner),
+    children: [{ tag: 'path', attributes: _extends({}, mainPath.attributes, trans.path, { fill: 'black' }) }]
+  };
+  var maskOuterGroup = {
+    tag: 'g',
+    attributes: _extends({}, trans.outer),
+    children: [maskInnerGroup]
+  };
+  var maskId = 'mask-' + nextUniqueId();
+  var clipId = 'clip-' + nextUniqueId();
+  var maskTag = {
+    tag: 'mask',
+    attributes: _extends({}, ALL_SPACE, {
+      id: maskId,
+      maskUnits: 'userSpaceOnUse',
+      maskContentUnits: 'userSpaceOnUse'
+    }),
+    children: [maskRect, maskOuterGroup]
+  };
+  var defs = {
+    tag: 'defs',
+    children: [{ tag: 'clipPath', attributes: { id: clipId }, children: [maskPath] }, maskTag]
+  };
+
+  children.push(defs, { tag: 'rect', attributes: _extends({ fill: 'currentColor', 'clip-path': 'url(#' + clipId + ')', mask: 'url(#' + maskId + ')' }, ALL_SPACE) });
+
+  return {
+    children: children,
+    attributes: attributes
+  };
+};
+
+var makeIconStandard = function (_ref) {
+  var children = _ref.children,
+      attributes = _ref.attributes,
+      main = _ref.main,
+      transform = _ref.transform,
+      styles = _ref.styles;
+
+  var styleString = joinStyles(styles);
+
+  if (styleString.length > 0) {
+    attributes['style'] = styleString;
+  }
+
+  if (transformIsMeaningful(transform)) {
+    var trans = transformForSvg({ transform: transform, containerWidth: main.width, iconWidth: main.width });
+    children.push({
+      tag: 'g',
+      attributes: _extends({}, trans.outer),
+      children: [{
+        tag: 'g',
+        attributes: _extends({}, trans.inner),
+        children: [{
+          tag: main.icon.tag,
+          children: main.icon.children,
+          attributes: _extends({}, main.icon.attributes, trans.path)
+        }]
+      }]
+    });
+  } else {
+    children.push(main.icon);
+  }
+
+  return {
+    children: children,
+    attributes: attributes
+  };
+};
+
+var asIcon = function (_ref) {
+  var children = _ref.children,
+      main = _ref.main,
+      mask = _ref.mask,
+      attributes = _ref.attributes,
+      styles = _ref.styles,
+      transform = _ref.transform;
+
+  if (transformIsMeaningful(transform) && main.found && !mask.found) {
+    var width = main.width,
+        height = main.height;
+
+    var offset = {
+      x: width / height / 2,
+      y: 0.5
+    };
+    attributes['style'] = joinStyles(_extends({}, styles, {
+      'transform-origin': offset.x + transform.x / 16 + 'em ' + (offset.y + transform.y / 16) + 'em'
+    }));
+  }
+
+  return [{
+    tag: 'svg',
+    attributes: attributes,
+    children: children
+  }];
+};
+
+var asSymbol = function (_ref) {
+  var prefix = _ref.prefix,
+      iconName = _ref.iconName,
+      children = _ref.children,
+      attributes = _ref.attributes,
+      symbol = _ref.symbol;
+
+  var id = symbol === true ? prefix + '-' + config.familyPrefix + '-' + iconName : symbol;
+
+  return [{
+    tag: 'svg',
+    attributes: {
+      style: 'display: none;'
+    },
+    children: [{
+      tag: 'symbol',
+      attributes: _extends({}, attributes, { id: id }),
+      children: children
+    }]
+  }];
+};
+
+function makeInlineSvgAbstract(params) {
+  var _params$icons = params.icons,
+      main = _params$icons.main,
+      mask = _params$icons.mask,
+      prefix = params.prefix,
+      iconName = params.iconName,
+      transform = params.transform,
+      symbol = params.symbol,
+      title = params.title,
+      extra = params.extra,
+      _params$watchable = params.watchable,
+      watchable = _params$watchable === undefined ? false : _params$watchable;
+
+  var _ref = mask.found ? mask : main,
+      width = _ref.width,
+      height = _ref.height;
+
+  var widthClass = 'fa-w-' + Math.ceil(width / height * 16);
+  var attrClass = [config.replacementClass, iconName ? config.familyPrefix + '-' + iconName : '', widthClass].filter(function (c) {
+    return extra.classes.indexOf(c) === -1;
+  }).concat(extra.classes).join(' ');
+
+  var content = {
+    children: [],
+    attributes: _extends({}, extra.attributes, {
+      'data-prefix': prefix,
+      'data-icon': iconName,
+      'class': attrClass,
+      'role': 'img',
+      'xmlns': 'http://www.w3.org/2000/svg',
+      'viewBox': '0 0 ' + width + ' ' + height
+    })
+  };
+
+  if (watchable) {
+    content.attributes[DATA_FA_I2SVG] = '';
+  }
+
+  if (title) content.children.push({ tag: 'title', attributes: { id: content.attributes['aria-labelledby'] || 'title-' + nextUniqueId() }, children: [title] });
+
+  var args = _extends({}, content, {
+    prefix: prefix,
+    iconName: iconName,
+    main: main,
+    mask: mask,
+    transform: transform,
+    symbol: symbol,
+    styles: extra.styles
+  });
+
+  var _ref2 = mask.found && main.found ? makeIconMasking(args) : makeIconStandard(args),
+      children = _ref2.children,
+      attributes = _ref2.attributes;
+
+  args.children = children;
+  args.attributes = attributes;
+
+  if (symbol) {
+    return asSymbol(args);
+  } else {
+    return asIcon(args);
+  }
+}
+
+function makeLayersTextAbstract(params) {
+  var content = params.content,
+      width = params.width,
+      height = params.height,
+      transform = params.transform,
+      title = params.title,
+      extra = params.extra,
+      _params$watchable2 = params.watchable,
+      watchable = _params$watchable2 === undefined ? false : _params$watchable2;
+
+  var attributes = _extends({}, extra.attributes, title ? { 'title': title } : {}, {
+    'class': extra.classes.join(' ')
+  });
+
+  if (watchable) {
+    attributes[DATA_FA_I2SVG] = '';
+  }
+
+  var styles = _extends({}, extra.styles);
+
+  if (transformIsMeaningful(transform)) {
+    styles['transform'] = transformForCss({ transform: transform, startCentered: true, width: width, height: height });
+    styles['-webkit-transform'] = styles['transform'];
+  }
+
+  var styleString = joinStyles(styles);
+
+  if (styleString.length > 0) {
+    attributes['style'] = styleString;
+  }
+
+  var val = [];
+
+  val.push({
+    tag: 'span',
+    attributes: attributes,
+    children: [content]
+  });
+
+  if (title) {
+    val.push({ tag: 'span', attributes: { class: 'sr-only' }, children: [title] });
+  }
+
+  return val;
+}
+
+function makeLayersCounterAbstract(params) {
+  var content = params.content,
+      title = params.title,
+      extra = params.extra;
+
+  var attributes = _extends({}, extra.attributes, title ? { 'title': title } : {}, {
+    'class': extra.classes.join(' ')
+  });
+
+  var styleString = joinStyles(extra.styles);
+
+  if (styleString.length > 0) {
+    attributes['style'] = styleString;
+  }
+
+  var val = [];
+
+  val.push({
+    tag: 'span',
+    attributes: attributes,
+    children: [content]
+  });
+
+  if (title) {
+    val.push({ tag: 'span', attributes: { class: 'sr-only' }, children: [title] });
+  }
+
+  return val;
+}
+
+var noop$2 = function noop() {};
+var p = config.measurePerformance && PERFORMANCE && PERFORMANCE.mark && PERFORMANCE.measure ? PERFORMANCE : { mark: noop$2, measure: noop$2 };
+var preamble = 'FA "5.1.0"';
+
+var begin = function begin(name) {
+  p.mark(preamble + ' ' + name + ' begins');
+  return function () {
+    return end(name);
+  };
+};
+
+var end = function end(name) {
+  p.mark(preamble + ' ' + name + ' ends');
+  p.measure(preamble + ' ' + name, preamble + ' ' + name + ' begins', preamble + ' ' + name + ' ends');
+};
+
+var perf = { begin: begin, end: end };
+
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
+/**
+ * Internal helper to bind a function known to have 4 arguments
+ * to a given context.
+ */
+var bindInternal4 = function bindInternal4(func, thisContext) {
+  return function (a, b, c, d) {
+    return func.call(thisContext, a, b, c, d);
+  };
+};
 
-var _react = require('react');
+'use strict';
 
-var _react2 = _interopRequireDefault(_react);
+/**
+ * # Reduce
+ *
+ * A fast object `.reduce()` implementation.
+ *
+ * @param  {Object}   subject      The object to reduce over.
+ * @param  {Function} fn           The reducer function.
+ * @param  {mixed}    initialValue The initial value for the reducer, defaults to subject[0].
+ * @param  {Object}   thisContext  The context for the reducer.
+ * @return {mixed}                 The final result.
+ */
+var reduce = function fastReduceObject(subject, fn, initialValue, thisContext) {
+  var keys = Object.keys(subject),
+      length = keys.length,
+      iterator = thisContext !== undefined ? bindInternal4(fn, thisContext) : fn,
+      i,
+      key,
+      result;
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  if (initialValue === undefined) {
+    i = 1;
+    result = subject[keys[0]];
+  } else {
+    i = 0;
+    result = initialValue;
+  }
 
-var Select = function Select(props) {
+  for (; i < length; i++) {
+    key = keys[i];
+    result = iterator(result, subject[key], key, subject);
+  }
 
-    var defaultOptions = {
-        className: '',
-        disabled: false,
-        defaultOptionTitle: 'defaultTitle'
+  return result;
+};
+
+var styles$2 = namespace.styles;
+var shims = namespace.shims;
+
+var _byUnicode = {};
+var _byLigature = {};
+var _byOldName = {};
+
+var build = function build() {
+  var lookup = function lookup(reducer) {
+    return reduce(styles$2, function (o, style, prefix) {
+      o[prefix] = reduce(style, reducer, {});
+      return o;
+    }, {});
+  };
+
+  _byUnicode = lookup(function (acc, icon, iconName) {
+    acc[icon[3]] = iconName;
+
+    return acc;
+  });
+
+  _byLigature = lookup(function (acc, icon, iconName) {
+    var ligatures = icon[2];
+
+    acc[iconName] = iconName;
+
+    ligatures.forEach(function (ligature) {
+      acc[ligature] = iconName;
+    });
+
+    return acc;
+  });
+
+  var hasRegular = 'far' in styles$2;
+
+  _byOldName = reduce(shims, function (acc, shim) {
+    var oldName = shim[0];
+    var prefix = shim[1];
+    var iconName = shim[2];
+
+    if (prefix === 'far' && !hasRegular) {
+      prefix = 'fas';
+    }
+
+    acc[oldName] = { prefix: prefix, iconName: iconName };
+
+    return acc;
+  }, {});
+};
+
+build();
+
+function byUnicode(prefix, unicode) {
+  return _byUnicode[prefix][unicode];
+}
+
+function byLigature(prefix, ligature) {
+  return _byLigature[prefix][ligature];
+}
+
+function byOldName(name) {
+  return _byOldName[name] || { prefix: null, iconName: null };
+}
+
+var styles$1 = namespace.styles;
+
+var emptyCanonicalIcon = function emptyCanonicalIcon() {
+  return { prefix: null, iconName: null, rest: [] };
+};
+
+function getCanonicalIcon(values) {
+  return values.reduce(function (acc, cls) {
+    var iconName = getIconName(config.familyPrefix, cls);
+
+    if (styles$1[cls]) {
+      acc.prefix = cls;
+    } else if (iconName) {
+      var shim = acc.prefix === 'fa' ? byOldName(iconName) : {};
+
+      acc.iconName = shim.iconName || iconName;
+      acc.prefix = shim.prefix || acc.prefix;
+    } else if (cls !== config.replacementClass && cls.indexOf('fa-w-') !== 0) {
+      acc.rest.push(cls);
+    }
+
+    return acc;
+  }, emptyCanonicalIcon());
+}
+
+function iconFromMapping(mapping, prefix, iconName) {
+  if (mapping && mapping[prefix] && mapping[prefix][iconName]) {
+    return {
+      prefix: prefix,
+      iconName: iconName,
+      icon: mapping[prefix][iconName]
+    };
+  }
+}
+
+function toHtml(abstractNodes) {
+  var tag = abstractNodes.tag,
+      _abstractNodes$attrib = abstractNodes.attributes,
+      attributes = _abstractNodes$attrib === undefined ? {} : _abstractNodes$attrib,
+      _abstractNodes$childr = abstractNodes.children,
+      children = _abstractNodes$childr === undefined ? [] : _abstractNodes$childr;
+
+  if (typeof abstractNodes === 'string') {
+    return htmlEscape(abstractNodes);
+  } else {
+    return '<' + tag + ' ' + joinAttributes(attributes) + '>' + children.map(toHtml).join('') + '</' + tag + '>';
+  }
+}
+
+var noop$1 = function noop() {};
+
+function isWatched(node) {
+  var i2svg = node.getAttribute ? node.getAttribute(DATA_FA_I2SVG) : null;
+
+  return typeof i2svg === 'string';
+}
+
+function getMutator() {
+  if (config.autoReplaceSvg === true) {
+    return mutators.replace;
+  }
+
+  var mutator = mutators[config.autoReplaceSvg];
+
+  return mutator || mutators.replace;
+}
+
+var mutators = {
+  replace: function replace(mutation) {
+    var node = mutation[0];
+    var abstract = mutation[1];
+    var newOuterHTML = abstract.map(function (a) {
+      return toHtml(a);
+    }).join('\n');
+
+    if (node.parentNode && node.outerHTML) {
+      node.outerHTML = newOuterHTML + (config.keepOriginalSource && node.tagName.toLowerCase() !== 'svg' ? '<!-- ' + node.outerHTML + ' -->' : '');
+    } else if (node.parentNode) {
+      var newNode = document.createElement('span');
+      node.parentNode.replaceChild(newNode, node);
+      newNode.outerHTML = newOuterHTML;
+    }
+  },
+  nest: function nest(mutation) {
+    var node = mutation[0];
+    var abstract = mutation[1];
+
+    // If we already have a replaced node we do not want to continue nesting within it.
+    // Short-circuit to the standard replacement
+    if (~classArray(node).indexOf(config.replacementClass)) {
+      return mutators.replace(mutation);
+    }
+
+    var forSvg = new RegExp(config.familyPrefix + '-.*');
+
+    delete abstract[0].attributes.style;
+
+    var splitClasses = abstract[0].attributes.class.split(' ').reduce(function (acc, cls) {
+      if (cls === config.replacementClass || cls.match(forSvg)) {
+        acc.toSvg.push(cls);
+      } else {
+        acc.toNode.push(cls);
+      }
+
+      return acc;
+    }, { toNode: [], toSvg: [] });
+
+    abstract[0].attributes.class = splitClasses.toSvg.join(' ');
+
+    var newInnerHTML = abstract.map(function (a) {
+      return toHtml(a);
+    }).join('\n');
+    node.setAttribute('class', splitClasses.toNode.join(' '));
+    node.setAttribute(DATA_FA_I2SVG, '');
+    node.innerHTML = newInnerHTML;
+  }
+};
+
+function perform(mutations, callback) {
+  var callbackFunction = typeof callback === 'function' ? callback : noop$1;
+
+  if (mutations.length === 0) {
+    callbackFunction();
+  } else {
+    var frame = WINDOW.requestAnimationFrame || function (op) {
+      return op();
     };
 
-    var options = props.options || [];
+    frame(function () {
+      var mutator = getMutator();
+      var mark = perf.begin('mutate');
 
-    var className = 'yt-uix-button yt-uix-button-size-default ';
-    if (props.blue) className = className + 'yt-uix-button-primary ';else className = className + 'yt-uix-white-primary ';
-    className = props.className ? className + props.className : className;
+      mutations.map(mutator);
 
-    return _react2.default.createElement(
-        'select',
-        {
-            className: className,
-            name: props.name,
-            id: props.id || props.name,
-            value: props.value,
-            onChange: props.onChange,
-            disabled: props.disabled || defaultOptions.disabled
-        },
-        !props.noEmptyOption && _react2.default.createElement(
-            'option',
-            { value: '', disabled: !props.null },
-            props.defaultOptionTitle || defaultOptions.defaultOptionTitle
-        ),
-        options.map(function (elem, index) {
-            return _react2.default.createElement(
-                'option',
-                { key: index, value: elem.value || index },
-                elem.title || index
-            );
-        })
-    );
+      mark();
+
+      callbackFunction();
+    });
+  }
+}
+
+var disabled = false;
+
+function disableObservation(operation) {
+  disabled = true;
+  operation();
+  disabled = false;
+}
+
+var mo = null;
+
+function observe(options) {
+  if (!MUTATION_OBSERVER) {
+    return;
+  }
+
+  if (!config.observeMutations) {
+    return;
+  }
+
+  var treeCallback = options.treeCallback,
+      nodeCallback = options.nodeCallback,
+      pseudoElementsCallback = options.pseudoElementsCallback,
+      _options$observeMutat = options.observeMutationsRoot,
+      observeMutationsRoot = _options$observeMutat === undefined ? DOCUMENT.body : _options$observeMutat;
+
+  mo = new MUTATION_OBSERVER(function (objects) {
+    if (disabled) return;
+
+    toArray(objects).forEach(function (mutationRecord) {
+      if (mutationRecord.type === 'childList' && mutationRecord.addedNodes.length > 0 && !isWatched(mutationRecord.addedNodes[0])) {
+        if (config.searchPseudoElements) {
+          pseudoElementsCallback(mutationRecord.target);
+        }
+
+        treeCallback(mutationRecord.target);
+      }
+
+      if (mutationRecord.type === 'attributes' && mutationRecord.target.parentNode && config.searchPseudoElements) {
+        pseudoElementsCallback(mutationRecord.target.parentNode);
+      }
+
+      if (mutationRecord.type === 'attributes' && isWatched(mutationRecord.target) && ~ATTRIBUTES_WATCHED_FOR_MUTATION.indexOf(mutationRecord.attributeName)) {
+        if (mutationRecord.attributeName === 'class') {
+          var _getCanonicalIcon = getCanonicalIcon(classArray(mutationRecord.target)),
+              prefix = _getCanonicalIcon.prefix,
+              iconName = _getCanonicalIcon.iconName;
+
+          if (prefix) mutationRecord.target.setAttribute('data-prefix', prefix);
+          if (iconName) mutationRecord.target.setAttribute('data-icon', iconName);
+        } else {
+          nodeCallback(mutationRecord.target);
+        }
+      }
+    });
+  });
+
+  if (!IS_DOM) return;
+
+  mo.observe(observeMutationsRoot, {
+    childList: true, attributes: true, characterData: true, subtree: true
+  });
+}
+
+function disconnect() {
+  if (!mo) return;
+
+  mo.disconnect();
+}
+
+var styleParser = function (node) {
+  var style = node.getAttribute('style');
+
+  var val = [];
+
+  if (style) {
+    val = style.split(';').reduce(function (acc, style) {
+      var styles = style.split(':');
+      var prop = styles[0];
+      var value = styles.slice(1);
+
+      if (prop && value.length > 0) {
+        acc[prop] = value.join(':').trim();
+      }
+
+      return acc;
+    }, {});
+  }
+
+  return val;
 };
 
-exports.default = Select;
-},{"react":15}],149:[function(require,module,exports) {
-'use strict';
+function toHex(unicode) {
+  var result = '';
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
+  for (var i = 0; i < unicode.length; i++) {
+    var hex = unicode.charCodeAt(i).toString(16);
+    result += ('000' + hex).slice(-4);
+  }
+
+  return result;
+}
+
+var classParser = function (node) {
+  var existingPrefix = node.getAttribute('data-prefix');
+  var existingIconName = node.getAttribute('data-icon');
+  var innerText = node.innerText !== undefined ? node.innerText.trim() : '';
+
+  var val = getCanonicalIcon(classArray(node));
+
+  if (existingPrefix && existingIconName) {
+    val.prefix = existingPrefix;
+    val.iconName = existingIconName;
+  }
+
+  if (val.prefix && innerText.length > 1) {
+    val.iconName = byLigature(val.prefix, node.innerText);
+  } else if (val.prefix && innerText.length === 1) {
+    val.iconName = byUnicode(val.prefix, toHex(node.innerText));
+  }
+
+  return val;
+};
+
+var parseTransformString = function parseTransformString(transformString) {
+  var transform = {
+    size: 16,
+    x: 0,
+    y: 0,
+    flipX: false,
+    flipY: false,
+    rotate: 0
+  };
+
+  if (!transformString) {
+    return transform;
+  } else {
+    return transformString.toLowerCase().split(' ').reduce(function (acc, n) {
+      var parts = n.toLowerCase().split('-');
+      var first = parts[0];
+      var rest = parts.slice(1).join('-');
+
+      if (first && rest === 'h') {
+        acc.flipX = true;
+        return acc;
+      }
+
+      if (first && rest === 'v') {
+        acc.flipY = true;
+        return acc;
+      }
+
+      rest = parseFloat(rest);
+
+      if (isNaN(rest)) {
+        return acc;
+      }
+
+      switch (first) {
+        case 'grow':
+          acc.size = acc.size + rest;
+          break;
+        case 'shrink':
+          acc.size = acc.size - rest;
+          break;
+        case 'left':
+          acc.x = acc.x - rest;
+          break;
+        case 'right':
+          acc.x = acc.x + rest;
+          break;
+        case 'up':
+          acc.y = acc.y - rest;
+          break;
+        case 'down':
+          acc.y = acc.y + rest;
+          break;
+        case 'rotate':
+          acc.rotate = acc.rotate + rest;
+          break;
+      }
+
+      return acc;
+    }, transform);
+  }
+};
+
+var transformParser = function (node) {
+  return parseTransformString(node.getAttribute('data-fa-transform'));
+};
+
+var symbolParser = function (node) {
+  var symbol = node.getAttribute('data-fa-symbol');
+
+  return symbol === null ? false : symbol === '' ? true : symbol;
+};
+
+var attributesParser = function (node) {
+  var extraAttributes = toArray(node.attributes).reduce(function (acc, attr) {
+    if (acc.name !== 'class' && acc.name !== 'style') {
+      acc[attr.name] = attr.value;
+    }
+    return acc;
+  }, {});
+
+  var title = node.getAttribute('title');
+
+  if (config.autoA11y) {
+    if (title) {
+      extraAttributes['aria-labelledby'] = config.replacementClass + '-title-' + nextUniqueId();
+    } else {
+      extraAttributes['aria-hidden'] = 'true';
+    }
+  }
+
+  return extraAttributes;
+};
+
+var maskParser = function (node) {
+  var mask = node.getAttribute('data-fa-mask');
+
+  if (!mask) {
+    return emptyCanonicalIcon();
+  } else {
+    return getCanonicalIcon(mask.split(' ').map(function (i) {
+      return i.trim();
+    }));
+  }
+};
+
+var blankMeta = {
+  iconName: null,
+  title: null,
+  prefix: null,
+  transform: meaninglessTransform,
+  symbol: false,
+  mask: null,
+  extra: { classes: [], styles: {}, attributes: {} }
+};
+
+function parseMeta(node) {
+  var _classParser = classParser(node),
+      iconName = _classParser.iconName,
+      prefix = _classParser.prefix,
+      extraClasses = _classParser.rest;
+
+  var extraStyles = styleParser(node);
+  var transform = transformParser(node);
+  var symbol = symbolParser(node);
+  var extraAttributes = attributesParser(node);
+  var mask = maskParser(node);
+
+  return {
+    iconName: iconName,
+    title: node.getAttribute('title'),
+    prefix: prefix,
+    transform: transform,
+    symbol: symbol,
+    mask: mask,
+    extra: {
+      classes: extraClasses,
+      styles: extraStyles,
+      attributes: extraAttributes
+    }
+  };
+}
+
+function MissingIcon(error) {
+  this.name = 'MissingIcon';
+  this.message = error || 'Icon unavailable';
+  this.stack = new Error().stack;
+}
+
+MissingIcon.prototype = Object.create(Error.prototype);
+MissingIcon.prototype.constructor = MissingIcon;
+
+var FILL = { fill: 'currentColor' };
+var ANIMATION_BASE = {
+  attributeType: 'XML',
+  repeatCount: 'indefinite',
+  dur: '2s'
+};
+var RING = {
+  tag: 'path',
+  attributes: _extends({}, FILL, {
+    d: 'M156.5,447.7l-12.6,29.5c-18.7-9.5-35.9-21.2-51.5-34.9l22.7-22.7C127.6,430.5,141.5,440,156.5,447.7z M40.6,272H8.5 c1.4,21.2,5.4,41.7,11.7,61.1L50,321.2C45.1,305.5,41.8,289,40.6,272z M40.6,240c1.4-18.8,5.2-37,11.1-54.1l-29.5-12.6 C14.7,194.3,10,216.7,8.5,240H40.6z M64.3,156.5c7.8-14.9,17.2-28.8,28.1-41.5L69.7,92.3c-13.7,15.6-25.5,32.8-34.9,51.5 L64.3,156.5z M397,419.6c-13.9,12-29.4,22.3-46.1,30.4l11.9,29.8c20.7-9.9,39.8-22.6,56.9-37.6L397,419.6z M115,92.4 c13.9-12,29.4-22.3,46.1-30.4l-11.9-29.8c-20.7,9.9-39.8,22.6-56.8,37.6L115,92.4z M447.7,355.5c-7.8,14.9-17.2,28.8-28.1,41.5 l22.7,22.7c13.7-15.6,25.5-32.9,34.9-51.5L447.7,355.5z M471.4,272c-1.4,18.8-5.2,37-11.1,54.1l29.5,12.6 c7.5-21.1,12.2-43.5,13.6-66.8H471.4z M321.2,462c-15.7,5-32.2,8.2-49.2,9.4v32.1c21.2-1.4,41.7-5.4,61.1-11.7L321.2,462z M240,471.4c-18.8-1.4-37-5.2-54.1-11.1l-12.6,29.5c21.1,7.5,43.5,12.2,66.8,13.6V471.4z M462,190.8c5,15.7,8.2,32.2,9.4,49.2h32.1 c-1.4-21.2-5.4-41.7-11.7-61.1L462,190.8z M92.4,397c-12-13.9-22.3-29.4-30.4-46.1l-29.8,11.9c9.9,20.7,22.6,39.8,37.6,56.9 L92.4,397z M272,40.6c18.8,1.4,36.9,5.2,54.1,11.1l12.6-29.5C317.7,14.7,295.3,10,272,8.5V40.6z M190.8,50 c15.7-5,32.2-8.2,49.2-9.4V8.5c-21.2,1.4-41.7,5.4-61.1,11.7L190.8,50z M442.3,92.3L419.6,115c12,13.9,22.3,29.4,30.5,46.1 l29.8-11.9C470,128.5,457.3,109.4,442.3,92.3z M397,92.4l22.7-22.7c-15.6-13.7-32.8-25.5-51.5-34.9l-12.6,29.5 C370.4,72.1,384.4,81.5,397,92.4z'
+  })
+};
+var OPACITY_ANIMATE = _extends({}, ANIMATION_BASE, {
+  attributeName: 'opacity'
 });
-exports.FilterPeriod = undefined;
+var DOT = {
+  tag: 'circle',
+  attributes: _extends({}, FILL, {
+    cx: '256',
+    cy: '364',
+    r: '28'
+  }),
+  children: [{ tag: 'animate', attributes: _extends({}, ANIMATION_BASE, { attributeName: 'r', values: '28;14;28;28;14;28;' }) }, { tag: 'animate', attributes: _extends({}, OPACITY_ANIMATE, { values: '1;0;1;1;0;1;' }) }]
+};
+var QUESTION = {
+  tag: 'path',
+  attributes: _extends({}, FILL, {
+    opacity: '1',
+    d: 'M263.7,312h-16c-6.6,0-12-5.4-12-12c0-71,77.4-63.9,77.4-107.8c0-20-17.8-40.2-57.4-40.2c-29.1,0-44.3,9.6-59.2,28.7 c-3.9,5-11.1,6-16.2,2.4l-13.1-9.2c-5.6-3.9-6.9-11.8-2.6-17.2c21.2-27.2,46.4-44.7,91.2-44.7c52.3,0,97.4,29.8,97.4,80.2 c0,67.6-77.4,63.5-77.4,107.8C275.7,306.6,270.3,312,263.7,312z'
+  }),
+  children: [{ tag: 'animate', attributes: _extends({}, OPACITY_ANIMATE, { values: '1;0;0;0;0;1;' }) }]
+};
+var EXCLAMATION = {
+  tag: 'path',
+  attributes: _extends({}, FILL, {
+    opacity: '0',
+    d: 'M232.5,134.5l7,168c0.3,6.4,5.6,11.5,12,11.5h9c6.4,0,11.7-5.1,12-11.5l7-168c0.3-6.8-5.2-12.5-12-12.5h-23 C237.7,122,232.2,127.7,232.5,134.5z'
+  }),
+  children: [{ tag: 'animate', attributes: _extends({}, OPACITY_ANIMATE, { values: '0;0;1;1;0;0;' }) }]
+};
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var missing = { tag: 'g', children: [RING, DOT, QUESTION, EXCLAMATION] };
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var styles = namespace.styles;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var LAYERS_TEXT_CLASSNAME = 'fa-layers-text';
+var FONT_FAMILY_PATTERN = /Font Awesome 5 (Solid|Regular|Light|Brands|Free|Pro)/;
+var STYLE_TO_PREFIX = {
+  'Solid': 'fas',
+  'Regular': 'far',
+  'Light': 'fal',
+  'Brands': 'fab'
+};
+var FONT_WEIGHT_TO_PREFIX = {
+  '900': 'fas',
+  '400': 'far',
+  '300': 'fal'
+};
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+function findIcon(iconName, prefix) {
+  var val = {
+    found: false,
+    width: 512,
+    height: 512,
+    icon: missing
+  };
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+  if (iconName && prefix && styles[prefix] && styles[prefix][iconName]) {
+    var icon = styles[prefix][iconName];
+    var width = icon[0];
+    var height = icon[1];
+    var vectorData = icon.slice(4);
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+    val = {
+      found: true,
+      width: width,
+      height: height,
+      icon: { tag: 'path', attributes: { fill: 'currentColor', d: vectorData[0] } }
+    };
+  } else if (iconName && prefix && !config.showMissingIcons) {
+    throw new MissingIcon('Icon is missing for prefix ' + prefix + ' with icon name ' + iconName);
+  }
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+  return val;
+}
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+function generateSvgReplacementMutation(node, nodeMeta) {
+  var iconName = nodeMeta.iconName,
+      title = nodeMeta.title,
+      prefix = nodeMeta.prefix,
+      transform = nodeMeta.transform,
+      symbol = nodeMeta.symbol,
+      mask = nodeMeta.mask,
+      extra = nodeMeta.extra;
 
-var _react = require('react');
+  return [node, makeInlineSvgAbstract({
+    icons: {
+      main: findIcon(iconName, prefix),
+      mask: findIcon(mask.iconName, mask.prefix)
+    },
+    prefix: prefix,
+    iconName: iconName,
+    transform: transform,
+    symbol: symbol,
+    mask: mask,
+    title: title,
+    extra: extra,
+    watchable: true
+  })];
+}
 
-var _react2 = _interopRequireDefault(_react);
+function generateLayersText(node, nodeMeta) {
+  var title = nodeMeta.title,
+      transform = nodeMeta.transform,
+      extra = nodeMeta.extra;
 
-var _Select = require('../../layouts/Select');
+  var width = null;
+  var height = null;
 
-var _Select2 = _interopRequireDefault(_Select);
+  if (IS_IE) {
+    var computedFontSize = parseInt(getComputedStyle(node).fontSize, 10);
+    var boundingClientRect = node.getBoundingClientRect();
+    width = boundingClientRect.width / computedFontSize;
+    height = boundingClientRect.height / computedFontSize;
+  }
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  if (config.autoA11y && !title) {
+    extra.attributes['aria-hidden'] = 'true';
+  }
 
-var FilterPeriod = exports.FilterPeriod = function (_Component) {
-    (0, _inherits3.default)(FilterPeriod, _Component);
+  return [node, makeLayersTextAbstract({
+    content: node.innerHTML,
+    width: width,
+    height: height,
+    transform: transform,
+    title: title,
+    extra: extra,
+    watchable: true
+  })];
+}
 
-    function FilterPeriod() {
-        (0, _classCallCheck3.default)(this, FilterPeriod);
+function generateMutation(node) {
+  var nodeMeta = parseMeta(node);
 
-        var _this = (0, _possibleConstructorReturn3.default)(this, (FilterPeriod.__proto__ || Object.getPrototypeOf(FilterPeriod)).call(this));
+  if (~nodeMeta.extra.classes.indexOf(LAYERS_TEXT_CLASSNAME)) {
+    return generateLayersText(node, nodeMeta);
+  } else {
+    return generateSvgReplacementMutation(node, nodeMeta);
+  }
+}
 
-        _this.periods = [{ value: 'anytime', title: 'Anytime' }, { value: 'hour', title: 'Last hour' }, { value: 'today', title: 'Today' }, { value: 'week', title: 'This week' }, { value: 'month', title: 'This month' }, { value: 'year', title: 'This year' }];
+function searchPseudoElements(root) {
+  if (!IS_DOM) return;
 
-        _this.state = {
-            filters: 'anytime'
-        };
+  var end = perf.begin('searchPseudoElements');
 
-        _this.handleChange = _this.handleChange.bind(_this);
-        return _this;
+  disableObservation(function () {
+    toArray(root.querySelectorAll('*')).filter(function (n) {
+      return n.parentNode !== document.head && !~TAGNAMES_TO_SKIP_FOR_PSEUDOELEMENTS.indexOf(n.tagName.toUpperCase()) && !n.getAttribute(DATA_FA_PSEUDO_ELEMENT) && (!n.parentNode || n.parentNode.tagName !== 'svg');
+    }).forEach(function (node) {
+      [':before', ':after'].forEach(function (pos) {
+        var children = toArray(node.children);
+        var alreadyProcessedPseudoElement = children.filter(function (c) {
+          return c.getAttribute(DATA_FA_PSEUDO_ELEMENT) === pos;
+        })[0];
+
+        var styles = WINDOW.getComputedStyle(node, pos);
+        var fontFamily = styles.getPropertyValue('font-family').match(FONT_FAMILY_PATTERN);
+        var fontWeight = styles.getPropertyValue('font-weight');
+
+        if (alreadyProcessedPseudoElement && !fontFamily) {
+          // If we've already processed it but the current computed style does not result in a font-family,
+          // that probably means that a class name that was previously present to make the icon has been
+          // removed. So we now should delete the icon.
+          node.removeChild(alreadyProcessedPseudoElement);
+        } else if (fontFamily) {
+          var content = styles.getPropertyValue('content');
+          var prefix = ~['Light', 'Regular', 'Solid'].indexOf(fontFamily[1]) ? STYLE_TO_PREFIX[fontFamily[1]] : FONT_WEIGHT_TO_PREFIX[fontWeight];
+          var iconName = byUnicode(prefix, toHex(content.length === 3 ? content.substr(1, 1) : content));
+          // Only convert the pseudo element in this :before/:after position into an icon if we haven't
+          // already done so with the same prefix and iconName
+          if (!alreadyProcessedPseudoElement || alreadyProcessedPseudoElement.getAttribute(DATA_PREFIX) !== prefix || alreadyProcessedPseudoElement.getAttribute(DATA_ICON) !== iconName) {
+            if (alreadyProcessedPseudoElement) {
+              // Delete the old one, since we're replacing it with a new one
+              node.removeChild(alreadyProcessedPseudoElement);
+            }
+
+            var extra = blankMeta.extra;
+
+            extra.attributes[DATA_FA_PSEUDO_ELEMENT] = pos;
+            var abstract = makeInlineSvgAbstract(_extends({}, blankMeta, {
+              icons: {
+                main: findIcon(iconName, prefix),
+                mask: emptyCanonicalIcon()
+              },
+              prefix: prefix,
+              iconName: iconName,
+              extra: extra,
+              watchable: true
+            }));
+
+            var element = DOCUMENT.createElement('svg');
+
+            if (pos === ':before') {
+              node.insertBefore(element, node.firstChild);
+            } else {
+              node.appendChild(element);
+            }
+
+            element.outerHTML = abstract.map(function (a) {
+              return toHtml(a);
+            }).join('\n');
+          }
+        }
+      });
+    });
+  });
+
+  end();
+}
+
+function onTree(root) {
+  var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+  if (!IS_DOM) return;
+
+  var htmlClassList = DOCUMENT.documentElement.classList;
+  var hclAdd = function hclAdd(suffix) {
+    return htmlClassList.add(HTML_CLASS_I2SVG_BASE_CLASS + '-' + suffix);
+  };
+  var hclRemove = function hclRemove(suffix) {
+    return htmlClassList.remove(HTML_CLASS_I2SVG_BASE_CLASS + '-' + suffix);
+  };
+  var prefixes = Object.keys(styles);
+  var prefixesDomQuery = ['.' + LAYERS_TEXT_CLASSNAME + ':not([' + DATA_FA_I2SVG + '])'].concat(prefixes.map(function (p) {
+    return '.' + p + ':not([' + DATA_FA_I2SVG + '])';
+  })).join(', ');
+
+  if (prefixesDomQuery.length === 0) {
+    return;
+  }
+
+  var candidates = toArray(root.querySelectorAll(prefixesDomQuery));
+
+  if (candidates.length > 0) {
+    hclAdd('pending');
+    hclRemove('complete');
+  } else {
+    return;
+  }
+
+  var mark = perf.begin('onTree');
+
+  var mutations = candidates.reduce(function (acc, node) {
+    try {
+      var mutation = generateMutation(node);
+
+      if (mutation) {
+        acc.push(mutation);
+      }
+    } catch (e) {
+      if (!PRODUCTION) {
+        if (e instanceof MissingIcon) {
+          console.error(e);
+        }
+      }
     }
 
-    (0, _createClass3.default)(FilterPeriod, [{
-        key: 'getUrlParameter',
-        value: function getUrlParameter(sParam) {
-            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-                sURLVariables = sPageURL.split('&'),
-                sParameterName,
-                i;
+    return acc;
+  }, []);
 
-            for (i = 0; i < sURLVariables.length; i++) {
-                sParameterName = sURLVariables[i].split('=');
+  mark();
 
-                if (sParameterName[0] === sParam) {
-                    return sParameterName[1] === undefined ? true : sParameterName[1];
-                }
-            }
-        }
-    }, {
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            var filters = this.getUrlParameter('filters');
+  perform(mutations, function () {
+    hclAdd('active');
+    hclAdd('complete');
+    hclRemove('pending');
 
-            return this.setState(function (prevState) {
-                return {
-                    filters: filters || prevState.filters
-                };
-            });
-        }
-    }, {
-        key: 'updateQueryStringParameter',
-        value: function updateQueryStringParameter(uri, key, value) {
-            var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
-            var separator = uri.indexOf('?') !== -1 ? "&" : "?";
-            if (uri.match(re)) {
-                return uri.replace(re, '$1' + key + "=" + value + '$2');
-            } else {
-                return uri + separator + key + "=" + value;
-            }
-        }
-    }, {
-        key: 'handleChange',
-        value: function handleChange(e) {
-            var period = e.target.value;
+    if (typeof callback === 'function') callback();
+  });
+}
 
-            if (!this.periods.find(function (x) {
-                return x.value == period;
-            })) return;
+function onNode(node) {
+  var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
-            var url = this.updateQueryStringParameter(window.location.href, 'filters', period);
+  var mutation = generateMutation(node);
 
-            return window.location.href = url;
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                { className: 'tools-filter-period' },
-                _react2.default.createElement(_Select2.default, {
-                    blue: true,
-                    value: this.state.filters,
-                    onChange: this.handleChange,
-                    name: 'filterPeriod',
-                    options: this.periods,
-                    noEmptyOption: true
-                })
-            );
-        }
-    }]);
-    return FilterPeriod;
-}(_react.Component);
+  if (mutation) {
+    perform([mutation], callback);
+  }
+}
 
-exports.default = FilterPeriod;
-},{"babel-runtime/helpers/classCallCheck":18,"babel-runtime/helpers/createClass":19,"babel-runtime/helpers/possibleConstructorReturn":20,"babel-runtime/helpers/inherits":21,"react":15,"../../layouts/Select":204}],221:[function(require,module,exports) {
-'use strict';
+var baseStyles = "svg:not(:root).svg-inline--fa {\n  overflow: visible; }\n\n.svg-inline--fa {\n  display: inline-block;\n  font-size: inherit;\n  height: 1em;\n  overflow: visible;\n  vertical-align: -.125em; }\n  .svg-inline--fa.fa-lg {\n    vertical-align: -.225em; }\n  .svg-inline--fa.fa-w-1 {\n    width: 0.0625em; }\n  .svg-inline--fa.fa-w-2 {\n    width: 0.125em; }\n  .svg-inline--fa.fa-w-3 {\n    width: 0.1875em; }\n  .svg-inline--fa.fa-w-4 {\n    width: 0.25em; }\n  .svg-inline--fa.fa-w-5 {\n    width: 0.3125em; }\n  .svg-inline--fa.fa-w-6 {\n    width: 0.375em; }\n  .svg-inline--fa.fa-w-7 {\n    width: 0.4375em; }\n  .svg-inline--fa.fa-w-8 {\n    width: 0.5em; }\n  .svg-inline--fa.fa-w-9 {\n    width: 0.5625em; }\n  .svg-inline--fa.fa-w-10 {\n    width: 0.625em; }\n  .svg-inline--fa.fa-w-11 {\n    width: 0.6875em; }\n  .svg-inline--fa.fa-w-12 {\n    width: 0.75em; }\n  .svg-inline--fa.fa-w-13 {\n    width: 0.8125em; }\n  .svg-inline--fa.fa-w-14 {\n    width: 0.875em; }\n  .svg-inline--fa.fa-w-15 {\n    width: 0.9375em; }\n  .svg-inline--fa.fa-w-16 {\n    width: 1em; }\n  .svg-inline--fa.fa-w-17 {\n    width: 1.0625em; }\n  .svg-inline--fa.fa-w-18 {\n    width: 1.125em; }\n  .svg-inline--fa.fa-w-19 {\n    width: 1.1875em; }\n  .svg-inline--fa.fa-w-20 {\n    width: 1.25em; }\n  .svg-inline--fa.fa-pull-left {\n    margin-right: .3em;\n    width: auto; }\n  .svg-inline--fa.fa-pull-right {\n    margin-left: .3em;\n    width: auto; }\n  .svg-inline--fa.fa-border {\n    height: 1.5em; }\n  .svg-inline--fa.fa-li {\n    width: 2em; }\n  .svg-inline--fa.fa-fw {\n    width: 1.25em; }\n\n.fa-layers svg.svg-inline--fa {\n  bottom: 0;\n  left: 0;\n  margin: auto;\n  position: absolute;\n  right: 0;\n  top: 0; }\n\n.fa-layers {\n  display: inline-block;\n  height: 1em;\n  position: relative;\n  text-align: center;\n  vertical-align: -.125em;\n  width: 1em; }\n  .fa-layers svg.svg-inline--fa {\n    -webkit-transform-origin: center center;\n            transform-origin: center center; }\n\n.fa-layers-text, .fa-layers-counter {\n  display: inline-block;\n  position: absolute;\n  text-align: center; }\n\n.fa-layers-text {\n  left: 50%;\n  top: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  -webkit-transform-origin: center center;\n          transform-origin: center center; }\n\n.fa-layers-counter {\n  background-color: #ff253a;\n  border-radius: 1em;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  color: #fff;\n  height: 1.5em;\n  line-height: 1;\n  max-width: 5em;\n  min-width: 1.5em;\n  overflow: hidden;\n  padding: .25em;\n  right: 0;\n  text-overflow: ellipsis;\n  top: 0;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: top right;\n          transform-origin: top right; }\n\n.fa-layers-bottom-right {\n  bottom: 0;\n  right: 0;\n  top: auto;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: bottom right;\n          transform-origin: bottom right; }\n\n.fa-layers-bottom-left {\n  bottom: 0;\n  left: 0;\n  right: auto;\n  top: auto;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: bottom left;\n          transform-origin: bottom left; }\n\n.fa-layers-top-right {\n  right: 0;\n  top: 0;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: top right;\n          transform-origin: top right; }\n\n.fa-layers-top-left {\n  left: 0;\n  right: auto;\n  top: 0;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: top left;\n          transform-origin: top left; }\n\n.fa-lg {\n  font-size: 1.33333em;\n  line-height: 0.75em;\n  vertical-align: -.0667em; }\n\n.fa-xs {\n  font-size: .75em; }\n\n.fa-sm {\n  font-size: .875em; }\n\n.fa-1x {\n  font-size: 1em; }\n\n.fa-2x {\n  font-size: 2em; }\n\n.fa-3x {\n  font-size: 3em; }\n\n.fa-4x {\n  font-size: 4em; }\n\n.fa-5x {\n  font-size: 5em; }\n\n.fa-6x {\n  font-size: 6em; }\n\n.fa-7x {\n  font-size: 7em; }\n\n.fa-8x {\n  font-size: 8em; }\n\n.fa-9x {\n  font-size: 9em; }\n\n.fa-10x {\n  font-size: 10em; }\n\n.fa-fw {\n  text-align: center;\n  width: 1.25em; }\n\n.fa-ul {\n  list-style-type: none;\n  margin-left: 2.5em;\n  padding-left: 0; }\n  .fa-ul > li {\n    position: relative; }\n\n.fa-li {\n  left: -2em;\n  position: absolute;\n  text-align: center;\n  width: 2em;\n  line-height: inherit; }\n\n.fa-border {\n  border: solid 0.08em #eee;\n  border-radius: .1em;\n  padding: .2em .25em .15em; }\n\n.fa-pull-left {\n  float: left; }\n\n.fa-pull-right {\n  float: right; }\n\n.fa.fa-pull-left,\n.fas.fa-pull-left,\n.far.fa-pull-left,\n.fal.fa-pull-left,\n.fab.fa-pull-left {\n  margin-right: .3em; }\n\n.fa.fa-pull-right,\n.fas.fa-pull-right,\n.far.fa-pull-right,\n.fal.fa-pull-right,\n.fab.fa-pull-right {\n  margin-left: .3em; }\n\n.fa-spin {\n  -webkit-animation: fa-spin 2s infinite linear;\n          animation: fa-spin 2s infinite linear; }\n\n.fa-pulse {\n  -webkit-animation: fa-spin 1s infinite steps(8);\n          animation: fa-spin 1s infinite steps(8); }\n\n@-webkit-keyframes fa-spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n\n@keyframes fa-spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n\n.fa-rotate-90 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=1)\";\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg); }\n\n.fa-rotate-180 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2)\";\n  -webkit-transform: rotate(180deg);\n          transform: rotate(180deg); }\n\n.fa-rotate-270 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=3)\";\n  -webkit-transform: rotate(270deg);\n          transform: rotate(270deg); }\n\n.fa-flip-horizontal {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)\";\n  -webkit-transform: scale(-1, 1);\n          transform: scale(-1, 1); }\n\n.fa-flip-vertical {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\n  -webkit-transform: scale(1, -1);\n          transform: scale(1, -1); }\n\n.fa-flip-horizontal.fa-flip-vertical {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\n  -webkit-transform: scale(-1, -1);\n          transform: scale(-1, -1); }\n\n:root .fa-rotate-90,\n:root .fa-rotate-180,\n:root .fa-rotate-270,\n:root .fa-flip-horizontal,\n:root .fa-flip-vertical {\n  -webkit-filter: none;\n          filter: none; }\n\n.fa-stack {\n  display: inline-block;\n  height: 2em;\n  position: relative;\n  width: 2em; }\n\n.fa-stack-1x,\n.fa-stack-2x {\n  bottom: 0;\n  left: 0;\n  margin: auto;\n  position: absolute;\n  right: 0;\n  top: 0; }\n\n.svg-inline--fa.fa-stack-1x {\n  height: 1em;\n  width: 1em; }\n\n.svg-inline--fa.fa-stack-2x {\n  height: 2em;\n  width: 2em; }\n\n.fa-inverse {\n  color: #fff; }\n\n.sr-only {\n  border: 0;\n  clip: rect(0, 0, 0, 0);\n  height: 1px;\n  margin: -1px;\n  overflow: hidden;\n  padding: 0;\n  position: absolute;\n  width: 1px; }\n\n.sr-only-focusable:active, .sr-only-focusable:focus {\n  clip: auto;\n  height: auto;\n  margin: 0;\n  overflow: visible;\n  position: static;\n  width: auto; }\n";
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
+var css = function () {
+  var dfp = DEFAULT_FAMILY_PREFIX;
+  var drc = DEFAULT_REPLACEMENT_CLASS;
+  var fp = config.familyPrefix;
+  var rc = config.replacementClass;
+  var s = baseStyles;
 
-var _react = require('react');
+  if (fp !== dfp || rc !== drc) {
+    var dPatt = new RegExp('\\.' + dfp + '\\-', 'g');
+    var rPatt = new RegExp('\\.' + drc, 'g');
 
-var _react2 = _interopRequireDefault(_react);
+    s = s.replace(dPatt, '.' + fp + '-').replace(rPatt, '.' + rc);
+  }
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Checkbox = function Checkbox(props) {
-    return _react2.default.createElement(
-        'span',
-        { className: 'yt-uix-form-input-checkbox-container', style: {
-                height: 16,
-                backgroundColor: '#F0F0F0'
-            } },
-        _react2.default.createElement('input', {
-            className: 'yt-uix-form-input-checkbox',
-            type: 'checkbox',
-            checked: props.checked,
-            name: props.name,
-            id: props.id || props.name,
-            onChange: props.onChange,
-            disabled: props.disabled || false
-        }),
-        _react2.default.createElement('span', { className: 'yt-uix-form-input-checkbox-element', style: {
-                boxSizing: 'content-box'
-            } })
-    );
+  return s;
 };
 
-exports.default = Checkbox;
-},{"react":15}],220:[function(require,module,exports) {
-'use strict';
+function define(prefix, icons) {
+  var normalized = Object.keys(icons).reduce(function (acc, iconName) {
+    var icon = icons[iconName];
+    var expanded = !!icon.icon;
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.ExcludeFlagged = undefined;
+    if (expanded) {
+      acc[icon.iconName] = icon.icon;
+    } else {
+      acc[iconName] = icon;
+    }
+    return acc;
+  }, {});
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+  if (typeof namespace.hooks.addPack === 'function') {
+    namespace.hooks.addPack(prefix, normalized);
+  } else {
+    namespace.styles[prefix] = _extends({}, namespace.styles[prefix] || {}, normalized);
+  }
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+  /**
+   * Font Awesome 4 used the prefix of `fa` for all icons. With the introduction
+   * of new styles we needed to differentiate between them. Prefix `fa` is now an alias
+   * for `fas` so we'll easy the upgrade process for our users by automatically defining
+   * this as well.
+   */
+  if (prefix === 'fas') {
+    define('fa', icons);
+  }
+}
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var Library = function () {
+  function Library() {
+    classCallCheck(this, Library);
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+    this.definitions = {};
+  }
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+  createClass(Library, [{
+    key: 'add',
+    value: function add() {
+      var _this = this;
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+      for (var _len = arguments.length, definitions = Array(_len), _key = 0; _key < _len; _key++) {
+        definitions[_key] = arguments[_key];
+      }
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+      var additions = definitions.reduce(this._pullDefinitions, {});
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+      Object.keys(additions).forEach(function (key) {
+        _this.definitions[key] = _extends({}, _this.definitions[key] || {}, additions[key]);
+        define(key, additions[key]);
+      });
+    }
+  }, {
+    key: 'reset',
+    value: function reset() {
+      this.definitions = {};
+    }
+  }, {
+    key: '_pullDefinitions',
+    value: function _pullDefinitions(additions, definition) {
+      var normalized = definition.prefix && definition.iconName && definition.icon ? { 0: definition } : definition;
 
-var _react = require('react');
+      Object.keys(normalized).map(function (key) {
+        var _normalized$key = normalized[key],
+            prefix = _normalized$key.prefix,
+            iconName = _normalized$key.iconName,
+            icon = _normalized$key.icon;
 
-var _react2 = _interopRequireDefault(_react);
+        if (!additions[prefix]) additions[prefix] = {};
 
-var _Checkbox = require('../../layouts/Checkbox');
+        additions[prefix][iconName] = icon;
+      });
 
-var _Checkbox2 = _interopRequireDefault(_Checkbox);
+      return additions;
+    }
+  }]);
+  return Library;
+}();
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function prepIcon(icon) {
+  var width = icon[0];
+  var height = icon[1];
+  var vectorData = icon.slice(4);
 
-var ExcludeFlagged = exports.ExcludeFlagged = function (_Component) {
-    (0, _inherits3.default)(ExcludeFlagged, _Component);
+  return {
+    found: true,
+    width: width,
+    height: height,
+    icon: { tag: 'path', attributes: { fill: 'currentColor', d: vectorData[0] } }
+  };
+}
 
-    function ExcludeFlagged() {
-        (0, _classCallCheck3.default)(this, ExcludeFlagged);
+function ensureCss() {
+  if (config.autoAddCss && !_cssInserted) {
+    insertCss(css());
+    _cssInserted = true;
+  }
+}
 
-        var _this = (0, _possibleConstructorReturn3.default)(this, (ExcludeFlagged.__proto__ || Object.getPrototypeOf(ExcludeFlagged)).call(this));
+function apiObject(val, abstractCreator) {
+  Object.defineProperty(val, 'abstract', {
+    get: abstractCreator
+  });
 
-        _this.state = {
-            isExcluded: true
-        };
+  Object.defineProperty(val, 'html', {
+    get: function get() {
+      return val.abstract.map(function (a) {
+        return toHtml(a);
+      });
+    }
+  });
 
-        _this.handleChange = _this.handleChange.bind(_this);
-        return _this;
+  Object.defineProperty(val, 'node', {
+    get: function get() {
+      if (!IS_DOM) return;
+
+      var container = DOCUMENT.createElement('div');
+      container.innerHTML = val.html;
+      return container.children;
+    }
+  });
+
+  return val;
+}
+
+function findIconDefinition(params) {
+  var _params$prefix = params.prefix,
+      prefix = _params$prefix === undefined ? 'fa' : _params$prefix,
+      iconName = params.iconName;
+
+  if (!iconName) return;
+
+  return iconFromMapping(library.definitions, prefix, iconName) || iconFromMapping(namespace.styles, prefix, iconName);
+}
+
+function resolveIcons(next) {
+  return function (maybeIconDefinition) {
+    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    var iconDefinition = (maybeIconDefinition || {}).icon ? maybeIconDefinition : findIconDefinition(maybeIconDefinition || {});
+
+    var mask = params.mask;
+
+    if (mask) {
+      mask = (mask || {}).icon ? mask : findIconDefinition(mask || {});
     }
 
-    (0, _createClass3.default)(ExcludeFlagged, [{
-        key: 'getUrlParameter',
-        value: function getUrlParameter(sParam) {
-            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-                sURLVariables = sPageURL.split('&'),
-                sParameterName,
-                i;
+    return next(iconDefinition, _extends({}, params, { mask: mask }));
+  };
+}
 
-            for (i = 0; i < sURLVariables.length; i++) {
-                sParameterName = sURLVariables[i].split('=');
+var library = new Library();
 
-                if (sParameterName[0] === sParam) {
-                    return sParameterName[1] === undefined ? true : sParameterName[1];
-                }
-            }
-        }
-    }, {
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            var isExcluded = this.getUrlParameter('exclude_flagged_videos') == 'true';
+var noAuto = function noAuto() {
+  config.autoReplaceSvg = false;
+  config.observeMutations = false;
 
-            return this.setState(function (prevState) {
-                return {
-                    isExcluded: !!isExcluded
-                };
-            });
-        }
-    }, {
-        key: 'updateQueryStringParameter',
-        value: function updateQueryStringParameter(uri, key, value) {
-            var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
-            var separator = uri.indexOf('?') !== -1 ? "&" : "?";
-            if (uri.match(re)) {
-                return uri.replace(re, '$1' + key + "=" + value + '$2');
-            } else {
-                return uri + separator + key + "=" + value;
-            }
-        }
-    }, {
-        key: 'handleChange',
-        value: function handleChange(e) {
-            var value = e.target.checked;
-
-            var url = this.updateQueryStringParameter(window.location.href, 'exclude_flagged_videos', value);
-
-            return window.location.href = url;
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                { className: 'tools-exclude-flagged' },
-                _react2.default.createElement(
-                    'label',
-                    { className: 'yt-uix-button yt-uix-button-size-default yt-uix-button-primary flex-me flex-align', htmlFor: 'excluded-flagged' },
-                    _react2.default.createElement(
-                        'span',
-                        { className: 'mgi--right-6' },
-                        'Exclude previously flagged videos'
-                    ),
-                    _react2.default.createElement(_Checkbox2.default, {
-                        checked: this.state.isExcluded,
-                        onChange: this.handleChange,
-                        name: 'excluded-flagged'
-                    })
-                )
-            );
-        }
-    }]);
-    return ExcludeFlagged;
-}(_react.Component);
-
-exports.default = ExcludeFlagged;
-},{"babel-runtime/helpers/classCallCheck":18,"babel-runtime/helpers/createClass":19,"babel-runtime/helpers/possibleConstructorReturn":20,"babel-runtime/helpers/inherits":21,"react":15,"../../layouts/Checkbox":221}],135:[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Button = require('../Button');
-
-var _Button2 = _interopRequireDefault(_Button);
-
-var _CountVideos = require('./CountVideos/CountVideos');
-
-var _CountVideos2 = _interopRequireDefault(_CountVideos);
-
-var _FilterPeriod = require('./FilterPeriod/FilterPeriod');
-
-var _ExcludeFlagged = require('./ExcludeFlagged/ExcludeFlagged');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var FlagTools = function FlagTools(context) {
-    return _react2.default.createElement(
-        'div',
-        { className: 'flex-me flex-justify-between flex-align' },
-        _react2.default.createElement(
-            'div',
-            { className: 'flex-me' },
-            _react2.default.createElement(
-                'div',
-                { className: 'mgi--right-10' },
-                _react2.default.createElement(
-                    _Button2.default,
-                    {
-                        blue: true,
-                        disabled: context.state.videosDisplayed.filter(function (x) {
-                            return x.selected === true;
-                        }).length === 0,
-                        onClick: function onClick() {
-                            return context.setState('popupReportingOpened', true);
-                        }
-                    },
-                    'Ajouter \xE0 la liste'
-                )
-            ),
-            _react2.default.createElement(
-                'div',
-                { className: 'mgi--right-10' },
-                _react2.default.createElement(_FilterPeriod.FilterPeriod, null)
-            ),
-            _react2.default.createElement(
-                'div',
-                { className: 'mgi--right-10' },
-                _react2.default.createElement(_ExcludeFlagged.ExcludeFlagged, null)
-            )
-        ),
-        _react2.default.createElement(_CountVideos2.default, context)
-    );
+  disconnect();
 };
 
-exports.default = FlagTools;
-},{"react":15,"../Button":153,"./CountVideos/CountVideos":148,"./FilterPeriod/FilterPeriod":149,"./ExcludeFlagged/ExcludeFlagged":220}],165:[function(require,module,exports) {
+var _cssInserted = false;
+
+var dom = {
+  i2svg: function i2svg() {
+    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+    if (IS_DOM) {
+      ensureCss();
+
+      var _params$node = params.node,
+          node = _params$node === undefined ? DOCUMENT : _params$node,
+          _params$callback = params.callback,
+          callback = _params$callback === undefined ? function () {} : _params$callback;
+
+      if (config.searchPseudoElements) {
+        searchPseudoElements(node);
+      }
+
+      onTree(node, callback);
+    }
+  },
+
+  css: css,
+
+  insertCss: function insertCss$$1() {
+    if (!_cssInserted) {
+      insertCss(css());
+      _cssInserted = true;
+    }
+  },
+
+  watch: function watch() {
+    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var autoReplaceSvgRoot = params.autoReplaceSvgRoot,
+        observeMutationsRoot = params.observeMutationsRoot;
+
+    if (config.autoReplaceSvg === false) {
+      config.autoReplaceSvg = true;
+    }
+
+    config.observeMutations = true;
+
+    domready(function () {
+      autoReplace({
+        autoReplaceSvgRoot: autoReplaceSvgRoot
+      });
+
+      observe({
+        treeCallback: onTree,
+        nodeCallback: onNode,
+        pseudoElementsCallback: searchPseudoElements,
+        observeMutationsRoot: observeMutationsRoot
+      });
+    });
+  }
+};
+
+var parse = {
+  transform: function transform(transformString) {
+    return parseTransformString(transformString);
+  }
+};
+
+var icon = resolveIcons(function (iconDefinition) {
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var _params$transform = params.transform,
+      transform = _params$transform === undefined ? meaninglessTransform : _params$transform,
+      _params$symbol = params.symbol,
+      symbol = _params$symbol === undefined ? false : _params$symbol,
+      _params$mask = params.mask,
+      mask = _params$mask === undefined ? null : _params$mask,
+      _params$title = params.title,
+      title = _params$title === undefined ? null : _params$title,
+      _params$classes = params.classes,
+      classes = _params$classes === undefined ? [] : _params$classes,
+      _params$attributes = params.attributes,
+      attributes = _params$attributes === undefined ? {} : _params$attributes,
+      _params$styles = params.styles,
+      styles = _params$styles === undefined ? {} : _params$styles;
+
+  if (!iconDefinition) return;
+
+  var prefix = iconDefinition.prefix,
+      iconName = iconDefinition.iconName,
+      icon = iconDefinition.icon;
+
+  return apiObject(_extends({ type: 'icon' }, iconDefinition), function () {
+    ensureCss();
+
+    if (config.autoA11y) {
+      if (title) {
+        attributes['aria-labelledby'] = config.replacementClass + '-title-' + nextUniqueId();
+      } else {
+        attributes['aria-hidden'] = 'true';
+      }
+    }
+
+    return makeInlineSvgAbstract({
+      icons: {
+        main: prepIcon(icon),
+        mask: mask ? prepIcon(mask.icon) : { found: false, width: null, height: null, icon: {} }
+      },
+      prefix: prefix,
+      iconName: iconName,
+      transform: _extends({}, meaninglessTransform, transform),
+      symbol: symbol,
+      title: title,
+      extra: {
+        attributes: attributes,
+        styles: styles,
+        classes: classes
+      }
+    });
+  });
+});
+
+var text = function text(content) {
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var _params$transform2 = params.transform,
+      transform = _params$transform2 === undefined ? meaninglessTransform : _params$transform2,
+      _params$title2 = params.title,
+      title = _params$title2 === undefined ? null : _params$title2,
+      _params$classes2 = params.classes,
+      classes = _params$classes2 === undefined ? [] : _params$classes2,
+      _params$attributes2 = params.attributes,
+      attributes = _params$attributes2 === undefined ? {} : _params$attributes2,
+      _params$styles2 = params.styles,
+      styles = _params$styles2 === undefined ? {} : _params$styles2;
+
+  return apiObject({ type: 'text', content: content }, function () {
+    ensureCss();
+
+    return makeLayersTextAbstract({
+      content: content,
+      transform: _extends({}, meaninglessTransform, transform),
+      title: title,
+      extra: {
+        attributes: attributes,
+        styles: styles,
+        classes: [config.familyPrefix + '-layers-text'].concat(toConsumableArray(classes))
+      }
+    });
+  });
+};
+
+var counter = function counter(content) {
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var _params$title3 = params.title,
+      title = _params$title3 === undefined ? null : _params$title3,
+      _params$classes3 = params.classes,
+      classes = _params$classes3 === undefined ? [] : _params$classes3,
+      _params$attributes3 = params.attributes,
+      attributes = _params$attributes3 === undefined ? {} : _params$attributes3,
+      _params$styles3 = params.styles,
+      styles = _params$styles3 === undefined ? {} : _params$styles3;
+
+  return apiObject({ type: 'counter', content: content }, function () {
+    ensureCss();
+
+    return makeLayersCounterAbstract({
+      content: content.toString(),
+      title: title,
+      extra: {
+        attributes: attributes,
+        styles: styles,
+        classes: [config.familyPrefix + '-layers-counter'].concat(toConsumableArray(classes))
+      }
+    });
+  });
+};
+
+var layer = function layer(assembler) {
+  return apiObject({ type: 'layer' }, function () {
+    ensureCss();
+
+    var children = [];
+
+    assembler(function (args) {
+      Array.isArray(args) ? args.map(function (a) {
+        children = children.concat(a.abstract);
+      }) : children = children.concat(args.abstract);
+    });
+
+    return [{
+      tag: 'span',
+      attributes: { class: config.familyPrefix + '-layers' },
+      children: children
+    }];
+  });
+};
+
+var api = {
+  noAuto: noAuto,
+  config: config,
+  dom: dom,
+  library: library,
+  parse: parse,
+  findIconDefinition: findIconDefinition,
+  icon: icon,
+  text: text,
+  counter: counter,
+  layer: layer,
+  toHtml: toHtml
+};
+
+var autoReplace = function autoReplace() {
+  var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var _params$autoReplaceSv = params.autoReplaceSvgRoot,
+      autoReplaceSvgRoot = _params$autoReplaceSv === undefined ? DOCUMENT : _params$autoReplaceSv;
+
+  if (Object.keys(namespace.styles).length > 0 && IS_DOM && config.autoReplaceSvg) api.dom.i2svg({ node: autoReplaceSvgRoot });
+};
+
+exports.icon = icon;
+exports.noAuto = noAuto;
+exports.config = config;
+exports.toHtml = toHtml;
+exports.layer = layer;
+exports.text = text;
+exports.counter = counter;
+exports.library = library;
+exports.dom = dom;
+exports.parse = parse;
+exports.findIconDefinition = findIconDefinition;
+},{}],139:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -22239,7 +23467,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 
   return ReactPropTypes;
 };
-},{"object-assign":55,"./lib/ReactPropTypesSecret":65,"./checkPropTypes":56}],157:[function(require,module,exports) {
+},{"object-assign":60,"./lib/ReactPropTypesSecret":74,"./checkPropTypes":67}],104:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -22263,7 +23491,1315 @@ if ('development' !== 'production') {
   // http://fb.me/prop-types-in-prod
   module.exports = require('./factoryWithThrowingShims')();
 }
-},{"./factoryWithTypeCheckers":165}],174:[function(require,module,exports) {
+},{"./factoryWithTypeCheckers":139}],76:[function(require,module,exports) {
+var global = arguments[3];
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.FontAwesomeIcon = undefined;
+
+var _fontawesomeSvgCore = require('@fortawesome/fontawesome-svg-core');
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+function createCommonjsModule(fn, module) {
+  return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
+
+var humps = createCommonjsModule(function (module) {
+  (function (global) {
+
+    var _processKeys = function (convert, obj, options) {
+      if (!_isObject(obj) || _isDate(obj) || _isRegExp(obj) || _isBoolean(obj) || _isFunction(obj)) {
+        return obj;
+      }
+
+      var output,
+          i = 0,
+          l = 0;
+
+      if (_isArray(obj)) {
+        output = [];
+        for (l = obj.length; i < l; i++) {
+          output.push(_processKeys(convert, obj[i], options));
+        }
+      } else {
+        output = {};
+        for (var key in obj) {
+          if (Object.prototype.hasOwnProperty.call(obj, key)) {
+            output[convert(key, options)] = _processKeys(convert, obj[key], options);
+          }
+        }
+      }
+      return output;
+    };
+
+    // String conversion methods
+
+    var separateWords = function (string, options) {
+      options = options || {};
+      var separator = options.separator || '_';
+      var split = options.split || /(?=[A-Z])/;
+
+      return string.split(split).join(separator);
+    };
+
+    var camelize = function (string) {
+      if (_isNumerical(string)) {
+        return string;
+      }
+      string = string.replace(/[\-_\s]+(.)?/g, function (match, chr) {
+        return chr ? chr.toUpperCase() : '';
+      });
+      // Ensure 1st char is always lowercase
+      return string.substr(0, 1).toLowerCase() + string.substr(1);
+    };
+
+    var pascalize = function (string) {
+      var camelized = camelize(string);
+      // Ensure 1st char is always uppercase
+      return camelized.substr(0, 1).toUpperCase() + camelized.substr(1);
+    };
+
+    var decamelize = function (string, options) {
+      return separateWords(string, options).toLowerCase();
+    };
+
+    // Utilities
+    // Taken from Underscore.js
+
+    var toString = Object.prototype.toString;
+
+    var _isFunction = function (obj) {
+      return typeof obj === 'function';
+    };
+    var _isObject = function (obj) {
+      return obj === Object(obj);
+    };
+    var _isArray = function (obj) {
+      return toString.call(obj) == '[object Array]';
+    };
+    var _isDate = function (obj) {
+      return toString.call(obj) == '[object Date]';
+    };
+    var _isRegExp = function (obj) {
+      return toString.call(obj) == '[object RegExp]';
+    };
+    var _isBoolean = function (obj) {
+      return toString.call(obj) == '[object Boolean]';
+    };
+
+    // Performant way to determine if obj coerces to a number
+    var _isNumerical = function (obj) {
+      obj = obj - 0;
+      return obj === obj;
+    };
+
+    // Sets up function which handles processing keys
+    // allowing the convert function to be modified by a callback
+    var _processor = function (convert, options) {
+      var callback = options && 'process' in options ? options.process : options;
+
+      if (typeof callback !== 'function') {
+        return convert;
+      }
+
+      return function (string, options) {
+        return callback(string, convert, options);
+      };
+    };
+
+    var humps = {
+      camelize: camelize,
+      decamelize: decamelize,
+      pascalize: pascalize,
+      depascalize: decamelize,
+      camelizeKeys: function (object, options) {
+        return _processKeys(_processor(camelize, options), object);
+      },
+      decamelizeKeys: function (object, options) {
+        return _processKeys(_processor(decamelize, options), object, options);
+      },
+      pascalizeKeys: function (object, options) {
+        return _processKeys(_processor(pascalize, options), object);
+      },
+      depascalizeKeys: function () {
+        return this.decamelizeKeys.apply(this, arguments);
+      }
+    };
+
+    if (typeof undefined === 'function' && undefined.amd) {
+      undefined(humps);
+    } else if ('object' !== 'undefined' && module.exports) {
+      module.exports = humps;
+    } else {
+      global.humps = humps;
+    }
+  })(commonjsGlobal);
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
+
+var defineProperty = function (obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+};
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+var objectWithoutProperties = function (obj, keys) {
+  var target = {};
+
+  for (var i in obj) {
+    if (keys.indexOf(i) >= 0) continue;
+    if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
+    target[i] = obj[i];
+  }
+
+  return target;
+};
+
+var toConsumableArray = function (arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+    return arr2;
+  } else {
+    return Array.from(arr);
+  }
+};
+
+function capitalize(val) {
+  return val.charAt(0).toUpperCase() + val.slice(1);
+}
+
+function styleToObject(style) {
+  return style.split(';').map(function (s) {
+    return s.trim();
+  }).filter(function (s) {
+    return s;
+  }).reduce(function (acc, pair) {
+    var i = pair.indexOf(':');
+    var prop = humps.camelize(pair.slice(0, i));
+    var value = pair.slice(i + 1).trim();
+
+    prop.startsWith('webkit') ? acc[capitalize(prop)] = value : acc[prop] = value;
+
+    return acc;
+  }, {});
+}
+
+function convert(createElement, element) {
+  var extraProps = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+  var children = (element.children || []).map(convert.bind(null, createElement));
+
+  var mixins = Object.keys(element.attributes || {}).reduce(function (acc, key) {
+    var val = element.attributes[key];
+
+    switch (key) {
+      case 'class':
+        acc.attrs['className'] = val;
+        delete element.attributes['class'];
+        break;
+      case 'style':
+        acc.attrs['style'] = styleToObject(val);
+        break;
+      default:
+        if (key.indexOf('aria-') === 0 || key.indexOf('data-') === 0) {
+          acc.attrs[key.toLowerCase()] = val;
+        } else {
+          acc.attrs[humps.camelize(key)] = val;
+        }
+    }
+
+    return acc;
+  }, { attrs: {} });
+
+  var _extraProps$style = extraProps.style,
+      existingStyle = _extraProps$style === undefined ? {} : _extraProps$style,
+      remaining = objectWithoutProperties(extraProps, ['style']);
+
+  mixins.attrs['style'] = _extends({}, mixins.attrs['style'], existingStyle);
+
+  return createElement.apply(undefined, [element.tag, _extends({}, mixins.attrs, remaining)].concat(toConsumableArray(children)));
+}
+
+var PRODUCTION = false;
+
+try {
+  PRODUCTION = 'development' === 'production';
+} catch (e) {}
+
+function log() {
+  if (!PRODUCTION && console && typeof console.error === 'function') {
+    var _console;
+
+    (_console = console).error.apply(_console, arguments);
+  }
+}
+
+function objectWithKey(key, value) {
+  return Array.isArray(value) && value.length > 0 || !Array.isArray(value) && value ? defineProperty({}, key, value) : {};
+}
+
+function classList(props) {
+  var _classes;
+
+  var classes = (_classes = {
+    'fa-spin': props.spin,
+    'fa-pulse': props.pulse,
+    'fa-fw': props.fixedWidth,
+    'fa-inverse': props.inverse,
+    'fa-border': props.border,
+    'fa-li': props.listItem,
+    'fa-flip-horizontal': props.flip === 'horizontal' || props.flip === 'both',
+    'fa-flip-vertical': props.flip === 'vertical' || props.flip === 'both'
+  }, defineProperty(_classes, 'fa-' + props.size, props.size !== null), defineProperty(_classes, 'fa-rotate-' + props.rotation, props.rotation !== null), defineProperty(_classes, 'fa-pull-' + props.pull, props.pull !== null), _classes);
+
+  return Object.keys(classes).map(function (key) {
+    return classes[key] ? key : null;
+  }).filter(function (key) {
+    return key;
+  });
+}
+
+function normalizeIconArgs(icon$$1) {
+  if (icon$$1 === null) {
+    return null;
+  }
+
+  if ((typeof icon$$1 === 'undefined' ? 'undefined' : _typeof(icon$$1)) === 'object' && icon$$1.prefix && icon$$1.iconName) {
+    return icon$$1;
+  }
+
+  if (Array.isArray(icon$$1) && icon$$1.length === 2) {
+    return { prefix: icon$$1[0], iconName: icon$$1[1] };
+  }
+
+  if (typeof icon$$1 === 'string') {
+    return { prefix: 'fas', iconName: icon$$1 };
+  }
+}
+
+function FontAwesomeIcon(props) {
+  var iconArgs = props.icon,
+      maskArgs = props.mask,
+      symbol = props.symbol,
+      className = props.className;
+
+  var iconLookup = normalizeIconArgs(iconArgs);
+  var classes = objectWithKey('classes', [].concat(toConsumableArray(classList(props)), toConsumableArray(className.split(' '))));
+  var transform = objectWithKey('transform', typeof props.transform === 'string' ? _fontawesomeSvgCore.parse.transform(props.transform) : props.transform);
+  var mask = objectWithKey('mask', normalizeIconArgs(maskArgs));
+
+  var renderedIcon = (0, _fontawesomeSvgCore.icon)(iconLookup, _extends({}, classes, transform, mask, {
+    symbol: symbol
+  }));
+
+  if (!renderedIcon) {
+    log('Could not find icon', iconLookup);
+    return null;
+  }
+
+  var abstract = renderedIcon.abstract;
+
+  var extraProps = {};
+
+  Object.keys(props).forEach(function (key) {
+    if (!FontAwesomeIcon.defaultProps.hasOwnProperty(key)) {
+      extraProps[key] = props[key];
+    }
+  });
+
+  return convertCurry(abstract[0], extraProps);
+}
+
+FontAwesomeIcon.displayName = 'FontAwesomeIcon';
+
+FontAwesomeIcon.propTypes = {
+  border: _propTypes2.default.bool,
+
+  className: _propTypes2.default.string,
+
+  mask: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.array, _propTypes2.default.string]),
+
+  fixedWidth: _propTypes2.default.bool,
+
+  inverse: _propTypes2.default.bool,
+
+  flip: _propTypes2.default.oneOf(['horizontal', 'vertical', 'both']),
+
+  icon: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.array, _propTypes2.default.string]),
+
+  listItem: _propTypes2.default.bool,
+
+  pull: _propTypes2.default.oneOf(['right', 'left']),
+
+  pulse: _propTypes2.default.bool,
+
+  rotation: _propTypes2.default.oneOf([90, 180, 270]),
+
+  size: _propTypes2.default.oneOf(['lg', 'xs', 'sm', '1x', '2x', '3x', '4x', '5x', '6x', '7x', '8x', '9x', '10x']),
+
+  spin: _propTypes2.default.bool,
+
+  symbol: _propTypes2.default.oneOfType([_propTypes2.default.bool, _propTypes2.default.string]),
+
+  transform: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.object])
+};
+
+FontAwesomeIcon.defaultProps = {
+  border: false,
+  className: '',
+  mask: null,
+  fixedWidth: false,
+  inverse: false,
+  flip: null,
+  icon: null,
+  listItem: false,
+  pull: null,
+  pulse: false,
+  rotation: null,
+  size: null,
+  spin: false,
+  symbol: false,
+  transform: null
+};
+
+var convertCurry = convert.bind(null, _react2.default.createElement);
+
+exports.FontAwesomeIcon = FontAwesomeIcon;
+},{"@fortawesome/fontawesome-svg-core":105,"prop-types":104,"react":18}],78:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+var prefix = 'fas';
+var iconName = 'history';
+var width = 512;
+var height = 512;
+var ligatures = [];
+var unicode = 'f1da';
+var svgPathData = 'M504 255.531c.253 136.64-111.18 248.372-247.82 248.468-59.015.042-113.223-20.53-155.822-54.911-11.077-8.94-11.905-25.541-1.839-35.607l11.267-11.267c8.609-8.609 22.353-9.551 31.891-1.984C173.062 425.135 212.781 440 256 440c101.705 0 184-82.311 184-184 0-101.705-82.311-184-184-184-48.814 0-93.149 18.969-126.068 49.932l50.754 50.754c10.08 10.08 2.941 27.314-11.313 27.314H24c-8.837 0-16-7.163-16-16V38.627c0-14.254 17.234-21.393 27.314-11.314l49.372 49.372C129.209 34.136 189.552 8 256 8c136.81 0 247.747 110.78 248 247.531zm-180.912 78.784l9.823-12.63c8.138-10.463 6.253-25.542-4.21-33.679L288 256.349V152c0-13.255-10.745-24-24-24h-16c-13.255 0-24 10.745-24 24v135.651l65.409 50.874c10.463 8.137 25.541 6.253 33.679-4.21z';
+
+exports.definition = {
+  prefix: prefix,
+  iconName: iconName,
+  icon: [width, height, ligatures, unicode, svgPathData] };
+
+exports.faHistory = exports.definition;
+exports.prefix = prefix;
+exports.iconName = iconName;
+exports.width = width;
+exports.height = height;
+exports.ligatures = ligatures;
+exports.unicode = unicode;
+exports.svgPathData = svgPathData;
+},{}],77:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+var prefix = 'fas';
+var iconName = 'chart-line';
+var width = 512;
+var height = 512;
+var ligatures = [];
+var unicode = 'f201';
+var svgPathData = 'M500 384c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12V76c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v308h436zM456 96H344c-21.4 0-32.1 25.9-17 41l32.9 32.9-72 72.9-55.6-55.6c-4.7-4.7-12.2-4.7-16.9 0L96.4 305c-4.7 4.6-4.8 12.2-.2 16.9l28.5 29.4c4.7 4.8 12.4 4.9 17.1.1l82.1-82.1 55.5 55.5c4.7 4.7 12.3 4.7 17 0l109.2-109.2L439 249c15.1 15.1 41 4.4 41-17V120c0-13.3-10.7-24-24-24z';
+
+exports.definition = {
+  prefix: prefix,
+  iconName: iconName,
+  icon: [width, height, ligatures, unicode, svgPathData] };
+
+exports.faChartLine = exports.definition;
+exports.prefix = prefix;
+exports.iconName = iconName;
+exports.width = width;
+exports.height = height;
+exports.ligatures = ligatures;
+exports.unicode = unicode;
+exports.svgPathData = svgPathData;
+},{}],79:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+var prefix = 'fas';
+var iconName = 'users';
+var width = 640;
+var height = 512;
+var ligatures = [];
+var unicode = 'f0c0';
+var svgPathData = 'M96 224c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm448 0c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm32 32h-64c-17.6 0-33.5 7.1-45.1 18.6 40.3 22.1 68.9 62 75.1 109.4h66c17.7 0 32-14.3 32-32v-32c0-35.3-28.7-64-64-64zm-256 0c61.9 0 112-50.1 112-112S381.9 32 320 32 208 82.1 208 144s50.1 112 112 112zm76.8 32h-8.3c-20.8 10-43.9 16-68.5 16s-47.6-6-68.5-16h-8.3C179.6 288 128 339.6 128 403.2V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-28.8c0-63.6-51.6-115.2-115.2-115.2zm-223.7-13.4C161.5 263.1 145.6 256 128 256H64c-35.3 0-64 28.7-64 64v32c0 17.7 14.3 32 32 32h65.9c6.3-47.4 34.9-87.3 75.2-109.4z';
+
+exports.definition = {
+  prefix: prefix,
+  iconName: iconName,
+  icon: [width, height, ligatures, unicode, svgPathData] };
+
+exports.faUsers = exports.definition;
+exports.prefix = prefix;
+exports.iconName = iconName;
+exports.width = width;
+exports.height = height;
+exports.ligatures = ligatures;
+exports.unicode = unicode;
+exports.svgPathData = svgPathData;
+},{}],83:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+var prefix = 'fas';
+var iconName = 'comment';
+var width = 512;
+var height = 512;
+var ligatures = [];
+var unicode = 'f075';
+var svgPathData = 'M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32z';
+
+exports.definition = {
+  prefix: prefix,
+  iconName: iconName,
+  icon: [width, height, ligatures, unicode, svgPathData] };
+
+exports.faComment = exports.definition;
+exports.prefix = prefix;
+exports.iconName = iconName;
+exports.width = width;
+exports.height = height;
+exports.ligatures = ligatures;
+exports.unicode = unicode;
+exports.svgPathData = svgPathData;
+},{}],81:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+var prefix = 'fas';
+var iconName = 'envelope';
+var width = 512;
+var height = 512;
+var ligatures = [];
+var unicode = 'f0e0';
+var svgPathData = 'M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z';
+
+exports.definition = {
+  prefix: prefix,
+  iconName: iconName,
+  icon: [width, height, ligatures, unicode, svgPathData] };
+
+exports.faEnvelope = exports.definition;
+exports.prefix = prefix;
+exports.iconName = iconName;
+exports.width = width;
+exports.height = height;
+exports.ligatures = ligatures;
+exports.unicode = unicode;
+exports.svgPathData = svgPathData;
+},{}],82:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+var prefix = 'fas';
+var iconName = 'sign-out-alt';
+var width = 512;
+var height = 512;
+var ligatures = [];
+var unicode = 'f2f5';
+var svgPathData = 'M497 273L329 441c-15 15-41 4.5-41-17v-96H152c-13.3 0-24-10.7-24-24v-96c0-13.3 10.7-24 24-24h136V88c0-21.4 25.9-32 41-17l168 168c9.3 9.4 9.3 24.6 0 34zM192 436v-40c0-6.6-5.4-12-12-12H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h84c6.6 0 12-5.4 12-12V76c0-6.6-5.4-12-12-12H96c-53 0-96 43-96 96v192c0 53 43 96 96 96h84c6.6 0 12-5.4 12-12z';
+
+exports.definition = {
+  prefix: prefix,
+  iconName: iconName,
+  icon: [width, height, ligatures, unicode, svgPathData] };
+
+exports.faSignOutAlt = exports.definition;
+exports.prefix = prefix;
+exports.iconName = iconName;
+exports.width = width;
+exports.height = height;
+exports.ligatures = ligatures;
+exports.unicode = unicode;
+exports.svgPathData = svgPathData;
+},{}],50:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var YOUTUBE_API_KEYS = exports.YOUTUBE_API_KEYS = 'AIzaSyBo4cXAPoLRFpiLi-l2Sj8OQpU3gQPUSko';
+var EMAIL_TRUSTED_FLAGGERS = exports.EMAIL_TRUSTED_FLAGGERS = 'trusted_flagging@google.com';
+var CONTRIBUTOR_LINK = exports.CONTRIBUTOR_LINK = 'https://www.contributorscommunity.com/t5/Trusted-Flagger-Forum/bd-p/EN_Flaggers_Board';
+var HANGOUTS_ME = exports.HANGOUTS_ME = 'https://hangouts.google.com/?action=chat&pi=100070124377981205858';
+},{}],3:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var urlsAvailable = exports.urlsAvailable = ['/flagging_history', '/deputy', '/stats'];
+
+var querys = exports.querys = ['search_query'];
+},{}],44:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Sidebar = undefined;
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactFontawesome = require('@fortawesome/react-fontawesome');
+
+var _faHistory = require('@fortawesome/free-solid-svg-icons/faHistory');
+
+var _faChartLine = require('@fortawesome/free-solid-svg-icons/faChartLine');
+
+var _faUsers = require('@fortawesome/free-solid-svg-icons/faUsers');
+
+var _faComment = require('@fortawesome/free-solid-svg-icons/faComment');
+
+var _faEnvelope = require('@fortawesome/free-solid-svg-icons/faEnvelope');
+
+var _faSignOutAlt = require('@fortawesome/free-solid-svg-icons/faSignOutAlt');
+
+var _private = require('../../../../private');
+
+var _main = require('../../main');
+
+var _config = require('../../config');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Sidebar = exports.Sidebar = function (_Component) {
+    (0, _inherits3.default)(Sidebar, _Component);
+
+    function Sidebar() {
+        (0, _classCallCheck3.default)(this, Sidebar);
+        return (0, _possibleConstructorReturn3.default)(this, (Sidebar.__proto__ || Object.getPrototypeOf(Sidebar)).apply(this, arguments));
+    }
+
+    (0, _createClass3.default)(Sidebar, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                _main.YouTubeContext.Consumer,
+                null,
+                function (context) {
+                    return _react2.default.createElement(
+                        'div',
+                        { className: 'sidebar' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'profile-wrapper' },
+                            _react2.default.createElement('img', { src: context.state.user.avatar, alt: context.state.user.username })
+                        ),
+                        _react2.default.createElement(
+                            'nav',
+                            { className: 'navbar' },
+                            _react2.default.createElement(
+                                'ul',
+                                { className: 'nav-link' },
+                                _react2.default.createElement(
+                                    'li',
+                                    null,
+                                    _react2.default.createElement(
+                                        _main.YouTubeContext.Consumer,
+                                        null,
+                                        function (context) {
+                                            return _react2.default.createElement(
+                                                'a',
+                                                { href: '/flagging_history', className: 'youtube-link ' + (context.state.pathname === _config.urlsAvailable[0] ? 'active' : '') },
+                                                _react2.default.createElement(
+                                                    'span',
+                                                    { className: 'span-icon mgi--right-16' },
+                                                    _react2.default.createElement(_reactFontawesome.FontAwesomeIcon, { icon: _faHistory.faHistory, size: '1x', fixedWidth: true })
+                                                ),
+                                                _react2.default.createElement(
+                                                    'span',
+                                                    { className: 'text-link' },
+                                                    'History'
+                                                )
+                                            );
+                                        }
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'li',
+                                    null,
+                                    _react2.default.createElement(
+                                        'a',
+                                        { href: '/deputy', className: 'youtube-link ' + (context.state.pathname === _config.urlsAvailable[2] ? 'active' : '') },
+                                        _react2.default.createElement(
+                                            'span',
+                                            { className: 'span-icon mgi--right-16' },
+                                            _react2.default.createElement(_reactFontawesome.FontAwesomeIcon, { icon: _faChartLine.faChartLine, size: '1x', fixedWidth: true })
+                                        ),
+                                        _react2.default.createElement(
+                                            'span',
+                                            { className: 'text-link' },
+                                            'Statistics'
+                                        )
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'li',
+                                    null,
+                                    _react2.default.createElement(
+                                        'a',
+                                        { href: _private.CONTRIBUTOR_LINK, className: 'youtube-link' },
+                                        _react2.default.createElement(
+                                            'span',
+                                            { className: 'span-icon mgi--right-16' },
+                                            _react2.default.createElement(_reactFontawesome.FontAwesomeIcon, { icon: _faUsers.faUsers, size: '1x', fixedWidth: true })
+                                        ),
+                                        _react2.default.createElement(
+                                            'span',
+                                            { className: 'text-link' },
+                                            'Contributor Forum'
+                                        )
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'li',
+                                    null,
+                                    _react2.default.createElement(
+                                        'a',
+                                        { href: 'https://mail.google.com/mail/u/0/?view=cm&fs=1&to=' + _private.EMAIL_TRUSTED_FLAGGERS, target: '_blank', className: 'youtube-link' },
+                                        _react2.default.createElement(
+                                            'span',
+                                            { className: 'span-icon mgi--right-16' },
+                                            _react2.default.createElement(_reactFontawesome.FontAwesomeIcon, { icon: _faEnvelope.faEnvelope, size: '1x', fixedWidth: true })
+                                        ),
+                                        _react2.default.createElement(
+                                            'span',
+                                            { className: 'text-link' },
+                                            'Send mail'
+                                        )
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'ul',
+                                { className: 'nav-link' },
+                                _react2.default.createElement(
+                                    'li',
+                                    null,
+                                    _react2.default.createElement(
+                                        'a',
+                                        { href: _private.HANGOUTS_ME, target: '_blank', className: 'youtube-link' },
+                                        _react2.default.createElement(
+                                            'span',
+                                            { className: 'span-icon mgi--right-16' },
+                                            _react2.default.createElement(_reactFontawesome.FontAwesomeIcon, { icon: _faComment.faComment, size: '1x', fixedWidth: true })
+                                        ),
+                                        _react2.default.createElement(
+                                            'span',
+                                            { className: 'text-link' },
+                                            'Help'
+                                        )
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'li',
+                                    null,
+                                    _react2.default.createElement(
+                                        'a',
+                                        { href: '/logout', className: 'youtube-link' },
+                                        _react2.default.createElement(
+                                            'span',
+                                            { className: 'span-icon mgi--right-16' },
+                                            _react2.default.createElement(_reactFontawesome.FontAwesomeIcon, { icon: _faSignOutAlt.faSignOutAlt, size: '1x', fixedWidth: true })
+                                        ),
+                                        _react2.default.createElement(
+                                            'span',
+                                            { className: 'text-link' },
+                                            'Logout'
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    );
+                }
+            );
+        }
+    }]);
+    return Sidebar;
+}(_react.Component);
+
+exports.default = Sidebar;
+},{"babel-runtime/helpers/classCallCheck":21,"babel-runtime/helpers/createClass":20,"babel-runtime/helpers/possibleConstructorReturn":22,"babel-runtime/helpers/inherits":23,"react":18,"@fortawesome/react-fontawesome":76,"@fortawesome/free-solid-svg-icons/faHistory":78,"@fortawesome/free-solid-svg-icons/faChartLine":77,"@fortawesome/free-solid-svg-icons/faUsers":79,"@fortawesome/free-solid-svg-icons/faComment":83,"@fortawesome/free-solid-svg-icons/faEnvelope":81,"@fortawesome/free-solid-svg-icons/faSignOutAlt":82,"../../../../private":50,"../../main":1,"../../config":3}],106:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Button = function Button(props) {
+
+    var className = 'yt-uix-button yt-uix-button-size-default ';
+    if (props.blue) className = className + 'yt-uix-button-primary ';else className = className + 'yt-uix-white-primary ';
+    className = props.className ? className + props.className : className;
+
+    return _react2.default.createElement(
+        'button',
+        {
+            className: className,
+            id: props.id,
+            name: props.name || '',
+            disabled: props.disabled || false,
+            onClick: props.onClick,
+            type: props.type || "button"
+        },
+        props.children
+    );
+};
+
+exports.default = Button;
+},{"react":18}],71:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Button = require('../../Button');
+
+var _Button2 = _interopRequireDefault(_Button);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Pagination = function Pagination(_ref) {
+    var pages = _ref.pages;
+
+    return _react2.default.createElement(
+        _react2.default.Fragment,
+        null,
+        pages.length !== 0 && _react2.default.createElement(
+            'div',
+            { className: 'tools-pagination mgi--top-10' },
+            pages.map(function (elem, index) {
+                return _react2.default.createElement(
+                    'a',
+                    { href: elem.url, className: 'mgi--right-4', key: index },
+                    _react2.default.createElement(
+                        _Button2.default,
+                        { blue: true, className: elem.isActual ? 'active' : '' },
+                        elem.isNext ? 'Next' : elem.isPrev ? 'Prev' : elem.numPage
+                    )
+                );
+            })
+        )
+    );
+};
+
+exports.default = Pagination;
+},{"react":18,"../../Button":106}],91:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var CountVideos = function CountVideos(context) {
+
+    var videosSelected = context.state.videosDisplayed.filter(function (x) {
+        return x.selected === true;
+    });
+    var videosRemoved = context.state.videosDisplayed.filter(function (x) {
+        return x.isRemoved === true;
+    });
+
+    return _react2.default.createElement(
+        'div',
+        { className: 'box-count-videos' },
+        _react2.default.createElement(
+            'span',
+            { className: !context.state.canFlag && videosRemoved.length > 0 ? 'red-color' : '' },
+            context.state.canFlag ? videosSelected.length : videosRemoved.length
+        ),
+        ' / ',
+        context.state.videosDisplayed.length
+    );
+};
+
+exports.default = CountVideos;
+},{"react":18}],184:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Select = function Select(props) {
+
+    var defaultOptions = {
+        className: '',
+        disabled: false,
+        defaultOptionTitle: 'defaultTitle'
+    };
+
+    var options = props.options || [];
+
+    var className = 'yt-uix-button yt-uix-button-size-default ';
+    if (props.blue) className = className + 'yt-uix-button-primary ';else className = className + 'yt-uix-white-primary ';
+    className = props.className ? className + props.className : className;
+
+    return _react2.default.createElement(
+        'select',
+        {
+            className: className,
+            name: props.name,
+            id: props.id || props.name,
+            value: props.value,
+            onChange: props.onChange,
+            disabled: props.disabled || defaultOptions.disabled
+        },
+        !props.noEmptyOption && _react2.default.createElement(
+            'option',
+            { value: '', disabled: !props.null },
+            props.defaultOptionTitle || defaultOptions.defaultOptionTitle
+        ),
+        options.map(function (elem, index) {
+            return _react2.default.createElement(
+                'option',
+                { key: index, value: elem.value || index },
+                elem.title || index
+            );
+        })
+    );
+};
+
+exports.default = Select;
+},{"react":18}],93:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.FilterPeriod = undefined;
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Select = require('../../layouts/Select');
+
+var _Select2 = _interopRequireDefault(_Select);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var FilterPeriod = exports.FilterPeriod = function (_Component) {
+    (0, _inherits3.default)(FilterPeriod, _Component);
+
+    function FilterPeriod() {
+        (0, _classCallCheck3.default)(this, FilterPeriod);
+
+        var _this = (0, _possibleConstructorReturn3.default)(this, (FilterPeriod.__proto__ || Object.getPrototypeOf(FilterPeriod)).call(this));
+
+        _this.periods = [{ value: 'anytime', title: 'Anytime' }, { value: 'hour', title: 'Last hour' }, { value: 'today', title: 'Today' }, { value: 'week', title: 'This week' }, { value: 'month', title: 'This month' }, { value: 'year', title: 'This year' }];
+
+        _this.state = {
+            filters: 'anytime'
+        };
+
+        _this.handleChange = _this.handleChange.bind(_this);
+        return _this;
+    }
+
+    (0, _createClass3.default)(FilterPeriod, [{
+        key: 'getUrlParameter',
+        value: function getUrlParameter(sParam) {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : sParameterName[1];
+                }
+            }
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var filters = this.getUrlParameter('filters');
+
+            return this.setState(function (prevState) {
+                return {
+                    filters: filters || prevState.filters
+                };
+            });
+        }
+    }, {
+        key: 'updateQueryStringParameter',
+        value: function updateQueryStringParameter(uri, key, value) {
+            var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+            var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+            if (uri.match(re)) {
+                return uri.replace(re, '$1' + key + "=" + value + '$2');
+            } else {
+                return uri + separator + key + "=" + value;
+            }
+        }
+    }, {
+        key: 'handleChange',
+        value: function handleChange(e) {
+            var period = e.target.value;
+
+            if (!this.periods.find(function (x) {
+                return x.value == period;
+            })) return;
+
+            var url = this.updateQueryStringParameter(window.location.href, 'filters', period);
+
+            return window.location.href = url;
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'tools-filter-period' },
+                _react2.default.createElement(_Select2.default, {
+                    blue: true,
+                    value: this.state.filters,
+                    onChange: this.handleChange,
+                    name: 'filterPeriod',
+                    options: this.periods,
+                    noEmptyOption: true
+                })
+            );
+        }
+    }]);
+    return FilterPeriod;
+}(_react.Component);
+
+exports.default = FilterPeriod;
+},{"babel-runtime/helpers/classCallCheck":21,"babel-runtime/helpers/createClass":20,"babel-runtime/helpers/possibleConstructorReturn":22,"babel-runtime/helpers/inherits":23,"react":18,"../../layouts/Select":184}],183:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Checkbox = function Checkbox(props) {
+    return _react2.default.createElement(
+        'span',
+        { className: 'yt-uix-form-input-checkbox-container', style: {
+                height: 16,
+                backgroundColor: '#F0F0F0'
+            } },
+        _react2.default.createElement('input', {
+            className: 'yt-uix-form-input-checkbox',
+            type: 'checkbox',
+            checked: props.checked,
+            name: props.name,
+            id: props.id || props.name,
+            onChange: props.onChange,
+            disabled: props.disabled || false
+        }),
+        _react2.default.createElement('span', { className: 'yt-uix-form-input-checkbox-element', style: {
+                boxSizing: 'content-box'
+            } })
+    );
+};
+
+exports.default = Checkbox;
+},{"react":18}],92:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.ExcludeFlagged = undefined;
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Checkbox = require('../../layouts/Checkbox');
+
+var _Checkbox2 = _interopRequireDefault(_Checkbox);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ExcludeFlagged = exports.ExcludeFlagged = function (_Component) {
+    (0, _inherits3.default)(ExcludeFlagged, _Component);
+
+    function ExcludeFlagged() {
+        (0, _classCallCheck3.default)(this, ExcludeFlagged);
+
+        var _this = (0, _possibleConstructorReturn3.default)(this, (ExcludeFlagged.__proto__ || Object.getPrototypeOf(ExcludeFlagged)).call(this));
+
+        _this.state = {
+            isExcluded: true
+        };
+
+        _this.handleChange = _this.handleChange.bind(_this);
+        return _this;
+    }
+
+    (0, _createClass3.default)(ExcludeFlagged, [{
+        key: 'getUrlParameter',
+        value: function getUrlParameter(sParam) {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : sParameterName[1];
+                }
+            }
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var isExcluded = this.getUrlParameter('exclude_flagged_videos') == 'true';
+
+            return this.setState(function (prevState) {
+                return {
+                    isExcluded: !!isExcluded
+                };
+            });
+        }
+    }, {
+        key: 'updateQueryStringParameter',
+        value: function updateQueryStringParameter(uri, key, value) {
+            var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+            var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+            if (uri.match(re)) {
+                return uri.replace(re, '$1' + key + "=" + value + '$2');
+            } else {
+                return uri + separator + key + "=" + value;
+            }
+        }
+    }, {
+        key: 'handleChange',
+        value: function handleChange(e) {
+            var value = e.target.checked;
+
+            var url = this.updateQueryStringParameter(window.location.href, 'exclude_flagged_videos', value);
+
+            return window.location.href = url;
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'tools-exclude-flagged' },
+                _react2.default.createElement(
+                    'label',
+                    { className: 'yt-uix-button yt-uix-button-size-default yt-uix-button-primary flex-me flex-align', htmlFor: 'excluded-flagged' },
+                    _react2.default.createElement(
+                        'span',
+                        { className: 'mgi--right-6' },
+                        'Exclude previously flagged videos'
+                    ),
+                    _react2.default.createElement(_Checkbox2.default, {
+                        checked: this.state.isExcluded,
+                        onChange: this.handleChange,
+                        name: 'excluded-flagged'
+                    })
+                )
+            );
+        }
+    }]);
+    return ExcludeFlagged;
+}(_react.Component);
+
+exports.default = ExcludeFlagged;
+},{"babel-runtime/helpers/classCallCheck":21,"babel-runtime/helpers/createClass":20,"babel-runtime/helpers/possibleConstructorReturn":22,"babel-runtime/helpers/inherits":23,"react":18,"../../layouts/Checkbox":183}],68:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Button = require('../Button');
+
+var _Button2 = _interopRequireDefault(_Button);
+
+var _CountVideos = require('./CountVideos/CountVideos');
+
+var _CountVideos2 = _interopRequireDefault(_CountVideos);
+
+var _FilterPeriod = require('./FilterPeriod/FilterPeriod');
+
+var _ExcludeFlagged = require('./ExcludeFlagged/ExcludeFlagged');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var FlagTools = function FlagTools(context) {
+    return _react2.default.createElement(
+        'div',
+        { className: 'flex-me flex-justify-between flex-align' },
+        _react2.default.createElement(
+            'div',
+            { className: 'flex-me' },
+            _react2.default.createElement(
+                'div',
+                { className: 'mgi--right-10' },
+                _react2.default.createElement(
+                    _Button2.default,
+                    {
+                        blue: true,
+                        disabled: context.state.videosDisplayed.filter(function (x) {
+                            return x.selected === true;
+                        }).length === 0,
+                        onClick: function onClick() {
+                            return context.setState('popupReportingOpened', true);
+                        }
+                    },
+                    'Ajouter \xE0 la liste'
+                )
+            ),
+            _react2.default.createElement(
+                'div',
+                { className: 'mgi--right-10' },
+                _react2.default.createElement(_FilterPeriod.FilterPeriod, null)
+            ),
+            _react2.default.createElement(
+                'div',
+                { className: 'mgi--right-10' },
+                _react2.default.createElement(_ExcludeFlagged.ExcludeFlagged, null)
+            )
+        ),
+        _react2.default.createElement(_CountVideos2.default, context)
+    );
+};
+
+exports.default = FlagTools;
+},{"react":18,"../Button":106,"./CountVideos/CountVideos":91,"./FilterPeriod/FilterPeriod":93,"./ExcludeFlagged/ExcludeFlagged":92}],196:[function(require,module,exports) {
 var define;
 /*!
   Copyright (c) 2017 Jed Watson.
@@ -22318,7 +24854,7 @@ var define;
 	}
 }());
 
-},{}],172:[function(require,module,exports) {
+},{}],197:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -22670,7 +25206,7 @@ function onClickOutsideHOC(WrappedComponent, config) {
 
 exports.IGNORE_CLASS_NAME = IGNORE_CLASS_NAME;
 exports.default = onClickOutsideHOC;
-},{"react":15,"react-dom":16}],145:[function(require,module,exports) {
+},{"react":18,"react-dom":17}],49:[function(require,module,exports) {
 var define;
 var global = arguments[3];
 //! moment.js
@@ -27180,7 +29716,7 @@ var global = arguments[3];
 
 })));
 
-},{}],189:[function(require,module,exports) {
+},{}],201:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27291,7 +29827,7 @@ Manager.defaultProps = {
 };
 
 exports.default = Manager;
-},{"react":15,"prop-types":157}],190:[function(require,module,exports) {
+},{"react":18,"prop-types":104}],200:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27365,7 +29901,7 @@ Target.propTypes = {
 };
 
 exports.default = Target;
-},{"react":15,"prop-types":157}],198:[function(require,module,exports) {
+},{"react":18,"prop-types":104}],205:[function(require,module,exports) {
 var global = arguments[3];
 'use strict';
 
@@ -29886,7 +32422,7 @@ Popper.Defaults = Defaults;
 
 exports.default = Popper;
 //# sourceMappingURL=popper.js.map
-},{}],191:[function(require,module,exports) {
+},{}],202:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30177,7 +32713,7 @@ Popper.defaultProps = {
 };
 
 exports.default = Popper;
-},{"react":15,"prop-types":157,"popper.js":198}],192:[function(require,module,exports) {
+},{"react":18,"prop-types":104,"popper.js":205}],203:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30257,7 +32793,7 @@ Arrow.propTypes = {
 };
 
 exports.default = Arrow;
-},{"react":15,"prop-types":157}],173:[function(require,module,exports) {
+},{"react":18,"prop-types":104}],198:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30307,7 +32843,7 @@ Object.defineProperty(exports, 'Arrow', {
 });
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./Manager":189,"./Target":190,"./Popper":191,"./Arrow":192}],167:[function(require,module,exports) {
+},{"./Manager":201,"./Target":200,"./Popper":202,"./Arrow":203}],186:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -33098,7 +35634,7 @@ DatePicker.propTypes = {
 
 exports.CalendarContainer = CalendarContainer;
 exports.default = DatePicker;
-},{"react":15,"prop-types":157,"classnames":174,"react-onclickoutside":172,"moment":145,"react-popper":173}],150:[function(require,module,exports) {
+},{"react":18,"prop-types":104,"classnames":196,"react-onclickoutside":197,"moment":49,"react-popper":198}],96:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -33285,7 +35821,7 @@ var SelectingTime = exports.SelectingTime = function (_Component) {
 }(_react.Component);
 
 exports.default = SelectingTime;
-},{"babel-runtime/helpers/defineProperty":17,"babel-runtime/helpers/classCallCheck":18,"babel-runtime/helpers/createClass":19,"babel-runtime/helpers/possibleConstructorReturn":20,"babel-runtime/helpers/inherits":21,"react":15,"react-datepicker":167,"moment":145,"../../Button":153}],136:[function(require,module,exports) {
+},{"babel-runtime/helpers/defineProperty":19,"babel-runtime/helpers/classCallCheck":21,"babel-runtime/helpers/createClass":20,"babel-runtime/helpers/possibleConstructorReturn":22,"babel-runtime/helpers/inherits":23,"react":18,"react-datepicker":186,"moment":49,"../../Button":106}],69:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -33362,7 +35898,7 @@ var HistoryTools = function HistoryTools() {
 };
 
 exports.default = HistoryTools;
-},{"react":15,"../Button":153,"../../main":1,"./CountVideos/CountVideos":148,"./SelectingTime/SelectingTime":150}],43:[function(require,module,exports) {
+},{"react":18,"../Button":106,"../../main":1,"./CountVideos/CountVideos":91,"./SelectingTime/SelectingTime":96}],45:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -33443,7 +35979,7 @@ var ToolsFlag = exports.ToolsFlag = function (_Component) {
 }(_react.Component);
 
 exports.default = ToolsFlag;
-},{"babel-runtime/helpers/classCallCheck":18,"babel-runtime/helpers/createClass":19,"babel-runtime/helpers/possibleConstructorReturn":20,"babel-runtime/helpers/inherits":21,"react":15,"../Tools/Pagination/Pagination":138,"../../main":1,"../Tools/FlagTools":135,"../Tools/HistoryTools":136}],162:[function(require,module,exports) {
+},{"babel-runtime/helpers/classCallCheck":21,"babel-runtime/helpers/createClass":20,"babel-runtime/helpers/possibleConstructorReturn":22,"babel-runtime/helpers/inherits":23,"react":18,"../Tools/Pagination/Pagination":71,"../../main":1,"../Tools/FlagTools":68,"../Tools/HistoryTools":69}],150:[function(require,module,exports) {
 var global = arguments[3];
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
@@ -34173,7 +36709,7 @@ var global = arguments[3];
   (function() { return this })() || Function("return this")()
 );
 
-},{}],156:[function(require,module,exports) {
+},{}],109:[function(require,module,exports) {
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -34210,10 +36746,10 @@ if (hadRuntime) {
   }
 }
 
-},{"./runtime":162}],151:[function(require,module,exports) {
+},{"./runtime":150}],87:[function(require,module,exports) {
 module.exports = require("regenerator-runtime");
 
-},{"regenerator-runtime":156}],176:[function(require,module,exports) {
+},{"regenerator-runtime":109}],116:[function(require,module,exports) {
 // getting tag from 19.1.3.6 Object.prototype.toString()
 var cof = require('./_cof');
 var TAG = require('./_wks')('toStringTag');
@@ -34238,14 +36774,14 @@ module.exports = function (it) {
     : (B = cof(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : B;
 };
 
-},{"./_cof":146,"./_wks":89}],177:[function(require,module,exports) {
+},{"./_cof":148,"./_wks":129}],120:[function(require,module,exports) {
 module.exports = function (it, Constructor, name, forbiddenField) {
   if (!(it instanceof Constructor) || (forbiddenField !== undefined && forbiddenField in it)) {
     throw TypeError(name + ': incorrect invocation!');
   } return it;
 };
 
-},{}],195:[function(require,module,exports) {
+},{}],159:[function(require,module,exports) {
 // call something on iterator step with safe closing on error
 var anObject = require('./_an-object');
 module.exports = function (iterator, fn, value, entries) {
@@ -34259,7 +36795,7 @@ module.exports = function (iterator, fn, value, entries) {
   }
 };
 
-},{"./_an-object":95}],197:[function(require,module,exports) {
+},{"./_an-object":152}],160:[function(require,module,exports) {
 // check on default Array iterator
 var Iterators = require('./_iterators');
 var ITERATOR = require('./_wks')('iterator');
@@ -34269,7 +36805,7 @@ module.exports = function (it) {
   return it !== undefined && (Iterators.Array === it || ArrayProto[ITERATOR] === it);
 };
 
-},{"./_iterators":93,"./_wks":89}],196:[function(require,module,exports) {
+},{"./_iterators":137,"./_wks":129}],162:[function(require,module,exports) {
 var classof = require('./_classof');
 var ITERATOR = require('./_wks')('iterator');
 var Iterators = require('./_iterators');
@@ -34279,7 +36815,7 @@ module.exports = require('./_core').getIteratorMethod = function (it) {
     || Iterators[classof(it)];
 };
 
-},{"./_classof":176,"./_wks":89,"./_iterators":93,"./_core":75}],178:[function(require,module,exports) {
+},{"./_classof":116,"./_wks":129,"./_iterators":137,"./_core":103}],121:[function(require,module,exports) {
 var ctx = require('./_ctx');
 var call = require('./_iter-call');
 var isArrayIter = require('./_is-array-iter');
@@ -34306,7 +36842,7 @@ var exports = module.exports = function (iterable, entries, fn, that, ITERATOR) 
 exports.BREAK = BREAK;
 exports.RETURN = RETURN;
 
-},{"./_ctx":96,"./_iter-call":195,"./_is-array-iter":197,"./_an-object":95,"./_to-length":163,"./core.get-iterator-method":196}],179:[function(require,module,exports) {
+},{"./_ctx":115,"./_iter-call":159,"./_is-array-iter":160,"./_an-object":152,"./_to-length":161,"./core.get-iterator-method":162}],122:[function(require,module,exports) {
 // 7.3.20 SpeciesConstructor(O, defaultConstructor)
 var anObject = require('./_an-object');
 var aFunction = require('./_a-function');
@@ -34317,7 +36853,7 @@ module.exports = function (O, D) {
   return C === undefined || (S = anObject(C)[SPECIES]) == undefined ? D : aFunction(S);
 };
 
-},{"./_an-object":95,"./_a-function":126,"./_wks":89}],194:[function(require,module,exports) {
+},{"./_an-object":152,"./_a-function":119,"./_wks":129}],166:[function(require,module,exports) {
 // fast apply, http://jsperf.lnkit.com/fast-apply/5
 module.exports = function (fn, args, that) {
   var un = that === undefined;
@@ -34335,7 +36871,7 @@ module.exports = function (fn, args, that) {
   } return fn.apply(that, args);
 };
 
-},{}],180:[function(require,module,exports) {
+},{}],123:[function(require,module,exports) {
 
 
 var ctx = require('./_ctx');
@@ -34423,7 +36959,7 @@ module.exports = {
   clear: clearTask
 };
 
-},{"./_ctx":96,"./_invoke":194,"./_html":103,"./_dom-create":102,"./_global":91,"./_cof":146}],181:[function(require,module,exports) {
+},{"./_ctx":115,"./_invoke":166,"./_html":167,"./_dom-create":168,"./_global":114,"./_cof":148}],124:[function(require,module,exports) {
 
 
 var global = require('./_global');
@@ -34496,7 +37032,7 @@ module.exports = function () {
   };
 };
 
-},{"./_global":91,"./_task":180,"./_cof":146}],182:[function(require,module,exports) {
+},{"./_global":114,"./_task":123,"./_cof":148}],125:[function(require,module,exports) {
 'use strict';
 // 25.4.1.5 NewPromiseCapability(C)
 var aFunction = require('./_a-function');
@@ -34516,7 +37052,7 @@ module.exports.f = function (C) {
   return new PromiseCapability(C);
 };
 
-},{"./_a-function":126}],183:[function(require,module,exports) {
+},{"./_a-function":119}],126:[function(require,module,exports) {
 module.exports = function (exec) {
   try {
     return { e: false, v: exec() };
@@ -34525,14 +37061,14 @@ module.exports = function (exec) {
   }
 };
 
-},{}],184:[function(require,module,exports) {
+},{}],127:[function(require,module,exports) {
 
 var global = require('./_global');
 var navigator = global.navigator;
 
 module.exports = navigator && navigator.userAgent || '';
 
-},{"./_global":91}],185:[function(require,module,exports) {
+},{"./_global":114}],128:[function(require,module,exports) {
 var anObject = require('./_an-object');
 var isObject = require('./_is-object');
 var newPromiseCapability = require('./_new-promise-capability');
@@ -34546,7 +37082,7 @@ module.exports = function (C, x) {
   return promiseCapability.promise;
 };
 
-},{"./_an-object":95,"./_is-object":94,"./_new-promise-capability":182}],186:[function(require,module,exports) {
+},{"./_an-object":152,"./_is-object":118,"./_new-promise-capability":125}],130:[function(require,module,exports) {
 var hide = require('./_hide');
 module.exports = function (target, src, safe) {
   for (var key in src) {
@@ -34555,7 +37091,7 @@ module.exports = function (target, src, safe) {
   } return target;
 };
 
-},{"./_hide":92}],187:[function(require,module,exports) {
+},{"./_hide":136}],132:[function(require,module,exports) {
 
 'use strict';
 var global = require('./_global');
@@ -34572,7 +37108,7 @@ module.exports = function (KEY) {
   });
 };
 
-},{"./_global":91,"./_core":75,"./_object-dp":85,"./_descriptors":84,"./_wks":89}],188:[function(require,module,exports) {
+},{"./_global":114,"./_core":103,"./_object-dp":157,"./_descriptors":158,"./_wks":129}],133:[function(require,module,exports) {
 var ITERATOR = require('./_wks')('iterator');
 var SAFE_CLOSING = false;
 
@@ -34596,7 +37132,7 @@ module.exports = function (exec, skipClosing) {
   return safe;
 };
 
-},{"./_wks":89}],169:[function(require,module,exports) {
+},{"./_wks":129}],100:[function(require,module,exports) {
 
 
 'use strict';
@@ -34886,7 +37422,7 @@ $export($export.S + $export.F * !(USE_NATIVE && require('./_iter-detect')(functi
   }
 });
 
-},{"./_library":114,"./_global":91,"./_ctx":96,"./_classof":176,"./_export":81,"./_is-object":94,"./_a-function":126,"./_an-instance":177,"./_for-of":178,"./_species-constructor":179,"./_task":180,"./_microtask":181,"./_new-promise-capability":182,"./_perform":183,"./_user-agent":184,"./_promise-resolve":185,"./_wks":89,"./_redefine-all":186,"./_set-to-string-tag":117,"./_set-species":187,"./_core":75,"./_iter-detect":188}],170:[function(require,module,exports) {
+},{"./_library":113,"./_global":114,"./_ctx":115,"./_classof":116,"./_export":117,"./_is-object":118,"./_a-function":119,"./_an-instance":120,"./_for-of":121,"./_species-constructor":122,"./_task":123,"./_microtask":124,"./_new-promise-capability":125,"./_perform":126,"./_user-agent":127,"./_promise-resolve":128,"./_wks":129,"./_redefine-all":130,"./_set-to-string-tag":131,"./_set-species":132,"./_core":103,"./_iter-detect":133}],101:[function(require,module,exports) {
 
 // https://github.com/tc39/proposal-promise-finally
 'use strict';
@@ -34909,7 +37445,7 @@ $export($export.P + $export.R, 'Promise', { 'finally': function (onFinally) {
   );
 } });
 
-},{"./_export":81,"./_core":75,"./_global":91,"./_species-constructor":179,"./_promise-resolve":185}],171:[function(require,module,exports) {
+},{"./_export":117,"./_core":103,"./_global":114,"./_species-constructor":122,"./_promise-resolve":128}],102:[function(require,module,exports) {
 'use strict';
 // https://github.com/tc39/proposal-promise-try
 var $export = require('./_export');
@@ -34923,7 +37459,7 @@ $export($export.S, 'Promise', { 'try': function (callbackfn) {
   return promiseCapability.promise;
 } });
 
-},{"./_export":81,"./_new-promise-capability":182,"./_perform":183}],166:[function(require,module,exports) {
+},{"./_export":117,"./_new-promise-capability":125,"./_perform":126}],75:[function(require,module,exports) {
 require('../modules/es6.object.to-string');
 require('../modules/es6.string.iterator');
 require('../modules/web.dom.iterable');
@@ -34932,9 +37468,9 @@ require('../modules/es7.promise.finally');
 require('../modules/es7.promise.try');
 module.exports = require('../modules/_core').Promise;
 
-},{"../modules/es6.object.to-string":108,"../modules/es6.string.iterator":79,"../modules/web.dom.iterable":78,"../modules/es6.promise":169,"../modules/es7.promise.finally":170,"../modules/es7.promise.try":171,"../modules/_core":75}],159:[function(require,module,exports) {
+},{"../modules/es6.object.to-string":97,"../modules/es6.string.iterator":98,"../modules/web.dom.iterable":99,"../modules/es6.promise":100,"../modules/es7.promise.finally":101,"../modules/es7.promise.try":102,"../modules/_core":103}],55:[function(require,module,exports) {
 module.exports = { "default": require("core-js/library/fn/promise"), __esModule: true };
-},{"core-js/library/fn/promise":166}],143:[function(require,module,exports) {
+},{"core-js/library/fn/promise":75}],54:[function(require,module,exports) {
 "use strict";
 
 exports.__esModule = true;
@@ -34973,7 +37509,7 @@ exports.default = function (fn) {
     });
   };
 };
-},{"../core-js/promise":159}],141:[function(require,module,exports) {
+},{"../core-js/promise":55}],52:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35057,7 +37593,7 @@ var VideoListItem = exports.VideoListItem = function (_Component) {
 }(_react.Component);
 
 exports.default = VideoListItem;
-},{"babel-runtime/helpers/classCallCheck":18,"babel-runtime/helpers/createClass":19,"babel-runtime/helpers/possibleConstructorReturn":20,"babel-runtime/helpers/inherits":21,"react":15}],139:[function(require,module,exports) {
+},{"babel-runtime/helpers/classCallCheck":21,"babel-runtime/helpers/createClass":20,"babel-runtime/helpers/possibleConstructorReturn":22,"babel-runtime/helpers/inherits":23,"react":18}],51:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35088,7 +37624,7 @@ var Popup = function Popup(props) {
 };
 
 exports.default = Popup;
-},{"react":15}],41:[function(require,module,exports) {
+},{"react":18}],43:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35145,7 +37681,7 @@ var Video = exports.Video = function () {
 }();
 
 exports.default = Video;
-},{"babel-runtime/helpers/classCallCheck":18,"babel-runtime/helpers/createClass":19,"moment":145}],193:[function(require,module,exports) {
+},{"babel-runtime/helpers/classCallCheck":21,"babel-runtime/helpers/createClass":20,"moment":49}],154:[function(require,module,exports) {
 
 module.exports = function () {
   var selection = document.getSelection();
@@ -35186,7 +37722,7 @@ module.exports = function () {
   };
 };
 
-},{}],175:[function(require,module,exports) {
+},{}],108:[function(require,module,exports) {
 'use strict';
 
 var deselectCurrent = require('toggle-selection');
@@ -35266,7 +37802,7 @@ function copy(text, options) {
 
 module.exports = copy;
 
-},{"toggle-selection":193}],168:[function(require,module,exports) {
+},{"toggle-selection":154}],85:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35356,7 +37892,7 @@ CopyToClipboard.defaultProps = {
   onCopy: undefined,
   options: undefined
 };
-},{"react":15,"copy-to-clipboard":175}],160:[function(require,module,exports) {
+},{"react":18,"copy-to-clipboard":108}],70:[function(require,module,exports) {
 'use strict';
 
 var _require = require('./Component'),
@@ -35364,7 +37900,7 @@ var _require = require('./Component'),
 
 CopyToClipboard.CopyToClipboard = CopyToClipboard;
 module.exports = CopyToClipboard;
-},{"./Component":168}],142:[function(require,module,exports) {
+},{"./Component":85}],53:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35624,2342 +38160,7 @@ var VideoDetail = exports.VideoDetail = function (_Component) {
 }(_react.Component);
 
 exports.default = VideoDetail;
-},{"babel-runtime/helpers/defineProperty":17,"babel-runtime/helpers/classCallCheck":18,"babel-runtime/helpers/createClass":19,"babel-runtime/helpers/possibleConstructorReturn":20,"babel-runtime/helpers/inherits":21,"react":15,"../Button":153,"react-copy-to-clipboard":160,"../../main":1}],158:[function(require,module,exports) {
-
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-/*!
- * Font Awesome Free 5.1.0 by @fontawesome - https://fontawesome.com
- * License - https://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
- */
-var noop = function noop() {};
-
-var _WINDOW = {};
-var _DOCUMENT = {};
-var _MUTATION_OBSERVER$1 = null;
-var _PERFORMANCE = { mark: noop, measure: noop };
-
-try {
-  if (typeof window !== 'undefined') _WINDOW = window;
-  if (typeof document !== 'undefined') _DOCUMENT = document;
-  if (typeof MutationObserver !== 'undefined') _MUTATION_OBSERVER$1 = MutationObserver;
-  if (typeof performance !== 'undefined') _PERFORMANCE = performance;
-} catch (e) {}
-
-var _ref = _WINDOW.navigator || {};
-var _ref$userAgent = _ref.userAgent;
-var userAgent = _ref$userAgent === undefined ? '' : _ref$userAgent;
-
-var WINDOW = _WINDOW;
-var DOCUMENT = _DOCUMENT;
-var MUTATION_OBSERVER = _MUTATION_OBSERVER$1;
-var PERFORMANCE = _PERFORMANCE;
-
-var IS_DOM = !!DOCUMENT.documentElement && !!DOCUMENT.head && typeof DOCUMENT.addEventListener === 'function' && typeof DOCUMENT.createElement === 'function';
-var IS_IE = ~userAgent.indexOf('MSIE') || ~userAgent.indexOf('Trident/');
-
-var NAMESPACE_IDENTIFIER = '___FONT_AWESOME___';
-var UNITS_IN_GRID = 16;
-var DEFAULT_FAMILY_PREFIX = 'fa';
-var DEFAULT_REPLACEMENT_CLASS = 'svg-inline--fa';
-var DATA_FA_I2SVG = 'data-fa-i2svg';
-var DATA_FA_PSEUDO_ELEMENT = 'data-fa-pseudo-element';
-var DATA_PREFIX = 'data-prefix';
-var DATA_ICON = 'data-icon';
-var HTML_CLASS_I2SVG_BASE_CLASS = 'fontawesome-i2svg';
-var TAGNAMES_TO_SKIP_FOR_PSEUDOELEMENTS = ['HTML', 'HEAD', 'STYLE', 'SCRIPT'];
-var PRODUCTION = function () {
-  try {
-    return 'development' === 'production';
-  } catch (e) {
-    return false;
-  }
-}();
-
-var oneToTen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-var oneToTwenty = oneToTen.concat([11, 12, 13, 14, 15, 16, 17, 18, 19, 20]);
-
-var ATTRIBUTES_WATCHED_FOR_MUTATION = ['class', 'data-prefix', 'data-icon', 'data-fa-transform', 'data-fa-mask'];
-
-var RESERVED_CLASSES = ['xs', 'sm', 'lg', 'fw', 'ul', 'li', 'border', 'pull-left', 'pull-right', 'spin', 'pulse', 'rotate-90', 'rotate-180', 'rotate-270', 'flip-horizontal', 'flip-vertical', 'stack', 'stack-1x', 'stack-2x', 'inverse', 'layers', 'layers-text', 'layers-counter'].concat(oneToTen.map(function (n) {
-  return n + 'x';
-})).concat(oneToTwenty.map(function (n) {
-  return 'w-' + n;
-}));
-
-var classCallCheck = function (instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-};
-
-var createClass = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];
-      descriptor.enumerable = descriptor.enumerable || false;
-      descriptor.configurable = true;
-      if ("value" in descriptor) descriptor.writable = true;
-      Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }
-
-  return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) defineProperties(Constructor, staticProps);
-    return Constructor;
-  };
-}();
-
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
-
-var slicedToArray = function () {
-  function sliceIterator(arr, i) {
-    var _arr = [];
-    var _n = true;
-    var _d = false;
-    var _e = undefined;
-
-    try {
-      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-        _arr.push(_s.value);
-
-        if (i && _arr.length === i) break;
-      }
-    } catch (err) {
-      _d = true;
-      _e = err;
-    } finally {
-      try {
-        if (!_n && _i["return"]) _i["return"]();
-      } finally {
-        if (_d) throw _e;
-      }
-    }
-
-    return _arr;
-  }
-
-  return function (arr, i) {
-    if (Array.isArray(arr)) {
-      return arr;
-    } else if (Symbol.iterator in Object(arr)) {
-      return sliceIterator(arr, i);
-    } else {
-      throw new TypeError("Invalid attempt to destructure non-iterable instance");
-    }
-  };
-}();
-
-var toConsumableArray = function (arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
-      arr2[i] = arr[i];
-    }return arr2;
-  } else {
-    return Array.from(arr);
-  }
-};
-
-var initial = WINDOW.FontAwesomeConfig || {};
-
-function getAttrConfig(attr) {
-  var element = DOCUMENT.querySelector('script[' + attr + ']');
-
-  if (element) {
-    return element.getAttribute(attr);
-  }
-}
-
-function coerce(val) {
-  // Getting an empty string will occur if the attribute is set on the HTML tag but without a value
-  // We'll assume that this is an indication that it should be toggled to true
-  // For example <script data-search-pseudo-elements src="..."></script>
-  if (val === '') return true;
-  if (val === 'false') return false;
-  if (val === 'true') return true;
-  return val;
-}
-
-if (DOCUMENT && typeof DOCUMENT.querySelector === 'function') {
-  var attrs = [['data-family-prefix', 'familyPrefix'], ['data-replacement-class', 'replacementClass'], ['data-auto-replace-svg', 'autoReplaceSvg'], ['data-auto-add-css', 'autoAddCss'], ['data-auto-a11y', 'autoA11y'], ['data-search-pseudo-elements', 'searchPseudoElements'], ['data-observe-mutations', 'observeMutations'], ['data-keep-original-source', 'keepOriginalSource'], ['data-measure-performance', 'measurePerformance'], ['data-show-missing-icons', 'showMissingIcons']];
-
-  attrs.forEach(function (_ref) {
-    var _ref2 = slicedToArray(_ref, 2),
-        attr = _ref2[0],
-        key = _ref2[1];
-
-    var val = coerce(getAttrConfig(attr));
-
-    if (val !== undefined && val !== null) {
-      initial[key] = val;
-    }
-  });
-}
-
-var _default = _extends({
-  familyPrefix: DEFAULT_FAMILY_PREFIX,
-  replacementClass: DEFAULT_REPLACEMENT_CLASS,
-  autoReplaceSvg: true,
-  autoAddCss: true,
-  autoA11y: true,
-  searchPseudoElements: false,
-  observeMutations: true,
-  keepOriginalSource: true,
-  measurePerformance: false,
-  showMissingIcons: true
-}, initial);
-
-if (!_default.autoReplaceSvg) _default.observeMutations = false;
-
-var config = _extends({}, _default);
-
-WINDOW.FontAwesomeConfig = config;
-
-var w = WINDOW || {};
-
-if (!w[NAMESPACE_IDENTIFIER]) w[NAMESPACE_IDENTIFIER] = {};
-if (!w[NAMESPACE_IDENTIFIER].styles) w[NAMESPACE_IDENTIFIER].styles = {};
-if (!w[NAMESPACE_IDENTIFIER].hooks) w[NAMESPACE_IDENTIFIER].hooks = {};
-if (!w[NAMESPACE_IDENTIFIER].shims) w[NAMESPACE_IDENTIFIER].shims = [];
-
-var namespace = w[NAMESPACE_IDENTIFIER];
-
-var functions = [];
-var listener = function listener() {
-  DOCUMENT.removeEventListener('DOMContentLoaded', listener);
-  loaded = 1;
-  functions.map(function (fn) {
-    return fn();
-  });
-};
-
-var loaded = false;
-
-if (IS_DOM) {
-  loaded = (DOCUMENT.documentElement.doScroll ? /^loaded|^c/ : /^loaded|^i|^c/).test(DOCUMENT.readyState);
-
-  if (!loaded) DOCUMENT.addEventListener('DOMContentLoaded', listener);
-}
-
-var domready = function (fn) {
-  if (!IS_DOM) return;
-  loaded ? setTimeout(fn, 0) : functions.push(fn);
-};
-
-var d = UNITS_IN_GRID;
-
-var meaninglessTransform = {
-  size: 16,
-  x: 0,
-  y: 0,
-  rotate: 0,
-  flipX: false,
-  flipY: false
-};
-
-function isReserved(name) {
-  return ~RESERVED_CLASSES.indexOf(name);
-}
-
-function insertCss(css) {
-  if (!css || !IS_DOM) {
-    return;
-  }
-
-  var style = DOCUMENT.createElement('style');
-  style.setAttribute('type', 'text/css');
-  style.innerHTML = css;
-
-  var headChildren = DOCUMENT.head.childNodes;
-  var beforeChild = null;
-
-  for (var i = headChildren.length - 1; i > -1; i--) {
-    var child = headChildren[i];
-    var tagName = (child.tagName || '').toUpperCase();
-    if (['STYLE', 'LINK'].indexOf(tagName) > -1) {
-      beforeChild = child;
-    }
-  }
-
-  DOCUMENT.head.insertBefore(style, beforeChild);
-
-  return css;
-}
-
-var _uniqueId = 0;
-
-function nextUniqueId() {
-  _uniqueId++;
-
-  return _uniqueId;
-}
-
-function toArray(obj) {
-  var array = [];
-
-  for (var i = (obj || []).length >>> 0; i--;) {
-    array[i] = obj[i];
-  }
-
-  return array;
-}
-
-function classArray(node) {
-  if (node.classList) {
-    return toArray(node.classList);
-  } else {
-    return (node.getAttribute('class') || '').split(' ').filter(function (i) {
-      return i;
-    });
-  }
-}
-
-function getIconName(familyPrefix, cls) {
-  var parts = cls.split('-');
-  var prefix = parts[0];
-  var iconName = parts.slice(1).join('-');
-
-  if (prefix === familyPrefix && iconName !== '' && !isReserved(iconName)) {
-    return iconName;
-  } else {
-    return null;
-  }
-}
-
-function htmlEscape(str) {
-  return ('' + str).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
-
-function joinAttributes(attributes) {
-  return Object.keys(attributes || {}).reduce(function (acc, attributeName) {
-    return acc + (attributeName + '="' + htmlEscape(attributes[attributeName]) + '" ');
-  }, '').trim();
-}
-
-function joinStyles(styles) {
-  return Object.keys(styles || {}).reduce(function (acc, styleName) {
-    return acc + (styleName + ': ' + styles[styleName] + ';');
-  }, '');
-}
-
-function transformIsMeaningful(transform) {
-  return transform.size !== meaninglessTransform.size || transform.x !== meaninglessTransform.x || transform.y !== meaninglessTransform.y || transform.rotate !== meaninglessTransform.rotate || transform.flipX || transform.flipY;
-}
-
-function transformForSvg(_ref) {
-  var transform = _ref.transform,
-      containerWidth = _ref.containerWidth,
-      iconWidth = _ref.iconWidth;
-
-  var outer = {
-    transform: 'translate(' + containerWidth / 2 + ' 256)'
-  };
-  var innerTranslate = 'translate(' + transform.x * 32 + ', ' + transform.y * 32 + ') ';
-  var innerScale = 'scale(' + transform.size / 16 * (transform.flipX ? -1 : 1) + ', ' + transform.size / 16 * (transform.flipY ? -1 : 1) + ') ';
-  var innerRotate = 'rotate(' + transform.rotate + ' 0 0)';
-  var inner = {
-    transform: innerTranslate + ' ' + innerScale + ' ' + innerRotate
-  };
-  var path = {
-    transform: 'translate(' + iconWidth / 2 * -1 + ' -256)'
-  };
-  return {
-    outer: outer,
-    inner: inner,
-    path: path
-  };
-}
-
-function transformForCss(_ref2) {
-  var transform = _ref2.transform,
-      _ref2$width = _ref2.width,
-      width = _ref2$width === undefined ? UNITS_IN_GRID : _ref2$width,
-      _ref2$height = _ref2.height,
-      height = _ref2$height === undefined ? UNITS_IN_GRID : _ref2$height,
-      _ref2$startCentered = _ref2.startCentered,
-      startCentered = _ref2$startCentered === undefined ? false : _ref2$startCentered;
-
-  var val = '';
-
-  if (startCentered && IS_IE) {
-    val += 'translate(' + (transform.x / d - width / 2) + 'em, ' + (transform.y / d - height / 2) + 'em) ';
-  } else if (startCentered) {
-    val += 'translate(calc(-50% + ' + transform.x / d + 'em), calc(-50% + ' + transform.y / d + 'em)) ';
-  } else {
-    val += 'translate(' + transform.x / d + 'em, ' + transform.y / d + 'em) ';
-  }
-
-  val += 'scale(' + transform.size / d * (transform.flipX ? -1 : 1) + ', ' + transform.size / d * (transform.flipY ? -1 : 1) + ') ';
-  val += 'rotate(' + transform.rotate + 'deg) ';
-
-  return val;
-}
-
-var ALL_SPACE = {
-  x: 0,
-  y: 0,
-  width: '100%',
-  height: '100%'
-};
-
-var makeIconMasking = function (_ref) {
-  var children = _ref.children,
-      attributes = _ref.attributes,
-      main = _ref.main,
-      mask = _ref.mask,
-      transform = _ref.transform;
-  var mainWidth = main.width,
-      mainPath = main.icon;
-  var maskWidth = mask.width,
-      maskPath = mask.icon;
-
-  var trans = transformForSvg({ transform: transform, containerWidth: maskWidth, iconWidth: mainWidth });
-
-  var maskRect = {
-    tag: 'rect',
-    attributes: _extends({}, ALL_SPACE, {
-      fill: 'white'
-    })
-  };
-  var maskInnerGroup = {
-    tag: 'g',
-    attributes: _extends({}, trans.inner),
-    children: [{ tag: 'path', attributes: _extends({}, mainPath.attributes, trans.path, { fill: 'black' }) }]
-  };
-  var maskOuterGroup = {
-    tag: 'g',
-    attributes: _extends({}, trans.outer),
-    children: [maskInnerGroup]
-  };
-  var maskId = 'mask-' + nextUniqueId();
-  var clipId = 'clip-' + nextUniqueId();
-  var maskTag = {
-    tag: 'mask',
-    attributes: _extends({}, ALL_SPACE, {
-      id: maskId,
-      maskUnits: 'userSpaceOnUse',
-      maskContentUnits: 'userSpaceOnUse'
-    }),
-    children: [maskRect, maskOuterGroup]
-  };
-  var defs = {
-    tag: 'defs',
-    children: [{ tag: 'clipPath', attributes: { id: clipId }, children: [maskPath] }, maskTag]
-  };
-
-  children.push(defs, { tag: 'rect', attributes: _extends({ fill: 'currentColor', 'clip-path': 'url(#' + clipId + ')', mask: 'url(#' + maskId + ')' }, ALL_SPACE) });
-
-  return {
-    children: children,
-    attributes: attributes
-  };
-};
-
-var makeIconStandard = function (_ref) {
-  var children = _ref.children,
-      attributes = _ref.attributes,
-      main = _ref.main,
-      transform = _ref.transform,
-      styles = _ref.styles;
-
-  var styleString = joinStyles(styles);
-
-  if (styleString.length > 0) {
-    attributes['style'] = styleString;
-  }
-
-  if (transformIsMeaningful(transform)) {
-    var trans = transformForSvg({ transform: transform, containerWidth: main.width, iconWidth: main.width });
-    children.push({
-      tag: 'g',
-      attributes: _extends({}, trans.outer),
-      children: [{
-        tag: 'g',
-        attributes: _extends({}, trans.inner),
-        children: [{
-          tag: main.icon.tag,
-          children: main.icon.children,
-          attributes: _extends({}, main.icon.attributes, trans.path)
-        }]
-      }]
-    });
-  } else {
-    children.push(main.icon);
-  }
-
-  return {
-    children: children,
-    attributes: attributes
-  };
-};
-
-var asIcon = function (_ref) {
-  var children = _ref.children,
-      main = _ref.main,
-      mask = _ref.mask,
-      attributes = _ref.attributes,
-      styles = _ref.styles,
-      transform = _ref.transform;
-
-  if (transformIsMeaningful(transform) && main.found && !mask.found) {
-    var width = main.width,
-        height = main.height;
-
-    var offset = {
-      x: width / height / 2,
-      y: 0.5
-    };
-    attributes['style'] = joinStyles(_extends({}, styles, {
-      'transform-origin': offset.x + transform.x / 16 + 'em ' + (offset.y + transform.y / 16) + 'em'
-    }));
-  }
-
-  return [{
-    tag: 'svg',
-    attributes: attributes,
-    children: children
-  }];
-};
-
-var asSymbol = function (_ref) {
-  var prefix = _ref.prefix,
-      iconName = _ref.iconName,
-      children = _ref.children,
-      attributes = _ref.attributes,
-      symbol = _ref.symbol;
-
-  var id = symbol === true ? prefix + '-' + config.familyPrefix + '-' + iconName : symbol;
-
-  return [{
-    tag: 'svg',
-    attributes: {
-      style: 'display: none;'
-    },
-    children: [{
-      tag: 'symbol',
-      attributes: _extends({}, attributes, { id: id }),
-      children: children
-    }]
-  }];
-};
-
-function makeInlineSvgAbstract(params) {
-  var _params$icons = params.icons,
-      main = _params$icons.main,
-      mask = _params$icons.mask,
-      prefix = params.prefix,
-      iconName = params.iconName,
-      transform = params.transform,
-      symbol = params.symbol,
-      title = params.title,
-      extra = params.extra,
-      _params$watchable = params.watchable,
-      watchable = _params$watchable === undefined ? false : _params$watchable;
-
-  var _ref = mask.found ? mask : main,
-      width = _ref.width,
-      height = _ref.height;
-
-  var widthClass = 'fa-w-' + Math.ceil(width / height * 16);
-  var attrClass = [config.replacementClass, iconName ? config.familyPrefix + '-' + iconName : '', widthClass].filter(function (c) {
-    return extra.classes.indexOf(c) === -1;
-  }).concat(extra.classes).join(' ');
-
-  var content = {
-    children: [],
-    attributes: _extends({}, extra.attributes, {
-      'data-prefix': prefix,
-      'data-icon': iconName,
-      'class': attrClass,
-      'role': 'img',
-      'xmlns': 'http://www.w3.org/2000/svg',
-      'viewBox': '0 0 ' + width + ' ' + height
-    })
-  };
-
-  if (watchable) {
-    content.attributes[DATA_FA_I2SVG] = '';
-  }
-
-  if (title) content.children.push({ tag: 'title', attributes: { id: content.attributes['aria-labelledby'] || 'title-' + nextUniqueId() }, children: [title] });
-
-  var args = _extends({}, content, {
-    prefix: prefix,
-    iconName: iconName,
-    main: main,
-    mask: mask,
-    transform: transform,
-    symbol: symbol,
-    styles: extra.styles
-  });
-
-  var _ref2 = mask.found && main.found ? makeIconMasking(args) : makeIconStandard(args),
-      children = _ref2.children,
-      attributes = _ref2.attributes;
-
-  args.children = children;
-  args.attributes = attributes;
-
-  if (symbol) {
-    return asSymbol(args);
-  } else {
-    return asIcon(args);
-  }
-}
-
-function makeLayersTextAbstract(params) {
-  var content = params.content,
-      width = params.width,
-      height = params.height,
-      transform = params.transform,
-      title = params.title,
-      extra = params.extra,
-      _params$watchable2 = params.watchable,
-      watchable = _params$watchable2 === undefined ? false : _params$watchable2;
-
-  var attributes = _extends({}, extra.attributes, title ? { 'title': title } : {}, {
-    'class': extra.classes.join(' ')
-  });
-
-  if (watchable) {
-    attributes[DATA_FA_I2SVG] = '';
-  }
-
-  var styles = _extends({}, extra.styles);
-
-  if (transformIsMeaningful(transform)) {
-    styles['transform'] = transformForCss({ transform: transform, startCentered: true, width: width, height: height });
-    styles['-webkit-transform'] = styles['transform'];
-  }
-
-  var styleString = joinStyles(styles);
-
-  if (styleString.length > 0) {
-    attributes['style'] = styleString;
-  }
-
-  var val = [];
-
-  val.push({
-    tag: 'span',
-    attributes: attributes,
-    children: [content]
-  });
-
-  if (title) {
-    val.push({ tag: 'span', attributes: { class: 'sr-only' }, children: [title] });
-  }
-
-  return val;
-}
-
-function makeLayersCounterAbstract(params) {
-  var content = params.content,
-      title = params.title,
-      extra = params.extra;
-
-  var attributes = _extends({}, extra.attributes, title ? { 'title': title } : {}, {
-    'class': extra.classes.join(' ')
-  });
-
-  var styleString = joinStyles(extra.styles);
-
-  if (styleString.length > 0) {
-    attributes['style'] = styleString;
-  }
-
-  var val = [];
-
-  val.push({
-    tag: 'span',
-    attributes: attributes,
-    children: [content]
-  });
-
-  if (title) {
-    val.push({ tag: 'span', attributes: { class: 'sr-only' }, children: [title] });
-  }
-
-  return val;
-}
-
-var noop$2 = function noop() {};
-var p = config.measurePerformance && PERFORMANCE && PERFORMANCE.mark && PERFORMANCE.measure ? PERFORMANCE : { mark: noop$2, measure: noop$2 };
-var preamble = 'FA "5.1.0"';
-
-var begin = function begin(name) {
-  p.mark(preamble + ' ' + name + ' begins');
-  return function () {
-    return end(name);
-  };
-};
-
-var end = function end(name) {
-  p.mark(preamble + ' ' + name + ' ends');
-  p.measure(preamble + ' ' + name, preamble + ' ' + name + ' begins', preamble + ' ' + name + ' ends');
-};
-
-var perf = { begin: begin, end: end };
-
-'use strict';
-
-/**
- * Internal helper to bind a function known to have 4 arguments
- * to a given context.
- */
-var bindInternal4 = function bindInternal4(func, thisContext) {
-  return function (a, b, c, d) {
-    return func.call(thisContext, a, b, c, d);
-  };
-};
-
-'use strict';
-
-/**
- * # Reduce
- *
- * A fast object `.reduce()` implementation.
- *
- * @param  {Object}   subject      The object to reduce over.
- * @param  {Function} fn           The reducer function.
- * @param  {mixed}    initialValue The initial value for the reducer, defaults to subject[0].
- * @param  {Object}   thisContext  The context for the reducer.
- * @return {mixed}                 The final result.
- */
-var reduce = function fastReduceObject(subject, fn, initialValue, thisContext) {
-  var keys = Object.keys(subject),
-      length = keys.length,
-      iterator = thisContext !== undefined ? bindInternal4(fn, thisContext) : fn,
-      i,
-      key,
-      result;
-
-  if (initialValue === undefined) {
-    i = 1;
-    result = subject[keys[0]];
-  } else {
-    i = 0;
-    result = initialValue;
-  }
-
-  for (; i < length; i++) {
-    key = keys[i];
-    result = iterator(result, subject[key], key, subject);
-  }
-
-  return result;
-};
-
-var styles$2 = namespace.styles;
-var shims = namespace.shims;
-
-var _byUnicode = {};
-var _byLigature = {};
-var _byOldName = {};
-
-var build = function build() {
-  var lookup = function lookup(reducer) {
-    return reduce(styles$2, function (o, style, prefix) {
-      o[prefix] = reduce(style, reducer, {});
-      return o;
-    }, {});
-  };
-
-  _byUnicode = lookup(function (acc, icon, iconName) {
-    acc[icon[3]] = iconName;
-
-    return acc;
-  });
-
-  _byLigature = lookup(function (acc, icon, iconName) {
-    var ligatures = icon[2];
-
-    acc[iconName] = iconName;
-
-    ligatures.forEach(function (ligature) {
-      acc[ligature] = iconName;
-    });
-
-    return acc;
-  });
-
-  var hasRegular = 'far' in styles$2;
-
-  _byOldName = reduce(shims, function (acc, shim) {
-    var oldName = shim[0];
-    var prefix = shim[1];
-    var iconName = shim[2];
-
-    if (prefix === 'far' && !hasRegular) {
-      prefix = 'fas';
-    }
-
-    acc[oldName] = { prefix: prefix, iconName: iconName };
-
-    return acc;
-  }, {});
-};
-
-build();
-
-function byUnicode(prefix, unicode) {
-  return _byUnicode[prefix][unicode];
-}
-
-function byLigature(prefix, ligature) {
-  return _byLigature[prefix][ligature];
-}
-
-function byOldName(name) {
-  return _byOldName[name] || { prefix: null, iconName: null };
-}
-
-var styles$1 = namespace.styles;
-
-var emptyCanonicalIcon = function emptyCanonicalIcon() {
-  return { prefix: null, iconName: null, rest: [] };
-};
-
-function getCanonicalIcon(values) {
-  return values.reduce(function (acc, cls) {
-    var iconName = getIconName(config.familyPrefix, cls);
-
-    if (styles$1[cls]) {
-      acc.prefix = cls;
-    } else if (iconName) {
-      var shim = acc.prefix === 'fa' ? byOldName(iconName) : {};
-
-      acc.iconName = shim.iconName || iconName;
-      acc.prefix = shim.prefix || acc.prefix;
-    } else if (cls !== config.replacementClass && cls.indexOf('fa-w-') !== 0) {
-      acc.rest.push(cls);
-    }
-
-    return acc;
-  }, emptyCanonicalIcon());
-}
-
-function iconFromMapping(mapping, prefix, iconName) {
-  if (mapping && mapping[prefix] && mapping[prefix][iconName]) {
-    return {
-      prefix: prefix,
-      iconName: iconName,
-      icon: mapping[prefix][iconName]
-    };
-  }
-}
-
-function toHtml(abstractNodes) {
-  var tag = abstractNodes.tag,
-      _abstractNodes$attrib = abstractNodes.attributes,
-      attributes = _abstractNodes$attrib === undefined ? {} : _abstractNodes$attrib,
-      _abstractNodes$childr = abstractNodes.children,
-      children = _abstractNodes$childr === undefined ? [] : _abstractNodes$childr;
-
-  if (typeof abstractNodes === 'string') {
-    return htmlEscape(abstractNodes);
-  } else {
-    return '<' + tag + ' ' + joinAttributes(attributes) + '>' + children.map(toHtml).join('') + '</' + tag + '>';
-  }
-}
-
-var noop$1 = function noop() {};
-
-function isWatched(node) {
-  var i2svg = node.getAttribute ? node.getAttribute(DATA_FA_I2SVG) : null;
-
-  return typeof i2svg === 'string';
-}
-
-function getMutator() {
-  if (config.autoReplaceSvg === true) {
-    return mutators.replace;
-  }
-
-  var mutator = mutators[config.autoReplaceSvg];
-
-  return mutator || mutators.replace;
-}
-
-var mutators = {
-  replace: function replace(mutation) {
-    var node = mutation[0];
-    var abstract = mutation[1];
-    var newOuterHTML = abstract.map(function (a) {
-      return toHtml(a);
-    }).join('\n');
-
-    if (node.parentNode && node.outerHTML) {
-      node.outerHTML = newOuterHTML + (config.keepOriginalSource && node.tagName.toLowerCase() !== 'svg' ? '<!-- ' + node.outerHTML + ' -->' : '');
-    } else if (node.parentNode) {
-      var newNode = document.createElement('span');
-      node.parentNode.replaceChild(newNode, node);
-      newNode.outerHTML = newOuterHTML;
-    }
-  },
-  nest: function nest(mutation) {
-    var node = mutation[0];
-    var abstract = mutation[1];
-
-    // If we already have a replaced node we do not want to continue nesting within it.
-    // Short-circuit to the standard replacement
-    if (~classArray(node).indexOf(config.replacementClass)) {
-      return mutators.replace(mutation);
-    }
-
-    var forSvg = new RegExp(config.familyPrefix + '-.*');
-
-    delete abstract[0].attributes.style;
-
-    var splitClasses = abstract[0].attributes.class.split(' ').reduce(function (acc, cls) {
-      if (cls === config.replacementClass || cls.match(forSvg)) {
-        acc.toSvg.push(cls);
-      } else {
-        acc.toNode.push(cls);
-      }
-
-      return acc;
-    }, { toNode: [], toSvg: [] });
-
-    abstract[0].attributes.class = splitClasses.toSvg.join(' ');
-
-    var newInnerHTML = abstract.map(function (a) {
-      return toHtml(a);
-    }).join('\n');
-    node.setAttribute('class', splitClasses.toNode.join(' '));
-    node.setAttribute(DATA_FA_I2SVG, '');
-    node.innerHTML = newInnerHTML;
-  }
-};
-
-function perform(mutations, callback) {
-  var callbackFunction = typeof callback === 'function' ? callback : noop$1;
-
-  if (mutations.length === 0) {
-    callbackFunction();
-  } else {
-    var frame = WINDOW.requestAnimationFrame || function (op) {
-      return op();
-    };
-
-    frame(function () {
-      var mutator = getMutator();
-      var mark = perf.begin('mutate');
-
-      mutations.map(mutator);
-
-      mark();
-
-      callbackFunction();
-    });
-  }
-}
-
-var disabled = false;
-
-function disableObservation(operation) {
-  disabled = true;
-  operation();
-  disabled = false;
-}
-
-var mo = null;
-
-function observe(options) {
-  if (!MUTATION_OBSERVER) {
-    return;
-  }
-
-  if (!config.observeMutations) {
-    return;
-  }
-
-  var treeCallback = options.treeCallback,
-      nodeCallback = options.nodeCallback,
-      pseudoElementsCallback = options.pseudoElementsCallback,
-      _options$observeMutat = options.observeMutationsRoot,
-      observeMutationsRoot = _options$observeMutat === undefined ? DOCUMENT.body : _options$observeMutat;
-
-  mo = new MUTATION_OBSERVER(function (objects) {
-    if (disabled) return;
-
-    toArray(objects).forEach(function (mutationRecord) {
-      if (mutationRecord.type === 'childList' && mutationRecord.addedNodes.length > 0 && !isWatched(mutationRecord.addedNodes[0])) {
-        if (config.searchPseudoElements) {
-          pseudoElementsCallback(mutationRecord.target);
-        }
-
-        treeCallback(mutationRecord.target);
-      }
-
-      if (mutationRecord.type === 'attributes' && mutationRecord.target.parentNode && config.searchPseudoElements) {
-        pseudoElementsCallback(mutationRecord.target.parentNode);
-      }
-
-      if (mutationRecord.type === 'attributes' && isWatched(mutationRecord.target) && ~ATTRIBUTES_WATCHED_FOR_MUTATION.indexOf(mutationRecord.attributeName)) {
-        if (mutationRecord.attributeName === 'class') {
-          var _getCanonicalIcon = getCanonicalIcon(classArray(mutationRecord.target)),
-              prefix = _getCanonicalIcon.prefix,
-              iconName = _getCanonicalIcon.iconName;
-
-          if (prefix) mutationRecord.target.setAttribute('data-prefix', prefix);
-          if (iconName) mutationRecord.target.setAttribute('data-icon', iconName);
-        } else {
-          nodeCallback(mutationRecord.target);
-        }
-      }
-    });
-  });
-
-  if (!IS_DOM) return;
-
-  mo.observe(observeMutationsRoot, {
-    childList: true, attributes: true, characterData: true, subtree: true
-  });
-}
-
-function disconnect() {
-  if (!mo) return;
-
-  mo.disconnect();
-}
-
-var styleParser = function (node) {
-  var style = node.getAttribute('style');
-
-  var val = [];
-
-  if (style) {
-    val = style.split(';').reduce(function (acc, style) {
-      var styles = style.split(':');
-      var prop = styles[0];
-      var value = styles.slice(1);
-
-      if (prop && value.length > 0) {
-        acc[prop] = value.join(':').trim();
-      }
-
-      return acc;
-    }, {});
-  }
-
-  return val;
-};
-
-function toHex(unicode) {
-  var result = '';
-
-  for (var i = 0; i < unicode.length; i++) {
-    var hex = unicode.charCodeAt(i).toString(16);
-    result += ('000' + hex).slice(-4);
-  }
-
-  return result;
-}
-
-var classParser = function (node) {
-  var existingPrefix = node.getAttribute('data-prefix');
-  var existingIconName = node.getAttribute('data-icon');
-  var innerText = node.innerText !== undefined ? node.innerText.trim() : '';
-
-  var val = getCanonicalIcon(classArray(node));
-
-  if (existingPrefix && existingIconName) {
-    val.prefix = existingPrefix;
-    val.iconName = existingIconName;
-  }
-
-  if (val.prefix && innerText.length > 1) {
-    val.iconName = byLigature(val.prefix, node.innerText);
-  } else if (val.prefix && innerText.length === 1) {
-    val.iconName = byUnicode(val.prefix, toHex(node.innerText));
-  }
-
-  return val;
-};
-
-var parseTransformString = function parseTransformString(transformString) {
-  var transform = {
-    size: 16,
-    x: 0,
-    y: 0,
-    flipX: false,
-    flipY: false,
-    rotate: 0
-  };
-
-  if (!transformString) {
-    return transform;
-  } else {
-    return transformString.toLowerCase().split(' ').reduce(function (acc, n) {
-      var parts = n.toLowerCase().split('-');
-      var first = parts[0];
-      var rest = parts.slice(1).join('-');
-
-      if (first && rest === 'h') {
-        acc.flipX = true;
-        return acc;
-      }
-
-      if (first && rest === 'v') {
-        acc.flipY = true;
-        return acc;
-      }
-
-      rest = parseFloat(rest);
-
-      if (isNaN(rest)) {
-        return acc;
-      }
-
-      switch (first) {
-        case 'grow':
-          acc.size = acc.size + rest;
-          break;
-        case 'shrink':
-          acc.size = acc.size - rest;
-          break;
-        case 'left':
-          acc.x = acc.x - rest;
-          break;
-        case 'right':
-          acc.x = acc.x + rest;
-          break;
-        case 'up':
-          acc.y = acc.y - rest;
-          break;
-        case 'down':
-          acc.y = acc.y + rest;
-          break;
-        case 'rotate':
-          acc.rotate = acc.rotate + rest;
-          break;
-      }
-
-      return acc;
-    }, transform);
-  }
-};
-
-var transformParser = function (node) {
-  return parseTransformString(node.getAttribute('data-fa-transform'));
-};
-
-var symbolParser = function (node) {
-  var symbol = node.getAttribute('data-fa-symbol');
-
-  return symbol === null ? false : symbol === '' ? true : symbol;
-};
-
-var attributesParser = function (node) {
-  var extraAttributes = toArray(node.attributes).reduce(function (acc, attr) {
-    if (acc.name !== 'class' && acc.name !== 'style') {
-      acc[attr.name] = attr.value;
-    }
-    return acc;
-  }, {});
-
-  var title = node.getAttribute('title');
-
-  if (config.autoA11y) {
-    if (title) {
-      extraAttributes['aria-labelledby'] = config.replacementClass + '-title-' + nextUniqueId();
-    } else {
-      extraAttributes['aria-hidden'] = 'true';
-    }
-  }
-
-  return extraAttributes;
-};
-
-var maskParser = function (node) {
-  var mask = node.getAttribute('data-fa-mask');
-
-  if (!mask) {
-    return emptyCanonicalIcon();
-  } else {
-    return getCanonicalIcon(mask.split(' ').map(function (i) {
-      return i.trim();
-    }));
-  }
-};
-
-var blankMeta = {
-  iconName: null,
-  title: null,
-  prefix: null,
-  transform: meaninglessTransform,
-  symbol: false,
-  mask: null,
-  extra: { classes: [], styles: {}, attributes: {} }
-};
-
-function parseMeta(node) {
-  var _classParser = classParser(node),
-      iconName = _classParser.iconName,
-      prefix = _classParser.prefix,
-      extraClasses = _classParser.rest;
-
-  var extraStyles = styleParser(node);
-  var transform = transformParser(node);
-  var symbol = symbolParser(node);
-  var extraAttributes = attributesParser(node);
-  var mask = maskParser(node);
-
-  return {
-    iconName: iconName,
-    title: node.getAttribute('title'),
-    prefix: prefix,
-    transform: transform,
-    symbol: symbol,
-    mask: mask,
-    extra: {
-      classes: extraClasses,
-      styles: extraStyles,
-      attributes: extraAttributes
-    }
-  };
-}
-
-function MissingIcon(error) {
-  this.name = 'MissingIcon';
-  this.message = error || 'Icon unavailable';
-  this.stack = new Error().stack;
-}
-
-MissingIcon.prototype = Object.create(Error.prototype);
-MissingIcon.prototype.constructor = MissingIcon;
-
-var FILL = { fill: 'currentColor' };
-var ANIMATION_BASE = {
-  attributeType: 'XML',
-  repeatCount: 'indefinite',
-  dur: '2s'
-};
-var RING = {
-  tag: 'path',
-  attributes: _extends({}, FILL, {
-    d: 'M156.5,447.7l-12.6,29.5c-18.7-9.5-35.9-21.2-51.5-34.9l22.7-22.7C127.6,430.5,141.5,440,156.5,447.7z M40.6,272H8.5 c1.4,21.2,5.4,41.7,11.7,61.1L50,321.2C45.1,305.5,41.8,289,40.6,272z M40.6,240c1.4-18.8,5.2-37,11.1-54.1l-29.5-12.6 C14.7,194.3,10,216.7,8.5,240H40.6z M64.3,156.5c7.8-14.9,17.2-28.8,28.1-41.5L69.7,92.3c-13.7,15.6-25.5,32.8-34.9,51.5 L64.3,156.5z M397,419.6c-13.9,12-29.4,22.3-46.1,30.4l11.9,29.8c20.7-9.9,39.8-22.6,56.9-37.6L397,419.6z M115,92.4 c13.9-12,29.4-22.3,46.1-30.4l-11.9-29.8c-20.7,9.9-39.8,22.6-56.8,37.6L115,92.4z M447.7,355.5c-7.8,14.9-17.2,28.8-28.1,41.5 l22.7,22.7c13.7-15.6,25.5-32.9,34.9-51.5L447.7,355.5z M471.4,272c-1.4,18.8-5.2,37-11.1,54.1l29.5,12.6 c7.5-21.1,12.2-43.5,13.6-66.8H471.4z M321.2,462c-15.7,5-32.2,8.2-49.2,9.4v32.1c21.2-1.4,41.7-5.4,61.1-11.7L321.2,462z M240,471.4c-18.8-1.4-37-5.2-54.1-11.1l-12.6,29.5c21.1,7.5,43.5,12.2,66.8,13.6V471.4z M462,190.8c5,15.7,8.2,32.2,9.4,49.2h32.1 c-1.4-21.2-5.4-41.7-11.7-61.1L462,190.8z M92.4,397c-12-13.9-22.3-29.4-30.4-46.1l-29.8,11.9c9.9,20.7,22.6,39.8,37.6,56.9 L92.4,397z M272,40.6c18.8,1.4,36.9,5.2,54.1,11.1l12.6-29.5C317.7,14.7,295.3,10,272,8.5V40.6z M190.8,50 c15.7-5,32.2-8.2,49.2-9.4V8.5c-21.2,1.4-41.7,5.4-61.1,11.7L190.8,50z M442.3,92.3L419.6,115c12,13.9,22.3,29.4,30.5,46.1 l29.8-11.9C470,128.5,457.3,109.4,442.3,92.3z M397,92.4l22.7-22.7c-15.6-13.7-32.8-25.5-51.5-34.9l-12.6,29.5 C370.4,72.1,384.4,81.5,397,92.4z'
-  })
-};
-var OPACITY_ANIMATE = _extends({}, ANIMATION_BASE, {
-  attributeName: 'opacity'
-});
-var DOT = {
-  tag: 'circle',
-  attributes: _extends({}, FILL, {
-    cx: '256',
-    cy: '364',
-    r: '28'
-  }),
-  children: [{ tag: 'animate', attributes: _extends({}, ANIMATION_BASE, { attributeName: 'r', values: '28;14;28;28;14;28;' }) }, { tag: 'animate', attributes: _extends({}, OPACITY_ANIMATE, { values: '1;0;1;1;0;1;' }) }]
-};
-var QUESTION = {
-  tag: 'path',
-  attributes: _extends({}, FILL, {
-    opacity: '1',
-    d: 'M263.7,312h-16c-6.6,0-12-5.4-12-12c0-71,77.4-63.9,77.4-107.8c0-20-17.8-40.2-57.4-40.2c-29.1,0-44.3,9.6-59.2,28.7 c-3.9,5-11.1,6-16.2,2.4l-13.1-9.2c-5.6-3.9-6.9-11.8-2.6-17.2c21.2-27.2,46.4-44.7,91.2-44.7c52.3,0,97.4,29.8,97.4,80.2 c0,67.6-77.4,63.5-77.4,107.8C275.7,306.6,270.3,312,263.7,312z'
-  }),
-  children: [{ tag: 'animate', attributes: _extends({}, OPACITY_ANIMATE, { values: '1;0;0;0;0;1;' }) }]
-};
-var EXCLAMATION = {
-  tag: 'path',
-  attributes: _extends({}, FILL, {
-    opacity: '0',
-    d: 'M232.5,134.5l7,168c0.3,6.4,5.6,11.5,12,11.5h9c6.4,0,11.7-5.1,12-11.5l7-168c0.3-6.8-5.2-12.5-12-12.5h-23 C237.7,122,232.2,127.7,232.5,134.5z'
-  }),
-  children: [{ tag: 'animate', attributes: _extends({}, OPACITY_ANIMATE, { values: '0;0;1;1;0;0;' }) }]
-};
-
-var missing = { tag: 'g', children: [RING, DOT, QUESTION, EXCLAMATION] };
-
-var styles = namespace.styles;
-
-var LAYERS_TEXT_CLASSNAME = 'fa-layers-text';
-var FONT_FAMILY_PATTERN = /Font Awesome 5 (Solid|Regular|Light|Brands|Free|Pro)/;
-var STYLE_TO_PREFIX = {
-  'Solid': 'fas',
-  'Regular': 'far',
-  'Light': 'fal',
-  'Brands': 'fab'
-};
-var FONT_WEIGHT_TO_PREFIX = {
-  '900': 'fas',
-  '400': 'far',
-  '300': 'fal'
-};
-
-function findIcon(iconName, prefix) {
-  var val = {
-    found: false,
-    width: 512,
-    height: 512,
-    icon: missing
-  };
-
-  if (iconName && prefix && styles[prefix] && styles[prefix][iconName]) {
-    var icon = styles[prefix][iconName];
-    var width = icon[0];
-    var height = icon[1];
-    var vectorData = icon.slice(4);
-
-    val = {
-      found: true,
-      width: width,
-      height: height,
-      icon: { tag: 'path', attributes: { fill: 'currentColor', d: vectorData[0] } }
-    };
-  } else if (iconName && prefix && !config.showMissingIcons) {
-    throw new MissingIcon('Icon is missing for prefix ' + prefix + ' with icon name ' + iconName);
-  }
-
-  return val;
-}
-
-function generateSvgReplacementMutation(node, nodeMeta) {
-  var iconName = nodeMeta.iconName,
-      title = nodeMeta.title,
-      prefix = nodeMeta.prefix,
-      transform = nodeMeta.transform,
-      symbol = nodeMeta.symbol,
-      mask = nodeMeta.mask,
-      extra = nodeMeta.extra;
-
-  return [node, makeInlineSvgAbstract({
-    icons: {
-      main: findIcon(iconName, prefix),
-      mask: findIcon(mask.iconName, mask.prefix)
-    },
-    prefix: prefix,
-    iconName: iconName,
-    transform: transform,
-    symbol: symbol,
-    mask: mask,
-    title: title,
-    extra: extra,
-    watchable: true
-  })];
-}
-
-function generateLayersText(node, nodeMeta) {
-  var title = nodeMeta.title,
-      transform = nodeMeta.transform,
-      extra = nodeMeta.extra;
-
-  var width = null;
-  var height = null;
-
-  if (IS_IE) {
-    var computedFontSize = parseInt(getComputedStyle(node).fontSize, 10);
-    var boundingClientRect = node.getBoundingClientRect();
-    width = boundingClientRect.width / computedFontSize;
-    height = boundingClientRect.height / computedFontSize;
-  }
-
-  if (config.autoA11y && !title) {
-    extra.attributes['aria-hidden'] = 'true';
-  }
-
-  return [node, makeLayersTextAbstract({
-    content: node.innerHTML,
-    width: width,
-    height: height,
-    transform: transform,
-    title: title,
-    extra: extra,
-    watchable: true
-  })];
-}
-
-function generateMutation(node) {
-  var nodeMeta = parseMeta(node);
-
-  if (~nodeMeta.extra.classes.indexOf(LAYERS_TEXT_CLASSNAME)) {
-    return generateLayersText(node, nodeMeta);
-  } else {
-    return generateSvgReplacementMutation(node, nodeMeta);
-  }
-}
-
-function searchPseudoElements(root) {
-  if (!IS_DOM) return;
-
-  var end = perf.begin('searchPseudoElements');
-
-  disableObservation(function () {
-    toArray(root.querySelectorAll('*')).filter(function (n) {
-      return n.parentNode !== document.head && !~TAGNAMES_TO_SKIP_FOR_PSEUDOELEMENTS.indexOf(n.tagName.toUpperCase()) && !n.getAttribute(DATA_FA_PSEUDO_ELEMENT) && (!n.parentNode || n.parentNode.tagName !== 'svg');
-    }).forEach(function (node) {
-      [':before', ':after'].forEach(function (pos) {
-        var children = toArray(node.children);
-        var alreadyProcessedPseudoElement = children.filter(function (c) {
-          return c.getAttribute(DATA_FA_PSEUDO_ELEMENT) === pos;
-        })[0];
-
-        var styles = WINDOW.getComputedStyle(node, pos);
-        var fontFamily = styles.getPropertyValue('font-family').match(FONT_FAMILY_PATTERN);
-        var fontWeight = styles.getPropertyValue('font-weight');
-
-        if (alreadyProcessedPseudoElement && !fontFamily) {
-          // If we've already processed it but the current computed style does not result in a font-family,
-          // that probably means that a class name that was previously present to make the icon has been
-          // removed. So we now should delete the icon.
-          node.removeChild(alreadyProcessedPseudoElement);
-        } else if (fontFamily) {
-          var content = styles.getPropertyValue('content');
-          var prefix = ~['Light', 'Regular', 'Solid'].indexOf(fontFamily[1]) ? STYLE_TO_PREFIX[fontFamily[1]] : FONT_WEIGHT_TO_PREFIX[fontWeight];
-          var iconName = byUnicode(prefix, toHex(content.length === 3 ? content.substr(1, 1) : content));
-          // Only convert the pseudo element in this :before/:after position into an icon if we haven't
-          // already done so with the same prefix and iconName
-          if (!alreadyProcessedPseudoElement || alreadyProcessedPseudoElement.getAttribute(DATA_PREFIX) !== prefix || alreadyProcessedPseudoElement.getAttribute(DATA_ICON) !== iconName) {
-            if (alreadyProcessedPseudoElement) {
-              // Delete the old one, since we're replacing it with a new one
-              node.removeChild(alreadyProcessedPseudoElement);
-            }
-
-            var extra = blankMeta.extra;
-
-            extra.attributes[DATA_FA_PSEUDO_ELEMENT] = pos;
-            var abstract = makeInlineSvgAbstract(_extends({}, blankMeta, {
-              icons: {
-                main: findIcon(iconName, prefix),
-                mask: emptyCanonicalIcon()
-              },
-              prefix: prefix,
-              iconName: iconName,
-              extra: extra,
-              watchable: true
-            }));
-
-            var element = DOCUMENT.createElement('svg');
-
-            if (pos === ':before') {
-              node.insertBefore(element, node.firstChild);
-            } else {
-              node.appendChild(element);
-            }
-
-            element.outerHTML = abstract.map(function (a) {
-              return toHtml(a);
-            }).join('\n');
-          }
-        }
-      });
-    });
-  });
-
-  end();
-}
-
-function onTree(root) {
-  var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-  if (!IS_DOM) return;
-
-  var htmlClassList = DOCUMENT.documentElement.classList;
-  var hclAdd = function hclAdd(suffix) {
-    return htmlClassList.add(HTML_CLASS_I2SVG_BASE_CLASS + '-' + suffix);
-  };
-  var hclRemove = function hclRemove(suffix) {
-    return htmlClassList.remove(HTML_CLASS_I2SVG_BASE_CLASS + '-' + suffix);
-  };
-  var prefixes = Object.keys(styles);
-  var prefixesDomQuery = ['.' + LAYERS_TEXT_CLASSNAME + ':not([' + DATA_FA_I2SVG + '])'].concat(prefixes.map(function (p) {
-    return '.' + p + ':not([' + DATA_FA_I2SVG + '])';
-  })).join(', ');
-
-  if (prefixesDomQuery.length === 0) {
-    return;
-  }
-
-  var candidates = toArray(root.querySelectorAll(prefixesDomQuery));
-
-  if (candidates.length > 0) {
-    hclAdd('pending');
-    hclRemove('complete');
-  } else {
-    return;
-  }
-
-  var mark = perf.begin('onTree');
-
-  var mutations = candidates.reduce(function (acc, node) {
-    try {
-      var mutation = generateMutation(node);
-
-      if (mutation) {
-        acc.push(mutation);
-      }
-    } catch (e) {
-      if (!PRODUCTION) {
-        if (e instanceof MissingIcon) {
-          console.error(e);
-        }
-      }
-    }
-
-    return acc;
-  }, []);
-
-  mark();
-
-  perform(mutations, function () {
-    hclAdd('active');
-    hclAdd('complete');
-    hclRemove('pending');
-
-    if (typeof callback === 'function') callback();
-  });
-}
-
-function onNode(node) {
-  var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-  var mutation = generateMutation(node);
-
-  if (mutation) {
-    perform([mutation], callback);
-  }
-}
-
-var baseStyles = "svg:not(:root).svg-inline--fa {\n  overflow: visible; }\n\n.svg-inline--fa {\n  display: inline-block;\n  font-size: inherit;\n  height: 1em;\n  overflow: visible;\n  vertical-align: -.125em; }\n  .svg-inline--fa.fa-lg {\n    vertical-align: -.225em; }\n  .svg-inline--fa.fa-w-1 {\n    width: 0.0625em; }\n  .svg-inline--fa.fa-w-2 {\n    width: 0.125em; }\n  .svg-inline--fa.fa-w-3 {\n    width: 0.1875em; }\n  .svg-inline--fa.fa-w-4 {\n    width: 0.25em; }\n  .svg-inline--fa.fa-w-5 {\n    width: 0.3125em; }\n  .svg-inline--fa.fa-w-6 {\n    width: 0.375em; }\n  .svg-inline--fa.fa-w-7 {\n    width: 0.4375em; }\n  .svg-inline--fa.fa-w-8 {\n    width: 0.5em; }\n  .svg-inline--fa.fa-w-9 {\n    width: 0.5625em; }\n  .svg-inline--fa.fa-w-10 {\n    width: 0.625em; }\n  .svg-inline--fa.fa-w-11 {\n    width: 0.6875em; }\n  .svg-inline--fa.fa-w-12 {\n    width: 0.75em; }\n  .svg-inline--fa.fa-w-13 {\n    width: 0.8125em; }\n  .svg-inline--fa.fa-w-14 {\n    width: 0.875em; }\n  .svg-inline--fa.fa-w-15 {\n    width: 0.9375em; }\n  .svg-inline--fa.fa-w-16 {\n    width: 1em; }\n  .svg-inline--fa.fa-w-17 {\n    width: 1.0625em; }\n  .svg-inline--fa.fa-w-18 {\n    width: 1.125em; }\n  .svg-inline--fa.fa-w-19 {\n    width: 1.1875em; }\n  .svg-inline--fa.fa-w-20 {\n    width: 1.25em; }\n  .svg-inline--fa.fa-pull-left {\n    margin-right: .3em;\n    width: auto; }\n  .svg-inline--fa.fa-pull-right {\n    margin-left: .3em;\n    width: auto; }\n  .svg-inline--fa.fa-border {\n    height: 1.5em; }\n  .svg-inline--fa.fa-li {\n    width: 2em; }\n  .svg-inline--fa.fa-fw {\n    width: 1.25em; }\n\n.fa-layers svg.svg-inline--fa {\n  bottom: 0;\n  left: 0;\n  margin: auto;\n  position: absolute;\n  right: 0;\n  top: 0; }\n\n.fa-layers {\n  display: inline-block;\n  height: 1em;\n  position: relative;\n  text-align: center;\n  vertical-align: -.125em;\n  width: 1em; }\n  .fa-layers svg.svg-inline--fa {\n    -webkit-transform-origin: center center;\n            transform-origin: center center; }\n\n.fa-layers-text, .fa-layers-counter {\n  display: inline-block;\n  position: absolute;\n  text-align: center; }\n\n.fa-layers-text {\n  left: 50%;\n  top: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  -webkit-transform-origin: center center;\n          transform-origin: center center; }\n\n.fa-layers-counter {\n  background-color: #ff253a;\n  border-radius: 1em;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  color: #fff;\n  height: 1.5em;\n  line-height: 1;\n  max-width: 5em;\n  min-width: 1.5em;\n  overflow: hidden;\n  padding: .25em;\n  right: 0;\n  text-overflow: ellipsis;\n  top: 0;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: top right;\n          transform-origin: top right; }\n\n.fa-layers-bottom-right {\n  bottom: 0;\n  right: 0;\n  top: auto;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: bottom right;\n          transform-origin: bottom right; }\n\n.fa-layers-bottom-left {\n  bottom: 0;\n  left: 0;\n  right: auto;\n  top: auto;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: bottom left;\n          transform-origin: bottom left; }\n\n.fa-layers-top-right {\n  right: 0;\n  top: 0;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: top right;\n          transform-origin: top right; }\n\n.fa-layers-top-left {\n  left: 0;\n  right: auto;\n  top: 0;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: top left;\n          transform-origin: top left; }\n\n.fa-lg {\n  font-size: 1.33333em;\n  line-height: 0.75em;\n  vertical-align: -.0667em; }\n\n.fa-xs {\n  font-size: .75em; }\n\n.fa-sm {\n  font-size: .875em; }\n\n.fa-1x {\n  font-size: 1em; }\n\n.fa-2x {\n  font-size: 2em; }\n\n.fa-3x {\n  font-size: 3em; }\n\n.fa-4x {\n  font-size: 4em; }\n\n.fa-5x {\n  font-size: 5em; }\n\n.fa-6x {\n  font-size: 6em; }\n\n.fa-7x {\n  font-size: 7em; }\n\n.fa-8x {\n  font-size: 8em; }\n\n.fa-9x {\n  font-size: 9em; }\n\n.fa-10x {\n  font-size: 10em; }\n\n.fa-fw {\n  text-align: center;\n  width: 1.25em; }\n\n.fa-ul {\n  list-style-type: none;\n  margin-left: 2.5em;\n  padding-left: 0; }\n  .fa-ul > li {\n    position: relative; }\n\n.fa-li {\n  left: -2em;\n  position: absolute;\n  text-align: center;\n  width: 2em;\n  line-height: inherit; }\n\n.fa-border {\n  border: solid 0.08em #eee;\n  border-radius: .1em;\n  padding: .2em .25em .15em; }\n\n.fa-pull-left {\n  float: left; }\n\n.fa-pull-right {\n  float: right; }\n\n.fa.fa-pull-left,\n.fas.fa-pull-left,\n.far.fa-pull-left,\n.fal.fa-pull-left,\n.fab.fa-pull-left {\n  margin-right: .3em; }\n\n.fa.fa-pull-right,\n.fas.fa-pull-right,\n.far.fa-pull-right,\n.fal.fa-pull-right,\n.fab.fa-pull-right {\n  margin-left: .3em; }\n\n.fa-spin {\n  -webkit-animation: fa-spin 2s infinite linear;\n          animation: fa-spin 2s infinite linear; }\n\n.fa-pulse {\n  -webkit-animation: fa-spin 1s infinite steps(8);\n          animation: fa-spin 1s infinite steps(8); }\n\n@-webkit-keyframes fa-spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n\n@keyframes fa-spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n\n.fa-rotate-90 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=1)\";\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg); }\n\n.fa-rotate-180 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2)\";\n  -webkit-transform: rotate(180deg);\n          transform: rotate(180deg); }\n\n.fa-rotate-270 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=3)\";\n  -webkit-transform: rotate(270deg);\n          transform: rotate(270deg); }\n\n.fa-flip-horizontal {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)\";\n  -webkit-transform: scale(-1, 1);\n          transform: scale(-1, 1); }\n\n.fa-flip-vertical {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\n  -webkit-transform: scale(1, -1);\n          transform: scale(1, -1); }\n\n.fa-flip-horizontal.fa-flip-vertical {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\n  -webkit-transform: scale(-1, -1);\n          transform: scale(-1, -1); }\n\n:root .fa-rotate-90,\n:root .fa-rotate-180,\n:root .fa-rotate-270,\n:root .fa-flip-horizontal,\n:root .fa-flip-vertical {\n  -webkit-filter: none;\n          filter: none; }\n\n.fa-stack {\n  display: inline-block;\n  height: 2em;\n  position: relative;\n  width: 2em; }\n\n.fa-stack-1x,\n.fa-stack-2x {\n  bottom: 0;\n  left: 0;\n  margin: auto;\n  position: absolute;\n  right: 0;\n  top: 0; }\n\n.svg-inline--fa.fa-stack-1x {\n  height: 1em;\n  width: 1em; }\n\n.svg-inline--fa.fa-stack-2x {\n  height: 2em;\n  width: 2em; }\n\n.fa-inverse {\n  color: #fff; }\n\n.sr-only {\n  border: 0;\n  clip: rect(0, 0, 0, 0);\n  height: 1px;\n  margin: -1px;\n  overflow: hidden;\n  padding: 0;\n  position: absolute;\n  width: 1px; }\n\n.sr-only-focusable:active, .sr-only-focusable:focus {\n  clip: auto;\n  height: auto;\n  margin: 0;\n  overflow: visible;\n  position: static;\n  width: auto; }\n";
-
-var css = function () {
-  var dfp = DEFAULT_FAMILY_PREFIX;
-  var drc = DEFAULT_REPLACEMENT_CLASS;
-  var fp = config.familyPrefix;
-  var rc = config.replacementClass;
-  var s = baseStyles;
-
-  if (fp !== dfp || rc !== drc) {
-    var dPatt = new RegExp('\\.' + dfp + '\\-', 'g');
-    var rPatt = new RegExp('\\.' + drc, 'g');
-
-    s = s.replace(dPatt, '.' + fp + '-').replace(rPatt, '.' + rc);
-  }
-
-  return s;
-};
-
-function define(prefix, icons) {
-  var normalized = Object.keys(icons).reduce(function (acc, iconName) {
-    var icon = icons[iconName];
-    var expanded = !!icon.icon;
-
-    if (expanded) {
-      acc[icon.iconName] = icon.icon;
-    } else {
-      acc[iconName] = icon;
-    }
-    return acc;
-  }, {});
-
-  if (typeof namespace.hooks.addPack === 'function') {
-    namespace.hooks.addPack(prefix, normalized);
-  } else {
-    namespace.styles[prefix] = _extends({}, namespace.styles[prefix] || {}, normalized);
-  }
-
-  /**
-   * Font Awesome 4 used the prefix of `fa` for all icons. With the introduction
-   * of new styles we needed to differentiate between them. Prefix `fa` is now an alias
-   * for `fas` so we'll easy the upgrade process for our users by automatically defining
-   * this as well.
-   */
-  if (prefix === 'fas') {
-    define('fa', icons);
-  }
-}
-
-var Library = function () {
-  function Library() {
-    classCallCheck(this, Library);
-
-    this.definitions = {};
-  }
-
-  createClass(Library, [{
-    key: 'add',
-    value: function add() {
-      var _this = this;
-
-      for (var _len = arguments.length, definitions = Array(_len), _key = 0; _key < _len; _key++) {
-        definitions[_key] = arguments[_key];
-      }
-
-      var additions = definitions.reduce(this._pullDefinitions, {});
-
-      Object.keys(additions).forEach(function (key) {
-        _this.definitions[key] = _extends({}, _this.definitions[key] || {}, additions[key]);
-        define(key, additions[key]);
-      });
-    }
-  }, {
-    key: 'reset',
-    value: function reset() {
-      this.definitions = {};
-    }
-  }, {
-    key: '_pullDefinitions',
-    value: function _pullDefinitions(additions, definition) {
-      var normalized = definition.prefix && definition.iconName && definition.icon ? { 0: definition } : definition;
-
-      Object.keys(normalized).map(function (key) {
-        var _normalized$key = normalized[key],
-            prefix = _normalized$key.prefix,
-            iconName = _normalized$key.iconName,
-            icon = _normalized$key.icon;
-
-        if (!additions[prefix]) additions[prefix] = {};
-
-        additions[prefix][iconName] = icon;
-      });
-
-      return additions;
-    }
-  }]);
-  return Library;
-}();
-
-function prepIcon(icon) {
-  var width = icon[0];
-  var height = icon[1];
-  var vectorData = icon.slice(4);
-
-  return {
-    found: true,
-    width: width,
-    height: height,
-    icon: { tag: 'path', attributes: { fill: 'currentColor', d: vectorData[0] } }
-  };
-}
-
-function ensureCss() {
-  if (config.autoAddCss && !_cssInserted) {
-    insertCss(css());
-    _cssInserted = true;
-  }
-}
-
-function apiObject(val, abstractCreator) {
-  Object.defineProperty(val, 'abstract', {
-    get: abstractCreator
-  });
-
-  Object.defineProperty(val, 'html', {
-    get: function get() {
-      return val.abstract.map(function (a) {
-        return toHtml(a);
-      });
-    }
-  });
-
-  Object.defineProperty(val, 'node', {
-    get: function get() {
-      if (!IS_DOM) return;
-
-      var container = DOCUMENT.createElement('div');
-      container.innerHTML = val.html;
-      return container.children;
-    }
-  });
-
-  return val;
-}
-
-function findIconDefinition(params) {
-  var _params$prefix = params.prefix,
-      prefix = _params$prefix === undefined ? 'fa' : _params$prefix,
-      iconName = params.iconName;
-
-  if (!iconName) return;
-
-  return iconFromMapping(library.definitions, prefix, iconName) || iconFromMapping(namespace.styles, prefix, iconName);
-}
-
-function resolveIcons(next) {
-  return function (maybeIconDefinition) {
-    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-    var iconDefinition = (maybeIconDefinition || {}).icon ? maybeIconDefinition : findIconDefinition(maybeIconDefinition || {});
-
-    var mask = params.mask;
-
-    if (mask) {
-      mask = (mask || {}).icon ? mask : findIconDefinition(mask || {});
-    }
-
-    return next(iconDefinition, _extends({}, params, { mask: mask }));
-  };
-}
-
-var library = new Library();
-
-var noAuto = function noAuto() {
-  config.autoReplaceSvg = false;
-  config.observeMutations = false;
-
-  disconnect();
-};
-
-var _cssInserted = false;
-
-var dom = {
-  i2svg: function i2svg() {
-    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-    if (IS_DOM) {
-      ensureCss();
-
-      var _params$node = params.node,
-          node = _params$node === undefined ? DOCUMENT : _params$node,
-          _params$callback = params.callback,
-          callback = _params$callback === undefined ? function () {} : _params$callback;
-
-      if (config.searchPseudoElements) {
-        searchPseudoElements(node);
-      }
-
-      onTree(node, callback);
-    }
-  },
-
-  css: css,
-
-  insertCss: function insertCss$$1() {
-    if (!_cssInserted) {
-      insertCss(css());
-      _cssInserted = true;
-    }
-  },
-
-  watch: function watch() {
-    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-    var autoReplaceSvgRoot = params.autoReplaceSvgRoot,
-        observeMutationsRoot = params.observeMutationsRoot;
-
-    if (config.autoReplaceSvg === false) {
-      config.autoReplaceSvg = true;
-    }
-
-    config.observeMutations = true;
-
-    domready(function () {
-      autoReplace({
-        autoReplaceSvgRoot: autoReplaceSvgRoot
-      });
-
-      observe({
-        treeCallback: onTree,
-        nodeCallback: onNode,
-        pseudoElementsCallback: searchPseudoElements,
-        observeMutationsRoot: observeMutationsRoot
-      });
-    });
-  }
-};
-
-var parse = {
-  transform: function transform(transformString) {
-    return parseTransformString(transformString);
-  }
-};
-
-var icon = resolveIcons(function (iconDefinition) {
-  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var _params$transform = params.transform,
-      transform = _params$transform === undefined ? meaninglessTransform : _params$transform,
-      _params$symbol = params.symbol,
-      symbol = _params$symbol === undefined ? false : _params$symbol,
-      _params$mask = params.mask,
-      mask = _params$mask === undefined ? null : _params$mask,
-      _params$title = params.title,
-      title = _params$title === undefined ? null : _params$title,
-      _params$classes = params.classes,
-      classes = _params$classes === undefined ? [] : _params$classes,
-      _params$attributes = params.attributes,
-      attributes = _params$attributes === undefined ? {} : _params$attributes,
-      _params$styles = params.styles,
-      styles = _params$styles === undefined ? {} : _params$styles;
-
-  if (!iconDefinition) return;
-
-  var prefix = iconDefinition.prefix,
-      iconName = iconDefinition.iconName,
-      icon = iconDefinition.icon;
-
-  return apiObject(_extends({ type: 'icon' }, iconDefinition), function () {
-    ensureCss();
-
-    if (config.autoA11y) {
-      if (title) {
-        attributes['aria-labelledby'] = config.replacementClass + '-title-' + nextUniqueId();
-      } else {
-        attributes['aria-hidden'] = 'true';
-      }
-    }
-
-    return makeInlineSvgAbstract({
-      icons: {
-        main: prepIcon(icon),
-        mask: mask ? prepIcon(mask.icon) : { found: false, width: null, height: null, icon: {} }
-      },
-      prefix: prefix,
-      iconName: iconName,
-      transform: _extends({}, meaninglessTransform, transform),
-      symbol: symbol,
-      title: title,
-      extra: {
-        attributes: attributes,
-        styles: styles,
-        classes: classes
-      }
-    });
-  });
-});
-
-var text = function text(content) {
-  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var _params$transform2 = params.transform,
-      transform = _params$transform2 === undefined ? meaninglessTransform : _params$transform2,
-      _params$title2 = params.title,
-      title = _params$title2 === undefined ? null : _params$title2,
-      _params$classes2 = params.classes,
-      classes = _params$classes2 === undefined ? [] : _params$classes2,
-      _params$attributes2 = params.attributes,
-      attributes = _params$attributes2 === undefined ? {} : _params$attributes2,
-      _params$styles2 = params.styles,
-      styles = _params$styles2 === undefined ? {} : _params$styles2;
-
-  return apiObject({ type: 'text', content: content }, function () {
-    ensureCss();
-
-    return makeLayersTextAbstract({
-      content: content,
-      transform: _extends({}, meaninglessTransform, transform),
-      title: title,
-      extra: {
-        attributes: attributes,
-        styles: styles,
-        classes: [config.familyPrefix + '-layers-text'].concat(toConsumableArray(classes))
-      }
-    });
-  });
-};
-
-var counter = function counter(content) {
-  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var _params$title3 = params.title,
-      title = _params$title3 === undefined ? null : _params$title3,
-      _params$classes3 = params.classes,
-      classes = _params$classes3 === undefined ? [] : _params$classes3,
-      _params$attributes3 = params.attributes,
-      attributes = _params$attributes3 === undefined ? {} : _params$attributes3,
-      _params$styles3 = params.styles,
-      styles = _params$styles3 === undefined ? {} : _params$styles3;
-
-  return apiObject({ type: 'counter', content: content }, function () {
-    ensureCss();
-
-    return makeLayersCounterAbstract({
-      content: content.toString(),
-      title: title,
-      extra: {
-        attributes: attributes,
-        styles: styles,
-        classes: [config.familyPrefix + '-layers-counter'].concat(toConsumableArray(classes))
-      }
-    });
-  });
-};
-
-var layer = function layer(assembler) {
-  return apiObject({ type: 'layer' }, function () {
-    ensureCss();
-
-    var children = [];
-
-    assembler(function (args) {
-      Array.isArray(args) ? args.map(function (a) {
-        children = children.concat(a.abstract);
-      }) : children = children.concat(args.abstract);
-    });
-
-    return [{
-      tag: 'span',
-      attributes: { class: config.familyPrefix + '-layers' },
-      children: children
-    }];
-  });
-};
-
-var api = {
-  noAuto: noAuto,
-  config: config,
-  dom: dom,
-  library: library,
-  parse: parse,
-  findIconDefinition: findIconDefinition,
-  icon: icon,
-  text: text,
-  counter: counter,
-  layer: layer,
-  toHtml: toHtml
-};
-
-var autoReplace = function autoReplace() {
-  var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var _params$autoReplaceSv = params.autoReplaceSvgRoot,
-      autoReplaceSvgRoot = _params$autoReplaceSv === undefined ? DOCUMENT : _params$autoReplaceSv;
-
-  if (Object.keys(namespace.styles).length > 0 && IS_DOM && config.autoReplaceSvg) api.dom.i2svg({ node: autoReplaceSvgRoot });
-};
-
-exports.icon = icon;
-exports.noAuto = noAuto;
-exports.config = config;
-exports.toHtml = toHtml;
-exports.layer = layer;
-exports.text = text;
-exports.counter = counter;
-exports.library = library;
-exports.dom = dom;
-exports.parse = parse;
-exports.findIconDefinition = findIconDefinition;
-},{}],154:[function(require,module,exports) {
-var global = arguments[3];
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.FontAwesomeIcon = undefined;
-
-var _fontawesomeSvgCore = require('@fortawesome/fontawesome-svg-core');
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
-
-function createCommonjsModule(fn, module) {
-  return module = { exports: {} }, fn(module, module.exports), module.exports;
-}
-
-var humps = createCommonjsModule(function (module) {
-  (function (global) {
-
-    var _processKeys = function (convert, obj, options) {
-      if (!_isObject(obj) || _isDate(obj) || _isRegExp(obj) || _isBoolean(obj) || _isFunction(obj)) {
-        return obj;
-      }
-
-      var output,
-          i = 0,
-          l = 0;
-
-      if (_isArray(obj)) {
-        output = [];
-        for (l = obj.length; i < l; i++) {
-          output.push(_processKeys(convert, obj[i], options));
-        }
-      } else {
-        output = {};
-        for (var key in obj) {
-          if (Object.prototype.hasOwnProperty.call(obj, key)) {
-            output[convert(key, options)] = _processKeys(convert, obj[key], options);
-          }
-        }
-      }
-      return output;
-    };
-
-    // String conversion methods
-
-    var separateWords = function (string, options) {
-      options = options || {};
-      var separator = options.separator || '_';
-      var split = options.split || /(?=[A-Z])/;
-
-      return string.split(split).join(separator);
-    };
-
-    var camelize = function (string) {
-      if (_isNumerical(string)) {
-        return string;
-      }
-      string = string.replace(/[\-_\s]+(.)?/g, function (match, chr) {
-        return chr ? chr.toUpperCase() : '';
-      });
-      // Ensure 1st char is always lowercase
-      return string.substr(0, 1).toLowerCase() + string.substr(1);
-    };
-
-    var pascalize = function (string) {
-      var camelized = camelize(string);
-      // Ensure 1st char is always uppercase
-      return camelized.substr(0, 1).toUpperCase() + camelized.substr(1);
-    };
-
-    var decamelize = function (string, options) {
-      return separateWords(string, options).toLowerCase();
-    };
-
-    // Utilities
-    // Taken from Underscore.js
-
-    var toString = Object.prototype.toString;
-
-    var _isFunction = function (obj) {
-      return typeof obj === 'function';
-    };
-    var _isObject = function (obj) {
-      return obj === Object(obj);
-    };
-    var _isArray = function (obj) {
-      return toString.call(obj) == '[object Array]';
-    };
-    var _isDate = function (obj) {
-      return toString.call(obj) == '[object Date]';
-    };
-    var _isRegExp = function (obj) {
-      return toString.call(obj) == '[object RegExp]';
-    };
-    var _isBoolean = function (obj) {
-      return toString.call(obj) == '[object Boolean]';
-    };
-
-    // Performant way to determine if obj coerces to a number
-    var _isNumerical = function (obj) {
-      obj = obj - 0;
-      return obj === obj;
-    };
-
-    // Sets up function which handles processing keys
-    // allowing the convert function to be modified by a callback
-    var _processor = function (convert, options) {
-      var callback = options && 'process' in options ? options.process : options;
-
-      if (typeof callback !== 'function') {
-        return convert;
-      }
-
-      return function (string, options) {
-        return callback(string, convert, options);
-      };
-    };
-
-    var humps = {
-      camelize: camelize,
-      decamelize: decamelize,
-      pascalize: pascalize,
-      depascalize: decamelize,
-      camelizeKeys: function (object, options) {
-        return _processKeys(_processor(camelize, options), object);
-      },
-      decamelizeKeys: function (object, options) {
-        return _processKeys(_processor(decamelize, options), object, options);
-      },
-      pascalizeKeys: function (object, options) {
-        return _processKeys(_processor(pascalize, options), object);
-      },
-      depascalizeKeys: function () {
-        return this.decamelizeKeys.apply(this, arguments);
-      }
-    };
-
-    if (typeof undefined === 'function' && undefined.amd) {
-      undefined(humps);
-    } else if ('object' !== 'undefined' && module.exports) {
-      module.exports = humps;
-    } else {
-      global.humps = humps;
-    }
-  })(commonjsGlobal);
-});
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
-  return typeof obj;
-} : function (obj) {
-  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-};
-
-var defineProperty = function (obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-};
-
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
-
-var objectWithoutProperties = function (obj, keys) {
-  var target = {};
-
-  for (var i in obj) {
-    if (keys.indexOf(i) >= 0) continue;
-    if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
-    target[i] = obj[i];
-  }
-
-  return target;
-};
-
-var toConsumableArray = function (arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
-
-    return arr2;
-  } else {
-    return Array.from(arr);
-  }
-};
-
-function capitalize(val) {
-  return val.charAt(0).toUpperCase() + val.slice(1);
-}
-
-function styleToObject(style) {
-  return style.split(';').map(function (s) {
-    return s.trim();
-  }).filter(function (s) {
-    return s;
-  }).reduce(function (acc, pair) {
-    var i = pair.indexOf(':');
-    var prop = humps.camelize(pair.slice(0, i));
-    var value = pair.slice(i + 1).trim();
-
-    prop.startsWith('webkit') ? acc[capitalize(prop)] = value : acc[prop] = value;
-
-    return acc;
-  }, {});
-}
-
-function convert(createElement, element) {
-  var extraProps = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
-  var children = (element.children || []).map(convert.bind(null, createElement));
-
-  var mixins = Object.keys(element.attributes || {}).reduce(function (acc, key) {
-    var val = element.attributes[key];
-
-    switch (key) {
-      case 'class':
-        acc.attrs['className'] = val;
-        delete element.attributes['class'];
-        break;
-      case 'style':
-        acc.attrs['style'] = styleToObject(val);
-        break;
-      default:
-        if (key.indexOf('aria-') === 0 || key.indexOf('data-') === 0) {
-          acc.attrs[key.toLowerCase()] = val;
-        } else {
-          acc.attrs[humps.camelize(key)] = val;
-        }
-    }
-
-    return acc;
-  }, { attrs: {} });
-
-  var _extraProps$style = extraProps.style,
-      existingStyle = _extraProps$style === undefined ? {} : _extraProps$style,
-      remaining = objectWithoutProperties(extraProps, ['style']);
-
-  mixins.attrs['style'] = _extends({}, mixins.attrs['style'], existingStyle);
-
-  return createElement.apply(undefined, [element.tag, _extends({}, mixins.attrs, remaining)].concat(toConsumableArray(children)));
-}
-
-var PRODUCTION = false;
-
-try {
-  PRODUCTION = 'development' === 'production';
-} catch (e) {}
-
-function log() {
-  if (!PRODUCTION && console && typeof console.error === 'function') {
-    var _console;
-
-    (_console = console).error.apply(_console, arguments);
-  }
-}
-
-function objectWithKey(key, value) {
-  return Array.isArray(value) && value.length > 0 || !Array.isArray(value) && value ? defineProperty({}, key, value) : {};
-}
-
-function classList(props) {
-  var _classes;
-
-  var classes = (_classes = {
-    'fa-spin': props.spin,
-    'fa-pulse': props.pulse,
-    'fa-fw': props.fixedWidth,
-    'fa-inverse': props.inverse,
-    'fa-border': props.border,
-    'fa-li': props.listItem,
-    'fa-flip-horizontal': props.flip === 'horizontal' || props.flip === 'both',
-    'fa-flip-vertical': props.flip === 'vertical' || props.flip === 'both'
-  }, defineProperty(_classes, 'fa-' + props.size, props.size !== null), defineProperty(_classes, 'fa-rotate-' + props.rotation, props.rotation !== null), defineProperty(_classes, 'fa-pull-' + props.pull, props.pull !== null), _classes);
-
-  return Object.keys(classes).map(function (key) {
-    return classes[key] ? key : null;
-  }).filter(function (key) {
-    return key;
-  });
-}
-
-function normalizeIconArgs(icon$$1) {
-  if (icon$$1 === null) {
-    return null;
-  }
-
-  if ((typeof icon$$1 === 'undefined' ? 'undefined' : _typeof(icon$$1)) === 'object' && icon$$1.prefix && icon$$1.iconName) {
-    return icon$$1;
-  }
-
-  if (Array.isArray(icon$$1) && icon$$1.length === 2) {
-    return { prefix: icon$$1[0], iconName: icon$$1[1] };
-  }
-
-  if (typeof icon$$1 === 'string') {
-    return { prefix: 'fas', iconName: icon$$1 };
-  }
-}
-
-function FontAwesomeIcon(props) {
-  var iconArgs = props.icon,
-      maskArgs = props.mask,
-      symbol = props.symbol,
-      className = props.className;
-
-  var iconLookup = normalizeIconArgs(iconArgs);
-  var classes = objectWithKey('classes', [].concat(toConsumableArray(classList(props)), toConsumableArray(className.split(' '))));
-  var transform = objectWithKey('transform', typeof props.transform === 'string' ? _fontawesomeSvgCore.parse.transform(props.transform) : props.transform);
-  var mask = objectWithKey('mask', normalizeIconArgs(maskArgs));
-
-  var renderedIcon = (0, _fontawesomeSvgCore.icon)(iconLookup, _extends({}, classes, transform, mask, {
-    symbol: symbol
-  }));
-
-  if (!renderedIcon) {
-    log('Could not find icon', iconLookup);
-    return null;
-  }
-
-  var abstract = renderedIcon.abstract;
-
-  var extraProps = {};
-
-  Object.keys(props).forEach(function (key) {
-    if (!FontAwesomeIcon.defaultProps.hasOwnProperty(key)) {
-      extraProps[key] = props[key];
-    }
-  });
-
-  return convertCurry(abstract[0], extraProps);
-}
-
-FontAwesomeIcon.displayName = 'FontAwesomeIcon';
-
-FontAwesomeIcon.propTypes = {
-  border: _propTypes2.default.bool,
-
-  className: _propTypes2.default.string,
-
-  mask: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.array, _propTypes2.default.string]),
-
-  fixedWidth: _propTypes2.default.bool,
-
-  inverse: _propTypes2.default.bool,
-
-  flip: _propTypes2.default.oneOf(['horizontal', 'vertical', 'both']),
-
-  icon: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.array, _propTypes2.default.string]),
-
-  listItem: _propTypes2.default.bool,
-
-  pull: _propTypes2.default.oneOf(['right', 'left']),
-
-  pulse: _propTypes2.default.bool,
-
-  rotation: _propTypes2.default.oneOf([90, 180, 270]),
-
-  size: _propTypes2.default.oneOf(['lg', 'xs', 'sm', '1x', '2x', '3x', '4x', '5x', '6x', '7x', '8x', '9x', '10x']),
-
-  spin: _propTypes2.default.bool,
-
-  symbol: _propTypes2.default.oneOfType([_propTypes2.default.bool, _propTypes2.default.string]),
-
-  transform: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.object])
-};
-
-FontAwesomeIcon.defaultProps = {
-  border: false,
-  className: '',
-  mask: null,
-  fixedWidth: false,
-  inverse: false,
-  flip: null,
-  icon: null,
-  listItem: false,
-  pull: null,
-  pulse: false,
-  rotation: null,
-  size: null,
-  spin: false,
-  symbol: false,
-  transform: null
-};
-
-var convertCurry = convert.bind(null, _react2.default.createElement);
-
-exports.FontAwesomeIcon = FontAwesomeIcon;
-},{"@fortawesome/fontawesome-svg-core":158,"prop-types":157,"react":15}],155:[function(require,module,exports) {
+},{"babel-runtime/helpers/defineProperty":19,"babel-runtime/helpers/classCallCheck":21,"babel-runtime/helpers/createClass":20,"babel-runtime/helpers/possibleConstructorReturn":22,"babel-runtime/helpers/inherits":23,"react":18,"../Button":106,"react-copy-to-clipboard":70,"../../main":1}],134:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, '__esModule', { value: true });
@@ -37984,7 +38185,7 @@ exports.height = height;
 exports.ligatures = ligatures;
 exports.unicode = unicode;
 exports.svgPathData = svgPathData;
-},{}],152:[function(require,module,exports) {
+},{}],86:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -38010,7 +38211,7 @@ var Loader = function Loader() {
 };
 
 exports.default = Loader;
-},{"react":15,"@fortawesome/react-fontawesome":154,"@fortawesome/free-solid-svg-icons/faSpinner":155}],44:[function(require,module,exports) {
+},{"react":18,"@fortawesome/react-fontawesome":76,"@fortawesome/free-solid-svg-icons/faSpinner":134}],46:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -38068,6 +38269,8 @@ var _Loader2 = _interopRequireDefault(_Loader);
 
 var _main = require('../../main');
 
+var _private = require('../../../../private');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var VideosList = exports.VideosList = function (_Component) {
@@ -38093,7 +38296,7 @@ var VideosList = exports.VideosList = function (_Component) {
     (0, _createClass3.default)(VideosList, [{
         key: 'getChannel',
         value: function getChannel(id) {
-            var whyDoUSearchMyKey = 'AIzaSyBo4cXAPoLRFpiLi-l2Sj8OQpU3gQPUSko';
+            var whyDoUSearchMyKey = _private.YOUTUBE_API_KEYS;
             return fetch('https://www.googleapis.com/youtube/v3/channels?part=snippet&id=' + id + '&key=' + whyDoUSearchMyKey).then(function (response) {
                 return response.json();
             }).then(function (response) {
@@ -38105,7 +38308,7 @@ var VideosList = exports.VideosList = function (_Component) {
     }, {
         key: 'getVideo',
         value: function getVideo(id) {
-            var whyDoUSearchMyKey = 'AIzaSyBo4cXAPoLRFpiLi-l2Sj8OQpU3gQPUSko';
+            var whyDoUSearchMyKey = _private.YOUTUBE_API_KEYS;
             return fetch('https://www.googleapis.com/youtube/v3/videos?part=snippet&id=' + id + '&key=' + whyDoUSearchMyKey).then(function (response) {
                 return response.json();
             }).then(function (response) {
@@ -38275,7 +38478,7 @@ var VideosList = exports.VideosList = function (_Component) {
 }(_react.Component);
 
 exports.default = VideosList;
-},{"babel-runtime/regenerator":151,"babel-runtime/helpers/asyncToGenerator":143,"babel-runtime/helpers/classCallCheck":18,"babel-runtime/helpers/createClass":19,"babel-runtime/helpers/possibleConstructorReturn":20,"babel-runtime/helpers/inherits":21,"react":15,"./VideoListItem":141,"../Popup/Popup":139,"../../shared/models/Video.class":41,"../VideoDetail/VideoDetail":142,"../layouts/Loader":152,"../../main":1}],161:[function(require,module,exports) {
+},{"babel-runtime/regenerator":87,"babel-runtime/helpers/asyncToGenerator":54,"babel-runtime/helpers/classCallCheck":21,"babel-runtime/helpers/createClass":20,"babel-runtime/helpers/possibleConstructorReturn":22,"babel-runtime/helpers/inherits":23,"react":18,"./VideoListItem":52,"../Popup/Popup":51,"../../shared/models/Video.class":43,"../VideoDetail/VideoDetail":53,"../layouts/Loader":86,"../../main":1,"../../../../private":50}],153:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -38326,7 +38529,7 @@ var Textarea = function Textarea(props) {
 };
 
 exports.default = Textarea;
-},{"react":15}],140:[function(require,module,exports) {
+},{"react":18}],72:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -38486,7 +38689,7 @@ var FormReporting = exports.FormReporting = function (_Component) {
 }(_react.Component);
 
 exports.default = FormReporting;
-},{"babel-runtime/helpers/classCallCheck":18,"babel-runtime/helpers/createClass":19,"babel-runtime/helpers/possibleConstructorReturn":20,"babel-runtime/helpers/inherits":21,"react":15,"../layouts/Textarea":161,"../Button":153,"../../main":1}],45:[function(require,module,exports) {
+},{"babel-runtime/helpers/classCallCheck":21,"babel-runtime/helpers/createClass":20,"babel-runtime/helpers/possibleConstructorReturn":22,"babel-runtime/helpers/inherits":23,"react":18,"../layouts/Textarea":153,"../Button":106,"../../main":1}],47:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -38624,16 +38827,90 @@ var FormFlagging = exports.FormFlagging = function (_Component) {
 }(_react.Component);
 
 exports.default = FormFlagging;
-},{"babel-runtime/helpers/defineProperty":17,"babel-runtime/helpers/classCallCheck":18,"babel-runtime/helpers/createClass":19,"babel-runtime/helpers/possibleConstructorReturn":20,"babel-runtime/helpers/inherits":21,"react":15,"../Button":153,"../ToolsFlag/ToolsFlag":43,"../VideosList/VideosList":44,"../Popup/Popup":139,"../FormReporting/FormReporting":140,"../../main":1}],3:[function(require,module,exports) {
+},{"babel-runtime/helpers/defineProperty":19,"babel-runtime/helpers/classCallCheck":21,"babel-runtime/helpers/createClass":20,"babel-runtime/helpers/possibleConstructorReturn":22,"babel-runtime/helpers/inherits":23,"react":18,"../Button":106,"../ToolsFlag/ToolsFlag":45,"../VideosList/VideosList":46,"../Popup/Popup":51,"../FormReporting/FormReporting":72,"../../main":1}],48:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
-var urlsAvailable = exports.urlsAvailable = ['/flagging_history', '/deputy', '/stats'];
+exports.Statistics = undefined;
 
-var querys = exports.querys = ['search_query'];
-},{}],4:[function(require,module,exports) {
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _main = require('../../main');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Statistics = exports.Statistics = function (_Component) {
+    (0, _inherits3.default)(Statistics, _Component);
+
+    function Statistics() {
+        (0, _classCallCheck3.default)(this, Statistics);
+        return (0, _possibleConstructorReturn3.default)(this, (Statistics.__proto__ || Object.getPrototypeOf(Statistics)).apply(this, arguments));
+    }
+
+    (0, _createClass3.default)(Statistics, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'pdi--10' },
+                _react2.default.createElement(
+                    _main.YouTubeContext.Consumer,
+                    null,
+                    function (context) {
+                        return _react2.default.createElement(
+                            'div',
+                            null,
+                            _react2.default.createElement(
+                                'h1',
+                                { className: 'mgi--bottom-10' },
+                                'Metrics'
+                            ),
+                            _react2.default.createElement(
+                                'p',
+                                { className: 'mgi--bottom-10' },
+                                'Videos Flagged All Time : ',
+                                context.state.statistics.allFlagged
+                            ),
+                            _react2.default.createElement(
+                                'p',
+                                { className: 'mgi--bottom-10' },
+                                'Videos Actioned All Time : ',
+                                context.state.statistics.allActioned,
+                                ' (',
+                                (context.state.statistics.allActioned / context.state.statistics.allFlagged * 100).toFixed(2),
+                                '%)'
+                            )
+                        );
+                    }
+                )
+            );
+        }
+    }]);
+    return Statistics;
+}(_react.Component);
+
+exports.default = Statistics;
+},{"babel-runtime/helpers/classCallCheck":21,"babel-runtime/helpers/createClass":20,"babel-runtime/helpers/possibleConstructorReturn":22,"babel-runtime/helpers/inherits":23,"react":18,"../../main":1}],4:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -38671,6 +38948,8 @@ var _FormFlagging = require('./FormFlagging/FormFlagging');
 var _config = require('../config');
 
 var _main = require('../main');
+
+var _Statistics = require('./Statistics/Statistics');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38711,11 +38990,7 @@ var App = function (_Component) {
                             ) : context.state.pathname === _config.urlsAvailable[1] ? _react2.default.createElement(_FormFlagging.FormFlagging, { videos: context.state.videosDisplayed }) : context.state.pathname === _config.urlsAvailable[2] ? _react2.default.createElement(
                                 'div',
                                 { className: 'full-heigth' },
-                                _react2.default.createElement(
-                                    'div',
-                                    null,
-                                    'stats'
-                                )
+                                _react2.default.createElement(_Statistics.Statistics, null)
                             ) : _react2.default.createElement(
                                 'div',
                                 null,
@@ -38731,7 +39006,7 @@ var App = function (_Component) {
 }(_react.Component);
 
 exports.default = App;
-},{"babel-runtime/helpers/classCallCheck":18,"babel-runtime/helpers/createClass":19,"babel-runtime/helpers/possibleConstructorReturn":20,"babel-runtime/helpers/inherits":21,"react":15,"./Sidebar/Sidebar":42,"./ToolsFlag/ToolsFlag":43,"./VideosList/VideosList":44,"./FormFlagging/FormFlagging":45,"../config":3,"../main":1}],5:[function(require,module,exports) {
+},{"babel-runtime/helpers/classCallCheck":21,"babel-runtime/helpers/createClass":20,"babel-runtime/helpers/possibleConstructorReturn":22,"babel-runtime/helpers/inherits":23,"react":18,"./Sidebar/Sidebar":44,"./ToolsFlag/ToolsFlag":45,"./VideosList/VideosList":46,"./FormFlagging/FormFlagging":47,"../config":3,"../main":1,"./Statistics/Statistics":48}],5:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -38828,7 +39103,7 @@ var videos = function getVideos() {
 };
 
 exports.default = videos;
-},{"../shared/models/Video.class":41}],6:[function(require,module,exports) {
+},{"../shared/models/Video.class":43}],6:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -38904,7 +39179,7 @@ var paginations = function getPagination() {
 };
 
 exports.default = paginations;
-},{}],246:[function(require,module,exports) {
+},{}],9:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -38930,6 +39205,27 @@ var statistics = function getStatistics() {
 };
 
 exports.default = statistics;
+},{}],393:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var user = function getUser() {
+    var userNode = document.getElementById('yt-masthead-account-picker');
+
+    if (userNode) {
+        var avatar = userNode.getElementsByTagName('img')[0].getAttribute('src');
+
+        var username = document.getElementsByClassName('yt-masthead-picker-name')[0].textContent;
+
+        return { avatar: avatar, username: username };
+    }
+
+    return null;
+};
+
+exports.default = user;
 },{}],1:[function(require,module,exports) {
 'use strict';
 
@@ -38990,6 +39286,10 @@ var _statistics = require('./getDom/_statistics');
 
 var _statistics2 = _interopRequireDefault(_statistics);
 
+var _user = require('./getDom/_user');
+
+var _user2 = _interopRequireDefault(_user);
+
 var _config = require('./config');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -38999,7 +39299,8 @@ var youTubeDatas = {
     videos: (0, _videos2.default)(),
     search: (0, _search2.default)(),
     pagination: (0, _pagination2.default)(),
-    statistics: (0, _statistics2.default)()
+    statistics: (0, _location2.default)() === '/stats' ? (0, _statistics2.default)() : null,
+    user: (0, _user2.default)()
 };
 
 var myReactApp = document.createElement("div");
@@ -39021,7 +39322,6 @@ var YouTubeProvider = function (_React$Component) {
         _this.baseHide = {};
 
         _this.state.videosDisplayed = youTubeDatas.videos;
-        _this.state.videosSelected = [];
         _this.state.hideRemoved = _this.baseHide.hideRemoved = false;
         _this.state.hideReviewed = _this.baseHide.hideReviewed = false;
         _this.state.canFlag = youTubeDatas.pathname === _config.urlsAvailable[1];
@@ -39075,7 +39375,7 @@ _reactDom2.default.render(_react2.default.createElement(
     null,
     _react2.default.createElement(_App2.default, null)
 ), myReactApp);
-},{"babel-runtime/helpers/defineProperty":17,"babel-runtime/helpers/classCallCheck":18,"babel-runtime/helpers/createClass":19,"babel-runtime/helpers/possibleConstructorReturn":20,"babel-runtime/helpers/inherits":21,"react":15,"react-dom":16,"./components/App":4,"./getDom/_videos":5,"./getDom/_search":6,"./getDom/_location":7,"./getDom/_pagination":8,"./getDom/_statistics":246,"./config":3}],199:[function(require,module,exports) {
+},{"babel-runtime/helpers/defineProperty":19,"babel-runtime/helpers/classCallCheck":21,"babel-runtime/helpers/createClass":20,"babel-runtime/helpers/possibleConstructorReturn":22,"babel-runtime/helpers/inherits":23,"react":18,"react-dom":17,"./components/App":4,"./getDom/_videos":5,"./getDom/_search":6,"./getDom/_location":7,"./getDom/_pagination":8,"./getDom/_statistics":9,"./getDom/_user":393,"./config":3}],401:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -39104,7 +39404,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '51315' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49751' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -39245,5 +39545,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[199,1], null)
+},{}]},{},[401,1], null)
 //# sourceMappingURL=/main.map

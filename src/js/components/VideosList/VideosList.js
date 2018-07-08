@@ -5,6 +5,7 @@ import Video from '../../shared/models/Video.class'
 import VideoDetail from '../VideoDetail/VideoDetail';
 import Loader from '../layouts/Loader';
 import { YouTubeContext } from '../../main';
+import { YOUTUBE_API_KEYS } from '../../../../private';
 
 export class VideosList extends Component {
 
@@ -23,7 +24,7 @@ export class VideosList extends Component {
     }
 
     getChannel(id) {
-        let whyDoUSearchMyKey = 'AIzaSyBo4cXAPoLRFpiLi-l2Sj8OQpU3gQPUSko'
+        let whyDoUSearchMyKey = YOUTUBE_API_KEYS
         return fetch(`https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${id}&key=${whyDoUSearchMyKey}`)
             .then(response => response.json())
             .then(response => response.items[0].snippet)
@@ -33,7 +34,7 @@ export class VideosList extends Component {
     }
 
     getVideo(id) {
-        let whyDoUSearchMyKey = 'AIzaSyBo4cXAPoLRFpiLi-l2Sj8OQpU3gQPUSko'
+        let whyDoUSearchMyKey = YOUTUBE_API_KEYS
         return fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${id}&key=${whyDoUSearchMyKey}`)
             .then(response => response.json())
             .then(response => {
