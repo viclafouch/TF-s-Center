@@ -89,6 +89,7 @@ export class VideosList extends Component {
     }
 
     closePopup() {
+        document.getElementById('description-content').innerHTML = '';
         return this.setState({
             videoSelected: new Video(),
             videoLoaded: false

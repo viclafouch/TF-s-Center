@@ -11,7 +11,6 @@ export class VideoDetail extends Component {
         this.state = {
             copied: false
         }
-        this.loadListener = this.loadListener.bind(this);
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -20,11 +19,16 @@ export class VideoDetail extends Component {
                 copied: false
             }
         }
-
         return null;
     }
 
-    loadListener() {
+    componentDidUpdate(prevProps) {
+        if (!prevProps.video.id && this.props.video.id) {
+            this.loadDescription();
+        }
+    }
+
+    loadDescription() {
         let { description } = this.props.video
 
         description = this.wrapURLs(description, true);
@@ -72,7 +76,6 @@ export class VideoDetail extends Component {
                                 video.id &&
                                 <iframe
                                     src={youTubeUrl + video.id + videoParams}
-                                    onLoad={this.loadListener}
                                     frameBorder={0}
                                     className="youtube-iframe"
                                     frameBorder="0"
