@@ -120,11 +120,15 @@ export class VideosList extends Component {
                                             <input
                                                 type="checkbox"
                                                 id={elem.id}
-                                                style={{ position: 'absolute' }}
                                                 className="yt-uix-form-input-checkbox deputy-flag-video-checkbox"
                                                 value={elem.id}
                                                 name="selected_vid"
                                                 onChange={this.handleChange}
+                                                style={{
+                                                    position: 'absolute',
+                                                    top: (context.state.displaying === 'column' ? 2 : 3),
+                                                    left: (context.state.displaying === 'column' ? 2 : 3)
+                                                }}
                                             />
                                         }
                                         <VideoListItem

@@ -283,7 +283,7 @@ div#TFsCenter {
         &.byColumns { grid-template-columns: repeat(auto-fill, 210px); }
         &.byRows { grid-template-columns: 1fr }
 
-        li { margin-top: 18px; }
+        li { margin-top: 18px; position: relative; }
 
         li input:checked + article > .video-item-thumbnail { opacity: 0.45; }
     }
@@ -377,6 +377,8 @@ div#TFsCenter {
                 }
             }
         }
+
+        li input:checked + article { opacity: 0.45; background: #fff; }
     }
 
     .sidebar {

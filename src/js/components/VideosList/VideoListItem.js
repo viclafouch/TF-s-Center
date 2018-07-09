@@ -43,8 +43,8 @@ export class VideoListItem extends Component {
                                     </div>
                                 </React.Fragment>
                                 :
-                                <div className="flex-me" onLoad={() => this.loadDescription()}>
-                                    <div className="video-item-thumbnail" onClick={this.props.onSelect} onContextMenu={this.props.onCheck}>
+                                <div className="flex-me" onLoad={() => this.loadDescription()} onContextMenu={this.props.onCheck}>
+                                    <div className="video-item-thumbnail" onClick={this.props.onSelect}>
                                         <img className="thumbnail" src={video.thumbnails.default.url} />
                                     </div>
                                     <div className="mgi--left-15 video-item-text" style={{flex: '1'}}>

@@ -3,6 +3,7 @@ import Button from '../Button'
 import CountVideos from './CountVideos/CountVideos';
 import { FilterPeriod } from './FilterPeriod/FilterPeriod';
 import { ExcludeFlagged } from './ExcludeFlagged/ExcludeFlagged';
+import { SelectDisplay } from './SelectDisplay/SelectDisplay';
 
 const FlagTools = (context) => {
     return (
@@ -20,6 +21,9 @@ const FlagTools = (context) => {
                 </div>
                 <div className="mgi--right-10">
                     <ExcludeFlagged />
+                </div>
+                <div className="mgi--right-10">
+                    <SelectDisplay />
                 </div>
             </div>
 
