@@ -4,6 +4,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus'
 import Select from '../../layouts/Select'
 import onClickOutside from "react-onclickoutside";
 import CountLetter from '../../layouts/CountLetter';
+import { Template } from '../../../shared/models/Template.class';
 
 export class NewTemplate extends Component {
 
@@ -19,6 +20,8 @@ export class NewTemplate extends Component {
             { value: 'Z', title: 'Spam' },
         ]
 
+        this.template = new Template();
+
         this.baseState = this.state = {
             "template-title": '',
             "template-description": '',
@@ -32,15 +35,20 @@ export class NewTemplate extends Component {
     }
 
     handleClickOutside(e) {
-        if (!this.state.formValid) return;
+        if (!this.state.formValid) return this.setState({ isOpen: false })
 
-        this.setState(this.baseState)
+        this.props.context.addTemplate(this.template, () =>
+            this.setState(this.baseState, () => this.template = new Template()));
     };
 
     handleFormValid() {
         let title = this.state["template-title"].trim();
         let description = this.state['template-description'].trim();
-        let type = this.state["template-type"].trim();
+        let type = this.state["template-type"];
+
+        this.template.title = title;
+        this.template.description = description;
+        this.template.type = type;
 
         this.setState({
             formValid: title.length > 0 && this.labels.find(x => x.value === type) && description.length > 0 && description.length <= 500

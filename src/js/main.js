@@ -9,14 +9,17 @@ import getPagination from './getDom/_pagination'
 import getStatistics from './getDom/_statistics'
 import getUser from './getDom/_user'
 import { urlsAvailable } from './config';
+import Template from './shared/models/Template.class'
 
 export const YouTubeContext = React.createContext();
 
 chrome.runtime.sendMessage({ type: 'showPageAction' });
 
-chrome.storage.local.get({
-    displaying: 'column'
+chrome.storage.sync.get({
+    displaying: 'column',
+    templates: []
 }, items => {
+
     let youTubeDatas = {
         pathname: getPathname(),
         videos: getVideos(),
@@ -44,6 +47,27 @@ chrome.storage.local.get({
             this.state.canFlag = youTubeDatas.pathname === urlsAvailable[1]
             this.state.popupReportingOpened = false
             this.state.displaying = items.displaying
+            this.state.templates = items.templates.map(elem => new Template(elem))
+
+            console.log(this.state.templates);
+
+        }
+
+        addTemplate(template, callback) {
+
+            const templates = this.state.templates;
+
+            templates.push(template);
+
+            return chrome.storage.sync.set({
+                templates: templates.map(e => {
+                    e.created = e.created.format('MM-DD-YYYY')
+                    return e;
+                })
+            }, () => this.setState({
+                templates: templates
+            }, () => callback && callback()));
+
         }
 
         filterVideos(type) {
@@ -64,7 +88,7 @@ chrome.storage.local.get({
 
         callbackState(name, value) {
             if (name === 'displaying') {
-                chrome.storage.local.set({
+                chrome.storage.sync.set({
                     displaying: value
                 });
             }
@@ -75,6 +99,7 @@ chrome.storage.local.get({
                 <YouTubeContext.Provider value={{
                     state: this.state,
                     filterVideos: type => this.filterVideos(type),
+                    addTemplate: (template, callback) => this.addTemplate(template, callback),
                     setState: (name, value) => this.setState({
                         [name]: value
                     }, () => this.callbackState(name, value)),
