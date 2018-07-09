@@ -46,7 +46,7 @@ export class Sidebar extends Component {
                                         <span className="span-icon mgi--right-16">
                                             <FontAwesomeIcon icon={faUsers} size="1x" fixedWidth />
                                         </span>
-                                        <span className="text-link">Contributor Forum</span>
+                                        <span className="text-link">Trusted Flagger Forum</span>
                                     </a>
                                 </li>
                                 <li>
