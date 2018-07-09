@@ -27,6 +27,19 @@ export class FormFlagging extends Component {
         return context.setState('videosDisplayed', videosDisplayed);
     }
 
+    getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'), sParameterName, i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
+
     handleChange(e) {
         let value = e.target.value;
         let name = e.target.name;
@@ -42,6 +55,8 @@ export class FormFlagging extends Component {
                 {(context) => (
                     <form action="/deputy?action_submit" id="formFlagging" method="POST" className="form-flagging full-heigth" onSubmit={() => context.setState('popupReportingOpened', true)}>
                         <input type="hidden" name="search_query" value={context.state.search} />
+                        <input type="hidden" name="page" value={this.getUrlParameter('page') || 1} />
+                        <input type="hidden" name="filters" value={this.getUrlParameter('filters') || ''} />
                         <ToolsFlag />
                         <VideosList
                             videos={context.state.videosDisplayed}
