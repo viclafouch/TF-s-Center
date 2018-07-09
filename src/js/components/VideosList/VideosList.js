@@ -109,12 +109,12 @@ export class VideosList extends Component {
 
         return (
             <div className="container-list scrollBarOnHover">
-                <ul className="videos-list pdi--top-0">
-                    {videos.map((elem, index) => {
-                        return (
-                            <YouTubeContext.Consumer key={index}>
-                                {(context) => (
-                                    <li>
+                <YouTubeContext.Consumer>
+                    {(context) => (
+                        <ul className={"videos-list pdi--top-0 " + (context.state.displaying === 'column' ? 'byColumns' : 'byRows')}>
+                            {videos.map((elem, index) => {
+                                return (
+                                    <li key={index}>
                                         {
                                             context.state.canFlag &&
                                             <input
@@ -133,12 +133,11 @@ export class VideosList extends Component {
                                             onCheck={e => context.state.canFlag && this.checkedVideo(e, elem)}
                                         />
                                     </li>
-                                )}
-                            </YouTubeContext.Consumer>
-                        )
-                    })}
-                </ul>
-
+                                )
+                            })}
+                        </ul>
+                    )}
+                </YouTubeContext.Consumer>
                 { this.state.isLoading && <Loader /> }
 
                 <Popup

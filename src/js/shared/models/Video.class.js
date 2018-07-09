@@ -7,6 +7,8 @@ export class Video {
         this.categoryId = video.categoryId
         this.channelTitle = video.channelTitle
         this.description = video.description
+        this.videoAddedTime = video.videoAddedTime
+        this.viewCount = video.viewCount
         this.title = video.title
         this.id = video.id
         this.channelUrl = video.channelUrl

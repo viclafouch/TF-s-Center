@@ -3577,6 +3577,10 @@ iframe.youtube-iframe {
   top: 0;
   left: 0; }
 
+.removed-on-text {
+  color: red !important;
+  font-weight: 500 !important; }
+
 img.channel-logo {
   overflow: hidden;
   width: 48px;
@@ -3735,8 +3739,11 @@ div#TFsCenter {
     grid-template-rows: auto;
     justify-content: space-between;
     gap: 2px 8px;
-    grid-auto-flow: dense;
-    grid-template-columns: repeat(auto-fill, 210px); }
+    grid-auto-flow: dense; }
+    div#TFsCenter ul.videos-list.byColumns {
+      grid-template-columns: repeat(auto-fill, 210px); }
+    div#TFsCenter ul.videos-list.byRows {
+      grid-template-columns: 1fr; }
     div#TFsCenter ul.videos-list li {
       margin-top: 18px; }
     div#TFsCenter ul.videos-list li input:checked + article > .video-item-thumbnail {
@@ -3769,9 +3776,33 @@ div#TFsCenter {
         color: rgba(17, 17, 17, 0.8); }
     div#TFsCenter article.video-item .video-item-text .video-item-title a {
       text-decoration: none; }
-      div#TFsCenter article.video-item .video-item-text .video-item-title a.removed-on-text {
-        color: red;
-        font-weight: 500; }
+    div#TFsCenter article.video-item .video-item-text .video-item-description {
+      max-height: 35px;
+      overflow: hidden;
+      text-overflow: clip;
+      font-size: 13px;
+      color: #333; }
+  div#TFsCenter ul.videos-list.byRows article.video-item {
+    padding: 5px;
+    transition: background-color 0.3s; }
+    div#TFsCenter ul.videos-list.byRows article.video-item:hover {
+      background-color: #fff; }
+    div#TFsCenter ul.videos-list.byRows article.video-item .video-item-thumbnail {
+      width: auto;
+      height: auto;
+      overflow: hidden;
+      position: relative;
+      display: block; }
+      div#TFsCenter ul.videos-list.byRows article.video-item .video-item-thumbnail .thumbnail {
+        width: auto;
+        transition: all 0.3s;
+        cursor: pointer; }
+    div#TFsCenter ul.videos-list.byRows article.video-item .video-notes {
+      color: #666666;
+      font-size: 12px; }
+    div#TFsCenter ul.videos-list.byRows article.video-item.isAccess:hover .thumbnail {
+      opacity: 1;
+      transform: scale(1); }
   div#TFsCenter .sidebar {
     background-color: #f4f4f4;
     display: flex;

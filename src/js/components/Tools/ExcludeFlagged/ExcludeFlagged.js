@@ -60,13 +60,13 @@ export class ExcludeFlagged extends Component {
         return (
             <div className="tools-exclude-flagged">
                 <label className="yt-uix-button yt-uix-button-size-default yt-uix-button-primary flex-me flex-align" htmlFor="excluded-flagged">
-                <span className="mgi--right-6">Exclude previously flagged videos</span>
-                <Checkbox
-                    checked={this.state.isExcluded}
-                    onChange={this.handleChange}
-                    name="excluded-flagged"
-                />
-            </label>
+                    <span className="mgi--right-6">Exclude previously flagged videos</span>
+                    <Checkbox
+                        checked={this.state.isExcluded}
+                        onChange={this.handleChange}
+                        name="excluded-flagged"
+                    />
+                </label>
             </div>
         )
     }
