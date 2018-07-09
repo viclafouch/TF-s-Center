@@ -1,3 +1,3 @@
-export const urlsAvailable = ['/flagging_history', '/deputy', '/stats']
+export const urlsAvailable = ['/flagging_history', '/deputy', '/stats', '/templates']
 
-export const querys = ['search_query']
+export const querys = ['search_query', 'context']

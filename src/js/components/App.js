@@ -6,6 +6,7 @@ import { FormFlagging } from './FormFlagging/FormFlagging';
 import { urlsAvailable } from '../config';
 import { YouTubeContext } from '../main';
 import { Statistics } from './Statistics/Statistics';
+import TemplatesContainer from '../containers/TemplatesContainer';
 
 class App extends Component {
 
@@ -34,6 +35,10 @@ class App extends Component {
                             : context.state.pathname === urlsAvailable[2] ?
                                 <div className="full-heigth">
                                     <Statistics />
+                                </div>
+                            : context.state.pathname === urlsAvailable[3] ?
+                                <div className="full-heigth">
+                                    <TemplatesContainer />
                                 </div>
                             : <div>This page do not exist</div>
                         )}

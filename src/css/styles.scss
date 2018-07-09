@@ -706,4 +706,65 @@ div#TFsCenter {
             }
         }
     }
+
+    .countletter {
+        white-space: nowrap;
+    }
+
+    .new-template-box {
+        width: 100;
+        max-width: 600px;
+        height: 46px;
+        color: #444;
+        margin: 0 auto;
+        border-radius: 2px;
+        background: white;
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+
+        .box-description {
+            color: rgba(0, 0, 0, 0.54);
+            width: 100%;
+            font-size: 14px;
+            padding: 13px 15px 15px 15px;
+            min-height: 46px;
+            white-space: pre-wrap;
+        }
+
+        &-opened {
+            .template-box-new-title {
+                width: 100%;
+
+                &-input {
+                    padding: 15px 15px 15px 15px;
+                    width: 100%;
+                    appearance: none;
+                    border: 0;
+                    background-color: transparent;
+                    font-weight: 600;
+                    font-size: 17px;
+                    color: rgba(0, 0, 0, 0.74);
+                    outline: none;
+                }
+
+                &-select {
+                    border: 0;
+                    color: rgba(0, 0, 0, 0.64);
+                    outline: none;
+                }
+
+                &-content {
+                    border: 0;
+                    appearance: none;
+                    outline: none;
+                    max-height: 500px;
+                    min-height: 150px;
+                    word-break: break-all;
+                    resize: vertical;
+                    overflow-x: hidden;
+                    padding-bottom: 30px;
+                    overflow-y: auto;
+                }
+            }
+        }
+    }
 }

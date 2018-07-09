@@ -6,6 +6,7 @@ import { faUsers } from '@fortawesome/free-solid-svg-icons/faUsers'
 import { faComment } from '@fortawesome/free-solid-svg-icons/faComment'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons/faEnvelope'
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons/faSignOutAlt'
+import { faFlag } from '@fortawesome/free-solid-svg-icons/faFlag'
 import { EMAIL_TRUSTED_FLAGGERS, CONTRIBUTOR_LINK, HANGOUTS_ME } from '../../../../private'
 import { YouTubeContext } from '../../main';
 import { urlsAvailable } from '../../config';
@@ -32,6 +33,14 @@ export class Sidebar extends Component {
                                             </a>
                                         )}
                                     </YouTubeContext.Consumer>
+                                </li>
+                                <li>
+                                    <a href="/deputy?context=templates" className={'youtube-link ' + (context.state.pathname === urlsAvailable[3] ? 'active' : '')}>
+                                        <span className="span-icon mgi--right-16">
+                                            <FontAwesomeIcon icon={faFlag} size="1x" fixedWidth />
+                                        </span>
+                                        <span className="text-link">Templates</span>
+                                    </a>
                                 </li>
                                 <li>
                                     <a href="/deputy" className={'youtube-link ' + (context.state.pathname === urlsAvailable[2] ? 'active' : '')}>
