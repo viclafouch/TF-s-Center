@@ -7,6 +7,24 @@ import CountLetter from '../layouts/CountLetter';
 import Select from '../layouts/Select';
 
 export class FormReporting extends Component {
+
+    constructor() {
+        super();
+
+        this.state = {
+            reasonEmpty: false
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.reason) {
+            this.setState({
+                reasonEmpty: false
+            });
+        }
+    }
+
+
     render() {
         return (
             <div className="form-reporting">
@@ -32,7 +50,7 @@ export class FormReporting extends Component {
                         )}
                     </YouTubeContext.Consumer>
                     <fieldset className="form-reporting-fieldset">
-                        <legend className="yt-uix-form-legend">What's the issue ?</legend>
+                        <legend className={"yt-uix-form-legend " + (this.state.reasonEmpty ? 'red-color': '')}>What's the issue ?</legend>
                         <ul className="yt-uix-form-list-option paper-list">
                             {
                                 labels.map((elem, index) => (
@@ -59,7 +77,7 @@ export class FormReporting extends Component {
                     </fieldset>
                     <fieldset className="form-reporting-fieldset">
                         <Textarea
-                            className="csstudio-frm-input u-full-width"
+                            className="scrollBarOnHover"
                             placeholder="Provide additional details"
                             value={this.props.description}
                             name="flag_comments"
@@ -75,7 +93,14 @@ export class FormReporting extends Component {
                         <Button type="button" white onClick={() => this.props.onClosed()}>Close</Button>
                     </div>
                     <div className="mgi--left-10">
-                        <Button type="submit" blue>Submit</Button>
+                        <Button type="submit" blue onClick={e => {
+                            if (!this.props.reason) {
+                                e.preventDefault();
+                                this.setState({
+                                    reasonEmpty: true
+                                });
+                            }
+                        }}>Submit</Button>
                     </div>
                 </div>
             </div>

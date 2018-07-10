@@ -12,11 +12,13 @@
     "node-sass": "^4.9.0",
     "parcel-bundler": "^1.9.4",
     "react": "^16.4.1",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-copy-to-clipboard": "^5.0.1",
     "react-datepicker": "^1.5.0",
     "react-dom": "^16.4.1",
     "react-onclickoutside": "^6.7.1",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "react-transition-group": "^1.2.1"
   },
   "scripts": {
     "build": "parcel build src/js/main.js -d src/build/ -o main.js",

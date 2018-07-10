@@ -17,9 +17,9 @@ export class TemplateListItem extends Component {
     render() {
         let { template } = this.props;
         let label = labels.find(x => x.value === template.type);
-        
+
         return (
-            <article className={"template-item " +(this.state.active ? 'active' : '')} onContextMenu={(e) => { e.preventDefault(); this.setState({active: !this.state.active})}}>
+            <article className={"template-item " +(this.state.active ? 'active' : '')} onClick={(e) => { e.preventDefault(); this.setState({active: !this.state.active})}}>
                 <div className="flex-me flex-justify-between">
                     <h2 className="title-template mgi--bottom-11">{template.title}</h2>
                     <span className="type-template">{label ? label.title : ''}</span>
