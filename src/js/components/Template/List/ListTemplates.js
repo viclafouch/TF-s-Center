@@ -10,7 +10,7 @@ export class ListTemplates extends Component {
             <YouTubeContext.Consumer>
                 {(context) => (
                     <ul className="template-list">
-                        <CSSTransitionGroup transitionName="template" transitionEnterTimeout={1000} transitionLeaveTimeout={1000}>
+                        <CSSTransitionGroup transitionName="template" transitionEnterTimeout={1000} transitionLeaveTimeout={500}>
                             { context.state.templates.map((elem) => (
                                 <li key={elem.id} className="box-template">
                                     <TemplateListItem template={elem} />

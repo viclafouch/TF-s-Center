@@ -7,7 +7,7 @@ import { faComment } from '@fortawesome/free-solid-svg-icons/faComment'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons/faEnvelope'
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons/faSignOutAlt'
 import { faFlag } from '@fortawesome/free-solid-svg-icons/faFlag'
-import { EMAIL_TRUSTED_FLAGGERS, CONTRIBUTOR_LINK, HANGOUTS_ME } from '../../../../private'
+import { EMAIL_TRUSTED_FLAGGERS, CONTRIBUTOR_LINK, HANGOUTS_ME, EMAIL_FLAGGER_LABEL } from '../../../../private'
 import { YouTubeContext } from '../../main';
 import { urlsAvailable } from '../../config';
 
@@ -63,7 +63,7 @@ export class Sidebar extends Component {
                                         <span className="span-icon mgi--right-16">
                                             <FontAwesomeIcon icon={faEnvelope} size="1x" fixedWidth />
                                         </span>
-                                        <span className="text-link">Send mail</span>
+                                        <span className="text-link">{EMAIL_FLAGGER_LABEL}</span>
                                     </a>
                                 </li>
                             </ul>
