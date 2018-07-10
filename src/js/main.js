@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
 import App from './components/App'
+import moment from 'moment'
 
 import getVideos from './getDom/_videos'
 import getSearch from './getDom/_search'
@@ -12,6 +13,8 @@ import { urlsAvailable } from './config';
 import Template from './shared/models/Template.class'
 
 export const YouTubeContext = React.createContext();
+
+// chrome.storage.sync.clear();
 
 chrome.runtime.sendMessage({ type: 'showPageAction' });
 
@@ -53,19 +56,28 @@ chrome.storage.sync.get({
 
         }
 
-        addTemplate(template, callback) {
+        actionTemplate(template, callback) {
 
-            const templates = this.state.templates;
+            let templates = this.state.templates;
 
-            templates.push(template);
+            let templateIndex = templates.findIndex(x => x.id === template.id)
+
+            if (templateIndex >= 0) {
+                templates = templates.filter((e, i) => i !== templateIndex);
+            } else {
+                templates.unshift(template);
+            }
 
             return chrome.storage.sync.set({
-                templates: templates.map(e => {
-                    e.created = e.created.format('MM-DD-YYYY')
+                templates: [...templates].map(e => {
+                    e.created = e.created.format();
                     return e;
                 })
             }, () => this.setState({
-                templates: templates
+                templates: templates.map(e => {
+                    e.created = moment(e.created)
+                    return e;
+                })
             }, () => callback && callback()));
 
         }
@@ -99,7 +111,8 @@ chrome.storage.sync.get({
                 <YouTubeContext.Provider value={{
                     state: this.state,
                     filterVideos: type => this.filterVideos(type),
-                    addTemplate: (template, callback) => this.addTemplate(template, callback),
+                    addTemplate: (template, callback) => this.actionTemplate(template, callback),
+                    removeTemplate: (template, callback) => this.actionTemplate(template, callback),
                     setState: (name, value) => this.setState({
                         [name]: value
                     }, () => this.callbackState(name, value)),

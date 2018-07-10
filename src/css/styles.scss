@@ -711,15 +711,23 @@ div#TFsCenter {
         white-space: nowrap;
     }
 
-    .new-template-box {
+    .template-container {
+        flex: 1;
+        overflow-y: scroll;
+    }
+
+    .box-template {
         width: 100;
-        max-width: 600px;
-        height: 46px;
         color: #444;
-        margin: 0 auto;
+        max-width: 600px;
         border-radius: 2px;
         background: white;
         box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+        margin: 0 auto;
+    }
+
+    .new-template-box {
+        height: 46px;
 
         .box-description {
             color: rgba(0, 0, 0, 0.54);
@@ -764,6 +772,75 @@ div#TFsCenter {
                     padding-bottom: 30px;
                     overflow-y: auto;
                 }
+            }
+        }
+    }
+
+    ul.template-list {
+        display: grid;
+        grid-template-columns: minmax(auto, 600px);
+        justify-content: center;
+        gap: 20px;
+
+        li { width: 100%; }
+
+        article.template-item {
+            padding: 15px;
+            width: 100%;
+            background: color;
+            transition: opacity 0.3s;
+            background: #f4f4f4;
+            position: relative;
+
+            .action-temp {
+                z-index: -1;
+                width: 100%;
+                height: 100%;
+                background-color: transparent;
+                position: absolute;
+                opacity: 0;
+                top: 0; left: 0; right: 0; bottom: 0;
+                pointer-events: none;
+                transition: all 0.34s;
+
+                & > span {
+                    transform: scale(0);
+                    transition: transform 0.3s;
+                }
+            }
+
+            &.active .action-temp {
+                z-index: 1;
+                pointer-events: all;
+                opacity: 1;
+                background-color: rgba($color: #ffffff, $alpha: 0.8);
+                & > span {
+                    transform: scale(1);
+                }
+            }
+
+            h2.title-template {
+                color: #444444;
+                line-height: 1.6em;
+                padding-bottom: 8px;
+                max-width: 80%;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+            p.description-template {
+                white-space: pre-wrap;
+            }
+
+            div.date-template, .type-template {
+                font-size: 11px;
+                color: rgba(17, 17, 17, 0.6);
+            }
+
+            .type-template {
+                color: rgba(17, 17, 17, 0.85);
+                text-align: right;
             }
         }
     }

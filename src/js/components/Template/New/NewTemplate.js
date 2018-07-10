@@ -5,20 +5,12 @@ import Select from '../../layouts/Select'
 import onClickOutside from "react-onclickoutside";
 import CountLetter from '../../layouts/CountLetter';
 import { Template } from '../../../shared/models/Template.class';
+import { labels } from '../../../config';
 
 export class NewTemplate extends Component {
 
     constructor() {
         super();
-
-        this.labels = [
-            { value: 'P', title: 'Sexual Content' },
-            { value: 'G', title: 'Violent or Repulsive Content' },
-            { value: 'R', title: 'Hateful or Abusive Content' },
-            { value: 'X', title: 'Harmful Dangerous Acts' },
-            { value: 'J', title: 'Child Abuse' },
-            { value: 'Z', title: 'Spam' },
-        ]
 
         this.template = new Template();
 
@@ -51,7 +43,7 @@ export class NewTemplate extends Component {
         this.template.type = type;
 
         this.setState({
-            formValid: title.length > 0 && this.labels.find(x => x.value === type) && description.length > 0 && description.length <= 500
+            formValid: title.length > 0 && labels.find(x => x.value === type) && description.length > 0 && description.length <= 500
         });
     }
 
@@ -66,10 +58,10 @@ export class NewTemplate extends Component {
 
     render() {
         return (
-            <div className="new-template-box" style={{height: this.state.isOpen ? 'auto' : 46}}>
-            {
+            <div className="new-template-box box-template" style={{height: this.state.isOpen ? 'auto' : 46}}>
+                {
                 !this.state.isOpen ?
-                        <div className="new-template-box-closed flex-me flex-justify-between box-description" onClick={() => this.setState({ isOpen: true })}>
+                        <div className="new-template-box-closed flex-me flex-align flex-justify-between box-description" onClick={() => this.setState({ isOpen: true })}>
                         <p>New Template</p>
                         <FontAwesomeIcon icon={faPlus} size="1x" fixedWidth />
                     </div>
@@ -93,7 +85,7 @@ export class NewTemplate extends Component {
                                     className="template-box-new-title-select"
                                     onChange={this.handleChange}
                                     name="template-type"
-                                    options={this.labels}
+                                    options={labels}
                                     defaultOptionTitle="Select the issue"
                                     null
                                 />
@@ -117,11 +109,9 @@ export class NewTemplate extends Component {
                                     limit={500}
                                 />
                             </div>
-
                         </form>
                     </div>
-            }
-
+                }
             </div>
         )
     }

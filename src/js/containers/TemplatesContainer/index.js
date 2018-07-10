@@ -5,7 +5,7 @@ import { YouTubeContext } from '../../main';
 
 const TemplatesContainer = () => {
     return (
-        <React.Fragment>
+        <div className="template-container scrollBarOnHover">
             <div className="pdi--10">
                 <YouTubeContext.Consumer>
                     {(context) => (
@@ -13,10 +13,10 @@ const TemplatesContainer = () => {
                     )}
                 </YouTubeContext.Consumer>
             </div>
-            <div>
+            <div className="pdi--10">
                 <ListTemplates />
             </div>
-        </React.Fragment>
+        </div>
     )
 }
 
