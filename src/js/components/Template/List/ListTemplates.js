@@ -3,7 +3,6 @@ import { YouTubeContext } from '../../../main';
 import TemplateListItem from './TemplateListItem';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
-
 export class ListTemplates extends Component {
     render() {
         return (

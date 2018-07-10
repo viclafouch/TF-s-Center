@@ -77,11 +77,11 @@ export class Sidebar extends Component {
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/logout" className="youtube-link">
+                                    <a href="/" className="youtube-link">
                                         <span className="span-icon mgi--right-16">
                                             <FontAwesomeIcon icon={faSignOutAlt} size="1x" fixedWidth />
                                         </span>
-                                        <span className="text-link">Logout</span>
+                                        <span className="text-link">Exit</span>
                                     </a>
                                 </li>
                             </ul>

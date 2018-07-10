@@ -5,6 +5,7 @@ import { VideosList } from '../VideosList/VideosList';
 import Popup from '../Popup/Popup';
 import FormReporting from '../FormReporting/FormReporting'
 import { YouTubeContext } from '../../main';
+import { getUrlParameter } from '../../utils';
 
 export class FormFlagging extends Component {
 
@@ -27,19 +28,6 @@ export class FormFlagging extends Component {
 
         return context.setState('videosDisplayed', videosDisplayed);
     }
-
-    getUrlParameter(sParam) {
-        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-            sURLVariables = sPageURL.split('&'), sParameterName, i;
-
-        for (i = 0; i < sURLVariables.length; i++) {
-            sParameterName = sURLVariables[i].split('=');
-
-            if (sParameterName[0] === sParam) {
-                return sParameterName[1] === undefined ? true : sParameterName[1];
-            }
-        }
-    };
 
     handleChange(e, context = {}) {
         let value = e.target.value;
@@ -64,8 +52,8 @@ export class FormFlagging extends Component {
                 {(context) => (
                     <form action="/deputy?action_submit" id="formFlagging" method="POST" className="form-flagging full-heigth" onSubmit={() => context.setState('popupReportingOpened', true)}>
                         <input type="hidden" name="search_query" value={context.state.search} />
-                        <input type="hidden" name="page" value={this.getUrlParameter('page') || 1} />
-                        <input type="hidden" name="filters" value={this.getUrlParameter('filters') || ''} />
+                        <input type="hidden" name="page" value={getUrlParameter('page') || 1} />
+                        <input type="hidden" name="filters" value={getUrlParameter('filters') || ''} />
                         <ToolsFlag />
                         <VideosList
                             videos={context.state.videosDisplayed}

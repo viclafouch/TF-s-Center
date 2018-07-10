@@ -51,9 +51,6 @@ chrome.storage.sync.get({
             this.state.popupReportingOpened = false
             this.state.displaying = items.displaying
             this.state.templates = items.templates.map(elem => new Template(elem))
-
-            console.log(this.state.templates);
-
         }
 
         actionTemplate(template, callback) {

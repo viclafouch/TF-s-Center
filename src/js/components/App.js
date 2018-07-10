@@ -11,13 +11,6 @@ import TemplatesContainer from '../containers/TemplatesContainer';
 class App extends Component {
 
     render() {
-
-        // let { hideRemoved, hideReviewed } = this.state;
-
-        // let videos = this.props.videos.filter(elem => {
-        //     return hideReviewed ? !elem.isReviewed : hideRemoved ? !elem.isRemoved : true
-        // });
-
         return (
             <React.Fragment>
                 <Sidebar />

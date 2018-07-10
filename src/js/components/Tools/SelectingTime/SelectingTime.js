@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
 import Button from '../../Button';
+import { updateQueryStringParameter, getUrlParameter } from '../../../utils'
 
 export class SelectingTime extends Component {
 
@@ -22,20 +23,9 @@ export class SelectingTime extends Component {
         });
     }
 
-   updateQueryStringParameter(uri, key, value) {
-        var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
-        var separator = uri.indexOf('?') !== -1 ? "&" : "?";
-        if (uri.match(re)) {
-            return uri.replace(re, '$1' + key + "=" + value + '$2');
-        }
-        else {
-            return uri + separator + key + "=" + value;
-        }
-    }
-
     componentDidMount() {
-        let timestamp_from = this.getUrlParameter('start_time');
-        let timestamp_to = this.getUrlParameter('end_time');
+        let timestamp_from = getUrlParameter('start_time');
+        let timestamp_to = getUrlParameter('end_time');
 
         timestamp_from = moment(new Date(timestamp_from * 1000))
         timestamp_to = moment(new Date(timestamp_to * 1000))
@@ -48,28 +38,14 @@ export class SelectingTime extends Component {
         });
     }
 
-
-    getUrlParameter(sParam) {
-        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-            sURLVariables = sPageURL.split('&'), sParameterName, i;
-
-        for (i = 0; i < sURLVariables.length; i++) {
-            sParameterName = sURLVariables[i].split('=');
-
-            if (sParameterName[0] === sParam) {
-                return sParameterName[1] === undefined ? true : sParameterName[1];
-            }
-        }
-    };
-
     handleSubmit(e) {
         e.preventDefault();
 
         let timestamp_from = moment(this.state.date_from).unix();
         let timestamp_to = moment(this.state.date_to).unix();
 
-        let url = this.updateQueryStringParameter(window.location.href, 'start_time', timestamp_from)
-        url = this.updateQueryStringParameter(url, 'end_time', timestamp_to);
+        let url = updateQueryStringParameter(window.location.href, 'start_time', timestamp_from)
+        url = updateQueryStringParameter(url, 'end_time', timestamp_to);
 
         return window.location.href = url;
     }

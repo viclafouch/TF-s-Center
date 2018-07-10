@@ -24,7 +24,6 @@ export class FormReporting extends Component {
         }
     }
 
-
     render() {
         return (
             <div className="form-reporting">

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Select from '../../layouts/Select';
+import { getUrlParameter, updateQueryStringParameter } from '../../../utils'
 
 export class FilterPeriod extends Component {
 
@@ -22,21 +23,8 @@ export class FilterPeriod extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    getUrlParameter(sParam) {
-        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-            sURLVariables = sPageURL.split('&'), sParameterName, i;
-
-        for (i = 0; i < sURLVariables.length; i++) {
-            sParameterName = sURLVariables[i].split('=');
-
-            if (sParameterName[0] === sParam) {
-                return sParameterName[1] === undefined ? true : sParameterName[1];
-            }
-        }
-    };
-
     componentDidMount() {
-        let filters = this.getUrlParameter('filters');
+        let filters = getUrlParameter('filters');
 
         return this.setState((prevState) => {
             return {
@@ -45,24 +33,12 @@ export class FilterPeriod extends Component {
         });
     }
 
-
-    updateQueryStringParameter(uri, key, value) {
-        var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
-        var separator = uri.indexOf('?') !== -1 ? "&" : "?";
-        if (uri.match(re)) {
-            return uri.replace(re, '$1' + key + "=" + value + '$2');
-        }
-        else {
-            return uri + separator + key + "=" + value;
-        }
-    }
-
     handleChange(e) {
         let period = e.target.value;
 
         if (!this.periods.find(x => x.value == period)) return;
 
-        let url = this.updateQueryStringParameter(window.location.href, 'filters', period)
+        let url = updateQueryStringParameter(window.location.href, 'filters', period)
 
         return window.location.href = url;
     }
