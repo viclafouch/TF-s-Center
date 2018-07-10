@@ -19,6 +19,7 @@ export class Video {
         this.active = true
         this.isRemoved = video.isRemoved || false
         this.isReviewed = video.isReviewed || false
+        this.selected = false
     }
 
     getVideoUrl() {

@@ -73,9 +73,8 @@ export class VideoDetail extends Component {
                             paddingBottom: '56.25%'
                         }}>
                             {
-                                video.id &&
                                 <iframe
-                                    src={youTubeUrl + video.id + videoParams}
+                                    src={video.id ? (youTubeUrl + video.id + videoParams) : ''}
                                     frameBorder={0}
                                     className="youtube-iframe"
                                     frameBorder="0"
@@ -112,7 +111,7 @@ export class VideoDetail extends Component {
                                 {(context) => (
                                     context.state.canFlag &&
                                     <div className="action-btn">
-                                        <Button blue onClick={e => this.props.onCheck(e, video)}>Add to list</Button>
+                                        <Button blue onClick={e => this.props.onCheck(e, video)}>{video.selected ? 'Remove from the list' : 'Add to list'}</Button>
                                     </div>
                                 )}
                             </YouTubeContext.Consumer>

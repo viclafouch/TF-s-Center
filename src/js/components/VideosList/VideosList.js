@@ -64,7 +64,9 @@ export class VideosList extends Component {
             isLoading: true
         }, async () => {
             try {
+                const selected = video.selected;
                 video = await this.getVideo(video.id);
+                video.selected = selected;
                 let channel = await this.getChannel(video.channelId);
 
                 video.channel = channel;
@@ -84,7 +86,7 @@ export class VideosList extends Component {
 
     checkedVideo(event, video) {
         event.preventDefault();
-        document.getElementById(video.id).click();
+        this.props.context.selectVideos([video]);
         this.closePopup();
     }
 
@@ -123,6 +125,7 @@ export class VideosList extends Component {
                                                 className="yt-uix-form-input-checkbox deputy-flag-video-checkbox"
                                                 value={elem.id}
                                                 name="selected_vid"
+                                                checked={elem.selected}
                                                 onChange={this.handleChange}
                                                 style={{
                                                     position: 'absolute',

@@ -57,6 +57,7 @@ export class FormFlagging extends Component {
                         <ToolsFlag />
                         <VideosList
                             videos={context.state.videosDisplayed}
+                            context={context}
                             onSelect={(video, checked) => this.handleSelectVideo(video, checked, context)}
                         />
                         <Popup

@@ -53,6 +53,20 @@ chrome.storage.sync.get({
             this.state.templates = items.templates.map(elem => new Template(elem))
         }
 
+        selectVideos(videos = [], force = false) {
+            let videosDisplayed = [...this.state.videosDisplayed];
+
+            for (let index = 0; index < videosDisplayed.length; index++) {
+                if (videos.find(x => x.id === videosDisplayed[index].id)) {
+                    videosDisplayed[index].selected = force || !videosDisplayed[index].selected
+                }
+            }
+
+            this.setState({
+                videosDisplayed: videosDisplayed
+            });
+        }
+
         actionTemplate(template, callback) {
 
             let templates = this.state.templates;
@@ -107,6 +121,8 @@ chrome.storage.sync.get({
             return (
                 <YouTubeContext.Provider value={{
                     state: this.state,
+                    selectVideos: (videos = []) => this.selectVideos(videos),
+                    selectAll: () => this.selectVideos(this.state.videosDisplayed, true),
                     filterVideos: type => this.filterVideos(type),
                     addTemplate: (template, callback) => this.actionTemplate(template, callback),
                     removeTemplate: (template, callback) => this.actionTemplate(template, callback),

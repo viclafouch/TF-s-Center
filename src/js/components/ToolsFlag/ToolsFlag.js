@@ -3,6 +3,7 @@ import Pagination from '../Tools/Pagination/Pagination'
 import { YouTubeContext } from '../../main';
 import FlagTools from '../Tools/FlagTools';
 import HistoryTools from '../Tools/HistoryTools';
+import Button from '../Button';
 
 export class ToolsFlag extends Component {
     render() {
@@ -13,8 +14,12 @@ export class ToolsFlag extends Component {
                         <div>
                             { context.state.canFlag ? <FlagTools {...context} /> : <HistoryTools /> }
                         </div>
-                        <div>   
+                        <div className="flex-me flex-justify-between mgi--top-10 flex-align">
                             <Pagination pages={context.state.pagination} />
+                            {
+                                context.state.canFlag &&
+                                <Button blue onClick={() => context.selectAll()}>Select all</Button>
+                            }
                         </div>
                     </div>
                 )}
