@@ -12,7 +12,8 @@ export class FormFlagging extends Component {
         super(props);
 
         this.state = {
-            flag_comments: ''
+            flag_comments: '',
+            reason: ''
         }
         this.handleChange = this.handleChange.bind(this);
     }
@@ -40,13 +41,21 @@ export class FormFlagging extends Component {
         }
     };
 
-    handleChange(e) {
+    handleChange(e, context = {}) {
         let value = e.target.value;
         let name = e.target.name;
 
-        return this.setState({
-            [name]: value
-        });
+        let previousState = this.state;
+
+        if (name === 'templateIdSelected' && value !== '') {
+            let template = context.state.templates.find(x => x.id == value)
+            previousState.flag_comments = template.description
+            previousState.reason = template.type
+        }
+
+        previousState[name] = value;
+
+        return this.setState(previousState);
     }
 
     render() {
@@ -68,6 +77,8 @@ export class FormFlagging extends Component {
                         >
                             <FormReporting
                                 description={this.state.flag_comments}
+                                reason={this.state.reason}
+                                templateIdSelected={this.state.templateIdSelected}
                                 handleChange={this.handleChange}
                                 onClosed={() => context.setState('popupReportingOpened', false)}
                             />

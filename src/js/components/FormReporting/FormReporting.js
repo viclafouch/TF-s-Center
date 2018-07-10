@@ -2,43 +2,54 @@ import React, { Component } from 'react'
 import Textarea from '../layouts/Textarea'
 import Button from '../Button';
 import { YouTubeContext } from '../../main';
+import { labels } from '../../config';
+import CountLetter from '../layouts/CountLetter';
+import Select from '../layouts/Select';
 
 export class FormReporting extends Component {
-    constructor() {
-        super();
-
-        this.labels = [
-            { value: 'P', text: 'Sexual Content' },
-            { value: 'G', text: 'Violent or Repulsive Content' },
-            { value: 'R', text: 'Hateful or Abusive Content' },
-            { value: 'X', text: 'Harmful Dangerous Acts' },
-            { value: 'J', text: 'Child Abuse' },
-            { value: 'Z', text: 'Spam' },
-        ]
-    }
-
     render() {
         return (
             <div className="form-reporting">
                 <div className="pdi--20">
                     <YouTubeContext.Consumer>
                         {(context) => (
-                            <h3>Report videos ({context.state.videosDisplayed.filter(x => x.selected === true).length})</h3>
+                            <div className="flex-me flex-justify-between">
+                                <h3>Report videos ({context.state.videosDisplayed.filter(x => x.selected === true).length})</h3>
+                                <Select
+                                    options={context.state.templates.map(e => {
+                                        return {
+                                            title: e.title,
+                                            value: e.id
+                                        }
+                                    })}
+                                    defaultOptionTitle="Choose template"
+                                    null
+                                    name="templateIdSelected"
+                                    value={this.props.templateIdSelected || ''}
+                                    onChange={(e) => this.props.handleChange(e, context)}
+                                />
+                            </div>
                         )}
                     </YouTubeContext.Consumer>
                     <fieldset className="form-reporting-fieldset">
                         <legend className="yt-uix-form-legend">What's the issue ?</legend>
                         <ul className="yt-uix-form-list-option paper-list">
                             {
-                                this.labels.map((elem, index) => (
+                                labels.map((elem, index) => (
                                     <li key={index} className="paper-item">
                                         <label>
                                             <span className="paper-radio">
-                                                <input type="radio" className="yt-uix-form-input-radio deputy-flag-reason" name="reason" value={elem.value} />
+                                                <input
+                                                    type="radio"
+                                                    className="yt-uix-form-input-radio deputy-flag-reason" name="reason"
+                                                    onChange={this.props.handleChange}
+                                                    checked={this.props.reason === elem.value}
+                                                    value={elem.value}
+                                                />
                                                 <span className="paper-radio-element"></span>
                                             </span>
                                             <div className="mgi--left-12">
-                                                <span>{elem.text}</span>
+                                                <span>{elem.title}</span>
                                             </div>
                                         </label>
                                     </li>
@@ -52,10 +63,12 @@ export class FormReporting extends Component {
                             placeholder="Provide additional details"
                             value={this.props.description}
                             name="flag_comments"
+                            spellCheck="false"
                             maxLength="500"
                             onChange={this.props.handleChange}
                         />
                     </fieldset>
+                    <CountLetter text={this.props.description} limit={500} style={{textAlign: 'right'}} />
                 </div>
                 <div className="form-reporting-fieldset buttons">
                     <div className="mgi--left-10">
