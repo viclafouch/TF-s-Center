@@ -28,7 +28,7 @@ export function openInNewTab(url) {
 }
 
 export function trySearch(text) {
-    let urlEncodade = encodeURIComponent(text.trim()).replace(/%20/g, '+');
+    let urlEncodade = encodeURIComponent('"' + text.trim() + '"').replace(/%20/g, '+');
     let url = `/deputy?search_query=${urlEncodade}`
     return openInNewTab(url);
 }
