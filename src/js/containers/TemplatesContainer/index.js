@@ -5,7 +5,7 @@ import { YouTubeContext } from '../../main';
 
 const TemplatesContainer = () => {
     return (
-        <div className="template-container scrollBarOnHover">
+        <div className="template-container container-scrollable scrollBarOnHover">
             <div className="pdi--10">
                 <YouTubeContext.Consumer>
                     {(context) => (

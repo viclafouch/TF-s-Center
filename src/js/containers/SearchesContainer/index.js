@@ -6,7 +6,7 @@ import { YouTubeContext } from '../../main';
 export class SearchesContainer extends Component {
     render() {
         return (
-            <div className="searches-container scrollBarOnHover">
+            <div className="searches-container container-scrollable scrollBarOnHover">
                 <div className="pdi--10">
                     <YouTubeContext.Consumer>
                         {(context) => (
