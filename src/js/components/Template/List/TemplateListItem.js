@@ -31,7 +31,7 @@ export class TemplateListItem extends Component {
                 <YouTubeContext.Consumer>
                     {(context) => (
                         <div className="action-temp flex-me flex-justify-center flex-align">
-                            <span style={{ cursor: 'pointer' }} onClick={() => this.setState({ active: false }, () => context.removeTemplate(template))}>
+                            <span style={{ cursor: 'pointer' }} onClick={() => this.setState({ active: false }, () => context.removeTemplate([template]))}>
                                 <FontAwesomeIcon icon={faTrashAlt} size="2x" fixedWidth />
                             </span>
                         </div>

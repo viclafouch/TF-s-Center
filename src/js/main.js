@@ -11,6 +11,7 @@ import getStatistics from './getDom/_statistics'
 import getUser from './getDom/_user'
 import { urlsAvailable } from './config';
 import Template from './shared/models/Template.class'
+import Search from './shared/models/Search.class'
 
 export const YouTubeContext = React.createContext();
 
@@ -20,7 +21,8 @@ chrome.runtime.sendMessage({ type: 'showPageAction' });
 
 chrome.storage.sync.get({
     displaying: 'column',
-    templates: []
+    templates: [],
+    searches: []
 }, items => {
 
     let youTubeDatas = {
@@ -51,41 +53,44 @@ chrome.storage.sync.get({
             this.state.popupReportingOpened = false
             this.state.displaying = items.displaying
             this.state.templates = items.templates.map(elem => new Template(elem))
+            this.state.searches = items.searches.map(elem => new Search(elem))
         }
 
-        selectVideos(videos = [], force = false) {
-            let videosDisplayed = [...this.state.videosDisplayed];
+        selectItems(items = [], type, force = false) {
+            let itemsDisplayed = [...this.state[type]];
 
-            for (let index = 0; index < videosDisplayed.length; index++) {
-                if (videos.find(x => x.id === videosDisplayed[index].id)) {
-                    videosDisplayed[index].selected = force || !videosDisplayed[index].selected
+            for (let index = 0; index < itemsDisplayed.length; index++) {
+                if (items.find(x => x.id === itemsDisplayed[index].id)) {
+                    itemsDisplayed[index].selected = force || !itemsDisplayed[index].selected
                 }
             }
 
             this.setState({
-                videosDisplayed: videosDisplayed
+                [type]: itemsDisplayed
             });
         }
 
-        actionTemplate(template, callback) {
+        actionItem(arrayItems, type, callback) {
 
-            let templates = this.state.templates;
+            let items = this.state[type];
 
-            let templateIndex = templates.findIndex(x => x.id === template.id)
-
-            if (templateIndex >= 0) {
-                templates = templates.filter((e, i) => i !== templateIndex);
-            } else {
-                templates.unshift(template);
+            for (let index = 0; index < arrayItems.length; index++) {
+                const element = arrayItems[index];
+                let ItemIndex = items.findIndex(x => x.id === element.id)
+                if (ItemIndex >= 0) {
+                    items = items.filter((e, i) => i !== ItemIndex);
+                } else {
+                    items.unshift(element);
+                }
             }
 
             return chrome.storage.sync.set({
-                templates: [...templates].map(e => {
+                [type]: [...items].map(e => {
                     e.created = e.created.format();
                     return e;
                 })
             }, () => this.setState({
-                templates: templates.map(e => {
+                [type]: items.map(e => {
                     e.created = moment(e.created)
                     return e;
                 })
@@ -121,11 +126,14 @@ chrome.storage.sync.get({
             return (
                 <YouTubeContext.Provider value={{
                     state: this.state,
-                    selectVideos: (videos = []) => this.selectVideos(videos),
-                    selectAll: () => this.selectVideos(this.state.videosDisplayed, true),
+                    selectVideos: (videos = []) => this.selectItems(videos, 'videosDisplayed'),
+                    selectSearches: (searches = []) => this.selectItems(searches, 'searches'),
+                    selectAll: (type, force = true) => this.selectItems(this.state[type], type, force),
                     filterVideos: type => this.filterVideos(type),
-                    addTemplate: (template, callback) => this.actionTemplate(template, callback),
-                    removeTemplate: (template, callback) => this.actionTemplate(template, callback),
+                    addTemplate: (template = [], callback) => this.actionItem(template, 'templates', callback),
+                    removeTemplate: (template = [], callback) => this.actionItem(template, 'templates', callback),
+                    addSearch: (search = [], callback) => this.actionItem(search, 'searches', callback),
+                    removeSearch: (search = [], callback) => this.actionItem(search, 'searches', callback),
                     setState: (name, value) => this.setState({
                         [name]: value
                     }, () => this.callbackState(name, value)),

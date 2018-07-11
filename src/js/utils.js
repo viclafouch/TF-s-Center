@@ -21,3 +21,14 @@ export function updateQueryStringParameter(uri, key, value) {
         return uri + separator + key + "=" + value;
     }
 }
+
+export function openInNewTab(url) {
+    var win = window.open(url, '_blank');
+    win.focus();
+}
+
+export function trySearch(text) {
+    let urlEncodade = encodeURIComponent(text.trim()).replace(/%20/g, '+');
+    let url = `/deputy?search_query=${urlEncodade}`
+    return openInNewTab(url);
+}

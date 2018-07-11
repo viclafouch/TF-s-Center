@@ -1,6 +1,7 @@
 @import './datepicker.scss';
 @import './form.scss';
 @import './utils.scss';
+@import './table.scss';
 
 body {
     height: 100vh;
@@ -814,6 +815,12 @@ div#TFsCenter {
         }
         input {
             height: 100%;
+        }
+    }
+
+    .table-searches {
+        table tbody td:last-child {
+            text-align: right;
         }
     }
 }

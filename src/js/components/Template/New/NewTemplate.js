@@ -30,7 +30,7 @@ export class NewTemplate extends Component {
     handleClickOutside(e) {
         if (!this.state.formValid) return this.setState({ isOpen: false })
 
-        this.props.context.addTemplate(this.template, () =>
+        this.props.context.addTemplate([this.template], () =>
             this.setState(this.baseState, () => this.template = new Template()));
     };
 

@@ -18,7 +18,7 @@ export class ToolsFlag extends Component {
                             <Pagination pages={context.state.pagination} />
                             {
                                 context.state.canFlag &&
-                                <Button blue onClick={() => context.selectAll()}>Select all</Button>
+                                <Button blue onClick={() => context.selectAll('videosDisplayed')}>Select all</Button>
                             }
                         </div>
                     </div>

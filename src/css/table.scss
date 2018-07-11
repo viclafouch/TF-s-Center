@@ -1,0 +1,39 @@
+table.table-material {
+    max-width: 100%;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    display: table;
+
+    tr {
+        display: table-row;
+        vertical-align: inherit;
+        border-color: inherit;
+    }
+
+    thead {
+        display: table-header-group;
+        vertical-align: middle;
+        border-color: inherit;
+    }
+
+    tbody {
+        display: table-row-group;
+        vertical-align: middle;
+        border-color: inherit;
+    }
+
+    td, th {
+        padding-top: 1.1rem;
+        padding: .75rem;
+        padding-bottom: 1rem;
+        text-align: left;
+    }
+
+    & > thead th {
+        font-weight: 500;
+        vertical-align: bottom;
+        border-top: none;
+        border-bottom: 2px solid #dee2e6;
+    }
+}
