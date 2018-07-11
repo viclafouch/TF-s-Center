@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import Button from '../../Button';
 import Checkbox from '../../layouts/Checkbox'
 import { YouTubeContext } from '../../../main';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons/faTrashAlt'
 import { trySearch } from '../../../utils';
 
 export class ListSearches extends Component {

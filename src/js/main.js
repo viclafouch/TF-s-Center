@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 import App from './components/App'
 import moment from 'moment'
-
 import getVideos from './getDom/_videos'
 import getSearch from './getDom/_search'
 import getPathname from './getDom/_location'
@@ -24,6 +23,9 @@ chrome.storage.sync.get({
     templates: [],
     searches: []
 }, items => {
+
+    console.log(items);
+
 
     let youTubeDatas = {
         pathname: getPathname(),

@@ -55,7 +55,7 @@ export class NewSearches extends Component {
                     />
                 </div>
                 <Button blue className="mgi--left-7" type="submit">Add</Button>
-                    <Button blue className="mgi--left-7" onClick={() => trySearch(this.state.search.trim())} disabled={this.state.search.trim() === ''}>Test it</Button>
+                <Button blue className="mgi--left-7" onClick={() => trySearch(this.state.search.trim())} disabled={this.state.search.trim() === ''}>Test</Button>
             </form>
             </div>
         )
