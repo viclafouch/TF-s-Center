@@ -1,65 +1,6 @@
 @import './datepicker.scss';
-
-$tblr: "top" "bottom" "left" "right";
-
-@each $pos in $tblr{
-    @for $i from 0 through 100 {
-        .pdi--#{$pos}-#{$i} {
-            padding-#{$pos}: $i+px !important;
-        }
-        .mgi--#{$pos}-#{$i} {
-            margin-#{$pos}: $i+px !important;
-        }
-    }
-}
-
-@for $i from 0 through 100 {
-    .pdi--#{$i} {
-            padding: $i+px !important;
-    }
-}
-@for $i from 0 through 100 {
-    .mgi--#{$i} {
-        margin: $i+px !important;
-    }
-}
-
-.flex-me{
-    display: flex!important;
-    &.inline-flex{
-        display: inline-flex;
-    }
-    &.flex-align{
-        align-items: center;
-    }
-    &.flex-align-start{
-        align-items: flex-start;
-    }
-    &.flex-align-end{
-        align-items: flex-end;
-    }
-    &.flex-vertical{
-        flex-direction: column;
-    }
-    &.flex-horizontal{
-        flex-direction: row;
-    }
-    &.flex-justify-start{
-        justify-content: flex-start;
-    }
-    &.flex-justify-end{
-        justify-content: flex-end;
-    }
-    &.flex-justify-center{
-        justify-content: center;
-    }
-    &.flex-justify-between{
-        justify-content: space-between;
-    }
-    &.flex-justify-around{
-        justify-content: space-around;
-    }
-}
+@import './form.scss';
+@import './utils.scss';
 
 body {
     height: 100vh;
@@ -719,9 +660,10 @@ div#TFsCenter {
         overflow-y: scroll;
     }
 
-    .box-template {
+    .box-material {
+        padding: 13px 15px 15px;
         width: 100;
-        color: #444;
+        color: rgba(0, 0, 0, 0.54);
         max-width: 600px;
         border-radius: 2px;
         background: white;
@@ -733,11 +675,8 @@ div#TFsCenter {
         height: 46px;
 
         .box-description {
-            color: rgba(0, 0, 0, 0.54);
             width: 100%;
             font-size: 14px;
-            padding: 13px 15px 15px 15px;
-            min-height: 46px;
             white-space: pre-wrap;
         }
 
@@ -747,14 +686,10 @@ div#TFsCenter {
 
                 &-input {
                     padding: 15px 15px 15px 15px;
-                    width: 100%;
-                    appearance: none;
                     border: 0;
                     background-color: transparent;
                     font-weight: 600;
                     font-size: 17px;
-                    color: rgba(0, 0, 0, 0.74);
-                    outline: none;
                 }
 
                 &-select {
@@ -788,11 +723,10 @@ div#TFsCenter {
         li { width: 100%; margin-top: 20px; }
 
         article.template-item {
-            padding: 15px;
+            padding: 8px;
             width: 100%;
             background: color;
             transition: opacity 0.3s;
-            background: #f4f4f4;
             position: relative;
 
             .action-temp {
@@ -872,5 +806,14 @@ div#TFsCenter {
         opacity: 0.1;
         transition: all 500ms ease-in-out;
         max-height: 0px;
+    }
+
+    .form-search-add {
+        & > div {
+            flex: 1;
+        }
+        input {
+            height: 100%;
+        }
     }
 }

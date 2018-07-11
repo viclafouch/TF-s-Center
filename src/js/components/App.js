@@ -7,6 +7,7 @@ import { urlsAvailable } from '../config';
 import { YouTubeContext } from '../main';
 import { Statistics } from './Statistics/Statistics';
 import TemplatesContainer from '../containers/TemplatesContainer';
+import SearchesContainer from '../containers/SearchesContainer';
 
 class App extends Component {
 
@@ -32,6 +33,10 @@ class App extends Component {
                             : context.state.pathname === urlsAvailable[3] ?
                                 <div className="full-heigth">
                                     <TemplatesContainer />
+                                </div>
+                            : context.state.pathname === urlsAvailable[4] ?
+                                <div className="full-heigth">
+                                    <SearchesContainer />
                                 </div>
                             : <div>This page do not exist</div>
                         )}

@@ -6,6 +6,7 @@ import onClickOutside from "react-onclickoutside";
 import CountLetter from '../../layouts/CountLetter';
 import { Template } from '../../../shared/models/Template.class';
 import { labels } from '../../../config';
+import Input from '../../layouts/Input';
 
 export class NewTemplate extends Component {
 
@@ -58,7 +59,7 @@ export class NewTemplate extends Component {
 
     render() {
         return (
-            <div className="new-template-box box-template" style={{height: this.state.isOpen ? 'auto' : 46}}>
+            <div className="new-template-box box-material" style={{height: this.state.isOpen ? 'auto' : 46}}>
                 {
                 !this.state.isOpen ?
                         <div className="new-template-box-closed flex-me flex-align flex-justify-between box-description" onClick={() => this.setState({ isOpen: true })}>
@@ -69,12 +70,12 @@ export class NewTemplate extends Component {
                     <div className="new-template-box-opened">
                         <form method="POST">
                             <div className="template-box-new-title">
-                                <input
+                                <Input
                                     type="text"
                                     className="template-box-new-title-input"
                                     name="template-title"
-                                    placeholder="Title"
                                     autoComplete="off"
+                                    placeholder="Title"
                                     spellCheck="false"
                                     onChange={this.handleChange}
                                 />
@@ -94,7 +95,7 @@ export class NewTemplate extends Component {
                                 <textarea
                                     id="content-template"
                                     value={this.state["template-description"]}
-                                    className="template-box-new-title-content box-description scrollBarOnHover"
+                                    className="pdi--15 template-box-new-title-content box-description scrollBarOnHover"
                                     name="template-description"
                                     autoFocus
                                     spellCheck="false"
@@ -103,7 +104,7 @@ export class NewTemplate extends Component {
                                     maxLength="500"
                                 ></textarea>
                             </div>
-                            <div className="flex-me flex-justify-end pdi--bottom-7 pdi--right-15">
+                            <div className="flex-me flex-justify-end pdi--bottom-7">
                                 <CountLetter
                                     text={this.state['template-description']}
                                     limit={500}

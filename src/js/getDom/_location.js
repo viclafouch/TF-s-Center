@@ -8,6 +8,8 @@ let pathname = function getPathname() {
         if (pathname === urlsAvailable[1]) {
             if (getUrlParameter(querys[1]) === 'templates') {
                 pathname = '/templates'
+            } else if (getUrlParameter(querys[1]) === 'searches') {
+                pathname = '/searches'
             } else if (!getUrlParameter(querys[0])) {
                 pathname = '/stats'
             }

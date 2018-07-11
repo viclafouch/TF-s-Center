@@ -11,7 +11,7 @@ export class ListTemplates extends Component {
                     <ul className="template-list">
                         <CSSTransitionGroup transitionName="template" transitionEnterTimeout={1000} transitionLeaveTimeout={500}>
                             { context.state.templates.map((elem) => (
-                                <li key={elem.id} className="box-template">
+                                <li key={elem.id} className="box-material">
                                     <TemplateListItem template={elem} />
                                 </li>
                             ))}
