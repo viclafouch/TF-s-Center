@@ -6,6 +6,7 @@ import VideoDetail from '../VideoDetail/VideoDetail';
 import Loader from '../layouts/Loader';
 import { YouTubeContext } from '../../main';
 import { YOUTUBE_API_KEYS } from '../../../../private';
+import { getUrlParameter } from '../../utils';
 
 export class VideosList extends Component {
 
@@ -83,6 +84,19 @@ export class VideosList extends Component {
             }
         })
     }
+
+    componentDidMount() {
+        let specialSearch = getUrlParameter('searchId');
+        if (this.props.context.state.canFlag && !!specialSearch) {
+            let search = this.props.context.state.searches.find(x => x.id == specialSearch)
+            if (!search) return;
+
+            let videosDetected = this.props.context.state.videosDisplayed.filter(elem => elem.title.toLowerCase().search(search.value.toLowerCase()) !== -1 || elem.description.toLowerCase().search(search.value.toLowerCase()) !== -1)
+
+            this.props.context.selectVideos(videosDetected);
+        }
+    }
+
 
     checkedVideo(event, video) {
         event.preventDefault();

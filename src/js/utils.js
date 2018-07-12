@@ -27,8 +27,9 @@ export function openInNewTab(url) {
     win.focus();
 }
 
-export function trySearch(text) {
+export function trySearch(text, search) {
     let urlEncodade = encodeURIComponent('"' + text.trim() + '"').replace(/%20/g, '+');
     let url = `/deputy?search_query=${urlEncodade}`
+    url = search ? url + `&searchId=${search.id}` : url
     return openInNewTab(url);
 }

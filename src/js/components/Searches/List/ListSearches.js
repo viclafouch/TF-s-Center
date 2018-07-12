@@ -56,7 +56,7 @@ export class ListSearches extends Component {
                                                 <th scope="row">{index}</th>
                                                 <td>{elem.value}</td>
                                                 <td style={{ width: 150 }}>
-                                                    <Button onClick={() => trySearch(elem.value)}>Go</Button>
+                                                    <Button onClick={() => trySearch(elem.value, elem)}>Go</Button>
                                                 </td>
                                             </tr>
                                         )
