@@ -19,6 +19,33 @@ export class FormFlagging extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
+    componentDidMount() {
+        let specialSearch = getUrlParameter('searchId');
+        if (this.props.context) {
+            if (this.props.context.state.canFlag && !!specialSearch) {
+                let search = this.props.context.state.searches.find(x => x.id == specialSearch)
+                if (!search) return;
+
+                let searchText = search.value.cleanString();
+
+                let videosDetected = this.props.context.state.videosDisplayed.filter(elem => elem.title.cleanString().search(searchText) !== -1 || elem.description.cleanString().search(searchText) !== -1)
+
+                this.props.context.selectVideos(videosDetected);
+
+                let template = this.props.context.state.templates.find(x => x.id == search.templateId)
+
+                if (!template) return;
+
+                return this.setState({
+                    flag_comments: template.description,
+                    reason: template.type,
+                    templateIdSelected: template.id
+                });
+            }
+        }
+    }
+
+
     handleSelectVideo(video, checked, context) {
         const { videosDisplayed } = context.state;
 

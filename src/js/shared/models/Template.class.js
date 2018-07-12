@@ -5,9 +5,9 @@ export class Template {
         template = {}
     ) {
         this.id = template.id || Math.floor(Math.random() * 1000000);
-        this.title = template.title
-        this.description = template.description
-        this.type = template.type
+        this.title = template.title || null
+        this.description = template.description || null
+        this.type = template.type || null
         this.created = template.created ? moment(template.created) : moment()
     }
 }

@@ -80,7 +80,7 @@ export class NewTemplate extends Component {
                                     onChange={this.handleChange}
                                 />
                             </div>
-                            <div className="template-box-new-type">
+                            <div className="template-box-new-type pdi--left-12">
                                 <Select
                                     value={this.state.type}
                                     className="template-box-new-title-select"

@@ -26,16 +26,21 @@ export class ListSearches extends Component {
                 {(context) => (
                     <div className="box-material table-searches">
                         <form>
+                            <div className="flex-me flex-justify-end">
+                                <Button disabled={!context.state.searches.find(x => x.selected)} onClick={() => this.handleRemove(context)}>Remove</Button>
+                            </div>
                             <table className="table-material">
                                 <thead>
                                     <tr>
                                         <th>
                                             <Checkbox
-                                                onChange={e => context.selectAll('searches', e.target.checked)}
+                                                checked={context.state.searches.filter(x => x.selected).length === context.state.searches.length}
+                                                onChange={() => context.selectAll('searches')}
                                             />
                                         </th>
                                         <th>#</th>
                                         <th>Value</th>
+                                        <th>Template</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -55,7 +60,8 @@ export class ListSearches extends Component {
                                                 </th>
                                                 <th scope="row">{index}</th>
                                                 <td>{elem.value}</td>
-                                                <td style={{ width: 150 }}>
+                                                <td>{elem.getTemplate(context).title}</td>
+                                                <td>
                                                     <Button onClick={() => trySearch(elem.value, elem)}>Go</Button>
                                                 </td>
                                             </tr>
@@ -63,7 +69,6 @@ export class ListSearches extends Component {
                                     }
                                 </tbody>
                             </table>
-                            <Button disabled={!context.state.searches.find(x => x.selected)} onClick={() => this.handleRemove(context)}>Remove</Button>
                         </form>
                     </div>
                 )}

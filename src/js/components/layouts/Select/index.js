@@ -10,10 +10,9 @@ const Select = (props) => {
 
     let options = props.options || [];
 
-    let className = 'yt-uix-button yt-uix-button-size-default '
-    if (props.blue) className = className + 'yt-uix-button-primary '
-    else className = className + 'yt-uix-white-primary '
-    className = (props.className) ? className + props.className : className
+    let className = 'tf-input-material '
+    className = props.blue ? className + 'yt-uix-button-primary ' : className
+    className = props.className ? className + props.className : className
 
     return (
         <select

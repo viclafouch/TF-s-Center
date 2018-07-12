@@ -1,18 +1,31 @@
-input.tf-input-material {
+input.tf-input-material, select.tf-input-material {
     padding: 2px 5px;
     width: 100%;
     outline: none;
     font-family: 'Roboto', 'Noto', sans-serif;
     outline: none;
+    height: 100%;
     appearance: none;
-    font-size: 14px;
+    font-size: 11px;
     color: rgba(0, 0, 0, 0.74);
+    font: 12px "YouTube Noto",Roboto,arial,sans-serif;
     border: 0;
     background-color: #fff;
     transition: border-color 0.3s;
     border-bottom: 1px solid rgba($color: #000000, $alpha: 0.05);
 }
 
-input:focus {
+select.tf-input-material {
+    padding-left: 0;
+    padding-bottom: 4px;
+}
+
+input.tf-input-material:focus, select.tf-input-material:focus {
     border-color: rgba($color: #000000, $alpha: 0.1);
+}
+
+.yt-uix-button-primary, .yt-uix-button-primary[disabled], .yt-uix-button-primary[disabled]:hover, .yt-uix-button-primary[disabled]:active, .yt-uix-button-primary[disabled]:focus {
+    border-color: #167ac6!important;
+    background: #167ac6!important;
+    color: #fff!important;
 }

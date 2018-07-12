@@ -32,19 +32,21 @@ export class FormReporting extends Component {
                         {(context) => (
                             <div className="flex-me flex-justify-between">
                                 <h3>Report videos ({context.state.videosDisplayed.filter(x => x.selected === true).length})</h3>
-                                <Select
-                                    options={context.state.templates.map(e => {
-                                        return {
-                                            title: e.title,
-                                            value: e.id
-                                        }
-                                    })}
-                                    defaultOptionTitle="Choose template"
-                                    null
-                                    name="templateIdSelected"
-                                    value={this.props.templateIdSelected || ''}
-                                    onChange={(e) => this.props.handleChange(e, context)}
-                                />
+                                <div>
+                                    <Select
+                                        options={context.state.templates.map(e => {
+                                            return {
+                                                title: e.title,
+                                                value: e.id
+                                            }
+                                        })}
+                                        defaultOptionTitle="Choose template"
+                                        null
+                                        name="templateIdSelected"
+                                        value={this.props.templateIdSelected || ''}
+                                        onChange={(e) => this.props.handleChange(e, context)}
+                                    />
+                                </div>
                             </div>
                         )}
                     </YouTubeContext.Consumer>

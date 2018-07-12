@@ -407,6 +407,13 @@ div#TFsCenter {
                 padding: 4px 4px;
             }
         }
+
+        select {
+            height: 28px;
+            padding: 2px 10px;
+            font-weight: 500;
+            border-radius: 2px;
+        }
     }
 
     .span-icon {
@@ -697,6 +704,7 @@ div#TFsCenter {
                     border: 0;
                     color: rgba(0, 0, 0, 0.64);
                     outline: none;
+                    padding: 15px 15px 15px 0px;
                 }
 
                 &-content {
@@ -810,10 +818,11 @@ div#TFsCenter {
     }
 
     .form-search-add {
-        & > div {
+        div.input-container-search {
             flex: 1;
         }
-        input {
+        input, select {
+            font-size: 14px;
             height: 100%;
         }
     }
@@ -821,6 +830,12 @@ div#TFsCenter {
     .table-searches {
         table tbody td:last-child {
             text-align: right;
+        }
+        table td {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            max-width: 100px;
         }
     }
 }

@@ -25,7 +25,7 @@ class App extends Component {
                                     <VideosList videos={context.state.videosDisplayed} />
                                 </div>
                             : context.state.pathname === urlsAvailable[1] ?
-                                <FormFlagging videos={context.state.videosDisplayed} />
+                                <FormFlagging videos={context.state.videosDisplayed} context={context} />
                             : context.state.pathname === urlsAvailable[2] ?
                                 <div className="full-heigth">
                                     <Statistics />

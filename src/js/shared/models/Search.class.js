@@ -8,6 +8,11 @@ export class Search {
         this.value = search.value
         this.created = search.created ? moment(search.created) : moment()
         this.selected = false;
+        this.templateId = search.templateId ? parseInt(search.templateId, 10) : null
+    }
+
+    getTemplate(context) {
+        return context.state.templates.find(x => x.id == this.templateId) || {}
     }
 }
 
