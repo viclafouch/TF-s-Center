@@ -28,6 +28,7 @@ export class NewTemplate extends Component {
     }
 
     handleClickOutside(e) {
+        e.preventDefault();
         if (!this.state.formValid) return this.setState({ isOpen: false })
 
         this.props.context.addTemplate([this.template], () =>
@@ -68,7 +69,7 @@ export class NewTemplate extends Component {
                     </div>
                 :
                     <div className="new-template-box-opened">
-                        <form method="POST">
+                         <form method="POST" onSubmit={this.handleClickOutside}>
                             <div className="template-box-new-title">
                                 <Input
                                     type="text"

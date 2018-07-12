@@ -3,6 +3,8 @@ import Button from '../../Button';
 import Checkbox from '../../layouts/Checkbox'
 import { YouTubeContext } from '../../../main';
 import { trySearch } from '../../../utils';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck'
 
 export class ListSearches extends Component {
 
@@ -41,6 +43,7 @@ export class ListSearches extends Component {
                                         <th>#</th>
                                         <th>Value</th>
                                         <th>Template</th>
+                                        <th>AS</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -61,6 +64,7 @@ export class ListSearches extends Component {
                                                 <th scope="row">{index}</th>
                                                 <td>{elem.value}</td>
                                                 <td>{elem.getTemplate(context).title}</td>
+                                                <td>{elem.autoSelect && <FontAwesomeIcon icon={faCheck} size="1x" fixedWidth />}</td>
                                                 <td>
                                                     <Button onClick={() => trySearch(elem.value, elem)}>Go</Button>
                                                 </td>

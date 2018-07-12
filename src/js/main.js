@@ -24,9 +24,6 @@ chrome.storage.sync.get({
     searches: []
 }, items => {
 
-    console.log(items);
-
-
     let youTubeDatas = {
         pathname: getPathname(),
         videos: getVideos(),

@@ -4,15 +4,17 @@ import Input from '../../layouts/Input';
 import Select from '../../layouts/Select';
 import { trySearch } from '../../../utils'
 import { Search } from '../../../shared/models/Search.class';
+import Checkbox from '../../layouts/Checkbox';
 
 export class NewSearches extends Component {
 
     constructor() {
         super();
 
-        this.state = {
+        this.state = this.baseState = {
             "search-value-add":  '',
-            templateId: ''
+            "search-template-id": '',
+            "search-auto-select": false
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -21,7 +23,7 @@ export class NewSearches extends Component {
 
     handleChange(e) {
         let name = e.target.name
-        let value = e.target.value
+        let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value
         return this.setState({
             [name]: value
         });
@@ -35,11 +37,10 @@ export class NewSearches extends Component {
 
         return this.props.context.addSearch([new Search ({
             value: value,
-            templateId: this.state.templateId || null
+            templateId: this.state["search-template-id"] || null,
+            autoSelect: this.state["search-auto-select"]
         })], () => {
-            this.setState({
-                "search-value-add": ''
-            });
+            this.setState(this.baseState);
         })
     }
 
@@ -63,7 +64,7 @@ export class NewSearches extends Component {
                         <Button blue className="mgi--left-7" type="submit">Add</Button>
                         <Button blue className="mgi--left-7" onClick={() => trySearch(this.state["search-value-add"].trim())} disabled={this.state["search-value-add"].trim() === ''}>Test</Button>
                     </div>
-                    <div className="mgi--top-10">
+                    <div className="mgi--top-10 flex-me flex-align">
                         <Select
                             options={this.props.context.state.templates.map(elem => {
                                 return {
@@ -71,12 +72,20 @@ export class NewSearches extends Component {
                                     title: elem.title
                                 }
                             })}
-                            value={this.state.templateId}
+                            value={this.state["search-template-id"]}
                             onChange={this.handleChange}
-                            name="templateId"
+                            name="search-template-id"
                             null
                             defaultOptionTitle="Choose template"
                         />
+                        <label className="yt-uix-button yt-uix-button-size-default yt-uix-button-primary flex-me flex-align mgi--left-7" htmlFor="search-auto-select">
+                            <span className="mgi--right-6">Active auto-select</span>
+                            <Checkbox
+                                checked={this.state["search-auto-select"]}
+                                onChange={this.handleChange}
+                                name="search-auto-select"
+                            />
+                        </label>
                     </div>
                 </form>
             </div>

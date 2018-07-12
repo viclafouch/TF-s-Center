@@ -8,6 +8,7 @@ export class Search {
         this.value = search.value
         this.created = search.created ? moment(search.created) : moment()
         this.selected = false;
+        this.autoSelect = search.autoSelect || false;
         this.templateId = search.templateId ? parseInt(search.templateId, 10) : null
     }
 
