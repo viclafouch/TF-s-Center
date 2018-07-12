@@ -87,16 +87,17 @@ export class VideosList extends Component {
 
     componentDidMount() {
         let specialSearch = getUrlParameter('searchId');
-        if (this.props.context.state.canFlag && !!specialSearch) {
-            let search = this.props.context.state.searches.find(x => x.id == specialSearch)
-            if (!search) return;
+        if (this.props.context) {
+            if (this.props.context.state.canFlag && !!specialSearch) {
+                let search = this.props.context.state.searches.find(x => x.id == specialSearch)
+                if (!search) return;
 
-            let videosDetected = this.props.context.state.videosDisplayed.filter(elem => elem.title.toLowerCase().search(search.value.toLowerCase()) !== -1 || elem.description.toLowerCase().search(search.value.toLowerCase()) !== -1)
+                let videosDetected = this.props.context.state.videosDisplayed.filter(elem => elem.title.toLowerCase().search(search.value.toLowerCase()) !== -1 || elem.description.toLowerCase().search(search.value.toLowerCase()) !== -1)
 
-            this.props.context.selectVideos(videosDetected);
+                this.props.context.selectVideos(videosDetected);
+            }
         }
     }
-
 
     checkedVideo(event, video) {
         event.preventDefault();

@@ -61,9 +61,17 @@ chrome.storage.sync.get({
         selectItems(items = [], type, force = false) {
             let itemsDisplayed = [...this.state[type]];
 
-            for (let index = 0; index < itemsDisplayed.length; index++) {
-                if (items.find(x => x.id === itemsDisplayed[index].id)) {
-                    itemsDisplayed[index].selected = force || !itemsDisplayed[index].selected
+            if (force && itemsDisplayed.filter(x => x.selected).length === itemsDisplayed.length) {
+                for (let index = 0; index < itemsDisplayed.length; index++) {
+                    if (items.find(x => x.id === itemsDisplayed[index].id)) {
+                        itemsDisplayed[index].selected = false
+                    }
+                }
+            } else {
+                for (let index = 0; index < itemsDisplayed.length; index++) {
+                    if (items.find(x => x.id === itemsDisplayed[index].id)) {
+                        itemsDisplayed[index].selected = force || !itemsDisplayed[index].selected
+                    }
                 }
             }
 
