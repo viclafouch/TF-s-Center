@@ -3,7 +3,6 @@ import moment from 'moment'
 import { Line } from 'react-chartjs-2';
 
 const LastSevenDays = ({context}) => {
-
     const data = {
         labels: context.state.flagged.reverse().map(e => e.date),
         datasets: [
@@ -26,7 +25,7 @@ const LastSevenDays = ({context}) => {
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
-                data: context.state.flagged.reverse().map(e => e.videos.length)
+                data: context.state.flagged.map(e => e.videos.length)
             }
         ]
     };

@@ -57,7 +57,7 @@ export class Sidebar extends Component {
                                         <span className="span-icon mgi--right-16">
                                             <FontAwesomeIcon icon={faChartLine} size="1x" fixedWidth />
                                         </span>
-                                        <span className="text-link">Statistics</span>
+                                        <span className="text-link">Analytics</span>
                                     </a>
                                 </li>
                                 <li>

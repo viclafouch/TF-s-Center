@@ -23,7 +23,7 @@ const TableResum = () => {
                             </tr>
                         </tbody>
                     </table>
-                    <p>Votre taux de succès s'élève à {((context.state.statistics.allActioned / context.state.statistics.allFlagged) * 100).toFixed(2)}% de réussite !</p>
+                    <p>Your success rate is {((context.state.statistics.allActioned / context.state.statistics.allFlagged) * 100).toFixed(2)}% !</p>
                 </div>
             )}
         </YouTubeContext.Consumer>
