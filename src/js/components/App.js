@@ -5,9 +5,9 @@ import { VideosList } from './VideosList/VideosList';
 import { FormFlagging } from './FormFlagging/FormFlagging';
 import { urlsAvailable } from '../config';
 import { YouTubeContext } from '../main';
-import { Statistics } from './Statistics/Statistics';
 import TemplatesContainer from '../containers/TemplatesContainer';
 import SearchesContainer from '../containers/SearchesContainer';
+import AnalyticsContainer from '../containers/AnalyticsContainer';
 
 class App extends Component {
 
@@ -28,7 +28,7 @@ class App extends Component {
                                 <FormFlagging videos={context.state.videosDisplayed} context={context} />
                             : context.state.pathname === urlsAvailable[2] ?
                                 <div className="full-heigth">
-                                    <Statistics />
+                                    <AnalyticsContainer />
                                 </div>
                             : context.state.pathname === urlsAvailable[3] ?
                                 <div className="full-heigth">

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { YouTubeContext } from '../../main';
+import LastSevenDays from './LastSevenDays/LastSevenDays';
 
 export class Statistics extends Component {
     render() {
@@ -14,6 +15,13 @@ export class Statistics extends Component {
                         </div>
                     )}
                 </YouTubeContext.Consumer>
+                <div className="mgi--bottom-10">
+                    <YouTubeContext.Consumer>
+                        {(context) => (
+                            <LastSevenDays context={context} />
+                        )}
+                    </YouTubeContext.Consumer>
+                </div>
             </div>
         )
     }

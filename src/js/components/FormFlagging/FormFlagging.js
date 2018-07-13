@@ -77,7 +77,7 @@ export class FormFlagging extends Component {
         return (
             <YouTubeContext.Consumer>
                 {(context) => (
-                    <form action="/deputy?action_submit" id="formFlagging" method="POST" className="form-flagging full-heigth" onSubmit={() => context.setState('popupReportingOpened', true)}>
+                    <form action="/deputy?action_submit" id="formFlagging" method="POST" className="form-flagging full-heigth">
                         <input type="hidden" name="search_query" value={context.state.search} />
                         <input type="hidden" name="page" value={getUrlParameter('page') || 1} />
                         <input type="hidden" name="filters" value={getUrlParameter('filters') || ''} />

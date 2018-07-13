@@ -8,6 +8,7 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons/faEnvelope'
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons/faSignOutAlt'
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch'
 import { faFlag } from '@fortawesome/free-solid-svg-icons/faFlag'
+import { faChrome } from '@fortawesome/free-brands-svg-icons/faChrome'
 import { EMAIL_TRUSTED_FLAGGERS, CONTRIBUTOR_LINK, HANGOUTS_ME, EMAIL_FLAGGER_LABEL } from '../../../../private'
 import { YouTubeContext } from '../../main';
 import { urlsAvailable } from '../../config';
@@ -77,6 +78,14 @@ export class Sidebar extends Component {
                                 </li>
                             </ul>
                             <ul className="nav-link">
+                                <li>
+                                    <a href="https://chrome.google.com/webstore/detail/tcs-center/hanknpkmjbfhcalmipokkfplndkohgdm?authuser=1" target="_blank" className="youtube-link">
+                                        <span className="span-icon mgi--right-16">
+                                            <FontAwesomeIcon icon={faChrome} size="1x" fixedWidth />
+                                        </span>
+                                        <span className="text-link">TC's Center</span>
+                                    </a>
+                                </li>
                                 <li>
                                     <a href={HANGOUTS_ME} target="_blank" className="youtube-link">
                                         <span className="span-icon mgi--right-16">

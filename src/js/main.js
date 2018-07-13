@@ -13,6 +13,12 @@ import Template from './shared/models/Template.class'
 import Search from './shared/models/Search.class'
 
 export const YouTubeContext = React.createContext();
+const sevenLastDays = Array(7).fill().map((e, i) => {
+    return {
+        date: moment().subtract(i, 'days').format('DD/MM/YYYY'),
+        videos: []
+    }
+});
 
 // chrome.storage.sync.clear();
 
@@ -21,8 +27,21 @@ chrome.runtime.sendMessage({ type: 'showPageAction' });
 chrome.storage.sync.get({
     displaying: 'column',
     templates: [],
-    searches: []
+    searches: [],
+    flagged: [...sevenLastDays]
+
 }, items => {
+
+    let flagged = sevenLastDays.map(elem => {
+        let flaggedFounded = items.flagged.find(x => x.date === elem.date);
+        if (flaggedFounded) {
+            return {
+                date: elem.date,
+                videos: flaggedFounded.videos
+            }
+        }
+        return elem;
+    })
 
     let youTubeDatas = {
         pathname: getPathname(),
@@ -51,6 +70,7 @@ chrome.storage.sync.get({
             this.state.canFlag = youTubeDatas.pathname === urlsAvailable[1]
             this.state.popupReportingOpened = false
             this.state.displaying = items.displaying
+            this.state.flagged = flagged
             this.state.templates = items.templates.map(elem => new Template(elem))
             this.state.searches = items.searches.map(elem => new Search(elem))
         }
@@ -125,6 +145,12 @@ chrome.storage.sync.get({
             if (name === 'displaying') {
                 chrome.storage.sync.set({
                     displaying: value
+                });
+            } else if (name === 'flagged') {
+                chrome.storage.sync.set({
+                    flagged: value
+                }, () => {
+                    document.getElementById('formFlagging').submit();
                 });
             }
         }

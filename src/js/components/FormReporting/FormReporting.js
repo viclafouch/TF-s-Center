@@ -14,6 +14,25 @@ export class FormReporting extends Component {
         this.state = {
             reasonEmpty: false
         }
+
+        this.handleClickSubmit = this.handleClickSubmit.bind(this);
+    }
+
+    async handleClickSubmit(e, context) {
+        e.preventDefault();
+
+        if (!this.props.reason) {
+            return this.setState({
+                reasonEmpty: true
+            });
+        }
+
+        let videosSelected = context.state.videosDisplayed.filter(elem => elem.selected);
+        let sevenDays = context.state.flagged
+        let flagged = sevenDays[0].videos.concat(videosSelected);
+        sevenDays[0].videos = flagged;
+
+        return context.setState('flagged', sevenDays);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -94,14 +113,11 @@ export class FormReporting extends Component {
                         <Button type="button" white onClick={() => this.props.onClosed()}>Close</Button>
                     </div>
                     <div className="mgi--left-10">
-                        <Button type="submit" blue onClick={e => {
-                            if (!this.props.reason) {
-                                e.preventDefault();
-                                this.setState({
-                                    reasonEmpty: true
-                                });
-                            }
-                        }}>Submit</Button>
+                        <YouTubeContext.Consumer>
+                            {(context) => (
+                                <Button type="submit" blue onClick={e => this.handleClickSubmit(e, context)}>Submit</Button>
+                            )}
+                        </YouTubeContext.Consumer>
                     </div>
                 </div>
             </div>
