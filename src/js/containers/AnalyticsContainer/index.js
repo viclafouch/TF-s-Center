@@ -3,6 +3,7 @@ import { YouTubeContext } from '../../main';
 import TableResum from '../../components/Statistics/TableResum/TableResum';
 import LastSevenDays from '../../components/Statistics/LastSevenDays/LastSevenDays';
 import BestTemplates from '../../components/Statistics/BestTemplates/BestTemplates';
+import BestSearches from '../../components/Statistics/BestSearches/BestSearches';
 
 const AnalyticsContainer = () => {
     return (
@@ -24,6 +25,14 @@ const AnalyticsContainer = () => {
                         <YouTubeContext.Consumer>
                             {(context) => (
                                 <BestTemplates context={context} />
+                            )}
+                        </YouTubeContext.Consumer>
+                    </div>
+                    <div className="column one-half box-material" style={{marginLeft: '4%'}}>
+                        <h2 className="center-text mgi--bottom-10">Searches sort by videos flagged</h2>
+                        <YouTubeContext.Consumer>
+                            {(context) => (
+                                <BestSearches context={context} />
                             )}
                         </YouTubeContext.Consumer>
                     </div>

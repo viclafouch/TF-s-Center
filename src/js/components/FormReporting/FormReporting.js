@@ -5,6 +5,7 @@ import { YouTubeContext } from '../../main';
 import { labels } from '../../config';
 import CountLetter from '../layouts/CountLetter';
 import Select from '../layouts/Select';
+import { getUrlParameter } from '../../utils';
 
 export class FormReporting extends Component {
 
@@ -28,16 +29,24 @@ export class FormReporting extends Component {
         }
 
         let videosSelected = context.state.videosDisplayed.filter(elem => elem.selected);
-        let sevenDays = context.state.lastSevenDaysflagged
-        let lastSevenDaysflagged = sevenDays[0].videos.concat(videosSelected).length
-        sevenDays[0].videos = lastSevenDaysflagged;
+        let { lastSevenDaysflagged, searches }= context.state
+        lastSevenDaysflagged[0].videos += videosSelected.length
 
-        let templateStuff = this.props.templateIdSelected !== '' ? {
+        let specialSearch = getUrlParameter('searchId');
+
+        if (specialSearch) {
+            let index = context.state.searches.findIndex(x => x.id == specialSearch)
+            searches[index].flagged += videosSelected.length
+        }
+
+        let stuff = this.props.templateIdSelected !== '' ? {
             templateId: this.props.templateIdSelected,
             nb_flagged: videosSelected.length
-        } : null
+        } : {}
 
-        return context.setState('lastSevenDaysflagged', sevenDays, templateStuff);
+        stuff.searches = searches
+
+        return context.setState('lastSevenDaysflagged', lastSevenDaysflagged, stuff);
     }
 
     componentWillReceiveProps(nextProps) {

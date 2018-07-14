@@ -5,7 +5,7 @@ import Select from '../../layouts/Select'
 import onClickOutside from "react-onclickoutside";
 import CountLetter from '../../layouts/CountLetter';
 import { Template } from '../../../shared/models/Template.class';
-import { labels } from '../../../config';
+import { labels, MAX_TEMPLATES } from '../../../config';
 import Input from '../../layouts/Input';
 
 export class NewTemplate extends Component {
@@ -20,7 +20,8 @@ export class NewTemplate extends Component {
             "template-description": '',
             "template-type": '',
             isOpen: false,
-            formValid: false
+            formValid: false,
+            isTooMany: false
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -31,8 +32,14 @@ export class NewTemplate extends Component {
         e.preventDefault();
         if (!this.state.formValid) return this.setState({ isOpen: false })
 
-        this.props.context.addTemplate([this.template], () =>
-            this.setState(this.baseState, () => this.template = new Template()));
+        if (this.props.context.state.templates.length >= MAX_TEMPLATES) {
+            return this.setState({
+                isTooMany: true
+            });
+        } else {
+            this.props.context.addTemplate([this.template], () =>
+                this.setState(this.baseState, () => this.template = new Template()));
+        }
     };
 
     handleFormValid() {
@@ -105,7 +112,12 @@ export class NewTemplate extends Component {
                                     maxLength="500"
                                 ></textarea>
                             </div>
-                            <div className="flex-me flex-justify-end pdi--bottom-7">
+                            <div className="flex-me flex-justify-between pdi--bottom-7">
+                                <div className="red-color">
+                                    { this.state.isTooMany &&
+                                        <span>You can't have more than {MAX_TEMPLATES} templates !</span>
+                                    }
+                                </div>
                                 <CountLetter
                                     text={this.state['template-description']}
                                     limit={500}

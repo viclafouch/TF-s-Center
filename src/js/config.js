@@ -10,3 +10,5 @@ export const labels = [
     { value: 'J', title: 'Child Abuse' },
     { value: 'Z', title: 'Spam' },
 ]
+
+export const MAX_TEMPLATES = 8

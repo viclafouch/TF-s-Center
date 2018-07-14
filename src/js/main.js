@@ -148,16 +148,22 @@ chrome.storage.sync.get({
                 });
             } else if (name === 'lastSevenDaysflagged') {
 
-                let { templates } = this.state;
+                let { templates, searches } = this.state;
 
                 if (stuff) {
-                    let index = templates.findIndex(x => x.id == stuff.templateId);
-                    templates[index].nb_flagged += stuff.nb_flagged
-                    templates[index].nb_used++
+                    if (stuff.templateId) {
+                        let index = templates.findIndex(x => x.id == stuff.templateId);
+                        templates[index].nb_flagged += stuff.nb_flagged
+                        templates[index].nb_used++
+                    }
                 }
 
                 chrome.storage.sync.set({
                     lastSevenDaysflagged: value,
+                    searches: searches.map(e => {
+                        e.created = e.created.format();
+                        return e;
+                    }),
                     templates: templates.map(e => {
                         e.created = e.created.format();
                         return e;
