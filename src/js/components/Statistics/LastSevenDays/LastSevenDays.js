@@ -35,9 +35,10 @@ const LastSevenDays = ({context}) => {
             yAxes: [{
                 ticks: {
                     beginAtZero: true,
-                    stepSize: 5,
+                    stepSize: 10,
                     min: 0,
-            }
+                    max: 100,
+                }
             }]
         }
     }
