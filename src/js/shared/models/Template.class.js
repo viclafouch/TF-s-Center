@@ -8,6 +8,8 @@ export class Template {
         this.title = template.title || null
         this.description = template.description || null
         this.type = template.type || null
+        this.nb_used = template.nb_used || 0
+        this.nb_flagged = template.nb_flagged || 0
         this.created = template.created ? moment(template.created) : moment()
     }
 }

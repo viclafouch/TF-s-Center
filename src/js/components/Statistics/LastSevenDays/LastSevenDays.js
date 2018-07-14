@@ -4,7 +4,7 @@ import { Line } from 'react-chartjs-2';
 
 const LastSevenDays = ({context}) => {
     const data = {
-        labels: context.state.flagged.reverse().map(e => e.date),
+        labels: context.state.lastSevenDaysflagged.reverse().map(e => e.date),
         datasets: [
             {
                 label: "Videos reported with TF's Center",
@@ -25,14 +25,26 @@ const LastSevenDays = ({context}) => {
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
-                data: context.state.flagged.map(e => e.videos.length)
+                data: context.state.lastSevenDaysflagged.map(e => e.videos)
             }
         ]
     };
 
+    const options = {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    stepSize: 5,
+                    min: 0,
+            }
+            }]
+        }
+    }
+
     return (
         <div>
-            <Line data={data} height={100} />
+            <Line data={data} height={100} options={options} />
         </div>
     )
 }

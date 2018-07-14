@@ -28,11 +28,16 @@ export class FormReporting extends Component {
         }
 
         let videosSelected = context.state.videosDisplayed.filter(elem => elem.selected);
-        let sevenDays = context.state.flagged
-        let flagged = sevenDays[0].videos.concat(videosSelected);
-        sevenDays[0].videos = flagged;
+        let sevenDays = context.state.lastSevenDaysflagged
+        let lastSevenDaysflagged = sevenDays[0].videos.concat(videosSelected).length
+        sevenDays[0].videos = lastSevenDaysflagged;
 
-        return context.setState('flagged', sevenDays);
+        let templateStuff = this.props.templateIdSelected !== '' ? {
+            templateId: this.props.templateIdSelected,
+            nb_flagged: videosSelected.length
+        } : null
+
+        return context.setState('lastSevenDaysflagged', sevenDays, templateStuff);
     }
 
     componentWillReceiveProps(nextProps) {

@@ -28,12 +28,12 @@ chrome.storage.sync.get({
     displaying: 'column',
     templates: [],
     searches: [],
-    flagged: [...sevenLastDays]
+    lastSevenDaysflagged: [...sevenLastDays]
 
 }, items => {
 
-    let flagged = sevenLastDays.map(elem => {
-        let flaggedFounded = items.flagged.find(x => x.date === elem.date);
+    let lastSevenDaysflagged = sevenLastDays.map(elem => {
+        let flaggedFounded = items.lastSevenDaysflagged.find(x => x.date === elem.date);
         if (flaggedFounded) {
             return {
                 date: elem.date,
@@ -70,7 +70,7 @@ chrome.storage.sync.get({
             this.state.canFlag = youTubeDatas.pathname === urlsAvailable[1]
             this.state.popupReportingOpened = false
             this.state.displaying = items.displaying
-            this.state.flagged = flagged
+            this.state.lastSevenDaysflagged = lastSevenDaysflagged
             this.state.templates = items.templates.map(elem => new Template(elem))
             this.state.searches = items.searches.map(elem => new Search(elem))
         }
@@ -141,14 +141,27 @@ chrome.storage.sync.get({
             });
         }
 
-        callbackState(name, value) {
+        callbackState(name, value, stuff) {
             if (name === 'displaying') {
                 chrome.storage.sync.set({
                     displaying: value
                 });
-            } else if (name === 'flagged') {
+            } else if (name === 'lastSevenDaysflagged') {
+
+                let { templates } = this.state;
+
+                if (stuff) {
+                    let index = templates.findIndex(x => x.id == stuff.templateId);
+                    templates[index].nb_flagged += stuff.nb_flagged
+                    templates[index].nb_used++
+                }
+
                 chrome.storage.sync.set({
-                    flagged: value
+                    lastSevenDaysflagged: value,
+                    templates: templates.map(e => {
+                        e.created = e.created.format();
+                        return e;
+                    })
                 }, () => {
                     document.getElementById('formFlagging').submit();
                 });
@@ -167,9 +180,9 @@ chrome.storage.sync.get({
                     removeTemplate: (template = [], callback) => this.actionItem(template, 'templates', callback),
                     addSearch: (search = [], callback) => this.actionItem(search, 'searches', callback),
                     removeSearch: (search = [], callback) => this.actionItem(search, 'searches', callback),
-                    setState: (name, value) => this.setState({
+                    setState: (name, value, stuffs = null) => this.setState({
                         [name]: value
-                    }, () => this.callbackState(name, value)),
+                    }, () => this.callbackState(name, value, stuffs)),
                 }}>{this.props.children}
                 </YouTubeContext.Provider>
             )
