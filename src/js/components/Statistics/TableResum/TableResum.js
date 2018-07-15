@@ -14,7 +14,7 @@ const TableResum = () => {
                                 <td>{context.state.statistics.allActioned}</td>
                             </tr>
                             <tr>
-                                <td>Video not actionned</td>
+                                <td>Videos not actionned</td>
                                 <td>{context.state.statistics.allFlagged - context.state.statistics.allActioned}</td>
                             </tr>
                             <tr>

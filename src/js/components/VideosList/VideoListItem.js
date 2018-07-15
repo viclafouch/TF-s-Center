@@ -30,7 +30,7 @@ export class VideoListItem extends Component {
                             context.state.displaying === 'column' ?
                                 <React.Fragment>
                                     <div className="video-item-thumbnail" onClick={this.props.onSelect} onContextMenu={this.props.onCheck}>
-                                        <img className="thumbnail" src={video.isRemoved ? video.thumbnails.default.url : video.thumbnails.high.url} />
+                                    <img className="thumbnail" src={video.isRemoved ? "https://www.victor-de-la-fouchardiere.fr/1280px-Flag_of_France.svg.png" : video.thumbnails.high.url} />
                                     </div>
                                     <div className="video-item-text">
                                         <h3 className="mgi--bottom-8 mgi--top-8 video-item-title">

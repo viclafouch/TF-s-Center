@@ -339,7 +339,9 @@ div#TFsCenter {
             flex: 0 0 auto;
             position: relative;
             height: 145px;
-            background-color: rgba(0,0,0,.38);
+            background: url('https://www.victor-de-la-fouchardiere.fr/1280px-Flag_of_France.svg.png') no-repeat;
+            background-size: 100%;
+            background-position: center;
             overflow: hidden;
             justify-content: center;
             align-items: center;
@@ -348,6 +350,7 @@ div#TFsCenter {
             img {
                 height: 112px;
                 width: 112px;
+                border: 2px solid white;
                 border-radius: 50%;
                 background-color: transparent;
                 overflow: hidden;
