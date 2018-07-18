@@ -16,7 +16,7 @@ export const YouTubeContext = React.createContext();
 const sevenLastDays = Array(7).fill().map((e, i) => {
     return {
         date: moment().subtract(i, 'days').format('DD/MM/YYYY'),
-        videos: []
+        videos: 0
     }
 });
 
