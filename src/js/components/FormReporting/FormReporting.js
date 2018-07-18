@@ -30,13 +30,13 @@ export class FormReporting extends Component {
 
         let videosSelected = context.state.videosDisplayed.filter(elem => elem.selected);
         let { lastSevenDaysflagged, searches }= context.state
-        lastSevenDaysflagged[0].videos = parseInt(lastSevenDaysflagged[0].videos) + parseInt(videosSelected.length)
+        lastSevenDaysflagged[0].videos += videosSelected.length
 
         let specialSearch = getUrlParameter('searchId');
 
         if (specialSearch) {
             let index = context.state.searches.findIndex(x => x.id == specialSearch)
-            searches[index].flagged = parseInt(searches[index].flagged) + parseInt(videosSelected.length)
+            searches[index].flagged += videosSelected.length
         }
 
         let stuff = this.props.templateIdSelected !== '' ? {

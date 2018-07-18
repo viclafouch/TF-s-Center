@@ -10,7 +10,7 @@ export class Search {
         this.selected = false;
         this.flagged = search.flagged || 0;
         this.autoSelect = search.autoSelect || false;
-        this.templateId = search.templateId ? parseInt(search.templateId) : null
+        this.templateId = search.templateId ? parseInt(search.templateId, 10) : null
     }
 
     getTemplate(context) {
