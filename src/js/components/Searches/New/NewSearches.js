@@ -62,7 +62,7 @@ export class NewSearches extends Component {
                             />
                         </div>
                         <Button blue className="mgi--left-7" type="submit">Add</Button>
-                        <Button blue className="mgi--left-7" onClick={() => trySearch(this.state["search-value-add"].trim())} disabled={this.state["search-value-add"].trim() === ''}>Test</Button>
+                        <Button blue className="mgi--left-7" onClick={() => trySearch(this.state["search-value-add"].trim(), false, true)} disabled={this.state["search-value-add"].trim() === ''}>Test</Button>
                     </div>
                     <div className="mgi--top-10 flex-me flex-align">
                         <Select

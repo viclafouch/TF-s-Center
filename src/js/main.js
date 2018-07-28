@@ -20,7 +20,22 @@ const sevenLastDays = Array(7).fill().map((e, i) => {
     }
 });
 
-// chrome.storage.sync.clear();
+function fadeOutEffect(elem) {
+    let fadeTarget = elem;
+    let fadeEffect = setInterval(function () {
+        if (!fadeTarget.style.opacity) {
+            fadeTarget.style.opacity = 1;
+        }
+        if (fadeTarget.style.opacity > 0) {
+            fadeTarget.style.opacity -= 0.1;
+        } else {
+            fadeTarget.style.display = 'none'
+            clearInterval(fadeEffect);
+        }
+    }, 200);
+}
+
+document.getElementById("confirmBox") && fadeOutEffect(document.getElementById("confirmBox"));
 
 chrome.runtime.sendMessage({ type: 'showPageAction' });
 

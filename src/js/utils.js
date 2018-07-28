@@ -22,16 +22,17 @@ export function updateQueryStringParameter(uri, key, value) {
     }
 }
 
-export function openInNewTab(url) {
-    var win = window.open(url, '_blank');
+export function openInNewTab(url, newTab = false) {
+    newTab = newTab ? '_blank' : false
+    var win = window.open(url, newTab);
     win.focus();
 }
 
-export function trySearch(text, search) {
+export function trySearch(text, search, newTab = false) {
     let urlEncodade = encodeURIComponent('"' + text.trim() + '"').replace(/%20/g, '+');
     let url = `/deputy?search_query=${urlEncodade}`
     url = search ? url + `&searchId=${search.id}` : url
-    return openInNewTab(url);
+    return openInNewTab(url, newTab);
 }
 
 String.prototype.cleanString = function () {

@@ -69,3 +69,9 @@ $tblr: "top" "bottom" "left" "right";
 .left-text {
     text-align: left;
 }
+
+.row::after {
+    content: '';
+    display: table;
+    clear: both;
+}
