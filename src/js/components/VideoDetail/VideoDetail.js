@@ -86,7 +86,7 @@ export class VideoDetail extends Component {
                     </div>
                     <div className="video-popup-body-aside">
                         <section className="thumbs-section">
-                            {video.thumbnails && <img src={video.thumbnails.medium.url} />}
+                            {video.id && <img src={video.thumbnails.medium.url} />}
                         </section>
                         <section className="tags-section">
                             <ul className="list-tags scrollBarOnHover">

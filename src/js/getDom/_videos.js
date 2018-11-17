@@ -37,33 +37,6 @@ let videos = function getVideos() {
             videoAddedTime: videoAddedTime,
             description: description,
             isReviewed: isReviewed,
-            thumbnails: {
-                default: {
-                    url: "https://i.ytimg.com/vi/"+id+"/default.jpg",
-                    width: 120,
-                    height: 90
-                },
-                medium: {
-                    url: "https://i.ytimg.com/vi/"+id+"/mqdefault.jpg",
-                    width: 320,
-                    height: 180
-                },
-                high: {
-                    url: "https://i.ytimg.com/vi/"+id+"/hqdefault.jpg",
-                    width: 480,
-                    height: 360
-                },
-                standard: {
-                    url: "https://i.ytimg.com/vi/"+id+"/sddefault.jpg",
-                    width: 640,
-                    height: 480
-                },
-                maxres: {
-                    url: "https://i.ytimg.com/vi/"+id+"/maxresdefault.jpg",
-                    width: 1280,
-                    height: 720
-                }
-            },
             isRemoved: isRemoved,
         }))
     }

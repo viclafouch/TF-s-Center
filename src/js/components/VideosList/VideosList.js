@@ -42,10 +42,9 @@ export class VideosList extends Component {
                 if (response.items.length === 0) throw new Error('NOT_FOUND_OR_REMOVED')
                 return response.items[0].snippet
             })
-            .then(video => {
-                video =  new Video(video)
-                video.id = id;
-                return video;
+            .then(responseVideo => {
+                responseVideo.id = id
+                return new Video(responseVideo)
             })
             .catch(e => {
                 throw e
