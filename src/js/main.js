@@ -11,6 +11,7 @@ import getUser from './getDom/_user'
 import { urlsAvailable } from './config';
 import Template from './shared/models/Template.class'
 import Search from './shared/models/Search.class'
+import { wait } from './utils';
 
 export const YouTubeContext = React.createContext();
 const sevenLastDays = Array(7).fill().map((e, i) => {
@@ -45,7 +46,7 @@ chrome.storage.sync.get({
     searches: [],
     lastSevenDaysflagged: [...sevenLastDays]
 
-}, items => {
+}, async items => {
 
     let lastSevenDaysflagged = sevenLastDays.map(elem => {
         let flaggedFounded = items.lastSevenDaysflagged.find(x => x.date === elem.date);
@@ -68,9 +69,19 @@ chrome.storage.sync.get({
     }
 
     const myReactApp = document.createElement("div");
-    myReactApp.setAttribute("id", "TFsCenter");
-    document.getElementById('page-container').innerHTML = '';
-    document.getElementById('page-container').appendChild(myReactApp);
+
+    if (youTubeDatas.pathname !== '/watch') {
+      myReactApp.setAttribute("id", "TFsCenter");
+      document.getElementById('page-container').innerHTML = '';
+      document.getElementById('page-container').appendChild(myReactApp);
+    } else {
+      myReactApp.setAttribute("id", "button-flag-TF");
+      // Website uses Angular and asynchrone injection
+      while (!document.getElementById('info').querySelector('#top-level-buttons')) {
+        await wait(50)
+      }
+      document.getElementById('info').querySelector('#top-level-buttons').appendChild(myReactApp);
+    }
 
     class YouTubeProvider extends React.Component {
 

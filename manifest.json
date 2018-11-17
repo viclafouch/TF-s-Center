@@ -29,7 +29,7 @@
             "matches": [
                 "https://www.youtube.com/flagging_history*",
                 "https://www.youtube.com/deputy*",
-                "http://www.youtube.com/deputy*"
+                "https://www.youtube.com/watch*"
             ],
             "js": [
                 "src/build/main.js"

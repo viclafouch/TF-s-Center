@@ -865,3 +865,35 @@ div#TFsCenter {
         }
     }
 }
+
+div#button-flag-TF {
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  font-weight: 500;
+  color: #909090;
+  padding-right: 8px;
+
+  a {
+    display: flex;
+    cursor: pointer;
+    align-content: center;
+    justify-content: center;
+    color: inherit;
+    border: 0;
+    text-decoration: none;
+    margin-top: -3px;
+
+    span {
+      font-size: 1.3rem;
+      font-weight: 500;
+      letter-spacing: .007px;
+      text-transform: uppercase;
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}

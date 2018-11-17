@@ -8,11 +8,13 @@ import { YouTubeContext } from '../main';
 import TemplatesContainer from '../containers/TemplatesContainer';
 import SearchesContainer from '../containers/SearchesContainer';
 import AnalyticsContainer from '../containers/AnalyticsContainer';
+import FlagButton from './FlagButton/FlagButton';
 
 class App extends Component {
-
     render() {
         return (
+            window.location.pathname !== '/watch'
+            ?
             <React.Fragment>
                 <Sidebar />
                 <div className="main-container">
@@ -43,6 +45,8 @@ class App extends Component {
                     </YouTubeContext.Consumer>
                 </div>
             </React.Fragment>
+            :
+            <FlagButton />
         )
     }
 }

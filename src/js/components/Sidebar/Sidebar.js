@@ -69,11 +69,11 @@ export class Sidebar extends Component {
                                     </a>
                                 </li>
                                 <li>
-                                    <a href={`https://mail.google.com/mail/u/0/?view=cm&fs=1&to=${EMAIL_TRUSTED_FLAGGERS}`} target="_blank" className="youtube-link">
+                                    <a href={EMAIL_FLAGGER_LABEL} target="_blank" className="youtube-link">
                                         <span className="span-icon mgi--right-16">
                                             <FontAwesomeIcon icon={faEnvelope} size="1x" fixedWidth />
                                         </span>
-                                        <span className="text-link">{EMAIL_FLAGGER_LABEL}</span>
+                                        <span className="text-link">trusted@flagging</span>
                                     </a>
                                 </li>
                             </ul>

@@ -11,6 +11,8 @@ export function getUrlParameter(sParam) {
     }
 };
 
+export const wait = (amount = 0) => new Promise(resolve => setTimeout(resolve, amount));
+
 export function updateQueryStringParameter(uri, key, value) {
     var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
     var separator = uri.indexOf('?') !== -1 ? "&" : "?";
