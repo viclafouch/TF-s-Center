@@ -76,6 +76,14 @@ export class VideosList extends Component {
                     isLoading: false
                 });
             } catch (error) {
+                if (error.message === "NOT_FOUND_OR_REMOVED" && this.props.context.state.onToFlag) {
+                  const { videosToFlag } = this.props.context.state;
+                  const existingIndex = videosToFlag.findIndex(x => x.id === video.id)
+                  if (existingIndex !== -1) {
+                    videosToFlag.splice(existingIndex, 1);
+                  }
+                  this.props.context.setState('videosToFlag', videosToFlag)
+                }
                 console.error(error);
                 this.setState({
                     isLoading: false
