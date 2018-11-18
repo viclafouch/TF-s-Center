@@ -289,7 +289,11 @@ function initExtension() {
     .catch(e => console.warn('Error TF-Center: ' + e))
 }
 
-initExtension();
+let pathname = getPathname()
+
+if (getUrlParameter('v') || urlsAvailable.includes(pathname)) {
+  initExtension();
+}
 
 // if async page changes
 let oldHref = document.location.href;
@@ -306,7 +310,7 @@ window.onload = function () {
           while (!document.querySelector(`[video-id="${newId}"]`)) {
             await wait(50)
           }
-          return initExtension();
+          return getUrlParameter('v') ? initExtension() : null
         }
       });
     });

@@ -27,9 +27,7 @@
     "content_scripts": [
         {
             "matches": [
-                "https://www.youtube.com/flagging_history*",
-                "https://www.youtube.com/deputy*",
-                "https://www.youtube.com/watch*"
+                "https://www.youtube.com/*"
             ],
             "js": [
                 "src/build/main.js"
