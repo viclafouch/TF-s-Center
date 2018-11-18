@@ -3,20 +3,22 @@ import { getUrlParameter } from '../utils'
 
 let pathname = function getPathname() {
     let { pathname } = window.location;
+    const context = getUrlParameter(querys[1])
 
-    if (urlsAvailable.length > 1 && querys.length > 0) {
-        if (pathname === urlsAvailable[1]) {
-            if (getUrlParameter(querys[1]) === 'templates') {
-                pathname = '/templates'
-            } else if (getUrlParameter(querys[1]) === 'searches') {
-                pathname = '/searches'
-            } else if (getUrlParameter(querys[2])) {
-                pathname = '/watch'
-            } else if (!getUrlParameter(querys[0])) {
-                pathname = '/stats'
-            }
-        }
+    if (pathname === urlsAvailable[1] && urlsAvailable.includes(`/${context}`)) {
+      pathname = `/${context}` // Deputy with context
+    } else if (pathname === urlsAvailable[1] && context === undefined) {
+      pathname = urlsAvailable[1] // Deputy without context
+    } else if (pathname === urlsAvailable[0]) {
+      pathname = '/flagging_history' // No Deputy but flag history
+    } else if (getUrlParameter(querys[2])) {
+      pathname = '/watch' // In a v=XXXX
+    } else {
+      pathname = null
     }
+
+  console.log(pathname);
+
 
     return pathname;
 }

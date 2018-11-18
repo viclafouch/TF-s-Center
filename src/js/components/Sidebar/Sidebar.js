@@ -53,7 +53,7 @@ export class Sidebar extends Component {
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/deputy" className={'youtube-link ' + (context.state.pathname === urlsAvailable[2] ? 'active' : '')}>
+                                    <a href="/deputy?context=stats" className={'youtube-link ' + (context.state.pathname === urlsAvailable[2] ? 'active' : '')}>
                                         <span className="span-icon mgi--right-16">
                                             <FontAwesomeIcon icon={faChartLine} size="1x" fixedWidth />
                                         </span>
