@@ -44,221 +44,255 @@ function initExtension() {
 
   chrome.runtime.sendMessage({ type: 'showPageAction' });
 
-  chrome.storage.sync.get({
-    displaying: 'column',
-    templates: [],
-    searches: [],
-    videosToFlag: [],
-    lastSevenDaysflagged: [...sevenLastDays]
-  }, async items => {
-
-    const videoIdWatch = getUrlParameter('v');
-    const pathname = getPathname()
-    const myReactApp = document.createElement("div");
-
-     // For /watch, website uses Angular and asynchrone injection, wait DOM ready
-    if (pathname === '/watch') {
-      while (!document.getElementById('info').querySelector('#top-level-buttons')) {
-        await wait(50)
-      }
+  let storageDefault = {
+    local: {
+      videosToFlag: []
+    },
+    sync: {
+      displaying: 'column',
+      templates: [],
+      searches: [],
+      lastSevenDaysflagged: [...sevenLastDays]
     }
+  }
 
-    let youTubeDatas = {
-      pathname,
-      videos: getVideos(),
-      search: getSearch(),
-      pagination: getPagination(),
-      statistics: pathname === '/stats' ? getStatistics() : null,
-      user: getUser(),
-      videoIdWatch: videoIdWatch,
-      videoWatched: pathname === '/watch' ? getVideo(videoIdWatch) : null,
-    }
-
-    if (pathname !== '/watch') {
-      myReactApp.setAttribute("id", "TFsCenter");
-      document.getElementById('page-container').innerHTML = '';
-      document.getElementById('page-container').appendChild(myReactApp);
+  let getStorages = (type) => new Promise((resolve, reject) => {
+    if (!chrome.runtime.lastError) {
+      chrome.storage[type].get(storageDefault[type], items => {
+        resolve(items);
+      })
     } else {
-      myReactApp.setAttribute("id", "button-flag-TF");
-      document.getElementById('info').querySelector('#top-level-buttons').appendChild(myReactApp);
+      reject('Error when loading storage ' + type)
     }
+  });
 
-    let lastSevenDaysflagged = sevenLastDays.map(elem => {
-      let flaggedFounded = items.lastSevenDaysflagged.find(x => x.date === elem.date);
-      if (flaggedFounded) {
-        return {
+  Promise.all([getStorages('local'), getStorages('sync')])
+    .then(async storages => {
+      const storage = storages.reduce((a, d) => Object.assign(d, a), {});
+
+      const videoIdWatch = getUrlParameter('v');
+      const pathname = getPathname()
+      const myReactApp = document.createElement("div");
+
+      // For /watch, website uses Angular and asynchrone injection, wait DOM ready
+      if (pathname === '/watch') {
+        while (!document.getElementById('info').querySelector('#top-level-buttons')) {
+          await wait(50)
+        }
+      }
+
+      let youTubeDatas = {
+        pathname,
+        videos: getVideos(),
+        search: getSearch(),
+        pagination: getPagination(),
+        statistics: pathname === '/stats' ? getStatistics() : null,
+        user: getUser(),
+        videoIdWatch: videoIdWatch,
+        videoWatched: pathname === '/watch' ? getVideo(videoIdWatch) : null,
+      }
+
+      if (pathname === '/watch') {
+        myReactApp.setAttribute("id", "button-flag-TF");
+        document.getElementById('info').querySelector('#top-level-buttons').appendChild(myReactApp);
+      } else {
+        myReactApp.setAttribute("id", "TFsCenter");
+        document.getElementById('page-container').innerHTML = '';
+        document.getElementById('page-container').appendChild(myReactApp);
+      }
+
+      const lastSevenDaysflagged = sevenLastDays.map(elem => {
+        const flaggedFounded = storage.lastSevenDaysflagged.find(x => x.date === elem.date);
+        return flaggedFounded ? {
           date: elem.date,
           videos: flaggedFounded.videos
-        }
-      }
-      return elem;
-    })
+        } : elem
+      })
 
-    class YouTubeProvider extends React.Component {
+      class YouTubeProvider extends React.Component {
 
-      constructor() {
-        super();
-        this.state = youTubeDatas;
-        this.baseHide = {}
+        constructor() {
+          super();
+          this.state = youTubeDatas;
+          this.baseHide = {}
 
-        this.state.videosDisplayed = youTubeDatas.videos
-        this.state.hideRemoved = this.baseHide.hideRemoved = false
-        this.state.hideReviewed = this.baseHide.hideReviewed = false
-        this.state.canFlag = youTubeDatas.pathname === urlsAvailable[1]
-        this.state.popupReportingOpened = false
-        this.state.displaying = items.displaying
-        this.state.videosToFlag = items.videosToFlag.map(e => new Video(e))
-        this.state.videoWatched = youTubeDatas.videoWatched
-        this.state.lastSevenDaysflagged = lastSevenDaysflagged
-        this.state.templates = items.templates.map(elem => new Template(elem))
-        this.state.searches = items.searches.map(elem => new Search(elem))
+          this.state.videosDisplayed = youTubeDatas.videos
+          this.state.hideRemoved = this.baseHide.hideRemoved = false
+          this.state.hideReviewed = this.baseHide.hideReviewed = false
+          this.state.canFlag = youTubeDatas.pathname === urlsAvailable[1]
+          this.state.popupReportingOpened = false
+          this.state.displaying = storage.displaying
+          this.state.videosToFlag = storage.videosToFlag.map(e => new Video(e))
+          this.state.videoWatched = youTubeDatas.videoWatched
+          this.state.lastSevenDaysflagged = lastSevenDaysflagged
+          this.state.templates = storage.templates.map(elem => new Template(elem))
+          this.state.searches = storage.searches.map(elem => new Search(elem))
 
-        if (youTubeDatas.pathname === urlsAvailable[5]) {
-          this.state.videosDisplayed = this.state.videosToFlag
-          this.state.canFlag = true
-          this.state.onToFlag = true
-        }
-      }
-
-      selectItems(items = [], type, force = false) {
-        let itemsDisplayed = [...this.state[type]];
-
-        if (force && itemsDisplayed.filter(x => x.selected).length === itemsDisplayed.length) {
-          for (let index = 0; index < itemsDisplayed.length; index++) {
-            if (items.find(x => x.id === itemsDisplayed[index].id)) {
-              itemsDisplayed[index].selected = false
-            }
-          }
-        } else {
-          for (let index = 0; index < itemsDisplayed.length; index++) {
-            if (items.find(x => x.id === itemsDisplayed[index].id)) {
-              itemsDisplayed[index].selected = force || !itemsDisplayed[index].selected
-            }
+          if (youTubeDatas.pathname === urlsAvailable[5]) {
+            this.state.videosDisplayed = this.state.videosToFlag
+            this.state.canFlag = true
+            this.state.onToFlag = true
           }
         }
 
-        this.setState({
-          [type]: itemsDisplayed
-        });
-      }
+        selectItems(items = [], type, force = false) {
+          let itemsDisplayed = [...this.state[type]];
 
-      actionItem(arrayItems, type, callback) {
-
-        let items = this.state[type];
-
-        for (let index = 0; index < arrayItems.length; index++) {
-          const element = arrayItems[index];
-          let ItemIndex = items.findIndex(x => x.id === element.id)
-          if (ItemIndex >= 0) {
-            items = items.filter((e, i) => i !== ItemIndex);
+          if (force && itemsDisplayed.filter(x => x.selected).length === itemsDisplayed.length) {
+            for (let index = 0; index < itemsDisplayed.length; index++) {
+              if (items.find(x => x.id === itemsDisplayed[index].id)) {
+                itemsDisplayed[index].selected = false
+              }
+            }
           } else {
-            items.unshift(element);
-          }
-        }
-
-        return chrome.storage.sync.set({
-          [type]: [...items].map(e => {
-            e.created = e.created.format();
-            return e;
-          })
-        }, () => this.setState({
-          [type]: items.map(e => {
-            e.created = moment(e.created)
-            return e;
-          })
-        }, () => callback && callback()));
-      }
-
-      filterVideos(type) {
-        const hides = Object.assign({}, this.baseHide);
-        const { videos } = this.state
-        hides[type] = !this.state[type];
-
-        let videosDisplayed = videos.filter(video => {
-          return hides.hideReviewed ? !video.isReviewed : hides.hideRemoved ? !video.isRemoved : true
-        });
-
-        return this.setState({
-          videosDisplayed,
-          hideRemoved: hides.hideRemoved,
-          hideReviewed: hides.hideReviewed,
-        });
-      }
-
-      callbackState(name, value, stuff) {
-        if (name === 'displaying') {
-          chrome.storage.sync.set({
-            displaying: value
-          });
-        } else if (name === 'lastSevenDaysflagged') {
-
-          let { templates, searches } = this.state;
-
-          if (stuff) {
-            if (stuff.templateId) {
-              let index = templates.findIndex(x => x.id == stuff.templateId);
-              templates[index].nb_flagged += stuff.nb_flagged
-              templates[index].nb_used++
+            for (let index = 0; index < itemsDisplayed.length; index++) {
+              if (items.find(x => x.id === itemsDisplayed[index].id)) {
+                itemsDisplayed[index].selected = force || !itemsDisplayed[index].selected
+              }
             }
           }
 
-          chrome.storage.sync.set({
-            lastSevenDaysflagged: value,
-            searches: searches.map(e => {
-              e.created = e.created.format();
-              return e;
-            }),
-            templates: templates.map(e => {
+          this.setState({
+            [type]: itemsDisplayed
+          });
+        }
+
+        actionItem(arrayItems, type, callback) {
+
+          let items = this.state[type];
+
+          for (let index = 0; index < arrayItems.length; index++) {
+            const element = arrayItems[index];
+            let ItemIndex = items.findIndex(x => x.id === element.id)
+            if (ItemIndex >= 0) {
+              items = items.filter((e, i) => i !== ItemIndex);
+            } else {
+              items.unshift(element);
+            }
+          }
+
+          return chrome.storage.sync.set({
+            [type]: [...items].map(e => {
               e.created = e.created.format();
               return e;
             })
-          }, () => {
-            document.getElementById('formFlagging').submit();
-          });
-        } else if (name === 'videosToFlag') {
-          chrome.storage.sync.set({
-            videosToFlag: this.state.videosToFlag.map(e => {
-              e.publishedAt = e.publishedAt.format();
+          }, () => this.setState({
+            [type]: items.map(e => {
+              e.created = moment(e.created)
               return e;
-            }),
+            })
+          }, () => callback && callback()));
+        }
+
+        removeVideosToFlag(sendForm = false) {
+          const listVideoToFlag = this.state.videosToFlag.filter(e => !e.selected)
+          chrome.storage.local.set({
+            videosToFlag: [...listVideoToFlag].map(e => {
+              e.publishedAt = e.publishedAt.format && e.publishedAt.format();
+              return e;
+            })
+          }, () => {
+            if (sendForm) {
+              document.getElementById('formFlagging').submit();
+            } else {
+              this.setState({
+                videosDisplayed: listVideoToFlag
+              })
+            }
           })
+        }
+
+        filterVideos(type) {
+          const hides = Object.assign({}, this.baseHide);
+          const { videos } = this.state
+          hides[type] = !this.state[type];
+
+          let videosDisplayed = videos.filter(video => {
+            return hides.hideReviewed ? !video.isReviewed : hides.hideRemoved ? !video.isRemoved : true
+          });
+
+          return this.setState({
+            videosDisplayed,
+            hideRemoved: hides.hideRemoved,
+            hideReviewed: hides.hideReviewed,
+          });
+        }
+
+        callbackState(name, value, stuff) {
+          if (name === 'displaying') {
+            chrome.storage.sync.set({
+              displaying: value
+            });
+          } else if (name === 'lastSevenDaysflagged') {
+
+            let { templates, searches } = this.state;
+
+            if (stuff) {
+              if (stuff.templateId) {
+                let index = templates.findIndex(x => x.id == stuff.templateId);
+                templates[index].nb_flagged += stuff.nb_flagged
+                templates[index].nb_used++
+              }
+            }
+
+            chrome.storage.sync.set({
+              lastSevenDaysflagged: value,
+              searches: searches.map(e => {
+                e.created = e.created.format();
+                return e;
+              }),
+              templates: templates.map(e => {
+                e.created = e.created.format();
+                return e;
+              })
+            }, () => {
+                if (this.state.onToFlag) {
+                  return removeVideosToFlag(true)
+                } else {
+                  return document.getElementById('formFlagging').submit();
+                }
+            });
+          } else if (name === 'videosToFlag') {
+            chrome.storage.local.set({
+              videosToFlag: this.state.videosToFlag.map(e => {
+                e.publishedAt = e.publishedAt.format && e.publishedAt.format();
+                return e;
+              }),
+            })
+          }
+        }
+
+        render() {
+          return (
+            <YouTubeContext.Provider value={{
+              state: this.state,
+              selectVideos: (videos = []) => this.selectItems(videos, 'videosDisplayed'),
+              selectSearches: (searches = []) => this.selectItems(searches, 'searches'),
+              selectAll: (type, force = true) => this.selectItems(this.state[type], type, force),
+              filterVideos: type => this.filterVideos(type),
+              addTemplate: (template = [], callback) => this.actionItem(template, 'templates', callback),
+              removeTemplate: (template = [], callback) => this.actionItem(template, 'templates', callback),
+              removeVideosToFlag: sendForme => this.removeVideosToFlag(sendForme),
+              addSearch: (search = [], callback) => this.actionItem(search, 'searches', callback),
+              removeSearch: (search = [], callback) => this.actionItem(search, 'searches', callback),
+              setState: (name, value, stuffs = null) => this.setState({
+                [name]: value
+              }, () => this.callbackState(name, value, stuffs)),
+            }}>{this.props.children}
+            </YouTubeContext.Provider>
+          )
         }
       }
 
-      render() {
-        return (
-          <YouTubeContext.Provider value={{
-            state: this.state,
-            selectVideos: (videos = []) => this.selectItems(videos, 'videosDisplayed'),
-            selectSearches: (searches = []) => this.selectItems(searches, 'searches'),
-            selectAll: (type, force = true) => this.selectItems(this.state[type], type, force),
-            filterVideos: type => this.filterVideos(type),
-            addTemplate: (template = [], callback) => this.actionItem(template, 'templates', callback),
-            removeTemplate: (template = [], callback) => this.actionItem(template, 'templates', callback),
-            addSearch: (search = [], callback) => this.actionItem(search, 'searches', callback),
-            removeSearch: (search = [], callback) => this.actionItem(search, 'searches', callback),
-            setState: (name, value, stuffs = null) => this.setState({
-              [name]: value
-            }, () => this.callbackState(name, value, stuffs)),
-          }}>{this.props.children}
-          </YouTubeContext.Provider>
-        )
-      }
-    }
-
-    ReactDOM.render(
-      <YouTubeProvider>
-        <App />
-      </YouTubeProvider>,
-      myReactApp);
-  });
+      ReactDOM.render(<YouTubeProvider><App /></YouTubeProvider>, myReactApp);
+    })
+    .catch(e => console.warn('Error TF-Center: ' + e))
 }
 
 initExtension();
 
-let oldHref = document.location.href;
-
 // if async page changes
+let oldHref = document.location.href;
 window.onload = function () {
   let bodyList = document.querySelector("body")
   let observer = new MutationObserver(mutations => {

@@ -280,9 +280,13 @@ div#TFsCenter {
             }
 
             .video-item-description {
-                max-height: 35px;
                 overflow: hidden;
-                text-overflow: clip;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                line-height: 16px;     /* fallback */
+                max-height: 48px;      /* fallback */
+                -webkit-line-clamp: 3; /* number of lines to show */
+                -webkit-box-orient: vertical;
                 font-size: 13px;
                 color: #333;
             }
@@ -304,6 +308,8 @@ div#TFsCenter {
                 display: block;
 
                 .thumbnail {
+                    height: 100%;
+                    display: block;
                     width: auto;
                     transition: all 0.3s;
                     cursor: pointer;

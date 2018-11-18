@@ -43,12 +43,12 @@ export class VideoListItem extends Component {
                                     </div>
                                 </React.Fragment>
                                 :
-                                <div className="flex-me" onLoad={() => this.loadDescription()} onContextMenu={this.props.onCheck}>
+                                <div className="flex-me flex-align" onLoad={() => this.loadDescription()} onContextMenu={this.props.onCheck}>
                                     <div className="video-item-thumbnail" onClick={this.props.onSelect}>
                                         <img className="thumbnail" src={video.thumbnails.default.url} />
                                     </div>
                                     <div className="mgi--left-15 video-item-text" style={{flex: '1'}}>
-                                        <h3 className="mgi--bottom-8 mgi--top-8 video-item-title">
+                                        <h3 className="mgi--bottom-8 video-item-title">
                                             <a href={video.getVideoUrl()} target="_blank" title={!video.isRemoved ? video.title : ''} className={video.isRemoved ? 'removed-on-text' : video.isReviewed ? 'reviewed-on-text' : ''}>{video.title || 'This video is no longer available'}</a>
                                         </h3>
                                         <p className="video-item-description mgi--bottom-4" id={'description-'+video.id}></p>

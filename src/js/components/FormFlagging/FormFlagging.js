@@ -74,13 +74,18 @@ export class FormFlagging extends Component {
     }
 
     render() {
+
+      const nbPage = getUrlParameter('page') || '1' // Int @string
+      const filterPeriod = getUrlParameter('filters') || '' // anytime !== '' wtfff @string select
+      const search = this.props.context.state.search || '' // @string
+
         return (
             <YouTubeContext.Consumer>
                 {(context) => (
                     <form action="/deputy?action_submit" id="formFlagging" method="POST" className="form-flagging full-heigth">
-                        <input type="hidden" name="search_query" value={context.state.search} />
-                        <input type="hidden" name="page" value={getUrlParameter('page') || 1} />
-                        <input type="hidden" name="filters" value={getUrlParameter('filters') || ''} />
+                        <input type="hidden" name="search_query" value={search} />
+                        <input type="hidden" name="page" value={nbPage} />
+                        <input type="hidden" name="filters" value={filterPeriod} />
                         <ToolsFlag />
                         <VideosList
                             videos={context.state.videosDisplayed}

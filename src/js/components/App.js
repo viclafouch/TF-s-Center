@@ -41,10 +41,7 @@ class App extends Component {
                                     <SearchesContainer />
                                 </div>
                             : context.state.pathname === urlsAvailable[5] ?
-                                <div className="full-heigth">
-                                  <ToolsFlag />
-                                  <VideosList videos={context.state.videosDisplayed} />
-                                </div>
+                                <FormFlagging videos={context.state.videosDisplayed} context={context} />
                             : <div>This page do not exist</div>
                         )}
                     </YouTubeContext.Consumer>

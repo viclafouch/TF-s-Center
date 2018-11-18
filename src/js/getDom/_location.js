@@ -8,7 +8,7 @@ let pathname = function getPathname() {
     if (pathname === urlsAvailable[1] && urlsAvailable.includes(`/${context}`)) {
       pathname = `/${context}` // Deputy with context
     } else if (pathname === urlsAvailable[1] && context === undefined) {
-      pathname = urlsAvailable[1] // Deputy without context
+      pathname = getUrlParameter(querys[0]) ? urlsAvailable[1] : urlsAvailable[5] // Deputy search or videoToFlag
     } else if (pathname === urlsAvailable[0]) {
       pathname = '/flagging_history' // No Deputy but flag history
     } else if (getUrlParameter(querys[2])) {
@@ -16,9 +16,6 @@ let pathname = function getPathname() {
     } else {
       pathname = null
     }
-
-  console.log(pathname);
-
 
     return pathname;
 }

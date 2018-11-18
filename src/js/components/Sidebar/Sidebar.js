@@ -9,6 +9,7 @@ import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons/faSignOutAlt'
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch'
 import { faFlag } from '@fortawesome/free-solid-svg-icons/faFlag'
 import { faChrome } from '@fortawesome/free-brands-svg-icons/faChrome'
+import { faBroom } from '@fortawesome/free-solid-svg-icons/faBroom'
 import { EMAIL_TRUSTED_FLAGGERS, CONTRIBUTOR_LINK, HANGOUTS_ME, EMAIL_FLAGGER_LABEL } from '../../../../private'
 import { YouTubeContext } from '../../main';
 import { urlsAvailable } from '../../config';
@@ -50,6 +51,14 @@ export class Sidebar extends Component {
                                             <FontAwesomeIcon icon={faSearch} size="1x" fixedWidth />
                                         </span>
                                         <span className="text-link">Searches</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/deputy" className={'youtube-link ' + (context.state.pathname === urlsAvailable[5] ? 'active' : '')}>
+                                        <span className="span-icon mgi--right-16">
+                                          <FontAwesomeIcon icon={faBroom} size="1x" fixedWidth />
+                                        </span>
+                                        <span className="text-link">Targets</span>
                                     </a>
                                 </li>
                                 <li>
