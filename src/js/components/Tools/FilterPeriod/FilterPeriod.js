@@ -35,19 +35,17 @@ export class FilterPeriod extends Component {
 
     handleChange(e) {
         let period = e.target.value;
-
-        if (!this.periods.find(x => x.value == period)) return;
-
+        if (!this.periods.find(x => x.value == period) || this.props.disabled) return;
         let url = updateQueryStringParameter(window.location.href, 'filters', period)
-
         return window.location.href = url;
     }
 
     render() {
         return (
-            <div className="tools-filter-period">
+            <div className={'tool tools-filter-period ' + (this.props.disabled ? 'tool-disabled' : '')}>
                 <Select
                     blue
+                    disabled={this.props.disabled}
                     value={this.state.filters}
                     onChange={this.handleChange}
                     name="filterPeriod"

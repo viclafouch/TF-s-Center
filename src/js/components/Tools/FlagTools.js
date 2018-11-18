@@ -17,10 +17,10 @@ const FlagTools = (context) => {
                     >Flag selected videos</Button>
                 </div>
                 <div className="mgi--right-10">
-                    <FilterPeriod />
+                    <FilterPeriod disabled={context.state.onToFlag} />
                 </div>
                 <div className="mgi--right-10">
-                    <ExcludeFlagged />
+                    <ExcludeFlagged disabled={context.state.onToFlag}/>
                 </div>
                 <div className="mgi--right-10">
                     <SelectDisplay />

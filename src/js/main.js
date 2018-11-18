@@ -68,10 +68,10 @@ function initExtension() {
       videos: getVideos(),
       search: getSearch(),
       pagination: getPagination(),
-      statistics: getPathname() === '/stats' ? getStatistics() : null,
+      statistics: pathname === '/stats' ? getStatistics() : null,
       user: getUser(),
       videoIdWatch: videoIdWatch,
-      videoWatched: getPathname() === '/watch' ? getVideo(videoIdWatch) : null,
+      videoWatched: pathname === '/watch' ? getVideo(videoIdWatch) : null,
     }
 
     if (pathname !== '/watch') {
@@ -112,6 +112,12 @@ function initExtension() {
         this.state.lastSevenDaysflagged = lastSevenDaysflagged
         this.state.templates = items.templates.map(elem => new Template(elem))
         this.state.searches = items.searches.map(elem => new Search(elem))
+
+        if (youTubeDatas.pathname === urlsAvailable[5]) {
+          this.state.videosDisplayed = this.state.videosToFlag
+          this.state.canFlag = true
+          this.state.onToFlag = true
+        }
       }
 
       selectItems(items = [], type, force = false) {

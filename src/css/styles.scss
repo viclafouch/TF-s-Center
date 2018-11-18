@@ -414,6 +414,12 @@ div#TFsCenter {
             font-weight: 500;
             border-radius: 2px;
         }
+
+        .tool.tool-disabled {
+          opacity: .5;
+          cursor: auto;
+          box-shadow: none;
+        }
     }
 
     .span-icon {
