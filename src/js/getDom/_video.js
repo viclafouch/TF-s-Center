@@ -10,10 +10,9 @@ let video = function getVideo(idWatch) {
   const title = document.getElementsByTagName('h1')[0].textContent.trim();
   const description = document.getElementById('description').textContent.trim();
   const videoAddedTime = document.getElementsByClassName('date')[0].textContent;
-  const publishedAt = moment(videoAddedTime.slice(videoAddedTime.search(/\d/), videoAddedTime.length))
   const channelUrl = document.getElementById("avatar").parentElement.href
   const channelTitle = document.getElementById('owner-container').textContent.trim();
-  const viewCount = document.getElementById('info-text').textContent;
+  const viewCount = document.getElementsByClassName('view-count')[0] ? document.getElementsByClassName('view-count')[0].textContent : ''
   const isRemoved = false;
   const isReviewed = null;
 
@@ -23,7 +22,6 @@ let video = function getVideo(idWatch) {
     title,
     description,
     videoAddedTime,
-    publishedAt,
     channelUrl,
     isRemoved,
     isReviewed,
