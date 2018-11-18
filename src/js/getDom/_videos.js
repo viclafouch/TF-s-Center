@@ -23,7 +23,7 @@ let videos = function getVideos() {
             videoAddedTime = item.getElementsByClassName('video-date-added')[0].textContent;
             channelTitle = item.getElementsByClassName('yt-user-name')[0].textContent;
             channelUrl = item.getElementsByClassName('yt-user-name')[0].getAttribute('href');
-            viewCount = item.getElementsByClassName('viewcount')[0].textContent
+            viewCount = item.getElementsByClassName('viewcount')[0] ? item.getElementsByClassName('viewcount')[0].textContent : ''
         } else {
             title = null;
         }
