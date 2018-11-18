@@ -187,10 +187,7 @@ function initExtension() {
         removeVideosToFlag(sendForm = false) {
           const listVideoToFlag = this.state.videosToFlag.filter(e => !e.selected)
           chrome.storage.local.set({
-            videosToFlag: [...listVideoToFlag].map(e => {
-              e.publishedAt = e.publishedAt.format && e.publishedAt.format();
-              return e;
-            })
+            videosToFlag: listVideoToFlag
           }, () => {
             if (sendForm) {
               document.getElementById('formFlagging').submit();
@@ -247,17 +244,14 @@ function initExtension() {
               })
             }, () => {
                 if (this.state.onToFlag) {
-                  return removeVideosToFlag(true)
+                  return this.removeVideosToFlag(true)
                 } else {
                   return document.getElementById('formFlagging').submit();
                 }
             });
           } else if (name === 'videosToFlag') {
             chrome.storage.local.set({
-              videosToFlag: this.state.videosToFlag.map(e => {
-                e.publishedAt = e.publishedAt.format && e.publishedAt.format();
-                return e;
-              }),
+              videosToFlag: this.state.videosToFlag
             })
           }
         }

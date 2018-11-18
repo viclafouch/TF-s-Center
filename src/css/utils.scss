@@ -75,3 +75,10 @@ $tblr: "top" "bottom" "left" "right";
     display: table;
     clear: both;
 }
+
+@mixin one-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  white-space: nowrap;
+}

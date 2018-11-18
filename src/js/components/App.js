@@ -50,7 +50,12 @@ class App extends Component {
             :
             <YouTubeContext.Consumer>
               {(context) => (
-                <FlagButton videoWatched={context.state.videoWatched} videosToFlag={context.state.videosToFlag} setContextState={context.setState} />
+                <FlagButton
+                  videoWatched={context.state.videoWatched}
+                  videosToFlag={context.state.videosToFlag}
+                  setContextState={context.setState}
+                  removeVideo={context.setState}
+                />
               )}
             </YouTubeContext.Consumer>
         )

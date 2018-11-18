@@ -273,6 +273,8 @@ div#TFsCenter {
         }
 
         .video-item-text {
+            display: flex;
+            flex-direction: column;
             .video-item-title {
                 a {
                     text-decoration: none;
@@ -297,19 +299,24 @@ div#TFsCenter {
         article.video-item {
             padding: 5px;
             transition: background-color 0.3s;
+
             &:hover {
                 background-color: #fff;
             }
+
+            .video-item-title {
+              @include one-line;
+            }
+
             .video-item-thumbnail {
                 width: auto;
-                height: auto;
+                height: 100%;
                 overflow: hidden;
                 position: relative;
                 display: block;
 
                 .thumbnail {
                     height: 100%;
-                    display: block;
                     width: auto;
                     transition: all 0.3s;
                     cursor: pointer;
@@ -319,6 +326,8 @@ div#TFsCenter {
             .video-notes {
                 color: #666666;
                 font-size: 12px;
+                margin-top: auto;
+                @include one-line
             }
 
             &.isAccess:hover {
@@ -758,7 +767,6 @@ div#TFsCenter {
                 position: absolute;
                 opacity: 0;
                 top: 0; left: 0; right: 0; bottom: 0;
-                pointer-events: none;
                 transition: all 0.34s;
 
                 & > span {
@@ -769,7 +777,6 @@ div#TFsCenter {
 
             &.active .action-temp {
                 z-index: 1;
-                pointer-events: all;
                 opacity: 1;
                 background-color: rgba($color: #ffffff, $alpha: 0.8);
                 & > span {
@@ -887,15 +894,24 @@ div#button-flag-TF {
   color: #909090;
   padding-right: 8px;
 
-  a {
+  i {
+    width: 16px;
+    height: 16px;
+  }
+
+  button {
     display: flex;
+    height: 100%;
     cursor: pointer;
-    align-content: center;
+    align-items: center;
     justify-content: center;
     color: inherit;
-    border: 0;
     text-decoration: none;
     margin-top: -3px;
+    opacity: 0.60;
+    background: transparent;
+    border: 0;
+    outline: none;
 
     span {
       font-size: 1.3rem;
@@ -906,6 +922,21 @@ div#button-flag-TF {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+    }
+
+    span.span-icon {
+      display: none;
+    }
+
+
+    &.active {
+      opacity: 1;
+      .span-icon {
+        display: block;
+      }
+      #svgSheriff {
+        display: none;
+      }
     }
   }
 }
