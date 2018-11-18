@@ -10,6 +10,8 @@ let pathname = function getPathname() {
                 pathname = '/templates'
             } else if (getUrlParameter(querys[1]) === 'searches') {
                 pathname = '/searches'
+            } else if (getUrlParameter(querys[2])) {
+                pathname = '/watch'
             } else if (!getUrlParameter(querys[0])) {
                 pathname = '/stats'
             }

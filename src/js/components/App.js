@@ -46,7 +46,11 @@ class App extends Component {
                 </div>
             </React.Fragment>
             :
-            <FlagButton />
+            <YouTubeContext.Consumer>
+              {(context) => (
+                <FlagButton videoWatched={context.state.videoWatched} videosToFlag={context.state.videosToFlag} setContextState={context.setState} />
+              )}
+            </YouTubeContext.Consumer>
         )
     }
 }
