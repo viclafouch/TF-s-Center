@@ -27,7 +27,7 @@ export class FlagButton extends Component {
   render() {
     return (
       <a href="/" onClick={this.onFlag}>
-        <span>Flag</span>
+        <span>[ADD-TO-TF]</span>
       </a>
     )
   }

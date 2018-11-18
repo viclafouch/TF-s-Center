@@ -52,8 +52,27 @@ function initExtension() {
     lastSevenDaysflagged: [...sevenLastDays]
   }, async items => {
 
+    const videoIdWatch = getUrlParameter('v');
     const pathname = getPathname()
     const myReactApp = document.createElement("div");
+
+     // For /watch, website uses Angular and asynchrone injection, wait DOM ready
+    if (pathname === '/watch') {
+      while (!document.getElementById('info').querySelector('#top-level-buttons')) {
+        await wait(50)
+      }
+    }
+
+    let youTubeDatas = {
+      pathname,
+      videos: getVideos(),
+      search: getSearch(),
+      pagination: getPagination(),
+      statistics: getPathname() === '/stats' ? getStatistics() : null,
+      user: getUser(),
+      videoIdWatch: videoIdWatch,
+      videoWatched: getPathname() === '/watch' ? getVideo(videoIdWatch) : null,
+    }
 
     if (pathname !== '/watch') {
       myReactApp.setAttribute("id", "TFsCenter");
@@ -61,10 +80,6 @@ function initExtension() {
       document.getElementById('page-container').appendChild(myReactApp);
     } else {
       myReactApp.setAttribute("id", "button-flag-TF");
-      // Website uses Angular and asynchrone injection
-      while (!document.getElementById('info').querySelector('#top-level-buttons')) {
-        await wait(50)
-      }
       document.getElementById('info').querySelector('#top-level-buttons').appendChild(myReactApp);
     }
 
@@ -78,19 +93,6 @@ function initExtension() {
       }
       return elem;
     })
-
-    let videoIdWatch = getUrlParameter('v');
-
-    let youTubeDatas = {
-      pathname,
-      videos: getVideos(),
-      search: getSearch(),
-      pagination: getPagination(),
-      statistics: getPathname() === '/stats' ? getStatistics() : null,
-      user: getUser(),
-      videoIdWatch: videoIdWatch,
-      videoWatched: getPathname() === '/watch' ? getVideo(videoIdWatch) : null,
-    }
 
     class YouTubeProvider extends React.Component {
 
