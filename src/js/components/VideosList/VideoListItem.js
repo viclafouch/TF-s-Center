@@ -53,7 +53,7 @@ export class VideoListItem extends Component {
                                         </h3>
                                         <p className="video-item-description mgi--bottom-4" id={'description-'+video.id}></p>
                                         {
-                                            !video.isRemoved &&
+                                        (!video.isRemoved && video.channelTitle) &&
                                             <p className="video-notes">
                                                 <a className="video-item-creator" href={video.channelUrl}>{video.channelTitle}</a>
                                                 {' | '}
