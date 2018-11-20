@@ -15,7 +15,8 @@
         "48": "src/icon/icon48.png",
         "128": "src/icon/icon128.png"
     },
-    "page_action": {
+    "browser_action": {
+        "default_popup": "popup.html",
         "default_icon": "src/icon/icon16.png",
         "default_title": "TFs Center"
     },

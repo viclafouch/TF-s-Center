@@ -79,6 +79,8 @@ function initExtension() {
         while (!document.getElementById('info').querySelector('#top-level-buttons')) {
           await wait(50)
         }
+
+        if (document.getElementById('info').querySelector('#button-flag-TF')) return;
       }
 
       let youTubeDatas = {
@@ -189,6 +191,7 @@ function initExtension() {
           chrome.storage.local.set({
             videosToFlag: listVideoToFlag
           }, () => {
+            chrome.runtime.sendMessage({ type: 'updateBadgeText', videosToFlag: listVideoToFlag  });
             if (sendForm) {
               document.getElementById('formFlagging').submit();
             } else {
@@ -253,6 +256,7 @@ function initExtension() {
             chrome.storage.local.set({
               videosToFlag: this.state.videosToFlag
             })
+            chrome.runtime.sendMessage({ type: 'updateBadgeText', videosToFlag: this.state.videosToFlag });
           }
         }
 

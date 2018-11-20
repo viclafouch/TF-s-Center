@@ -92,7 +92,7 @@ img.channel-logo {
     color: #167ac6!important;
 }
 
-#alerts {
+#alerts.content-alignment {
     z-index: 99999999;
     position: fixed;
     right: 0;
@@ -309,8 +309,8 @@ div#TFsCenter {
             }
 
             .video-item-thumbnail {
-                width: auto;
-                height: 100%;
+                width: 120px;
+                height: 90px;
                 overflow: hidden;
                 position: relative;
                 display: block;

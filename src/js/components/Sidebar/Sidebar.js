@@ -26,16 +26,12 @@ export class Sidebar extends Component {
                         <nav className="navbar">
                             <ul className="nav-link">
                                 <li>
-                                    <YouTubeContext.Consumer>
-                                        {(context) => (
-                                            <a href="/flagging_history" className={'youtube-link '+(context.state.pathname === urlsAvailable[0] ? 'active' : '')}>
-                                                <span className="span-icon mgi--right-16">
-                                                    <FontAwesomeIcon icon={faHistory} size="1x" fixedWidth />
-                                                </span>
-                                                <span className="text-link">History</span>
-                                            </a>
-                                        )}
-                                    </YouTubeContext.Consumer>
+                                    <a href="/flagging_history" className={'youtube-link '+(context.state.pathname === urlsAvailable[0] ? 'active' : '')}>
+                                        <span className="span-icon mgi--right-16">
+                                            <FontAwesomeIcon icon={faHistory} size="1x" fixedWidth />
+                                        </span>
+                                        <span className="text-link">History</span>
+                                    </a>
                                 </li>
                                 <li>
                                     <a href="/deputy?context=templates" className={'youtube-link ' + (context.state.pathname === urlsAvailable[3] ? 'active' : '')}>

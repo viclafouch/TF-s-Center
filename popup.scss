@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+}
+
+ul {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  & > li {
+    border-bottom: 1px solid #f4f4f4;
+    width: 100%;
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+    color: rgba(0,0,0,.87);
+    * { color: inherit; }
+    .span-icon { margin-right: 16px; }
+    a {
+        display: block;
+        padding: 8px 24px 8px 12px;
+        line-height: 18px;
+        width: 100%;
+        box-sizing: border-box;
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.025);
+            span.span-icon { color: red; }
+        }
+    }
+
+    span { display: inline-block; }
+  }
+}

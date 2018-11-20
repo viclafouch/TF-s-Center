@@ -24,13 +24,19 @@
     "react-transition-group": "^1.2.1"
   },
   "scripts": {
-    "build": "parcel build src/js/main.js -d src/build/ -o main.js --no-cache",
-    "build-scss": "parcel build src/css/styles.scss -d src/build/ -o styles.css",
-    "watch": "npm-run-all --parallel watch-js watch-scss",
+    "build-content-js": "parcel build src/js/main.js -d src/build/ -o main.js --no-cache",
+    "build-popup-js": "parcel build popup.js -d src/build/ -o popup.js --no-cache",
+    "build-popup-scss": "parcel build popup.scss -d src/build/ -o popup.css --no-cache",
+    "build-content-scss": "parcel build src/css/styles.scss -d src/build/ -o styles.css --no-cache",
+    "build-all": "npm-run-all --parallel build-content-js build-popup-js build-content-scss build-popup-scss",
+    "watch-content-js": "parcel watch src/js/main.js -d src/build/ -o main.js",
+    "watch-popup-js": "parcel watch popup -d src/build/ -o popup.js",
+    "watch-content-scss": "parcel watch src/css/styles.scss -d src/build/ -o styles.css",
+    "watch-popup-scss": "parcel watch popup.scss -d src/build/ -o popup.css",
+    "watch-popup": "npm-run-all --parallel watch-popup-js watch-popup-scss",
+    "watch-content": "npm-run-all --parallel watch-content-js watch-content-scss",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "watch-js": "parcel watch src/js/main.js -d src/build/ -o main.js",
-    "watch-scss": "parcel watch src/css/styles.scss -d src/build/ -o styles.css"
+    "eject": "react-scripts eject"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.3"
