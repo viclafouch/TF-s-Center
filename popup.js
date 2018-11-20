@@ -56,7 +56,6 @@ class Popup extends Component {
   }
 
   render() {
-    console.log('testdssssssqsdqsdddqsdqsqsddqsd');
     return (
       <nav className="navbar">
         <ul className="nav-link">
