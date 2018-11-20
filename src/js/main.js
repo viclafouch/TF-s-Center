@@ -305,10 +305,20 @@ window.onload = function () {
           let newId = getUrlParameter('v');
           elem && elem.parentNode.removeChild(elem);
           await wait(0)
+
+          // Check if page is a watched page
+          if (!newId) return;
+
+          // While can no exceded 3s (security process)
+          let stopAtInMilliseconds = 3000;
+          let seconds = 0;
           while (!document.querySelector(`[video-id="${newId}"]`)) {
             await wait(50)
+            seconds+= 50
+            if (seconds >= stopAtInMilliseconds) return;
           }
-          return getUrlParameter('v') ? initExtension() : null
+
+          return initExtension()
         }
       });
     });
