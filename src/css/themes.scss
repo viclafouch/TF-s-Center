@@ -1,0 +1,48 @@
+html[data-theme='dark'] {
+  --text-color: #f0F0F0;
+  --background-container: #1C1C1C;
+  --icon-color: rgba(255, 255, 255, 0.5);
+  --border-color-sidebar:rgba(255,255,255,.12);
+  --body-background: #121212;
+  --color-notes: rgb(148, 148, 148);
+  --lighten-hover: rgba(136, 136, 136, 0.4);
+  --input-background: rgba(0,0,0,.38);
+  --input-border: rgb(48, 48, 48);
+  --input-text: var(--text-color);
+  --input-placeholder: #999999;
+}
+
+html[data-theme='light'] {
+  --text-color: rgb(17, 17, 17);
+  --background-container: #FAFAFA;
+  --icon-color: #444444;
+  --border-color-sidebar:rgba(0,0,0,.12);
+  --body-background: rgb(241, 241, 241);
+  --color-notes: rgb(102, 102, 102);
+  --lighten-hover: rgba(0, 0, 0, 0.04);
+  --input-background: #ffffff;
+  --input-border: rgba(0,0,0,0.25);
+  --input-text: var(--text-color);
+  --input-placeholder: #999999;
+}
+
+#TFsCenter.color-theme-in-transition,
+#TFsCenter.color-theme-in-transition *,
+#TFsCenter.color-theme-in-transition *:before,
+#TFsCenter.color-theme-in-transition *:after {
+  transition-property: color, fill, border-bottom-color, border-top-color, border-left-color, border-right-color, background-color!important;
+  transition-delay: 0s!important;
+  transition-duration: 750ms!important;
+  transition-timing-function: linear!important;
+}
+
+.input-colored {
+  border-width: 1px;
+  border-style: solid;
+  border-top-color: var(--input-border);
+  border-bottom-color: var(--input-border);
+  border-left-color: var(--input-border);
+  border-right-color: var(--input-border);
+  background-color: var(--input-background);
+  color: var(--input-text);
+}

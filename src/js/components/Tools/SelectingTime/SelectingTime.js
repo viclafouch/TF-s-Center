@@ -68,12 +68,14 @@ export class SelectingTime extends Component {
                     <span>View flagging history from to</span>
                     <DatePicker
                         selected={this.state.date_from}
+                        className="input-colored"
                         onChange={date => this.handleChange(date, 'date_from')}
                         maxDate={maxDate.date_from}
                         minDate={minDate.date_from}
                     />
                     <span>to</span>
                     <DatePicker
+                        className="input-colored"
                         selected={this.state.date_to}
                         onChange={date => this.handleChange(date, 'date_to')}
                         maxDate={maxDate.date_to}

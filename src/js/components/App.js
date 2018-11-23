@@ -29,20 +29,20 @@ class App extends Component {
                             : context.state.pathname === urlsAvailable[1] ?
                                 <FormFlagging videos={context.state.videosDisplayed} context={context} />
                             : context.state.pathname === urlsAvailable[2] ?
-                                <div className="full-heigth">
+                                <div className="full-heigth main-body">
                                     <AnalyticsContainer />
                                 </div>
                             : context.state.pathname === urlsAvailable[3] ?
-                                <div className="full-heigth">
+                                <div className="full-heigth main-body">
                                     <TemplatesContainer />
                                 </div>
                             : context.state.pathname === urlsAvailable[4] ?
-                                <div className="full-heigth">
+                                <div className="full-heigth main-body">
                                     <SearchesContainer />
                                 </div>
                             : context.state.pathname === urlsAvailable[5] ?
                                 <FormFlagging videos={context.state.videosDisplayed} context={context} />
-                            : <div>This page do not exist</div>
+                            : <div class="main-body">This page do not exist</div>
                         )}
                     </YouTubeContext.Consumer>
                 </div>

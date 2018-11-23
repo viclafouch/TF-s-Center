@@ -50,6 +50,7 @@ function initExtension() {
     },
     sync: {
       displaying: 'column',
+      theme: 'light',
       templates: [],
       searches: [],
       lastSevenDaysflagged: [...sevenLastDays]
@@ -73,6 +74,7 @@ function initExtension() {
       const videoIdWatch = getUrlParameter('v');
       const pathname = getPathname()
       const myReactApp = document.createElement("div");
+
 
       // For /watch, website uses Angular and asynchrone injection, wait DOM ready
       if (pathname === '/watch') {
@@ -101,6 +103,7 @@ function initExtension() {
         myReactApp.setAttribute("id", "TFsCenter");
         document.getElementById('page-container').innerHTML = '';
         document.getElementById('page-container').appendChild(myReactApp);
+        document.documentElement.setAttribute('data-theme', storage.theme)
       }
 
       const lastSevenDaysflagged = sevenLastDays.map(elem => {
@@ -123,6 +126,7 @@ function initExtension() {
           this.state.hideReviewed = this.baseHide.hideReviewed = false
           this.state.canFlag = youTubeDatas.pathname === urlsAvailable[1]
           this.state.popupReportingOpened = false
+          this.state.theme = storage.theme
           this.state.displaying = storage.displaying
           this.state.videosToFlag = storage.videosToFlag.map(e => new Video(e))
           this.state.videoWatched = youTubeDatas.videoWatched
@@ -218,11 +222,15 @@ function initExtension() {
           });
         }
 
+        saveToStorage({type, name, value})  {
+          return chrome.storage[type].set({
+            [name]: value
+          });
+        }
+
         callbackState(name, value, stuff) {
-          if (name === 'displaying') {
-            chrome.storage.sync.set({
-              displaying: value
-            });
+          if (name === 'displaying' || name === 'theme') {
+            return this.saveToStorage({ type: 'sync', name, value })
           } else if (name === 'lastSevenDaysflagged') {
 
             let { templates, searches } = this.state;

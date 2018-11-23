@@ -7,10 +7,10 @@ input.tf-input-material, select.tf-input-material {
     height: 100%;
     appearance: none;
     font-size: 11px;
-    color: rgba(0, 0, 0, 0.74);
+    color: var(--input-text);
     font: 12px "YouTube Noto",Roboto,arial,sans-serif;
     border: 0;
-    background-color: #fff;
+    background-color: var(--input-background);
     transition: border-color 0.3s;
     border-bottom: 1px solid rgba($color: #000000, $alpha: 0.05);
 }

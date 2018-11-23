@@ -73,6 +73,7 @@ export class FormReporting extends Component {
                                                 value: e.id
                                             }
                                         })}
+                                        className="input-colored"
                                         defaultOptionTitle="Choose template"
                                         null
                                         name="templateIdSelected"
@@ -111,7 +112,7 @@ export class FormReporting extends Component {
                     </fieldset>
                     <fieldset className="form-reporting-fieldset">
                         <Textarea
-                            className="scrollBarOnHover"
+                            className="scrollBarOnHover input-colored"
                             placeholder="Provide additional details"
                             value={this.props.description}
                             name="flag_comments"

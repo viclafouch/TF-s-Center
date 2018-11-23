@@ -9,12 +9,24 @@ import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons/faSignOutAlt'
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch'
 import { faFlag } from '@fortawesome/free-solid-svg-icons/faFlag'
 import { faChrome } from '@fortawesome/free-brands-svg-icons/faChrome'
+import { faMoon as faMoonBis } from '@fortawesome/free-solid-svg-icons/faMoon'
+import { faMoon } from '@fortawesome/free-regular-svg-icons/faMoon'
 import { faBullseye } from '@fortawesome/free-solid-svg-icons/faBullseye'
 import { CONTRIBUTOR_LINK, HANGOUTS_ME, EMAIL_FLAGGER_LABEL } from '../../../../private'
 import { YouTubeContext } from '../../main';
 import { urlsAvailable } from '../../config';
 
 export class Sidebar extends Component {
+
+    async switchTheme(event, context) {
+      event.preventDefault();
+      const theme = context.state.theme === 'light' ? 'dark' : 'light'
+      document.getElementById('TFsCenter').classList.add('color-theme-in-transition')
+      document.documentElement.setAttribute('data-theme', theme)
+      context.setState('theme', theme)
+      setTimeout(() => document.getElementById('TFsCenter').classList.remove('color-theme-in-transition'), 1000);
+    }
+
     render() {
         return (
             <YouTubeContext.Consumer>
@@ -84,11 +96,11 @@ export class Sidebar extends Component {
                             </ul>
                             <ul className="nav-link">
                                 <li>
-                                    <a href="https://chrome.google.com/webstore/detail/tcs-center/hanknpkmjbfhcalmipokkfplndkohgdm?authuser=1" target="_blank" className="youtube-link">
+                                    <a className="youtube-link" onClick={e => this.switchTheme(e, context)}>
                                         <span className="span-icon mgi--right-16">
-                                            <FontAwesomeIcon icon={faChrome} size="1x" fixedWidth />
+                                          <FontAwesomeIcon icon={context.state.theme === 'dark' ? faMoon : faMoonBis} size="1x" fixedWidth />
                                         </span>
-                                        <span className="text-link">TC's Center</span>
+                                        <span className="text-link">{context.state.theme === 'dark' ? 'Light' : 'Dark'} mode</span>
                                     </a>
                                 </li>
                                 <li>

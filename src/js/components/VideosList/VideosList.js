@@ -118,7 +118,7 @@ export class VideosList extends Component {
         let { videos } = this.props;
 
         return (
-            <div className="container-list scrollBarOnHover">
+            <div className="container-list scrollBarOnHover main-body">
                 <YouTubeContext.Consumer>
                     {(context) => (
                         <ul className={"videos-list pdi--top-0 " + (context.state.displaying === 'column' ? 'byColumns' : 'byRows')}>
