@@ -8,9 +8,11 @@ const directory = 'dist';
 const zip = new AdmZip();
 
 const zipFileName = `${directory}/TF-Center-${+new Date}.zip`
-const files = [ 'popup.html', 'src/build', 'README.md', 'manifest.json', 'background.js']
+const files = [ 'popup.html', 'src/build', 'README.md', 'manifest.json', 'background.js', 'src/icon']
 const messageOk = `${emoji.get('package')}  Zip file ready to be published on ${colors.blue.underline('https://chrome.google.com/u/1/webstore/devconsole')} !`
 const messageNotOk = `${emoji.get('rotating_light')}  ${colors.red('An error occured while zipping files !')} ${emoji.get('rotating_light')}`
+
+fs.existsSync(`./${directory}`) || fs.mkdirSync(`./${directory}`)
 
 async function removeFiles(directory) {
   await fs.readdir(directory, async (err, files) => {
