@@ -3,8 +3,9 @@ import { Line } from 'react-chartjs-2';
 import { copyObject } from '../../../utils';
 
 const LastSevenDays = ({context}) => {
+    const videos = copyObject(context.state.lastSevenDaysflagged)
     const data = {
-        labels: copyObject(context.state.lastSevenDaysflagged).reverse().map(e => e.date),
+        labels: videos.reverse().map(e => e.date),
         datasets: [
             {
                 label: "Videos reported with TF's Center",
@@ -25,7 +26,7 @@ const LastSevenDays = ({context}) => {
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
-                data: context.state.lastSevenDaysflagged.map(e => e.videos)
+                data: videos.map(e => e.videos)
             }
         ]
     };
