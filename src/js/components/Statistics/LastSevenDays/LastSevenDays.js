@@ -1,10 +1,10 @@
 import React from 'react'
-import moment from 'moment'
 import { Line } from 'react-chartjs-2';
+import { copyObject } from '../../../utils';
 
 const LastSevenDays = ({context}) => {
     const data = {
-        labels: context.state.lastSevenDaysflagged.reverse().map(e => e.date),
+        labels: copyObject(context.state.lastSevenDaysflagged).reverse().map(e => e.date),
         datasets: [
             {
                 label: "Videos reported with TF's Center",

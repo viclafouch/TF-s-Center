@@ -25,7 +25,8 @@ body {
 
     &::-webkit-scrollbar {
         width: 8px;
-        background-color: #F5F5F5;
+        background-color: var(--color-scrollbar);
+        transition: background-color 750ms;
     }
 
     &::-webkit-scrollbar-thumb {
@@ -42,15 +43,18 @@ body {
     &::-webkit-scrollbar-thumb, ::-webkit-scrollbar-track {
         border-radius: 3px;
         background-clip: padding-box !important;
-        color: rgba(177,191,206,0.35);
+        color: var(--color-scrollbar);
+        transition: color 750ms;
     }
 
     &:hover::-webkit-scrollbar-track {
-        background: rgba(177,191,206,0.35);
+        background: var(--color-scrollbar);
+        transition: background 750ms;
     }
 
     &:hover::-webkit-scrollbar-thumb {
-        background: #a1b2c4;
+        background: var(--background-scrollbar);
+        transition: background 750ms;
     }
 }
 
@@ -733,6 +737,11 @@ div#TFsCenter {
             white-space: pre-wrap;
         }
 
+        &-closed {
+          p { color: var(--color-notes); }
+          path { fill: var(--color-notes); }
+        }
+
         &-opened {
             .template-box-new-title {
                 color: var(--text-color);
@@ -892,7 +901,7 @@ div#TFsCenter {
 
     .container-table-resum {
 
-        h1 { text-align: center; }
+        h1 { text-align: center; color: var(--text-color); }
         p {
             color: var(--color-notes);
             text-align: right;
@@ -905,6 +914,10 @@ div#TFsCenter {
 
         table tr *:last-child { text-align: right; }
         table th.total-allFlagged { font-size: 1.1em; }
+    }
+
+    .analytics-container h2.title-chart {
+      color: var(--text-color);
     }
 
     .chart-container {

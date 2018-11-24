@@ -21,7 +21,7 @@ const AnalyticsContainer = () => {
             <div className="mgi--20">
                 <div className="row">
                     <div className="column one-half box-material">
-                        <h2 className="center-text mgi--bottom-10">Templates sort by videos flagged</h2>
+                        <h2 className="title-chart center-text mgi--bottom-10">Templates sort by videos flagged</h2>
                         <YouTubeContext.Consumer>
                             {(context) => (
                                 <BestTemplates context={context} />
@@ -29,7 +29,7 @@ const AnalyticsContainer = () => {
                         </YouTubeContext.Consumer>
                     </div>
                     <div className="column one-half box-material" style={{marginLeft: '4%'}}>
-                        <h2 className="center-text mgi--bottom-10">Searches sort by videos flagged</h2>
+                        <h2 className="title-chart center-text mgi--bottom-10">Searches sort by videos flagged</h2>
                         <YouTubeContext.Consumer>
                             {(context) => (
                                 <BestSearches context={context} />

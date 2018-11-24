@@ -30,6 +30,8 @@ export function openInNewTab(url, newTab = false) {
     win.focus();
 }
 
+export const copyObject = (obj) => JSON.parse(JSON.stringify(obj));
+
 export function trySearch(text, search, newTab = false) {
     let urlEncodade = encodeURIComponent('"' + text.trim() + '"').replace(/%20/g, '+');
     let url = `/deputy?search_query=${urlEncodade}`

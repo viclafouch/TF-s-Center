@@ -5,6 +5,13 @@ table.table-material {
     margin-bottom: 1rem;
     display: table;
 
+
+    td, th {
+      color: var(--text-color);
+    }
+
+    path { fill: var(--text-color)!important; }
+
     tr {
         display: table-row;
         vertical-align: inherit;
