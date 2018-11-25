@@ -7,7 +7,7 @@
     "version": "1.33",
     "background": {
         "scripts": [
-            "background.js"
+            "build/background.bundle.js"
         ]
     },
     "icons": {
@@ -16,7 +16,7 @@
         "128": "src/icon/icon128.png"
     },
     "browser_action": {
-        "default_popup": "popup.html",
+        "default_popup": "build/popup.html",
         "default_icon": "src/icon/icon16.png",
         "default_title": "TFs Center"
     },
@@ -31,10 +31,10 @@
                 "https://www.youtube.com/*"
             ],
             "js": [
-                "src/build/main.js"
+                "build/content_script.bundle.js"
             ],
             "css": [
-                "src/build/styles.css"
+                "build/styles.css"
             ]
         }
     ]

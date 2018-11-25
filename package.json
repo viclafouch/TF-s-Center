@@ -4,6 +4,7 @@
   "private": true,
   "main": "src/js/main.js",
   "dependencies": {
+    "@babel/polyfill": "^7.0.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.8",
     "@fortawesome/free-brands-svg-icons": "^5.5.0",
     "@fortawesome/free-regular-svg-icons": "^5.5.0",
@@ -22,27 +23,38 @@
     "react-transition-group": "^1.2.1"
   },
   "scripts": {
-    "build-content-js": "parcel build src/js/main.js -d src/build/ -o main.js --no-cache",
+    "build": "webpack --config webpack.prod.js",
     "build-popup-js": "parcel build popup.js -d src/build/ -o popup.js --no-cache",
     "build-popup-scss": "parcel build popup.scss -d src/build/ -o popup.css --no-cache",
     "build-content-scss": "parcel build src/css/styles.scss -d src/build/ -o styles.css --no-cache",
     "build-all": "npm-run-all --parallel build-content-js build-popup-js build-content-scss build-popup-scss",
-    "watch-content-js": "parcel watch src/js/main.js -d src/build/ -o main.js",
+    "watch-content-js": "webpack --config webpack.dev.js",
     "watch-popup-js": "parcel watch popup -d src/build/ -o popup.js",
     "watch-content-scss": "parcel watch src/css/styles.scss -d src/build/ -o styles.css",
     "watch-popup-scss": "parcel watch popup.scss -d src/build/ -o popup.css",
     "watch-popup": "npm-run-all --parallel watch-popup-js watch-popup-scss",
     "watch-content": "npm-run-all --parallel watch-content-js watch-content-scss",
-    "test": "react-scripts test --env=jsdom",
-    "published": "node tasks/published.js",
-    "eject": "react-scripts eject"
+    "published": "node tasks/published.js"
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
     "adm-zip": "^0.4.13",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "colors": "^1.3.2",
+    "css-loader": "^1.0.1",
+    "mini-css-extract-plugin": "^0.4.5",
     "node-emoji": "^1.8.1",
     "node-sass": "^4.10.0",
     "npm-run-all": "^4.1.5",
-    "parcel-bundler": "^1.10.3"
+    "parcel-bundler": "^1.10.3",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.26.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-merge": "^4.1.4"
   }
 }

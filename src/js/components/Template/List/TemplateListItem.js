@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { labels } from '../../../config';
+import { labels } from '../../../config/config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons/faTrashAlt'
-import { YouTubeContext } from '../../../main';
+import { YouTubeContext } from '../../../content_script';
 
 export class TemplateListItem extends Component {
 

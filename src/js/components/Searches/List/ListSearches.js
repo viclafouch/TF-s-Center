@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import Button from '../../Button';
 import Checkbox from '../../layouts/Checkbox'
-import { YouTubeContext } from '../../../main';
-import { trySearch } from '../../../utils';
+import { YouTubeContext } from '../../../content_script';
+import { trySearch } from '../../../utils/utils';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck'
 

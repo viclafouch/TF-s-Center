@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Button from '../Button'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { YouTubeContext } from '../../main';
+import { YouTubeContext } from '../../content_script';
 
 export class VideoDetail extends Component {
 

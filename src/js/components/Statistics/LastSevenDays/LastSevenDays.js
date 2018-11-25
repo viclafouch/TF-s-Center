@@ -1,6 +1,6 @@
 import React from 'react'
 import { Line } from 'react-chartjs-2';
-import { copyObject } from '../../../utils';
+import { copyObject } from '../../../utils/utils';
 
 const LastSevenDays = ({context}) => {
     const videos = copyObject(context.state.lastSevenDaysflagged)

@@ -1,5 +1,5 @@
 import React from 'react'
-import { YouTubeContext } from '../../main';
+import { YouTubeContext } from '../../content_script';
 import TableResum from '../../components/Statistics/TableResum/TableResum';
 import LastSevenDays from '../../components/Statistics/LastSevenDays/LastSevenDays';
 import BestTemplates from '../../components/Statistics/BestTemplates/BestTemplates';

@@ -5,7 +5,7 @@ import Select from '../../layouts/Select'
 import onClickOutside from "react-onclickoutside";
 import CountLetter from '../../layouts/CountLetter';
 import { Template } from '../../../shared/models/Template.class';
-import { labels, MAX_TEMPLATES } from '../../../config';
+import { labels, MAX_TEMPLATES } from '../../../config/config';
 import Input from '../../layouts/Input';
 
 export class NewTemplate extends Component {

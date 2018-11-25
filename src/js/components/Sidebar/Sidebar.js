@@ -12,8 +12,8 @@ import { faMoon as faMoonBis } from '@fortawesome/free-solid-svg-icons/faMoon'
 import { faMoon } from '@fortawesome/free-regular-svg-icons/faMoon'
 import { faBullseye } from '@fortawesome/free-solid-svg-icons/faBullseye'
 import { CONTRIBUTOR_LINK, HANGOUTS_ME, EMAIL_FLAGGER_LABEL } from '../../../../private'
-import { YouTubeContext } from '../../main';
-import { urlsAvailable } from '../../config';
+import { YouTubeContext } from '../../content_script';
+import { urlsAvailable } from '../../config/config';
 
 export class Sidebar extends Component {
 

@@ -1,6 +1,4 @@
 function setBadgeText(text) {
-  console.log(text.toString());
-
   chrome.browserAction.setBadgeText({
     text: text ? text.toString() : ''
   });

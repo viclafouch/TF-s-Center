@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
 import Button from '../../Button';
-import { updateQueryStringParameter, getUrlParameter } from '../../../utils'
+import { updateQueryStringParameter, getUrlParameter } from '../../../utils/utils'
 
 export class SelectingTime extends Component {
 

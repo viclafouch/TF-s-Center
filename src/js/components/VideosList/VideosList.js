@@ -4,9 +4,9 @@ import Popup from '../Popup/Popup'
 import Video from '../../shared/models/Video.class'
 import VideoDetail from '../VideoDetail/VideoDetail';
 import Loader from '../layouts/Loader';
-import { YouTubeContext } from '../../main';
+import { YouTubeContext } from '../../content_script';
 import { YOUTUBE_API_KEYS } from '../../../../private';
-import { getUrlParameter } from '../../utils';
+import { getUrlParameter } from '../../utils/utils';
 
 export class VideosList extends Component {
 

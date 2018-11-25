@@ -9,10 +9,10 @@ import getPathname from './getDom/_location'
 import getPagination from './getDom/_pagination'
 import getStatistics from './getDom/_statistics'
 import getUser from './getDom/_user'
-import { urlsAvailable } from './config';
+import { urlsAvailable } from './config/config';
 import Template from './shared/models/Template.class'
 import Search from './shared/models/Search.class'
-import { wait, getUrlParameter } from './utils';
+import { wait, getUrlParameter } from './utils/utils';
 import Video from './shared/models/Video.class';
 
 export const YouTubeContext = React.createContext();

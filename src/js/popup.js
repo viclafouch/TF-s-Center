@@ -7,7 +7,6 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch'
 import { faBullseye } from '@fortawesome/free-solid-svg-icons/faBullseye'
 import { faChartLine } from '@fortawesome/free-solid-svg-icons/faChartLine'
 
-
 class Popup extends Component {
 
   constructor() {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Select from '../../layouts/Select';
-import { getUrlParameter, updateQueryStringParameter } from '../../../utils'
+import { getUrlParameter, updateQueryStringParameter } from '../../../utils/utils'
 
 export class FilterPeriod extends Component {
 

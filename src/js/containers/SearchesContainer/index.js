@@ -1,7 +1,7 @@
 import React from 'react'
 import { NewSearches } from '../../components/Searches/New/NewSearches';
 import { ListSearches } from '../../components/Searches/List/ListSearches';
-import { YouTubeContext } from '../../main';
+import { YouTubeContext } from '../../content_script';
 
 const SearchesContainer = () => {
     return (
