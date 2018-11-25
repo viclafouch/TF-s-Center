@@ -2,12 +2,10 @@
     "name": "TF's Center",
     "short_name": "TFs Center",
     "manifest_version": 2,
-    "description": "A Chrome extension that remakes a new design for the TF tools.",
     "author": "Victor de la Fouchardiere",
-    "version": "1.33",
     "background": {
         "scripts": [
-            "build/background.bundle.js"
+            "background.bundle.js"
         ]
     },
     "icons": {
@@ -16,7 +14,7 @@
         "128": "src/icon/icon128.png"
     },
     "browser_action": {
-        "default_popup": "build/popup.html",
+        "default_popup": "popup.html",
         "default_icon": "src/icon/icon16.png",
         "default_title": "TFs Center"
     },
@@ -31,10 +29,10 @@
                 "https://www.youtube.com/*"
             ],
             "js": [
-                "build/content_script.bundle.js"
+                "content_script.bundle.js"
             ],
             "css": [
-                "build/styles.css"
+                "styles.css"
             ]
         }
     ]

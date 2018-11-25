@@ -1,6 +1,7 @@
 {
   "name": "tfs-center",
-  "version": "0.1.0",
+  "description": "A Chrome extension that remakes a new design for the TF tools.",
+  "version": "1.33.0",
   "private": true,
   "main": "src/js/main.js",
   "dependencies": {
@@ -44,7 +45,9 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.4",
     "babel-plugin-transform-runtime": "^6.23.0",
+    "clean-webpack-plugin": "^1.0.0",
     "colors": "^1.3.2",
+    "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^1.0.1",
     "mini-css-extract-plugin": "^0.4.5",
     "node-emoji": "^1.8.1",
