@@ -9,13 +9,13 @@
         ]
     },
     "icons": {
-        "16": "src/icon/icon16.png",
-        "48": "src/icon/icon48.png",
-        "128": "src/icon/icon128.png"
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
     },
     "browser_action": {
         "default_popup": "popup.html",
-        "default_icon": "src/icon/icon16.png",
+        "default_icon": "icon16.png",
         "default_title": "TFs Center"
     },
     "permissions": [
