@@ -28,6 +28,8 @@ async function published() {
   try {
     await removeFiles(directory);
 
+    if (!fs.existsSync('./build')) throw new Error('Build directory does not exist, please run npm build.')
+
     zip.addLocalFolder("./build/", "./");
     zip.writeZip(zipFileName);
     console.log(messageOk);
