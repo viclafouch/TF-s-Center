@@ -72,6 +72,8 @@ export class SelectingTime extends Component {
                         onChange={date => this.handleChange(date, 'date_from')}
                         maxDate={maxDate.date_from}
                         minDate={minDate.date_from}
+                        previousMonthButtonLabel=""
+                        nextMonthButtonLabel=""
                     />
                     <span>to</span>
                     <DatePicker
@@ -80,6 +82,8 @@ export class SelectingTime extends Component {
                         onChange={date => this.handleChange(date, 'date_to')}
                         maxDate={maxDate.date_to}
                         minDate={minDate.date_to}
+                        previousMonthButtonLabel=""
+                        nextMonthButtonLabel=""
                     />
                     <Button blue type="submit">
                         Go

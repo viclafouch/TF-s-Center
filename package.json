@@ -17,15 +17,15 @@
     "react-addons-css-transition-group": "^15.6.2",
     "react-chartjs-2": "^2.7.4",
     "react-copy-to-clipboard": "^5.0.1",
-    "react-datepicker": "^1.8.0",
+    "react-datepicker": "^1.7.0",
     "react-dom": "^16.6.3",
     "react-onclickoutside": "^6.7.1",
     "react-scripts": "^2.1.1",
     "react-transition-group": "^1.2.1"
   },
   "scripts": {
-    "build": "webpack --mode production",
-    "start": "webpack --mode development",
+    "build": "webpack --mode production -p --progress --hide-modules --display-error-details",
+    "start": "webpack --mode development --progress --hide-modules --display-error-details",
     "published": "node tasks/published.js"
   },
   "devDependencies": {
@@ -46,7 +46,6 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.26.0",
-    "webpack-cli": "^3.1.2",
-    "webpack-merge": "^4.1.4"
+    "webpack-cli": "^3.1.2"
   }
 }

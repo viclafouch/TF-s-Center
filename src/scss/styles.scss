@@ -1,8 +1,8 @@
-@import './datepicker.scss';
-@import './themes.scss';
-@import './form.scss';
-@import './utils.scss';
-@import './table.scss';
+@import './datepicker';
+@import './themes';
+@import './form';
+@import './utils';
+@import './table';
 
 body {
     height: 100vh;
@@ -406,12 +406,12 @@ div#TFsCenter {
                         &.active {
                             background-color: var(--lighten-hover)!important;
                             span.text-link { font-weight: 600; }
-                            span.span-icon { color: red; }
+                            span.span-icon path { fill: red!important; }
                         }
                     }
 
                     span { display: inline-block; color: var(--text-color); }
-                    svg path { fill : var(--text-color)!important; }
+                    svg path { fill : var(--text-color); }
                 }
             }
         }
