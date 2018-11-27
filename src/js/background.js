@@ -9,9 +9,6 @@ chrome.storage.local.get({
 }, items => setBadgeText(items.videosToFlag.length))
 
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-    if (message.type === 'showPageAction') {
-        chrome.pageAction.show(sender.tab.id);
-    }
     if (message.type === 'updateBadgeText') {
       setBadgeText(message.videosToFlag.length)
     }
