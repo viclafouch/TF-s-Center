@@ -12,7 +12,7 @@ import getUser from './getDom/_user'
 import { urlsAvailable } from './config/config';
 import Template from './shared/models/Template.class'
 import Search from './shared/models/Search.class'
-import { wait, getUrlParameter } from './utils/utils';
+import { wait, getUrlParameter, injectCss } from './utils/utils';
 import Video from './shared/models/Video.class';
 
 export const YouTubeContext = React.createContext();
@@ -104,6 +104,7 @@ function initExtension() {
         document.getElementById('page-container').innerHTML = '';
         document.getElementById('page-container').appendChild(myReactApp);
         document.documentElement.setAttribute('data-theme', storage.theme)
+        injectCss()
       }
 
       const lastSevenDaysflagged = sevenLastDays.map(elem => {

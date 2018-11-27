@@ -1,5 +1,4 @@
 import { Video } from "../shared/models/Video.class";
-import moment from 'moment'
 
 /**
  * Getting my all videos to an array

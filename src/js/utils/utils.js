@@ -39,6 +39,13 @@ export function trySearch(text, search, newTab = false) {
     return openInNewTab(url, newTab);
 }
 
+export function injectCss() {
+  const style = document.createElement('style');
+  style.type = "text/css";
+  style.textContent = "body{height: 100vh; overflow: hidden}";
+  (document.body || document.head || document.documentElement).appendChild(style);
+}
+
 String.prototype.cleanString = function () {
     return this
         .replace(/[áàãâä]/gi, "a")
