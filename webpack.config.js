@@ -3,6 +3,7 @@ const path = require("path");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require('webpack');
 
 module.exports = (env, argv) => ({
   mode: argv.mode,
@@ -16,8 +17,7 @@ module.exports = (env, argv) => ({
   performance: { hints: false },
   optimization: {
     minimize: argv.mode === 'production',
-    nodeEnv: argv.mode,
-    removeAvailableModules: true
+    nodeEnv: argv.mode
   },
   entry: {
     popup: path.join(__dirname, "src", "js", "popup.js"),
@@ -73,6 +73,7 @@ module.exports = (env, argv) => ({
         }))
       }
     }]),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new CopyWebpackPlugin([{
       from: path.join(__dirname, "src", "icon"),
       to: path.join(__dirname, "build"),
