@@ -73,6 +73,7 @@ module.exports = (env, argv) => ({
         }))
       }
     }]),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new CopyWebpackPlugin([{
       from: path.join(__dirname, "src", "icon"),
       to: path.join(__dirname, "build"),

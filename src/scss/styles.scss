@@ -483,6 +483,7 @@ div#TFsCenter {
         }
 
         & > div.container {
+            border: 1px solid var(--border-color-sidebar);
             min-width: 300px;
             box-sizing: border-box;
             position: absolute;
