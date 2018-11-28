@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import DatePicker from 'react-datepicker'
-import moment from 'moment'
 import Button from '../../Button';
-import { updateQueryStringParameter, getUrlParameter } from '../../../utils/utils'
+import { updateQueryStringParameter, getUrlParameter, copyDate, isValidDate, getUnix } from '../../../utils/utils'
 
 export class SelectingTime extends Component {
 
     constructor() {
         super();
 
+        const today = new Date()
+
         this.state = {
-            date_from: moment().subtract(7, 'days'),
-            date_to: moment()
+            date_from: new Date(copyDate(today).setDate(today.getDate() - 7)),
+            date_to: copyDate(today)
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,7 +20,7 @@ export class SelectingTime extends Component {
 
     handleChange(date = {}, type) {
         date !== null && this.setState({
-            [type]: date
+            [type]: new Date(date)
         });
     }
 
@@ -27,13 +28,13 @@ export class SelectingTime extends Component {
         let timestamp_from = getUrlParameter('start_time');
         let timestamp_to = getUrlParameter('end_time');
 
-        timestamp_from = moment(new Date(timestamp_from * 1000))
-        timestamp_to = moment(new Date(timestamp_to * 1000))
+        timestamp_from = new Date(timestamp_from * 1000)
+        timestamp_to = new Date(timestamp_to * 1000)
 
         return this.setState((prevState) => {
             return {
-                date_from: timestamp_from.isValid() ? timestamp_from : prevState.date_from,
-                date_to: timestamp_to.isValid() ? timestamp_to : prevState.date_to
+                date_from: isValidDate(timestamp_from) ? timestamp_from : prevState.date_from,
+                date_to: isValidDate(timestamp_to) ? timestamp_to : prevState.date_to
             };
         });
     }
@@ -41,8 +42,8 @@ export class SelectingTime extends Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        let timestamp_from = moment(this.state.date_from).unix();
-        let timestamp_to = moment(this.state.date_to).unix();
+        let timestamp_from = getUnix(this.state.date_from)
+        let timestamp_to = getUnix(this.state.date_to)
 
         let url = updateQueryStringParameter(window.location.href, 'start_time', timestamp_from)
         url = updateQueryStringParameter(url, 'end_time', timestamp_to);
@@ -54,12 +55,12 @@ export class SelectingTime extends Component {
 
         let minDate = {
             date_from: null,
-            date_to: moment(this.state.date_from).add(1, 'days')
+            date_to: new Date(copyDate(this.state.date_from).setDate(this.state.date_from.getDate() + 1)),
         }
 
         let maxDate = {
-            date_from: moment(this.state.date_to).subtract(1, 'days'),
-            date_to: moment()
+            date_from: new Date(copyDate(this.state.date_to).setDate(this.state.date_to.getDate() - 1)),
+            date_to: new Date()
         }
 
         return (

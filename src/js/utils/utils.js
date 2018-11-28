@@ -21,6 +21,11 @@ export const getDateAwesome = date => date.getDate() + ' ' + months[date.getMont
 
 export const getDateFormat = (date) => date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()
 
+
+export const isValidDate = date => date instanceof Date && !isNaN(date);
+
+export const getUnix = date => Math.round(date.getTime() / 1000)
+
 export function updateQueryStringParameter(uri, key, value) {
     var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
     var separator = uri.indexOf('?') !== -1 ? "&" : "?";
