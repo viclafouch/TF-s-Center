@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Button from '../Button'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { YouTubeContext } from '../../content_script';
+import { getDateAwesome } from '../../utils/utils';
 
 export class VideoDetail extends Component {
 
@@ -130,7 +131,7 @@ export class VideoDetail extends Component {
                             <p className="channel-name">
                                 <a href={`/channel/${video.channelId}`} target="_blank">{video.channelTitle}</a>
                             </p>
-                            <p className="video-published">Published on {video.publishedAt ? video.publishedAt.format("ll") : ''}</p>
+                            <p className="video-published">Published on {getDateAwesome(video.publishedAt)}</p>
                         </div>
                     </div>
                     <div className="description scrollBarOnHover">

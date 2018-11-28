@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
 import App from './components/App'
-import moment from 'moment'
 import getVideos from './getDom/_videos'
 import getVideo from './getDom/_video'
 import getSearch from './getDom/_search'
@@ -12,15 +11,17 @@ import getUser from './getDom/_user'
 import { urlsAvailable } from './config/config';
 import Template from './shared/models/Template.class'
 import Search from './shared/models/Search.class'
-import { wait, getUrlParameter, injectCss } from './utils/utils';
+import { wait, getUrlParameter, injectCss, getDateFormat, copyDate } from './utils/utils';
 import Video from './shared/models/Video.class';
 
 export const YouTubeContext = React.createContext();
 
 function initExtension() {
   const sevenLastDays = Array(7).fill().map((e, i) => {
+    const date = new Date()
+    date.setDate(date.getDate() - i);
     return {
-      date: moment().subtract(i, 'days').format('DD/MM/YYYY'),
+      date: getDateFormat(date),
       videos: 0
     }
   });
@@ -179,15 +180,12 @@ function initExtension() {
           }
 
           return chrome.storage.sync.set({
-            [type]: [...items].map(e => {
-              e.created = e.created.format();
-              return e;
-            })
+            [type]: items.map(e => ({
+              ...e,
+              created: copyDate(e.created).toString()
+            }))
           }, () => this.setState({
-            [type]: items.map(e => {
-              e.created = moment(e.created)
-              return e;
-            })
+            [type]: items
           }, () => callback && callback()));
         }
 
@@ -246,14 +244,14 @@ function initExtension() {
 
             chrome.storage.sync.set({
               lastSevenDaysflagged: value,
-              searches: searches.map(e => {
-                e.created = e.created.format();
-                return e;
-              }),
-              templates: templates.map(e => {
-                e.created = e.created.format();
-                return e;
-              })
+              searches: searches.map(e => ({
+                ...e,
+                created: copyDate(e.created).toString()
+              })),
+              templates: templates.map(e => ({
+                ...e,
+                created: copyDate(e.created).toString()
+              }))
             }, () => {
                 if (this.state.onToFlag) {
                   return this.removeVideosToFlag(true)

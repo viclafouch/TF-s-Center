@@ -1,5 +1,3 @@
-import moment from 'moment'
-
 export class Template {
     constructor(
         template = {}
@@ -10,7 +8,7 @@ export class Template {
         this.type = template.type || null
         this.nb_used = template.nb_used || 0
         this.nb_flagged = template.nb_flagged || 0
-        this.created = template.created ? moment(template.created) : moment()
+        this.created = template.created ? new Date(template.created) : new Date()
     }
 }
 

@@ -3,6 +3,7 @@ import { labels } from '../../../config/config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons/faTrashAlt'
 import { YouTubeContext } from '../../../content_script';
+import { getDateFormat } from '../../../utils/utils';
 
 export class TemplateListItem extends Component {
 
@@ -27,7 +28,7 @@ export class TemplateListItem extends Component {
               </div>
               <p className="description-template">{template.description}</p>
               <div className="mgi--top-15 flex-me flex-justify-end date-template">
-                <i>{template.created.calendar()}</i>
+                <i>{getDateFormat(template.created)}</i>
               </div>
             </article>
             <YouTubeContext.Consumer>

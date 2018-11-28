@@ -13,6 +13,14 @@ export function getUrlParameter(sParam) {
 
 export const wait = (amount = 0) => new Promise(resolve => setTimeout(resolve, amount));
 
+export const copyDate = date => new Date(date.getTime())
+
+const months = Array.from({length: 12}, (x, index) => (new Date(0, index).toLocaleDateString('en-US', { month: 'short'})))
+
+export const getDateAwesome = date => date.getDate() + ' ' + months[date.getMonth()] + ' '+ date.getFullYear()
+
+export const getDateFormat = (date) => date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()
+
 export function updateQueryStringParameter(uri, key, value) {
     var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
     var separator = uri.indexOf('?') !== -1 ? "&" : "?";
