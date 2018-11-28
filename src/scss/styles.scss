@@ -915,6 +915,10 @@ div#TFsCenter {
       color: var(--text-color);
     }
 
+    .pie-box {
+      max-width: none;
+    }
+
     .chart-container {
         position: relative;
         p {
