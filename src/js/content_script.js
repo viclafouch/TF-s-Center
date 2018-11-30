@@ -298,6 +298,8 @@ let pathname = getPathname()
 
 if (getUrlParameter('v') || urlsAvailable.includes(pathname)) {
   initExtension();
+} else {
+  document.body.style.overflow = 'auto'
 }
 
 // if async page changes
