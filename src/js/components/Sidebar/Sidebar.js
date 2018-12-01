@@ -4,14 +4,14 @@ import { faHistory } from '@fortawesome/free-solid-svg-icons/faHistory'
 import { faChartLine } from '@fortawesome/free-solid-svg-icons/faChartLine'
 import { faUsers } from '@fortawesome/free-solid-svg-icons/faUsers'
 import { faComment } from '@fortawesome/free-solid-svg-icons/faComment'
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons/faEnvelope'
+import { faDev } from '@fortawesome/free-brands-svg-icons/faDev'
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons/faSignOutAlt'
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch'
 import { faFlag } from '@fortawesome/free-solid-svg-icons/faFlag'
 import { faMoon as faMoonBis } from '@fortawesome/free-solid-svg-icons/faMoon'
 import { faMoon } from '@fortawesome/free-regular-svg-icons/faMoon'
 import { faBullseye } from '@fortawesome/free-solid-svg-icons/faBullseye'
-import { CONTRIBUTOR_LINK, HANGOUTS_ME, EMAIL_FLAGGER_LABEL } from '../../../../private'
+import { CONTRIBUTOR_LINK, HANGOUTS_ME } from '../../../../private'
 import { YouTubeContext } from '../../content_script';
 import { urlsAvailable } from '../../config/config';
 
@@ -24,6 +24,11 @@ export class Sidebar extends Component {
       document.documentElement.setAttribute('data-theme', theme)
       context.setState('theme', theme)
       setTimeout(() => document.getElementById('TFsCenter').classList.remove('color-theme-in-transition'), 1000);
+    }
+
+    openPopup(event, context) {
+      event.preventDefault();
+      context.openModal('logs')
     }
 
     render() {
@@ -81,15 +86,15 @@ export class Sidebar extends Component {
                                         <span className="span-icon mgi--right-16">
                                             <FontAwesomeIcon icon={faUsers} size="1x" fixedWidth />
                                         </span>
-                                        <span className="text-link">Trusted Flagger Forum</span>
+                                        <span className="text-link">Forum</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href={EMAIL_FLAGGER_LABEL} target="_blank" className="youtube-link">
+                                    <a href={window.location.href + '#logs'} onClick={e => this.openPopup(e, context)} className="youtube-link">
                                         <span className="span-icon mgi--right-16">
-                                            <FontAwesomeIcon icon={faEnvelope} size="1x" fixedWidth />
+                                            <FontAwesomeIcon icon={faDev} size="1x" fixedWidth />
                                         </span>
-                                        <span className="text-link">trusted@flagging</span>
+                                        <span className="text-link">Logs</span>
                                     </a>
                                 </li>
                             </ul>

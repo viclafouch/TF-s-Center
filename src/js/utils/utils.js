@@ -37,10 +37,20 @@ export function updateQueryStringParameter(uri, key, value) {
     }
 }
 
+export const clearStorages = () => {
+  chrome.storage.local.clear()
+  chrome.storage.sync.clear()
+  window.location.reload()
+}
+
 export function openInNewTab(url, newTab = false) {
-    newTab = newTab ? '_blank' : false
-    var win = window.open(url, newTab);
-    win.focus();
+    if (chrome.tabs) {
+      return chrome.tabs.create({ active: true, url, pinned: false });
+    } else {
+      newTab = newTab ? '_blank' : false
+      const win = window.open(url, newTab);
+      win.focus();
+    }
 }
 
 export const copyObject = (obj) => JSON.parse(JSON.stringify(obj));

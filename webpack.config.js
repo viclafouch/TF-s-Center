@@ -7,7 +7,7 @@ const webpack = require('webpack');
 
 module.exports = (env, argv) => ({
   mode: argv.mode,
-  cache: argv.mode === 'development',
+  cache: false,
   watch: argv.mode === 'development',
   watchOptions: {
     aggregateTimeout: 300,

@@ -1,4 +1,4 @@
-export const urlsAvailable = ['/flagging_history', '/deputy', '/stats', '/templates', '/searches', '/targets']
+export const urlsAvailable = ['/flagging_history', '/deputy', '/stats', '/templates', '/searches', '/targets', '/logs']
 
 export const querys = ['search_query', 'context', 'v']
 

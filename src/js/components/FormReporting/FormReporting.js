@@ -64,7 +64,7 @@ export class FormReporting extends Component {
                     <YouTubeContext.Consumer>
                         {(context) => (
                             <div className="flex-me flex-justify-between">
-                                <h3>Report videos ({context.state.videosDisplayed.filter(x => x.selected === true).length})</h3>
+                                <h2>Report videos ({context.state.videosDisplayed.filter(x => x.selected === true).length})</h2>
                                 <div>
                                     <Select
                                         options={context.state.templates.map(e => {

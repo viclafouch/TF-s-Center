@@ -135,6 +135,7 @@ function initExtension() {
           this.state.lastSevenDaysflagged = lastSevenDaysflagged
           this.state.templates = storage.templates.map(elem => new Template(elem))
           this.state.searches = storage.searches.map(elem => new Search(elem))
+          this.state.openModal = { type: null, isOpen: false }
 
           if (youTubeDatas.pathname === urlsAvailable[5]) {
             this.state.videosDisplayed = this.state.videosToFlag
@@ -162,6 +163,18 @@ function initExtension() {
 
           this.setState({
             [type]: itemsDisplayed
+          });
+        }
+
+        openModal(type, isOpen = true) {
+          if (isOpen) {
+            window.location.hash = `#${type}`
+          } else {
+            const noHashURL = window.location.href.replace(/#.*$/, '');
+            window.history.replaceState('', document.title, noHashURL)
+          }
+          return this.setState({
+            openModal: { type, isOpen }
           });
         }
 
@@ -277,6 +290,7 @@ function initExtension() {
               filterVideos: type => this.filterVideos(type),
               addTemplate: (template = [], callback) => this.actionItem(template, 'templates', callback),
               removeTemplate: (template = [], callback) => this.actionItem(template, 'templates', callback),
+              openModal: (type, isOpen = true) => this.openModal(type, isOpen),
               removeVideosToFlag: sendForme => this.removeVideosToFlag(sendForme),
               addSearch: (search = [], callback) => this.actionItem(search, 'searches', callback),
               removeSearch: (search = [], callback) => this.actionItem(search, 'searches', callback),
