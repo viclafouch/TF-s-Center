@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { YouTubeContext } from '../../../content_script';
+import { YouTubeContext } from '../../../store/YouTubeContext';
 import TemplateListItem from './TemplateListItem';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 

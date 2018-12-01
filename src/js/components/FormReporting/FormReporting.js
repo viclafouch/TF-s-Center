@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Textarea from '../layouts/Textarea'
 import Button from '../Button';
-import { YouTubeContext } from '../../content_script';
+import { YouTubeContext } from '../../store/YouTubeContext';
 import { labels } from '../../config/config';
 import CountLetter from '../layouts/CountLetter';
 import Select from '../layouts/Select';

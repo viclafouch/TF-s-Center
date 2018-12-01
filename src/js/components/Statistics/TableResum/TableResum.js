@@ -1,5 +1,5 @@
 import React from 'react'
-import { YouTubeContext } from '../../../content_script';
+import { YouTubeContext } from '../../../store/YouTubeContext';
 
 const TableResum = () => {
     return (

@@ -12,7 +12,7 @@ import { faMoon as faMoonBis } from '@fortawesome/free-solid-svg-icons/faMoon'
 import { faMoon } from '@fortawesome/free-regular-svg-icons/faMoon'
 import { faBullseye } from '@fortawesome/free-solid-svg-icons/faBullseye'
 import { CONTRIBUTOR_LINK, HANGOUTS_ME } from '../../../../private'
-import { YouTubeContext } from '../../content_script';
+import { YouTubeContext } from '../../store/YouTubeContext';
 import { urlsAvailable } from '../../config/config';
 
 export class Sidebar extends Component {

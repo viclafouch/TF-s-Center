@@ -4,7 +4,7 @@ import { ToolsFlag } from './ToolsFlag/ToolsFlag';
 import { VideosList } from './VideosList/VideosList';
 import { FormFlagging } from './FormFlagging/FormFlagging';
 import { urlsAvailable } from '../config/config';
-import { YouTubeContext } from '../content_script';
+import { YouTubeContext } from '../store/YouTubeContext';
 import TemplatesContainer from '../containers/TemplatesContainer';
 import SearchesContainer from '../containers/SearchesContainer';
 import AnalyticsContainer from '../containers/AnalyticsContainer';

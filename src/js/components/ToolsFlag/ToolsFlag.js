@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Pagination from '../Tools/Pagination/Pagination'
-import { YouTubeContext } from '../../content_script';
+import { YouTubeContext } from '../../store/YouTubeContext';
 import FlagTools from '../Tools/FlagTools';
 import HistoryTools from '../Tools/HistoryTools';
 import Button from '../Button';

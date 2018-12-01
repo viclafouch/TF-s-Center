@@ -14,5 +14,13 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     }
 });
 
+console.log('tets');
+
+
+chrome.browserAction.onClicked.addListener(function (tab) {
+  // chrome.tabs.insertCSS({ file: "style.css" });
+  console.log(tab);
+
+});
 
 

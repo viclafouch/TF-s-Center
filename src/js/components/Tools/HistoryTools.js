@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from '../Button';
-import { YouTubeContext } from '../../content_script';
+import { YouTubeContext } from '../../store/YouTubeContext';
 import CountVideos from './CountVideos/CountVideos';
 import SelectingTime from './SelectingTime/SelectingTime';
 import { SelectDisplay } from './SelectDisplay/SelectDisplay';

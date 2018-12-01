@@ -3,7 +3,7 @@ import ToolsFlag from '../ToolsFlag/ToolsFlag'
 import { VideosList } from '../VideosList/VideosList';
 import Popup from '../Popup/Popup';
 import FormReporting from '../FormReporting/FormReporting'
-import { YouTubeContext } from '../../content_script';
+import { YouTubeContext } from '../../store/YouTubeContext';
 import { getUrlParameter } from '../../utils/utils';
 
 export class FormFlagging extends Component {

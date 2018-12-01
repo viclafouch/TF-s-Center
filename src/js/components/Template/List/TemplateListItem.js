@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { labels } from '../../../config/config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons/faTrashAlt'
-import { YouTubeContext } from '../../../content_script';
+import { YouTubeContext } from '../../../store/YouTubeContext';
 import { getDateFormat } from '../../../utils/utils';
 
 export class TemplateListItem extends Component {
