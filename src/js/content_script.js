@@ -73,7 +73,7 @@ function initExtension() {
         >
           <App />
         </YouTubeProvider>
-      , myReactApp);
+      , myReactApp, () => document.body.classList.add('TFs-ready'))
     })
     .catch(e => console.warn('Error TF-Center: ' + e))
 }
@@ -82,8 +82,6 @@ let pathname = getPathname()
 
 if (getUrlParameter('v') || urlsAvailable.includes(pathname)) {
   initExtension();
-} else {
-  document.body.style.overflow = 'auto'
 }
 
 // if async page changes

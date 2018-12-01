@@ -9,10 +9,6 @@
     font-weight: 500;
 }
 
-body {
-  overflow: hidden;
-}
-
 .red-color {
     color: red!important;
 }
@@ -422,7 +418,7 @@ div#TFsCenter {
 
     div.tools {
         margin: 0 auto;
-        z-index: 999;
+        z-index: 9;
         width: 100%;
         padding: 20px 16px;
         background-color: var(--background-container);
@@ -456,6 +452,7 @@ div#TFsCenter {
         }
 
         .box-count-videos {
+          white-space: nowrap;
           color: var(--color-notes);
         }
     }

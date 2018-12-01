@@ -28,6 +28,11 @@
             "matches": ["https://www.youtube.com/*"],
             "js": ["content_script.bundle.js"],
             "css": ["styles.css"]
+        },
+        {
+            "matches": ["https://www.youtube.com/deputy*", "https://www.youtube.com/flagging_history*"],
+            "js": ["content_script.bundle.js"],
+            "css": ["styles.css", "deputy.css"]
         }
     ],
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"

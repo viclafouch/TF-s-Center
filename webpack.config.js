@@ -25,6 +25,7 @@ module.exports = (env, argv) => ({
     background: path.join(__dirname, "src", "js", "background.js"),
     styles: path.join(__dirname, "src", "scss", "styles.scss"),
     popupcss: path.join(__dirname, "src", "scss", "popup.scss"),
+    deputy: path.join(__dirname, "src", "scss", "deputy.scss")
   },
   module: {
     rules: [
