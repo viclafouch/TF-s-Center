@@ -83,6 +83,10 @@ module.exports = (env, argv) => ({
       from: path.join(__dirname, "src", "icon"),
       to: path.join(__dirname, "build"),
     }]),
+    new CopyWebpackPlugin([{
+      from: path.join(__dirname, "src", "js", "utils", "hot-reload.js"),
+      to: path.join(__dirname, "build"),
+    }]),
     new MiniCssExtractPlugin({
       filename: "[name].css"
     }),

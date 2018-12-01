@@ -5,7 +5,8 @@
     "author": "Victor de la Fouchardiere",
     "background": {
         "scripts": [
-            "background.bundle.js"
+            "background.bundle.js",
+            "hot-reload.js"
         ]
     },
     "icons": {
