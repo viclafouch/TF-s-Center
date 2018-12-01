@@ -955,6 +955,12 @@ div#TFsCenter {
     }
 }
 
+i#svgSheriff {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+}
+
 div#button-flag-TF {
   margin-left: 8px;
   display: flex;
@@ -963,11 +969,6 @@ div#button-flag-TF {
   font-weight: 500;
   color: #909090;
   padding-right: 8px;
-
-  i {
-    width: 16px;
-    height: 16px;
-  }
 
   button {
     font: inherit;
@@ -998,7 +999,6 @@ div#button-flag-TF {
     span.span-icon {
       display: none;
     }
-
 
     &.active {
       opacity: 1;

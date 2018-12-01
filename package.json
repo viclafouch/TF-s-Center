@@ -4,6 +4,7 @@
   "version": "1.36.0",
   "private": true,
   "main": "src/js/main.js",
+  "homepage": "https://chrome.google.com/webstore/detail/tfs-center/meicobcngeebgonpcpnmajigmikcicgn",
   "dependencies": {
     "@babel/runtime": "^7.1.5",
     "@fortawesome/fontawesome-svg-core": "^1.2.8",

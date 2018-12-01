@@ -4,6 +4,7 @@ import Button from '../Button';
 import { openInNewTab, clearStorages } from '../../utils/utils'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons/faExternalLinkAlt'
+import svgIcon from '../../../img/sheriff'
 
 export class Logs extends Component {
   constructor() {
@@ -37,6 +38,7 @@ export class Logs extends Component {
   }
 
   componentDidMount() {
+    document.getElementById('svgSheriff').innerHTML = svgIcon
     this.getReleased();
   }
 
@@ -52,7 +54,12 @@ export class Logs extends Component {
             <div className="pdi--20">
               <div className="logs-header flex-me flex-justify-between">
                 <h2 className="logs-title pdi--bottom-6">Last logs</h2>
-                { process.env.NODE_ENV === 'development' && <Button blue onClick={() => clearStorages()}>Reset storage</Button> }
+                <div className="flex-me">
+                  { process.env.NODE_ENV === 'development' && <Button className="mgi--left-10" blue onClick={() => clearStorages()}>Reset storage</Button> }
+                    <a href={process.env.homepage_url} target="_blank">
+                      <Button className="mgi--left-10 flex-me flex-align"><span>Rate this extension</span> <i id="svgSheriff" className="mgi--left-5"></i></Button>
+                    </a>
+                </div>
               </div>
               <div className="logs-list">
                 {

@@ -10,7 +10,7 @@ module.exports = (env, argv) => ({
   cache: false,
   watch: argv.mode === 'development',
   watchOptions: {
-    aggregateTimeout: 300,
+    aggregateTimeout: 1000,
     ignored: ['node_modules']
   },
   devtool: argv.mode === 'production' ? 'source-map' : 'cheap-module-eval-source-map',
@@ -73,7 +73,10 @@ module.exports = (env, argv) => ({
         }))
       }
     }]),
-    new webpack.EnvironmentPlugin({ "process.env.NODE_ENV": JSON.stringify(argv.mode) }),
+    new webpack.EnvironmentPlugin({
+      "process.env.NODE_ENV": JSON.stringify(argv.mode),
+      'homepage_url': process.env.npm_package_homepage
+    }),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new CopyWebpackPlugin([{
       from: path.join(__dirname, "src", "icon"),
