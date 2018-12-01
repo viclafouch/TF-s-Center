@@ -52,7 +52,7 @@ export class Logs extends Component {
             <div className="pdi--20">
               <div className="logs-header flex-me flex-justify-between">
                 <h2 className="logs-title pdi--bottom-6">Last logs</h2>
-                <Button blue onClick={() => clearStorages()}>Reset storage</Button>
+                { process.env.NODE_ENV === 'development' && <Button blue onClick={() => clearStorages()}>Reset storage</Button> }
               </div>
               <div className="logs-list">
                 {

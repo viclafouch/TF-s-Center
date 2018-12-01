@@ -52,11 +52,9 @@ class App extends Component {
 										isOpen={context.state.openModal.isOpen && context.state.openModal.type}
 										onClosed={() => context.openModal(context.state.openModal.type, false)}
 									>
-										{ context.state.openModal.type === 'logs' &&
-                      <Logs
-                        onClosed={() => context.openModal(context.state.openModal.type, false)}
-                      />
-										}
+                    <Logs
+                      onClosed={() => context.openModal(context.state.openModal.type, false)}
+                    />
 									</Popup>
 								</React.Fragment>
 							)}

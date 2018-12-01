@@ -14,6 +14,14 @@ import Search from './shared/models/Search.class'
 import { wait, getUrlParameter, injectCss, getDateFormat, copyDate } from './utils/utils';
 import Video from './shared/models/Video.class';
 
+const style = [
+  'background: linear-gradient(to right, #5433ff, #20bdff, #a5fecb);',
+  'color: #fff',
+  'padding: 10px 20px',
+  'line-height: 35px'
+].join(';');
+console.log(`%cTF\'s Center on ${process.env.NODE_ENV} mode!`, style);
+
 export const YouTubeContext = React.createContext();
 
 function initExtension() {

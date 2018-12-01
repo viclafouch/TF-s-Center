@@ -73,6 +73,7 @@ module.exports = (env, argv) => ({
         }))
       }
     }]),
+    new webpack.EnvironmentPlugin({ "process.env.NODE_ENV": JSON.stringify(argv.mode) }),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new CopyWebpackPlugin([{
       from: path.join(__dirname, "src", "icon"),
