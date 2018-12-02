@@ -862,14 +862,14 @@ div#TFsCenter {
         max-height: 999px;
     }
 
-    .template-leave {
+    .template-exit {
         max-height: 999px;
         transition: all 500ms cubic-bezier(0, 1, 0, 1);
         overflow: hidden;
         opacity: 1;
     }
 
-    .template-leave.template-leave-active {
+    .template-exit.template-exit-active {
         opacity: 0.1;
         transition: all 500ms ease-in-out;
         max-height: 0px;

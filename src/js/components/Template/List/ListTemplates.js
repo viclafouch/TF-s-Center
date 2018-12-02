@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { YouTubeContext } from '../../../store/YouTubeContext';
 import TemplateListItem from './TemplateListItem';
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import {
+  CSSTransition,
+  TransitionGroup,
+} from 'react-transition-group';
 
 export class ListTemplates extends Component {
     render() {
@@ -9,13 +12,22 @@ export class ListTemplates extends Component {
             <YouTubeContext.Consumer>
                 {(context) => (
                     <ul className="template-list">
-                        <CSSTransitionGroup transitionName="template" transitionEnterTimeout={1000} transitionLeaveTimeout={500}>
-                            { context.state.templates.map((elem) => (
-                                <li key={elem.id} className="box-material">
-                                    <TemplateListItem template={elem} />
-                                </li>
-                            ))}
-                        </CSSTransitionGroup>
+                      <TransitionGroup>
+                        { context.state.templates.map((elem) => (
+                            <CSSTransition
+                              key={elem.id}
+                              timeout={{
+                                enter: 1000,
+                                exit: 500,
+                              }}
+                              classNames="template"
+                            >
+                              <li className="box-material">
+                                  <TemplateListItem template={elem} />
+                              </li>
+                            </CSSTransition>
+                        ))}
+                      </TransitionGroup>
                     </ul>
                 )}
             </YouTubeContext.Consumer>
