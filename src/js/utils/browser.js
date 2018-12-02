@@ -1,6 +1,9 @@
-export const clearStorages = () => {
+import { wait } from "./utils";
+
+export const clearStorages = async () => {
   chrome.storage.local.clear()
   chrome.storage.sync.clear()
+  await wait(200);
   window.location.reload()
 }
 
