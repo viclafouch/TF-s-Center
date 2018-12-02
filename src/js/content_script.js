@@ -73,7 +73,10 @@ function initExtension() {
         >
           <App />
         </YouTubeProvider>
-      , myReactApp, () => document.body.classList.add('TFs-ready'))
+      , myReactApp, async () => {
+        await wait(1000);
+        document.body.classList.add('TFs-ready')
+      })
     })
     .catch(e => console.warn('Error TF-Center: ' + e))
 }
