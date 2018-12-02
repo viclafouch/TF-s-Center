@@ -15,6 +15,11 @@ export class TemplateListItem extends Component {
         }
     }
 
+    actionOnSelected(event, context, template) {
+      this.setState({ active: false });
+      if (event.target !== event.currentTarget) context.removeTemplate([template])
+    }
+
     render() {
         let { template } = this.props;
         let label = labels.find(x => x.value === template.type);
@@ -33,8 +38,8 @@ export class TemplateListItem extends Component {
             </article>
             <YouTubeContext.Consumer>
               {(context) => (
-                <div className="action-temp flex-me flex-justify-center flex-align">
-                  <span style={{ cursor: 'pointer' }} onClick={() => this.setState({ active: false }, () => context.removeTemplate([template]))}>
+                <div className="action-temp flex-me flex-justify-center flex-align" onClick={e => this.actionOnSelected(e, context, template)}>
+                  <span style={{ cursor: 'pointer' }}>
                     <FontAwesomeIcon icon={faTrashAlt} size="2x" fixedWidth />
                   </span>
                 </div>
