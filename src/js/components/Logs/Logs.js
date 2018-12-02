@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { Release } from '../../shared/models/Release.class';
 import Button from '../Button';
-import { openInNewTab, clearStorages } from '../../utils/utils'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons/faExternalLinkAlt'
 import svgIcon from '../../../img/sheriff'
+import { getDateFormat } from "../../utils/date";
+import { clearStorages, openInNewTab } from '../../utils/browser';
 
 export class Logs extends Component {
   constructor() {
@@ -27,7 +28,7 @@ export class Logs extends Component {
 
   async getReleased() {
     try {
-      let releaseds = await this.fetchReleased()
+      const releaseds = await this.fetchReleased()
       this.setState({ releaseds, error: false })
       return;
     } catch (error) {
@@ -48,7 +49,7 @@ export class Logs extends Component {
         {
           this.state.error
           ?
-          <div>An error occurred</div>
+          <div className="pdi--20 flex-me flex-align flex-justify-center"><span>An error occurred.</span></div>
           :
           <React.Fragment>
             <div className="pdi--20">
@@ -61,11 +62,19 @@ export class Logs extends Component {
                     </a>
                 </div>
               </div>
-              <div className="logs-list">
+              <div className="logs-list scrollBarOnHover">
                 {
                   this.state.releaseds.slice(0, 5).map((release, index) => (
                     <article key={release.id} className="log-item">
-                      <h4 className="log-item-title">{release.name} <a href={release.url} target="_blank">(See)</a> {index === 0 && "(Latest)"}</h4>
+                      <div>
+                        <h4 className="log-item-title">{release.name}</h4>
+                        {' '}
+                        <a href={release.url} target="_blank">(See)</a>
+                        {' '}
+                        <span className="log-date">{getDateFormat(release.created_at)}</span>
+                        {' '}
+                        {index === 0 && <b>(Latest)</b>}
+                      </div>
                       <ul>
                         {release.body.map((item, index) => <li key={index}>{item}</li>)}
                       </ul>

@@ -1,3 +1,5 @@
+import { openInNewTab } from "./browser";
+
 export function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
         sURLVariables = sPageURL.split('&'), sParameterName, i;
@@ -13,19 +15,6 @@ export function getUrlParameter(sParam) {
 
 export const wait = (amount = 0) => new Promise(resolve => setTimeout(resolve, amount));
 
-export const copyDate = date => new Date(date.getTime())
-
-const months = Array.from({length: 12}, (x, index) => (new Date(0, index).toLocaleDateString('en-US', { month: 'short'})))
-
-export const getDateAwesome = date => date.getDate() + ' ' + months[date.getMonth()] + ' '+ date.getFullYear()
-
-export const getDateFormat = (date) => date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()
-
-
-export const isValidDate = date => date instanceof Date && !isNaN(date);
-
-export const getUnix = date => Math.round(date.getTime() / 1000)
-
 export function updateQueryStringParameter(uri, key, value) {
     var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
     var separator = uri.indexOf('?') !== -1 ? "&" : "?";
@@ -37,22 +26,6 @@ export function updateQueryStringParameter(uri, key, value) {
     }
 }
 
-export const clearStorages = () => {
-  chrome.storage.local.clear()
-  chrome.storage.sync.clear()
-  window.location.reload()
-}
-
-export function openInNewTab(url, newTab = false) {
-    if (chrome.tabs) {
-      return chrome.tabs.create({ active: true, url, pinned: false });
-    } else {
-      newTab = newTab ? '_blank' : false
-      const win = window.open(url, newTab);
-      win.focus();
-    }
-}
-
 export const copyObject = (obj) => JSON.parse(JSON.stringify(obj));
 
 export function trySearch(text, search, newTab = false) {
@@ -60,12 +33,6 @@ export function trySearch(text, search, newTab = false) {
     let url = `/deputy?search_query=${urlEncodade}`
     url = search ? url + `&searchId=${search.id}` : url
     return openInNewTab(url, newTab);
-}
-
-export function injectCss() {
-  const style = document.createElement('style');
-  style.type = "text/css";
-  (document.body || document.head || document.documentElement).appendChild(style);
 }
 
 String.prototype.cleanString = function () {

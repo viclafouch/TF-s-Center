@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './components/App'
 import getPathname from './getDom/_location'
 import { urlsAvailable } from './config/config';
-import { wait, getUrlParameter, injectCss } from './utils/utils';
+import { wait, getUrlParameter } from './utils/utils';
 import YouTubeProvider from './store/YouTubeContext';
 import { getStorages } from './store/BrowserStorage';
 import getYouTubeDatasFromDOM from './store/DatasDom'
@@ -62,7 +62,6 @@ function initExtension() {
         document.getElementById('page-container').innerHTML = '';
         document.getElementById('page-container').appendChild(myReactApp);
         document.documentElement.setAttribute('data-theme', storage.theme)
-        injectCss()
       }
 
       ReactDOM.render(

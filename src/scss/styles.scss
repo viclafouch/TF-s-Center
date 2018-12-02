@@ -939,10 +939,14 @@ div#TFsCenter {
 
       .logs-list {
         margin-top: 20px;
+        max-height: 400px;
+        overflow-y: scroll;
 
         article.log-item {
+           padding-bottom: 18px;
+          .log-item-title { display: inline-block; }
+          .log-date { color: var(--color-notes); font-size: 12px; }
           a { color: #15c!important; }
-          padding-bottom: 13px;
           ul {
             margin-left: 10px;
             & > li { padding-top: 5px; padding-right: 7px; margin-left: 20px; list-style: disc; }

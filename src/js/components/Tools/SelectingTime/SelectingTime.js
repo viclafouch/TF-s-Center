@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import DatePicker from 'react-datepicker'
 import Button from '../../Button';
-import { updateQueryStringParameter, getUrlParameter, copyDate, isValidDate, getUnix } from '../../../utils/utils'
+import { updateQueryStringParameter, getUrlParameter } from '../../../utils/utils'
+import { copyDate, isValidDate, getUnixFromDate } from '../../../utils/date';
 
 export class SelectingTime extends Component {
 
@@ -42,8 +43,8 @@ export class SelectingTime extends Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        let timestamp_from = getUnix(this.state.date_from)
-        let timestamp_to = getUnix(this.state.date_to)
+        let timestamp_from = getUnixFromDate(this.state.date_from)
+        let timestamp_to = getUnixFromDate(this.state.date_to)
 
         let url = updateQueryStringParameter(window.location.href, 'start_time', timestamp_from)
         url = updateQueryStringParameter(url, 'end_time', timestamp_to);
