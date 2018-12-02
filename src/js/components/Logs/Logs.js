@@ -71,7 +71,7 @@ export class Logs extends Component {
                         {' '}
                         <a href={release.url} target="_blank">(See)</a>
                         {' '}
-                        <span className="log-date">{getDateFormat(release.created_at)}</span>
+                        <span className="log-date">{getDateFormat(release.published_at)}</span>
                         {' '}
                         {index === 0 && <b>(Latest)</b>}
                       </div>

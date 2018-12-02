@@ -4,7 +4,7 @@ export class Release {
   ) {
     this.id = release.id
     this.name = release.name
-    this.created_at = new Date(release.created_at)
+    this.published_at = new Date(release.published_at)
     this.url = release.html_url
     this.body = this.bodyToList(release.body)
   }
