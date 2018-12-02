@@ -40,10 +40,9 @@ function initExtension() {
   Promise.all([getStorages('local'), getStorages('sync')])
     .then(async storages => {
       const storage = storages.reduce((a, d) => Object.assign(d, a), {});
-
       const pathname = getPathname()
       const myReactApp = document.createElement("div");
-      const youtubeDatasFromDOM = getYouTubeDatasFromDOM(pathname);
+
 
       // For /watch, website uses Angular and asynchrone injection, wait DOM ready
       if (pathname === '/watch') {
@@ -53,6 +52,8 @@ function initExtension() {
         // Forbid duplicate
         if (document.getElementById('info').querySelector('#button-flag-TF')) return;
       }
+
+      const youtubeDatasFromDOM = getYouTubeDatasFromDOM(pathname);
 
       if (pathname === '/watch') {
         myReactApp.setAttribute("id", "button-flag-TF");
