@@ -6,9 +6,8 @@ import getUser from './../getDom/_user'
 import getVideos from './../getDom/_videos'
 import { getUrlParameter } from '../utils/utils';
 
-const videoIdWatch = getUrlParameter('v')
-
 export default function(pathname) {
+  const videoIdWatch = getUrlParameter('v')
   return {
     pathname,
     videos: getVideos(),

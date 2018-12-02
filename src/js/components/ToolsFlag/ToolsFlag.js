@@ -20,7 +20,9 @@ export class ToolsFlag extends Component {
                                 {
                                   context.state.canFlag &&
                                   <Button
-                                    className={context.state.videosDisplayed.filter(x => x.selected).length === context.state.videosDisplayed.length ? 'active' : ''} blue
+                                    className={context.state.videosDisplayed.filter(x => x.selected).length === context.state.videosDisplayed.length && context.state.videosDisplayed.length !== 0 ? 'active' : ''}
+                                    blue
+                                    disabled={context.state.videosDisplayed.length === 0}
                                     onClick={() => context.selectAll('videosDisplayed')}>Select all</Button>
                                 }
                                 {
