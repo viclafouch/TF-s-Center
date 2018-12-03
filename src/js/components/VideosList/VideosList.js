@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import VideoListItem from './VideoListItem';
 import Popup from '../Popup/Popup'
-import Video from '../../shared/models/Video.class'
+import Video from '@shared/models/Video.class'
 import VideoDetail from '../VideoDetail/VideoDetail';
 import Loader from '../layouts/Loader';
-import { YouTubeContext } from '../../store/YouTubeContext';
+import { YouTubeContext } from '@stores/YouTubeContext';
 import { YOUTUBE_API_KEYS } from '../../../../private';
 
 export class VideosList extends Component {

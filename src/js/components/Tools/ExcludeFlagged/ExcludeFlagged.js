@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Checkbox from '../../layouts/Checkbox';
-import { getUrlParameter, updateQueryStringParameter } from '../../../utils/utils'
+import Checkbox from '@components/layouts/Checkbox';
+import { getUrlParameter, updateQueryStringParameter } from '@utils'
 
 export class ExcludeFlagged extends Component {
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { YouTubeContext } from '../../store/YouTubeContext';
+import { YouTubeContext } from '@stores/YouTubeContext';
 
 export class VideoListItem extends Component {
 

@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import Button from '../../Button';
-import Input from '../../layouts/Input';
-import Select from '../../layouts/Select';
-import { trySearch } from '../../../utils/utils'
-import { Search } from '../../../shared/models/Search.class';
-import Checkbox from '../../layouts/Checkbox';
+import Button from '@components/Button';
+import Input from '@components/layouts/Input';
+import Select from '@components/layouts/Select';
+import { trySearch } from '@utils'
+import { Search } from '@shared/models/Search.class';
+import Checkbox from '@components/layouts/Checkbox';
 
 export class NewSearches extends Component {
 

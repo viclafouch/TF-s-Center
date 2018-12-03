@@ -4,7 +4,7 @@ import getPagination from './../getDom/_pagination'
 import getStatistics from './../getDom/_statistics'
 import getUser from './../getDom/_user'
 import getVideos from './../getDom/_videos'
-import { getUrlParameter } from '../utils/utils';
+import { getUrlParameter } from '@utils';
 
 export default function(pathname) {
   const videoIdWatch = getUrlParameter('v')

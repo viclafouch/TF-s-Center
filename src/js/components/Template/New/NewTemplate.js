@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus'
-import Select from '../../layouts/Select'
+import Select from '@components/layouts/Select'
 import onClickOutside from "react-onclickoutside";
-import CountLetter from '../../layouts/CountLetter';
-import { Template } from '../../../shared/models/Template.class';
+import CountLetter from '@components/layouts/CountLetter';
+import { Template } from '@shared/models/Template.class';
 import { labels, MAX_TEMPLATES } from '../../../config/config';
-import Input from '../../layouts/Input';
+import Input from '@components/layouts/Input';
 
 export class NewTemplate extends Component {
 

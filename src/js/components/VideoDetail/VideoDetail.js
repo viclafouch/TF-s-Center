@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import Button from '../Button'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { YouTubeContext } from '../../store/YouTubeContext';
-import { getDateAwesome } from '../../utils/date';
+import { YouTubeContext } from '@stores/YouTubeContext';
+import { getDateAwesome } from '@utils/date';
 
 export class VideoDetail extends Component {
 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import Video from '../shared/models/Video.class';
-import Template from '../shared/models/Template.class';
-import Search from '../shared/models/Search.class';
-import { copyDate } from '../utils/date';
-import { sevenLastDays } from '../utils/date';
+import Video from '@shared/models/Video.class';
+import Template from '@shared/models/Template.class';
+import Search from '@shared/models/Search.class';
+import { copyDate } from '@utils/date';
+import { sevenLastDays } from '@utils/date';
 import { urlsAvailable } from '../config/config';
 
 export const YouTubeContext = React.createContext();

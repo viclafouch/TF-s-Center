@@ -1,4 +1,4 @@
-import { wait } from "./utils";
+import { wait } from "@utils";
 
 export const clearStorages = async () => {
   chrome.storage.local.clear()

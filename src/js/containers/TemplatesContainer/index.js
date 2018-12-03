@@ -1,7 +1,7 @@
 import React from 'react'
-import NewTemplate from '../../components/Template/New/NewTemplate';
-import { ListTemplates } from '../../components/Template/List/ListTemplates';
-import { YouTubeContext } from '../../store/YouTubeContext';
+import NewTemplate from '@components/Template/New/NewTemplate';
+import { ListTemplates } from '@components/Template/List/ListTemplates';
+import { YouTubeContext } from '@stores/YouTubeContext';
 
 const TemplatesContainer = () => {
     return (

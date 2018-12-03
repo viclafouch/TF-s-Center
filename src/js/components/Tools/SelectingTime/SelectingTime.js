@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import DatePicker from 'react-datepicker'
-import Button from '../../Button';
-import { updateQueryStringParameter, getUrlParameter } from '../../../utils/utils'
-import { copyDate, isValidDate, getUnixFromDate } from '../../../utils/date';
+import Button from '@components/Button';
+import { updateQueryStringParameter, getUrlParameter } from '@utils'
+import { copyDate, isValidDate, getUnixFromDate } from '@utils/date';
 
 export class SelectingTime extends Component {
 

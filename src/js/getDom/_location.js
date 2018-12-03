@@ -1,5 +1,5 @@
 import { urlsAvailable, querys } from '../config/config'
-import { getUrlParameter } from '../utils/utils'
+import { getUrlParameter } from '@utils'
 
 let pathname = function getPathname() {
     let { pathname } = window.location;

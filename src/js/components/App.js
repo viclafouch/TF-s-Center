@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
-import { Sidebar } from './Sidebar/Sidebar';
-import { ToolsFlag } from './ToolsFlag/ToolsFlag';
-import { VideosList } from './VideosList/VideosList';
-import { FormFlagging } from './FormFlagging/FormFlagging';
+import { Sidebar } from '@components/Sidebar/Sidebar';
+import { ToolsFlag } from '@components/ToolsFlag/ToolsFlag';
+import { VideosList } from '@components/VideosList/VideosList';
+import { FormFlagging } from '@components/FormFlagging/FormFlagging';
 import { urlsAvailable } from '../config/config';
-import { YouTubeContext } from '../store/YouTubeContext';
-import TemplatesContainer from '../containers/TemplatesContainer';
-import SearchesContainer from '../containers/SearchesContainer';
-import AnalyticsContainer from '../containers/AnalyticsContainer';
-import FlagButton from './FlagButton/FlagButton';
-import Popup from './Popup/Popup';
-import Logs from './Logs/Logs';
+import { YouTubeContext } from '@stores/YouTubeContext';
+import TemplatesContainer from '@containers/TemplatesContainer';
+import SearchesContainer from '@containers/SearchesContainer';
+import AnalyticsContainer from '@containers/AnalyticsContainer';
+import FlagButton from '@components/FlagButton/FlagButton';
+import Popup from '@components/Popup/Popup';
+import Logs from '@components/Logs/Logs';
 
 class App extends Component {
     render() {

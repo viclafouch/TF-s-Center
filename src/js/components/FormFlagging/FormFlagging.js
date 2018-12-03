@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import ToolsFlag from '../ToolsFlag/ToolsFlag'
-import { VideosList } from '../VideosList/VideosList';
-import Popup from '../Popup/Popup';
-import FormReporting from '../FormReporting/FormReporting'
-import { YouTubeContext } from '../../store/YouTubeContext';
-import { getUrlParameter } from '../../utils/utils';
+import ToolsFlag from '@components/ToolsFlag/ToolsFlag'
+import { VideosList } from '@components/VideosList/VideosList';
+import Popup from '@components/Popup/Popup';
+import FormReporting from '@components/FormReporting/FormReporting'
+import { YouTubeContext } from '@stores/YouTubeContext';
+import { getUrlParameter } from '@utils';
 
 export class FormFlagging extends Component {
 

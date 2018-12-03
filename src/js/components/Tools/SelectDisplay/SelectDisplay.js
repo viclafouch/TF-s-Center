@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Checkbox from '../../layouts/Checkbox';
-import { YouTubeContext } from '../../../store/YouTubeContext';
+import Checkbox from '@components/layouts/Checkbox';
+import { YouTubeContext } from '@stores/YouTubeContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faColumns } from '@fortawesome/free-solid-svg-icons/faColumns'
 

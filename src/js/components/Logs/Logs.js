@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { Release } from '../../shared/models/Release.class';
-import Button from '../Button';
+import { Release } from '@shared/models/Release.class';
+import Button from '@components/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons/faExternalLinkAlt'
 import svgIcon from '../../../img/sheriff'
-import { getDateFormat } from "../../utils/date";
-import { clearStorages, openInNewTab } from '../../utils/browser';
+import { getDateFormat } from "@utils/date";
+import { clearStorages, openInNewTab } from '@utils/browser';
 
 export class Logs extends Component {
   constructor() {

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import Textarea from '../layouts/Textarea'
-import Button from '../Button';
-import { YouTubeContext } from '../../store/YouTubeContext';
+import Textarea from '@components/layouts/Textarea'
+import Button from '@components/Button';
+import { YouTubeContext } from '@stores/YouTubeContext';
 import { labels } from '../../config/config';
-import CountLetter from '../layouts/CountLetter';
-import Select from '../layouts/Select';
-import { getUrlParameter } from '../../utils/utils';
+import CountLetter from '@components/layouts/CountLetter';
+import Select from '@components/layouts/Select';
+import { getUrlParameter } from '@utils';
 
 export class FormReporting extends Component {
 

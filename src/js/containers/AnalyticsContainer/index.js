@@ -1,9 +1,9 @@
 import React from 'react'
-import { YouTubeContext } from '../../store/YouTubeContext';
-import TableResum from '../../components/Statistics/TableResum/TableResum';
-import LastSevenDays from '../../components/Statistics/LastSevenDays/LastSevenDays';
-import BestTemplates from '../../components/Statistics/BestTemplates/BestTemplates';
-import BestSearches from '../../components/Statistics/BestSearches/BestSearches';
+import { YouTubeContext } from '@stores/YouTubeContext';
+import TableResum from '@components/Statistics/TableResum/TableResum';
+import LastSevenDays from '@components/Statistics/LastSevenDays/LastSevenDays';
+import BestTemplates from '@components/Statistics/BestTemplates/BestTemplates';
+import BestSearches from '@components/Statistics/BestSearches/BestSearches';
 
 const AnalyticsContainer = () => {
     return (

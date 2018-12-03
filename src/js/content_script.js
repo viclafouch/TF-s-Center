@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
-import App from './components/App'
+import App from '@components/App'
 import getPathname from './getDom/_location'
 import { urlsAvailable } from './config/config';
-import { wait, getUrlParameter } from './utils/utils';
-import YouTubeProvider from './store/YouTubeContext';
-import { getStorages } from './store/BrowserStorage';
-import getYouTubeDatasFromDOM from './store/DatasDom'
+import { wait, getUrlParameter } from '@utils';
+import YouTubeProvider from '@stores/YouTubeContext';
+import { getStorages } from '@stores/BrowserStorage';
+import getYouTubeDatasFromDOM from '@stores/DatasDom'
 
 const style = [
   'background: linear-gradient(to right, #5433ff, #20bdff, #a5fecb);',
