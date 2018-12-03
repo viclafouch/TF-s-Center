@@ -55,7 +55,17 @@ module.exports = (env, argv) => ({
     ]
   },
   resolve: {
-    extensions: [".jsx", ".js", ".scss"]
+    extensions: [".jsx", ".js", ".scss"],
+    alias: {
+      '@components': path.resolve(__dirname, './src/js/components'),
+      '@stores': path.resolve(__dirname, './src/js/store'),
+      '@containers': path.resolve(__dirname, './src/js/containers'),
+      '@shared': path.resolve(__dirname, './src/js/shared'),
+      '@utils': path.resolve(__dirname, './src/js/utils'),
+      '@scss': path.resolve(__dirname, './src/scss'),
+      '@img': path.resolve(__dirname, './src/img'),
+      '@': path.resolve(__dirname, './src')
+    }
   },
   output: {
     path: path.join(__dirname, "build"),
