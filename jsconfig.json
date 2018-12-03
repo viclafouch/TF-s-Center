@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "allowSyntheticDefaultImports": false,
+    "baseUrl": "./",
+    "paths": {
+      "@components/*": ["src/js/components/*"],
+      "@stores/*": ["src/js/store/*"],
+      "@containers/*": ["src/js/containers/*"],
+      "@shared/*": ["src/js/shared/*"],
+      "@utils/*": ["src/js/utils/*"],
+      "@scss/*": ["src/scss/*"],
+      "@img/*": ["src/img/*"],
+      "@/*": ["src/*"],
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
