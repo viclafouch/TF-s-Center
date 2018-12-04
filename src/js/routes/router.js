@@ -12,7 +12,7 @@ const AppRouter = () => (
   <YouTubeContext.Consumer>
     {(context) => (
       <React.Fragment>
-        { context.state.isLoading && <div className="isLoading"></div> }
+        {context.state.isLoading && <div className={"isLoading" + ' loader-'+context.state.theme}></div>}
         <Switch>
           <Route exact path="/" component={TemplatesContainer} />
           <Route exact path="/flagging_history" component={HistoryContainer} />

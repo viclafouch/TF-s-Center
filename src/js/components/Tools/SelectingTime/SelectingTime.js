@@ -3,21 +3,32 @@ import DatePicker from 'react-datepicker'
 import Button from '@components/Button';
 import { updateQueryStringParameter, getUrlParameter } from '@utils'
 import { copyDate, isValidDate, getUnixFromDate } from '@utils/date';
+import { Redirect } from 'react-router'
 
 export class SelectingTime extends Component {
 
     constructor() {
         super();
 
+        this.url = null;
+
         const today = new Date()
 
         this.state = {
+            redirectTo: null,
             date_from: new Date(copyDate(today).setDate(today.getDate() - 7)),
             date_to: copyDate(today)
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    componentDidUpdate(prevProps, prevState) {
+      if (prevState.redirectTo) {
+        return this.setState({ redirectTo: null })
+      }
+    }
+
 
     handleChange(date = {}, type) {
         date !== null && this.setState({
@@ -28,6 +39,9 @@ export class SelectingTime extends Component {
     componentDidMount() {
         let timestamp_from = getUrlParameter('start_time');
         let timestamp_to = getUrlParameter('end_time');
+
+        this.timestamp_from = timestamp_from
+        this.timestamp_to = timestamp_to
 
         timestamp_from = new Date(timestamp_from * 1000)
         timestamp_to = new Date(timestamp_to * 1000)
@@ -46,10 +60,16 @@ export class SelectingTime extends Component {
         let timestamp_from = getUnixFromDate(this.state.date_from)
         let timestamp_to = getUnixFromDate(this.state.date_to)
 
-        let url = updateQueryStringParameter(window.location.href, 'start_time', timestamp_from)
+        let url = updateQueryStringParameter("/flagging_history", 'start_time', timestamp_from)
         url = updateQueryStringParameter(url, 'end_time', timestamp_to);
 
-        return window.location.href = url;
+        if (timestamp_from != this.timestamp_from || timestamp_to != this.timestamp_to) {
+          this.timestamp_from = timestamp_from
+          this.timestamp_to = timestamp_to
+          return this.setState({
+            redirectTo: url
+          });
+        }
     }
 
     render() {
@@ -66,6 +86,7 @@ export class SelectingTime extends Component {
 
         return (
             <div className="tools-choosing-time">
+            { this.state.redirectTo && <Redirect to={this.state.redirectTo} /> }
                 <form action="" onSubmit={this.handleSubmit} className="flex-me flex-align">
                     <span>View flagging history from to</span>
                     <DatePicker
