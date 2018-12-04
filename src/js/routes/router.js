@@ -11,26 +11,27 @@ import HistoryContainer from '@containers/HistoryContainer/index';
 const AppRouter = () => (
   <YouTubeContext.Consumer>
     {(context) => (
-      <Switch>
-        <Route exact path="/" component={TemplatesContainer} />
-        <Route exact path="/flagging_history" component={HistoryContainer} />
-        <Route path="/deputy" render={props => {
-          const query = getUrlParameter('context') || "target"
-          console.log({query});
-          switch (query) {
-            case "stats":
-              return <AnalyticsContainer  {...props } />
-            case "templates":
-              return <TemplatesContainer {...props} />
-            case "searches":
-              return <SearchesContainer {...props} />
-            default:
-              return <FormFlagging {...props} context={context} />
-          }
-
-        }}/>
-        <Route path="/deputy?context=stats"  />
-      </Switch>
+      <React.Fragment>
+        { context.state.isLoading && <div className="isLoading"></div> }
+        <Switch>
+          <Route exact path="/" component={TemplatesContainer} />
+          <Route exact path="/flagging_history" component={HistoryContainer} />
+          <Route path="/deputy" render={props => {
+            const query = getUrlParameter('context') || "target"
+            switch (query) {
+              case "stats":
+                return <AnalyticsContainer  {...props} />
+              case "templates":
+                return <TemplatesContainer {...props} />
+              case "searches":
+                return <SearchesContainer {...props} />
+              default:
+                return <FormFlagging {...props} context={context} />
+            }
+          }} />
+          <Route path="/deputy?context=stats" />
+        </Switch>
+      </React.Fragment>
     )}
   </YouTubeContext.Consumer>
 )

@@ -25,7 +25,6 @@ class YouTubeProvider extends Component {
     })
 
     this.state = copyObject(youtubeDatasDeputy)
-    console.log(this.state);
 
     this.baseHide = {}
 
@@ -35,6 +34,7 @@ class YouTubeProvider extends Component {
     this.state.canFlag = pathname === urlsAvailable[1]
     this.state.popupReportingOpened = false
     this.state.theme = storage.theme
+    this.state.isLoading = false
     this.state.displaying = storage.displaying
     this.state.videosToFlag = storage.videosToFlag.map(e => new Video(e))
     this.state.videoWatched = youtubeDatasDeputy.videoWatched
@@ -126,6 +126,15 @@ class YouTubeProvider extends Component {
         })
       }
     })
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    if (JSON.stringify(prevState.videos) !== JSON.stringify(this.state.videos)) {
+      const videosDisplayed = this.state.videos.filter(video => {
+        return this.state.hideReviewed ? !video.isReviewed : this.state.hideRemoved ? !video.isRemoved : true
+      });
+      return this.setState({videosDisplayed});
+    }
   }
 
   filterVideos(type) {

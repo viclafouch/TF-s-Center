@@ -1,6 +1,8 @@
-body {
+body, .isLoading {
   overflow: hidden;
   position: relative;
+  height: 100%;
+  width: 100%;
 }
 
 .TFs-ready {
@@ -11,7 +13,7 @@ body {
   }
 }
 
-body::before {
+body::before, .isLoading::before {
   content: '';
   z-index: 101;
   width: 100%;
@@ -22,7 +24,7 @@ body::before {
   left: 0;
 }
 
-body::after {
+body::after, .isLoading::after {
   z-index: 102;
   content: '';
   width: 200px;

@@ -1,17 +1,7 @@
 import React, { Component } from 'react'
 import { Sidebar } from '@components/Sidebar/Sidebar';
-import { ToolsFlag } from '@components/ToolsFlag/ToolsFlag';
-import { VideosList } from '@components/VideosList/VideosList';
-import { FormFlagging } from '@components/FormFlagging/FormFlagging';
-import { urlsAvailable } from '../config/config';
 import { YouTubeContext } from '@stores/YouTubeContext';
-import TemplatesContainer from '@containers/TemplatesContainer';
-import SearchesContainer from '@containers/SearchesContainer';
-import AnalyticsContainer from '@containers/AnalyticsContainer';
 import FlagButton from '@components/FlagButton/FlagButton';
-import Popup from '@components/Popup/Popup';
-import Logs from '@components/Logs/Logs';
-import { BrowserRouter } from 'react-router-dom'
 import AppRouter from '../routes/router';
 import { withRouter } from "react-router";
 import { fetchHistory } from '@shared/api/Deputy';
@@ -30,6 +20,7 @@ class App extends Component {
     if (this.props.location !== prevProps.location) {
       const params = getAllUrlParams()
       if (this.props.location.pathname === '/flagging_history') {
+        await this.props.context.setState('isLoading', true)
         try {
           const videos = await fetchHistory(params)
           await this.props.context.setMultipleState({
@@ -38,6 +29,8 @@ class App extends Component {
           })
         } catch (error) {
           console.log(error)
+        } finally {
+          this.props.context.setState('isLoading', false)
         }
       }
     }
