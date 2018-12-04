@@ -5,6 +5,7 @@ import { YouTubeContext } from '@stores/YouTubeContext';
 
 const SearchesContainer = () => {
     return (
+      <div className="full-heigth main-body">
         <div className="searches-container container-scrollable scrollBarOnHover">
             <div className="pdi--10">
                 <YouTubeContext.Consumer>
@@ -23,6 +24,7 @@ const SearchesContainer = () => {
                 </YouTubeContext.Consumer>
             </div>
         </div>
+      </div>
     )
 }
 

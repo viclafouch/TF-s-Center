@@ -1,8 +1,8 @@
-let paginations = function getPagination() {
+let paginations = function getPagination(root = document) {
 
     let pages = []
 
-    document.querySelectorAll('[data-page]').forEach(e => {
+    root.querySelectorAll('[data-page]').forEach(e => {
         pages.push({
             numPage: parseInt(e.getAttribute('data-page')),
             isNext: e.getAttribute('data-link-type') === 'next',

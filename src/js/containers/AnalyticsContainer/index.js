@@ -7,6 +7,7 @@ import BestSearches from '@components/Statistics/BestSearches/BestSearches';
 
 const AnalyticsContainer = () => {
     return (
+      <div className="full-heigth main-body">
         <div className="analytics-container pdi--10 container-scrollable scrollBarOnHover">
             <div className="mgi--top-10">
                 <TableResum />
@@ -39,6 +40,7 @@ const AnalyticsContainer = () => {
                 </div>
             </div>
         </div>
+      </div>
     )
 }
 

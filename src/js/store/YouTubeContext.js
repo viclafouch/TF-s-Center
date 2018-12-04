@@ -5,6 +5,7 @@ import Search from '@shared/models/Search.class';
 import { copyDate } from '@utils/date';
 import { sevenLastDays } from '@utils/date';
 import { urlsAvailable } from '../config/config';
+import { copyObject } from '@utils/index';
 
 export const YouTubeContext = React.createContext();
 
@@ -13,7 +14,7 @@ class YouTubeProvider extends Component {
   constructor(props) {
     super(props);
 
-    const { storage, pathname, youtubeDatasFromDOM } = this.props
+    const { storage, pathname, youtubeDatasDeputy } = this.props
 
     const lastSevenDaysflagged = sevenLastDays.map(elem => {
       const flaggedFounded = storage.lastSevenDaysflagged.find(x => x.date === elem.date);
@@ -23,10 +24,12 @@ class YouTubeProvider extends Component {
       } : elem
     })
 
-    this.state = youtubeDatasFromDOM
+    this.state = copyObject(youtubeDatasDeputy)
+    console.log(this.state);
+
     this.baseHide = {}
 
-    this.state.videosDisplayed = youtubeDatasFromDOM.videos
+    this.state.videosDisplayed = youtubeDatasDeputy.videos
     this.state.hideRemoved = this.baseHide.hideRemoved = false
     this.state.hideReviewed = this.baseHide.hideReviewed = false
     this.state.canFlag = pathname === urlsAvailable[1]
@@ -34,7 +37,7 @@ class YouTubeProvider extends Component {
     this.state.theme = storage.theme
     this.state.displaying = storage.displaying
     this.state.videosToFlag = storage.videosToFlag.map(e => new Video(e))
-    this.state.videoWatched = youtubeDatasFromDOM.videoWatched
+    this.state.videoWatched = youtubeDatasDeputy.videoWatched
     this.state.lastSevenDaysflagged = lastSevenDaysflagged
     this.state.templates = storage.templates.map(elem => new Template(elem))
     this.state.searches = storage.searches.map(elem => new Search(elem))
@@ -79,6 +82,10 @@ class YouTubeProvider extends Component {
     return this.setState({
       openModal: { type, isOpen }
     });
+  }
+
+  setMultipleState(newState = {}, callback) {
+    return this.setState(newState, () => callback && callback())
   }
 
   actionItem(arrayItems, type, callback) {
@@ -200,6 +207,7 @@ class YouTubeProvider extends Component {
         setState: (name, value, stuffs = null) => this.setState({
           [name]: value
         }, () => this.callbackState(name, value, stuffs)),
+        setMultipleState: state => this.setMultipleState(state)
       }}>{this.props.children}
       </YouTubeContext.Provider>
     )

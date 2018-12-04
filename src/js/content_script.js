@@ -4,9 +4,12 @@ import App from '@components/App'
 import getPathname from './getDom/_location'
 import { urlsAvailable } from './config/config';
 import { wait, getUrlParameter } from '@utils';
-import YouTubeProvider from '@stores/YouTubeContext';
+import YouTubeProvider, { YouTubeContext } from '@stores/YouTubeContext';
 import { getStorages } from '@stores/BrowserStorage';
 import getYouTubeDatasFromDOM from '@stores/DatasDom'
+import { BrowserRouter } from 'react-router-dom'
+import { fetchStats } from '@shared/api/Deputy';
+import { getAllUrlParams } from '@utils/index';
 
 const style = [
   'background: linear-gradient(to right, #5433ff, #20bdff, #a5fecb);',
@@ -43,7 +46,6 @@ function initExtension() {
       const pathname = getPathname()
       const myReactApp = document.createElement("div");
 
-
       // For /watch, website uses Angular and asynchrone injection, wait DOM ready
       if (pathname === '/watch') {
         while (!document.getElementById('info').querySelector('#top-level-buttons')) {
@@ -53,7 +55,9 @@ function initExtension() {
         if (document.getElementById('info').querySelector('#button-flag-TF')) return;
       }
 
-      const youtubeDatasFromDOM = getYouTubeDatasFromDOM(pathname);
+      const params = getAllUrlParams()
+      const youtubeDatasFromDOM = await getYouTubeDatasFromDOM(params);
+      const youtubeDatasDeputy = youtubeDatasFromDOM.reduce((a, d) => Object.assign(d, a), {});
 
       if (pathname === '/watch') {
         myReactApp.setAttribute("id", "button-flag-TF");
@@ -69,9 +73,13 @@ function initExtension() {
         <YouTubeProvider
           pathname={pathname}
           storage={storage}
-          youtubeDatasFromDOM={youtubeDatasFromDOM}
+          youtubeDatasDeputy={youtubeDatasDeputy}
         >
-          <App />
+          <BrowserRouter>
+            <YouTubeContext.Consumer>
+              {(context) => <App context={context}/>}
+            </YouTubeContext.Consumer>
+          </BrowserRouter>
         </YouTubeProvider>
       , myReactApp, async () => {
         await wait(1000);

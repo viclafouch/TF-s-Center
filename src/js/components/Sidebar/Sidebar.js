@@ -14,6 +14,7 @@ import { faBullseye } from '@fortawesome/free-solid-svg-icons/faBullseye'
 import { CONTRIBUTOR_LINK, HANGOUTS_ME } from '../../../../private'
 import { YouTubeContext } from '@stores/YouTubeContext';
 import { urlsAvailable } from '../../config/config';
+import { NavLink } from 'react-router-dom'
 
 export class Sidebar extends Component {
 
@@ -32,6 +33,7 @@ export class Sidebar extends Component {
     }
 
     render() {
+        const url = this.props.location.pathname + this.props.location.search
         return (
             <YouTubeContext.Consumer>
                 {(context) => (
@@ -42,44 +44,51 @@ export class Sidebar extends Component {
                         <nav className="navbar">
                             <ul className="nav-link">
                                 <li>
-                                    <a href="/flagging_history" className={'youtube-link '+(context.state.pathname === urlsAvailable[0] ? 'active' : '')}>
+                                    <NavLink
+                                      to="/flagging_history"
+                                      className="youtube-link"
+                                      activeClassName="active">
                                         <span className="span-icon mgi--right-16">
-                                            <FontAwesomeIcon icon={faHistory} size="1x" fixedWidth />
+                                          <FontAwesomeIcon icon={faHistory} size="1x" fixedWidth />
                                         </span>
                                         <span className="text-link">History</span>
-                                    </a>
+                                    </NavLink>
                                 </li>
                                 <li>
-                                    <a href="/deputy?context=templates" className={'youtube-link ' + (context.state.pathname === urlsAvailable[3] ? 'active' : '')}>
-                                        <span className="span-icon mgi--right-16">
-                                            <FontAwesomeIcon icon={faFlag} size="1x" fixedWidth />
-                                        </span>
-                                        <span className="text-link">Templates</span>
-                                    </a>
+                                  <NavLink
+                                    to="/deputy?context=templates"
+                                    className={'youtube-link ' + (url === "/deputy?context=templates" ? 'active' : '')}
+                                    activeClassName="active">
+                                    <span className="span-icon mgi--right-16">
+                                      <FontAwesomeIcon icon={faFlag} size="1x" fixedWidth />
+                                    </span>
+                                    <span className="text-link">Templates</span>
+                                  </NavLink>
                                 </li>
                                 <li>
-                                    <a href="/deputy?context=searches" className={'youtube-link ' + (context.state.pathname === urlsAvailable[4] ? 'active' : '')}>
-                                        <span className="span-icon mgi--right-16">
-                                            <FontAwesomeIcon icon={faSearch} size="1x" fixedWidth />
-                                        </span>
-                                        <span className="text-link">Searches</span>
-                                    </a>
+                                  <NavLink
+                                    to="deputy?context=searches"
+                                    className={'youtube-link ' + (url === "/deputy?context=searches" ? 'active' : '')}
+                                    >
+                                      <span className="span-icon mgi--right-16">
+                                        <FontAwesomeIcon icon={faSearch} size="1x" fixedWidth />
+                                      </span>
+                                      <span className="text-link">Searches</span>
+                                  </NavLink>
                                 </li>
                                 <li>
-                                    <a href="/deputy" className={'youtube-link ' + (context.state.pathname === urlsAvailable[5] ? 'active' : '')}>
-                                        <span className="span-icon mgi--right-16">
-                                            <FontAwesomeIcon icon={faBullseye} size="1x" fixedWidth />
-                                        </span>
-                                        <span className="text-link">Targets</span>
-                                    </a>
+
                                 </li>
                                 <li>
-                                    <a href="/deputy?context=stats" className={'youtube-link ' + (context.state.pathname === urlsAvailable[2] ? 'active' : '')}>
-                                        <span className="span-icon mgi--right-16">
-                                            <FontAwesomeIcon icon={faChartLine} size="1x" fixedWidth />
-                                        </span>
-                                        <span className="text-link">Analytics</span>
-                                    </a>
+                                  <NavLink
+                                    to="deputy?context=stats"
+                                    className={'youtube-link ' + (url === "/deputy?context=stats" ? 'active' : '')}
+                                    >
+                                      <span className="span-icon mgi--right-16">
+                                        <FontAwesomeIcon icon={faChartLine} size="1x" fixedWidth />
+                                      </span>
+                                      <span className="text-link">Analytics</span>
+                                  </NavLink>
                                 </li>
                                 <li>
                                     <a href={CONTRIBUTOR_LINK} className="youtube-link">

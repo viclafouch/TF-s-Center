@@ -3,8 +3,10 @@ import NewTemplate from '@components/Template/New/NewTemplate';
 import { ListTemplates } from '@components/Template/List/ListTemplates';
 import { YouTubeContext } from '@stores/YouTubeContext';
 
-const TemplatesContainer = () => {
+const TemplatesContainer = (props) => {
+    console.log(props);
     return (
+      <div className="full-heigth main-body">
         <div className="template-container container-scrollable scrollBarOnHover">
             <div className="pdi--10">
                 <YouTubeContext.Consumer>
@@ -17,6 +19,7 @@ const TemplatesContainer = () => {
                 <ListTemplates />
             </div>
         </div>
+      </div>
     )
 }
 

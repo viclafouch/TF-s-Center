@@ -1,12 +1,13 @@
 import { Video } from "../shared/models/Video.class";
+import getPagination from './_pagination'
 
 /**
  * Getting my all videos to an array
  * @return videos videos
  */
 
-let videos = function getVideos() {
-    const list = document.getElementsByClassName('deputy-flag-item yt-tile-default');
+let videos = function getVideos(root = document) {
+    const list = root.getElementsByClassName('deputy-flag-item yt-tile-default');
 
     const videos = []
 
@@ -41,7 +42,10 @@ let videos = function getVideos() {
         }))
     }
 
-    return videos;
+    return {
+      videos,
+      pagination: getPagination(root)
+    }
 }
 
 

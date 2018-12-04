@@ -1,8 +1,9 @@
 let search = function getSearch() {
+    let search
     if (document.getElementById('masthead-search-term')) {
-        return document.getElementById('masthead-search-term').value
+        search = document.getElementById('masthead-search-term').value
     }
-    return null;
+    return { search }
 }
 
 export default search;
