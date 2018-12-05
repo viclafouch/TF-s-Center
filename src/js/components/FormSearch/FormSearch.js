@@ -1,17 +1,26 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch'
+import { Redirect } from 'react-router'
+import { getAllUrlParams } from '@utils/index';
 
 export class FormSearch extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      search: props.state.search
+      search: props.state.search,
+      redirectTo: null
     }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.redirectTo) {
+      this.setState({ redirectTo: null})
+    }
   }
 
   handleChange(event) {
@@ -20,11 +29,19 @@ export class FormSearch extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    const params = getAllUrlParams()
+    if (this.state.search && params.search_query !== this.state.search.trim()) {
+      let query = this.state.search.trim().replace(/\s+/g, "+")
+      this.setState({
+        redirectTo: `/deputy?search_query=${query}`
+      })
+    }
   }
 
   render() {
+    if (this.state.redirectTo) return <Redirect to={this.state.redirectTo} />
     return (
-      <form className="flex-me form-search" id="search-form" action="POST" onSubmit={this.handleSubmit}>
+      <form className="flex-me form-search" id="search-form" action="GET" onSubmit={this.handleSubmit}>
         <input
           className="input-colored flex-one"
           placeholder="Search"

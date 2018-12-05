@@ -5,7 +5,8 @@ import Search from '@shared/models/Search.class';
 import { copyDate } from '@utils/date';
 import { sevenLastDays } from '@utils/date';
 import { urlsAvailable } from '../config/config';
-import { copyObject } from '@utils/index';
+import { copyObject, getAllUrlParams, wait, setStateAsync } from '@utils/index';
+import { fetchHistory, fetchSearch } from '@shared/api/Deputy';
 
 export const YouTubeContext = React.createContext();
 
@@ -84,10 +85,6 @@ class YouTubeProvider extends Component {
     });
   }
 
-  setMultipleState(newState = {}, callback) {
-    return this.setState(newState, () => callback && callback())
-  }
-
   actionItem(arrayItems, type, callback) {
 
     let items = this.state[type];
@@ -126,6 +123,26 @@ class YouTubeProvider extends Component {
         })
       }
     })
+  }
+
+  async getVideos(type, params) {
+    console.log(type, params);
+
+    await setStateAsync({ isLoading: true }, this)
+    try {
+      let videos = []
+      if (type === 'history') {
+        videos = await fetchHistory(params)
+      } else if (type === 'search') {
+        videos = await fetchSearch(params)
+      }
+      await setStateAsync({...videos, canFlag: type !== 'history', videosDisplayed: videos.videos}, this)
+      await wait(100) // Hide animation css pagination number changes
+    } catch (error) {
+      console.log(error)
+    } finally {
+      this.setState({ isLoading: false})
+    }
   }
 
   componentDidUpdate (prevProps, prevState) {
@@ -216,7 +233,7 @@ class YouTubeProvider extends Component {
         setState: (name, value, stuffs = null) => this.setState({
           [name]: value
         }, () => this.callbackState(name, value, stuffs)),
-        setMultipleState: state => this.setMultipleState(state)
+        getVideos: (type = 'history', params = getAllUrlParams()) => this.getVideos(type, params)
       }}>{this.props.children}
       </YouTubeContext.Provider>
     )

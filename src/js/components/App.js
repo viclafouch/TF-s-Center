@@ -17,36 +17,13 @@ class App extends Component {
     }
   }
 
-  async getVideos(type = 'history') {
-    const params = getAllUrlParams()
-    await this.props.context.setState('isLoading', true)
-    try {
-      let videos = []
-      if (type === 'history') {
-        videos = await fetchHistory(params)
-      } else if (type === 'search') {
-        videos = await fetchSearch(params)
-      }
-      await this.props.context.setMultipleState({
-        ...videos,
-        canFlag: type !== 'history',
-        videosDisplayed: videos.videos
-      })
-      await wait(100) // Hide animation css pagination number changes
-    } catch (error) {
-      console.log(error)
-    } finally {
-      this.props.context.setState('isLoading', false)
-    }
-  }
-
   async componentDidUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
       const params = getAllUrlParams()
       if (this.props.location.pathname === '/flagging_history') {
-        return this.getVideos('history')
+        return this.props.context.getVideos('history')
       } else if (params.search_query) {
-        return this.getVideos('search')
+        return this.props.context.getVideos('search')
       }
     }
   }
@@ -65,16 +42,11 @@ class App extends Component {
               </main>
             </React.Fragment>
           :
-          <YouTubeContext.Consumer>
-            {(context) => (
-              <FlagButton
-                videoWatched={context.state.videoWatched}
-                videosToFlag={context.state.videosToFlag}
-                setContextState={context.setState}
-                removeVideo={context.setState}
-              />
-            )}
-          </YouTubeContext.Consumer>
+          <FlagButton
+            videoWatched={this.props.context.state.videoWatched}
+            videosToFlag={this.props.context.state.videosToFlag}
+            setContextState={this.props.context.setState}
+          />
       )
   }
 }
