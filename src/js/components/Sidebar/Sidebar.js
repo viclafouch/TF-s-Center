@@ -13,7 +13,6 @@ import { faMoon } from '@fortawesome/free-regular-svg-icons/faMoon'
 import { faBullseye } from '@fortawesome/free-solid-svg-icons/faBullseye'
 import { CONTRIBUTOR_LINK, HANGOUTS_ME } from '../../../../private'
 import { YouTubeContext } from '@stores/YouTubeContext';
-import { urlsAvailable } from '../../config/config';
 import { NavLink } from 'react-router-dom'
 
 export class Sidebar extends Component {

@@ -1,5 +1,5 @@
 let search = function getSearch() {
-    let search
+    let search = ''
     if (document.getElementById('masthead-search-term')) {
         search = document.getElementById('masthead-search-term').value
     }

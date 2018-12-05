@@ -13,6 +13,7 @@ html[data-theme='dark'] {
   --input-placeholder: #999999;
   --color-scrollbar: var(--body-background);
   --background-scrollbar: var(--background-container);
+  --logo-youtube-text: #ffffff;
 }
 
 html[data-theme='light'] {
@@ -30,13 +31,14 @@ html[data-theme='light'] {
   --input-placeholder: #999999;
   --color-scrollbar:rgba(177,191,206,0.35);
   --background-scrollbar: #a1b2c4;
+  --logo-youtube-text: #282828;
 }
 
 #TFsCenter.color-theme-in-transition,
 #TFsCenter.color-theme-in-transition *,
 #TFsCenter.color-theme-in-transition *:before,
 #TFsCenter.color-theme-in-transition *:after {
-  transition-property: color, fill, border-bottom-color, border-top-color, border-left-color, border-right-color, background-color!important;
+  transition-property: color, fill, border-color, border-bottom-color, border-top-color, border-left-color, border-right-color, background-color!important;
   transition-delay: 0s!important;
   transition-duration: 750ms!important;
   transition-timing-function: linear!important;

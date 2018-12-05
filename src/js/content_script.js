@@ -8,7 +8,6 @@ import YouTubeProvider, { YouTubeContext } from '@stores/YouTubeContext';
 import { getStorages } from '@stores/BrowserStorage';
 import getYouTubeDatasFromDOM from '@stores/DatasDom'
 import { BrowserRouter } from 'react-router-dom'
-import { fetchStats } from '@shared/api/Deputy';
 import { getAllUrlParams } from '@utils/index';
 
 const style = [
@@ -64,8 +63,8 @@ function initExtension() {
         document.getElementById('info').querySelector('#top-level-buttons').appendChild(myReactApp);
       } else {
         myReactApp.setAttribute("id", "TFsCenter");
-        document.getElementById('page-container').innerHTML = '';
-        document.getElementById('page-container').appendChild(myReactApp);
+        document.body.innerHTML = '';
+        document.body.appendChild(myReactApp);
         document.documentElement.setAttribute('data-theme', storage.theme)
       }
 

@@ -6,6 +6,7 @@ import AppRouter from '../routes/router';
 import { withRouter } from "react-router";
 import { fetchHistory, fetchSearch } from '@shared/api/Deputy';
 import { getAllUrlParams, wait } from '@utils/index';
+import Navbar from './Navbar/Navbar';
 
 class App extends Component {
 
@@ -55,10 +56,13 @@ class App extends Component {
           window.location.pathname !== '/watch'
           ?
             <React.Fragment>
+              <Navbar />
+              <main id="TF-main">
                 <Sidebar location={this.props.location} />
                 <div className="main-container">
                   <AppRouter />
                 </div>
+              </main>
             </React.Fragment>
           :
           <YouTubeContext.Consumer>

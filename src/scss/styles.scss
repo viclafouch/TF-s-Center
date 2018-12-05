@@ -4,6 +4,10 @@
 @import './utils';
 @import './table';
 
+
+$h-nav: 56px;
+$w-sidebar: 240px;
+
 .reviewed-on-text {
     color: green!important;
     font-weight: 500;
@@ -100,7 +104,7 @@ img.channel-logo {
     z-index: 99999999;
     position: fixed;
     right: 0;
-    width: calc(100vw - 256px);
+    width: calc(100vw - #{$w-sidebar});
     padding: 0 10px;
 }
 
@@ -111,37 +115,49 @@ div#TFsCenter {
     * { box-sizing: border-box; }
 
     font-family: 'Roboto', 'Noto', sans-serif;
-    height: calc(100vh - 50px);
-    display: grid;
-    grid-template-columns: 256px auto;
 
-    & > div.main-container {
-        position: relative;
-        height: inherit;
-        box-sizing: border-box;
-
-        .main-body {
-          background-color: var(--body-background);
-        }
-
-        .container-list {
-            flex: 1 1;
-            overflow-y: scroll;
-        }
-
-        .full-heigth {
-            position: relative;
-            height: inherit;
-            display: flex;
-            flex-direction: column;
-
-            ul.videos-list {
-                padding: 20px 16px;
-                position: relative;
-            }
-        }
+    & > nav#TF-navbar {
+      height: $h-nav;
+      padding: 7px 30px;
+      background-color: var(--background-popup);
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      border-bottom-color: var(--border-color-sidebar);
+      position: relative;
     }
 
+    & > main#TF-main {
+      height: calc(100vh - #{$h-nav});
+      display: grid;
+      grid-template-columns: $w-sidebar auto;
+    }
+
+    div.main-container {
+      position: relative;
+      height: inherit;
+      box-sizing: border-box;
+
+      .main-body {
+        background-color: var(--body-background);
+      }
+
+      .container-list {
+          flex: 1 1;
+          overflow-y: scroll;
+      }
+
+      .full-heigth {
+        position: relative;
+        height: inherit;
+        display: flex;
+        flex-direction: column;
+
+        ul.videos-list {
+            padding: 20px 16px;
+            position: relative;
+        }
+      }
+    }
 
     .container {
     position: relative;
@@ -224,7 +240,69 @@ div#TFsCenter {
 
     .offset-by-one-half.column,
     .offset-by-one-half.columns     { margin-left: 52%; }
+    }
 
+    .navbar {
+
+      & > div.block-left-side {
+        width: calc(#{$w-sidebar} - 31px); // 30 padding 1 border
+        .logo_youtube {
+          width: 80px;
+          height: 24px;
+          display: flex;
+          align-items: center;
+
+          svg {
+            height: 100%;
+            .st0{fill:#FF0000;}
+            .st1{fill:#FFFFFF;}
+            .st2{fill: var(--logo-youtube-text); }
+          }
+        }
+      }
+
+      & > div.block-right-side {
+        .form-search-container {
+          max-width: 650px;
+        }
+      }
+
+      #search-form {
+        input {
+          -webkit-appearance: none;
+          padding: 2px 10px;
+          -webkit-font-smoothing: antialiased;
+          background-color: transparent;
+          box-shadow: none;
+          font-family: 'Roboto','Noto',sans-serif;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 24px;
+          max-width: 100%;
+          outline: none;
+          text-align: inherit;
+          width: 100%;
+        }
+
+        button.button-search {
+          cursor: pointer;
+          width: 65px;
+          border-style: solid;
+          border-color: var(--input-border);
+          border-width: 1px;
+          background-color: var(--input-border);
+          text-align: center;
+          border-radius: 0 2px 2px 0;
+
+          & > span.span-icon {
+            opacity: 0.6;
+          }
+
+          &:hover span.span-icon {
+            opacity: 1
+          }
+        }
+      }
     }
 
     ul.videos-list {
@@ -410,7 +488,6 @@ div#TFsCenter {
                     }
 
                     span { display: inline-block; color: var(--text-color); }
-                    svg path { fill : var(--text-color); }
                 }
             }
         }
@@ -461,6 +538,8 @@ div#TFsCenter {
         width: 24px;
         height: 24px;
         text-align: center;
+
+        path { fill: var(--text-color); }
     }
 
     .popup {

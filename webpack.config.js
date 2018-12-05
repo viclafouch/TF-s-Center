@@ -10,7 +10,7 @@ module.exports = (env, argv) => ({
   cache: false,
   watch: argv.mode === 'development',
   watchOptions: {
-    aggregateTimeout: 1000,
+    aggregateTimeout: 5000,
     ignored: ['node_modules']
   },
   devtool: argv.mode === 'production' ? 'source-map' : 'cheap-module-eval-source-map',
