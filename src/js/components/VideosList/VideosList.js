@@ -5,168 +5,140 @@ import Video from '@shared/models/Video.class'
 import VideoDetail from '../VideoDetail/VideoDetail';
 import Loader from '../layouts/Loader';
 import { YouTubeContext } from '@stores/YouTubeContext';
-import { YOUTUBE_API_KEYS } from '../../../../private';
+import { fetchYouTubeChannel, fetchYouTubeVideo } from '@shared/api/YouTube';
+import { redirectToWebCache, setStateAsync } from '@utils/index';
 
 export class VideosList extends Component {
 
-    constructor() {
-        super();
+  constructor() {
+    super()
 
-        this.state = {
-            videoSelected: new Video(),
-            isLoading: false
-        }
-
-        this.handleChange = this.handleChange.bind(this);
-        this.closePopup = this.closePopup.bind(this);
-        this.checkedVideo = this.checkedVideo.bind(this);
+    this.state = {
+      videoSelected: new Video(),
+      isLoading: false
     }
 
-    getChannel(id) {
-        let whyDoUSearchMyKey = YOUTUBE_API_KEYS
-        return fetch(`https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${id}&key=${whyDoUSearchMyKey}`)
-            .then(response => response.json())
-            .then(response => response.items[0].snippet)
-            .catch(e => {
-                throw e
-            })
+    this.handleChange = this.handleChange.bind(this)
+    this.closePopup = this.closePopup.bind(this)
+    this.checkedVideo = this.checkedVideo.bind(this)
+  }
+
+  /**
+   * get all details about a video (video, channel)
+   * @param {Video} video - Video selected
+   */
+  async getInfoVideo(video) {
+    if (!video.id) return
+    if (video.isRemoved) return redirectToWebCache(`https://www.youtube.com/watch?v=${video.id}`, true)
+
+    try {
+      await setStateAsync({ isLoading: true }, this)
+      const { selected } = video
+      const videoSelected = await fetchYouTubeVideo(video.id)
+      videoSelected.selected = selected
+      videoSelected.channel = await fetchYouTubeChannel(video.channelId)
+      this.setState({ videoSelected })
+    } catch (error) {
+      // TODO
+      // if (error.message === "NOT_FOUND_OR_REMOVED" && this.props.context.state.onToFlag) {
+      //   const { videosToFlag } = this.props.context.state;
+      //   const existingIndex = videosToFlag.findIndex(x => x.id === video.id)
+      //   if (existingIndex !== -1) {
+      //     videosToFlag.splice(existingIndex, 1);
+      //   }
+      //   this.props.context.setState('videosToFlag', videosToFlag)
+      // }
+      console.error(error);
+    } finally {
+      this.setState({ isLoading: false })
     }
+  }
 
-    getVideo(id) {
-        let whyDoUSearchMyKey = YOUTUBE_API_KEYS
-        return fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${id}&key=${whyDoUSearchMyKey}`)
-            .then(response => response.json())
-            .then(response => {
-                if (!response.items) throw new Error('UNKNOWN')
-                if (response.items.length === 0) throw new Error('NOT_FOUND_OR_REMOVED')
-                return response.items[0].snippet
-            })
-            .then(responseVideo => {
-                responseVideo.id = id
-                return new Video(responseVideo)
-            })
-            .catch(e => {
-                throw e
-            })
-    }
+  /**
+   *
+   * @param {Event} event - Event of user action
+   * @param {Video} video - Video checked/unchecked
+   */
+  checkedVideo(event, video) {
+    event.preventDefault()
+    this.props.context.selectVideos([video])
+    this.closePopup()
+  }
 
-    redirectToWebCache(video) {
-        return window.open(`http://webcache.googleusercontent.com/search?q=cache:https://www.youtube.com/watch?v=${video.id}`, '_blank');
-    }
+  /**
+   * on Popup close
+   * Reset empty video
+   */
+  closePopup() {
+    document.getElementById('description-content').innerHTML = '' //TODO
+    return this.setState({ videoSelected: new Video() })
+  }
 
-    getInfoVideo(video) {
-        if (!video.id) return;
+  /**
+   * When user right clic on a video
+   * @param {Event} e - On checkbox change
+   */
+  handleChange(e) {
+    e.stopPropagation()
+    const id = e.target.id
+    const video = this.props.videos.find(x => x.id === id)
+    if (video && this.props.canFlag) return this.props.onSelect(video, e.target.checked)
+    return
+  }
 
-        if (video.isRemoved) return this.redirectToWebCache(video);
+  render() {
 
-        return this.setState({
-            isLoading: true
-        }, async () => {
-            try {
-                const selected = video.selected;
-                video = await this.getVideo(video.id);
-                video.selected = selected;
-                let channel = await this.getChannel(video.channelId);
+    const { videos } = this.props;
 
-                video.channel = channel;
-
-                return this.setState({
-                    videoSelected: video,
-                    isLoading: false
-                });
-            } catch (error) {
-                if (error.message === "NOT_FOUND_OR_REMOVED" && this.props.context.state.onToFlag) {
-                  const { videosToFlag } = this.props.context.state;
-                  const existingIndex = videosToFlag.findIndex(x => x.id === video.id)
-                  if (existingIndex !== -1) {
-                    videosToFlag.splice(existingIndex, 1);
-                  }
-                  this.props.context.setState('videosToFlag', videosToFlag)
-                }
-                console.error(error);
-                this.setState({
-                    isLoading: false
-                });
-            }
-        })
-    }
-
-    checkedVideo(event, video) {
-        event.preventDefault();
-        this.props.context.selectVideos([video]);
-        this.closePopup();
-    }
-
-    closePopup() {
-        document.getElementById('description-content').innerHTML = '';
-        return this.setState({
-            videoSelected: new Video(),
-            videoLoaded: false
-        });
-    }
-
-    handleChange(e) {
-        e.stopPropagation();
-        let id = e.target.id;
-        let video = this.props.videos.find(x => x.id === id);
-        this.props.onSelect && this.props.onSelect(video, e.target.checked);
-    }
-
-    render() {
-
-        let { videos } = this.props;
-
-        return (
-            <div className="container-list scrollBarOnHover main-body">
-                <YouTubeContext.Consumer>
-                    {(context) => (
-                        <ul className={"videos-list pdi--top-0 " + (context.state.displaying === 'column' ? 'byColumns' : 'byRows')}>
-                            {videos.map((elem, index) => {
-                                return (
-                                    <li key={index}>
-                                        {
-                                            context.state.canFlag &&
-                                            <input
-                                                type="checkbox"
-                                                id={elem.id}
-                                                className="yt-uix-form-input-checkbox deputy-flag-video-checkbox"
-                                                value={elem.id}
-                                                name="selected_vid"
-                                                checked={elem.selected}
-                                                onChange={this.handleChange}
-                                                style={{
-                                                    position: 'absolute',
-                                                    top: (context.state.displaying === 'column' ? 2 : 3),
-                                                    left: (context.state.displaying === 'column' ? 2 : 3)
-                                                }}
-                                            />
-                                        }
-                                        <VideoListItem
-                                            video={elem}
-                                            onSelect={() => this.getInfoVideo(elem)}
-                                            onCheck={e => context.state.canFlag && this.checkedVideo(e, elem)}
-                                        />
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                    )}
-                </YouTubeContext.Consumer>
-                { this.state.isLoading && <Loader /> }
-
-                <Popup
-                    isOpen={this.state.videoSelected.id && !this.state.isLoading}
-                    onClosed={this.closePopup}
-                    maxWidth={1100}
-                >
-                    <VideoDetail
-                        video={this.state.videoSelected}
-                        onCheck={(e, video) => this.checkedVideo(e, video)}
+    return (
+      <div className="container-list scrollBarOnHover main-body">
+        {this.state.isLoading && <Loader />}
+        <YouTubeContext.Consumer>
+          {(context) => (
+            <ul className={"videos-list pdi--top-0 " + (context.state.displaying === 'column' ? 'byColumns' : 'byRows')}>
+              {videos.map((elem, index) => {
+                return (
+                  <li key={index}>
+                    { this.props.canFlag &&
+                      <input
+                        type="checkbox"
+                        id={elem.id}
+                        className="yt-uix-form-input-checkbox deputy-flag-video-checkbox"
+                        value={elem.id}
+                        name="selected_vid"
+                        checked={elem.selected}
+                        onChange={this.handleChange}
+                        style={{
+                          position: 'absolute',
+                          top: (context.state.displaying === 'column' ? 2 : 3),
+                          left: (context.state.displaying === 'column' ? 2 : 3)
+                        }}
+                      />
+                    }
+                    <VideoListItem
+                      video={elem}
+                      onSelect={() => this.getInfoVideo(elem)}
+                      onCheck={e => this.props.canFlag && this.checkedVideo(e, elem)}
                     />
-                </Popup>
-            </div>
-        )
-    }
+                </li>
+              )})}
+            </ul>
+          )}
+        </YouTubeContext.Consumer>
+        <Popup
+          isOpen={this.state.videoSelected.id && !this.state.isLoading}
+          onClosed={this.closePopup}
+          maxWidth={1100}
+        >
+          <VideoDetail
+            canFlag={this.props.canFlag}
+            video={this.state.videoSelected}
+            onCheck={(e, video) => this.checkedVideo(e, video)}
+          />
+        </Popup>
+      </div>
+    )
+  }
 }
 
 export default VideosList

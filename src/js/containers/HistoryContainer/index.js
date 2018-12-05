@@ -5,14 +5,14 @@ import VideosList from '@components/VideosList/VideosList';
 
 const HistoryContainer = () => {
   return (
-    <div className="full-heigth" >
-      <ToolsFlag />
-      <YouTubeContext.Consumer>
-        {(context) => (
+    <YouTubeContext.Consumer>
+      {(context) => (
+        <div className="full-heigth" >
+          <ToolsFlag />
           <VideosList videos={context.state.videosDisplayed} />
-        )}
-      </YouTubeContext.Consumer>
-    </div>
+        </div>
+      )}
+    </YouTubeContext.Consumer>
   )
 }
 

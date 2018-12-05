@@ -32,7 +32,6 @@ class YouTubeProvider extends Component {
     this.state.videosDisplayed = youtubeDatasDeputy.videos
     this.state.hideRemoved = this.baseHide.hideRemoved = false
     this.state.hideReviewed = this.baseHide.hideReviewed = false
-    this.state.canFlag = pathname === urlsAvailable[1]
     this.state.popupReportingOpened = false
     this.state.theme = storage.theme
     this.state.isLoading = false
@@ -46,7 +45,6 @@ class YouTubeProvider extends Component {
 
     if (pathname === urlsAvailable[5]) {
       this.state.videosDisplayed = this.state.videosToFlag
-      this.state.canFlag = true
       this.state.onToFlag = true
     }
   }
@@ -126,8 +124,6 @@ class YouTubeProvider extends Component {
   }
 
   async getVideos(type, params) {
-    console.log(type, params);
-
     await setStateAsync({ isLoading: true }, this)
     try {
       let videos = []
@@ -136,7 +132,7 @@ class YouTubeProvider extends Component {
       } else if (type === 'search') {
         videos = await fetchSearch(params)
       }
-      await setStateAsync({...videos, canFlag: type !== 'history', videosDisplayed: videos.videos}, this)
+      await setStateAsync({...videos, videosDisplayed: videos.videos}, this)
       await wait(100) // Hide animation css pagination number changes
     } catch (error) {
       console.log(error)

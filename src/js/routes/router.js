@@ -4,15 +4,18 @@ import TemplatesContainer from '@containers/TemplatesContainer/index';
 import { Switch, Route } from 'react-router-dom'
 import { getUrlParameter } from '@utils/index';
 import SearchesContainer from '@containers/SearchesContainer/index';
-import FormFlagging from '@components/FormFlagging/FormFlagging';
 import { YouTubeContext } from '@stores/YouTubeContext';
 import HistoryContainer from '@containers/HistoryContainer/index';
+import SearchVideosContainer from '@containers/SearchVideosContainer/index';
 
 const AppRouter = () => (
   <YouTubeContext.Consumer>
     {(context) => (
       <React.Fragment>
-        {context.state.isLoading && <div className={"isLoading" + ' loader-'+context.state.theme}></div>}
+        { context.state.isLoading
+        ?
+          <div className={"isLoading" + ' loader-' + context.state.theme}></div>
+        :
         <Switch>
           <Route exact path="/" component={TemplatesContainer} />
           <Route exact path="/flagging_history" component={HistoryContainer} />
@@ -26,11 +29,11 @@ const AppRouter = () => (
               case "searches":
                 return <SearchesContainer {...props} />
               default:
-                return <FormFlagging {...props} context={context} />
+                return <SearchVideosContainer {...props } />
             }
           }} />
-          <Route path="/deputy?context=stats" />
         </Switch>
+        }
       </React.Fragment>
     )}
   </YouTubeContext.Consumer>
