@@ -13,6 +13,8 @@ export function getUrlParameter(sParam) {
     }
 };
 
+export const setStateAsync = (state, self) =>  new Promise(resolve => self.setState(state, resolve))
+
 export const wait = (amount = 0) => new Promise(resolve => setTimeout(resolve, amount));
 
 export function updateQueryStringParameter(uri, key, value) {
@@ -61,7 +63,7 @@ export function getAllUrlParams(url) {
       var paramValue = typeof (a[1]) === 'undefined' ? true : a[1];
 
       paramName = paramName.toLowerCase();
-      if (typeof paramValue === 'string') paramValue = paramValue.toLowerCase();
+      if (typeof paramValue === 'string') paramValue = decodeURIComponent(paramValue.toLowerCase())
 
       if (paramName.match(/\[(\d+)?\]$/)) {
         var key = paramName.replace(/\[(\d+)?\]/, '');
