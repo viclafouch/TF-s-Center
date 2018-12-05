@@ -29,3 +29,22 @@ export const fetchStats = () =>
       fragment.innerHTML = StringReponse
       return getStatistics(fragment)
     })
+
+export const fetchSearch = (params = { search_query = '', page = null } = {}) => {
+  const paramsAccepted = ['search_query', 'page', 'filters', 'exclude_flagged_videos']
+  let url = 'https://www.youtube.com/deputy'
+  for (const iterator in params) {
+    if (paramsAccepted.includes(iterator)) {
+      url = updateQueryStringParameter(url, iterator, params[iterator])
+    }
+  }
+  return fetch(url)
+    .then(StreamResponse => StreamResponse.text())
+    .then(StringReponse => {
+      const fragment = document.createElement('div')
+      fragment.innerHTML = StringReponse
+      console.log(fragment);
+
+      return getVideos(fragment)
+    })
+}

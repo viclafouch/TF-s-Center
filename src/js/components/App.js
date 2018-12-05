@@ -4,8 +4,8 @@ import { YouTubeContext } from '@stores/YouTubeContext';
 import FlagButton from '@components/FlagButton/FlagButton';
 import AppRouter from '../routes/router';
 import { withRouter } from "react-router";
-import { fetchHistory } from '@shared/api/Deputy';
-import { getAllUrlParams } from '@utils/index';
+import { fetchHistory, fetchSearch } from '@shared/api/Deputy';
+import { getAllUrlParams, wait } from '@utils/index';
 
 class App extends Component {
 
@@ -16,22 +16,36 @@ class App extends Component {
     }
   }
 
+  async getVideos(type = 'history') {
+    const params = getAllUrlParams()
+    await this.props.context.setState('isLoading', true)
+    try {
+      let videos = []
+      if (type === 'history') {
+        videos = await fetchHistory(params)
+      } else if (type === 'search') {
+        videos = await fetchSearch(params)
+      }
+      await this.props.context.setMultipleState({
+        ...videos,
+        canFlag: type !== 'history',
+        videosDisplayed: videos.videos
+      })
+      await wait(100) // Hide animation css pagination number changes
+    } catch (error) {
+      console.log(error)
+    } finally {
+      this.props.context.setState('isLoading', false)
+    }
+  }
+
   async componentDidUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
       const params = getAllUrlParams()
       if (this.props.location.pathname === '/flagging_history') {
-        await this.props.context.setState('isLoading', true)
-        try {
-          const videos = await fetchHistory(params)
-          await this.props.context.setMultipleState({
-            ...videos,
-            videosDisplayed: videos.videos
-          })
-        } catch (error) {
-          console.log(error)
-        } finally {
-          this.props.context.setState('isLoading', false)
-        }
+        return this.getVideos('history')
+      } else if (params.search_query) {
+        return this.getVideos('search')
       }
     }
   }
