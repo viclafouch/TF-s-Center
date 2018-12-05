@@ -17,24 +17,20 @@ export class FormSearch extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.redirectTo) {
-      this.setState({ redirectTo: null})
-    }
+  componentDidUpdate() {
+    if (this.state.redirectTo) return this.setState({ redirectTo: null})
   }
 
   handleChange(event) {
-    this.setState({ search: event.target.value });
+    return this.setState({ search: event.target.value });
   }
 
   handleSubmit(event) {
     event.preventDefault();
     const params = getAllUrlParams()
     if (this.state.search && params.search_query !== this.state.search.trim()) {
-      let query = this.state.search.trim().replace(/\s+/g, "+")
-      this.setState({
-        redirectTo: `/deputy?search_query=${query}`
-      })
+      const query = this.state.search.trim().replace(/\s+/g, "+")
+      return this.setState({ redirectTo: `/deputy?search_query=${query}` })
     }
   }
 

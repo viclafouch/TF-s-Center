@@ -6,6 +6,7 @@ import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons/faExternalL
 import svgIcon from '../../../img/sheriff'
 import { getDateFormat } from "@utils/date";
 import { clearStorages, openInNewTab } from '@utils/browser';
+import { fetchGithubReleased } from '@shared/api/Github';
 
 export class Logs extends Component {
   constructor() {
@@ -17,30 +18,23 @@ export class Logs extends Component {
     }
   }
 
-  fetchReleased() {
-    return fetch('https://api.github.com/repos/viclafouch/TFs-Center/releases')
-      .then(e => e.json())
-      .then(json => json.map(e => new Release(e)))
-      .catch(error => {
-        throw error
-      })
-  }
-
+  /**
+   * Get all github released
+   */
   async getReleased() {
     try {
-      const releaseds = await this.fetchReleased()
-      this.setState({ releaseds, error: false })
-      return;
+      const releaseds = await fetchGithubReleased()
+      return this.setState({ releaseds, error: false })
     } catch (error) {
-      this.setState({
+      return this.setState({
         error: true
       });
     }
   }
 
   componentDidMount() {
-    document.getElementById('svgSheriff').innerHTML = svgIcon
-    this.getReleased();
+    this.refs.sheriff.innerHTML = svgIcon
+    return this.getReleased();
   }
 
   render() {
@@ -58,7 +52,7 @@ export class Logs extends Component {
                 <div className="flex-me">
                   { process.env.NODE_ENV === 'development' && <Button className="mgi--left-10" blue onClick={() => clearStorages()}>Reset storage</Button> }
                     <a href={process.env.homepage_url} target="_blank">
-                      <Button className="mgi--left-10 flex-me flex-align"><span>Rate this extension</span> <i id="svgSheriff" className="mgi--left-5"></i></Button>
+                      <Button className="mgi--left-10 flex-me flex-align"><span>Rate this extension</span> <i id="svgSheriff" ref="sheriff" className="mgi--left-5"></i></Button>
                     </a>
                 </div>
               </div>

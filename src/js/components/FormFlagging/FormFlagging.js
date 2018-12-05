@@ -56,7 +56,7 @@ export class FormFlagging extends Component {
    */
   handleSelectVideo(video, checked, context) {
     const { videosDisplayed } = context.state;
-    let videoIndex = videosDisplayed.findIndex(elem => elem.id === video.id);
+    const videoIndex = videosDisplayed.findIndex(elem => elem.id === video.id);
     videosDisplayed[videoIndex].selected = checked;
     return context.setState('videosDisplayed', videosDisplayed);
   }

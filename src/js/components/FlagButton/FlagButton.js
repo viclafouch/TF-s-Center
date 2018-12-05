@@ -11,7 +11,7 @@ export class FlagButton extends Component {
   };
 
   componentDidMount() {
-    document.getElementById('svgSheriff').innerHTML = svgIcon
+    return this.refs.sheriff.innerHTML = svgIcon
   }
 
   onFlag(e) {
@@ -23,7 +23,7 @@ export class FlagButton extends Component {
     } else {
       videosToFlag.splice(existingIndex, 1);
     }
-    this.props.setContextState('videosToFlag', videosToFlag)
+    return this.props.setContextState('videosToFlag', videosToFlag)
   }
 
   render() {
@@ -36,7 +36,7 @@ export class FlagButton extends Component {
         <span className="span-icon mgi--left-5">
           <FontAwesomeIcon icon={faCheck} size="1x" fixedWidth />
         </span>
-        <i id="svgSheriff" className="mgi--left-5"></i>
+        <i id="svgSheriff" ref="sheriff" className="mgi--left-5"></i>
       </button>
     )
   }
