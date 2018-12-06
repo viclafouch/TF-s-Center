@@ -5,7 +5,7 @@ import Search from '@shared/models/Search.class';
 import { copyDate } from '@utils/date';
 import { sevenLastDays } from '@utils/date';
 import { urlsAvailable } from '../config/config';
-import { copyObject, getAllUrlParams, wait, setStateAsync } from '@utils/index';
+import { getAllUrlParams, wait, setStateAsync } from '@utils/index';
 import { fetchHistory, fetchSearch } from '@shared/api/Deputy';
 
 export const YouTubeContext = React.createContext();
@@ -25,7 +25,7 @@ class YouTubeProvider extends Component {
       } : elem
     })
 
-    this.state = copyObject(youtubeDatasDeputy)
+    this.state = { ...youtubeDatasDeputy }
 
     this.baseHide = {}
 
@@ -89,7 +89,7 @@ class YouTubeProvider extends Component {
 
     for (let index = 0; index < arrayItems.length; index++) {
       const element = arrayItems[index];
-      let ItemIndex = items.findIndex(x => x.id === element.id)
+      const ItemIndex = items.findIndex(x => x.id === element.id)
       if (ItemIndex >= 0) {
         items = items.filter((e, i) => i !== ItemIndex);
       } else {
@@ -161,8 +161,7 @@ class YouTubeProvider extends Component {
 
     return this.setState({
       videosDisplayed,
-      hideRemoved: hides.hideRemoved,
-      hideReviewed: hides.hideReviewed,
+      ...hides
     });
   }
 

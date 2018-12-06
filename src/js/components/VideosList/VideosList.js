@@ -36,8 +36,8 @@ export class VideosList extends Component {
       const { selected } = video
       const videoSelected = await fetchYouTubeVideo(video.id)
       videoSelected.selected = selected
-      videoSelected.channel = await fetchYouTubeChannel(video.channelId)
-      this.setState({ videoSelected })
+      videoSelected.channel = await fetchYouTubeChannel(videoSelected.channelId)
+      return this.setState({ videoSelected })
     } catch (error) {
       // TODO
       // if (error.message === "NOT_FOUND_OR_REMOVED" && this.props.context.state.onToFlag) {
@@ -50,7 +50,7 @@ export class VideosList extends Component {
       // }
       console.error(error);
     } finally {
-      this.setState({ isLoading: false })
+      return this.setState({ isLoading: false })
     }
   }
 
