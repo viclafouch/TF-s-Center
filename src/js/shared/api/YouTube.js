@@ -1,4 +1,4 @@
-import { YOUTUBE_API_KEYS } from "private";
+import { YOUTUBE_API_KEYS } from "@private";
 import Video from "@shared/models/Video.class";
 
 /**
@@ -8,7 +8,11 @@ import Video from "@shared/models/Video.class";
  */
 export const fetchYouTubeChannel = channelID => fetch(`https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${channelID}&key=${YOUTUBE_API_KEYS}`)
   .then(response => response.json())
-  .then(response => response.items[0].snippet)
+  .then(response => {
+    if (!response.items) throw new Error('UNKNOWN')
+    if (!response.items.length) throw new Error('NOT_FOUND_OR_REMOVED')
+    return response.items[0].snippet
+  })
   .catch(e => {
     throw e
   })
@@ -22,8 +26,10 @@ export const fetchYouTubeVideo = videoID => fetch(`https://www.googleapis.com/yo
     .then(response => response.json())
     .then(response => {
       if (!response.items) throw new Error('UNKNOWN')
-      if (response.items.length === 0) throw new Error('NOT_FOUND_OR_REMOVED')
+      if (!response.items.length) throw new Error('NOT_FOUND_OR_REMOVED')
       return response.items[0].snippet
     })
-    .then(responseVideo => new Video({...responseVideo, id}))
-    .catch(e => { throw e })
+    .then(video => new Video({ ...video, id: videoID}))
+    .catch(e =>
+      { throw e }
+    )

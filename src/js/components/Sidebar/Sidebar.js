@@ -11,7 +11,7 @@ import { faFlag } from '@fortawesome/free-solid-svg-icons/faFlag'
 import { faMoon as faMoonBis } from '@fortawesome/free-solid-svg-icons/faMoon'
 import { faMoon } from '@fortawesome/free-regular-svg-icons/faMoon'
 import { faBullseye } from '@fortawesome/free-solid-svg-icons/faBullseye'
-import { CONTRIBUTOR_LINK, HANGOUTS_ME } from '../../../../private'
+import { CONTRIBUTOR_LINK, HANGOUTS_ME } from '@private'
 import { YouTubeContext } from '@stores/YouTubeContext';
 import { NavLink } from 'react-router-dom'
 import { openInNewTab } from '@utils/browser';
