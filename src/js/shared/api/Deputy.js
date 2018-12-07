@@ -30,8 +30,8 @@ export const fetchStats = () =>
       return getStatistics(fragment)
     })
 
-export const fetchSearch = (params = { search_query = '', page = null, filters = null, exclude_flagged_videos = null  } = {}) => {
-  const paramsAccepted = ['search_query', 'page', 'filters', 'exclude_flagged_videos']
+export const fetchSearch = (params = { search_query = '', page = null, filters = null, exclude_flagged_videos = null, search_id  } = {}) => {
+  const paramsAccepted = ['search_query', 'page', 'filters', 'exclude_flagged_videos', 'search_id']
   let url = 'https://www.youtube.com/deputy'
   for (const iterator in params) {
     if (paramsAccepted.includes(iterator)) {

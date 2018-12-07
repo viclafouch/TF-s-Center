@@ -9,19 +9,24 @@ import { copyObject } from '@utils/index';
 
 export class FormFlagging extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       flag_comments: '',
       reason: '',
-      templateIdSelected: ''
+      templateIdSelected: '',
+      location: props.location
     }
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidMount() {
-    let specialSearch = getUrlParameter('searchId');
-    if (!!specialSearch && this.props.canFlag) {
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.search !== this.props.location.search) return this.autoCompleteForm()
+  }
+  
+  autoCompleteForm() {
+    const specialSearch = getUrlParameter('search_id');
+    if (!!specialSearch) {
       const search = this.props.context.state.searches.find(x => x.id == specialSearch)
       if (!search) return; // Didin't find search saved
 
@@ -29,9 +34,9 @@ export class FormFlagging extends Component {
        * Auto Select videos
        */
       if (search.autoSelect) {
-          const searchText = search.value.cleanString();
-          const videosDetected = this.props.context.state.videosDisplayed.filter(elem => elem.title.cleanString().search(searchText) !== -1 || elem.description.cleanString().search(searchText) !== -1)
-          this.props.context.selectVideos(videosDetected);
+        const searchText = search.value.cleanString();
+        const videosDetected = this.props.context.state.videosDisplayed.filter(elem => elem.title.cleanString().search(searchText) !== -1 || elem.description.cleanString().search(searchText) !== -1)
+        this.props.context.selectVideos(videosDetected);
       }
 
       /**
@@ -41,11 +46,15 @@ export class FormFlagging extends Component {
       if (!template) return; // Didin't find template saved
 
       return this.setState({
-          flag_comments: template.description,
-          reason: template.type,
-          templateIdSelected: template.id
+        flag_comments: template.description,
+        reason: template.type,
+        templateIdSelected: template.id
       });
     }
+  }
+
+  componentDidMount() {
+    this.autoCompleteForm()
   }
 
   /**

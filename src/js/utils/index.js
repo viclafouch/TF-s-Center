@@ -35,7 +35,7 @@ export const copyObject = (obj) => JSON.parse(JSON.stringify(obj));
 export const trySearch = (text, searchId) => {
     const urlEncodade = encodeURIComponent('"' + text.trim() + '"').replace(/%20/g, '+');
     let url = `/deputy?search_query=${urlEncodade}`
-    url = searchId ? url + `&searchId=${searchId}` : url
+    url = searchId ? url + `&search_id=${searchId}` : url
     return url
 }
 
