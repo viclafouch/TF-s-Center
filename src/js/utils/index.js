@@ -32,11 +32,11 @@ export function updateQueryStringParameter(uri, key, value) {
 
 export const copyObject = (obj) => JSON.parse(JSON.stringify(obj));
 
-export function trySearch(text, search, newTab = false) {
-    let urlEncodade = encodeURIComponent('"' + text.trim() + '"').replace(/%20/g, '+');
+export const trySearch = (text, searchId) => {
+    const urlEncodade = encodeURIComponent('"' + text.trim() + '"').replace(/%20/g, '+');
     let url = `/deputy?search_query=${urlEncodade}`
-    url = search ? url + `&searchId=${search.id}` : url
-    return openInNewTab(url, newTab);
+    url = searchId ? url + `&searchId=${searchId}` : url
+    return url
 }
 
 String.prototype.cleanString = function () {
