@@ -53,6 +53,10 @@ export class Video {
     getVideoUrl() {
         return `/watch?v=${this.id}`
     }
+
+    getVideoEmbed() {
+      return `https://www.youtube.com/embed/${this.id}?autoplay=1&rel=0&showinfo=0`
+    }
 }
 
 export default Video
