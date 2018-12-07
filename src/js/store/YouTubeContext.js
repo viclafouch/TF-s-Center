@@ -133,7 +133,6 @@ class YouTubeProvider extends Component {
         videos = await fetchSearch(params)
       }
       await setStateAsync({...videos, videosDisplayed: videos.videos}, this)
-      await wait(100) // Hide animation css pagination number changes
     } catch (error) {
       console.log(error)
     } finally {

@@ -16,7 +16,7 @@ export const fetchHistory = (params = { page = null, start_time = null, end_time
       const fragment = document.createElement('div')
       fragment.innerHTML = StringReponse
       console.log(fragment);
-
+      console.log(fragment.querySelector('title').textContent.trim());
       return getVideos(fragment)
     })
 }

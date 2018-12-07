@@ -12,7 +12,7 @@ export class ToolsFlag extends Component {
         {(context) => (
           <div className="tools">
             <div>
-              { this.props.canFlag ? <FlagTools {...context} /> : <HistoryTools /> }
+              {this.props.canFlag ? <FlagTools {...context} canFlag={this.props.canFlag} /> : <HistoryTools canFlag={this.props.canFlag} /> }
             </div>
             <div className="flex-me flex-justify-between mgi--top-10 flex-align">
               <Pagination pages={context.state.pagination} />
