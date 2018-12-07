@@ -20,3 +20,11 @@ export const getStorages = (type) => new Promise((resolve, reject) => {
     reject('Error when loading storage ' + type)
   }
 });
+
+export const setStorage = (type, object) => new Promise((resolve, reject) => {
+  if (!chrome.runtime.lastError) {
+    chrome.storage[type].set(object, items => resolve(items))
+  } else {
+    reject('Error when loading storage ' + type)
+  }
+})
