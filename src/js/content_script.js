@@ -81,7 +81,6 @@ function initExtension() {
           </BrowserRouter>
         </YouTubeProvider>
       , myReactApp, async () => {
-        await wait(1000);
         document.body.classList.add('TFs-ready')
       })
     })

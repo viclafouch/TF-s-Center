@@ -5,8 +5,9 @@ import Search from '@shared/models/Search.class';
 import { copyDate } from '@utils/date';
 import { sevenLastDays } from '@utils/date';
 import { urlsAvailable } from '../config/config';
-import { getAllUrlParams, wait, setStateAsync } from '@utils/index';
+import { getAllUrlParams, setStateAsync, wait } from '@utils/index';
 import { fetchHistory, fetchSearch } from '@shared/api/Deputy';
+import { getStorages } from './BrowserStorage';
 
 export const YouTubeContext = React.createContext();
 
@@ -34,7 +35,7 @@ class YouTubeProvider extends Component {
     this.state.hideReviewed = this.baseHide.hideReviewed = false
     this.state.popupReportingOpened = false
     this.state.theme = storage.theme
-    this.state.isLoading = false
+    this.state.isFetchingSlow = false
     this.state.displaying = storage.displaying
     this.state.videosToFlag = storage.videosToFlag.map(e => new Video(e))
     this.state.videoWatched = youtubeDatasDeputy.videoWatched
@@ -123,20 +124,52 @@ class YouTubeProvider extends Component {
     })
   }
 
+  async getBrowserDatas() {
+    await Promise.all([getStorages('local'), getStorages('sync')])
+      .then(async storages => {
+        const { videosToFlag, templates, searches, lastSevenDaysflagged: test  } = storages.reduce((a, d) => Object.assign(d, a), {});
+        const lastSevenDaysflagged = sevenLastDays.map(elem => {
+          const flaggedFounded = test.find(x => x.date === elem.date);
+          return flaggedFounded ? {
+            date: elem.date,
+            videos: flaggedFounded.videos
+          } : elem
+        })
+        await setStateAsync({
+          videosToFlag: videosToFlag.map(e => new Video(e)),
+          templates: templates.map(elem => new Template(elem)),
+          searches: searches.map(elem => new Search(elem)),
+          lastSevenDaysflagged
+        }, this)
+      })
+  }
+
   async getVideos(type, params) {
-    await setStateAsync({ isLoading: true }, this)
     try {
+      if (type !== 'target') await setStateAsync({ isFetchingSlow: true }, this)
       let videos = []
       if (type === 'history') {
         videos = await fetchHistory(params)
       } else if (type === 'search') {
         videos = await fetchSearch(params)
+      } else if (type === 'target') {
+        videos = {
+          videos: this.state.videosToFlag,
+          pagination: []
+        }
       }
-      await setStateAsync({...videos, videosDisplayed: videos.videos}, this)
+      await setStateAsync({
+        ...videos,
+        videosDisplayed: videos.videos,
+        onToFlag: type === 'target'
+      }, this)
+      await wait(0)
     } catch (error) {
-      console.log(error)
+      throw new Error(error)
     } finally {
-      this.setState({ isLoading: false})
+      await setStateAsync({
+        isFetchingSlow: false
+      }, this)
     }
   }
 
@@ -214,6 +247,7 @@ class YouTubeProvider extends Component {
     return (
       <YouTubeContext.Provider value={{
         state: this.state,
+        getBrowserDatas: () => this.getBrowserDatas(),
         selectVideos: (videos = []) => this.selectItems(videos, 'videosDisplayed'),
         selectSearches: (searches = []) => this.selectItems(searches, 'searches'),
         selectAll: (type, force = true) => this.selectItems(this.state[type], type, force),

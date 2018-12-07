@@ -137,6 +137,8 @@ div#TFsCenter {
       height: inherit;
       box-sizing: border-box;
 
+      & > div { height: inherit; } // react router async
+
       .main-body {
         background-color: var(--body-background);
       }
