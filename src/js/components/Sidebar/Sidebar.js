@@ -43,6 +43,11 @@ export class Sidebar extends Component {
         label: 'Analytics'
       },
       {
+        url: '/deputy?context=targets',
+        icon: faBullseye,
+        label: 'Targets'
+      },
+      {
         url: CONTRIBUTOR_LINK,
         icon: faUsers,
         label: 'Forum',
