@@ -6,7 +6,7 @@ import VideoDetail from '../VideoDetail/VideoDetail';
 import Loader from '../layouts/Loader';
 import { YouTubeContext } from '@stores/YouTubeContext';
 import { fetchYouTubeChannel, fetchYouTubeVideo } from '@shared/api/YouTube';
-import { redirectToWebCache, setStateAsync } from '@utils/index';
+import { redirectToWebCache, setStateAsync, wrapURLs } from '@utils/index';
 
 export class VideosList extends Component {
 
@@ -18,6 +18,7 @@ export class VideosList extends Component {
       isLoading: false
     }
 
+    this.descriptionDetail = React.createRef();
     this.handleChange = this.handleChange.bind(this)
     this.closePopup = this.closePopup.bind(this)
     this.checkedVideo = this.checkedVideo.bind(this)
@@ -37,6 +38,10 @@ export class VideosList extends Component {
       const videoSelected = await fetchYouTubeVideo(video.id)
       videoSelected.selected = selected
       videoSelected.channel = await fetchYouTubeChannel(videoSelected.channelId)
+
+      let description = wrapURLs(videoSelected.description, true);
+      description = description.replace(/(?:\r\n|\r|\n)/g, '<br>');
+      this.descriptionDetail.current.innerHTML = description
       return this.setState({ videoSelected })
     } catch (error) {
       // TODO
@@ -70,7 +75,6 @@ export class VideosList extends Component {
    * Reset empty video
    */
   closePopup() {
-    document.getElementById('description-content').innerHTML = '' //TODO
     return this.setState({ videoSelected: new Video() })
   }
 
@@ -131,6 +135,7 @@ export class VideosList extends Component {
           maxWidth={1100}
         >
           <VideoDetail
+            ref={this.descriptionDetail}
             canFlag={this.props.canFlag}
             video={this.state.videoSelected}
             onCheck={(e, video) => this.checkedVideo(e, video)}

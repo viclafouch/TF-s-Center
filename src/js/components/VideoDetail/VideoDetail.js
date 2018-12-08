@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Button from '../Button'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { getDateAwesome } from '@utils/date';
-import { wrapURLs } from '@utils/index';
 
 export class VideoDetail extends Component {
 
@@ -19,22 +18,8 @@ export class VideoDetail extends Component {
     return null;
   }
 
-  componentDidUpdate(prevProps) {
-    if (!prevProps.video.id && this.props.video.id) this.loadDescription();
-  }
-
-  loadDescription() {
-    let { videoDescription } = this.props.video
-    videoDescription = wrapURLs(videoDescription, true);
-    videoDescription =  videoDescription.replace(/(?:\r\n|\r|\n)/g, '<br>');
-
-    const pDescription = document.createElement('p');
-    pDescription.innerHTML = videoDescription;
-    this.refs.description.innerHTML = '';
-    this.refs.description.appendChild(pDescription);
-  }
-
   render() {
+
     const { video } = this.props;
 
     return (
@@ -54,11 +39,11 @@ export class VideoDetail extends Component {
             }}>
               {
               <iframe
-                  src={video.id ? video.getVideoEmbed() : ''}
-                  className="youtube-iframe"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
+                src={video.id ? video.getVideoEmbed() : ''}
+                className="youtube-iframe"
+                frameBorder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
               />
               }
             </div>
@@ -111,7 +96,7 @@ export class VideoDetail extends Component {
           </div>
         </div>
         <div className="description scrollBarOnHover">
-          <div ref="description" id="description-content"></div>
+          <div ref={this.props.innerRef} id="description-content"></div>
         </div>
       </div>
     </div>
@@ -119,4 +104,4 @@ export class VideoDetail extends Component {
   }
 }
 
-export default VideoDetail
+export default React.forwardRef((props, ref) => <VideoDetail innerRef={ref} {...props} /> )
