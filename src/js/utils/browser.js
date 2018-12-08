@@ -16,3 +16,11 @@ export function openInNewTab(url, newTab = false) {
     win.focus();
   }
 }
+
+export const sendMessageToBackground = (type, object) => new Promise((resolve, reject) => {
+  if (!chrome.runtime.lastError) {
+    chrome.runtime.sendMessage({ type, object }, (response) => resolve(response))
+  } else {
+    reject('Error when sending message ' + type)
+  }
+})
