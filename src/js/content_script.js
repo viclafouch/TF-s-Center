@@ -62,6 +62,8 @@ function initExtension() {
         myReactApp.setAttribute("id", "button-flag-TF");
         document.getElementById('info').querySelector('#top-level-buttons').appendChild(myReactApp);
       } else {
+        const session_token = document.querySelector('[name="session_token"]').value
+        youtubeDatasDeputy.session_token = session_token
         myReactApp.setAttribute("id", "TFsCenter");
         document.body.innerHTML = '';
         document.body.appendChild(myReactApp);

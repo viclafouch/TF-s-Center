@@ -40,7 +40,7 @@ export class FilterPeriod extends Component {
     const period = e.target.value
     if (!this.periods.find(x => x.value == period) || this.props.disabled) return
     const url = updateQueryStringParameter(window.location.pathname + window.location.search, 'filters', period)
-    return this.setState({ redirectTo: url })
+    return this.setState({ redirectTo: url, filters: period })
   }
 
   render() {

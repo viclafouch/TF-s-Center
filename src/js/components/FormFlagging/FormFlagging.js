@@ -23,7 +23,7 @@ export class FormFlagging extends Component {
   componentDidUpdate(prevProps) {
     if (prevProps.location.search !== this.props.location.search) return this.autoCompleteForm()
   }
-  
+
   autoCompleteForm() {
     const specialSearch = getUrlParameter('search_id');
     if (!!specialSearch) {
@@ -120,6 +120,7 @@ export class FormFlagging extends Component {
                 onClosed={() => context.setState('popupReportingOpened', false)}
               />
             </Popup>
+              <input name="session_token" type="hidden" value={context.state.session_token}></input>
           </form>
         )}
       </YouTubeContext.Consumer>

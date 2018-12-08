@@ -17,15 +17,6 @@ export class FormSearch extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  static getDerivedStateFromProps(props, state) {
-    if (props.state.search !== state.search) {
-      return {
-        search: props.state.search
-      }
-    }
-    return null;
-  }
-
   componentDidUpdate() {
     if (this.state.redirectTo) return this.setState({ redirectTo: null})
   }
