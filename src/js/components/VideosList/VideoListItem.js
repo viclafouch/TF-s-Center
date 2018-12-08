@@ -2,16 +2,6 @@ import React, { Component } from 'react'
 import { YouTubeContext } from '@stores/YouTubeContext';
 
 export class VideoListItem extends Component {
-  /**
-   * Load description to be properly displayed
-   */
-  loadDescription() {
-    // TODO
-    const p = document.createElement('p')
-    p.innerHTML = this.props.video.description
-    document.getElementById('description-'+this.props.video.id).innerHTML = ''
-    document.getElementById('description-'+this.props.video.id).appendChild(p)
-  }
 
   render() {
     const { video } = this.props
@@ -42,7 +32,6 @@ export class VideoListItem extends Component {
             :
             <div
               className="flex-me"
-              onLoad={() => this.loadDescription()}
               onContextMenu={this.props.onCheck}
             >
               <div className="video-item-thumbnail" onClick={this.props.onSelect}>
@@ -52,7 +41,12 @@ export class VideoListItem extends Component {
                 <h3 className="mgi--bottom-8 video-item-title">
                   <a href={video.getVideoUrl()} target="_blank" title={!video.isRemoved ? video.title : ''} className={video.isRemoved ? 'removed-on-text' : video.isReviewed ? 'reviewed-on-text' : ''}>{video.title || 'This video is no longer available'}</a>
                 </h3>
-                <p className="video-item-description mgi--bottom-4" id={'description-'+video.id}></p>
+                <p
+                  className="video-item-description mgi--bottom-4"
+                  dangerouslySetInnerHTML={{
+                    __html: `<p>${this.props.video.description}</p>`
+                  }}
+                ></p>
                 { (!video.isRemoved && video.channelTitle) &&
                   <p className="video-notes">
                     <a className="video-item-creator" href={video.channelUrl}>{video.channelTitle}</a>
