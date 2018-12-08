@@ -17,7 +17,7 @@ class App extends Component {
     if (prevProps.notification.id !== this.props.notification.id && this.props.notification.id) {
       this.addNotification(this.props.notification.params)
       const url = this.props.location.pathname + this.props.location.search
-      if (this.props.notification.type === 'flaggedVideos') this.props.history.push(url)
+      if (this.props.notification.type === 'flaggedVideos' && this.props.notification.params.level === 'success') this.props.history.push(url)
     }
   }
 
@@ -37,6 +37,10 @@ class App extends Component {
         success: {
           color: '#FFFFFF',
           background: 'green'
+        },
+        error: {
+          color: '#FFFFFF',
+          background: 'red'
         }
       }
     }

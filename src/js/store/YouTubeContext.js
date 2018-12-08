@@ -237,13 +237,16 @@ class YouTubeProvider extends Component {
           id: randomId(),
           type: 'flaggedVideos',
           params: {
-            type: 'success',
+            level: 'success',
             message: 'Helllo'
           }
         }
       })
     } catch (error) {
-      console.log(error);
+      console.error(error)
+      return this.setState({
+        notification: { id: randomId(), type: 'flaggedVideos', params: { level: 'error', message: 'An error occured' }}
+      })
     }
   }
 
