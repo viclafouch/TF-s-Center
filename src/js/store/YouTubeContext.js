@@ -147,16 +147,10 @@ class YouTubeProvider extends Component {
     try {
       if (type !== 'target') await setStateAsync({ isFetchingSlow: true }, this)
       let videos = []
-      if (type === 'history') {
-        videos = await fetchHistory(params)
-      } else if (type === 'search') {
-        videos = await fetchSearch(params)
-      } else if (type === 'target') {
-        videos = {
-          videos: this.state.videosToFlag,
-          pagination: []
-        }
-      }
+      if (type === 'history') { videos = await fetchHistory(params) }
+      else if (type === 'search') { videos = await fetchSearch(params) }
+      else if (type === 'target') { videos = { videos: this.state.videosToFlag, pagination: [] } }
+
       await setStateAsync({
         ...videos,
         videosDisplayed: videos.videos,
@@ -193,12 +187,6 @@ class YouTubeProvider extends Component {
     return this.setState({
       videosDisplayed,
       ...hides
-    });
-  }
-
-  saveToStorage({ type, name, value }) {
-    return chrome.storage[type].set({
-      [name]: value
     });
   }
 
@@ -250,17 +238,13 @@ class YouTubeProvider extends Component {
     }
   }
 
-  async callbackState(name, value, params = {}) {
-    if (name === 'displaying' || name === 'theme') {
-      return this.saveToStorage({ type: 'sync', name, value })
+  async callbackState(updatedState) {
+    if (updatedState.hasOwnProperty("displaying") || updatedState.hasOwnProperty("theme")) {
+      return await setStorage('sync', {
+        displaying: updatedState.displaying,
+        theme: updatedState.theme
+      })
     }
-
-    // else if (name === 'videosToFlag') {
-    //   chrome.storage.local.set({
-    //     videosToFlag: this.state.videosToFlag
-    //   })
-    //   chrome.runtime.sendMessage({ type: 'updateBadgeText', videosToFlag: this.state.videosToFlag });
-    // }
   }
 
   render() {
@@ -279,9 +263,7 @@ class YouTubeProvider extends Component {
         removeVideosToFlag: sendForme => this.removeVideosToFlag(sendForme),
         addSearch: (search = [], callback) => this.actionItem(search, 'searches', callback),
         removeSearch: (search = [], callback) => this.actionItem(search, 'searches', callback),
-        setState: (name, value, stuffs = null) => this.setState({
-          [name]: value
-        }, () => this.callbackState(name, value, stuffs)),
+        setState: (object) => this.setState(object, this.callbackState(object)),
         getVideos: (type = 'history', params = getAllUrlParams()) => this.getVideos(type, params)
       }}>{this.props.children}
       </YouTubeContext.Provider>

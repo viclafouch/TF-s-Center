@@ -27,11 +27,11 @@ export class ListSearches extends Component {
     const searchIndex = context.state.searches.findIndex(x => x.id == id);
     const searches = context.state.searches;
     searches[searchIndex].selected = e.target.checked;
-    return context.setState('searches', searches);
+    return context.setState({ searches });
   }
 
   async redirectSearch(search, context) {
-    await context.setState('search', '"'+search.value+'"')
+    context.setState({ search: '"'+search.value+'"' })
     return this.setState({ redirectTo: trySearch(search.value, search.id) })
   }
 

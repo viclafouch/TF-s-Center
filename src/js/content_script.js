@@ -8,7 +8,7 @@ import YouTubeProvider, { YouTubeContext } from '@stores/YouTubeContext';
 import { getStorages } from '@stores/BrowserStorage';
 import getYouTubeDatasFromDOM from '@stores/DatasDom'
 import { BrowserRouter } from 'react-router-dom'
-import { getAllUrlParams } from '@utils/index';
+import { getAllUrlParams, uena } from '@utils/index';
 
 const style = [
   'background: linear-gradient(to right, #5433ff, #20bdff, #a5fecb);',
@@ -39,11 +39,13 @@ function initExtension() {
 
   chrome.runtime.sendMessage({ type: 'showPageAction' });
 
+  const myReactApp = document.createElement("div");
+  myReactApp.setAttribute("id", "TFsCenter");
+
   Promise.all([getStorages('local'), getStorages('sync')])
     .then(async storages => {
       const storage = storages.reduce((a, d) => Object.assign(d, a), {});
       const pathname = getPathname()
-      const myReactApp = document.createElement("div");
 
       // For /watch, website uses Angular and asynchrone injection, wait DOM ready
       if (pathname === '/watch') {
@@ -64,13 +66,12 @@ function initExtension() {
       } else {
         const session_token = document.querySelector('[name="session_token"]').value
         youtubeDatasDeputy.session_token = session_token
-        myReactApp.setAttribute("id", "TFsCenter");
         document.body.innerHTML = '';
         document.body.appendChild(myReactApp);
         document.documentElement.setAttribute('data-theme', storage.theme)
       }
 
-      ReactDOM.render(
+      await new Promise(resolve => ReactDOM.render(
         <YouTubeProvider
           pathname={pathname}
           storage={storage}
@@ -82,11 +83,28 @@ function initExtension() {
             </YouTubeContext.Consumer>
           </BrowserRouter>
         </YouTubeProvider>
-      , myReactApp, async () => {
-        document.body.classList.add('TFs-ready')
-      })
+      , myReactApp, resolve()))
     })
-    .catch(e => console.warn('Error TF-Center: ' + e))
+    .catch(e => {
+      e = e.id ? e : e.message
+      document.body.innerHTML = '';
+      const div = document.createElement('div')
+      const h1 = document.createElement('h1');
+      h1.textContent = '500 Server Error (TF-Center)'
+      const p = document.createElement('p')
+      p.innerHTML = 'Sorry, something went wrong. <br /> A team of hightly trained monkeys has been dispatched to deal this situation.'
+      const perror = document.createElement('p');
+      perror.textContent = process.env.NODE_ENV === 'development' ? JSON.stringify(e) : uena(JSON.stringify(e))
+      div.appendChild(h1)
+      div.appendChild(p)
+      div.appendChild(perror)
+      myReactApp.appendChild(div)
+      myReactApp.classList.add('container-error')
+      document.body.appendChild(myReactApp);
+    })
+    .finally(() => {
+      document.body.classList.add('TFs-ready')
+    })
 }
 
 let pathname = getPathname()

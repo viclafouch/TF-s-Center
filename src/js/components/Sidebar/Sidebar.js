@@ -64,7 +64,7 @@ export class Sidebar extends Component {
     const theme = context.state.theme === 'light' ? 'dark' : 'light'
     document.getElementById('TFsCenter').classList.add('color-theme-in-transition')
     document.documentElement.setAttribute('data-theme', theme)
-    context.setState('theme', theme)
+    context.setState({ theme })
     setTimeout(() => document.getElementById('TFsCenter').classList.remove('color-theme-in-transition'), 1000);
   }
 

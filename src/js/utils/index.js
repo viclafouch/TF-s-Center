@@ -1,3 +1,5 @@
+import ERRORS from '../../../errors.json'
+
 export function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
         sURLVariables = sPageURL.split('&'), sParameterName, i;
@@ -104,3 +106,19 @@ export const wrapURLs = (text = '', new_window) => {
     return '<a href="' + href + '" target="' + target + '">' + url + '</a>';
   });
 };
+
+
+export function TF_ERROR(id) {
+  const error_ = ERRORS[id]
+  if (!error_) throw new Error('Unknown Error')
+  Error.call(this)
+  this.message = error_.message
+  this.code = error_.code
+  this.id = id
+}
+
+TF_ERROR.prototype = Object.create(Error.prototype)
+TF_ERROR.prototype.constructor = TF_ERROR
+
+export const uena = chn => window.btoa(unescape(encodeURIComponent(chn)))
+export const aenu = chn => decodeURIComponent(escape(window.atob(chn)));

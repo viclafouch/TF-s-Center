@@ -15,7 +15,9 @@ export class SelectDisplay extends Component {
                             <React.Fragment>
                                 <Checkbox
                                     checked={context.state.displaying === 'column'}
-                                    onChange={e => context.setState('displaying', e.target.checked ? 'column' : 'row')}
+                                    onChange={e => context.setState({
+                                      displaying: e.target.checked ? 'column' : 'row'
+                                    })}
                                     name="chooseDisplayed"
                                     hide={true}
                                 />

@@ -1,7 +1,7 @@
 import getVideos from '../../getDom/_videos'
 import getStatistics from '../../getDom/_statistics'
 import queryString from 'query-string';
-import { updateQueryStringParameter } from '@utils/index';
+import { updateQueryStringParameter, TF_ERROR } from '@utils/index';
 
 export const fetchHistory = (params = { page = null, start_time = null, end_time = null } = {}) => {
   const paramsAccepted = ['page', "start_time", "end_time"]
@@ -16,7 +16,7 @@ export const fetchHistory = (params = { page = null, start_time = null, end_time
     .then(StringReponse => {
       const fragment = document.createElement('div')
       fragment.innerHTML = StringReponse
-      if (fragment.querySelector('title').textContent.trim() === '500 Internal Server Error') throw new Error('INTERNAL_SERVER_ERROR')
+      if (fragment.querySelector('title').textContent.trim() === '500 Internal Server Error') throw new TF_ERROR('INTERNAL_SERVER_ERROR')
       return getVideos(fragment)
     })
 }
@@ -43,7 +43,7 @@ export const fetchSearch = (params = { search_query = '', page = null, filters =
     .then(StringReponse => {
       const fragment = document.createElement('div')
       fragment.innerHTML = StringReponse
-      if (fragment.querySelector('title').textContent.trim() === '500 Internal Server Error') throw new Error('INTERNAL_SERVER_ERROR')
+      if (fragment.querySelector('title').textContent.trim() === '500 Internal Server Error') throw new TF_ERROR('INTERNAL_SERVER_ERROR')
       return getVideos(fragment)
     })
 }

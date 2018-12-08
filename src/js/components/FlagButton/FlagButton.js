@@ -23,7 +23,7 @@ export class FlagButton extends Component {
     } else {
       videosToFlag.splice(existingIndex, 1);
     }
-    return this.props.setContextState('videosToFlag', videosToFlag)
+    return this.props.setContextState({ videosToFlag })
   }
 
   render() {

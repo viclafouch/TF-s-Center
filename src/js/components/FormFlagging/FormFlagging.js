@@ -67,7 +67,9 @@ export class FormFlagging extends Component {
     const { videosDisplayed } = context.state;
     const videoIndex = videosDisplayed.findIndex(elem => elem.id === video.id);
     videosDisplayed[videoIndex].selected = checked;
-    return context.setState('videosDisplayed', videosDisplayed);
+    return context.setState({
+      videosDisplayed
+    })
   }
 
   /**
@@ -110,7 +112,9 @@ export class FormFlagging extends Component {
             />
             <Popup
               isOpen={context.state.popupReportingOpened}
-              onClosed={() => context.setState('popupReportingOpened', false)}
+              onClosed={() => context.setState({
+                popupReportingOpened:  false
+              })}
             >
               <FormReporting
                 params={{
@@ -125,7 +129,9 @@ export class FormFlagging extends Component {
                 reason={this.state.reason}
                 templateIdSelected={this.state.templateIdSelected}
                 handleChange={this.handleChange}
-                onClosed={() => context.setState('popupReportingOpened', false)}
+                onClosed={() => context.setState({
+                  popupReportingOpened: false
+                })}
               />
             </Popup>
               <input name="session_token" type="hidden" value={context.state.session_token}></input>
