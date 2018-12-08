@@ -194,6 +194,7 @@ class YouTubeProvider extends Component {
    * @param {Object} params - Params for fetching and add to storage
    */
   async flagVideos(params) {
+    await setStateAsync({ isFetchingSlow: true, popupReportingOpened: false }, this)
     try {
       await fetchPostVideos(params)
       const { lastSevenDaysflagged, templates, searches } = Object.assign({}, this.state)
@@ -206,7 +207,7 @@ class YouTubeProvider extends Component {
       }
 
       if (params.searchId) {
-        const searchIndex = context.state.searches.findIndex(x => x.id == params.searchId)
+        const searchIndex = this.state.searches.findIndex(x => x.id == params.searchId)
         if (searchIndex) searches[searchIndex].flagged += params.videos.length
       }
 
@@ -234,9 +235,13 @@ class YouTubeProvider extends Component {
         }
       })
     } catch (error) {
+      console.log(error);
       return this.setState({
-        notification: { id: randomId(), type: 'flaggedVideos', params: { level: 'error', message: 'An error occured' }}
+        notification: { id: randomId(), type: 'flaggedVideos', params: { level: 'error', message: 'An error occured' }},
+        popupReportingOpened: true
       })
+    } finally {
+      await setStateAsync({ isFetchingSlow: false }, this)
     }
   }
 

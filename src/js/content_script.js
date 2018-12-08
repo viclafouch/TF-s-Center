@@ -91,6 +91,7 @@ function initExtension() {
       ,myReactApp, resolve()))
     })
     .catch(e => {
+      console.log(e);
       e = e.id ? e : (e.message || 'Unknown error')
       document.body.innerHTML = '';
       document.body.appendChild(myReactApp);
