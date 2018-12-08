@@ -46,11 +46,8 @@ class YouTubeProvider extends Component {
     this.state.templates = storage.templates.map(elem => new Template(elem))
     this.state.searches = storage.searches.map(elem => new Search(elem))
     this.state.openModal = { type: null, isOpen: false }
-    this.state.notification = {
-      id: null,
-      type: null,
-      params: {}
-    }
+    this.state.notification = { id: null, type: null, params: {} }
+    this.state.fatalError = false
 
     if (pathname === urlsAvailable[5]) {
       this.state.videosDisplayed = this.state.videosToFlag
@@ -158,7 +155,8 @@ class YouTubeProvider extends Component {
       }, this)
       await wait(0)
     } catch (error) {
-      throw new Error(error)
+      const fatalError = error.id ? error : error.message
+      return this.setState({ fatalError })
     } finally {
       await setStateAsync({
         isFetchingSlow: false
@@ -190,6 +188,11 @@ class YouTubeProvider extends Component {
     });
   }
 
+  /**
+   * Flag videos
+   * Post to Deputy API
+   * @param {Object} params - Params for fetching and add to storage
+   */
   async flagVideos(params) {
     try {
       await fetchPostVideos(params)
@@ -226,28 +229,28 @@ class YouTubeProvider extends Component {
           type: 'flaggedVideos',
           params: {
             level: 'success',
-            message: 'Helllo'
+            message: `${params.videos.length} videos flagged !`
           }
         }
       })
     } catch (error) {
-      console.error(error)
       return this.setState({
         notification: { id: randomId(), type: 'flaggedVideos', params: { level: 'error', message: 'An error occured' }}
       })
     }
   }
 
-  async callbackState(updatedState) {
+  callbackState(updatedState) {
     if (updatedState.hasOwnProperty("displaying") || updatedState.hasOwnProperty("theme")) {
-      return await setStorage('sync', {
-        displaying: updatedState.displaying,
-        theme: updatedState.theme
+      setStorage('sync', {
+        displaying: this.state.displaying,
+        theme: this.state.theme
       })
     }
   }
 
   render() {
+    if (this.state.fatalError) throw this.state.fatalError
     return (
       <YouTubeContext.Provider value={{
         state: this.state,

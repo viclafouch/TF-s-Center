@@ -5,29 +5,23 @@ body, .isLoading {
   width: 100%;
 }
 
-div#TFsCenter.container-error {
+.container-error {
   height: 100%;
   width: 100%;
   font-family: 'Inconsolata', monospace;
-  display: flex;
-  align-items: flex-start;
+  padding: 3em;
 
+  h1 {
+    font-weight: bold;
+    font-size: 23px;
+  }
 
-  & > div {
-    padding: 3em;
-
-    h1 {
-      font-weight: bold;
-      font-size: 23px;
-    }
-
-    p {
-      margin-top: 25px;
-      line-height: 2em;
-      &:last-child {
-        max-width: 600px;
-        white-space: pre-wrap;
-      }
+  p {
+    margin-top: 25px;
+    line-height: 2em;
+    &:last-child {
+      max-width: 600px;
+      white-space: pre-wrap;
     }
   }
 }

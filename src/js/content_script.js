@@ -8,7 +8,8 @@ import YouTubeProvider, { YouTubeContext } from '@stores/YouTubeContext';
 import { getStorages } from '@stores/BrowserStorage';
 import getYouTubeDatasFromDOM from '@stores/DatasDom'
 import { BrowserRouter } from 'react-router-dom'
-import { getAllUrlParams, uena } from '@utils/index';
+import { getAllUrlParams } from '@utils/index';
+import ErrorBoundary from '@components/ErrorBoundary/ErrorBoundary';
 
 const style = [
   'background: linear-gradient(to right, #5433ff, #20bdff, #a5fecb);',
@@ -79,28 +80,21 @@ function initExtension() {
         >
           <BrowserRouter>
             <YouTubeContext.Consumer>
-              {(context) => <App context={context} notification={context.state.notification} />}
+              {(context) =>
+                <ErrorBoundary>
+                  <App context={context} notification={context.state.notification} />
+                </ErrorBoundary>
+              }
             </YouTubeContext.Consumer>
           </BrowserRouter>
         </YouTubeProvider>
-      , myReactApp, resolve()))
+      ,myReactApp, resolve()))
     })
     .catch(e => {
-      e = e.id ? e : e.message
+      e = e.id ? e : (e.message || 'Unknown error')
       document.body.innerHTML = '';
-      const div = document.createElement('div')
-      const h1 = document.createElement('h1');
-      h1.textContent = '500 Server Error (TF-Center)'
-      const p = document.createElement('p')
-      p.innerHTML = 'Sorry, something went wrong. <br /> A team of hightly trained monkeys has been dispatched to deal this situation.'
-      const perror = document.createElement('p');
-      perror.textContent = process.env.NODE_ENV === 'development' ? JSON.stringify(e) : uena(JSON.stringify(e))
-      div.appendChild(h1)
-      div.appendChild(p)
-      div.appendChild(perror)
-      myReactApp.appendChild(div)
-      myReactApp.classList.add('container-error')
       document.body.appendChild(myReactApp);
+      ReactDOM.render(<ErrorBoundary error={e} />, myReactApp)
     })
     .finally(() => {
       document.body.classList.add('TFs-ready')

@@ -7,7 +7,7 @@ import { fetchHistory, fetchStats, fetchSearch } from '@shared/api/Deputy';
 
 export default function (params) {
   const videoIdWatch = getUrlParameter('v')
-  let promises;
+  let promises = []
   if (videoIdWatch) {
     promises = [getVideo(videoIdWatch)]
   } else {
