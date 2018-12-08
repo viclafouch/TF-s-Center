@@ -113,6 +113,14 @@ export class FormFlagging extends Component {
               onClosed={() => context.setState('popupReportingOpened', false)}
             >
               <FormReporting
+                params={{
+                  reason: this.state.reason,
+                  flag_comments: this.state.flag_comments,
+                  nbPage,
+                  filterPeriod,
+                  search,
+                  token: context.state.session_token
+                }}
                 description={this.state.flag_comments}
                 reason={this.state.reason}
                 templateIdSelected={this.state.templateIdSelected}

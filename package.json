@@ -14,6 +14,7 @@
     "@fortawesome/react-fontawesome": "0.1.3",
     "@simple-contacts/react-router-async-routes": "^0.2.13",
     "chart.js": "^2.7.3",
+    "query-string": "^6.2.0",
     "react": "^16.6.3",
     "react-addons-css-transition-group": "^15.6.2",
     "react-chartjs-2": "^2.7.4",

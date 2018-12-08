@@ -6,8 +6,9 @@ import { copyDate } from '@utils/date';
 import { sevenLastDays } from '@utils/date';
 import { urlsAvailable } from '../config/config';
 import { getAllUrlParams, setStateAsync, wait } from '@utils/index';
-import { fetchHistory, fetchSearch } from '@shared/api/Deputy';
-import { getStorages } from './BrowserStorage';
+import { fetchHistory, fetchSearch, fetchPostVideos } from '@shared/api/Deputy';
+import { getStorages, setStorage } from './BrowserStorage';
+import { sendMessageToBackground } from '@utils/browser';
 
 export const YouTubeContext = React.createContext();
 
@@ -108,20 +109,11 @@ class YouTubeProvider extends Component {
     }, () => callback && callback()));
   }
 
-  removeVideosToFlag(sendForm = false) {
-    const listVideoToFlag = this.state.videosToFlag.filter(e => !e.selected)
-    chrome.storage.local.set({
-      videosToFlag: listVideoToFlag
-    }, () => {
-      chrome.runtime.sendMessage({ type: 'updateBadgeText', videosToFlag: listVideoToFlag });
-      if (sendForm) {
-        document.getElementById('formFlagging').submit();
-      } else {
-        this.setState({
-          videosDisplayed: listVideoToFlag
-        })
-      }
-    })
+  async removeVideosToFlag() {
+    const videosToFlag = this.state.videosToFlag.filter(e => !e.selected)
+    await setStorage('local', { videosToFlag })
+    await sendMessageToBackground('updateBadgeText', { videosToFlag })
+    return videosToFlag
   }
 
   async getBrowserDatas() {
@@ -203,44 +195,53 @@ class YouTubeProvider extends Component {
     });
   }
 
-  callbackState(name, value, stuff) {
-    if (name === 'displaying' || name === 'theme') {
-      return this.saveToStorage({ type: 'sync', name, value })
-    } else if (name === 'lastSevenDaysflagged') {
+  async flagVideos(params) {
+    try {
+      await fetchPostVideos(params)
+      const { lastSevenDaysflagged, templates, searches } = Object.assign({}, this.state)
+      lastSevenDaysflagged[0].videos += params.videos.length
 
-      let { templates, searches } = this.state;
-
-      if (stuff) {
-        if (stuff.templateId) {
-          let index = templates.findIndex(x => x.id == stuff.templateId);
-          templates[index].nb_flagged += stuff.nb_flagged
-          templates[index].nb_used++
-        }
+      if (params.templateId) {
+        const index = templates.findIndex(x => x.id == params.templateId);
+        templates[index].nb_flagged += params.nb_flagged
+        templates[index].nb_used++
       }
 
-      chrome.storage.sync.set({
-        lastSevenDaysflagged: value,
-        searches: searches.map(e => ({
-          ...e,
-          created: copyDate(e.created).toString()
-        })),
-        templates: templates.map(e => ({
-          ...e,
-          created: copyDate(e.created).toString()
-        }))
-      }, () => {
-        if (this.state.onToFlag) {
-          return this.removeVideosToFlag(true)
-        } else {
-          return document.getElementById('formFlagging').submit();
-        }
-      });
-    } else if (name === 'videosToFlag') {
-      chrome.storage.local.set({
-        videosToFlag: this.state.videosToFlag
+      if (params.searchId) {
+        const searchIndex = context.state.searches.findIndex(x => x.id == params.searchId)
+        if (searchIndex) searches[searchIndex].flagged += params.videos.length
+      }
+
+      await setStateAsync( {
+        lastSevenDaysflagged,
+        templates,
+        searches
+      }, this)
+
+      await setStorage('sync', {
+        lastSevenDaysflagged,
+        searches: searches.map(e => ({ ...e, created: copyDate(e.created).toString() })),
+        templates: templates.map(e => ({ ...e, created: copyDate(e.created).toString() }))
       })
-      chrome.runtime.sendMessage({ type: 'updateBadgeText', videosToFlag: this.state.videosToFlag });
+
+      console.log('ok');
+    
+    } catch (error) {
+      console.log(error);
     }
+  }
+
+  async callbackState(name, value, params = {}) {
+    if (name === 'displaying' || name === 'theme') {
+      return this.saveToStorage({ type: 'sync', name, value })
+    }
+
+    // else if (name === 'videosToFlag') {
+    //   chrome.storage.local.set({
+    //     videosToFlag: this.state.videosToFlag
+    //   })
+    //   chrome.runtime.sendMessage({ type: 'updateBadgeText', videosToFlag: this.state.videosToFlag });
+    // }
   }
 
   render() {
@@ -248,6 +249,7 @@ class YouTubeProvider extends Component {
       <YouTubeContext.Provider value={{
         state: this.state,
         getBrowserDatas: () => this.getBrowserDatas(),
+        flagVideos: params => this.flagVideos(params),
         selectVideos: (videos = []) => this.selectItems(videos, 'videosDisplayed'),
         selectSearches: (searches = []) => this.selectItems(searches, 'searches'),
         selectAll: (type, force = true) => this.selectItems(this.state[type], type, force),

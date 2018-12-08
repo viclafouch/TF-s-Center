@@ -32,27 +32,16 @@ export class FormReporting extends Component {
 
     if (!this.props.reason) return this.setState({ reasonEmpty: true })
 
-    const numberOfvideosSelected = context.state.videosDisplayed.filter(elem => elem.selected).length
-    const { lastSevenDaysflagged, searches } = context.state
-    const specialSearch = getUrlParameter('search_id')
+    const videoSelected = context.state.videosDisplayed.filter(elem => elem.selected)
+    const searchId = getUrlParameter('search_id')
 
-    lastSevenDaysflagged[0].videos += numberOfvideosSelected
+    const params = Object.assign({}, {
+      templateId: this.props.templateIdSelected,
+      searchId,
+      videos: videoSelected,
+    }, this.props.params);
 
-    if (specialSearch) {
-      const searchIndex = context.state.searches.findIndex(x => x.id == specialSearch)
-      if (searchIndex) searches[searchIndex].flagged += numberOfvideosSelected
-    }
-
-    let stuff = {}
-    if (this.props.templateIdSelected) {
-      stuff = {
-        templateId: this.props.templateIdSelected,
-        nb_flagged: numberOfvideosSelected
-      }
-    }
-
-    stuff.searches = searches
-    return context.setState('lastSevenDaysflagged', lastSevenDaysflagged, stuff)
+    return context.flagVideos(params)
   }
 
   /**
