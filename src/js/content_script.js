@@ -74,21 +74,21 @@ function initExtension() {
       }
 
       await new Promise(resolve => ReactDOM.render(
-        <YouTubeProvider
-          pathname={pathname}
-          storage={storage}
-          youtubeDatasDeputy={youtubeDatasDeputy}
-        >
+        <ErrorBoundary>
+          <YouTubeProvider
+            pathname={pathname}
+            storage={storage}
+            youtubeDatasDeputy={youtubeDatasDeputy}
+          >
           <BrowserRouter>
             <YouTubeContext.Consumer>
               {(context) =>
-                <ErrorBoundary>
-                  <App context={context} notification={context.state.notification} />
-                </ErrorBoundary>
+                <App context={context} notification={context.state.notification} />
               }
             </YouTubeContext.Consumer>
           </BrowserRouter>
         </YouTubeProvider>
+        </ErrorBoundary>
       ,myReactApp, resolve()))
     })
     .catch(e => {

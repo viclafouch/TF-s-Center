@@ -5,10 +5,18 @@ import Search from '@shared/models/Search.class';
 import { copyDate } from '@utils/date';
 import { sevenLastDays } from '@utils/date';
 import { urlsAvailable } from '../config/config';
-import { getAllUrlParams, setStateAsync, wait, randomId } from '@utils/index';
+import { getAllUrlParams, setStateAsync, wait, randomId, TF_ERROR } from '@utils/index';
 import { fetchHistory, fetchSearch, fetchPostVideos } from '@shared/api/Deputy';
 import { getStorages, setStorage } from './BrowserStorage';
 import { sendMessageToBackground } from '@utils/browser';
+
+const newLastSevenDaysFlagged = lastSevenDaysflagged => sevenLastDays.map(elem => {
+  const flaggedFounded = lastSevenDaysflagged.find(x => x.date === elem.date);
+  return flaggedFounded ? {
+    date: elem.date,
+    videos: flaggedFounded.videos
+  } : elem
+})
 
 export const YouTubeContext = React.createContext();
 
@@ -20,14 +28,6 @@ class YouTubeProvider extends Component {
     this.notificationSystem = React.createRef();
 
     const { storage, pathname, youtubeDatasDeputy } = this.props
-
-    const lastSevenDaysflagged = sevenLastDays.map(elem => {
-      const flaggedFounded = storage.lastSevenDaysflagged.find(x => x.date === elem.date);
-      return flaggedFounded ? {
-        date: elem.date,
-        videos: flaggedFounded.videos
-      } : elem
-    })
 
     this.state = { ...youtubeDatasDeputy }
 
@@ -42,7 +42,7 @@ class YouTubeProvider extends Component {
     this.state.displaying = storage.displaying
     this.state.videosToFlag = storage.videosToFlag.map(e => new Video(e))
     this.state.videoWatched = youtubeDatasDeputy.videoWatched
-    this.state.lastSevenDaysflagged = lastSevenDaysflagged
+    this.state.lastSevenDaysflagged = newLastSevenDaysFlagged(storage.lastSevenDaysflagged)
     this.state.templates = storage.templates.map(elem => new Template(elem))
     this.state.searches = storage.searches.map(elem => new Search(elem))
     this.state.openModal = { type: null, isOpen: false }
@@ -123,20 +123,17 @@ class YouTubeProvider extends Component {
   async getBrowserDatas() {
     await Promise.all([getStorages('local'), getStorages('sync')])
       .then(async storages => {
-        const { videosToFlag, templates, searches, lastSevenDaysflagged: test  } = storages.reduce((a, d) => Object.assign(d, a), {});
-        const lastSevenDaysflagged = sevenLastDays.map(elem => {
-          const flaggedFounded = test.find(x => x.date === elem.date);
-          return flaggedFounded ? {
-            date: elem.date,
-            videos: flaggedFounded.videos
-          } : elem
-        })
-        await setStateAsync({
+        const { videosToFlag, templates, searches, lastSevenDaysflagged  } = storages.reduce((a, d) => Object.assign(d, a), {})
+        setStateAsync({
           videosToFlag: videosToFlag.map(e => new Video(e)),
           templates: templates.map(elem => new Template(elem)),
           searches: searches.map(elem => new Search(elem)),
-          lastSevenDaysflagged
+          lastSevenDaysflagged: newLastSevenDaysFlagged(lastSevenDaysflagged)
         }, this)
+      })
+      .catch(async () => {
+        const fatalError = new TF_ERROR('ERROR_GET_STORAGE')
+        await setStateAsync({ fatalError }, this)
       })
   }
 
@@ -155,12 +152,10 @@ class YouTubeProvider extends Component {
       }, this)
       await wait(0)
     } catch (error) {
-      const fatalError = error.id ? error : error.message
-      return this.setState({ fatalError })
+      const fatalError = error.id ? error : (error.message || 'Unknown error')
+      await setStateAsync({ fatalError }, this)
     } finally {
-      await setStateAsync({
-        isFetchingSlow: false
-      }, this)
+      await setStateAsync({ isFetchingSlow: false }, this)
     }
   }
 
