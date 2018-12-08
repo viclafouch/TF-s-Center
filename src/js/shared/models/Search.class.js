@@ -1,8 +1,10 @@
+import { randomId } from "@utils/index";
+
 export class Search {
     constructor(
         search = {}
     ) {
-        this.id = search.id || Math.floor(Math.random() * 1000000);
+        this.id = search.id || randomId()
         this.value = search.value
         this.created = search.created ? new Date(search.created) : new Date()
         this.selected = false;

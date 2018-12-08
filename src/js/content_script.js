@@ -78,7 +78,7 @@ function initExtension() {
         >
           <BrowserRouter>
             <YouTubeContext.Consumer>
-              {(context) => <App context={context}/>}
+              {(context) => <App context={context} notification={context.state.notification} />}
             </YouTubeContext.Consumer>
           </BrowserRouter>
         </YouTubeProvider>

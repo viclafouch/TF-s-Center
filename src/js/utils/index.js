@@ -1,5 +1,3 @@
-import { openInNewTab } from "./browser";
-
 export function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
         sURLVariables = sPageURL.split('&'), sParameterName, i;
@@ -12,6 +10,8 @@ export function getUrlParameter(sParam) {
         }
     }
 };
+
+export const randomId = () => Math.floor(Math.random() * 1000000)
 
 export const redirectToWebCache = (link, newTab = true) => window.open(`http://webcache.googleusercontent.com/search?q=cache:${link}`, newTab ? '_blank' : '')
 

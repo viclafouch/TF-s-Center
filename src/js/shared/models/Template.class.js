@@ -1,8 +1,10 @@
+import { randomId } from "@utils/index";
+
 export class Template {
     constructor(
         template = {}
     ) {
-        this.id = template.id || Math.floor(Math.random() * 1000000);
+        this.id = template.id || randomId()
         this.title = template.title || null
         this.description = template.description || null
         this.type = template.type || null

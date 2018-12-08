@@ -5,7 +5,7 @@ import Search from '@shared/models/Search.class';
 import { copyDate } from '@utils/date';
 import { sevenLastDays } from '@utils/date';
 import { urlsAvailable } from '../config/config';
-import { getAllUrlParams, setStateAsync, wait } from '@utils/index';
+import { getAllUrlParams, setStateAsync, wait, randomId } from '@utils/index';
 import { fetchHistory, fetchSearch, fetchPostVideos } from '@shared/api/Deputy';
 import { getStorages, setStorage } from './BrowserStorage';
 import { sendMessageToBackground } from '@utils/browser';
@@ -16,6 +16,8 @@ class YouTubeProvider extends Component {
 
   constructor(props) {
     super(props);
+
+    this.notificationSystem = React.createRef();
 
     const { storage, pathname, youtubeDatasDeputy } = this.props
 
@@ -44,6 +46,11 @@ class YouTubeProvider extends Component {
     this.state.templates = storage.templates.map(elem => new Template(elem))
     this.state.searches = storage.searches.map(elem => new Search(elem))
     this.state.openModal = { type: null, isOpen: false }
+    this.state.notification = {
+      id: null,
+      type: null,
+      params: {}
+    }
 
     if (pathname === urlsAvailable[5]) {
       this.state.videosDisplayed = this.state.videosToFlag
@@ -224,8 +231,17 @@ class YouTubeProvider extends Component {
         templates: templates.map(e => ({ ...e, created: copyDate(e.created).toString() }))
       })
 
-      console.log('ok');
-    
+      return this.setState({
+        popupReportingOpened: false,
+        notification: {
+          id: randomId(),
+          type: 'flaggedVideos',
+          params: {
+            type: 'success',
+            message: 'Helllo'
+          }
+        }
+      })
     } catch (error) {
       console.log(error);
     }
