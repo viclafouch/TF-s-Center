@@ -5,7 +5,7 @@ import Select from '@components/layouts/Select';
 import { trySearch } from '@utils'
 import { Search } from '@shared/models/Search.class';
 import Checkbox from '@components/layouts/Checkbox';
-import { randomId } from '@utils/index';
+import { randomId, setStateAsync } from '@utils/index';
 
 export class NewSearches extends Component {
 
@@ -42,7 +42,10 @@ export class NewSearches extends Component {
         templateId: this.state["search-template-id"] || null,
         autoSelect: this.state["search-auto-select"]
       })])
-      return this.setState(this.baseState)
+      await setStateAsync(this.baseState, this)
+      this.props.context.setState({
+        notification: { id: randomId(), type: 'addSearch', params: { level: 'success', message: 'New search added !' } },
+      })
     } catch (error) {
       this.props.context.setState({
         notification: { id: randomId(), type: 'addSearch', params: { level: 'error', message: error.message } },

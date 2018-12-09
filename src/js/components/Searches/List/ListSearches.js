@@ -6,6 +6,7 @@ import { trySearch } from '@utils';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck'
 import { Redirect } from 'react-router'
+import { randomId } from '@utils/index';
 
 export class ListSearches extends Component {
 
@@ -35,9 +36,19 @@ export class ListSearches extends Component {
     return this.setState({ redirectTo: trySearch(search.value, search.id) })
   }
 
-  handleRemove(context) {
+  async handleRemove(context) {
     const searchesSelected = context.state.searches.filter(x => x.selected)
-    return context.removeSearch(searchesSelected);
+    try {
+      await context.removeSearch(searchesSelected)
+      const message = searchesSelected.length > 1 ? 'Searches' : 'Search'
+      context.setState({
+        notification: { id: randomId(), type: 'removeSearch', params: { level: 'success', message: message + ' removed !' } },
+      })
+    } catch (error) {
+      context.setState({
+        notification: { id: randomId(), type: 'removeSearch', params: { level: 'error', message: error.message } },
+      })
+    }
   }
 
   render() {

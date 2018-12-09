@@ -91,7 +91,7 @@ class YouTubeProvider extends Component {
 
   async actionItem(arrayItems, type) {
 
-    const items = this.state[type]
+    let items = this.state[type]
 
     for (let index = 0; index < arrayItems.length; index++) {
       const element = arrayItems[index]

@@ -23,7 +23,7 @@ class App extends Component {
   }
 
   addNotification({ level = 'success', message} = {}) {
-    message = !Object.values(ERRORS).find(x => x.message === message) ? level === 'error' ? 'An error occurred !' : 'You did it !' : message
+    if (level === 'error') message = !Object.values(ERRORS).find(x => x.message === message) ? 'An error occurred !' : message
     const notification = this.notificationSystem.current;
     notification.addNotification({
       message,
