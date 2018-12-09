@@ -8,7 +8,7 @@ export class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error) {
-    this.setState({ error: JSON.stringify(error) })
+    this.setState({ error: JSON.stringify(error.code ? error : error.message) })
   }
 
   render() {
