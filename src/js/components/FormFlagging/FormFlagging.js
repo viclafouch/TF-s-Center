@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ToolsFlag from '@components/ToolsFlag/ToolsFlag'
-import { VideosList } from '@components/VideosList/VideosList';
+import VideosList from '@components/VideosList/VideosList';
 import Popup from '@components/Popup/Popup';
 import FormReporting from '@components/FormReporting/FormReporting'
 import { YouTubeContext } from '@stores/YouTubeContext';

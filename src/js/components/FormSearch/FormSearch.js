@@ -26,9 +26,8 @@ export class FormSearch extends Component {
   }
 
   handleSubmit(event) {
-    event.preventDefault();
-    const params = getAllUrlParams()
-    if (this.state.search && params.search_query !== this.state.search.trim()) {
+    event.preventDefault()
+    if (this.state.search.trim()) {
       const query = this.state.search.trim().replace(/\s+/g, "+")
       return this.setState({ redirectTo: `/deputy?search_query=${query}` })
     }

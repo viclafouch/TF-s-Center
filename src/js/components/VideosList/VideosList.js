@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import VideoListItem from './VideoListItem';
+import { withRouter } from "react-router";
 import Popup from '../Popup/Popup'
 import Video from '@shared/models/Video.class'
 import VideoDetail from '../VideoDetail/VideoDetail';
@@ -18,6 +19,7 @@ export class VideosList extends Component {
       isLoading: false
     }
 
+    this.containerScroller = React.createRef();
     this.descriptionDetail = React.createRef();
     this.handleChange = this.handleChange.bind(this)
     this.closePopup = this.closePopup.bind(this)
@@ -62,6 +64,14 @@ export class VideosList extends Component {
   }
 
   /**
+   * Reset scroll on new location
+   * @param {Object} prevProps
+   */
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.key !== this.props.location.key) this.containerScroller.current.scrollTop = 0
+  }
+
+  /**
    *
    * @param {Event} event - Event of user action
    * @param {Video} video - Video checked/unchecked
@@ -94,10 +104,13 @@ export class VideosList extends Component {
 
   render() {
 
+    console.log(this.props);
+
+
     const { videos } = this.props;
 
     return (
-      <div className="container-list scrollBarOnHover main-body">
+      <div className="container-list scrollBarOnHover main-body" ref={this.containerScroller}>
         {this.state.isLoading && <Loader />}
         <YouTubeContext.Consumer>
           {(context) => (
@@ -148,4 +161,4 @@ export class VideosList extends Component {
   }
 }
 
-export default VideosList
+export default withRouter(VideosList)
