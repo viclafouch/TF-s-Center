@@ -30,20 +30,23 @@ export class NewTemplate extends Component {
     this.handleClickOutside = this.handleClickOutside.bind(this);
   }
 
-  async handleClickOutside(e) {
-    e.preventDefault();
-    if (!this.state.formValid) return this.setState({ isOpen: false })
-
-    try {
-      const { templates } = await getStorages('sync')
-      if (templates.length > MAX_TEMPLATES) throw new TF_ERROR('MAX_TEMPLATES')
-      await this.props.context.addTemplate([this.template])
-      this.setState(this.baseState, () => this.template = new Template())
-    } catch (error) {
-      if (!this.state.isTooMany || error.code != 300) {
-        this.setState({ isTooMany: error.code == 300 }, () => this.props.context.setState({
-          notification: { id: randomId(), type: 'addTemplate', params: { level: 'error', message: error.code == 300 ? error.message : null }},
-        }))
+  async handleClickOutside() {
+    if (!this.state.formValid) this.setState({ isOpen: false })
+    else {
+      try {
+        const { templates } = await getStorages('sync')
+        if (templates.length > MAX_TEMPLATES) throw new TF_ERROR('MAX_TEMPLATES')
+        await this.props.context.addTemplate([this.template])
+        this.setState(this.baseState, () => this.template = new Template())
+        this.props.context.setState({
+          notification: { id: randomId(), type: 'addTemplate', params: { level: 'success', message: 'New template added !' } },
+        })
+      } catch (error) {
+        if (!this.state.isTooMany || error.code != 300) {
+          this.setState({ isTooMany: error.code == 300 }, () => this.props.context.setState({
+            notification: { id: randomId(), type: 'addTemplate', params: { level: 'error', message: error.code == 300 ? error.message : null } },
+          }))
+        }
       }
     }
   }

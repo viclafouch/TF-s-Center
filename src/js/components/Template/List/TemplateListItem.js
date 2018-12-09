@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons/faTrashAlt'
 import { YouTubeContext } from '@stores/YouTubeContext';
 import { getDateFormat } from '@utils/date';
+import { setStateAsync, randomId } from '@utils/index';
 
 export class TemplateListItem extends Component {
 
@@ -15,14 +16,26 @@ export class TemplateListItem extends Component {
         }
     }
 
-    actionOnSelected(event, context, template) {
-      this.setState({ active: false });
-      if (event.target !== event.currentTarget) context.removeTemplate([template])
+    async actionOnSelected(event, context, template) {
+      const svgTarget = event.target !== event.currentTarget
+      try {
+        await setStateAsync({ active: false }, this)
+        if (svgTarget) {
+          await context.removeTemplate([template])
+          await context.setState({
+            notification: { id: randomId(), type: 'removeTemplate', params: { level: 'success', message: 'Template removed !' } },
+          })
+        }
+      } catch (error) {
+        context.setState({
+          notification: { id: randomId(), type: 'removeTemplate', params: { level: 'error', message: error.message } },
+        })
+      }
     }
 
     render() {
-        let { template } = this.props;
-        let label = labels.find(x => x.value === template.type);
+        const { template } = this.props
+        const label = labels.find(x => x.value === template.type)
 
         return (
           <div>
