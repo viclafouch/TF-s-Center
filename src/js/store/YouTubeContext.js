@@ -91,8 +91,8 @@ class YouTubeProvider extends Component {
 
   async removeVideosToFlag() {
     const videosToFlag = this.state.videosToFlag.filter(e => !e.selected)
-    await setStorage('local', { videosToFlag })
-    await sendMessageToBackground('updateBadgeText', { videosToFlag })
+    await setStateAsync({ videosToFlag, videosDisplayed: videosToFlag }, this)
+    this.callbackState({videosToFlag})
     return videosToFlag
   }
 

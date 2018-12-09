@@ -25,14 +25,14 @@ export class ToolsFlag extends Component {
                     disabled={context.state.videosDisplayed.length === 0}
                     onClick={() => context.selectAll('videosDisplayed')}>Select all</Button>
                 }
-                {/* { TODO
+                {
                   (this.props.canFlag && context.state.onToFlag) &&
                   <Button
                     className="mgi--left-10"
                     blue
                     disabled={context.state.videosDisplayed.filter(x => x.selected).length === 0}
                     onClick={() => context.removeVideosToFlag()}>Remove from the list</Button>
-                } */}
+                }
               </div>
             </div>
           </div>
