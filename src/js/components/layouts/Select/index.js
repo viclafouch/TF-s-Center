@@ -26,7 +26,7 @@ const Select = (props) => {
             {!props.noEmptyOption && <option value="" disabled={!props.null}>{props.defaultOptionTitle || defaultOptions.defaultOptionTitle}</option>}
             {
                 options.map((elem, index) =>
-                    <option key={index} value={elem.value || index}>{elem.title || index}</option>
+                    <option key={index} value={elem.value || elem.id || index}>{elem.title || index}</option>
                 )
             }
 
