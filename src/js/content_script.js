@@ -58,9 +58,13 @@ function initExtension() {
     .catch(e => {
       console.log(e);
       e = e.id ? e : (e.message || 'Unknown error')
-      document.body.innerHTML = '';
-      document.body.appendChild(myReactApp);
-      ReactDOM.render(<ErrorBoundary error={e} />, myReactApp)
+      if (pathname !== '/watch') {
+        document.body.innerHTML = '';
+        document.body.appendChild(myReactApp);
+        ReactDOM.render(<ErrorBoundary error={e} />, myReactApp)
+      } else {
+        process.env.NODE_ENV === 'development' && console.error(e);
+      }
     })
     .finally(() => {
       document.body.classList.add('TFs-ready')
