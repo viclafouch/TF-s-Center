@@ -257,7 +257,7 @@ class YouTubeProvider extends Component {
         removeVideosToFlag: sendForme => this.removeVideosToFlag(sendForme),
         addSearch: (search = []) => this.actionItem(search, 'searches'),
         removeSearch: (search = []) => this.actionItem(search, 'searches'),
-        setState: (object) => this.setState(object, this.callbackState(object)),
+        setState: (object) => this.setState(object, () => this.callbackState(object)),
         getVideos: (type = 'history', params = getAllUrlParams()) => this.getVideos(type, params)
       }}>{this.props.children}
       </YouTubeContext.Provider>
