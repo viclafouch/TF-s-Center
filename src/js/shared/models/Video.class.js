@@ -55,7 +55,7 @@ export class Video {
     }
 
     getVideoEmbed() {
-      return `https://www.youtube.com/embed/${this.id}?autoplay=1&rel=0&showinfo=0`
+      return `https://www.youtube-nocookie.com/embed/${this.id}?autoplay=1&rel=0&showinfo=0&iv_load_policy=3`
     }
 }
 

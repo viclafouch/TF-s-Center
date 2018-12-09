@@ -172,14 +172,16 @@ class YouTubeProvider extends Component {
       lastSevenDaysflagged[0].videos += params.videos.length
 
       if (params.templateId) {
-        const index = templates.findIndex(x => x.id == params.templateId);
-        templates[index].nb_flagged += params.nb_flagged
-        templates[index].nb_used++
+        const templateIndex = templates.findIndex(x => x.id == params.templateId);
+        if (templateIndex !== -1) {
+          templates[templateIndex].nb_flagged += params.videos.length
+          templates[templateIndex].nb_used++
+        }
       }
 
       if (params.searchId) {
         const searchIndex = this.state.searches.findIndex(x => x.id == params.searchId)
-        if (searchIndex) searches[searchIndex].flagged += params.videos.length
+        if (searchIndex !== -1) searches[searchIndex].flagged += params.videos.length
       }
 
       await setStateAsync( {

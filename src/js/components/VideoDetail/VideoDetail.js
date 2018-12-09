@@ -39,9 +39,10 @@ export class VideoDetail extends Component {
             }}>
               {
               <iframe
+                id="ytplayer"
+                type="text/html"
                 src={video.id ? video.getVideoEmbed() : ''}
                 className="youtube-iframe"
-                frameBorder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
