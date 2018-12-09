@@ -6,6 +6,7 @@ import { faFlag } from '@fortawesome/free-solid-svg-icons/faFlag'
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch'
 import { faBullseye } from '@fortawesome/free-solid-svg-icons/faBullseye'
 import { faChartLine } from '@fortawesome/free-solid-svg-icons/faChartLine'
+import { openInNewTab } from '@utils/browser';
 
 class Popup extends Component {
 
@@ -47,11 +48,7 @@ class Popup extends Component {
     e.preventDefault();
     let url = e.currentTarget.getAttribute('data-href');
     url = `https://www.youtube.com${url}`
-    return chrome.tabs.create({
-      active: true,
-      url: url,
-      pinned: false
-    });
+    return openInNewTab(url, true)
   }
 
   render() {

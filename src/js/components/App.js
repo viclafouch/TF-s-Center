@@ -68,7 +68,7 @@ class App extends Component {
         </React.Fragment>
       :
       <FlagButton
-        videoWatched={this.props.context.state.videoWatched}
+        watchedVideo={this.props.context.state.watchedVideo}
         videosToFlag={this.props.context.state.videosToFlag}
         setContextState={this.props.context.setState}
       />

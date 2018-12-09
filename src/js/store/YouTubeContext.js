@@ -33,21 +33,20 @@ class YouTubeProvider extends Component {
 
     this.baseHide = {}
 
-    this.state.videosDisplayed = youtubeDatasDeputy.videos
-    this.state.hideRemoved = this.baseHide.hideRemoved = false
-    this.state.hideReviewed = this.baseHide.hideReviewed = false
-    this.state.popupReportingOpened = false
-    this.state.theme = storage.theme
-    this.state.isFetchingSlow = false
-    this.state.displaying = storage.displaying
-    this.state.videosToFlag = storage.videosToFlag.map(e => new Video(e))
-    this.state.videoWatched = youtubeDatasDeputy.videoWatched
-    this.state.lastSevenDaysflagged = newLastSevenDaysFlagged(storage.lastSevenDaysflagged)
-    this.state.templates = storage.templates.map(elem => new Template(elem))
-    this.state.searches = storage.searches.map(elem => new Search(elem))
-    this.state.modal = { type: null, isOpen: false }
-    this.state.notification = { id: null, type: null, params: {} }
-    this.state.fatalError = false
+    this.state.videosDisplayed = youtubeDatasDeputy.videos // @array
+    this.state.hideRemoved = this.baseHide.hideRemoved = false // @boolean
+    this.state.hideReviewed = this.baseHide.hideReviewed = false // @boolean
+    this.state.theme = storage.theme // light / dark
+    this.state.isFetchingSlow = false // @boolean
+    this.state.displaying = storage.displaying // row / column
+    this.state.videosToFlag = storage.videosToFlag.map(e => new Video(e)) // @array
+    this.state.watchedVideo = youtubeDatasDeputy.watchedVideo // @Video
+    this.state.lastSevenDaysflagged = newLastSevenDaysFlagged(storage.lastSevenDaysflagged) // @array
+    this.state.templates = storage.templates.map(elem => new Template(elem)) // @array
+    this.state.searches = storage.searches.map(elem => new Search(elem)) // @array
+    this.state.modal = { type: null, isOpen: false } // @object
+    this.state.notification = { id: null, type: null, params: {} } // @object
+    this.state.fatalError = false // @boolean
 
     if (pathname === urlsAvailable[5]) {
       this.state.videosDisplayed = this.state.videosToFlag
@@ -123,14 +122,14 @@ class YouTubeProvider extends Component {
   async getVideos(type, params) {
     try {
       if (type !== 'target') await setStateAsync({ isFetchingSlow: true }, this)
-      let videos = []
-      if (type === 'history') { videos = await fetchHistory(params) }
-      else if (type === 'search') { videos = await fetchSearch(params) }
-      else if (type === 'target') { videos = { videos: this.state.videosToFlag, pagination: [] } }
+      let datasVideos = {} // videos / pagination
+      if (type === 'history') { datasVideos = await fetchHistory(params) }
+      else if (type === 'search') { datasVideos = await fetchSearch(params) }
+      else if (type === 'target') { datasVideos = { videos: this.state.videosToFlag, pagination: [] } }
 
       await setStateAsync({
-        ...videos,
-        videosDisplayed: videos.videos,
+        ...datasVideos,
+        videosDisplayed: datasVideos.videos,
         onToFlag: type === 'target'
       }, this)
       await wait(0)
@@ -202,7 +201,6 @@ class YouTubeProvider extends Component {
       })
 
       return this.setState({
-        popupReportingOpened: false,
         notification: {
           id: randomId(),
           type: 'flaggedVideos',
@@ -213,7 +211,6 @@ class YouTubeProvider extends Component {
         }
       })
     } catch (error) {
-      console.log(error);
       return this.setState({
         notification: { id: randomId(), type: 'flaggedVideos', params: { level: 'error', message: 'An error occured' }},
         modal: { type: 'form-flagging', isOpen: true }
@@ -223,12 +220,17 @@ class YouTubeProvider extends Component {
     }
   }
 
-  callbackState(updatedState) {
+  async callbackState(updatedState) {
     if (updatedState.hasOwnProperty("displaying") || updatedState.hasOwnProperty("theme")) {
       setStorage('sync', {
         displaying: this.state.displaying,
         theme: this.state.theme
       })
+    }
+
+    if (updatedState.hasOwnProperty("videosToFlag")) {
+      await setStorage('local', { videosToFlag: this.state.videosToFlag })
+      await sendMessageToBackground('updateBadgeText', { videosToFlag: this.state.videosToFlag })
     }
   }
 

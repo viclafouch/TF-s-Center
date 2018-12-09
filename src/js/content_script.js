@@ -38,8 +38,6 @@ function initExtension() {
 
   document.getElementById("confirmBox") && fadeOutEffect(document.getElementById("confirmBox"));
 
-  chrome.runtime.sendMessage({ type: 'showPageAction' });
-
   const myReactApp = document.createElement("div");
   myReactApp.setAttribute("id", "TFsCenter");
 
@@ -58,7 +56,7 @@ function initExtension() {
       }
 
       const params = getAllUrlParams()
-      const youtubeDatasFromDOM = await getYouTubeDatasFromDOM(params);
+      const youtubeDatasFromDOM = await getYouTubeDatasFromDOM(params)
       const youtubeDatasDeputy = youtubeDatasFromDOM.reduce((a, d) => Object.assign(d, a), {});
 
       if (pathname === '/watch') {

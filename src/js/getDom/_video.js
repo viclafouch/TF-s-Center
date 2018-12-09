@@ -12,20 +12,18 @@ let video = function getVideo(idWatch) {
   const channelUrl = document.getElementById("avatar").parentElement.href
   const channelTitle = document.getElementById('owner-container').textContent.trim();
   const viewCount = document.getElementsByClassName('view-count')[0] ? document.getElementsByClassName('view-count')[0].textContent : ''
-  const isRemoved = false;
-  const isReviewed = null;
 
-  return new Video({
-    id: idWatch,
-    viewCount,
-    title,
-    description,
-    videoAddedTime,
-    channelUrl,
-    isRemoved,
-    isReviewed,
-    channelTitle
-  })
+  return {
+    watchedVideo: new Video({
+      id: idWatch,
+      viewCount,
+      title,
+      description,
+      videoAddedTime,
+      channelUrl,
+      channelTitle
+    })
+  }
 }
 
 
