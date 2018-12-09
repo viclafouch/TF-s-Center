@@ -74,7 +74,6 @@ function initExtension() {
       await new Promise(resolve => ReactDOM.render(
         <ErrorBoundary>
           <YouTubeProvider
-            pathname={pathname}
             storage={storage}
             youtubeDatasDeputy={youtubeDatasDeputy}
           >

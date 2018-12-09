@@ -27,7 +27,7 @@ class YouTubeProvider extends Component {
 
     this.notificationSystem = React.createRef();
 
-    const { storage, pathname, youtubeDatasDeputy } = this.props
+    const { storage, youtubeDatasDeputy } = this.props
 
     this.state = { ...youtubeDatasDeputy }
 
@@ -47,11 +47,6 @@ class YouTubeProvider extends Component {
     this.state.modal = { type: null, isOpen: false } // @object
     this.state.notification = { id: null, type: null, params: {} } // @object
     this.state.fatalError = false // @boolean
-
-    if (pathname === urlsAvailable[5]) {
-      this.state.videosDisplayed = this.state.videosToFlag
-      this.state.onToFlag = true
-    }
   }
 
   selectItems(items = [], type, force = false) {
