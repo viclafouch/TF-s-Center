@@ -1,8 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
 import App from '@components/App'
-import getPathname from './getDom/_location'
-import { urlsAvailable } from './config/config';
 import { wait, getUrlParameter } from '@utils';
 import YouTubeProvider, { YouTubeContext } from '@stores/YouTubeContext';
 import { getStorages } from '@stores/BrowserStorage';
@@ -21,39 +19,13 @@ console.log(`%cTF\'s Center on ${process.env.NODE_ENV} mode!`, style);
 
 function initExtension() {
 
-  function fadeOutEffect(elem) {
-    let fadeTarget = elem;
-    let fadeEffect = setInterval(function () {
-      if (!fadeTarget.style.opacity) {
-        fadeTarget.style.opacity = 1;
-      }
-      if (fadeTarget.style.opacity > 0) {
-        fadeTarget.style.opacity -= 0.1;
-      } else {
-        fadeTarget.style.display = 'none'
-        clearInterval(fadeEffect);
-      }
-    }, 200);
-  }
-
-  document.getElementById("confirmBox") && fadeOutEffect(document.getElementById("confirmBox"));
-
   const myReactApp = document.createElement("div");
   myReactApp.setAttribute("id", "TFsCenter");
 
   Promise.all([getStorages('local'), getStorages('sync')])
     .then(async storages => {
       const storage = storages.reduce((a, d) => Object.assign(d, a), {});
-      const pathname = getPathname()
-
-      // For /watch, website uses Angular and asynchrone injection, wait DOM ready
-      if (pathname === '/watch') {
-        while (!document.getElementById('info').querySelector('#top-level-buttons')) {
-          await wait(50)
-        }
-        // Forbid duplicate
-        if (document.getElementById('info').querySelector('#button-flag-TF')) return;
-      }
+      const pathname = window.location.pathname
 
       const params = getAllUrlParams()
       const youtubeDatasFromDOM = await getYouTubeDatasFromDOM(params)
@@ -73,20 +45,15 @@ function initExtension() {
 
       await new Promise(resolve => ReactDOM.render(
         <ErrorBoundary>
-          <YouTubeProvider
-            storage={storage}
-            youtubeDatasDeputy={youtubeDatasDeputy}
-          >
+          <YouTubeProvider storage={storage} youtubeDatasDeputy={youtubeDatasDeputy} >
           <BrowserRouter>
             <YouTubeContext.Consumer>
-              {(context) =>
-                <App context={context} notification={context.state.notification} />
-              }
+              {(context) => <App context={context} notification={context.state.notification} /> }
             </YouTubeContext.Consumer>
           </BrowserRouter>
         </YouTubeProvider>
         </ErrorBoundary>
-      ,myReactApp, resolve()))
+      , myReactApp, resolve()))
     })
     .catch(e => {
       console.log(e);
@@ -100,46 +67,27 @@ function initExtension() {
     })
 }
 
-let pathname = getPathname()
+const pathname = window.location.pathname
+if (pathname === '/deputy' || pathname === '/flagging_history') initExtension()
 
-if (getUrlParameter('v') || urlsAvailable.includes(pathname)) {
-  initExtension();
-}
-
-// if async page changes
-let oldHref = document.location.href;
+// Watch page (asynchrone)
+let actualHref = null
 window.onload = function () {
-  let bodyList = document.querySelector("body")
-  let observer = new MutationObserver(mutations => {
-      mutations.forEach(async () => {
-        if (oldHref != document.location.href) {
-          oldHref = document.location.href;
-          let elem = document.getElementById('button-flag-TF');
-          let newId = getUrlParameter('v');
-          elem && elem.parentNode.removeChild(elem);
-          await wait(0)
+  const observer = new MutationObserver(() => {
+    if (document.location.pathname !== '/watch' && actualHref) actualHref = null
+    if (actualHref !== document.location.href && document.location.pathname === '/watch' && document.querySelector('[video-id]').getAttribute('video-id') === getUrlParameter('v') && document.getElementById('info').querySelector('#top-level-buttons')) {
+      actualHref = document.location.href
+      while (document.getElementById('#button-flag-TF')) {
+        document.getElementById('#button-flag-TF').parentNode.removeChild(document.getElementById('#button-flag-TF'))
+      }
+      initExtension()
+    }
+  });
 
-          // Check if page is a watched page
-          if (!newId) return;
-
-          // While can no exceded 3s (security process)
-          let stopAtInMilliseconds = 3000;
-          let seconds = 0;
-          while (!document.querySelector(`[video-id="${newId}"]`)) {
-            await wait(50)
-            seconds+= 50
-            if (seconds >= stopAtInMilliseconds) return;
-          }
-
-          return initExtension()
-        }
-      });
-    });
-
-  let config = {
+  const config = {
     childList: true,
     subtree: true
-  };
+  }
 
-  observer.observe(bodyList, config);
+  observer.observe(document.body, config);
 };

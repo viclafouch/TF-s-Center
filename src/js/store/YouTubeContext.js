@@ -4,7 +4,6 @@ import Template from '@shared/models/Template.class';
 import Search from '@shared/models/Search.class';
 import { copyDate } from '@utils/date';
 import { sevenLastDays } from '@utils/date';
-import { urlsAvailable } from '../config/config';
 import { getAllUrlParams, setStateAsync, wait, randomId, TF_ERROR } from '@utils/index';
 import { fetchHistory, fetchSearch, fetchPostVideos } from '@shared/api/Deputy';
 import { getStorages, setStorage } from './BrowserStorage';

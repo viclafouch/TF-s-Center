@@ -50,7 +50,7 @@ class App extends Component {
     }
 
     return (
-      this.props.location.pathname !== '/watch'
+      window.location.pathname !== '/watch'
       ?
         <React.Fragment>
           <Navbar />

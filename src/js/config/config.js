@@ -1,7 +1,3 @@
-export const urlsAvailable = ['/flagging_history', '/deputy', '/stats', '/templates', '/searches', '/targets', '/logs']
-
-export const querys = ['search_query', 'context', 'v']
-
 export const labels = [
     { value: 'P', title: 'Sexual Content' },
     { value: 'G', title: 'Violent or Repulsive Content' },
