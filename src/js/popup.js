@@ -33,7 +33,7 @@ class Popup extends Component {
         {
           label: 'Targets',
           svg: faBullseye,
-          href: '/deputy'
+          href: '/deputy?context=targets'
         },
         {
           label: 'Analytics',
