@@ -89,28 +89,19 @@ class YouTubeProvider extends Component {
     });
   }
 
-  actionItem(arrayItems, type, callback) {
+  async actionItem(arrayItems, type) {
 
-    let items = this.state[type];
+    const items = this.state[type]
 
     for (let index = 0; index < arrayItems.length; index++) {
-      const element = arrayItems[index];
-      const ItemIndex = items.findIndex(x => x.id === element.id)
-      if (ItemIndex >= 0) {
-        items = items.filter((e, i) => i !== ItemIndex);
-      } else {
-        items.unshift(element);
-      }
+      const element = arrayItems[index]
+      const itemIndex = items.findIndex(x => x.id === element.id)
+      if (itemIndex >= 0) items = items.filter((e, i) => i !== itemIndex)
+      else items.unshift(element)
     }
 
-    return chrome.storage.sync.set({
-      [type]: items.map(e => ({
-        ...e,
-        created: copyDate(e.created).toString()
-      }))
-    }, () => this.setState({
-      [type]: items
-    }, () => callback && callback()));
+    await setStorage('sync', { [type]: items.map(e => ({ ...e, created: copyDate(e.created).toString()}))})
+    await setStateAsync({ [type]: items }, this)
   }
 
   async removeVideosToFlag() {
@@ -260,12 +251,12 @@ class YouTubeProvider extends Component {
         selectSearches: (searches = []) => this.selectItems(searches, 'searches'),
         selectAll: (type, force = true) => this.selectItems(this.state[type], type, force),
         filterVideos: type => this.filterVideos(type),
-        addTemplate: (template = [], callback) => this.actionItem(template, 'templates', callback),
-        removeTemplate: (template = [], callback) => this.actionItem(template, 'templates', callback),
+        addTemplate: (template = []) => this.actionItem(template, 'templates'),
+        removeTemplate: (template = []) => this.actionItem(template, 'templates'),
         openModal: (type, isOpen = true) => this.openModal(type, isOpen),
         removeVideosToFlag: sendForme => this.removeVideosToFlag(sendForme),
-        addSearch: (search = [], callback) => this.actionItem(search, 'searches', callback),
-        removeSearch: (search = [], callback) => this.actionItem(search, 'searches', callback),
+        addSearch: (search = []) => this.actionItem(search, 'searches'),
+        removeSearch: (search = []) => this.actionItem(search, 'searches'),
         setState: (object) => this.setState(object, this.callbackState(object)),
         getVideos: (type = 'history', params = getAllUrlParams()) => this.getVideos(type, params)
       }}>{this.props.children}

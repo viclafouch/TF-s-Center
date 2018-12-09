@@ -4,7 +4,8 @@ import FlagButton from '@components/FlagButton/FlagButton';
 import AppRouter, { Loader } from '../routes/router';
 import { withRouter } from "react-router";
 import Navbar from './Navbar/Navbar';
-import NotificationSystem from 'react-notification-system';
+import NotificationSystem from 'react-notification-system'
+import ERRORS from '../../../errors.json'
 
 class App extends Component {
 
@@ -21,7 +22,8 @@ class App extends Component {
     }
   }
 
-  addNotification({ level = 'success', message = 'Message success'} = {}) {
+  addNotification({ level = 'success', message} = {}) {
+    message = !Object.values(ERRORS).find(x => x.message === message) ? level === 'error' ? 'An error occurred !' : 'You did it !' : message
     const notification = this.notificationSystem.current;
     notification.addNotification({
       message,

@@ -6,7 +6,7 @@ import VideoDetail from '../VideoDetail/VideoDetail';
 import Loader from '../layouts/Loader';
 import { YouTubeContext } from '@stores/YouTubeContext';
 import { fetchYouTubeChannel, fetchYouTubeVideo } from '@shared/api/YouTube';
-import { redirectToWebCache, setStateAsync, wrapURLs } from '@utils/index';
+import { redirectToWebCache, setStateAsync, wrapURLs, randomId } from '@utils/index';
 
 export class VideosList extends Component {
 
@@ -44,6 +44,9 @@ export class VideosList extends Component {
       this.descriptionDetail.current.innerHTML = description
       return this.setState({ videoSelected })
     } catch (error) {
+      this.props.context.setState({
+        notification: { id: randomId(), type: 'getVideo', params: { level: 'error', message: error.message } },
+      })
       // TODO
       // if (error.message === "NOT_FOUND_OR_REMOVED" && this.props.context.state.onToFlag) {
       //   const { videosToFlag } = this.props.context.state;
@@ -53,7 +56,6 @@ export class VideosList extends Component {
       //   }
       //   this.props.context.setState('videosToFlag', videosToFlag)
       // }
-      console.error(error);
     } finally {
       return this.setState({ isLoading: false })
     }
