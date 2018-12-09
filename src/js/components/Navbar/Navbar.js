@@ -26,7 +26,7 @@ export class Navbar extends Component {
             </div>
             <div className="block-right-side flex-me flex-align flex-justify-between flex-one">
               <div className="flex-one form-search-container">
-                <FormSearch {...context} />
+                <FormSearch context={context} />
               </div>
               <div className="nav-links mgi--left-10">
                 <span className="span-icon clicked mgi--right-16" onClick={() => context.openModal('logs')}>

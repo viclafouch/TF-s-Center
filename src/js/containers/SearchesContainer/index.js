@@ -1,6 +1,6 @@
 import React from 'react'
-import { NewSearches } from '@components/Searches/New/NewSearches';
-import { ListSearches } from '@components/Searches/List/ListSearches';
+import NewSearches from '@components/Searches/New/NewSearches';
+import ListSearches from '@components/Searches/List/ListSearches';
 import { YouTubeContext } from '@stores/YouTubeContext';
 
 const SearchesContainer = () => {

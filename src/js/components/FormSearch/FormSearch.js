@@ -2,14 +2,12 @@ import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch'
 import { Redirect } from 'react-router'
-import { getAllUrlParams } from '@utils/index';
 
 export class FormSearch extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      search: props.state.search,
       redirectTo: null
     }
 
@@ -22,13 +20,13 @@ export class FormSearch extends Component {
   }
 
   handleChange(event) {
-    return this.setState({ search: event.target.value });
+    return this.props.context.setState({ search: event.target.value });
   }
 
   handleSubmit(event) {
     event.preventDefault()
-    if (this.state.search.trim()) {
-      const query = this.state.search.trim().replace(/\s+/g, "+")
+    if (this.props.context.state.search.trim()) {
+      const query = this.props.context.state.search.trim().replace(/\s+/g, "+")
       return this.setState({ redirectTo: `/deputy?search_query=${query}` })
     }
   }
@@ -47,7 +45,7 @@ export class FormSearch extends Component {
           autoCorrect="off"
           tabIndex="0"
           onChange={this.handleChange}
-          value={this.state.search}
+          value={this.props.context.state.search}
         />
         <button className="button-search">
           <span className="span-icon">

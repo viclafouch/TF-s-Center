@@ -31,9 +31,15 @@ export class ListSearches extends Component {
     return context.setState({ searches });
   }
 
-  async redirectSearch(search, context) {
-    context.setState({ search: '"'+search.value+'"' })
-    return this.setState({ redirectTo: trySearch(search.value, search.id) })
+  redirectSearch(search, context) {
+    try {
+      context.setState({ search: '"' + search.value + '"' })
+      return this.setState({ redirectTo: trySearch(search.value, search.id) })
+    } catch (error) {
+      context.setState({
+        notification: { id: randomId(), type: 'goSearch', params: { level: 'error', message: error.message } }
+      })
+    }
   }
 
   async handleRemove(context) {
