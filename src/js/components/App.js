@@ -6,6 +6,8 @@ import { withRouter } from "react-router";
 import Navbar from './Navbar/Navbar';
 import NotificationSystem from 'react-notification-system'
 import ERRORS from '../../../errors.json'
+import Popup from './Popup/Popup';
+import Logs from './Logs/Logs';
 
 class App extends Component {
 
@@ -60,6 +62,9 @@ class App extends Component {
               <NotificationSystem ref={this.notificationSystem} style={notificationStyle} />
             </div>
           </main>
+          <Popup type="logs">
+            <Logs />
+          </Popup>
         </React.Fragment>
       :
       <FlagButton

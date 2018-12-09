@@ -116,7 +116,7 @@ export class FormReporting extends Component {
       </div>
       <div className="form-reporting-fieldset buttons">
         <div className="mgi--left-10">
-          <Button type="button" white onClick={() => this.props.onClosed()}>Close</Button>
+          <Button type="button" white onClick={() => this.props.closeModal()}>Close</Button>
         </div>
         <div className="mgi--left-10">
           <YouTubeContext.Consumer>

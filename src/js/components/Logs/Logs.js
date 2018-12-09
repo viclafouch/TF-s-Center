@@ -12,6 +12,8 @@ export class Logs extends Component {
   constructor() {
     super();
 
+    this.sheriff = React.createRef()
+
     this.state = {
       releaseds: [],
       error: false
@@ -33,7 +35,7 @@ export class Logs extends Component {
   }
 
   componentDidMount() {
-    this.refs.sheriff.innerHTML = svgIcon
+    this.sheriff.current.innerHTML = svgIcon
     return this.getReleased();
   }
 
@@ -52,7 +54,7 @@ export class Logs extends Component {
                 <div className="flex-me">
                   { process.env.NODE_ENV === 'development' && <Button className="mgi--left-10" blue onClick={() => clearStorages()}>Reset storage</Button> }
                     <a href={process.env.homepage_url} target="_blank">
-                      <Button className="mgi--left-10 flex-me flex-align"><span>Rate this extension</span> <i id="svgSheriff" ref="sheriff" className="mgi--left-5"></i></Button>
+                      <Button className="mgi--left-10 flex-me flex-align"><span>Rate this extension</span> <i id="svgSheriff" ref={this.sheriff} className="mgi--left-5"></i></Button>
                     </a>
                 </div>
               </div>
@@ -79,7 +81,7 @@ export class Logs extends Component {
             </div>
             <div className="buttons">
               <div className="mgi--left-10">
-                <Button type="button" white onClick={() => this.props.onClosed()}>Close</Button>
+                <Button type="button" white onClick={() => this.props.closeModal()}>Close</Button>
               </div>
               <div className="mgi--left-10">
                 <Button type="submit" blue onClick={() => openInNewTab('https://github.com/viclafouch/TFs-Center/releases', true)}>See all <FontAwesomeIcon icon={faExternalLinkAlt} size="1x" fixedWidth /></Button>

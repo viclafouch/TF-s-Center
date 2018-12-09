@@ -269,6 +269,16 @@ div#TFsCenter {
         .form-search-container {
           max-width: 650px;
         }
+
+        .nav-links {
+          .span-icon {
+            margin-left: 16px;
+            margin-right: 0!important;
+            transition: opacity 0.3s;
+            path { fill: var(--color-notes) }
+            &:hover { opacity: 0.8; }
+          }
+        }
       }
 
       #search-form {
@@ -291,9 +301,7 @@ div#TFsCenter {
         button.button-search {
           cursor: pointer;
           width: 65px;
-          border-style: solid;
-          border-color: var(--input-border);
-          border-width: 1px;
+          border: 0;
           background-color: var(--input-border);
           text-align: center;
           border-radius: 0 2px 2px 0;
@@ -539,11 +547,10 @@ div#TFsCenter {
     }
 
     .span-icon {
-        width: 24px;
-        height: 24px;
-        text-align: center;
-
-        path { fill: var(--text-color); }
+      text-align: center;
+      display: inline-block;
+      path { fill: var(--text-color); }
+      &.clicked { cursor: pointer; }
     }
 
     .popup {

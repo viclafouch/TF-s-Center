@@ -45,7 +45,7 @@ class YouTubeProvider extends Component {
     this.state.lastSevenDaysflagged = newLastSevenDaysFlagged(storage.lastSevenDaysflagged)
     this.state.templates = storage.templates.map(elem => new Template(elem))
     this.state.searches = storage.searches.map(elem => new Search(elem))
-    this.state.openModal = { type: null, isOpen: false }
+    this.state.modal = { type: null, isOpen: false }
     this.state.notification = { id: null, type: null, params: {} }
     this.state.fatalError = false
 
@@ -77,16 +77,8 @@ class YouTubeProvider extends Component {
     });
   }
 
-  openModal(type, isOpen = true) {
-    if (isOpen) {
-      window.location.hash = `#${type}`
-    } else {
-      const noHashURL = window.location.href.replace(/#.*$/, '');
-      window.history.replaceState('', document.title, noHashURL)
-    }
-    return this.setState({
-      openModal: { type, isOpen }
-    });
+  async openModal(type, isOpen = true) {
+    await setStateAsync({ modal: { type, isOpen }}, this)
   }
 
   async actionItem(arrayItems, type) {
@@ -180,7 +172,7 @@ class YouTubeProvider extends Component {
    * @param {Object} params - Params for fetching and add to storage
    */
   async flagVideos(params) {
-    await setStateAsync({ isFetchingSlow: true, popupReportingOpened: false }, this)
+    await setStateAsync({ isFetchingSlow: true, modal: { type: 'form-flagging', isOpen: false }}, this)
     try {
       await fetchPostVideos(params)
       const { lastSevenDaysflagged, templates, searches } = Object.assign({}, this.state)
@@ -224,7 +216,7 @@ class YouTubeProvider extends Component {
       console.log(error);
       return this.setState({
         notification: { id: randomId(), type: 'flaggedVideos', params: { level: 'error', message: 'An error occured' }},
-        popupReportingOpened: true
+        modal: { type: 'form-flagging', isOpen: true }
       })
     } finally {
       await setStateAsync({ isFetchingSlow: false }, this)

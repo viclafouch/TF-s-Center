@@ -20,9 +20,9 @@ export class VideosList extends Component {
     }
 
     this.containerScroller = React.createRef();
+    this.videoDetail = React.createRef();
     this.descriptionDetail = React.createRef();
     this.handleChange = this.handleChange.bind(this)
-    this.closePopup = this.closePopup.bind(this)
     this.checkedVideo = this.checkedVideo.bind(this)
   }
 
@@ -44,7 +44,8 @@ export class VideosList extends Component {
       let description = wrapURLs(videoSelected.description, true);
       description = description.replace(/(?:\r\n|\r|\n)/g, '<br>');
       this.descriptionDetail.current.innerHTML = description
-      return this.setState({ videoSelected })
+      await setStateAsync({ videoSelected }, this)
+      await this.props.context.openModal('video-detail')
     } catch (error) {
       this.props.context.setState({
         notification: { id: randomId(), type: 'getVideo', params: { level: 'error', message: error.message } },
@@ -79,15 +80,7 @@ export class VideosList extends Component {
   checkedVideo(event, video) {
     event.preventDefault()
     this.props.context.selectVideos([video])
-    this.closePopup()
-  }
-
-  /**
-   * on Popup close
-   * Reset empty video
-   */
-  closePopup() {
-    return this.setState({ videoSelected: new Video() })
+    this.videoDetail.current.closeModal(this.props.context)
   }
 
   /**
@@ -103,12 +96,7 @@ export class VideosList extends Component {
   }
 
   render() {
-
-    console.log(this.props);
-
-
-    const { videos } = this.props;
-
+    const { videos } = this.props
     return (
       <div className="container-list scrollBarOnHover main-body" ref={this.containerScroller}>
         {this.state.isLoading && <Loader />}
@@ -145,10 +133,11 @@ export class VideosList extends Component {
           )}
         </YouTubeContext.Consumer>
         <Popup
-          isOpen={this.state.videoSelected.id && !this.state.isLoading}
-          onClosed={this.closePopup}
+          ref={this.videoDetail}
           maxWidth={1100}
-        >
+          type="video-detail"
+          callbackOnClosed={() => this.setState({videoSelected: new Video()})
+        }>
           <VideoDetail
             ref={this.descriptionDetail}
             canFlag={this.props.canFlag}
