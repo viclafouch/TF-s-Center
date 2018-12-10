@@ -2,7 +2,8 @@ import { sevenLastDays } from '../utils/date';
 
 export const storageDefault = {
   local: {
-    videosToFlag: []
+    videosToFlag: [],
+    lastSearches: []
   },
   sync: {
     displaying: 'column',

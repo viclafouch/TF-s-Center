@@ -2,16 +2,22 @@ import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch'
 import { Redirect } from 'react-router'
+import { getStorages } from '@stores/BrowserStorage';
+import onClickOutside from "react-onclickoutside";
 
 export class FormSearch extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      redirectTo: null
+      redirectTo: null,
+      showLastSearches: false,
+      foundSearchesOnTap: []
     }
 
+    this.handleClickOutside = this.handleClickOutside.bind(this);
     this.handleChange = this.handleChange.bind(this)
+    this.handleFocus = this.handleFocus.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -19,15 +25,50 @@ export class FormSearch extends Component {
     if (this.state.redirectTo) return this.setState({ redirectTo: null})
   }
 
+  handleClickOutside() {
+    this.setState({ showLastSearches: false })
+  }
+
+  handleFocus() {
+    this.setState({ showLastSearches: true })
+  }
+
+  async handleClickLastSearch(event, search) {
+    event.preventDefault();
+    this.props.context.setState({ search }, () => this.handleSubmit())
+  }
+
+  componentDidMount() {
+    this.foundWords(this.props.context.state.search)
+  }
+
+  foundWords(value) {
+    if (value.length > 3) {
+      const wordsInput = value.split(' ')
+      const foundSearchesOnTap = this.props.context.state.lastSearches.filter(e => e.split(' ').some(u => wordsInput.includes(u)))
+      this.setState({ foundSearchesOnTap })
+    }
+  }
+
   handleChange(event) {
+    this.foundWords(event.target.value)
     return this.props.context.setState({ search: event.target.value });
   }
 
-  handleSubmit(event) {
-    event.preventDefault()
-    if (this.props.context.state.search.trim()) {
-      const query = this.props.context.state.search.trim().replace(/\s+/g, "+")
-      return this.setState({ redirectTo: `/deputy?search_query=${query}` })
+  async handleSubmit(event) {
+    event && event.preventDefault()
+    const value = this.props.context.state.search.trim()
+    if (value) {
+      const query = value.replace(/\s+/g, "+")
+      this.setState({ redirectTo: `/deputy?search_query=${query}`, showLastSearches: false })
+      const { lastSearches } = await getStorages('local')
+      if (lastSearches.includes(value)) {
+        const lastSearchIndex = lastSearches.findIndex(x => x === value)
+        lastSearches.splice(lastSearchIndex, 1);
+      }
+      lastSearches.unshift(value)
+      this.props.context.setState({ lastSearches: lastSearches.slice(0, 3) })
+      return;
     }
   }
 
@@ -35,18 +76,33 @@ export class FormSearch extends Component {
     if (this.state.redirectTo) return <Redirect to={this.state.redirectTo} />
     return (
       <form className="flex-me form-search" id="search-form" action="GET" onSubmit={this.handleSubmit}>
-        <input
-          className="input-colored flex-one"
-          placeholder="Search"
-          type="text"
-          spellCheck="false"
-          aria-label="Search"
-          autoComplete="off"
-          autoCorrect="off"
-          tabIndex="0"
-          onChange={this.handleChange}
-          value={this.props.context.state.search}
-        />
+        <div className="container-search-action">
+          <input
+            className="input-colored flex-one"
+            placeholder="Search"
+            type="text"
+            onFocus={this.handleFocus}
+            spellCheck="false"
+            aria-label="Search"
+            autoComplete="off"
+            autoCorrect="off"
+            tabIndex="0"
+            onChange={this.handleChange}
+            value={this.props.context.state.search}
+          />
+          {
+            (this.state.showLastSearches && this.props.context.state.lastSearches.length > 0) &&
+            <div className="lastSearches-container">
+              <ul className="list-last-searches">
+              {
+                this.props.context.state.lastSearches.map((elem, index) =>
+                  <li key={index} className={"item-last-search " + (this.state.foundSearchesOnTap.includes(elem) ? 'bold' : '')} onClick={event => this.handleClickLastSearch(event, elem)}>{elem}</li>
+                )
+              }
+              </ul>
+            </div>
+          }
+        </div>
         <button className="button-search">
           <span className="span-icon">
             <FontAwesomeIcon icon={faSearch} size="1x" fixedWidth />
@@ -57,4 +113,4 @@ export class FormSearch extends Component {
   }
 }
 
-export default FormSearch
+export default onClickOutside(FormSearch);

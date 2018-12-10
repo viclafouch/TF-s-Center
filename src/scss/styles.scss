@@ -99,14 +99,6 @@ img.channel-logo {
     color: #167ac6!important;
 }
 
-#alerts.content-alignment {
-    z-index: 99999999;
-    position: fixed;
-    right: 0;
-    width: calc(100vw - #{$w-sidebar});
-    padding: 0 10px;
-}
-
 div#TFsCenter {
 
     height: 100%;
@@ -267,6 +259,42 @@ div#TFsCenter {
       & > div.block-right-side {
         .form-search-container {
           max-width: 650px;
+
+          .container-search-action {
+            width: 100%;
+            position: relative;
+
+            div.lastSearches-container {
+              position: absolute;
+              z-index: 11;
+              width: 100%;
+              background-color: var(--background-container);
+              color: var(--color-notes);
+              box-shadow: 2px 2px 2px rgba(68, 68, 68, 0.6);
+
+              ul.list-last-searches {
+                width: 100%;
+                li.item-last-search {
+                  cursor: pointer;
+                  border-width: 1px;
+                  border-style: solid;
+                  border-color: var(--input-border);
+                  border-top-width: 0;
+                  border-bottom-width: 0;
+                  padding: 5px 10px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  width: 100%;
+                  font-style: normal;
+                  font-size: 13px;
+                  opacity: 0.67;
+                  white-space: pre-wrap;
+                  &.bold { font-weight: 500; color: var(--text-color) }
+                  &:hover { opacity: 1;}
+                }
+              }
+            }
+          }
         }
 
         .nav-links {

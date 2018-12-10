@@ -36,6 +36,7 @@ class YouTubeProvider extends Component {
     this.state.hideRemoved = this.baseHide.hideRemoved = false // @boolean
     this.state.hideReviewed = this.baseHide.hideReviewed = false // @boolean
     this.state.theme = storage.theme // light / dark
+    this.state.lastSearches = storage.lastSearches // @array
     this.state.isFetchingSlow = false // @boolean
     this.state.displaying = storage.displaying // row / column
     this.state.videosToFlag = storage.videosToFlag.map(e => new Video(e)) // @array
@@ -224,8 +225,11 @@ class YouTubeProvider extends Component {
       })
     }
 
-    if (updatedState.hasOwnProperty("videosToFlag")) {
-      await setStorage('local', { videosToFlag: this.state.videosToFlag })
+    if (updatedState.hasOwnProperty("videosToFlag") || updatedState.hasOwnProperty("lastSearches")) {
+      await setStorage('local', {
+        videosToFlag: this.state.videosToFlag,
+        lastSearches: this.state.lastSearches
+      })
       await sendMessageToBackground('updateBadgeText', { videosToFlag: this.state.videosToFlag })
     }
   }
@@ -247,7 +251,7 @@ class YouTubeProvider extends Component {
         removeVideosToFlag: sendForme => this.removeVideosToFlag(sendForme),
         addSearch: (search = []) => this.actionItem(search, 'searches'),
         removeSearch: (search = []) => this.actionItem(search, 'searches'),
-        setState: (object) => this.setState(object, () => this.callbackState(object)),
+        setState: (object, callback) => this.setState(object, () => callback ? callback() : this.callbackState(object)),
         getVideos: (type = 'history', params = getAllUrlParams()) => this.getVideos(type, params)
       }}>{this.props.children}
       </YouTubeContext.Provider>
