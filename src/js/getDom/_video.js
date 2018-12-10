@@ -10,8 +10,8 @@ let video = function getVideo(idWatch) {
   const description = document.getElementById('description').textContent.trim()
   const videoAddedTime = document.getElementsByClassName('date')[0].textContent;
   const channelUrl = document.getElementById("avatar").parentElement.href
-  const channelTitle = document.querySelector('.ytp-ce-channel-title').textContent.trim()
-  const channelId = document.querySelector('.ytp-ce-channel-title').href.split('/channel/')[1]
+  const channelTitle = document.getElementById('owner-container').firstElementChild.textContent.trim()
+  const channelId = document.getElementById('owner-container').firstElementChild.firstElementChild.href.split('/channel/')[1]
   const viewCount = document.getElementsByClassName('view-count')[0] ? document.getElementsByClassName('view-count')[0].textContent : ''
 
   return {
