@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck'
 import svgIcon from '../../../img/sheriff.js'
+import { getStorages } from '@stores/BrowserStorage.js';
 
 export class FlagButton extends Component {
 
@@ -15,9 +16,10 @@ export class FlagButton extends Component {
     return this.sheriff.current.innerHTML = svgIcon
   }
 
-  onFlag(e) {
+  async onFlag(e) {
     e.preventDefault();
-    const { watchedVideo, videosToFlag } = this.props;
+    const { watchedVideo } = this.props
+    const { videosToFlag } = await getStorages('local')
     const existingIndex = videosToFlag.findIndex(x => x.id === watchedVideo.id)
     if (existingIndex === -1) videosToFlag.push(watchedVideo)
     else videosToFlag.splice(existingIndex, 1)
