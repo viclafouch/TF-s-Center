@@ -9,7 +9,7 @@ const HistoryContainer = () => {
       {(context) => (
         <div className="full-heigth" >
           <ToolsFlag />
-          <VideosList videos={context.state.videosDisplayed} />
+          <VideosList videos={context.state.videosDisplayed} context={context} />
         </div>
       )}
     </YouTubeContext.Consumer>
