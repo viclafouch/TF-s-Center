@@ -24,7 +24,7 @@ export const fetchYouTubeVideo = videoID => fetch(`https://www.googleapis.com/yo
     .then(response => response.json())
     .then(response => {
       if (!response.items) throw new Error()
-      if (!response.items.length) throw new TF_ERROR('ERROR_GET_VIDEO')
+      if (!response.items.length) throw new TF_ERROR('ERROR_GET_VIDEO_DELETED')
       return response.items[0].snippet
     })
     .then(video => new Video({ ...video, id: videoID }))

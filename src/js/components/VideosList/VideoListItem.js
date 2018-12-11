@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { YouTubeContext } from '@stores/YouTubeContext';
-import { wrapURLs } from '@utils/index';
 
 export class VideoListItem extends Component {
 
@@ -45,7 +44,7 @@ export class VideoListItem extends Component {
                 <p
                   className="video-item-description mgi--bottom-4"
                   dangerouslySetInnerHTML={{
-                    __html: `<p>${wrapURLs(this.props.video.description)}</p>`
+                    __html: `<p>${this.props.video.description}</p>`
                   }}
                 ></p>
                 { (!video.isRemoved && video.channelTitle) &&

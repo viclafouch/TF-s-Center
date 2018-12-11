@@ -50,15 +50,15 @@ export class VideosList extends Component {
       this.props.context.setState({
         notification: { id: randomId(), type: 'getVideo', params: { level: 'error', message: error.message } },
       })
-      // TODO
-      // if (error.message === "NOT_FOUND_OR_REMOVED" && this.props.context.state.onToFlag) {
-      //   const { videosToFlag } = this.props.context.state;
-      //   const existingIndex = videosToFlag.findIndex(x => x.id === video.id)
-      //   if (existingIndex !== -1) {
-      //     videosToFlag.splice(existingIndex, 1);
-      //   }
-      //   this.props.context.setState('videosToFlag', videosToFlag)
-      // }
+
+      if (error.id === 'ERROR_GET_VIDEO_DELETED') {
+        const { videosToFlag } = this.props.context.state
+        const videoTargetIndex = videosToFlag.findIndex(x => x.id === video.id)
+        if (videoTargetIndex !== -1) {
+          videosToFlag.splice(videoTargetIndex, 1)
+          this.props.context.setState({ videosToFlag, videosDisplayed: this.props.context.state.onToFlag ? videosToFlag : this.props.context.state.videosDisplayed })
+        }
+      }
     } finally {
       return this.setState({ isLoading: false })
     }

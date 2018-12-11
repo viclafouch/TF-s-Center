@@ -47,6 +47,7 @@ class YouTubeProvider extends Component {
     this.state.modal = { type: null, isOpen: false } // @object
     this.state.notification = { id: null, type: null, params: {} } // @object
     this.state.fatalError = false // @boolean
+    this.state.onToFlag = null // @boolean
   }
 
   selectItems(items = [], type, force = false) {

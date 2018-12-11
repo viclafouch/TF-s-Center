@@ -7,9 +7,9 @@
     "code": "500",
     "message": "An error occurred with local/sync storage"
   },
-  "ERROR_GET_VIDEO": {
+  "ERROR_GET_VIDEO_DELETED": {
     "code": "404",
-    "message": "The video has not been found"
+    "message": "The video has been removed"
   },
   "ERROR_GET_CHANNEL": {
     "code": "404",
