@@ -94,7 +94,7 @@ class YouTubeProvider extends Component {
   async removeVideosToFlag() {
     const videosToFlag = this.state.videosDisplayed.filter(e => !e.selected)
     await setStateAsync({ videosToFlag, videosDisplayed: videosToFlag }, this)
-    this.callbackState({videosToFlag})
+    await this.callbackState({videosToFlag})
     return videosToFlag
   }
 
@@ -196,6 +196,8 @@ class YouTubeProvider extends Component {
         searches
       }, this)
 
+      if (this.state.onToFlag) await this.removeVideosToFlag()
+
       await setStorage('sync', {
         lastSevenDaysflagged,
         searches: searches.map(e => ({ ...e, created: copyDate(e.created).toString() })),
@@ -208,7 +210,7 @@ class YouTubeProvider extends Component {
           type: 'flaggedVideos',
           params: {
             level: 'success',
-            message: `${params.videos.length} videos flagged !`
+            message: `${params.videos.length} video${ params.videos.length > 1 ? 's' : ''} flagged !`
           }
         }
       })
@@ -224,7 +226,7 @@ class YouTubeProvider extends Component {
 
   async callbackState(updatedState) {
     if (updatedState.hasOwnProperty("displaying") || updatedState.hasOwnProperty("theme")) {
-      setStorage('sync', {
+      await setStorage('sync', {
         displaying: this.state.displaying,
         theme: this.state.theme
       })
