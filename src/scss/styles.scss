@@ -875,6 +875,7 @@ div#TFsCenter {
                     margin-left: -5px;
                     border: 0;
                     color: var(--text-color);
+                    background-color: var(--background-container); // for Windows
                     outline: none;
                     padding: 15px 15px 15px 0px;
                 }
@@ -1001,6 +1002,9 @@ div#TFsCenter {
             color: var(--input-text);
             font-size: 14px;
             height: 100%;
+        }
+        select {
+          background-color: var(--background-container); // For Windows
         }
     }
 
