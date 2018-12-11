@@ -31,6 +31,7 @@ export class FormSearch extends Component {
 
   handleFocus() {
     this.setState({ showLastSearches: true })
+    this.foundWords(this.props.context.state.search)
   }
 
   async handleClickLastSearch(event, search) {
@@ -43,10 +44,12 @@ export class FormSearch extends Component {
   }
 
   foundWords(value) {
-    if (value.length > 3) {
+    if (value.length > 2) {
       const wordsInput = value.split(' ')
       const foundSearchesOnTap = this.props.context.state.lastSearches.filter(e => e.split(' ').some(u => wordsInput.includes(u)))
       this.setState({ foundSearchesOnTap })
+    } else {
+      this.setState({ foundSearchesOnTap: [] })
     }
   }
 
