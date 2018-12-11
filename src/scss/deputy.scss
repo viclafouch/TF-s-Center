@@ -20,6 +20,7 @@ body, .isLoading {
 
   p {
     font-size: 14px;
+    word-break: break-all;
     margin-top: 25px;
     line-height: 2em;
     &:last-child {

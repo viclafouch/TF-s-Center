@@ -99,11 +99,10 @@ class YouTubeProvider extends Component {
   }
 
   async getBrowserDatas() {
-    await Promise.all([getStorages('local'), getStorages('sync')])
+    await Promise.all([getStorages('sync')])
       .then(async storages => {
-        const { videosToFlag, templates, searches, lastSevenDaysflagged  } = storages.reduce((a, d) => Object.assign(d, a), {})
+        const { templates, searches, lastSevenDaysflagged } = storages.reduce((a, d) => Object.assign(d, a), {})
         setStateAsync({
-          videosToFlag: videosToFlag.map(e => new Video(e)),
           templates: templates.map(elem => new Template(elem)),
           searches: searches.map(elem => new Search(elem)),
           lastSevenDaysflagged: newLastSevenDaysFlagged(lastSevenDaysflagged)
@@ -121,7 +120,12 @@ class YouTubeProvider extends Component {
       let datasVideos = {} // videos / pagination
       if (type === 'history') { datasVideos = await fetchHistory(params) }
       else if (type === 'search') { datasVideos = await fetchSearch(params) }
-      else if (type === 'target') { datasVideos = { videos: this.state.videosToFlag, pagination: [] } }
+      else if (type === 'target') {
+        const { videosToFlag } = await getStorages('local')
+        datasVideos = {
+          videos: videosToFlag.map(e => new Video(e)),
+          pagination: []
+      }}
 
       await setStateAsync({
         ...datasVideos,
