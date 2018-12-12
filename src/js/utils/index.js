@@ -34,10 +34,12 @@ export function updateQueryStringParameter(uri, key, value) {
 
 export const copyObject = (obj) => JSON.parse(JSON.stringify(obj));
 
-export const trySearch = (text, searchId) => {
+export const trySearch = (text, { searchId, isAS, templateId }) => {
     const urlEncodade = encodeURIComponent('"' + text.trim() + '"').replace(/%20/g, '+');
     let url = `/deputy?search_query=${urlEncodade}`
     url = searchId ? url + `&search_id=${searchId}` : url
+    url = isAS ? url + `&is_as=true` : url
+    url = templateId ? url + `&template_id=${templateId}` : url
     return url
 }
 

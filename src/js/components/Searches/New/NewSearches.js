@@ -31,7 +31,7 @@ export class NewSearches extends Component {
   testSearch(value) {
     try {
       this.props.context.setState({ search: '"' + value + '"' })
-      return this.setState({ redirectTo: trySearch(value) })
+      return this.setState({ redirectTo: trySearch(value, { isAS: this.state['search-auto-select'], templateId: this.state['search-template-id'] }) })
     } catch (error) {
       this.props.context.setState({
         notification: { id: randomId(), type: 'goSearch', params: { level: 'error', message: error.message } }

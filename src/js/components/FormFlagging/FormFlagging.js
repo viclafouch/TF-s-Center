@@ -24,32 +24,35 @@ export class FormFlagging extends Component {
     if (prevProps.location.search !== this.props.location.search) return this.autoCompleteForm()
   }
 
+   /**
+   * Auto Select videos
+   */
+  autoSelectVideo(search) {
+    const searchText = search.cleanString()
+    const videosDetected = this.props.context.state.videosDisplayed.filter(elem => elem.title.cleanString().search(searchText) !== -1 || elem.description.cleanString().search(searchText) !== -1)
+    this.props.context.selectVideos(videosDetected)
+  }
+
   autoCompleteForm() {
-    const specialSearch = getUrlParameter('search_id');
-    if (!!specialSearch) {
-      const search = this.props.context.state.searches.find(x => x.id == specialSearch)
-      if (!search) return; // Didin't find search saved
+    const specialSearch = getUrlParameter('search_id')
+    const search = this.props.context.state.searches.find(x => x.id == specialSearch) || {}
+    const templateId = search.templateId || getUrlParameter('template_id')
+    let searchValue = search.value || getUrlParameter('search_query')
 
-      /**
-       * Auto Select videos
-       */
-      if (search.autoSelect) {
-        const searchText = search.value.cleanString();
-        const videosDetected = this.props.context.state.videosDisplayed.filter(elem => elem.title.cleanString().search(searchText) !== -1 || elem.description.cleanString().search(searchText) !== -1)
-        this.props.context.selectVideos(videosDetected);
-      }
+    if (searchValue && (search.autoSelect || getUrlParameter('is_as') === 'true')) {
+      searchValue = searchValue.replace(new RegExp("\\+", "g"), ' ').replace(new RegExp('\\"', "g"), '')
+      this.autoSelectVideo(searchValue)
+    }
 
-      /**
-       * Autocomplete form flagging
-       */
-      const template = this.props.context.state.templates.find(x => x.id == search.templateId)
-      if (!template) return; // Didin't find template saved
+    if (templateId) {
+      const template = this.props.context.state.templates.find(x => x.id == templateId)
+      if (!template) return
 
       return this.setState({
         flag_comments: template.description,
         reason: template.type,
         templateIdSelected: template.id
-      });
+      })
     }
   }
 

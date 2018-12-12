@@ -34,7 +34,7 @@ export class ListSearches extends Component {
   redirectSearch(search, context) {
     try {
       context.setState({ search: '"' + search.value + '"' })
-      return this.setState({ redirectTo: trySearch(search.value, search.id) })
+      return this.setState({ redirectTo: trySearch(search.value, { searchId: search.id }) })
     } catch (error) {
       context.setState({
         notification: { id: randomId(), type: 'goSearch', params: { level: 'error', message: error.message } }
