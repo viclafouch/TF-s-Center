@@ -77,10 +77,14 @@ if (pathname === '/deputy' || pathname === '/flagging_history') initExtension()
 let actualHref = null
 window.onload = function () {
   const observer = new MutationObserver(() => {
+    if (actualHref !== document.location.href && document.location.pathname !== '/watch' && document.getElementById('button-flag-TF')) {
+      ReactDOM.unmountComponentAtNode(document.getElementById('button-flag-TF'))
+    }
     if (document.location.pathname !== '/watch' && actualHref) actualHref = null
     if (actualHref !== document.location.href && document.location.pathname === '/watch' && document.querySelector('[video-id]') && document.querySelector('[video-id]').getAttribute('video-id') === getUrlParameter('v') && document.getElementById('info').querySelector('#top-level-buttons') && document.getElementById('owner-container') && document.getElementById("avatar")) {
       actualHref = document.location.href
       while (document.getElementById('#button-flag-TF')) {
+        ReactDOM.unmountComponentAtNode(document.getElementById('button-flag-TF'))
         document.getElementById('#button-flag-TF').parentNode.removeChild(document.getElementById('#button-flag-TF'))
       }
       initExtension()
