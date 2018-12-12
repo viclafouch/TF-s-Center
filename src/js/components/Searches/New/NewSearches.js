@@ -6,6 +6,7 @@ import { trySearch } from '@utils'
 import { Search } from '@shared/models/Search.class';
 import Checkbox from '@components/layouts/Checkbox';
 import { randomId, setStateAsync } from '@utils/index';
+import { Redirect } from 'react-router'
 
 export class NewSearches extends Component {
 
@@ -15,11 +16,27 @@ export class NewSearches extends Component {
     this.state = this.baseState = {
       "search-value-add":  '',
       "search-template-id": '',
-      "search-auto-select": false
+      "search-auto-select": false,
+      redirectTo: null
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidUpdate() {
+    if (this.state.redirectTo) return this.setState({ redirectTo: null })
+  }
+
+  testSearch(value) {
+    try {
+      this.props.context.setState({ search: '"' + value + '"' })
+      return this.setState({ redirectTo: trySearch(value) })
+    } catch (error) {
+      this.props.context.setState({
+        notification: { id: randomId(), type: 'goSearch', params: { level: 'error', message: error.message } }
+      })
+    }
   }
 
   handleChange(e) {
@@ -54,6 +71,7 @@ export class NewSearches extends Component {
   }
 
   render() {
+    if (this.state.redirectTo) return <Redirect to={this.state.redirectTo} />
     return (
       <div className="box-material new-search-box">
         <form onSubmit={this.handleSubmit} className="form-search-add">
@@ -71,7 +89,7 @@ export class NewSearches extends Component {
               />
             </div>
             <Button blue className="mgi--left-7" type="submit">Add</Button>
-            <Button blue className="mgi--left-7" onClick={() => trySearch(this.state["search-value-add"].trim(), false, true)} disabled={this.state["search-value-add"].trim() === ''}>Test</Button>
+            <Button blue className="mgi--left-7" onClick={() => this.testSearch(this.state["search-value-add"])} disabled={this.state["search-value-add"].trim() === ''}>Test</Button>
           </div>
           <div className="mgi--top-10 flex-me flex-align">
             <Select
