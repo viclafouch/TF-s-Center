@@ -1091,6 +1091,15 @@ div#button-flag-TF, div[data-button-tf] {
   color: #909090;
   padding-right: 8px;
 
+  &[id] {
+    .span-icon, i {
+      padding: 10px 10px;
+      margin: 0;
+      width: 16px;
+      height: 16px;
+    }
+  }
+
   button {
     padding: 0;
     font: inherit;
@@ -1113,12 +1122,6 @@ div#button-flag-TF, div[data-button-tf] {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      &.span-icon, i {
-        padding: 10px 10px;
-        margin: 0;
-        width: 16px;
-        height: 16px;
-      }
     }
 
     span.span-icon {
@@ -1141,5 +1144,6 @@ div[data-button-tf]:not([id]) button {
   color: var(--ytd-metadata-line-color, var(--yt-spec-text-secondary));
   padding: 0;
   line-height: 1.8em;
-  span { font-weight: 400; }
+  span, i { font-weight: 400; margin-right: 5px; }
+  span.span-icon { width: 16px; height: 16px; }
 }
