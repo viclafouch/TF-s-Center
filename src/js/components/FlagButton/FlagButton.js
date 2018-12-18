@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck'
 import svgIcon from '../../../img/sheriff.js'
-import { getStorages } from '@stores/BrowserStorage.js';
+import { getStorages } from '@stores/BrowserStorage.js'
 
 export class FlagButton extends Component {
 
   constructor() {
-    super();
-    this.sheriff = React.createRef();
+    super()
+    this.sheriff = React.createRef()
     this.onFlag = this.onFlag.bind(this)
   };
 
@@ -32,11 +32,11 @@ export class FlagButton extends Component {
 
     return (
       <button onClick={this.onFlag} className={videosToFlag.find(x => x.id === watchedVideo.id) ? 'active' : ''}>
-        <span>Add to targets</span>
-        <span className="span-icon mgi--left-5">
+        <span className="span-icon">
           <FontAwesomeIcon icon={faCheck} size="1x" fixedWidth />
         </span>
-        <i id="svgSheriff" ref={this.sheriff} className="mgi--left-5"></i>
+        <i id="svgSheriff" ref={this.sheriff}></i>
+        <span>Add to targets</span>
       </button>
     )
   }

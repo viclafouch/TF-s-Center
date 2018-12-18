@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
-import { Sidebar } from '@components/Sidebar/Sidebar';
-import FlagButton from '@components/FlagButton/FlagButton';
-import AppRouter, { Loader } from '../routes/router';
-import { withRouter } from "react-router";
-import Navbar from './Navbar/Navbar';
+import { Sidebar } from '@components/Sidebar/Sidebar'
+import FlagButton from '@components/FlagButton/FlagButton'
+import AppRouter, { Loader } from '../routes/router'
+import { withRouter } from "react-router"
+import Navbar from './Navbar/Navbar'
 import NotificationSystem from 'react-notification-system'
 import ERRORS from '../../../errors.json'
-import Popup from './Popup/Popup';
-import Logs from './Logs/Logs';
+import Popup from './Popup/Popup'
+import Logs from './Logs/Logs'
+import { onDeputyLocation } from '@utils/index'
 
 class App extends Component {
 
@@ -48,9 +49,8 @@ class App extends Component {
         }
       }
     }
-
     return (
-      window.location.pathname !== '/watch'
+      onDeputyLocation(this.props.location)
       ?
         <React.Fragment>
           <Navbar />

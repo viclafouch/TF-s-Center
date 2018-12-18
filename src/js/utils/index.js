@@ -19,17 +19,15 @@ export const redirectToWebCache = (link, newTab = true) => window.open(`http://w
 
 export const setStateAsync = (state, self) =>  new Promise(resolve => self.setState(state, resolve))
 
-export const wait = (amount = 0) => new Promise(resolve => setTimeout(resolve, amount));
+export const wait = (amount = 0) => new Promise(resolve => setTimeout(resolve, amount))
+
+export const onDeputyLocation = ({ pathname } = document.location) => pathname === '/deputy' || pathname === '/flagging_history'
 
 export function updateQueryStringParameter(uri, key, value) {
-    var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
-    var separator = uri.indexOf('?') !== -1 ? "&" : "?";
-    if (uri.match(re)) {
-        return uri.replace(re, '$1' + key + "=" + value + '$2');
-    }
-    else {
-        return uri + separator + key + "=" + value;
-    }
+    const re = new RegExp("([?&])" + key + "=.*?(&|$)", "i")
+    const separator = uri.indexOf('?') !== -1 ? "&" : "?"
+    if (uri.match(re)) return uri.replace(re, '$1' + key + "=" + value + '$2')
+    else return uri + separator + key + "=" + value
 }
 
 export const copyObject = (obj) => JSON.parse(JSON.stringify(obj));

@@ -1083,29 +1083,26 @@ i#svgSheriff {
   display: inline-block;
 }
 
-div#button-flag-TF {
+div#button-flag-TF, div[data-button-tf] {
   margin-left: 8px;
-  display: flex;
-  align-items: center;
+  display: block;
   white-space: nowrap;
   font-weight: 500;
   color: #909090;
   padding-right: 8px;
 
   button {
+    padding: 0;
     font: inherit;
     display: flex;
-    height: 100%;
     cursor: pointer;
     align-items: center;
     justify-content: center;
-    color: inherit;
     text-decoration: none;
-    margin-top: -4px;
-    opacity: 0.75;
     background: transparent;
     border: 0;
     outline: none;
+    color: var(--yt-icon-color);
 
     span {
       font-size: 1.3rem;
@@ -1116,6 +1113,12 @@ div#button-flag-TF {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      &.span-icon, i {
+        padding: 10px 10px;
+        margin: 0;
+        width: 16px;
+        height: 16px;
+      }
     }
 
     span.span-icon {
@@ -1123,7 +1126,6 @@ div#button-flag-TF {
     }
 
     &.active {
-      opacity: 1;
       .span-icon {
         display: block;
       }
@@ -1132,4 +1134,12 @@ div#button-flag-TF {
       }
     }
   }
+}
+
+div[data-button-tf]:not([id]) span { text-transform: none!important; }
+div[data-button-tf]:not([id]) button {
+  color: var(--ytd-metadata-line-color, var(--yt-spec-text-secondary));
+  padding: 0;
+  line-height: 1.8em;
+  span { font-weight: 400; }
 }

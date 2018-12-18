@@ -6,7 +6,7 @@ import YouTubeProvider, { YouTubeContext } from '@stores/YouTubeContext';
 import { getStorages } from '@stores/BrowserStorage';
 import getYouTubeDatasFromDOM from '@stores/DatasDom'
 import { BrowserRouter } from 'react-router-dom'
-import { getAllUrlParams } from '@utils/index';
+import { getAllUrlParams, onDeputyLocation } from '@utils/index';
 import ErrorBoundary from '@components/ErrorBoundary/ErrorBoundary';
 
 const style = [
@@ -17,79 +17,110 @@ const style = [
 ].join(';');
 console.log(`%cTF\'s Center on ${process.env.NODE_ENV} mode!`, style);
 
-function initExtension() {
+function initExtension(container = null) {
 
-  const myReactApp = document.createElement("div");
-  myReactApp.setAttribute("id", "TFsCenter");
+  const myReactApp = document.createElement('div')
+  myReactApp.setAttribute("id", "TFsCenter")
 
   Promise.all([getStorages('local'), getStorages('sync')])
     .then(async storages => {
-      const storage = storages.reduce((a, d) => Object.assign(d, a), {});
+      const storage = storages.reduce((a, d) => Object.assign(d, a), {})
       const pathname = document.location.pathname
 
       const params = getAllUrlParams()
-      const youtubeDatasFromDOM = await getYouTubeDatasFromDOM(params)
-      const youtubeDatasDeputy = youtubeDatasFromDOM.reduce((a, d) => Object.assign(d, a), {});
+      const youtubeDatasFromDOM = await getYouTubeDatasFromDOM(params, pathname, container)
 
-      if (pathname === '/watch') {
-        myReactApp.setAttribute("id", "button-flag-TF");
-        document.getElementById('info').querySelector('#top-level-buttons').appendChild(myReactApp);
-      } else {
+      const youtubeDatasDeputy = youtubeDatasFromDOM.reduce((a, d) => Object.assign(d, a), {})
+
+      if (onDeputyLocation()) {
         while (!document.querySelector('[name="session_token"]')) await wait(50)
         const session_token = document.querySelector('[name="session_token"]').value
         youtubeDatasDeputy.session_token = session_token
         document.body.innerHTML = '';
         document.body.appendChild(myReactApp);
         document.documentElement.setAttribute('data-theme', storage.theme)
+      } else if (pathname === '/watch') {
+        myReactApp.setAttribute("id", "button-flag-TF")
+        myReactApp.setAttribute("data-button-tf", "true")
+        document.getElementById('menu-container').querySelector('#top-level-buttons').appendChild(myReactApp)
+      } else {
+        myReactApp.removeAttribute("id")
+        myReactApp.setAttribute("data-button-tf", "true")
+        container.querySelector('#metadata').appendChild(myReactApp)
       }
 
       await new Promise(resolve => ReactDOM.render(
         <ErrorBoundary>
           <YouTubeProvider storage={storage} youtubeDatasDeputy={youtubeDatasDeputy} >
-          <BrowserRouter>
-            <YouTubeContext.Consumer>
-              {(context) => <App context={context} notification={context.state.notification} /> }
-            </YouTubeContext.Consumer>
-          </BrowserRouter>
-        </YouTubeProvider>
+            <BrowserRouter>
+              <YouTubeContext.Consumer>
+                {(context) => <App context={context} notification={context.state.notification} /> }
+              </YouTubeContext.Consumer>
+            </BrowserRouter>
+          </YouTubeProvider>
         </ErrorBoundary>
       , myReactApp, resolve()))
     })
     .catch(e => {
+      if (process.env.NODE_ENV === 'development') console.error(e)
       e = e.id ? e : (e.message || 'Unknown error')
-      if (document.location.pathname !== '/watch') {
+      if (onDeputyLocation()) {
         document.body.innerHTML = '';
-        document.body.appendChild(myReactApp);
+        document.body.appendChild(myReactApp)
         ReactDOM.render(<ErrorBoundary error={e} />, myReactApp)
-      } else if (process.env.NODE_ENV === 'development') {
-        console.error(e);
       }
     })
     .finally(() => {
-      document.location.pathname !== '/watch' && document.body.classList.add('TFs-ready')
+      onDeputyLocation() && document.body.classList.add('TFs-ready')
     })
 }
 
-const pathname = window.location.pathname
-if (pathname === '/deputy' || pathname === '/flagging_history') initExtension()
+onDeputyLocation() && initExtension()
 
 // Watch page (asynchrone)
+const canAppearOn = ['/watch', '/results']
+const containers = new Set()
 let actualHref = null
+let arrivedOnCanAppear = false
 window.onload = function () {
-  const observer = new MutationObserver(() => {
-    if (actualHref !== document.location.href && document.location.pathname !== '/watch' && document.getElementById('button-flag-TF')) {
-      ReactDOM.unmountComponentAtNode(document.getElementById('button-flag-TF'))
-    }
-    if (document.location.pathname !== '/watch' && actualHref) actualHref = null
-    if (actualHref !== document.location.href && document.location.pathname === '/watch' && document.querySelector('[video-id]') && document.querySelector('[video-id]').getAttribute('video-id') === getUrlParameter('v') && document.getElementById('info').querySelector('#top-level-buttons') && document.getElementById('owner-container') && document.getElementById("avatar")) {
-      actualHref = document.location.href
-      while (document.getElementById('#button-flag-TF')) {
-        ReactDOM.unmountComponentAtNode(document.getElementById('button-flag-TF'))
-        document.getElementById('#button-flag-TF').parentNode.removeChild(document.getElementById('#button-flag-TF'))
+
+  function removeContainers() {
+    for (const container of containers) {
+      if (container.querySelector('[data-button-tf]')) {
+        const element = container.querySelector('[data-button-tf]')
+        ReactDOM.unmountComponentAtNode(element)
+        element.parentNode.removeChild(element)
       }
+      containers.delete(container)
+    }
+  }
+  const observer = new MutationObserver(async () => {
+    const { href, pathname } = document.location
+    if (href !== actualHref) {
+      arrivedOnCanAppear = false
+      if (!canAppearOn.includes(pathname) && actualHref) actualHref = null
+    }
+
+    if (pathname === '/watch' && document.querySelector('[video-id]') && document.querySelector('[video-id]').getAttribute('video-id') === getUrlParameter('v') && document.getElementById('menu-container').querySelector('#top-level-buttons') && document.getElementById('owner-container') && document.getElementById("avatar") && !arrivedOnCanAppear) {
+      arrivedOnCanAppear = true
+      actualHref = href
+      // await wait(500) // TODO // Actually, if you goback to the same watch video, the dom will be recreated.
+      removeContainers()
+      const container = document.getElementById('menu-container').querySelector('#top-level-buttons')
+      containers.add(container)
       initExtension()
     }
-  });
+
+    else if (pathname === '/results') {
+      actualHref = href
+      for (const container of Array.from(document.querySelectorAll('ytd-video-renderer'))) {
+        if (!containers.has(container)) {
+          containers.add(container)
+          initExtension(container)
+        }
+      }
+    }
+  })
 
   const config = {
     childList: true,
