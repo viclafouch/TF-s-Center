@@ -10,7 +10,7 @@ import { faFlag } from '@fortawesome/free-solid-svg-icons/faFlag'
 import { faMoon as faMoonBis } from '@fortawesome/free-solid-svg-icons/faMoon'
 import { faMoon } from '@fortawesome/free-regular-svg-icons/faMoon'
 import { faBullseye } from '@fortawesome/free-solid-svg-icons/faBullseye'
-import { CONTRIBUTOR_LINK, HANGOUTS_ME } from '@private'
+import { HANGOUTS_ME } from '@private'
 import { YouTubeContext } from '@stores/YouTubeContext';
 import { NavLink } from 'react-router-dom'
 import { openInNewTab } from '@utils/browser';
@@ -45,16 +45,7 @@ export class Sidebar extends Component {
         url: '/deputy?context=targets',
         icon: faBullseye,
         label: 'Targets'
-      },
-      {
-        url: CONTRIBUTOR_LINK,
-        icon: faUsers,
-        label: 'Forum',
-        onClick: e => {
-          e.preventDefault()
-          return openInNewTab(CONTRIBUTOR_LINK)
-        }
-      },
+      }
     ]
   }
 
