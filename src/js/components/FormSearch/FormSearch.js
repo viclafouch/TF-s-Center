@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch'
 import { Redirect } from 'react-router'
-import { getStorages } from '@stores/BrowserStorage';
-import onClickOutside from "react-onclickoutside";
+import { getStorages } from '@stores/BrowserStorage'
+import onClickOutside from "react-onclickoutside"
+import { getUrlParameter } from '@utils/index'
 
 export class FormSearch extends Component {
 
@@ -63,7 +64,12 @@ export class FormSearch extends Component {
     const value = this.props.context.state.search.trim()
     if (value) {
       const query = value.replace(/\s+/g, "+")
-      this.setState({ redirectTo: `/deputy?search_query=${query}`, showLastSearches: false })
+      const isExcluded = !(getUrlParameter('exclude_flagged_videos') == 'false')
+      const filters = getUrlParameter('filters')
+      let redirectTo = `/deputy?search_query=${query}`
+      if (filters) redirectTo += `&filters=${filters}`
+      if (isExcluded) redirectTo += `&exclude_flagged_videos=${isExcluded}`
+      this.setState({ redirectTo, showLastSearches: false })
       const { lastSearches } = await getStorages('local')
       if (lastSearches.includes(value)) {
         const lastSearchIndex = lastSearches.findIndex(x => x === value)

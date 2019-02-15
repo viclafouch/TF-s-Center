@@ -127,7 +127,7 @@ export class FormFlagging extends Component {
                 handleChange={this.handleChange}
               />
             </Popup>
-              <input name="session_token" type="hidden" value={context.state.session_token}></input>
+            <input name="session_token" type="hidden" value={context.state.session_token}></input>
           </form>
         )}
       </YouTubeContext.Consumer>
