@@ -1,11 +1,10 @@
 import { YOUTUBE_API_KEYS } from '../../private.js'
 import { TF_ERROR } from '@utils/index.js'
 
-function setBadgeText(text) {
+const setBadgeText = text =>
   chrome.browserAction.setBadgeText({
     text: text ? text.toString() : ''
   })
-}
 
 chrome.storage.local.get(
   {
@@ -17,6 +16,7 @@ chrome.storage.local.get(
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (request.type === 'updateBadgeText' && request.items) {
     setBadgeText(request.items.videosToFlag.length)
+    sendResponse(true)
   } else if (request.type === 'fetchYouTubeVideo') {
     fetch(
       `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${
