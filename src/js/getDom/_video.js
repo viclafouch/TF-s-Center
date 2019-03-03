@@ -39,9 +39,8 @@ const video = function getVideo(idWatch, container) {
       description = ''
       channelTitle = document.getElementById('channel-title').textContent
       channelUrl = document
-        .getElementById('form')
-        .getAttribute('action')
-        .replace('/search', '')
+        .getElementById('menu')
+        .firstElementChild.href.split('/videos')[0]
     }
 
     viewCount = container.querySelector('#metadata-line').firstElementChild
