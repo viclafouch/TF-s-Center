@@ -5,19 +5,18 @@ import svgIcon from '../../../img/sheriff.js'
 import { getStorages } from '@stores/BrowserStorage.js'
 
 export class FlagButton extends Component {
-
   constructor() {
     super()
     this.sheriff = React.createRef()
     this.onFlag = this.onFlag.bind(this)
-  };
+  }
 
   componentDidMount() {
-    return this.sheriff.current.innerHTML = svgIcon
+    return (this.sheriff.current.innerHTML = svgIcon)
   }
 
   async onFlag(e) {
-    e.preventDefault();
+    e.preventDefault()
     const { watchedVideo } = this.props
     const { videosToFlag } = await getStorages('local')
     const existingIndex = videosToFlag.findIndex(x => x.id === watchedVideo.id)
@@ -27,16 +26,20 @@ export class FlagButton extends Component {
   }
 
   render() {
-
-    const { watchedVideo, videosToFlag } = this.props;
+    const { watchedVideo, videosToFlag } = this.props
 
     return (
-      <button onClick={this.onFlag} className={videosToFlag.find(x => x.id === watchedVideo.id) ? 'active' : ''}>
+      <button
+        onClick={this.onFlag}
+        className={
+          videosToFlag.find(x => x.id === watchedVideo.id) ? 'active' : ''
+        }
+      >
         <span className="span-icon">
           <FontAwesomeIcon icon={faCheck} size="1x" fixedWidth />
         </span>
-        <i id="svgSheriff" ref={this.sheriff}></i>
-        <span>Add to targets</span>
+        <i id="svgSheriff" ref={this.sheriff} />
+        <span>Add</span>
       </button>
     )
   }
