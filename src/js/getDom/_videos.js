@@ -1,4 +1,4 @@
-import { Video } from "../shared/models/Video.class";
+import { Video } from '../shared/models/Video.class'
 import getPagination from './_pagination'
 
 /**
@@ -7,46 +7,64 @@ import getPagination from './_pagination'
  */
 
 let videos = function getVideos(root = document) {
-    const list = root.getElementsByClassName('deputy-flag-item yt-tile-default');
+  const list = root.getElementsByClassName('deputy-flag-item yt-tile-default')
 
-    const videos = []
+  const videos = []
 
-    for (var item of list) {
-        let channelTitle, channelUrl, videoAddedTime, viewCount = null;
-        let title = item.getElementsByTagName('h3')[0].textContent.trim();
-        let description = item.getElementsByClassName('deputy-item-description-summary')[0].innerHTML.trim();
-        let id = item.getElementsByClassName('yt-uix-sessionlink ')[0].getAttribute('href').split('=')[1]
+  for (var item of list) {
+    let channelTitle,
+      channelUrl,
+      videoAddedTime,
+      viewCount = null
+    const title = item.getElementsByTagName('h3')[0].textContent.trim()
+    const description = item
+      .getElementsByClassName('deputy-item-description-summary')[0]
+      .innerHTML.trim()
+    const id = item
+      .getElementsByClassName('yt-uix-sessionlink ')[0]
+      .getAttribute('href')
+      .split('=')[1]
 
-        let isRemoved = item.getElementsByClassName('removed-on-text').length > 0;
-        let isReviewed = item.getElementsByClassName('reviewed-on-text').length > 0;
+    const isRemoved = item.getElementsByClassName('removed-on-text').length > 0
+    const isReviewed =
+      item.getElementsByClassName('reviewed-on-text').length > 0
+    const isAgeRestricted =
+      item.getElementsByClassName('age-restricted-on-text').length > 0
 
-        if (!isRemoved && item.getElementsByClassName('yt-user-name').length > 0) {
-            videoAddedTime = item.getElementsByClassName('video-date-added')[0].textContent;
-            channelTitle = item.getElementsByClassName('yt-user-name')[0].textContent;
-            channelUrl = item.getElementsByClassName('yt-user-name')[0].getAttribute('href');
-            viewCount = item.getElementsByClassName('viewcount')[0] ? item.getElementsByClassName('viewcount')[0].textContent : ''
-        } else {
-            title = null;
-        }
-
-        videos.push(new Video({
-            title: title,
-            channelTitle: channelTitle,
-            channelUrl: channelUrl,
-            viewCount: viewCount,
-            id: id,
-            videoAddedTime: videoAddedTime,
-            description: description,
-            isReviewed: isReviewed,
-            isRemoved: isRemoved,
-        }))
+    if (!isRemoved && item.getElementsByClassName('yt-user-name').length > 0) {
+      videoAddedTime = item.getElementsByClassName('video-date-added')[0]
+        .textContent
+      channelTitle = item.getElementsByClassName('yt-user-name')[0].textContent
+      channelUrl = item
+        .getElementsByClassName('yt-user-name')[0]
+        .getAttribute('href')
+      viewCount = item.getElementsByClassName('viewcount')[0]
+        ? item.getElementsByClassName('viewcount')[0].textContent
+        : ''
+    } else {
+      title = null
     }
 
-    return {
-      videos,
-      pagination: getPagination(root)
-    }
+    videos.push(
+      new Video({
+        title,
+        channelTitle,
+        channelUrl,
+        viewCount,
+        id,
+        videoAddedTime,
+        description,
+        isReviewed,
+        isRemoved,
+        isAgeRestricted
+      })
+    )
+  }
+
+  return {
+    videos,
+    pagination: getPagination(root)
+  }
 }
-
 
 export default videos

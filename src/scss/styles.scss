@@ -1,8 +1,8 @@
-@import "./datepicker";
-@import "./themes";
-@import "./form";
-@import "./utils";
-@import "./table";
+@import './datepicker';
+@import './themes';
+@import './form';
+@import './utils';
+@import './table';
 
 $h-nav: 56px;
 $w-sidebar: 240px;
@@ -68,8 +68,10 @@ iframe.youtube-iframe {
 }
 
 .removed-on-text {
-  color: red !important;
-  font-weight: 500 !important;
+  @extend .red-color;
+}
+.age-restricted-on-text {
+  @extend .orange-color;
 }
 
 img.channel-logo {
@@ -111,7 +113,7 @@ div#TFsCenter {
     box-sizing: border-box;
   }
 
-  font-family: "Roboto", "Noto", sans-serif;
+  font-family: 'Roboto', 'Noto', sans-serif;
 
   & > nav#TF-navbar {
     height: $h-nav;
@@ -400,7 +402,7 @@ div#TFsCenter {
         -webkit-font-smoothing: antialiased;
         background-color: transparent;
         box-shadow: none;
-        font-family: "Roboto", "Noto", sans-serif;
+        font-family: 'Roboto', 'Noto', sans-serif;
         font-size: 16px;
         font-weight: 400;
         line-height: 24px;
@@ -942,7 +944,7 @@ div#TFsCenter {
         font-weight: 400;
         padding: 10px 0;
         &:empty:before {
-          content: "\200b";
+          content: '\200b';
         }
       }
     }
