@@ -1,21 +1,24 @@
 const statistics = function getStatistics(root = document) {
-    let statistics;
-    if (root.getElementsByTagName("a[href='/flagging_history']")) {
-        const h1 = root.getElementsByTagName('h1')[0];
+  let statistics
 
-        const allFlagsNode = h1.nextSibling.nextSibling
-        const allActionedNode = allFlagsNode.nextSibling.nextSibling
+  if (document.getElementById('report-stats')) {
+    const allFlagsNode = document.querySelectorAll('.report-stat')[1]
+    const allActionedNode = document.querySelectorAll('.report-stat')[0]
 
-        const allFlagsNumber = parseInt(allFlagsNode.textContent.replace(/\D+/g, ''));
-        const allActionedNumber = parseInt(allActionedNode.textContent.replace(/\D+/g, ''));
+    const allFlagsNumber = parseInt(
+      allFlagsNode.textContent.replace(/\D+/g, '')
+    )
+    const allActionedNumber = parseInt(
+      allActionedNode.textContent.replace(/\D+/g, '')
+    )
 
-        statistics = {
-            allFlagged: allFlagsNumber,
-            allActioned: allActionedNumber
-        }
+    statistics = {
+      allFlagged: allFlagsNumber,
+      allActioned: allActionedNumber
     }
+  }
 
-  return { statistics };
+  return { statistics }
 }
 
-export default statistics;
+export default statistics
