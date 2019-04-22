@@ -1,9 +1,9 @@
 const statistics = function getStatistics(root = document) {
   let statistics
 
-  if (document.getElementById('report-stats')) {
-    const allFlagsNode = document.querySelectorAll('.report-stat')[1]
-    const allActionedNode = document.querySelectorAll('.report-stat')[0]
+  if (root.querySelector('#report-stats')) {
+    const allFlagsNode = root.querySelectorAll('.report-stat')[1]
+    const allActionedNode = root.querySelectorAll('.report-stat')[0]
 
     const allFlagsNumber = parseInt(
       allFlagsNode.textContent.replace(/\D+/g, '')
