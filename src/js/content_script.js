@@ -134,8 +134,8 @@ window.onload = function() {
       document
         .getElementById('menu-container')
         .querySelector('#top-level-buttons') &&
-      document.getElementById('owner-container') &&
-      document.getElementById('avatar') &&
+      document.getElementById('meta-contents') &&
+      document.getElementById('meta-contents').querySelector('#upload-info') &&
       !arrivedOnCanAppear
     ) {
       arrivedOnCanAppear = true

@@ -1,6 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
@@ -61,7 +61,11 @@ module.exports = (env, argv) => ({
     filename: '[name].bundle.js'
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin({
+      verbose: true,
+      cleanStaleWebpackAssets: false,
+      protectWebpackAssets: true
+    }),
     new CopyWebpackPlugin([
       {
         from: path.join(__dirname, 'manifest.json'),
