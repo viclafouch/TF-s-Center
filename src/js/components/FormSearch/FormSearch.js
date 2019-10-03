@@ -3,27 +3,26 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch'
 import { Redirect } from 'react-router'
 import { getStorages } from '@stores/BrowserStorage'
-import onClickOutside from "react-onclickoutside"
+import onClickOutside from 'react-onclickoutside'
 import { getUrlParameter } from '@utils/index'
 
 export class FormSearch extends Component {
-
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       redirectTo: null,
       showLastSearches: false,
       foundSearchesOnTap: []
     }
 
-    this.handleClickOutside = this.handleClickOutside.bind(this);
+    this.handleClickOutside = this.handleClickOutside.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleFocus = this.handleFocus.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidUpdate() {
-    if (this.state.redirectTo) return this.setState({ redirectTo: null})
+    if (this.state.redirectTo) return this.setState({ redirectTo: null })
   }
 
   handleClickOutside() {
@@ -36,7 +35,7 @@ export class FormSearch extends Component {
   }
 
   async handleClickLastSearch(event, search) {
-    event.preventDefault();
+    event.preventDefault()
     this.props.context.setState({ search }, () => this.handleSubmit())
   }
 
@@ -56,14 +55,14 @@ export class FormSearch extends Component {
 
   handleChange(event) {
     this.foundWords(event.target.value)
-    return this.props.context.setState({ search: event.target.value });
+    return this.props.context.setState({ search: event.target.value })
   }
 
   async handleSubmit(event) {
     event && event.preventDefault()
     const value = this.props.context.state.search.trim()
     if (value) {
-      const query = value.replace(/\s+/g, "+")
+      const query = value.replace(/\s+/g, '+')
       const isExcluded = !(getUrlParameter('exclude_flagged_videos') == 'false')
       const filters = getUrlParameter('filters')
       let redirectTo = `/deputy?search_query=${query}`
@@ -73,11 +72,10 @@ export class FormSearch extends Component {
       const { lastSearches } = await getStorages('local')
       if (lastSearches.includes(value)) {
         const lastSearchIndex = lastSearches.findIndex(x => x === value)
-        lastSearches.splice(lastSearchIndex, 1);
+        lastSearches.splice(lastSearchIndex, 1)
       }
       lastSearches.unshift(value)
       this.props.context.setState({ lastSearches: lastSearches.slice(0, 3) })
-      return;
     }
   }
 
@@ -99,18 +97,21 @@ export class FormSearch extends Component {
             onChange={this.handleChange}
             value={this.props.context.state.search}
           />
-          {
-            (this.state.showLastSearches && this.props.context.state.lastSearches.length > 0) &&
+          {this.state.showLastSearches && this.props.context.state.lastSearches.length > 0 && (
             <div className="lastSearches-container">
               <ul className="list-last-searches">
-              {
-                this.props.context.state.lastSearches.map((elem, index) =>
-                  <li key={index} className={"item-last-search " + (this.state.foundSearchesOnTap.includes(elem) ? 'bold' : '')} onClick={event => this.handleClickLastSearch(event, elem)}>{elem}</li>
-                )
-              }
+                {this.props.context.state.lastSearches.map((elem, index) => (
+                  <li
+                    key={index}
+                    className={`item-last-search ${this.state.foundSearchesOnTap.includes(elem) ? 'bold' : ''}`}
+                    onClick={event => this.handleClickLastSearch(event, elem)}
+                  >
+                    {elem}
+                  </li>
+                ))}
               </ul>
             </div>
-          }
+          )}
         </div>
         <button className="button-search">
           <span className="span-icon">
@@ -122,4 +123,4 @@ export class FormSearch extends Component {
   }
 }
 
-export default onClickOutside(FormSearch);
+export default onClickOutside(FormSearch)

@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import Select from '@components/layouts/Select';
-import { getUrlParameter, updateQueryStringParameter } from '@utils'
+import Select from '@components/layouts/Select'
 import { Redirect } from 'react-router'
+import { getUrlParameter, updateQueryStringParameter } from '@utils'
 
 export class FilterPeriod extends Component {
-
   constructor() {
-    super();
+    super()
 
     this.periods = [
       { value: 'anytime', title: 'Anytime' },
@@ -14,7 +13,7 @@ export class FilterPeriod extends Component {
       { value: 'today', title: 'Today' },
       { value: 'week', title: 'This week' },
       { value: 'month', title: 'This month' },
-      { value: 'year', title: 'This year' },
+      { value: 'year', title: 'This year' }
     ]
 
     this.state = {
@@ -27,7 +26,7 @@ export class FilterPeriod extends Component {
 
   componentDidMount() {
     const filters = getUrlParameter('filters')
-    return this.setState((prevState) => ({
+    return this.setState(prevState => ({
       filters: filters || prevState.filters
     }))
   }
@@ -46,7 +45,7 @@ export class FilterPeriod extends Component {
   render() {
     if (this.state.redirectTo) return <Redirect to={this.state.redirectTo} />
     return (
-      <div className={'tool tools-filter-period ' + (this.props.disabled ? 'tool-disabled' : '')}>
+      <div className={`tool tools-filter-period ${this.props.disabled ? 'tool-disabled' : ''}`}>
         <Select
           blue
           disabled={this.props.disabled}

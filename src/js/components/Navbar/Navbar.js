@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import FormSearch from '@components/FormSearch/FormSearch';
+import FormSearch from '@components/FormSearch/FormSearch'
 import { faDev } from '@fortawesome/free-brands-svg-icons/faDev'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import YouTubeLogo from '@img/YouTube_Logo'
-import { YouTubeContext } from '@stores/YouTubeContext';
+import { YouTubeContext } from '@stores/YouTubeContext'
 
 export class Navbar extends Component {
-
   constructor() {
     super()
     this.logo = React.createRef()
@@ -19,10 +18,10 @@ export class Navbar extends Component {
   render() {
     return (
       <YouTubeContext.Consumer>
-        {(context) =>
+        {context => (
           <nav id="TF-navbar" className="navbar flex-me flex-align">
             <div className="block-left-side">
-              <a href="/" className="logo_youtube" ref={this.logo}></a>
+              <a href="/" className="logo_youtube" ref={this.logo} />
             </div>
             <div className="block-right-side flex-me flex-align flex-justify-between flex-one">
               <div className="flex-one form-search-container">
@@ -35,7 +34,7 @@ export class Navbar extends Component {
               </div>
             </div>
           </nav>
-        }
+        )}
       </YouTubeContext.Consumer>
     )
   }

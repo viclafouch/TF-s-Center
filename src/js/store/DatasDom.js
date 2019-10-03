@@ -1,9 +1,9 @@
-import getVideo from './../getDom/_video'
-import getSearch from './../getDom/_search'
-import getUser from './../getDom/_user'
-import { getUrlParameter } from '@utils'
 import { fetchHistory, fetchStats, fetchSearch } from '@shared/api/Deputy'
 import { onDeputyLocation } from '@utils/index'
+import getVideo from '../getDom/_video'
+import getSearch from '../getDom/_search'
+import getUser from '../getDom/_user'
+import { getUrlParameter } from '@utils'
 
 export default function(params, pathname, container) {
   const videoIdWatch = getUrlParameter('v')

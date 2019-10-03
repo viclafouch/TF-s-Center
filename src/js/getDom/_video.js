@@ -6,13 +6,13 @@ import { Video } from '../shared/models/Video.class'
  */
 
 const video = function getVideo(idWatch, container) {
-  let title,
-    description,
-    videoAddedTime,
-    channelUrl,
-    channelTitle,
-    channelId,
-    viewCount
+  let title
+  let description
+  let videoAddedTime
+  let channelUrl
+  let channelTitle
+  let channelId
+  let viewCount
   if (!container) {
     title = document.getElementsByTagName('h1')[0].textContent.trim()
     description = document.getElementById('description').textContent.trim()
@@ -34,23 +34,16 @@ const video = function getVideo(idWatch, container) {
     if (container.querySelector('#description-text')) {
       description = container.querySelector('#description-text').textContent
       channelTitle = container.querySelector('.ytd-channel-name').textContent
-      channelUrl = container.querySelector('.ytd-channel-name')
-        .firstElementChild.href
+      channelUrl = container.querySelector('.ytd-channel-name').firstElementChild.href
     } else {
       description = ''
       channelTitle = document.getElementById('channel-name').textContent
-      channelUrl = document
-        .getElementById('menu')
-        .firstElementChild.href.split('/videos')[0]
+      channelUrl = document.getElementById('menu').firstElementChild.href.split('/videos')[0]
     }
 
-    viewCount = container.querySelector('#metadata-line').firstElementChild
-      .textContent
-    videoAddedTime = container.querySelector('#metadata-line').firstElementChild
-      .nextSibling.textContent
-    idWatch = new URL(
-      container.querySelector('#video-title').href
-    ).searchParams.get('v')
+    viewCount = container.querySelector('#metadata-line').firstElementChild.textContent
+    videoAddedTime = container.querySelector('#metadata-line').firstElementChild.nextSibling.textContent
+    idWatch = new URL(container.querySelector('#video-title').href).searchParams.get('v')
   }
   return {
     watchedVideo: new Video({

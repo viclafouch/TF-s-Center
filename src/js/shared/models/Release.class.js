@@ -1,7 +1,5 @@
 export class Release {
-  constructor(
-    release = {}
-  ) {
+  constructor(release = {}) {
     this.id = release.id
     this.name = release.name
     this.published_at = new Date(release.published_at)

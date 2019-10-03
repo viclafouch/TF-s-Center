@@ -2,32 +2,31 @@ import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus'
 import Select from '@components/layouts/Select'
-import onClickOutside from "react-onclickoutside";
-import CountLetter from '@components/layouts/CountLetter';
-import { Template } from '@shared/models/Template.class';
-import { labels, MAX_TEMPLATES } from '../../../config/config';
-import Input from '@components/layouts/Input';
-import { TF_ERROR, randomId } from '@utils/index';
-import { getStorages } from '@stores/BrowserStorage';
+import onClickOutside from 'react-onclickoutside'
+import CountLetter from '@components/layouts/CountLetter'
+import { Template } from '@shared/models/Template.class'
+import Input from '@components/layouts/Input'
+import { TF_ERROR, randomId } from '@utils/index'
+import { getStorages } from '@stores/BrowserStorage'
+import { labels, MAX_TEMPLATES } from '../../../config/config'
 
 export class NewTemplate extends Component {
-
   constructor() {
-    super();
+    super()
 
-    this.template = new Template();
+    this.template = new Template()
 
     this.baseState = this.state = {
-      "template-title": '',
-      "template-description": '',
-      "template-type": '',
+      'template-title': '',
+      'template-description': '',
+      'template-type': '',
       isOpen: false,
       formValid: false,
       isTooMany: false
     }
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClickOutside = this.handleClickOutside.bind(this);
+    this.handleChange = this.handleChange.bind(this)
+    this.handleClickOutside = this.handleClickOutside.bind(this)
   }
 
   async handleClickOutside() {
@@ -37,24 +36,30 @@ export class NewTemplate extends Component {
         const { templates } = await getStorages('sync')
         if (templates.length > MAX_TEMPLATES) throw new TF_ERROR('MAX_TEMPLATES')
         await this.props.context.addTemplate([this.template])
-        this.setState(this.baseState, () => this.template = new Template())
+        this.setState(this.baseState, () => (this.template = new Template()))
         this.props.context.setState({
-          notification: { id: randomId(), type: 'addTemplate', params: { level: 'success', message: 'New template added !' } },
+          notification: { id: randomId(), type: 'addTemplate', params: { level: 'success', message: 'New template added !' } }
         })
       } catch (error) {
         if (!this.state.isTooMany || error.code != 300) {
-          this.setState({ isTooMany: error.code == 300 }, () => this.props.context.setState({
-            notification: { id: randomId(), type: 'addTemplate', params: { level: 'error', message: error.code == 300 ? error.message : null } },
-          }))
+          this.setState({ isTooMany: error.code == 300 }, () =>
+            this.props.context.setState({
+              notification: {
+                id: randomId(),
+                type: 'addTemplate',
+                params: { level: 'error', message: error.code == 300 ? error.message : null }
+              }
+            })
+          )
         }
       }
     }
   }
 
   handleFormValid() {
-    const title = this.state["template-title"].trim()
+    const title = this.state['template-title'].trim()
     const description = this.state['template-description'].trim()
-    const type = this.state["template-type"]
+    const type = this.state['template-type']
 
     this.template.title = title
     this.template.description = description
@@ -65,25 +70,30 @@ export class NewTemplate extends Component {
     })
   }
 
-  handleChange({target}) {
-    const name = target.name
-    const value = target.value
+  handleChange({ target }) {
+    const { name } = target
+    const { value } = target
 
-    return this.setState({
-      [name]: value
-    }, () => this.handleFormValid());
+    return this.setState(
+      {
+        [name]: value
+      },
+      () => this.handleFormValid()
+    )
   }
 
   render() {
     return (
-      <div className="new-template-box box-material" style={{height: this.state.isOpen ? 'auto' : 46}}>
-        { !this.state.isOpen
-          ?
-          <div className="new-template-box-closed flex-me flex-align flex-justify-between box-description" onClick={() => this.setState({ isOpen: true })}>
+      <div className="new-template-box box-material" style={{ height: this.state.isOpen ? 'auto' : 46 }}>
+        {!this.state.isOpen ? (
+          <div
+            className="new-template-box-closed flex-me flex-align flex-justify-between box-description"
+            onClick={() => this.setState({ isOpen: true })}
+          >
             <p>New Template</p>
             <FontAwesomeIcon icon={faPlus} size="1x" fixedWidth />
           </div>
-          :
+        ) : (
           <div className="new-template-box-opened">
             <form method="POST" onSubmit={this.handleClickOutside}>
               <div className="template-box-new-title">
@@ -111,7 +121,7 @@ export class NewTemplate extends Component {
               <div className="template-box-new-description">
                 <textarea
                   id="content-template"
-                  value={this.state["template-description"]}
+                  value={this.state['template-description']}
                   className="pdi--15 template-box-new-title-content box-description scrollBarOnHover"
                   name="template-description"
                   autoFocus
@@ -119,17 +129,17 @@ export class NewTemplate extends Component {
                   onChange={this.handleChange}
                   placeholder="New Template"
                   maxLength="500"
-                ></textarea>
+                />
               </div>
               <div className="flex-me flex-justify-between pdi--bottom-7">
                 <CountLetter text={this.state['template-description']} limit={500} />
               </div>
             </form>
           </div>
-        }
+        )}
       </div>
     )
   }
 }
 
-export default onClickOutside(NewTemplate);
+export default onClickOutside(NewTemplate)

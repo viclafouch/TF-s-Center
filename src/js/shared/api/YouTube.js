@@ -1,7 +1,7 @@
-import { YOUTUBE_API_KEYS } from '@private'
 import Video from '@shared/models/Video.class'
 import { TF_ERROR } from '@utils/index'
 import { sendMessageToBackground } from '@utils/browser'
+import { YOUTUBE_API_KEYS } from '@private'
 
 /**
  * Fetch a YouTube channel

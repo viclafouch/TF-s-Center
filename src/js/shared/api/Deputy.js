@@ -1,11 +1,9 @@
-import getVideos from '../../getDom/_videos'
-import getStatistics from '../../getDom/_statistics'
 import queryString from 'query-string'
 import { updateQueryStringParameter, TF_ERROR } from '@utils/index'
+import getVideos from '../../getDom/_videos'
+import getStatistics from '../../getDom/_statistics'
 
-export const fetchHistory = (
-  params = ({ page = null, start_time = null, end_time = null } = {})
-) => {
+export const fetchHistory = (params = ({ page = null, start_time = null, end_time = null } = {})) => {
   const paramsAccepted = ['page', 'start_time', 'end_time']
   let url = 'https://www.youtube.com/flagging_history'
   for (const iterator in params) {
@@ -18,10 +16,7 @@ export const fetchHistory = (
     .then(StringReponse => {
       const fragment = document.createElement('div')
       fragment.innerHTML = StringReponse
-      if (
-        fragment.querySelector('title').textContent.trim() ===
-        '500 Internal Server Error'
-      )
+      if (fragment.querySelector('title').textContent.trim() === '500 Internal Server Error')
         throw new TF_ERROR('INTERNAL_SERVER_ERROR')
       return getVideos(fragment)
     })
@@ -37,21 +32,9 @@ export const fetchStats = () =>
     })
 
 export const fetchSearch = (
-  params = ({
-    search_query = '',
-    page = null,
-    filters = null,
-    exclude_flagged_videos = null,
-    search_id
-  } = {})
+  params = ({ search_query = '', page = null, filters = null, exclude_flagged_videos = null, search_id } = {})
 ) => {
-  const paramsAccepted = [
-    'search_query',
-    'page',
-    'filters',
-    'exclude_flagged_videos',
-    'search_id'
-  ]
+  const paramsAccepted = ['search_query', 'page', 'filters', 'exclude_flagged_videos', 'search_id']
   let url = 'https://www.youtube.com/deputy'
   for (const iterator in params) {
     if (paramsAccepted.includes(iterator)) {
@@ -63,10 +46,7 @@ export const fetchSearch = (
     .then(StringReponse => {
       const fragment = document.createElement('div')
       fragment.innerHTML = StringReponse
-      if (
-        fragment.querySelector('title').textContent.trim() ===
-        '500 Internal Server Error'
-      )
+      if (fragment.querySelector('title').textContent.trim() === '500 Internal Server Error')
         throw new TF_ERROR('INTERNAL_SERVER_ERROR')
       return getVideos(fragment)
     })

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck'
-import svgIcon from '../../../img/sheriff.js'
 import { getStorages } from '@stores/BrowserStorage.js'
+import svgIcon from '../../../img/sheriff.js'
 
 export class FlagButton extends Component {
   constructor() {
@@ -29,12 +29,7 @@ export class FlagButton extends Component {
     const { watchedVideo, videosToFlag } = this.props
 
     return (
-      <button
-        onClick={this.onFlag}
-        className={
-          videosToFlag.find(x => x.id === watchedVideo.id) ? 'active' : ''
-        }
-      >
+      <button onClick={this.onFlag} className={videosToFlag.find(x => x.id === watchedVideo.id) ? 'active' : ''}>
         <span className="span-icon">
           <FontAwesomeIcon icon={faCheck} size="1x" fixedWidth />
         </span>

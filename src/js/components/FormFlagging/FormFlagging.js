@@ -1,35 +1,36 @@
 import React, { Component } from 'react'
 import ToolsFlag from '@components/ToolsFlag/ToolsFlag'
-import VideosList from '@components/VideosList/VideosList';
-import Popup from '@components/Popup/Popup';
+import VideosList from '@components/VideosList/VideosList'
+import Popup from '@components/Popup/Popup'
 import FormReporting from '@components/FormReporting/FormReporting'
-import { YouTubeContext } from '@stores/YouTubeContext';
-import { getUrlParameter } from '@utils';
-import { copyObject } from '@utils/index';
+import { YouTubeContext } from '@stores/YouTubeContext'
+import { copyObject } from '@utils/index'
+import { getUrlParameter } from '@utils'
 
 export class FormFlagging extends Component {
-
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       flag_comments: '',
       reason: '',
       templateIdSelected: '',
       location: props.location
     }
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.location.search !== this.props.location.search) return this.autoCompleteForm()
   }
 
-   /**
+  /**
    * Auto Select videos
    */
   autoSelectVideo(search) {
     const searchText = search.cleanString()
-    const videosDetected = this.props.context.state.videosDisplayed.filter(elem => elem.title.cleanString().search(searchText) !== -1 || elem.description.cleanString().search(searchText) !== -1)
+    const videosDetected = this.props.context.state.videosDisplayed.filter(
+      elem => elem.title.cleanString().search(searchText) !== -1 || elem.description.cleanString().search(searchText) !== -1
+    )
     this.props.context.selectVideos(videosDetected)
   }
 
@@ -40,7 +41,7 @@ export class FormFlagging extends Component {
     let searchValue = search.value || getUrlParameter('search_query')
 
     if (searchValue && (search.autoSelect || getUrlParameter('is_as') === 'true')) {
-      searchValue = searchValue.replace(new RegExp("\\+", "g"), ' ').replace(new RegExp('\\"', "g"), '')
+      searchValue = searchValue.replace(new RegExp('\\+', 'g'), ' ').replace(new RegExp('\\"', 'g'), '')
       this.autoSelectVideo(searchValue)
     }
 
@@ -67,9 +68,9 @@ export class FormFlagging extends Component {
    * @param {Object} context
    */
   handleSelectVideo(video, checked, context) {
-    const { videosDisplayed } = context.state;
-    const videoIndex = videosDisplayed.findIndex(elem => elem.id === video.id);
-    videosDisplayed[videoIndex].selected = checked;
+    const { videosDisplayed } = context.state
+    const videoIndex = videosDisplayed.findIndex(elem => elem.id === video.id)
+    videosDisplayed[videoIndex].selected = checked
     return context.setState({ videosDisplayed })
   }
 
@@ -79,14 +80,14 @@ export class FormFlagging extends Component {
    * @param {Object} context
    */
   handleChange(e, context = {}) {
-    const value = e.target.value
-    const name = e.target.name
+    const { value } = e.target
+    const { name } = e.target
     const previousState = copyObject(this.state)
 
     if (name === 'templateIdSelected' && value !== '') {
-        const template = context.state.templates.find(x => x.id == value)
-        previousState.flag_comments = template.description
-        previousState.reason = template.type
+      const template = context.state.templates.find(x => x.id == value)
+      previousState.flag_comments = template.description
+      previousState.reason = template.type
     }
     previousState[name] = value
     return this.setState(previousState)
@@ -99,7 +100,7 @@ export class FormFlagging extends Component {
 
     return (
       <YouTubeContext.Consumer>
-        {(context) => (
+        {context => (
           <form action="/deputy?action_submit" id="formFlagging" method="POST" className="form-flagging full-heigth">
             <input type="hidden" name="search_query" value={search} />
             <input type="hidden" name="page" value={nbPage} />
@@ -127,7 +128,7 @@ export class FormFlagging extends Component {
                 handleChange={this.handleChange}
               />
             </Popup>
-            <input name="session_token" type="hidden" value={context.state.session_token}></input>
+            <input name="session_token" type="hidden" value={context.state.session_token} />
           </form>
         )}
       </YouTubeContext.Consumer>

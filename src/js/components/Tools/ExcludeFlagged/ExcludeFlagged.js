@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
-import Checkbox from '@components/layouts/Checkbox';
-import { getUrlParameter, updateQueryStringParameter } from '@utils'
+import Checkbox from '@components/layouts/Checkbox'
 import { Redirect } from 'react-router'
+import { getUrlParameter, updateQueryStringParameter } from '@utils'
 
 export class ExcludeFlagged extends Component {
-
   constructor() {
     super()
     this.state = {
-        isExcluded: true,
-        redirectTo: null
+      isExcluded: true,
+      redirectTo: null
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -17,7 +16,7 @@ export class ExcludeFlagged extends Component {
   /* Check the param in url and set it to the state */
   componentDidMount() {
     const isExcluded = !(getUrlParameter('exclude_flagged_videos') == 'false')
-    return this.setState({isExcluded})
+    return this.setState({ isExcluded })
   }
 
   /* Reset redirectTo if a redirection has been set */
@@ -43,8 +42,11 @@ export class ExcludeFlagged extends Component {
   render() {
     if (this.state.redirectTo) return <Redirect to={this.state.redirectTo} />
     return (
-      <div className={'tool tools-exclude-flagged ' + (this.props.disabled ? 'tool-disabled' : '')}>
-        <label className="yt-uix-button yt-uix-button-size-default yt-uix-button-primary flex-me flex-align" htmlFor="excluded-flagged">
+      <div className={`tool tools-exclude-flagged ${this.props.disabled ? 'tool-disabled' : ''}`}>
+        <label
+          className="yt-uix-button yt-uix-button-size-default yt-uix-button-primary flex-me flex-align"
+          htmlFor="excluded-flagged"
+        >
           <span className="mgi--right-6">Exclude previously flagged videos</span>
           <Checkbox
             disabled={this.props.disabled}

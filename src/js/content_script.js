@@ -1,13 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from '@components/App'
-import { wait, getUrlParameter } from '@utils'
 import YouTubeProvider, { YouTubeContext } from '@stores/YouTubeContext'
 import { getStorages } from '@stores/BrowserStorage'
 import getYouTubeDatasFromDOM from '@stores/DatasDom'
 import { BrowserRouter } from 'react-router-dom'
 import { getAllUrlParams, onDeputyLocation } from '@utils/index'
 import ErrorBoundary from '@components/ErrorBoundary/ErrorBoundary'
+import { wait, getUrlParameter } from '@utils'
 
 const style = [
   'background: linear-gradient(to right, #5433ff, #20bdff, #a5fecb);',
@@ -24,24 +24,16 @@ function initExtension(container = null) {
   Promise.all([getStorages('local'), getStorages('sync')])
     .then(async storages => {
       const storage = storages.reduce((a, d) => Object.assign(d, a), {})
-      const pathname = document.location.pathname
+      const { pathname } = document.location
 
       const params = getAllUrlParams()
-      const youtubeDatasFromDOM = await getYouTubeDatasFromDOM(
-        params,
-        pathname,
-        container
-      )
+      const youtubeDatasFromDOM = await getYouTubeDatasFromDOM(params, pathname, container)
 
-      const youtubeDatasDeputy = youtubeDatasFromDOM.reduce(
-        (a, d) => Object.assign(d, a),
-        {}
-      )
+      const youtubeDatasDeputy = youtubeDatasFromDOM.reduce((a, d) => Object.assign(d, a), {})
 
       if (onDeputyLocation()) {
         while (!document.querySelector('[name="session_token"]')) await wait(50)
-        const session_token = document.querySelector('[name="session_token"]')
-          .value
+        const session_token = document.querySelector('[name="session_token"]').value
         youtubeDatasDeputy.session_token = session_token
         document.body.innerHTML = ''
         document.body.appendChild(myReactApp)
@@ -63,18 +55,10 @@ function initExtension(container = null) {
       await new Promise(resolve =>
         ReactDOM.render(
           <ErrorBoundary>
-            <YouTubeProvider
-              storage={storage}
-              youtubeDatasDeputy={youtubeDatasDeputy}
-            >
+            <YouTubeProvider storage={storage} youtubeDatasDeputy={youtubeDatasDeputy}>
               <BrowserRouter>
                 <YouTubeContext.Consumer>
-                  {context => (
-                    <App
-                      context={context}
-                      notification={context.state.notification}
-                    />
-                  )}
+                  {context => <App context={context} notification={context.state.notification} />}
                 </YouTubeContext.Consumer>
               </BrowserRouter>
             </YouTubeProvider>
@@ -129,11 +113,8 @@ window.onload = function() {
     if (
       pathname === '/watch' &&
       document.querySelector('[video-id]') &&
-      document.querySelector('[video-id]').getAttribute('video-id') ===
-        getUrlParameter('v') &&
-      document
-        .getElementById('menu-container')
-        .querySelector('#top-level-buttons') &&
+      document.querySelector('[video-id]').getAttribute('video-id') === getUrlParameter('v') &&
+      document.getElementById('menu-container').querySelector('#top-level-buttons') &&
       document.getElementById('meta-contents') &&
       document.getElementById('meta-contents').querySelector('#upload-info') &&
       !arrivedOnCanAppear
@@ -142,16 +123,12 @@ window.onload = function() {
       actualHref = href
       // await wait(500) // TODO // Actually, if you goback to the same watch video, the dom will be recreated.
       removeContainers()
-      const container = document
-        .getElementById('menu-container')
-        .querySelector('#top-level-buttons')
+      const container = document.getElementById('menu-container').querySelector('#top-level-buttons')
       containers.add(container)
       initExtension()
     } else if (pathname === '/results') {
       actualHref = href
-      for (const container of Array.from(
-        document.querySelectorAll('ytd-video-renderer')
-      )) {
+      for (const container of Array.from(document.querySelectorAll('ytd-video-renderer'))) {
         if (!containers.has(container)) {
           containers.add(container)
           initExtension(container)
@@ -160,9 +137,7 @@ window.onload = function() {
     } else if (pathname.includes('/videos')) {
       actualHref = href
 
-      for (const container of Array.from(
-        document.querySelectorAll('ytd-grid-video-renderer')
-      )) {
+      for (const container of Array.from(document.querySelectorAll('ytd-grid-video-renderer'))) {
         if (!containers.has(container)) {
           containers.add(container)
           initExtension(container)

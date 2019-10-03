@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Button = (props) => {
+const Button = props => {
   let className = 'yt-uix-button yt-uix-button-size-default '
-  if (props.blue) className = className + 'yt-uix-button-primary '
-  else className = className + 'yt-uix-white-primary '
-  className = (props.className) ? className+props.className : className
+  if (props.blue) className += 'yt-uix-button-primary '
+  else className += 'yt-uix-white-primary '
+  className = props.className ? className + props.className : className
 
   return (
     <button
@@ -13,10 +13,10 @@ const Button = (props) => {
       name={props.name || ''}
       disabled={props.disabled || false}
       onClick={props.onClick}
-      type={props.type || "button"}
+      type={props.type || 'button'}
     >
       {props.children}
-      </button>
+    </button>
   )
 }
 

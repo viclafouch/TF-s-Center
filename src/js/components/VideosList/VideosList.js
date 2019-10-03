@@ -1,18 +1,13 @@
 import React, { Component } from 'react'
-import VideoListItem from './VideoListItem'
 import { withRouter } from 'react-router'
-import Popup from '../Popup/Popup'
 import Video from '@shared/models/Video.class'
-import VideoDetail from '../VideoDetail/VideoDetail'
-import Loader from '../layouts/Loader'
 import { YouTubeContext } from '@stores/YouTubeContext'
 import { fetchYouTubeChannel, fetchYouTubeVideo } from '@shared/api/YouTube'
-import {
-  redirectToWebCache,
-  setStateAsync,
-  wrapURLs,
-  randomId
-} from '@utils/index'
+import { redirectToWebCache, setStateAsync, wrapURLs, randomId } from '@utils/index'
+import Loader from '../layouts/Loader'
+import VideoDetail from '../VideoDetail/VideoDetail'
+import Popup from '../Popup/Popup'
+import VideoListItem from './VideoListItem'
 
 export class VideosList extends Component {
   constructor() {
@@ -36,11 +31,7 @@ export class VideosList extends Component {
    */
   async getInfoVideo(video) {
     if (!video.id) return
-    if (video.isRemoved)
-      return redirectToWebCache(
-        `https://www.youtube.com/watch?v=${video.id}`,
-        true
-      )
+    if (video.isRemoved) return redirectToWebCache(`https://www.youtube.com/watch?v=${video.id}`, true)
 
     try {
       await setStateAsync({ isLoading: true }, this)
@@ -69,9 +60,7 @@ export class VideosList extends Component {
           videosToFlag.splice(videoTargetIndex, 1)
           this.props.context.setState({
             videosToFlag,
-            videosDisplayed: this.props.context.state.onToFlag
-              ? videosToFlag
-              : this.props.context.state.videosDisplayed
+            videosDisplayed: this.props.context.state.onToFlag ? videosToFlag : this.props.context.state.videosDisplayed
           })
         }
       }
@@ -85,8 +74,7 @@ export class VideosList extends Component {
    * @param {Object} prevProps
    */
   componentDidUpdate(prevProps) {
-    if (prevProps.location.key !== this.props.location.key)
-      this.containerScroller.current.scrollTop = 0
+    if (prevProps.location.key !== this.props.location.key) this.containerScroller.current.scrollTop = 0
   }
 
   /**
@@ -106,58 +94,44 @@ export class VideosList extends Component {
    */
   handleChange(e) {
     e.stopPropagation()
-    const id = e.target.id
+    const { id } = e.target
     const video = this.props.videos.find(x => x.id === id)
-    if (video && this.props.canFlag)
-      return this.props.onSelect(video, e.target.checked)
-    return
+    if (video && this.props.canFlag) return this.props.onSelect(video, e.target.checked)
   }
 
   render() {
     const { videos } = this.props
     return (
-      <div
-        className="container-list scrollBarOnHover main-body"
-        ref={this.containerScroller}
-      >
+      <div className="container-list scrollBarOnHover main-body" ref={this.containerScroller}>
         {this.state.isLoading && <Loader />}
         <YouTubeContext.Consumer>
           {context => (
-            <ul
-              className={
-                'videos-list pdi--top-0 ' +
-                (context.state.displaying === 'column' ? 'byColumns' : 'byRows')
-              }
-            >
-              {videos.map((elem, index) => {
-                return (
-                  <li key={index}>
-                    {this.props.canFlag && (
-                      <input
-                        type="checkbox"
-                        id={elem.id}
-                        className="yt-uix-form-input-checkbox deputy-flag-video-checkbox"
-                        value={elem.id}
-                        name="selected_vid"
-                        checked={elem.selected}
-                        onChange={this.handleChange}
-                        style={{
-                          position: 'absolute',
-                          top: context.state.displaying === 'column' ? 2 : 3,
-                          left: context.state.displaying === 'column' ? 2 : 3
-                        }}
-                      />
-                    )}
-                    <VideoListItem
-                      video={elem}
-                      onSelect={() => this.getInfoVideo(elem)}
-                      onCheck={e =>
-                        this.props.canFlag && this.checkedVideo(e, elem)
-                      }
+            <ul className={`videos-list pdi--top-0 ${context.state.displaying === 'column' ? 'byColumns' : 'byRows'}`}>
+              {videos.map((elem, index) => (
+                <li key={index}>
+                  {this.props.canFlag && (
+                    <input
+                      type="checkbox"
+                      id={elem.id}
+                      className="yt-uix-form-input-checkbox deputy-flag-video-checkbox"
+                      value={elem.id}
+                      name="selected_vid"
+                      checked={elem.selected}
+                      onChange={this.handleChange}
+                      style={{
+                        position: 'absolute',
+                        top: context.state.displaying === 'column' ? 2 : 3,
+                        left: context.state.displaying === 'column' ? 2 : 3
+                      }}
                     />
-                  </li>
-                )
-              })}
+                  )}
+                  <VideoListItem
+                    video={elem}
+                    onSelect={() => this.getInfoVideo(elem)}
+                    onCheck={e => this.props.canFlag && this.checkedVideo(e, elem)}
+                  />
+                </li>
+              ))}
             </ul>
           )}
         </YouTubeContext.Consumer>
