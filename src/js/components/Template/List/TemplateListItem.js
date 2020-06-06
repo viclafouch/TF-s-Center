@@ -22,12 +22,20 @@ export class TemplateListItem extends Component {
       if (svgTarget) {
         await context.removeTemplate([template])
         await context.setState({
-          notification: { id: randomId(), type: 'removeTemplate', params: { level: 'success', message: 'Template removed !' } }
+          notification: {
+            id: randomId(),
+            type: 'removeTemplate',
+            params: { level: 'success', message: 'Template removed !' }
+          }
         })
       }
     } catch (error) {
       context.setState({
-        notification: { id: randomId(), type: 'removeTemplate', params: { level: 'error', message: error.message } }
+        notification: {
+          id: randomId(),
+          type: 'removeTemplate',
+          params: { level: 'error', message: error.message }
+        }
       })
     }
   }

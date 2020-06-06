@@ -5,8 +5,12 @@ const statistics = function getStatistics(root = document) {
     const allFlagsNode = root.querySelectorAll('.report-stat')[1]
     const allActionedNode = root.querySelectorAll('.report-stat')[0]
 
-    const allFlagsNumber = parseInt(allFlagsNode.textContent.replace(/\D+/g, ''))
-    const allActionedNumber = parseInt(allActionedNode.textContent.replace(/\D+/g, ''))
+    const allFlagsNumber = parseInt(
+      allFlagsNode.textContent.replace(/\D+/g, '')
+    )
+    const allActionedNumber = parseInt(
+      allActionedNode.textContent.replace(/\D+/g, '')
+    )
 
     statistics = {
       allFlagged: allFlagsNumber,

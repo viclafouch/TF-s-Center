@@ -12,17 +12,30 @@ const AnalyticsContainer = () => (
         <TableResum />
       </div>
       <div className="mgi--10">
-        <YouTubeContext.Consumer>{context => <LastSevenDays context={context} />}</YouTubeContext.Consumer>
+        <YouTubeContext.Consumer>
+          {context => <LastSevenDays context={context} />}
+        </YouTubeContext.Consumer>
       </div>
       <div className="mgi--20">
         <div className="row">
           <div className="column one-half pie-box box-material">
-            <h2 className="title-chart center-text mgi--bottom-10">Templates sort by videos flagged</h2>
-            <YouTubeContext.Consumer>{context => <BestTemplates context={context} />}</YouTubeContext.Consumer>
+            <h2 className="title-chart center-text mgi--bottom-10">
+              Templates sort by videos flagged
+            </h2>
+            <YouTubeContext.Consumer>
+              {context => <BestTemplates context={context} />}
+            </YouTubeContext.Consumer>
           </div>
-          <div className="column one-half pie-box box-material" style={{ marginLeft: '4%' }}>
-            <h2 className="title-chart center-text mgi--bottom-10">Searches sort by videos flagged</h2>
-            <YouTubeContext.Consumer>{context => <BestSearches context={context} />}</YouTubeContext.Consumer>
+          <div
+            className="column one-half pie-box box-material"
+            style={{ marginLeft: '4%' }}
+          >
+            <h2 className="title-chart center-text mgi--bottom-10">
+              Searches sort by videos flagged
+            </h2>
+            <YouTubeContext.Consumer>
+              {context => <BestSearches context={context} />}
+            </YouTubeContext.Consumer>
           </div>
         </div>
       </div>

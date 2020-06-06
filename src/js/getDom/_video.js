@@ -34,16 +34,23 @@ const video = function getVideo(idWatch, container) {
     if (container.querySelector('#description-text')) {
       description = container.querySelector('#description-text').textContent
       channelTitle = container.querySelector('.ytd-channel-name').textContent
-      channelUrl = container.querySelector('.ytd-channel-name').firstElementChild.href
+      channelUrl = container.querySelector('.ytd-channel-name')
+        .firstElementChild.href
     } else {
       description = ''
       channelTitle = document.getElementById('channel-name').textContent
-      channelUrl = document.getElementById('menu').firstElementChild.href.split('/videos')[0]
+      channelUrl = document
+        .getElementById('menu')
+        .firstElementChild.href.split('/videos')[0]
     }
 
-    viewCount = container.querySelector('#metadata-line').firstElementChild.textContent
-    videoAddedTime = container.querySelector('#metadata-line').firstElementChild.nextSibling.textContent
-    idWatch = new URL(container.querySelector('#video-title').href).searchParams.get('v')
+    viewCount = container.querySelector('#metadata-line').firstElementChild
+      .textContent
+    videoAddedTime = container.querySelector('#metadata-line').firstElementChild
+      .nextSibling.textContent
+    idWatch = new URL(
+      container.querySelector('#video-title').href
+    ).searchParams.get('v')
   }
   return {
     watchedVideo: new Video({

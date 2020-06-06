@@ -24,7 +24,8 @@ export class ToolsFlag extends Component {
                 {this.props.canFlag && (
                   <Button
                     className={
-                      context.state.videosDisplayed.filter(x => x.selected).length === context.state.videosDisplayed.length &&
+                      context.state.videosDisplayed.filter(x => x.selected)
+                        .length === context.state.videosDisplayed.length &&
                       context.state.videosDisplayed.length !== 0
                         ? 'active'
                         : ''
@@ -40,7 +41,10 @@ export class ToolsFlag extends Component {
                   <Button
                     className="mgi--left-10"
                     blue
-                    disabled={context.state.videosDisplayed.filter(x => x.selected).length === 0}
+                    disabled={
+                      context.state.videosDisplayed.filter(x => x.selected)
+                        .length === 0
+                    }
                     onClick={() => context.removeVideosToFlag()}
                   >
                     Remove from the list

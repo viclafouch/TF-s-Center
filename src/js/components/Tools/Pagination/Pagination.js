@@ -7,7 +7,12 @@ const Pagination = ({ pages }) => (
     {pages.length !== 0 && (
       <div className="tools-pagination">
         {pages.map((elem, index) => (
-          <NavLink key={index} to={elem.url} className="mgi--right-4" activeClassName="active">
+          <NavLink
+            key={index}
+            to={elem.url}
+            className="mgi--right-4"
+            activeClassName="active"
+          >
             <Button blue className={elem.isActual ? 'active' : ''}>
               {elem.isNext ? 'Next' : elem.isPrev ? 'Prev' : elem.numPage}
             </Button>

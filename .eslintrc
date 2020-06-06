@@ -1,7 +1,0 @@
-{
-  "extends": ["@viclafouch/eslint-config-viclafouch"],
-  "globals": {
-    "chrome": true,
-    "browser": true
-  }
-}

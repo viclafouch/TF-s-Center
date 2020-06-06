@@ -40,7 +40,9 @@ export class SelectingTime extends Component {
     timestamp_to = new Date(timestamp_to * 1000)
 
     return this.setState(prevState => ({
-      date_from: isValidDate(timestamp_from) ? timestamp_from : prevState.date_from,
+      date_from: isValidDate(timestamp_from)
+        ? timestamp_from
+        : prevState.date_from,
       date_to: isValidDate(timestamp_to) ? timestamp_to : prevState.date_to
     }))
   }
@@ -48,12 +50,17 @@ export class SelectingTime extends Component {
   async handleSubmit(e) {
     e.preventDefault()
 
-    if (this.state.date_to > new Date()) await setStateAsync({ date_to: new Date() }, this)
+    if (this.state.date_to > new Date())
+      await setStateAsync({ date_to: new Date() }, this)
 
     const timestamp_from = getUnixFromDate(this.state.date_from)
     const timestamp_to = getUnixFromDate(this.state.date_to)
 
-    let url = updateQueryStringParameter('/flagging_history', 'start_time', timestamp_from)
+    let url = updateQueryStringParameter(
+      '/flagging_history',
+      'start_time',
+      timestamp_from
+    )
     url = updateQueryStringParameter(url, 'end_time', timestamp_to)
 
     return this.setState({
@@ -64,11 +71,17 @@ export class SelectingTime extends Component {
   render() {
     const minDate = {
       date_from: null,
-      date_to: new Date(copyDate(this.state.date_from).setDate(this.state.date_from.getDate() + 1))
+      date_to: new Date(
+        copyDate(this.state.date_from).setDate(
+          this.state.date_from.getDate() + 1
+        )
+      )
     }
 
     const maxDate = {
-      date_from: new Date(copyDate(this.state.date_to).setDate(this.state.date_to.getDate() - 1)),
+      date_from: new Date(
+        copyDate(this.state.date_to).setDate(this.state.date_to.getDate() - 1)
+      ),
       date_to: new Date()
     }
 

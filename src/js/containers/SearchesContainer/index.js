@@ -7,11 +7,15 @@ const SearchesContainer = () => (
   <div className="full-heigth main-body">
     <div className="searches-container container-scrollable scrollBarOnHover">
       <div className="pdi--10">
-        <YouTubeContext.Consumer>{context => <NewSearches context={context} />}</YouTubeContext.Consumer>
+        <YouTubeContext.Consumer>
+          {context => <NewSearches context={context} />}
+        </YouTubeContext.Consumer>
       </div>
       <div className="pdi--10">
         <YouTubeContext.Consumer>
-          {context => <>{context.state.searches.length > 0 && <ListSearches />}</>}
+          {context => (
+            <>{context.state.searches.length > 0 && <ListSearches />}</>
+          )}
         </YouTubeContext.Consumer>
       </div>
     </div>

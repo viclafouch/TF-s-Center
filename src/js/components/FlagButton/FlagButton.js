@@ -29,7 +29,12 @@ export class FlagButton extends Component {
     const { watchedVideo, videosToFlag } = this.props
 
     return (
-      <button onClick={this.onFlag} className={videosToFlag.find(x => x.id === watchedVideo.id) ? 'active' : ''}>
+      <button
+        onClick={this.onFlag}
+        className={
+          videosToFlag.find(x => x.id === watchedVideo.id) ? 'active' : ''
+        }
+      >
         <span className="span-icon">
           <FontAwesomeIcon icon={faCheck} size="1x" fixedWidth />
         </span>

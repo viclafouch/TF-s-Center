@@ -1,4 +1,5 @@
-export const getDateFormat = date => `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+export const getDateFormat = date =>
+  `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
 
 export const sevenLastDays = Array(7)
   .fill()
@@ -11,9 +12,12 @@ export const sevenLastDays = Array(7)
     }
   })
 
-const months = Array.from({ length: 12 }, (x, index) => new Date(0, index).toLocaleDateString('en-US', { month: 'short' }))
+const months = Array.from({ length: 12 }, (x, index) =>
+  new Date(0, index).toLocaleDateString('en-US', { month: 'short' })
+)
 
-export const getDateAwesome = date => `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`
+export const getDateAwesome = date =>
+  `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`
 
 export const copyDate = date => new Date(date.getTime())
 

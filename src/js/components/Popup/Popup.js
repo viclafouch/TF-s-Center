@@ -13,10 +13,22 @@ export class Popup extends Component {
     return (
       <YouTubeContext.Consumer>
         {context => (
-          <div className={`popup ${this.props.type === context.state.modal.type && context.state.modal.isOpen ? 'active' : ''}`}>
+          <div
+            className={`popup ${
+              this.props.type === context.state.modal.type &&
+              context.state.modal.isOpen
+                ? 'active'
+                : ''
+            }`}
+          >
             <div className="overlay" onClick={() => this.closeModal(context)} />
-            <div className="container" style={{ maxWidth: this.props.maxWidth || '' }}>
-              {React.cloneElement(this.props.children, { closeModal: () => this.closeModal(context) })}
+            <div
+              className="container"
+              style={{ maxWidth: this.props.maxWidth || '' }}
+            >
+              {React.cloneElement(this.props.children, {
+                closeModal: () => this.closeModal(context)
+              })}
             </div>
           </div>
         )}

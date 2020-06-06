@@ -37,15 +37,24 @@ export class FilterPeriod extends Component {
 
   handleChange(e) {
     const period = e.target.value
-    if (!this.periods.find(x => x.value == period) || this.props.disabled) return
-    const url = updateQueryStringParameter(window.location.pathname + window.location.search, 'filters', period)
+    if (!this.periods.find(x => x.value == period) || this.props.disabled)
+      return
+    const url = updateQueryStringParameter(
+      window.location.pathname + window.location.search,
+      'filters',
+      period
+    )
     return this.setState({ redirectTo: url, filters: period })
   }
 
   render() {
     if (this.state.redirectTo) return <Redirect to={this.state.redirectTo} />
     return (
-      <div className={`tool tools-filter-period ${this.props.disabled ? 'tool-disabled' : ''}`}>
+      <div
+        className={`tool tools-filter-period ${
+          this.props.disabled ? 'tool-disabled' : ''
+        }`}
+      >
         <Select
           blue
           disabled={this.props.disabled}

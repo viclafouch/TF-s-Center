@@ -34,11 +34,16 @@ export class NewTemplate extends Component {
     else {
       try {
         const { templates } = await getStorages('sync')
-        if (templates.length > MAX_TEMPLATES) throw new TF_ERROR('MAX_TEMPLATES')
+        if (templates.length > MAX_TEMPLATES)
+          throw new TF_ERROR('MAX_TEMPLATES')
         await this.props.context.addTemplate([this.template])
         this.setState(this.baseState, () => (this.template = new Template()))
         this.props.context.setState({
-          notification: { id: randomId(), type: 'addTemplate', params: { level: 'success', message: 'New template added !' } }
+          notification: {
+            id: randomId(),
+            type: 'addTemplate',
+            params: { level: 'success', message: 'New template added !' }
+          }
         })
       } catch (error) {
         if (!this.state.isTooMany || error.code != 300) {
@@ -47,7 +52,10 @@ export class NewTemplate extends Component {
               notification: {
                 id: randomId(),
                 type: 'addTemplate',
-                params: { level: 'error', message: error.code == 300 ? error.message : null }
+                params: {
+                  level: 'error',
+                  message: error.code == 300 ? error.message : null
+                }
               }
             })
           )
@@ -66,7 +74,11 @@ export class NewTemplate extends Component {
     this.template.type = type
 
     return this.setState({
-      formValid: title.length > 0 && labels.find(x => x.value === type) && description.length > 0 && description.length <= 500
+      formValid:
+        title.length > 0 &&
+        labels.find(x => x.value === type) &&
+        description.length > 0 &&
+        description.length <= 500
     })
   }
 
@@ -84,7 +96,10 @@ export class NewTemplate extends Component {
 
   render() {
     return (
-      <div className="new-template-box box-material" style={{ height: this.state.isOpen ? 'auto' : 46 }}>
+      <div
+        className="new-template-box box-material"
+        style={{ height: this.state.isOpen ? 'auto' : 46 }}
+      >
         {!this.state.isOpen ? (
           <div
             className="new-template-box-closed flex-me flex-align flex-justify-between box-description"
@@ -132,7 +147,10 @@ export class NewTemplate extends Component {
                 />
               </div>
               <div className="flex-me flex-justify-between pdi--bottom-7">
-                <CountLetter text={this.state['template-description']} limit={500} />
+                <CountLetter
+                  text={this.state['template-description']}
+                  limit={500}
+                />
               </div>
             </form>
           </div>

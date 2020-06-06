@@ -9,7 +9,9 @@ export class Video {
     this.id = video.id
     this.channelUrl = video.channelUrl
     this.channelId = video.channelId
-    this.publishedAt = video.publishedAt ? new Date(video.publishedAt) : new Date()
+    this.publishedAt = video.publishedAt
+      ? new Date(video.publishedAt)
+      : new Date()
     this.tags = video.tags || []
     this.active = true
     this.isRemoved = video.isRemoved || false

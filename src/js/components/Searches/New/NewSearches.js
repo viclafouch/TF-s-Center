@@ -31,18 +31,26 @@ export class NewSearches extends Component {
     try {
       this.props.context.setState({ search: `"${value}"` })
       return this.setState({
-        redirectTo: trySearch(value, { isAS: this.state['search-auto-select'], templateId: this.state['search-template-id'] })
+        redirectTo: trySearch(value, {
+          isAS: this.state['search-auto-select'],
+          templateId: this.state['search-template-id']
+        })
       })
     } catch (error) {
       this.props.context.setState({
-        notification: { id: randomId(), type: 'goSearch', params: { level: 'error', message: error.message } }
+        notification: {
+          id: randomId(),
+          type: 'goSearch',
+          params: { level: 'error', message: error.message }
+        }
       })
     }
   }
 
   handleChange(e) {
     const { name } = e.target
-    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value
+    const value =
+      e.target.type === 'checkbox' ? e.target.checked : e.target.value
     return this.setState({
       [name]: value
     })
@@ -64,11 +72,19 @@ export class NewSearches extends Component {
       ])
       await setStateAsync(this.baseState, this)
       this.props.context.setState({
-        notification: { id: randomId(), type: 'addSearch', params: { level: 'success', message: 'New search added !' } }
+        notification: {
+          id: randomId(),
+          type: 'addSearch',
+          params: { level: 'success', message: 'New search added !' }
+        }
       })
     } catch (error) {
       this.props.context.setState({
-        notification: { id: randomId(), type: 'addSearch', params: { level: 'error', message: error.message } }
+        notification: {
+          id: randomId(),
+          type: 'addSearch',
+          params: { level: 'error', message: error.message }
+        }
       })
     }
   }
@@ -120,7 +136,11 @@ export class NewSearches extends Component {
               htmlFor="search-auto-select"
             >
               <span className="mgi--right-6">Active auto-select</span>
-              <Checkbox checked={this.state['search-auto-select']} onChange={this.handleChange} name="search-auto-select" />
+              <Checkbox
+                checked={this.state['search-auto-select']}
+                onChange={this.handleChange}
+                name="search-auto-select"
+              />
             </label>
           </div>
         </form>

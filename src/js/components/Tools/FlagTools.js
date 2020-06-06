@@ -11,7 +11,9 @@ const FlagTools = context => (
       <div className="mgi--right-10">
         <Button
           blue
-          disabled={!context.state.videosDisplayed.filter(x => x.selected).length}
+          disabled={
+            !context.state.videosDisplayed.filter(x => x.selected).length
+          }
           onClick={() => context.openModal('form-flagging')}
         >
           Flag selected videos

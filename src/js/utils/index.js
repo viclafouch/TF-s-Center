@@ -18,13 +18,19 @@ export function getUrlParameter(sParam) {
 export const randomId = () => Math.floor(Math.random() * 1000000)
 
 export const redirectToWebCache = (link, newTab = true) =>
-  window.open(`http://webcache.googleusercontent.com/search?q=cache:${link}`, newTab ? '_blank' : '')
+  window.open(
+    `http://webcache.googleusercontent.com/search?q=cache:${link}`,
+    newTab ? '_blank' : ''
+  )
 
-export const setStateAsync = (state, self) => new Promise(resolve => self.setState(state, resolve))
+export const setStateAsync = (state, self) =>
+  new Promise(resolve => self.setState(state, resolve))
 
-export const wait = (amount = 0) => new Promise(resolve => setTimeout(resolve, amount))
+export const wait = (amount = 0) =>
+  new Promise(resolve => setTimeout(resolve, amount))
 
-export const onDeputyLocation = ({ pathname } = document.location) => pathname === '/deputy' || pathname === '/flagging_history'
+export const onDeputyLocation = ({ pathname } = document.location) =>
+  pathname === '/deputy' || pathname === '/flagging_history'
 
 export function updateQueryStringParameter(uri, key, value) {
   const re = new RegExp(`([?&])${key}=.*?(&|$)`, 'i')
@@ -36,7 +42,10 @@ export function updateQueryStringParameter(uri, key, value) {
 export const copyObject = obj => JSON.parse(JSON.stringify(obj))
 
 export const trySearch = (text, { searchId, isAS, templateId }) => {
-  const urlEncodade = encodeURIComponent(`"${text.trim()}"`).replace(/%20/g, '+')
+  const urlEncodade = encodeURIComponent(`"${text.trim()}"`).replace(
+    /%20/g,
+    '+'
+  )
   let url = `/deputy?search_query=${urlEncodade}`
   url = searchId ? `${url}&search_id=${searchId}` : url
   url = isAS ? `${url}&is_as=true` : url
@@ -69,7 +78,8 @@ export function getAllUrlParams(url) {
       let paramValue = typeof a[1] === 'undefined' ? true : a[1]
 
       paramName = paramName.toLowerCase()
-      if (typeof paramValue === 'string') paramValue = decodeURIComponent(paramValue.toLowerCase())
+      if (typeof paramValue === 'string')
+        paramValue = decodeURIComponent(paramValue.toLowerCase())
 
       if (paramName.match(/\[(\d+)?\]$/)) {
         const key = paramName.replace(/\[(\d+)?\]/, '')

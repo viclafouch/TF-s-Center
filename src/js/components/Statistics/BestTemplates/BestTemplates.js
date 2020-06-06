@@ -43,7 +43,9 @@ const BestTemplates = ({ context }) => {
       {
         data: templates.map(el => el.nb_flagged),
         backgroundColor: templates.map((el, index) => default_colors[index]),
-        hoverBackgroundColor: templates.map((el, index) => default_colors[index])
+        hoverBackgroundColor: templates.map(
+          (el, index) => default_colors[index]
+        )
       }
     ]
   }

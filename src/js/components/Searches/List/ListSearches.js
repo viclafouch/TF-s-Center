@@ -33,10 +33,16 @@ export class ListSearches extends Component {
   redirectSearch(search, context) {
     try {
       context.setState({ search: `"${search.value}"` })
-      return this.setState({ redirectTo: trySearch(search.value, { searchId: search.id }) })
+      return this.setState({
+        redirectTo: trySearch(search.value, { searchId: search.id })
+      })
     } catch (error) {
       context.setState({
-        notification: { id: randomId(), type: 'goSearch', params: { level: 'error', message: error.message } }
+        notification: {
+          id: randomId(),
+          type: 'goSearch',
+          params: { level: 'error', message: error.message }
+        }
       })
     }
   }
@@ -47,11 +53,19 @@ export class ListSearches extends Component {
       await context.removeSearch(searchesSelected)
       const message = searchesSelected.length > 1 ? 'Searches' : 'Search'
       context.setState({
-        notification: { id: randomId(), type: 'removeSearch', params: { level: 'success', message: `${message} removed !` } }
+        notification: {
+          id: randomId(),
+          type: 'removeSearch',
+          params: { level: 'success', message: `${message} removed !` }
+        }
       })
     } catch (error) {
       context.setState({
-        notification: { id: randomId(), type: 'removeSearch', params: { level: 'error', message: error.message } }
+        notification: {
+          id: randomId(),
+          type: 'removeSearch',
+          params: { level: 'error', message: error.message }
+        }
       })
     }
   }
@@ -64,7 +78,10 @@ export class ListSearches extends Component {
           <div className="box-material table-searches">
             <form>
               <div className="flex-me flex-justify-end">
-                <Button disabled={!context.state.searches.find(x => x.selected)} onClick={() => this.handleRemove(context)}>
+                <Button
+                  disabled={!context.state.searches.find(x => x.selected)}
+                  onClick={() => this.handleRemove(context)}
+                >
                   Remove
                 </Button>
               </div>
@@ -73,7 +90,10 @@ export class ListSearches extends Component {
                   <tr>
                     <th>
                       <Checkbox
-                        checked={context.state.searches.filter(x => x.selected).length === context.state.searches.length}
+                        checked={
+                          context.state.searches.filter(x => x.selected)
+                            .length === context.state.searches.length
+                        }
                         onChange={() => context.selectAll('searches')}
                       />
                     </th>
@@ -93,16 +113,27 @@ export class ListSearches extends Component {
                           id={elem.id}
                           value={elem.id}
                           name="select_search"
-                          checked={elem.selected}
                           onChange={e => this.handleChange(e, context)}
                         />
                       </th>
                       <th scope="row">{index}</th>
                       <td>{elem.value}</td>
                       <td>{elem.getTemplate(context).title}</td>
-                      <td>{elem.autoSelect && <FontAwesomeIcon icon={faCheck} size="1x" fixedWidth />}</td>
                       <td>
-                        <Button onClick={() => this.redirectSearch(elem, context)}>Go</Button>
+                        {elem.autoSelect && (
+                          <FontAwesomeIcon
+                            icon={faCheck}
+                            size="1x"
+                            fixedWidth
+                          />
+                        )}
+                      </td>
+                      <td>
+                        <Button
+                          onClick={() => this.redirectSearch(elem, context)}
+                        >
+                          Go
+                        </Button>
                       </td>
                     </tr>
                   ))}

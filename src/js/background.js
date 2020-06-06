@@ -18,17 +18,22 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     setBadgeText(request.items.videosToFlag.length)
     sendResponse(true)
   } else if (request.type === 'fetchYouTubeVideo') {
-    fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${request.items.videoID}&key=${YOUTUBE_API_KEYS}`)
+    fetch(
+      `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${request.items.videoID}&key=${YOUTUBE_API_KEYS}`
+    )
       .then(response => response.json())
       .then(response => {
         if (!response.items) throw new Error()
-        if (response.items.length < 1) throw new TF_ERROR('ERROR_GET_VIDEO_DELETED')
+        if (response.items.length < 1)
+          throw new TF_ERROR('ERROR_GET_VIDEO_DELETED')
         return response.items[0].snippet
       })
       .then(video => sendResponse(video))
       .catch(error => sendResponse({ error }))
   } else if (request.type === 'fetchYouTubeChannel') {
-    fetch(`https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${request.items.channelID}&key=${YOUTUBE_API_KEYS}`)
+    fetch(
+      `https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${request.items.channelID}&key=${YOUTUBE_API_KEYS}`
+    )
       .then(response => response.json())
       .then(response => {
         if (!response.items) throw new Error()

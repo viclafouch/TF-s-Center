@@ -56,7 +56,12 @@ class Popup extends Component {
         <ul className="nav-link">
           {this.state.links.map((elem, index) => (
             <li key={index}>
-              <a href={elem.href} data-href={elem.href} className="youtube-link" onClick={this.redirectToTabs}>
+              <a
+                href={elem.href}
+                data-href={elem.href}
+                className="youtube-link"
+                onClick={this.redirectToTabs}
+              >
                 <span className="span-icon">
                   <FontAwesomeIcon icon={elem.svg} size="1x" fixedWidth />
                 </span>

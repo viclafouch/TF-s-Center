@@ -5,8 +5,14 @@ const CountLetter = ({ text, limit, className, style }) => {
 
   return (
     <div className={`countletter ${className || ''}`} style={style || {}}>
-      <span className={quota < 0.75 ? '' : quota < 0.9 ? 'orange-color' : 'red-color'}>{text.trim().length}</span>/
-      <span>{limit}</span>
+      <span
+        className={
+          quota < 0.75 ? '' : quota < 0.9 ? 'orange-color' : 'red-color'
+        }
+      >
+        {text.trim().length}
+      </span>
+      /<span>{limit}</span>
     </div>
   )
 }

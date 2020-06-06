@@ -17,16 +17,25 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.notification.id !== this.props.notification.id && this.props.notification.id) {
+    if (
+      prevProps.notification.id !== this.props.notification.id &&
+      this.props.notification.id
+    ) {
       this.addNotification(this.props.notification.params)
       const url = this.props.location.pathname + this.props.location.search
-      if (this.props.notification.type === 'flaggedVideos' && this.props.notification.params.level === 'success')
+      if (
+        this.props.notification.type === 'flaggedVideos' &&
+        this.props.notification.params.level === 'success'
+      )
         this.props.history.push(url)
     }
   }
 
   addNotification({ level = 'success', message } = {}) {
-    if (level === 'error') message = !Object.values(ERRORS).find(x => x.message === message) ? 'An error occurred !' : message
+    if (level === 'error')
+      message = !Object.values(ERRORS).find(x => x.message === message)
+        ? 'An error occurred !'
+        : message
     const notification = this.notificationSystem.current
     notification.addNotification({
       message,
@@ -57,7 +66,10 @@ class App extends Component {
           <div className="main-container">
             {this.props.context.state.isFetchingSlow && <Loader />}
             <AppRouter context={this.props.context} />
-            <NotificationSystem ref={this.notificationSystem} style={notificationStyle} />
+            <NotificationSystem
+              ref={this.notificationSystem}
+              style={notificationStyle}
+            />
           </div>
         </main>
         <Popup type="logs">

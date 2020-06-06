@@ -4,7 +4,13 @@ import Template from '@shared/models/Template.class'
 import Search from '@shared/models/Search.class'
 import { copyDate, sevenLastDays } from '@utils/date'
 
-import { getAllUrlParams, setStateAsync, wait, randomId, TF_ERROR } from '@utils/index'
+import {
+  getAllUrlParams,
+  setStateAsync,
+  wait,
+  randomId,
+  TF_ERROR
+} from '@utils/index'
 import { fetchHistory, fetchSearch, fetchPostVideos } from '@shared/api/Deputy'
 import { sendMessageToBackground } from '@utils/browser'
 import { getStorages, setStorage } from './BrowserStorage'
@@ -43,7 +49,9 @@ class YouTubeProvider extends Component {
     this.state.displaying = storage.displaying // row / column
     this.state.videosToFlag = storage.videosToFlag.map(e => new Video(e)) // @array
     this.state.watchedVideo = youtubeDatasDeputy.watchedVideo // @Video
-    this.state.lastSevenDaysflagged = newLastSevenDaysFlagged(storage.lastSevenDaysflagged) // @array
+    this.state.lastSevenDaysflagged = newLastSevenDaysFlagged(
+      storage.lastSevenDaysflagged
+    ) // @array
     this.state.templates = storage.templates.map(elem => new Template(elem)) // @array
     this.state.searches = storage.searches.map(elem => new Search(elem)) // @array
     this.state.modal = { type: null, isOpen: false } // @object
@@ -56,7 +64,10 @@ class YouTubeProvider extends Component {
   selectItems(items = [], type, force = false) {
     const itemsDisplayed = [...this.state[type]]
 
-    if (force && itemsDisplayed.filter(x => x.selected).length === itemsDisplayed.length) {
+    if (
+      force &&
+      itemsDisplayed.filter(x => x.selected).length === itemsDisplayed.length
+    ) {
       for (let index = 0; index < itemsDisplayed.length; index++) {
         if (items.find(x => x.id === itemsDisplayed[index].id)) {
           itemsDisplayed[index].selected = false
@@ -65,7 +76,8 @@ class YouTubeProvider extends Component {
     } else {
       for (let index = 0; index < itemsDisplayed.length; index++) {
         if (items.find(x => x.id === itemsDisplayed[index].id)) {
-          itemsDisplayed[index].selected = force || !itemsDisplayed[index].selected
+          itemsDisplayed[index].selected =
+            force || !itemsDisplayed[index].selected
         }
       }
     }
@@ -108,7 +120,10 @@ class YouTubeProvider extends Component {
   async getBrowserDatas() {
     await Promise.all([getStorages('sync')])
       .then(async storages => {
-        const { templates, searches, lastSevenDaysflagged } = storages.reduce((a, d) => Object.assign(d, a), {})
+        const { templates, searches, lastSevenDaysflagged } = storages.reduce(
+          (a, d) => Object.assign(d, a),
+          {}
+        )
         setStateAsync(
           {
             templates: templates.map(elem => new Template(elem)),
@@ -158,9 +173,15 @@ class YouTubeProvider extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (JSON.stringify(prevState.videos) !== JSON.stringify(this.state.videos)) {
+    if (
+      JSON.stringify(prevState.videos) !== JSON.stringify(this.state.videos)
+    ) {
       const videosDisplayed = this.state.videos.filter(video =>
-        this.state.hideReviewed ? !video.isReviewed : this.state.hideRemoved ? !video.isRemoved : true
+        this.state.hideReviewed
+          ? !video.isReviewed
+          : this.state.hideRemoved
+          ? !video.isRemoved
+          : true
       )
       return this.setState({ videosDisplayed })
     }
@@ -172,7 +193,11 @@ class YouTubeProvider extends Component {
     hides[type] = !this.state[type]
 
     const videosDisplayed = videos.filter(video =>
-      hides.hideReviewed ? !video.isReviewed : hides.hideRemoved ? !video.isRemoved : true
+      hides.hideReviewed
+        ? !video.isReviewed
+        : hides.hideRemoved
+        ? !video.isRemoved
+        : true
     )
 
     return this.setState({
@@ -187,7 +212,10 @@ class YouTubeProvider extends Component {
    * @param {Object} params - Params for fetching and add to storage
    */
   async flagVideos(params) {
-    await setStateAsync({ isFetchingSlow: true, modal: { type: 'form-flagging', isOpen: false } }, this)
+    await setStateAsync(
+      { isFetchingSlow: true, modal: { type: 'form-flagging', isOpen: false } },
+      this
+    )
     try {
       params.session_token = this.state.session_token
       await fetchPostVideos(params)
@@ -197,7 +225,9 @@ class YouTubeProvider extends Component {
       lastSevenDaysflagged[0].videos += params.nbReported
 
       if (params.templateId) {
-        const templateIndex = templates.findIndex(x => x.id == params.templateId)
+        const templateIndex = templates.findIndex(
+          x => x.id == params.templateId
+        )
         if (templateIndex !== -1) {
           templates[templateIndex].nb_flagged += params.nbReported
           templates[templateIndex].nb_used++
@@ -205,8 +235,11 @@ class YouTubeProvider extends Component {
       }
 
       if (params.searchId) {
-        const searchIndex = this.state.searches.findIndex(x => x.id == params.searchId)
-        if (searchIndex !== -1) searches[searchIndex].flagged += params.nbReported
+        const searchIndex = this.state.searches.findIndex(
+          x => x.id == params.searchId
+        )
+        if (searchIndex !== -1)
+          searches[searchIndex].flagged += params.nbReported
       }
 
       await setStateAsync(
@@ -238,7 +271,9 @@ class YouTubeProvider extends Component {
           type: 'flaggedVideos',
           params: {
             level: 'success',
-            message: `${params.nbReported} video${params.nbReported > 1 ? 's' : ''} flagged !`
+            message: `${params.nbReported} video${
+              params.nbReported > 1 ? 's' : ''
+            } flagged !`
           }
         }
       })
@@ -258,14 +293,14 @@ class YouTubeProvider extends Component {
   }
 
   async callbackState(updatedState) {
-    if (updatedState.hasOwnProperty('displaying') || updatedState.hasOwnProperty('theme')) {
+    if ('displaying' in updatedState || 'theme' in updatedState) {
       await setStorage('sync', {
         displaying: this.state.displaying,
         theme: this.state.theme
       })
     }
 
-    if (updatedState.hasOwnProperty('videosToFlag') || updatedState.hasOwnProperty('lastSearches')) {
+    if ('videosToFlag' in updatedState || 'lastSearches' in updatedState) {
       await setStorage('local', {
         videosToFlag: this.state.videosToFlag,
         lastSearches: this.state.lastSearches
@@ -284,18 +319,27 @@ class YouTubeProvider extends Component {
           state: this.state,
           getBrowserDatas: () => this.getBrowserDatas(),
           flagVideos: params => this.flagVideos(params),
-          selectVideos: (videos = []) => this.selectItems(videos, 'videosDisplayed'),
-          selectSearches: (searches = []) => this.selectItems(searches, 'searches'),
-          selectAll: (type, force = true) => this.selectItems(this.state[type], type, force),
+          selectVideos: (videos = []) =>
+            this.selectItems(videos, 'videosDisplayed'),
+          selectSearches: (searches = []) =>
+            this.selectItems(searches, 'searches'),
+          selectAll: (type, force = true) =>
+            this.selectItems(this.state[type], type, force),
           filterVideos: type => this.filterVideos(type),
-          addTemplate: (template = []) => this.actionItem(template, 'templates'),
-          removeTemplate: (template = []) => this.actionItem(template, 'templates'),
+          addTemplate: (template = []) =>
+            this.actionItem(template, 'templates'),
+          removeTemplate: (template = []) =>
+            this.actionItem(template, 'templates'),
           openModal: (type, isOpen = true) => this.openModal(type, isOpen),
           removeVideosToFlag: sendForme => this.removeVideosToFlag(sendForme),
           addSearch: (search = []) => this.actionItem(search, 'searches'),
           removeSearch: (search = []) => this.actionItem(search, 'searches'),
-          setState: (object, callback) => this.setState(object, () => (callback ? callback() : this.callbackState(object))),
-          getVideos: (type = 'history', params = getAllUrlParams()) => this.getVideos(type, params)
+          setState: (object, callback) =>
+            this.setState(object, () =>
+              callback ? callback() : this.callbackState(object)
+            ),
+          getVideos: (type = 'history', params = getAllUrlParams()) =>
+            this.getVideos(type, params)
         }}
       >
         {this.props.children}

@@ -28,7 +28,10 @@ export class Navbar extends Component {
                 <FormSearch context={context} />
               </div>
               <div className="nav-links mgi--left-10">
-                <span className="span-icon clicked mgi--right-16" onClick={() => context.openModal('logs')}>
+                <span
+                  className="span-icon clicked mgi--right-16"
+                  onClick={() => context.openModal('logs')}
+                >
                   <FontAwesomeIcon icon={faDev} size="2x" fixedWidth />
                 </span>
               </div>

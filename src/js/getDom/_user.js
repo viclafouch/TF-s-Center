@@ -4,7 +4,9 @@ const user = function getUser() {
 
   if (userNode) {
     const avatar = userNode.getElementsByTagName('img')[0].getAttribute('src')
-    const username = document.getElementsByClassName('yt-masthead-picker-name')[0].textContent
+    const username = document.getElementsByClassName(
+      'yt-masthead-picker-name'
+    )[0].textContent
     userObject = { avatar, username }
   }
 

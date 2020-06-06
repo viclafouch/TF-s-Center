@@ -20,7 +20,8 @@ export class FormFlagging extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.location.search !== this.props.location.search) return this.autoCompleteForm()
+    if (prevProps.location.search !== this.props.location.search)
+      return this.autoCompleteForm()
   }
 
   /**
@@ -29,24 +30,34 @@ export class FormFlagging extends Component {
   autoSelectVideo(search) {
     const searchText = search.cleanString()
     const videosDetected = this.props.context.state.videosDisplayed.filter(
-      elem => elem.title.cleanString().search(searchText) !== -1 || elem.description.cleanString().search(searchText) !== -1
+      elem =>
+        elem.title.cleanString().search(searchText) !== -1 ||
+        elem.description.cleanString().search(searchText) !== -1
     )
     this.props.context.selectVideos(videosDetected)
   }
 
   autoCompleteForm() {
     const specialSearch = getUrlParameter('search_id')
-    const search = this.props.context.state.searches.find(x => x.id == specialSearch) || {}
+    const search =
+      this.props.context.state.searches.find(x => x.id == specialSearch) || {}
     const templateId = search.templateId || getUrlParameter('template_id')
     let searchValue = search.value || getUrlParameter('search_query')
 
-    if (searchValue && (search.autoSelect || getUrlParameter('is_as') === 'true')) {
-      searchValue = searchValue.replace(new RegExp('\\+', 'g'), ' ').replace(new RegExp('\\"', 'g'), '')
+    if (
+      searchValue &&
+      (search.autoSelect || getUrlParameter('is_as') === 'true')
+    ) {
+      searchValue = searchValue
+        .replace(new RegExp('\\+', 'g'), ' ')
+        .replace(new RegExp('\\"', 'g'), '')
       this.autoSelectVideo(searchValue)
     }
 
     if (templateId) {
-      const template = this.props.context.state.templates.find(x => x.id == templateId)
+      const template = this.props.context.state.templates.find(
+        x => x.id == templateId
+      )
       if (!template) return
 
       return this.setState({
@@ -101,7 +112,12 @@ export class FormFlagging extends Component {
     return (
       <YouTubeContext.Consumer>
         {context => (
-          <form action="/deputy?action_submit" id="formFlagging" method="POST" className="form-flagging full-heigth">
+          <form
+            action="/deputy?action_submit"
+            id="formFlagging"
+            method="POST"
+            className="form-flagging full-heigth"
+          >
             <input type="hidden" name="search_query" value={search} />
             <input type="hidden" name="page" value={nbPage} />
             <input type="hidden" name="filters" value={filterPeriod} />
@@ -110,7 +126,9 @@ export class FormFlagging extends Component {
               videos={context.state.videosDisplayed}
               context={context}
               canFlag
-              onSelect={(video, checked) => this.handleSelectVideo(video, checked, context)}
+              onSelect={(video, checked) =>
+                this.handleSelectVideo(video, checked, context)
+              }
             />
             <Popup type="form-flagging">
               <FormReporting
@@ -128,7 +146,11 @@ export class FormFlagging extends Component {
                 handleChange={this.handleChange}
               />
             </Popup>
-            <input name="session_token" type="hidden" value={context.state.session_token} />
+            <input
+              name="session_token"
+              type="hidden"
+              value={context.state.session_token}
+            />
           </form>
         )}
       </YouTubeContext.Consumer>
