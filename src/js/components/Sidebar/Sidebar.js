@@ -11,7 +11,6 @@ import { faMoon } from '@fortawesome/free-regular-svg-icons/faMoon'
 import { faBullseye } from '@fortawesome/free-solid-svg-icons/faBullseye'
 import { YouTubeContext } from '@stores/YouTubeContext'
 import { NavLink } from 'react-router-dom'
-import { HANGOUTS_ME } from '@private'
 
 export class Sidebar extends Component {
   constructor(props) {
@@ -121,7 +120,7 @@ export class Sidebar extends Component {
                 </li>
                 <li>
                   <a
-                    href={HANGOUTS_ME}
+                    href="https://hangouts.google.com/webchat/start?action=chat&pi=100070124377981205858"
                     target="_blank"
                     rel="noreferrer"
                     className="youtube-link"

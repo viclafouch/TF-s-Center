@@ -4,7 +4,7 @@
   "manifest_version": 2,
   "author": "Victor de la Fouchardiere",
   "background": {
-    "scripts": ["background.bundle.js", "hot-reload.js"]
+    "scripts": ["background.bundle.js"]
   },
   "icons": {
     "16": "icon16.png",
@@ -32,5 +32,5 @@
       "css": ["styles.css", "deputy.css"]
     }
   ],
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+  "content_security_policy": "script-src 'self'; object-src 'self'"
 }
