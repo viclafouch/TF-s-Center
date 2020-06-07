@@ -1,4 +1,4 @@
-# TF's Center (v1.39)
+# TF's Center (v1.5)
 
 Welcome to the repository of this fabulous extension : __TF's Center__ !
 If you're not a YouTube Trusted Flagger, this extension is useless on your browser.
