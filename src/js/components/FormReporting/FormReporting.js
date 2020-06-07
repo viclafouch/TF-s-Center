@@ -12,7 +12,7 @@ export class FormReporting extends Component {
     super()
 
     this.state = {
-      reasonEmpty: false
+      reasonEmpty: false,
     }
 
     this.handleClickSubmit = this.handleClickSubmit.bind(this)
@@ -30,7 +30,7 @@ export class FormReporting extends Component {
     e.preventDefault()
     if (!this.props.reason) return this.setState({ reasonEmpty: true })
     const params = {
-      video_ids: context.state.videosDisplayed.map(e => e.id),
+      video_ids: context.state.videosDisplayed.map((e) => e.id),
       filters: this.props.params.filters,
       search_query: this.props.params.search,
       page: this.props.params.nbPage,
@@ -38,11 +38,11 @@ export class FormReporting extends Component {
       video_report_reason: this.props.params.reason,
       templateId: this.props.templateIdSelected,
       searchId: getUrlParameter('search_id'),
-      nbReported: context.state.videosDisplayed.filter(elem => elem.selected)
+      nbReported: context.state.videosDisplayed.filter((elem) => elem.selected)
         .length,
       selected_vid: context.state.videosDisplayed
-        .filter(elem => elem.selected)
-        .map(e => e.id)
+        .filter((elem) => elem.selected)
+        .map((e) => e.id),
     }
 
     return context.flagVideos(params)
@@ -61,13 +61,13 @@ export class FormReporting extends Component {
       <div className="form-reporting">
         <div className="pdi--20">
           <YouTubeContext.Consumer>
-            {context => (
+            {(context) => (
               <div className="flex-me flex-justify-between">
                 <h2>
                   Report videos (
                   {
                     context.state.videosDisplayed.filter(
-                      x => x.selected === true
+                      (x) => x.selected === true
                     ).length
                   }
                   )
@@ -76,14 +76,14 @@ export class FormReporting extends Component {
                   <Select
                     options={context.state.templates.map(({ title, id }) => ({
                       title,
-                      id
+                      id,
                     }))}
                     className="input-colored"
                     defaultOptionTitle="Choose template"
                     null
                     name="templateIdSelected"
                     value={this.props.templateIdSelected}
-                    onChange={e => this.props.handleChange(e, context)}
+                    onChange={(e) => this.props.handleChange(e, context)}
                   />
                 </div>
               </div>
@@ -145,11 +145,11 @@ export class FormReporting extends Component {
           </div>
           <div className="mgi--left-10">
             <YouTubeContext.Consumer>
-              {context => (
+              {(context) => (
                 <Button
                   type="submit"
                   blue
-                  onClick={e => this.handleClickSubmit(e, context)}
+                  onClick={(e) => this.handleClickSubmit(e, context)}
                 >
                   Submit
                 </Button>

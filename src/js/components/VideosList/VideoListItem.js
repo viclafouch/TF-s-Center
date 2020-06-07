@@ -7,7 +7,7 @@ export class VideoListItem extends Component {
     return (
       <article className={`video-item ${!video.isRemoved ? 'isAccess' : ''}`}>
         <YouTubeContext.Consumer>
-          {context =>
+          {(context) =>
             context.state.displaying === 'column' ? (
               <>
                 <div
@@ -83,7 +83,7 @@ export class VideoListItem extends Component {
                   <p
                     className="video-item-description mgi--bottom-4"
                     dangerouslySetInnerHTML={{
-                      __html: `<p>${this.props.video.description}</p>`
+                      __html: `<p>${this.props.video.description}</p>`,
                     }}
                   />
                   {!video.isRemoved && video.channelTitle && (

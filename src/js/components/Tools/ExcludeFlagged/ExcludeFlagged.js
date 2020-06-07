@@ -8,7 +8,7 @@ export class ExcludeFlagged extends Component {
     super()
     this.state = {
       isExcluded: true,
-      redirectTo: null
+      redirectTo: null,
     }
     this.handleChange = this.handleChange.bind(this)
   }

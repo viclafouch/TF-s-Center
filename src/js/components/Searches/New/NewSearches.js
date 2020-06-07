@@ -16,7 +16,7 @@ export class NewSearches extends Component {
       'search-value-add': '',
       'search-template-id': '',
       'search-auto-select': false,
-      redirectTo: null
+      redirectTo: null,
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -33,16 +33,16 @@ export class NewSearches extends Component {
       return this.setState({
         redirectTo: trySearch(value, {
           isAS: this.state['search-auto-select'],
-          templateId: this.state['search-template-id']
-        })
+          templateId: this.state['search-template-id'],
+        }),
       })
     } catch (error) {
       this.props.context.setState({
         notification: {
           id: randomId(),
           type: 'goSearch',
-          params: { level: 'error', message: error.message }
-        }
+          params: { level: 'error', message: error.message },
+        },
       })
     }
   }
@@ -52,7 +52,7 @@ export class NewSearches extends Component {
     const value =
       e.target.type === 'checkbox' ? e.target.checked : e.target.value
     return this.setState({
-      [name]: value
+      [name]: value,
     })
   }
 
@@ -67,24 +67,24 @@ export class NewSearches extends Component {
         new Search({
           value,
           templateId: this.state['search-template-id'] || null,
-          autoSelect: this.state['search-auto-select']
-        })
+          autoSelect: this.state['search-auto-select'],
+        }),
       ])
       await setStateAsync(this.baseState, this)
       this.props.context.setState({
         notification: {
           id: randomId(),
           type: 'addSearch',
-          params: { level: 'success', message: 'New search added !' }
-        }
+          params: { level: 'success', message: 'New search added !' },
+        },
       })
     } catch (error) {
       this.props.context.setState({
         notification: {
           id: randomId(),
           type: 'addSearch',
-          params: { level: 'error', message: error.message }
-        }
+          params: { level: 'error', message: error.message },
+        },
       })
     }
   }
@@ -121,9 +121,9 @@ export class NewSearches extends Component {
           </div>
           <div className="mgi--top-10 flex-me flex-align">
             <Select
-              options={this.props.context.state.templates.map(elem => ({
+              options={this.props.context.state.templates.map((elem) => ({
                 value: elem.id,
-                title: elem.title
+                title: elem.title,
               }))}
               value={this.state['search-template-id']}
               onChange={this.handleChange}

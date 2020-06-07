@@ -14,7 +14,7 @@ const statistics = function getStatistics(root = document) {
 
     statistics = {
       allFlagged: allFlagsNumber,
-      allActioned: allActionedNumber
+      allActioned: allActionedNumber,
     }
   }
 

@@ -56,14 +56,14 @@ const videos = function getVideos(root = document) {
         description,
         isReviewed,
         isRemoved,
-        isAgeRestricted
+        isAgeRestricted,
       })
     )
   }
 
   return {
     videos,
-    pagination: getPagination(root)
+    pagination: getPagination(root),
   }
 }
 

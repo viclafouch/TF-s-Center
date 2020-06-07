@@ -13,7 +13,7 @@ export class ListSearches extends Component {
     super()
 
     this.state = {
-      redirectTo: null
+      redirectTo: null,
     }
   }
 
@@ -24,7 +24,7 @@ export class ListSearches extends Component {
   handleChange(e, context) {
     e.stopPropagation()
     const { id } = e.target
-    const searchIndex = context.state.searches.findIndex(x => x.id == id)
+    const searchIndex = context.state.searches.findIndex((x) => x.id == id)
     const { searches } = context.state
     searches[searchIndex].selected = e.target.checked
     return context.setState({ searches })
@@ -34,21 +34,21 @@ export class ListSearches extends Component {
     try {
       context.setState({ search: `"${search.value}"` })
       return this.setState({
-        redirectTo: trySearch(search.value, { searchId: search.id })
+        redirectTo: trySearch(search.value, { searchId: search.id }),
       })
     } catch (error) {
       context.setState({
         notification: {
           id: randomId(),
           type: 'goSearch',
-          params: { level: 'error', message: error.message }
-        }
+          params: { level: 'error', message: error.message },
+        },
       })
     }
   }
 
   async handleRemove(context) {
-    const searchesSelected = context.state.searches.filter(x => x.selected)
+    const searchesSelected = context.state.searches.filter((x) => x.selected)
     try {
       await context.removeSearch(searchesSelected)
       const message = searchesSelected.length > 1 ? 'Searches' : 'Search'
@@ -56,16 +56,16 @@ export class ListSearches extends Component {
         notification: {
           id: randomId(),
           type: 'removeSearch',
-          params: { level: 'success', message: `${message} removed !` }
-        }
+          params: { level: 'success', message: `${message} removed !` },
+        },
       })
     } catch (error) {
       context.setState({
         notification: {
           id: randomId(),
           type: 'removeSearch',
-          params: { level: 'error', message: error.message }
-        }
+          params: { level: 'error', message: error.message },
+        },
       })
     }
   }
@@ -74,12 +74,12 @@ export class ListSearches extends Component {
     if (this.state.redirectTo) return <Redirect to={this.state.redirectTo} />
     return (
       <YouTubeContext.Consumer>
-        {context => (
+        {(context) => (
           <div className="box-material table-searches">
             <form>
               <div className="flex-me flex-justify-end">
                 <Button
-                  disabled={!context.state.searches.find(x => x.selected)}
+                  disabled={!context.state.searches.find((x) => x.selected)}
                   onClick={() => this.handleRemove(context)}
                 >
                   Remove
@@ -91,7 +91,7 @@ export class ListSearches extends Component {
                     <th>
                       <Checkbox
                         checked={
-                          context.state.searches.filter(x => x.selected)
+                          context.state.searches.filter((x) => x.selected)
                             .length === context.state.searches.length
                         }
                         onChange={() => context.selectAll('searches')}
@@ -113,7 +113,7 @@ export class ListSearches extends Component {
                           id={elem.id}
                           value={elem.id}
                           name="select_search"
-                          onChange={e => this.handleChange(e, context)}
+                          onChange={(e) => this.handleChange(e, context)}
                         />
                       </th>
                       <th scope="row">{index}</th>

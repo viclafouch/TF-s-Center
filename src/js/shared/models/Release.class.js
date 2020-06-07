@@ -10,7 +10,7 @@ export class Release {
   bodyToList(body) {
     return body
       .split(new RegExp(['\\* ', '\\n'].join('|'), 'g'))
-      .filter(e => e.trim())
+      .filter((e) => e.trim())
   }
 }
 

@@ -13,12 +13,12 @@ export class FilterPeriod extends Component {
       { value: 'today', title: 'Today' },
       { value: 'week', title: 'This week' },
       { value: 'month', title: 'This month' },
-      { value: 'year', title: 'This year' }
+      { value: 'year', title: 'This year' },
     ]
 
     this.state = {
       redirectTo: null,
-      filters: 'anytime'
+      filters: 'anytime',
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -26,8 +26,8 @@ export class FilterPeriod extends Component {
 
   componentDidMount() {
     const filters = getUrlParameter('filters')
-    return this.setState(prevState => ({
-      filters: filters || prevState.filters
+    return this.setState((prevState) => ({
+      filters: filters || prevState.filters,
     }))
   }
 
@@ -37,7 +37,7 @@ export class FilterPeriod extends Component {
 
   handleChange(e) {
     const period = e.target.value
-    if (!this.periods.find(x => x.value == period) || this.props.disabled)
+    if (!this.periods.find((x) => x.value == period) || this.props.disabled)
       return
     const url = updateQueryStringParameter(
       window.location.pathname + window.location.search,

@@ -7,19 +7,21 @@ import { sendMessageToBackground } from '@utils/browser'
  * @param {int} id - ID of the channel
  * @return object
  */
-export const fetchYouTubeChannel = channelID =>
-  sendMessageToBackground('fetchYouTubeChannel', { channelID }).then(result => {
-    if (result.error) throw new TF_ERROR(result.error.id)
-    return result
-  })
+export const fetchYouTubeChannel = (channelID) =>
+  sendMessageToBackground('fetchYouTubeChannel', { channelID }).then(
+    (result) => {
+      if (result.error) throw new TF_ERROR(result.error.id)
+      return result
+    }
+  )
 
 /**
  * Fetch a YouTube Video
  * @param {int} videoID - ID of the video
  * @return Video
  */
-export const fetchYouTubeVideo = async videoID =>
-  sendMessageToBackground('fetchYouTubeVideo', { videoID }).then(result => {
+export const fetchYouTubeVideo = async (videoID) =>
+  sendMessageToBackground('fetchYouTubeVideo', { videoID }).then((result) => {
     if (result.error) throw new TF_ERROR(result.error.id)
     return new Video({ ...result, id: videoID })
   })

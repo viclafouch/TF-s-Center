@@ -15,7 +15,7 @@ export class Logs extends Component {
 
     this.state = {
       releaseds: [],
-      error: false
+      error: false,
     }
   }
 
@@ -28,7 +28,7 @@ export class Logs extends Component {
       return this.setState({ releaseds, error: false })
     } catch (error) {
       return this.setState({
-        error: true
+        error: true,
       })
     }
   }

@@ -7,7 +7,7 @@ import {
   redirectToWebCache,
   setStateAsync,
   wrapURLs,
-  randomId
+  randomId,
 } from '@utils/index'
 import Loader from '../layouts/Loader'
 import VideoDetail from '../VideoDetail/VideoDetail'
@@ -20,7 +20,7 @@ export class VideosList extends Component {
 
     this.state = {
       videoSelected: new Video(),
-      isLoading: false
+      isLoading: false,
     }
 
     this.containerScroller = React.createRef()
@@ -58,20 +58,22 @@ export class VideosList extends Component {
         notification: {
           id: randomId(),
           type: 'getVideo',
-          params: { level: 'error', message: error.message }
-        }
+          params: { level: 'error', message: error.message },
+        },
       })
 
       if (error.id === 'ERROR_GET_VIDEO_DELETED') {
         const { videosToFlag } = this.props.context.state
-        const videoTargetIndex = videosToFlag.findIndex(x => x.id === video.id)
+        const videoTargetIndex = videosToFlag.findIndex(
+          (x) => x.id === video.id
+        )
         if (videoTargetIndex !== -1) {
           videosToFlag.splice(videoTargetIndex, 1)
           this.props.context.setState({
             videosToFlag,
             videosDisplayed: this.props.context.state.onToFlag
               ? videosToFlag
-              : this.props.context.state.videosDisplayed
+              : this.props.context.state.videosDisplayed,
           })
         }
       }
@@ -107,7 +109,7 @@ export class VideosList extends Component {
   handleChange(e) {
     e.stopPropagation()
     const { id } = e.target
-    const video = this.props.videos.find(x => x.id === id)
+    const video = this.props.videos.find((x) => x.id === id)
     if (video && this.props.canFlag)
       return this.props.onSelect(video, e.target.checked)
   }
@@ -121,7 +123,7 @@ export class VideosList extends Component {
       >
         {this.state.isLoading && <Loader />}
         <YouTubeContext.Consumer>
-          {context => (
+          {(context) => (
             <ul
               className={`videos-list pdi--top-0 ${
                 context.state.displaying === 'column' ? 'byColumns' : 'byRows'
@@ -141,14 +143,14 @@ export class VideosList extends Component {
                       style={{
                         position: 'absolute',
                         top: context.state.displaying === 'column' ? 2 : 3,
-                        left: context.state.displaying === 'column' ? 2 : 3
+                        left: context.state.displaying === 'column' ? 2 : 3,
                       }}
                     />
                   )}
                   <VideoListItem
                     video={elem}
                     onSelect={() => this.getInfoVideo(elem)}
-                    onCheck={e =>
+                    onCheck={(e) =>
                       this.props.canFlag && this.checkedVideo(e, elem)
                     }
                   />

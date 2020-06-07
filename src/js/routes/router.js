@@ -11,7 +11,7 @@ import { YouTubeContext } from '@stores/YouTubeContext'
 
 export const Loader = () => (
   <YouTubeContext.Consumer>
-    {context => (
+    {(context) => (
       <div
         className={`${'isLoading' + ' loader-'}${context.state.theme}`}
         style={{ height: 'calc(100vh - 56px)', width: '100%' }}
@@ -27,7 +27,7 @@ const AppRouter = ({ context }) => (
       path="/flagging_history"
       async
       loading={<Loader />}
-      render={async props => {
+      render={async (props) => {
         await context.getVideos('history', getAllUrlParams())
         return <HistoryContainer {...props} />
       }}
@@ -36,7 +36,7 @@ const AppRouter = ({ context }) => (
       path="/deputy"
       async
       loading={<Loader />}
-      render={async props => {
+      render={async (props) => {
         const query = getUrlParameter('context') || 'target'
         switch (query) {
           case 'stats':

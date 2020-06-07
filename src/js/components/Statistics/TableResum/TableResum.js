@@ -3,7 +3,7 @@ import { YouTubeContext } from '@stores/YouTubeContext'
 
 const TableResum = () => (
   <YouTubeContext.Consumer>
-    {context => (
+    {(context) => (
       <div className="container-table-resum box-material">
         <h1 className="pdi--15">Analytics</h1>
         <table className="table-material">

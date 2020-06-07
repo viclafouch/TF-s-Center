@@ -19,7 +19,9 @@ export function openInNewTab(url, newTab = false) {
 export const sendMessageToBackground = (type, items) =>
   new Promise((resolve, reject) => {
     if (!chrome.runtime.lastError) {
-      chrome.runtime.sendMessage({ type, items }, response => resolve(response))
+      chrome.runtime.sendMessage({ type, items }, (response) =>
+        resolve(response)
+      )
     } else {
       reject(`Error when sending message ${type}`)
     }

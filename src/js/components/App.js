@@ -3,7 +3,7 @@ import { Sidebar } from '@components/Sidebar/Sidebar'
 import FlagButton from '@components/FlagButton/FlagButton'
 import { withRouter } from 'react-router'
 import NotificationSystem from 'react-notification-system'
-import { onDeputyLocation } from '@utils/index'
+import { isOnDeputyPage } from '@utils/index'
 import AppRouter, { Loader } from '../routes/router'
 import Navbar from './Navbar/Navbar'
 import ERRORS from '../../../errors.json'
@@ -33,7 +33,7 @@ class App extends Component {
 
   addNotification({ level = 'success', message } = {}) {
     if (level === 'error')
-      message = !Object.values(ERRORS).find(x => x.message === message)
+      message = !Object.values(ERRORS).find((x) => x.message === message)
         ? 'An error occurred !'
         : message
     const notification = this.notificationSystem.current
@@ -41,7 +41,7 @@ class App extends Component {
       message,
       level,
       position: 'br',
-      autoDismiss: 5
+      autoDismiss: 5,
     })
   }
 
@@ -50,15 +50,15 @@ class App extends Component {
       NotificationItem: {
         success: {
           color: '#FFFFFF',
-          background: 'green'
+          background: 'green',
         },
         error: {
           color: '#FFFFFF',
-          background: 'red'
-        }
-      }
+          background: 'red',
+        },
+      },
     }
-    return onDeputyLocation(this.props.location) ? (
+    return isOnDeputyPage(this.props.location) ? (
       <>
         <Navbar />
         <main id="TF-main">

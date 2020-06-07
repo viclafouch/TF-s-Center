@@ -12,32 +12,32 @@ const links = [
   {
     label: 'History',
     svg: faHistory,
-    href: '/flagging_history'
+    href: '/flagging_history',
   },
   {
     label: 'Templates',
     svg: faFlag,
-    href: '/deputy?context=templates'
+    href: '/deputy?context=templates',
   },
   {
     label: 'Searches',
     svg: faSearch,
-    href: '/deputy?context=searches'
+    href: '/deputy?context=searches',
   },
   {
     label: 'Targets',
     svg: faBullseye,
-    href: '/deputy?context=targets'
+    href: '/deputy?context=targets',
   },
   {
     label: 'Analytics',
     svg: faChartLine,
-    href: '/deputy?context=stats'
-  }
+    href: '/deputy?context=stats',
+  },
 ]
 
 function Popup() {
-  const redirectToTabs = e => {
+  const redirectToTabs = (e) => {
     e.preventDefault()
     const to = e.currentTarget.getAttribute('data-href')
     const url = `https://www.youtube.com${to}`

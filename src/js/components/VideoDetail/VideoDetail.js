@@ -8,7 +8,7 @@ export class VideoDetail extends Component {
     super()
 
     this.state = {
-      copied: false
+      copied: false,
     }
   }
 
@@ -40,7 +40,7 @@ export class VideoDetail extends Component {
                 backgroundAttachment: 'scroll',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
-                paddingBottom: '56.25%'
+                paddingBottom: '56.25%',
               }}
             >
               <iframe
@@ -82,7 +82,7 @@ export class VideoDetail extends Component {
               </div>
               {this.props.canFlag && (
                 <div className="action-btn">
-                  <Button blue onClick={e => this.props.onCheck(e, video)}>
+                  <Button blue onClick={(e) => this.props.onCheck(e, video)}>
                     {video.selected ? 'Remove from the list' : 'Add to list'}
                   </Button>
                 </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Input = props => {
+const Input = (props) => {
   const defaultOptions = {
     type: 'text',
     spellCheck: true,
@@ -9,7 +9,7 @@ const Input = props => {
     disabled: false,
     maxLength: 524288,
     minLength: 0,
-    step: 1
+    step: 1,
   }
 
   let className = 'tf-input-material '

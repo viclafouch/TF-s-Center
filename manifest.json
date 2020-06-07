@@ -29,7 +29,7 @@
         "https://www.youtube.com/flagging_history*"
       ],
       "js": ["content_script.bundle.js"],
-      "css": ["styles.css", "deputy.css"]
+      "css": ["styles.css", "deputy.css", "content_script.css"]
     }
   ],
   "content_security_policy": "script-src 'self'; object-src 'self'"

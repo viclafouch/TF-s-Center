@@ -8,7 +8,7 @@ const TemplatesContainer = () => (
     <div className="template-container container-scrollable scrollBarOnHover">
       <div className="pdi--10">
         <YouTubeContext.Consumer>
-          {context => <NewTemplate context={context} />}
+          {(context) => <NewTemplate context={context} />}
         </YouTubeContext.Consumer>
       </div>
       <div className="pdi--10">

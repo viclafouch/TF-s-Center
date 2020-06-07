@@ -20,21 +20,27 @@ module.exports = (env, argv, IS_DEV = argv.mode !== 'production') => {
       background: path.join(__dirname, 'src', 'js', 'background.js'),
       styles: path.join(__dirname, 'src', 'scss', 'styles.scss'),
       popupcss: path.join(__dirname, 'src', 'scss', 'popup.scss'),
-      deputy: path.join(__dirname, 'src', 'scss', 'deputy.scss')
+      deputy: path.join(__dirname, 'src', 'scss', 'deputy.scss'),
     },
     module: {
       rules: [
         {
           test: /\.(js|jsx)$/,
           use: ['babel-loader'],
-          exclude: /node_modules/
+          exclude: /node_modules/,
         },
         {
           test: /\.scss$/,
-          use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-          exclude: /node_modules/
-        }
-      ]
+          use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            { loader: 'scoped-css-loader' },
+
+            'sass-loader',
+          ],
+          exclude: /node_modules/,
+        },
+      ],
     },
     resolve: {
       extensions: ['.jsx', '.js', '.scss'],
@@ -47,12 +53,12 @@ module.exports = (env, argv, IS_DEV = argv.mode !== 'production') => {
         '@scss': path.resolve(__dirname, './src/scss'),
         '@img': path.resolve(__dirname, './src/img'),
         '@': path.resolve(__dirname, './src'),
-        '@private': path.resolve(__dirname, 'private.js')
-      }
+        '@private': path.resolve(__dirname, 'private.js'),
+      },
     },
     output: {
       filename: '[name].bundle.js',
-      path: path.join(__dirname, 'build')
+      path: path.join(__dirname, 'build'),
     },
     plugins: [
       new FixStyleOnlyEntriesPlugin(),
@@ -62,7 +68,7 @@ module.exports = (env, argv, IS_DEV = argv.mode !== 'production') => {
           {
             from: path.join(__dirname, 'manifest.json'),
             to: path.join(__dirname, 'build'),
-            transform: content => {
+            transform: (content) => {
               const manifestContent = JSON.parse(content.toString())
               if (IS_DEV) {
                 manifestContent['content_security_policy'] =
@@ -74,32 +80,32 @@ module.exports = (env, argv, IS_DEV = argv.mode !== 'production') => {
                 JSON.stringify(
                   Object.assign({}, manifestContent, {
                     description: process.env.npm_package_description,
-                    version: process.env.npm_package_version
+                    version: process.env.npm_package_version,
                   })
                 )
               )
-            }
+            },
           },
           {
             from: path.join(__dirname, 'src', 'icon'),
-            to: path.join(__dirname, 'build')
-          }
-        ]
+            to: path.join(__dirname, 'build'),
+          },
+        ],
       }),
       new webpack.EnvironmentPlugin({
         'process.env.NODE_ENV': JSON.stringify(argv.mode),
-        homepage_url: process.env.npm_package_homepage
+        homepage_url: process.env.npm_package_homepage,
       }),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
       new MiniCssExtractPlugin({
-        filename: '[name].css'
+        filename: '[name].css',
       }),
       new HtmlWebpackPlugin({
         template: path.join(__dirname, 'src', 'html', 'popup.html'),
         filename: 'popup.html',
-        chunks: ['popup', 'popupcss']
-      })
-    ]
+        chunks: ['popup', 'popupcss'],
+      }),
+    ],
   }
 
   if (IS_DEV) {
@@ -108,9 +114,9 @@ module.exports = (env, argv, IS_DEV = argv.mode !== 'production') => {
         patterns: [
           {
             from: path.join(__dirname, 'src', 'js', 'utils', 'hot-reload.js'),
-            to: path.join(__dirname, 'build')
-          }
-        ]
+            to: path.join(__dirname, 'build'),
+          },
+        ],
       })
     )
   }

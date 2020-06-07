@@ -61,8 +61,8 @@ const video = function getVideo(idWatch, container) {
       videoAddedTime,
       channelUrl,
       channelTitle,
-      channelId
-    })
+      channelId,
+    }),
   }
 }
 

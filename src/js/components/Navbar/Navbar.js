@@ -18,7 +18,7 @@ export class Navbar extends Component {
   render() {
     return (
       <YouTubeContext.Consumer>
-        {context => (
+        {(context) => (
           <nav id="TF-navbar" className="navbar flex-me flex-align">
             <div className="block-left-side">
               <a href="/" className="logo_youtube" ref={this.logo} />

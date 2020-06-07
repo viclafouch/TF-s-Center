@@ -1,7 +1,7 @@
 import React from 'react'
 
-const CountVideos = context => {
-  const videoToCount = context.state.videosDisplayed.filter(x =>
+const CountVideos = (context) => {
+  const videoToCount = context.state.videosDisplayed.filter((x) =>
     !context.canFlag ? x.isRemoved : x.selected
   )
 

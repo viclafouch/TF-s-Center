@@ -5,7 +5,7 @@ import { copyObject } from '@utils'
 const LastSevenDays = ({ context }) => {
   const videos = copyObject(context.state.lastSevenDaysflagged)
   const data = {
-    labels: videos.reverse().map(e => e.date),
+    labels: videos.reverse().map((e) => e.date),
     datasets: [
       {
         label: "Videos reported with TF's Center",
@@ -26,9 +26,9 @@ const LastSevenDays = ({ context }) => {
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: videos.map(e => e.videos)
-      }
-    ]
+        data: videos.map((e) => e.videos),
+      },
+    ],
   }
 
   const options = {
@@ -39,11 +39,11 @@ const LastSevenDays = ({ context }) => {
             beginAtZero: true,
             stepSize: 150,
             min: 0,
-            max: 1500
-          }
-        }
-      ]
-    }
+            max: 1500,
+          },
+        },
+      ],
+    },
   }
 
   return (

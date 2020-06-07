@@ -9,19 +9,21 @@ import {
   setStateAsync,
   wait,
   randomId,
-  TF_ERROR
+  TF_ERROR,
 } from '@utils/index'
 import { fetchHistory, fetchSearch, fetchPostVideos } from '@shared/api/Deputy'
 import { sendMessageToBackground } from '@utils/browser'
 import { getStorages, setStorage } from './BrowserStorage'
 
-const newLastSevenDaysFlagged = lastSevenDaysflagged =>
-  sevenLastDays.map(elem => {
-    const flaggedFounded = lastSevenDaysflagged.find(x => x.date === elem.date)
+const newLastSevenDaysFlagged = (lastSevenDaysflagged) =>
+  sevenLastDays.map((elem) => {
+    const flaggedFounded = lastSevenDaysflagged.find(
+      (x) => x.date === elem.date
+    )
     return flaggedFounded
       ? {
           date: elem.date,
-          videos: flaggedFounded.videos
+          videos: flaggedFounded.videos,
         }
       : elem
   })
@@ -47,13 +49,13 @@ class YouTubeProvider extends Component {
     this.state.lastSearches = storage.lastSearches // @array
     this.state.isFetchingSlow = false // @boolean
     this.state.displaying = storage.displaying // row / column
-    this.state.videosToFlag = storage.videosToFlag.map(e => new Video(e)) // @array
+    this.state.videosToFlag = storage.videosToFlag.map((e) => new Video(e)) // @array
     this.state.watchedVideo = youtubeDatasDeputy.watchedVideo // @Video
     this.state.lastSevenDaysflagged = newLastSevenDaysFlagged(
       storage.lastSevenDaysflagged
     ) // @array
-    this.state.templates = storage.templates.map(elem => new Template(elem)) // @array
-    this.state.searches = storage.searches.map(elem => new Search(elem)) // @array
+    this.state.templates = storage.templates.map((elem) => new Template(elem)) // @array
+    this.state.searches = storage.searches.map((elem) => new Search(elem)) // @array
     this.state.modal = { type: null, isOpen: false } // @object
     this.state.notification = { id: null, type: null, params: {} } // @object
     this.state.fatalError = false // @boolean
@@ -66,16 +68,16 @@ class YouTubeProvider extends Component {
 
     if (
       force &&
-      itemsDisplayed.filter(x => x.selected).length === itemsDisplayed.length
+      itemsDisplayed.filter((x) => x.selected).length === itemsDisplayed.length
     ) {
       for (let index = 0; index < itemsDisplayed.length; index++) {
-        if (items.find(x => x.id === itemsDisplayed[index].id)) {
+        if (items.find((x) => x.id === itemsDisplayed[index].id)) {
           itemsDisplayed[index].selected = false
         }
       }
     } else {
       for (let index = 0; index < itemsDisplayed.length; index++) {
-        if (items.find(x => x.id === itemsDisplayed[index].id)) {
+        if (items.find((x) => x.id === itemsDisplayed[index].id)) {
           itemsDisplayed[index].selected =
             force || !itemsDisplayed[index].selected
         }
@@ -83,7 +85,7 @@ class YouTubeProvider extends Component {
     }
 
     this.setState({
-      [type]: itemsDisplayed
+      [type]: itemsDisplayed,
     })
   }
 
@@ -96,22 +98,22 @@ class YouTubeProvider extends Component {
 
     for (let index = 0; index < arrayItems.length; index++) {
       const element = arrayItems[index]
-      const itemIndex = items.findIndex(x => x.id === element.id)
+      const itemIndex = items.findIndex((x) => x.id === element.id)
       if (itemIndex >= 0) items = items.filter((e, i) => i !== itemIndex)
       else items.unshift(element)
     }
 
     await setStorage('sync', {
-      [type]: items.map(e => ({
+      [type]: items.map((e) => ({
         ...e,
-        created: copyDate(e.created).toString()
-      }))
+        created: copyDate(e.created).toString(),
+      })),
     })
     await setStateAsync({ [type]: items }, this)
   }
 
   async removeVideosToFlag() {
-    const videosToFlag = this.state.videosDisplayed.filter(e => !e.selected)
+    const videosToFlag = this.state.videosDisplayed.filter((e) => !e.selected)
     await setStateAsync({ videosToFlag, videosDisplayed: videosToFlag }, this)
     await this.callbackState({ videosToFlag })
     return videosToFlag
@@ -119,16 +121,16 @@ class YouTubeProvider extends Component {
 
   async getBrowserDatas() {
     await Promise.all([getStorages('sync')])
-      .then(async storages => {
+      .then(async (storages) => {
         const { templates, searches, lastSevenDaysflagged } = storages.reduce(
           (a, d) => Object.assign(d, a),
           {}
         )
         setStateAsync(
           {
-            templates: templates.map(elem => new Template(elem)),
-            searches: searches.map(elem => new Search(elem)),
-            lastSevenDaysflagged: newLastSevenDaysFlagged(lastSevenDaysflagged)
+            templates: templates.map((elem) => new Template(elem)),
+            searches: searches.map((elem) => new Search(elem)),
+            lastSevenDaysflagged: newLastSevenDaysFlagged(lastSevenDaysflagged),
           },
           this
         )
@@ -150,8 +152,8 @@ class YouTubeProvider extends Component {
       } else if (type === 'target') {
         const { videosToFlag } = await getStorages('local')
         datasVideos = {
-          videos: videosToFlag.map(e => new Video(e)),
-          pagination: []
+          videos: videosToFlag.map((e) => new Video(e)),
+          pagination: [],
         }
       }
 
@@ -159,7 +161,7 @@ class YouTubeProvider extends Component {
         {
           ...datasVideos,
           videosDisplayed: datasVideos.videos,
-          onToFlag: type === 'target'
+          onToFlag: type === 'target',
         },
         this
       )
@@ -176,7 +178,7 @@ class YouTubeProvider extends Component {
     if (
       JSON.stringify(prevState.videos) !== JSON.stringify(this.state.videos)
     ) {
-      const videosDisplayed = this.state.videos.filter(video =>
+      const videosDisplayed = this.state.videos.filter((video) =>
         this.state.hideReviewed
           ? !video.isReviewed
           : this.state.hideRemoved
@@ -192,7 +194,7 @@ class YouTubeProvider extends Component {
     const { videos } = this.state
     hides[type] = !this.state[type]
 
-    const videosDisplayed = videos.filter(video =>
+    const videosDisplayed = videos.filter((video) =>
       hides.hideReviewed
         ? !video.isReviewed
         : hides.hideRemoved
@@ -202,7 +204,7 @@ class YouTubeProvider extends Component {
 
     return this.setState({
       videosDisplayed,
-      ...hides
+      ...hides,
     })
   }
 
@@ -220,13 +222,13 @@ class YouTubeProvider extends Component {
       params.session_token = this.state.session_token
       await fetchPostVideos(params)
       const { lastSevenDaysflagged, templates, searches } = {
-        ...this.state
+        ...this.state,
       }
       lastSevenDaysflagged[0].videos += params.nbReported
 
       if (params.templateId) {
         const templateIndex = templates.findIndex(
-          x => x.id == params.templateId
+          (x) => x.id == params.templateId
         )
         if (templateIndex !== -1) {
           templates[templateIndex].nb_flagged += params.nbReported
@@ -236,7 +238,7 @@ class YouTubeProvider extends Component {
 
       if (params.searchId) {
         const searchIndex = this.state.searches.findIndex(
-          x => x.id == params.searchId
+          (x) => x.id == params.searchId
         )
         if (searchIndex !== -1)
           searches[searchIndex].flagged += params.nbReported
@@ -246,7 +248,7 @@ class YouTubeProvider extends Component {
         {
           lastSevenDaysflagged,
           templates,
-          searches
+          searches,
         },
         this
       )
@@ -255,14 +257,14 @@ class YouTubeProvider extends Component {
 
       await setStorage('sync', {
         lastSevenDaysflagged,
-        searches: searches.map(e => ({
+        searches: searches.map((e) => ({
           ...e,
-          created: copyDate(e.created).toString()
+          created: copyDate(e.created).toString(),
         })),
-        templates: templates.map(e => ({
+        templates: templates.map((e) => ({
           ...e,
-          created: copyDate(e.created).toString()
-        }))
+          created: copyDate(e.created).toString(),
+        })),
       })
 
       return this.setState({
@@ -273,9 +275,9 @@ class YouTubeProvider extends Component {
             level: 'success',
             message: `${params.nbReported} video${
               params.nbReported > 1 ? 's' : ''
-            } flagged !`
-          }
-        }
+            } flagged !`,
+          },
+        },
       })
     } catch (error) {
       console.error(error)
@@ -283,9 +285,9 @@ class YouTubeProvider extends Component {
         notification: {
           id: randomId(),
           type: 'flaggedVideos',
-          params: { level: 'error', message: 'An error occured' }
+          params: { level: 'error', message: 'An error occured' },
         },
-        modal: { type: 'form-flagging', isOpen: true }
+        modal: { type: 'form-flagging', isOpen: true },
       })
     } finally {
       await setStateAsync({ isFetchingSlow: false }, this)
@@ -296,17 +298,17 @@ class YouTubeProvider extends Component {
     if ('displaying' in updatedState || 'theme' in updatedState) {
       await setStorage('sync', {
         displaying: this.state.displaying,
-        theme: this.state.theme
+        theme: this.state.theme,
       })
     }
 
     if ('videosToFlag' in updatedState || 'lastSearches' in updatedState) {
       await setStorage('local', {
         videosToFlag: this.state.videosToFlag,
-        lastSearches: this.state.lastSearches
+        lastSearches: this.state.lastSearches,
       })
       await sendMessageToBackground('updateBadgeText', {
-        videosToFlag: this.state.videosToFlag
+        videosToFlag: this.state.videosToFlag,
       })
     }
   }
@@ -318,20 +320,20 @@ class YouTubeProvider extends Component {
         value={{
           state: this.state,
           getBrowserDatas: () => this.getBrowserDatas(),
-          flagVideos: params => this.flagVideos(params),
+          flagVideos: (params) => this.flagVideos(params),
           selectVideos: (videos = []) =>
             this.selectItems(videos, 'videosDisplayed'),
           selectSearches: (searches = []) =>
             this.selectItems(searches, 'searches'),
           selectAll: (type, force = true) =>
             this.selectItems(this.state[type], type, force),
-          filterVideos: type => this.filterVideos(type),
+          filterVideos: (type) => this.filterVideos(type),
           addTemplate: (template = []) =>
             this.actionItem(template, 'templates'),
           removeTemplate: (template = []) =>
             this.actionItem(template, 'templates'),
           openModal: (type, isOpen = true) => this.openModal(type, isOpen),
-          removeVideosToFlag: sendForme => this.removeVideosToFlag(sendForme),
+          removeVideosToFlag: (sendForme) => this.removeVideosToFlag(sendForme),
           addSearch: (search = []) => this.actionItem(search, 'searches'),
           removeSearch: (search = []) => this.actionItem(search, 'searches'),
           setState: (object, callback) =>
@@ -339,7 +341,7 @@ class YouTubeProvider extends Component {
               callback ? callback() : this.callbackState(object)
             ),
           getVideos: (type = 'history', params = getAllUrlParams()) =>
-            this.getVideos(type, params)
+            this.getVideos(type, params),
         }}
       >
         {this.props.children}

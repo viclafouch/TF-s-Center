@@ -24,12 +24,12 @@ export const redirectToWebCache = (link, newTab = true) =>
   )
 
 export const setStateAsync = (state, self) =>
-  new Promise(resolve => self.setState(state, resolve))
+  new Promise((resolve) => self.setState(state, resolve))
 
 export const wait = (amount = 0) =>
-  new Promise(resolve => setTimeout(resolve, amount))
+  new Promise((resolve) => setTimeout(resolve, amount))
 
-export const onDeputyLocation = ({ pathname } = document.location) =>
+export const isOnDeputyPage = ({ pathname } = document.location) =>
   pathname === '/deputy' || pathname === '/flagging_history'
 
 export function updateQueryStringParameter(uri, key, value) {
@@ -39,7 +39,7 @@ export function updateQueryStringParameter(uri, key, value) {
   return `${uri + separator + key}=${value}`
 }
 
-export const copyObject = obj => JSON.parse(JSON.stringify(obj))
+export const copyObject = (obj) => JSON.parse(JSON.stringify(obj))
 
 export const trySearch = (text, { searchId, isAS, templateId }) => {
   const urlEncodade = encodeURIComponent(`"${text.trim()}"`).replace(
@@ -53,7 +53,7 @@ export const trySearch = (text, { searchId, isAS, templateId }) => {
   return url
 }
 
-String.prototype.cleanString = function() {
+String.prototype.cleanString = function () {
   return this.replace(/[áàãâä]/gi, 'a')
     .replace(/[éè¨ê]/gi, 'e')
     .replace(/[íìïî]/gi, 'i')
@@ -110,7 +110,7 @@ export const wrapURLs = (text = '', new_window) => {
 
   const target = new_window === true || new_window == null ? '_blank' : ''
 
-  return text.replace(url_pattern, url => {
+  return text.replace(url_pattern, (url) => {
     const protocol_pattern = /^(?:(?:https?|ftp):\/\/)/i
     const href = protocol_pattern.test(url) ? url : `http://${url}`
     return `<a href="${href}" target="${target}">${url}</a>`
@@ -129,5 +129,5 @@ export function TF_ERROR(id) {
 TF_ERROR.prototype = Object.create(Error.prototype)
 TF_ERROR.prototype.constructor = TF_ERROR
 
-export const uena = chn => window.btoa(unescape(encodeURIComponent(chn)))
-export const aenu = chn => decodeURIComponent(escape(window.atob(chn)))
+export const uena = (chn) => window.btoa(unescape(encodeURIComponent(chn)))
+export const aenu = (chn) => decodeURIComponent(escape(window.atob(chn)))

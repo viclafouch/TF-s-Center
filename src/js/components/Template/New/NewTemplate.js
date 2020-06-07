@@ -22,7 +22,7 @@ export class NewTemplate extends Component {
       'template-type': '',
       isOpen: false,
       formValid: false,
-      isTooMany: false
+      isTooMany: false,
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -42,8 +42,8 @@ export class NewTemplate extends Component {
           notification: {
             id: randomId(),
             type: 'addTemplate',
-            params: { level: 'success', message: 'New template added !' }
-          }
+            params: { level: 'success', message: 'New template added !' },
+          },
         })
       } catch (error) {
         if (!this.state.isTooMany || error.code != 300) {
@@ -54,9 +54,9 @@ export class NewTemplate extends Component {
                 type: 'addTemplate',
                 params: {
                   level: 'error',
-                  message: error.code == 300 ? error.message : null
-                }
-              }
+                  message: error.code == 300 ? error.message : null,
+                },
+              },
             })
           )
         }
@@ -76,9 +76,9 @@ export class NewTemplate extends Component {
     return this.setState({
       formValid:
         title.length > 0 &&
-        labels.find(x => x.value === type) &&
+        labels.find((x) => x.value === type) &&
         description.length > 0 &&
-        description.length <= 500
+        description.length <= 500,
     })
   }
 
@@ -88,7 +88,7 @@ export class NewTemplate extends Component {
 
     return this.setState(
       {
-        [name]: value
+        [name]: value,
       },
       () => this.handleFormValid()
     )

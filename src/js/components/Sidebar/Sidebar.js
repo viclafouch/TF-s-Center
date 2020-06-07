@@ -20,28 +20,28 @@ export class Sidebar extends Component {
       {
         url: '/flagging_history',
         icon: faHistory,
-        label: 'History'
+        label: 'History',
       },
       {
         url: '/deputy?context=templates',
         icon: faFlag,
-        label: 'Templates'
+        label: 'Templates',
       },
       {
         url: '/deputy?context=searches',
         icon: faSearch,
-        label: 'Searches'
+        label: 'Searches',
       },
       {
         url: '/deputy?context=stats',
         icon: faChartLine,
-        label: 'Analytics'
+        label: 'Analytics',
       },
       {
         url: '/deputy?context=targets',
         icon: faBullseye,
-        label: 'Targets'
-      }
+        label: 'Targets',
+      },
     ]
   }
 
@@ -66,7 +66,7 @@ export class Sidebar extends Component {
     const url = this.props.location.pathname + this.props.location.search
     return (
       <YouTubeContext.Consumer>
-        {context => (
+        {(context) => (
           <div className="sidebar">
             <div className="profile-wrapper">
               <img
@@ -83,7 +83,7 @@ export class Sidebar extends Component {
                       className={`youtube-link ${
                         url === link.url ? 'active' : ''
                       }`}
-                      onClick={link.onClick ? e => link.onClick(e) : null}
+                      onClick={link.onClick ? (e) => link.onClick(e) : null}
                       activeClassName="active"
                     >
                       <span className="span-icon mgi--right-16">
@@ -102,7 +102,7 @@ export class Sidebar extends Component {
                 <li>
                   <a
                     className="youtube-link"
-                    onClick={e => this.switchTheme(e, context)}
+                    onClick={(e) => this.switchTheme(e, context)}
                   >
                     <span className="span-icon mgi--right-16">
                       <FontAwesomeIcon

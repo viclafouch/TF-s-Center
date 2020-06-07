@@ -12,7 +12,7 @@ export class Popup extends Component {
   render() {
     return (
       <YouTubeContext.Consumer>
-        {context => (
+        {(context) => (
           <div
             className={`popup ${
               this.props.type === context.state.modal.type &&
@@ -27,7 +27,7 @@ export class Popup extends Component {
               style={{ maxWidth: this.props.maxWidth || '' }}
             >
               {React.cloneElement(this.props.children, {
-                closeModal: () => this.closeModal(context)
+                closeModal: () => this.closeModal(context),
               })}
             </div>
           </div>

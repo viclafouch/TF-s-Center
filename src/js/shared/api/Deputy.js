@@ -12,8 +12,8 @@ export const fetchHistory = (params = {}) => {
     }
   }
   return fetch(url)
-    .then(StreamResponse => StreamResponse.text())
-    .then(StringReponse => {
+    .then((StreamResponse) => StreamResponse.text())
+    .then((StringReponse) => {
       const fragment = document.createElement('div')
       fragment.innerHTML = StringReponse
       if (
@@ -27,8 +27,8 @@ export const fetchHistory = (params = {}) => {
 
 export const fetchStats = () =>
   fetch('https://www.youtube.com/deputy?context=stats')
-    .then(StreamResponse => StreamResponse.text())
-    .then(StringReponse => {
+    .then((StreamResponse) => StreamResponse.text())
+    .then((StringReponse) => {
       const fragment = document.createElement('div')
       fragment.innerHTML = StringReponse
       return getStatistics(fragment)
@@ -40,7 +40,7 @@ export const fetchSearch = (params = {}) => {
     'page',
     'filters',
     'exclude_flagged_videos',
-    'search_id'
+    'search_id',
   ]
   let url = 'https://www.youtube.com/deputy'
   for (const iterator in params) {
@@ -49,8 +49,8 @@ export const fetchSearch = (params = {}) => {
     }
   }
   return fetch(url)
-    .then(StreamResponse => StreamResponse.text())
-    .then(StringReponse => {
+    .then((StreamResponse) => StreamResponse.text())
+    .then((StringReponse) => {
       const fragment = document.createElement('div')
       fragment.innerHTML = StringReponse
       if (
@@ -62,7 +62,7 @@ export const fetchSearch = (params = {}) => {
     })
 }
 
-export const fetchPostVideos = params =>
+export const fetchPostVideos = (params) =>
   fetch('/deputy?action_submit', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -74,6 +74,6 @@ export const fetchPostVideos = params =>
       search_query: params.search_query || '',
       page: params.page,
       filters: params.filters || '',
-      video_ids: params.video_ids.join(',')
-    })
+      video_ids: params.video_ids.join(','),
+    }),
   })

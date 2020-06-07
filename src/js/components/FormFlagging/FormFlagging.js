@@ -14,7 +14,7 @@ export class FormFlagging extends Component {
       flag_comments: '',
       reason: '',
       templateIdSelected: '',
-      location: props.location
+      location: props.location,
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -30,7 +30,7 @@ export class FormFlagging extends Component {
   autoSelectVideo(search) {
     const searchText = search.cleanString()
     const videosDetected = this.props.context.state.videosDisplayed.filter(
-      elem =>
+      (elem) =>
         elem.title.cleanString().search(searchText) !== -1 ||
         elem.description.cleanString().search(searchText) !== -1
     )
@@ -40,7 +40,7 @@ export class FormFlagging extends Component {
   autoCompleteForm() {
     const specialSearch = getUrlParameter('search_id')
     const search =
-      this.props.context.state.searches.find(x => x.id == specialSearch) || {}
+      this.props.context.state.searches.find((x) => x.id == specialSearch) || {}
     const templateId = search.templateId || getUrlParameter('template_id')
     let searchValue = search.value || getUrlParameter('search_query')
 
@@ -56,14 +56,14 @@ export class FormFlagging extends Component {
 
     if (templateId) {
       const template = this.props.context.state.templates.find(
-        x => x.id == templateId
+        (x) => x.id == templateId
       )
       if (!template) return
 
       return this.setState({
         flag_comments: template.description,
         reason: template.type,
-        templateIdSelected: template.id
+        templateIdSelected: template.id,
       })
     }
   }
@@ -80,7 +80,7 @@ export class FormFlagging extends Component {
    */
   handleSelectVideo(video, checked, context) {
     const { videosDisplayed } = context.state
-    const videoIndex = videosDisplayed.findIndex(elem => elem.id === video.id)
+    const videoIndex = videosDisplayed.findIndex((elem) => elem.id === video.id)
     videosDisplayed[videoIndex].selected = checked
     return context.setState({ videosDisplayed })
   }
@@ -96,7 +96,7 @@ export class FormFlagging extends Component {
     const previousState = copyObject(this.state)
 
     if (name === 'templateIdSelected' && value !== '') {
-      const template = context.state.templates.find(x => x.id == value)
+      const template = context.state.templates.find((x) => x.id == value)
       previousState.flag_comments = template.description
       previousState.reason = template.type
     }
@@ -111,7 +111,7 @@ export class FormFlagging extends Component {
 
     return (
       <YouTubeContext.Consumer>
-        {context => (
+        {(context) => (
           <form
             action="/deputy?action_submit"
             id="formFlagging"
@@ -138,7 +138,7 @@ export class FormFlagging extends Component {
                   nbPage,
                   filterPeriod,
                   search,
-                  token: context.state.session_token
+                  token: context.state.session_token,
                 }}
                 description={this.state.flag_comments}
                 reason={this.state.reason}

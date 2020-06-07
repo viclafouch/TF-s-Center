@@ -13,7 +13,7 @@ const AnalyticsContainer = () => (
       </div>
       <div className="mgi--10">
         <YouTubeContext.Consumer>
-          {context => <LastSevenDays context={context} />}
+          {(context) => <LastSevenDays context={context} />}
         </YouTubeContext.Consumer>
       </div>
       <div className="mgi--20">
@@ -23,7 +23,7 @@ const AnalyticsContainer = () => (
               Templates sort by videos flagged
             </h2>
             <YouTubeContext.Consumer>
-              {context => <BestTemplates context={context} />}
+              {(context) => <BestTemplates context={context} />}
             </YouTubeContext.Consumer>
           </div>
           <div
@@ -34,7 +34,7 @@ const AnalyticsContainer = () => (
               Searches sort by videos flagged
             </h2>
             <YouTubeContext.Consumer>
-              {context => <BestSearches context={context} />}
+              {(context) => <BestSearches context={context} />}
             </YouTubeContext.Consumer>
           </div>
         </div>

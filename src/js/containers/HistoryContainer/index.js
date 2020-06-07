@@ -5,7 +5,7 @@ import VideosList from '@components/VideosList/VideosList'
 
 const HistoryContainer = () => (
   <YouTubeContext.Consumer>
-    {context => (
+    {(context) => (
       <div className="full-heigth">
         <ToolsFlag />
         <VideosList videos={context.state.videosDisplayed} context={context} />

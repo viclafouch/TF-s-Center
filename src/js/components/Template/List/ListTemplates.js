@@ -7,15 +7,15 @@ export class ListTemplates extends Component {
   render() {
     return (
       <YouTubeContext.Consumer>
-        {context => (
+        {(context) => (
           <ul className="template-list">
             <TransitionGroup>
-              {context.state.templates.map(elem => (
+              {context.state.templates.map((elem) => (
                 <CSSTransition
                   key={elem.id}
                   timeout={{
                     enter: 1000,
-                    exit: 500
+                    exit: 500,
                   }}
                   classNames="template"
                 >

@@ -4,7 +4,7 @@ export const labels = [
   { value: 'R', title: 'Hateful or Abusive Content' },
   { value: 'X', title: 'Harmful Dangerous Acts' },
   { value: 'J', title: 'Child Abuse' },
-  { value: 'Z', title: 'Spam' }
+  { value: 'Z', title: 'Spam' },
 ]
 
 export const MAX_TEMPLATES = 8

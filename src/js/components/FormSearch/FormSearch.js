@@ -12,7 +12,7 @@ export class FormSearch extends Component {
     this.state = {
       redirectTo: null,
       showLastSearches: false,
-      foundSearchesOnTap: []
+      foundSearchesOnTap: [],
     }
 
     this.handleClickOutside = this.handleClickOutside.bind(this)
@@ -47,7 +47,7 @@ export class FormSearch extends Component {
     if (value.length > 2) {
       const wordsInput = value.split(' ')
       const foundSearchesOnTap = this.props.context.state.lastSearches.filter(
-        e => e.split(' ').some(u => wordsInput.includes(u))
+        (e) => e.split(' ').some((u) => wordsInput.includes(u))
       )
       this.setState({ foundSearchesOnTap })
     } else {
@@ -73,7 +73,7 @@ export class FormSearch extends Component {
       this.setState({ redirectTo, showLastSearches: false })
       const { lastSearches } = await getStorages('local')
       if (lastSearches.includes(value)) {
-        const lastSearchIndex = lastSearches.findIndex(x => x === value)
+        const lastSearchIndex = lastSearches.findIndex((x) => x === value)
         lastSearches.splice(lastSearchIndex, 1)
       }
       lastSearches.unshift(value)
@@ -116,7 +116,9 @@ export class FormSearch extends Component {
                           ? 'bold'
                           : ''
                       }`}
-                      onClick={event => this.handleClickLastSearch(event, elem)}
+                      onClick={(event) =>
+                        this.handleClickLastSearch(event, elem)
+                      }
                     >
                       {elem}
                     </li>

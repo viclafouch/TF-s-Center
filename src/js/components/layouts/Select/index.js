@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Select = props => {
+const Select = (props) => {
   const defaultOptions = {
     className: '',
     disabled: false,
-    defaultOptionTitle: 'defaultTitle'
+    defaultOptionTitle: 'defaultTitle',
   }
 
   const options = props.options || []
