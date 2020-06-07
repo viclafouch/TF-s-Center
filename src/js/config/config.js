@@ -37,7 +37,7 @@ export const links = [
   {
     label: 'Analytics',
     icon: faChartLine,
-    href: '/deputy?context=stats',
+    href: '/deputy?context=analytics',
   },
 ]
 
