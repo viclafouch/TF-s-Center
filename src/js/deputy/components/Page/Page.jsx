@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import './page.scoped.scss'
 import Sidebar from '../Sidebar/Sidebar'
+import './page.scoped.scss'
 
 const renderMergedProps = (component, ...rest) => {
   const finalProps = Object.assign({}, ...rest)

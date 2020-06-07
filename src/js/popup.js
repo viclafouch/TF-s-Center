@@ -1,40 +1,8 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHistory } from '@fortawesome/free-solid-svg-icons/faHistory'
-import { faFlag } from '@fortawesome/free-solid-svg-icons/faFlag'
-import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch'
-import { faBullseye } from '@fortawesome/free-solid-svg-icons/faBullseye'
-import { faChartLine } from '@fortawesome/free-solid-svg-icons/faChartLine'
+import { links } from '@/js/config/config'
 import { openInNewTab } from '@utils/browser'
-
-const links = [
-  {
-    label: 'History',
-    svg: faHistory,
-    href: '/flagging_history',
-  },
-  {
-    label: 'Templates',
-    svg: faFlag,
-    href: '/deputy?context=templates',
-  },
-  {
-    label: 'Searches',
-    svg: faSearch,
-    href: '/deputy?context=searches',
-  },
-  {
-    label: 'Targets',
-    svg: faBullseye,
-    href: '/deputy?context=targets',
-  },
-  {
-    label: 'Analytics',
-    svg: faChartLine,
-    href: '/deputy?context=stats',
-  },
-]
 
 function Popup() {
   const redirectToTabs = (e) => {
@@ -47,18 +15,18 @@ function Popup() {
   return (
     <nav className="navbar">
       <ul className="nav-link">
-        {links.map((elem, index) => (
+        {links.map((link, index) => (
           <li key={index}>
             <a
-              href={elem.href}
-              data-href={elem.href}
+              href={link.href}
+              data-href={link.href}
               className="youtube-link"
               onClick={redirectToTabs}
             >
               <span className="span-icon">
-                <FontAwesomeIcon icon={elem.svg} size="1x" fixedWidth />
+                <FontAwesomeIcon icon={link.icon} size="1x" fixedWidth />
               </span>
-              <span className="text-link">{elem.label}</span>
+              <span className="text-link">{link.label}</span>
             </a>
           </li>
         ))}
