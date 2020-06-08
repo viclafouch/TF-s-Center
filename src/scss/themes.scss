@@ -33,14 +33,3 @@ html[data-theme='light'] {
   --background-scrollbar: #a1b2c4;
   --logo-youtube-text: #282828;
 }
-
-.input-colored {
-  border-width: 1px;
-  border-style: solid;
-  border-top-color: var(--input-border);
-  border-bottom-color: var(--input-border);
-  border-left-color: var(--input-border);
-  border-right-color: var(--input-border);
-  background-color: var(--input-background);
-  color: var(--input-text);
-}

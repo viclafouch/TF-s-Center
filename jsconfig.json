@@ -8,6 +8,7 @@
       "@stores/*": ["src/js/store/*"],
       "@containers/*": ["src/js/containers/*"],
       "@shared/*": ["src/js/shared/*"],
+      "@deputy/*": ["src/js/deputy/*"],
       "@utils/*": ["src/js/utils/*"],
       "@scss/*": ["src/scss/*"],
       "@img/*": ["src/img/*"],

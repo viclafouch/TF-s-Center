@@ -27,7 +27,7 @@ function Sidebar() {
                 isActive={() => link.href === currentPath}
                 activeClassName="active"
               >
-                <span className="span-icon mgi--right-16">
+                <span className="span-icon">
                   <FontAwesomeIcon icon={link.icon} size="1x" fixedWidth />
                 </span>
                 <span className="text-link">{link.label}</span>

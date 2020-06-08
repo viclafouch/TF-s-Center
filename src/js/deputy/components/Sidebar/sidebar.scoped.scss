@@ -64,6 +64,9 @@
         span {
           display: inline-block;
           color: var(--text-color);
+          &.span-icon {
+            margin-right: 16px;
+          }
         }
       }
     }

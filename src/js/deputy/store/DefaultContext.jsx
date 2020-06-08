@@ -1,10 +1,14 @@
 import React, { useReducer } from 'react'
-import produce from 'immer'
+import DefaultReducer from './reducer/default'
 
 export const DefaultContext = React.createContext()
 
-function DefaultProvider({ initialState, children }) {
-  const [state, updater] = useReducer(produce, initialState)
+const initialState = {
+  searches: [],
+}
+
+function DefaultProvider({ children }) {
+  const [state, updater] = useReducer(DefaultReducer, initialState)
   return (
     <DefaultContext.Provider value={[state, updater]}>
       {children}

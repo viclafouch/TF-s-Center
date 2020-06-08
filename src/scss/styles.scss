@@ -1,8 +1,5 @@
 @import './datepicker';
-@import './themes';
 @import './form';
-@import './utils';
-@import './table';
 
 $h-nav: 56px;
 $w-sidebar: 240px;
@@ -534,10 +531,6 @@ div#TFsCenter {
         background-color: var(--lighten-hover);
       }
 
-      .video-item-title {
-        @include one-line;
-      }
-
       .video-item-thumbnail {
         width: 120px;
         height: 90px;
@@ -556,7 +549,6 @@ div#TFsCenter {
       .video-notes {
         font-size: 12px;
         margin-top: auto;
-        @include one-line;
         a {
           color: inherit;
         }

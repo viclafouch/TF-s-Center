@@ -52,6 +52,7 @@ module.exports = (env, argv, IS_DEV = argv.mode !== 'production') => {
         '@utils': path.resolve(__dirname, './src/js/utils'),
         '@scss': path.resolve(__dirname, './src/scss'),
         '@img': path.resolve(__dirname, './src/img'),
+        '@deputy': path.resolve(__dirname, './src/js/deputy'),
         '@': path.resolve(__dirname, './src'),
         '@private': path.resolve(__dirname, 'private.js'),
       },

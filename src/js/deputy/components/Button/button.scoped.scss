@@ -1,0 +1,47 @@
+.button {
+  font: initial;
+  display: inline-block;
+  height: 28px;
+  border: solid 1px transparent;
+  padding: 0 10px;
+  outline: 0;
+  font-weight: 500;
+  font-size: 11px;
+  text-decoration: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  line-height: normal;
+  vertical-align: middle;
+  cursor: pointer;
+  border-radius: 2px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+  font-family: 'YouTube Noto', Roboto, arial, sans-serif;
+  margin: 0;
+  float: none;
+  color: #000000;
+
+  &.button-blue {
+    color: #ffffff;
+    border-color: #167ac6;
+    background-color: #167ac6;
+  }
+
+  &.button-white {
+    color: #000000;
+    border-color: #ffffff;
+    background-color: #ffffff;
+
+    &:disabled {
+      background-color: #b9b9b9;
+      color: #7d7d7d;
+    }
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled):hover {
+    opacity: 0.8;
+  }
+}

@@ -1,0 +1,26 @@
+.searches {
+  .searches-add-container {
+    .top-search-action {
+      display: flex;
+      margin-bottom: 10px;
+
+      .input-container-search {
+        flex: 1;
+      }
+
+      .button {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .searches-list-container {
+    margin-top: 50px;
+
+    .list-actions-top {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 20px;
+    }
+  }
+}
