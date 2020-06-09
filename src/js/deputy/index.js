@@ -1,15 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
+import { getBrowserStorage } from '@utils/browser'
 
-const startDeputy = () => {
+const startDeputy = async () => {
   document.documentElement.setAttribute('data-theme', 'dark')
-  document.body.classList.add('TFs-ready')
   const div = document.createElement('div')
   div.setAttribute('id', 'TFsCenter')
   document.body.innerHTML = ''
   document.body.appendChild(div)
-  ReactDOM.render(<App initialData={null} />, div)
+  const localStorage = await getBrowserStorage('local', ['searches'])
+  ReactDOM.render(<App initialData={localStorage} />, div)
+  document.body.classList.add('TFs-ready')
 }
 
 export default startDeputy

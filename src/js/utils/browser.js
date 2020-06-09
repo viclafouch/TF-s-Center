@@ -1,5 +1,7 @@
 import { wait } from '@utils'
 
+export const browser = browser || chrome
+
 export const clearStorages = async () => {
   chrome.storage.local.clear()
   chrome.storage.sync.clear()
@@ -24,5 +26,38 @@ export const sendMessageToBackground = (type, items) =>
       )
     } else {
       reject(`Error when sending message ${type}`)
+    }
+  })
+
+/**
+ * Set item(s) to a specitif type of browser storage
+ * @param {string} type - local or sync
+ * @param {object} items - items you want to set
+ */
+export const setBrowserStorage = (type, items) =>
+  new Promise((resolve, reject) => {
+    if (!['sync', 'local'].includes(type))
+      reject('Sync or Local as type allowed')
+    if (!browser.runtime.lastError) {
+      browser.storage[type].set(items, (result) => resolve(result))
+    } else {
+      console.error(browser.runtime.lastError.message)
+      reject(`Error while setting items to the ${type} storage`)
+    }
+  })
+
+/**
+ * Get specitif storage from browser
+ * @param {string} type - local or sync
+ */
+export const getBrowserStorage = (type, items = []) =>
+  new Promise((resolve, reject) => {
+    if (!['sync', 'local'].includes(type))
+      reject('Sync or Local as type allowed')
+    if (!browser.runtime.lastError) {
+      browser.storage[type].get(items, (result) => resolve(result))
+    } else {
+      console.error(browser.runtime.lastError.message)
+      reject(`Error when loading ${type} storage`)
     }
   })

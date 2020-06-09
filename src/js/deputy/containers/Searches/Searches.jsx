@@ -39,8 +39,6 @@ function Searches() {
   const isAllChecked =
     searches.length === selectedSearches.length && searches.length > 0
 
-  console.log(search)
-
   return (
     <div className="searches">
       <div className="searches-add-container">
