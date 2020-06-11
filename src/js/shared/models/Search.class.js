@@ -12,7 +12,7 @@ export class Search {
   }
 
   getTemplate(context) {
-    return context.state.templates.find((x) => x.id == this.templateId) || {}
+    return context.state.templates.find(x => x.id == this.templateId) || {}
   }
 }
 

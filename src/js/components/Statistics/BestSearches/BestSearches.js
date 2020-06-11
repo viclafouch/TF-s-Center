@@ -9,7 +9,7 @@ const BestSearches = ({ context }) => {
   }
 
   const searches = context.state.searches
-    .filter((elem) => elem.flagged)
+    .filter(elem => elem.flagged)
     .sort(compare)
     .reverse()
     .slice(0, 5)
@@ -34,27 +34,25 @@ const BestSearches = ({ context }) => {
     '#8B0707',
     '#329262',
     '#5574A6',
-    '#3B3EAC',
+    '#3B3EAC'
   ]
 
   const data = {
-    labels: searches.map((el) => el.value),
+    labels: searches.map(el => el.value),
     datasets: [
       {
-        data: searches.map((el) => el.flagged),
+        data: searches.map(el => el.flagged),
         backgroundColor: searches.map((el, index) => default_colors[index]),
-        hoverBackgroundColor: searches.map(
-          (el, index) => default_colors[index]
-        ),
-      },
-    ],
+        hoverBackgroundColor: searches.map((el, index) => default_colors[index])
+      }
+    ]
   }
 
   const options = {
     legend: {
       display: true,
-      position: 'bottom',
-    },
+      position: 'bottom'
+    }
   }
 
   return (

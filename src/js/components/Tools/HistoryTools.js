@@ -7,7 +7,7 @@ import { SelectDisplay } from './SelectDisplay/SelectDisplay'
 
 const HistoryTools = () => (
   <YouTubeContext.Consumer>
-    {(context) => (
+    {context => (
       <>
         <div className="flex-me flex-justify-between flex-align">
           <div className="flex-me">

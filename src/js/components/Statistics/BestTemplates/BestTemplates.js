@@ -9,7 +9,7 @@ const BestTemplates = ({ context }) => {
   }
 
   const templates = context.state.templates
-    .filter((elem) => elem.nb_flagged)
+    .filter(elem => elem.nb_flagged)
     .sort(compare)
     .reverse()
     .slice(0, 5)
@@ -34,27 +34,25 @@ const BestTemplates = ({ context }) => {
     '#8B0707',
     '#329262',
     '#5574A6',
-    '#3B3EAC',
+    '#3B3EAC'
   ]
 
   const data = {
-    labels: templates.map((el) => el.title),
+    labels: templates.map(el => el.title),
     datasets: [
       {
-        data: templates.map((el) => el.nb_flagged),
+        data: templates.map(el => el.nb_flagged),
         backgroundColor: templates.map((el, index) => default_colors[index]),
-        hoverBackgroundColor: templates.map(
-          (el, index) => default_colors[index]
-        ),
-      },
-    ],
+        hoverBackgroundColor: templates.map((el, index) => default_colors[index])
+      }
+    ]
   }
 
   const options = {
     legend: {
       display: true,
-      position: 'bottom',
-    },
+      position: 'bottom'
+    }
   }
 
   return (

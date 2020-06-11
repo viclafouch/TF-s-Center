@@ -4,7 +4,7 @@ import FormFlagging from '@components/FormFlagging/FormFlagging'
 
 const SearchVideosContainer = ({ location }) => (
   <YouTubeContext.Consumer>
-    {(context) => (
+    {context => (
       <div className="full-heigth">
         <FormFlagging context={context} location={location} />
       </div>

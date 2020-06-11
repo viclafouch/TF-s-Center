@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Textarea = (props) => {
+const Textarea = props => {
   const defaultOptions = {
     className: '',
     placeholder: '',
@@ -10,7 +10,7 @@ const Textarea = (props) => {
     minLength: 0,
     rows: 2,
     cols: 20,
-    wrap: 'soft',
+    wrap: 'soft'
   }
 
   const classNames = props.className || defaultOptions.className

@@ -12,7 +12,7 @@ export class FormReporting extends Component {
     super()
 
     this.state = {
-      reasonEmpty: false,
+      reasonEmpty: false
     }
 
     this.handleClickSubmit = this.handleClickSubmit.bind(this)
@@ -30,7 +30,7 @@ export class FormReporting extends Component {
     e.preventDefault()
     if (!this.props.reason) return this.setState({ reasonEmpty: true })
     const params = {
-      video_ids: context.state.videosDisplayed.map((e) => e.id),
+      video_ids: context.state.videosDisplayed.map(e => e.id),
       filters: this.props.params.filters,
       search_query: this.props.params.search,
       page: this.props.params.nbPage,
@@ -38,11 +38,8 @@ export class FormReporting extends Component {
       video_report_reason: this.props.params.reason,
       templateId: this.props.templateIdSelected,
       searchId: getUrlParameter('search_id'),
-      nbReported: context.state.videosDisplayed.filter((elem) => elem.selected)
-        .length,
-      selected_vid: context.state.videosDisplayed
-        .filter((elem) => elem.selected)
-        .map((e) => e.id),
+      nbReported: context.state.videosDisplayed.filter(elem => elem.selected).length,
+      selected_vid: context.state.videosDisplayed.filter(elem => elem.selected).map(e => e.id)
     }
 
     return context.flagVideos(params)
@@ -61,42 +58,28 @@ export class FormReporting extends Component {
       <div className="form-reporting">
         <div className="pdi--20">
           <YouTubeContext.Consumer>
-            {(context) => (
+            {context => (
               <div className="flex-me flex-justify-between">
-                <h2>
-                  Report videos (
-                  {
-                    context.state.videosDisplayed.filter(
-                      (x) => x.selected === true
-                    ).length
-                  }
-                  )
-                </h2>
+                <h2>Report videos ({context.state.videosDisplayed.filter(x => x.selected === true).length})</h2>
                 <div>
                   <Select
                     options={context.state.templates.map(({ title, id }) => ({
                       title,
-                      id,
+                      id
                     }))}
                     className="input-colored"
                     defaultOptionTitle="Choose template"
                     null
                     name="templateIdSelected"
                     value={this.props.templateIdSelected}
-                    onChange={(e) => this.props.handleChange(e, context)}
+                    onChange={e => this.props.handleChange(e, context)}
                   />
                 </div>
               </div>
             )}
           </YouTubeContext.Consumer>
           <fieldset className="form-reporting-fieldset">
-            <legend
-              className={`yt-uix-form-legend ${
-                this.state.reasonEmpty ? 'red-color' : ''
-              }`}
-            >
-              {`What's the issue ?`}
-            </legend>
+            <legend className={`yt-uix-form-legend ${this.state.reasonEmpty ? 'red-color' : ''}`}>{`What's the issue ?`}</legend>
             <ul className="yt-uix-form-list-option paper-list">
               {labels.map((elem, index) => (
                 <li key={index} className="paper-item">
@@ -131,11 +114,7 @@ export class FormReporting extends Component {
               onChange={this.props.handleChange}
             />
           </fieldset>
-          <CountLetter
-            text={this.props.description}
-            limit={500}
-            style={{ textAlign: 'right' }}
-          />
+          <CountLetter text={this.props.description} limit={500} style={{ textAlign: 'right' }} />
         </div>
         <div className="form-reporting-fieldset buttons">
           <div className="mgi--left-10">
@@ -145,12 +124,8 @@ export class FormReporting extends Component {
           </div>
           <div className="mgi--left-10">
             <YouTubeContext.Consumer>
-              {(context) => (
-                <Button
-                  type="submit"
-                  blue
-                  onClick={(e) => this.handleClickSubmit(e, context)}
-                >
+              {context => (
+                <Button type="submit" blue onClick={e => this.handleClickSubmit(e, context)}>
                   Submit
                 </Button>
               )}

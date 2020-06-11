@@ -12,14 +12,14 @@ function transformLocation(inputLocation) {
   if (contextQuery === undefined) return inputLocation
   return {
     ...inputLocation,
-    pathname: '/' + contextQuery,
+    pathname: '/' + contextQuery
   }
 }
 
 function Routes() {
   return (
     <Route
-      render={(routeProps) => (
+      render={routeProps => (
         <Switch location={transformLocation(routeProps.location)}>
           <Page path="/analytics" component={Analytics} />
           <Page path="/targets" component={Targets} />

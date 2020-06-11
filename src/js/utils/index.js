@@ -18,19 +18,13 @@ export function getUrlParameter(sParam) {
 export const randomId = () => Math.floor(Math.random() * 1000000)
 
 export const redirectToWebCache = (link, newTab = true) =>
-  window.open(
-    `http://webcache.googleusercontent.com/search?q=cache:${link}`,
-    newTab ? '_blank' : ''
-  )
+  window.open(`http://webcache.googleusercontent.com/search?q=cache:${link}`, newTab ? '_blank' : '')
 
-export const setStateAsync = (state, self) =>
-  new Promise((resolve) => self.setState(state, resolve))
+export const setStateAsync = (state, self) => new Promise(resolve => self.setState(state, resolve))
 
-export const wait = (amount = 0) =>
-  new Promise((resolve) => setTimeout(resolve, amount))
+export const wait = (amount = 0) => new Promise(resolve => setTimeout(resolve, amount))
 
-export const isOnDeputyPage = ({ pathname } = document.location) =>
-  pathname === '/deputy' || pathname === '/flagging_history'
+export const isOnDeputyPage = ({ pathname } = document.location) => pathname === '/deputy' || pathname === '/flagging_history'
 
 export function updateQueryStringParameter(uri, key, value) {
   const re = new RegExp(`([?&])${key}=.*?(&|$)`, 'i')
@@ -39,13 +33,10 @@ export function updateQueryStringParameter(uri, key, value) {
   return `${uri + separator + key}=${value}`
 }
 
-export const copyObject = (obj) => JSON.parse(JSON.stringify(obj))
+export const copyObject = obj => JSON.parse(JSON.stringify(obj))
 
 export const trySearch = (text, { searchId, isAS, templateId }) => {
-  const urlEncodade = encodeURIComponent(`"${text.trim()}"`).replace(
-    /%20/g,
-    '+'
-  )
+  const urlEncodade = encodeURIComponent(`"${text.trim()}"`).replace(/%20/g, '+')
   let url = `/deputy?search_query=${urlEncodade}`
   url = searchId ? `${url}&search_id=${searchId}` : url
   url = isAS ? `${url}&is_as=true` : url
@@ -78,8 +69,7 @@ export function getAllUrlParams(url) {
       let paramValue = typeof a[1] === 'undefined' ? true : a[1]
 
       paramName = paramName.toLowerCase()
-      if (typeof paramValue === 'string')
-        paramValue = decodeURIComponent(paramValue.toLowerCase())
+      if (typeof paramValue === 'string') paramValue = decodeURIComponent(paramValue.toLowerCase())
 
       if (paramName.match(/\[(\d+)?\]$/)) {
         const key = paramName.replace(/\[(\d+)?\]/, '')
@@ -110,7 +100,7 @@ export const wrapURLs = (text = '', new_window) => {
 
   const target = new_window === true || new_window == null ? '_blank' : ''
 
-  return text.replace(url_pattern, (url) => {
+  return text.replace(url_pattern, url => {
     const protocol_pattern = /^(?:(?:https?|ftp):\/\/)/i
     const href = protocol_pattern.test(url) ? url : `http://${url}`
     return `<a href="${href}" target="${target}">${url}</a>`
@@ -129,5 +119,5 @@ export function TF_ERROR(id) {
 TF_ERROR.prototype = Object.create(Error.prototype)
 TF_ERROR.prototype.constructor = TF_ERROR
 
-export const uena = (chn) => window.btoa(unescape(encodeURIComponent(chn)))
-export const aenu = (chn) => decodeURIComponent(escape(window.atob(chn)))
+export const uena = chn => window.btoa(unescape(encodeURIComponent(chn)))
+export const aenu = chn => decodeURIComponent(escape(window.atob(chn)))

@@ -21,9 +21,7 @@ export function openInNewTab(url, newTab = false) {
 export const sendMessageToBackground = (type, items) =>
   new Promise((resolve, reject) => {
     if (!chrome.runtime.lastError) {
-      chrome.runtime.sendMessage({ type, items }, (response) =>
-        resolve(response)
-      )
+      chrome.runtime.sendMessage({ type, items }, response => resolve(response))
     } else {
       reject(`Error when sending message ${type}`)
     }
@@ -36,10 +34,9 @@ export const sendMessageToBackground = (type, items) =>
  */
 export const setBrowserStorage = (type, items) =>
   new Promise((resolve, reject) => {
-    if (!['sync', 'local'].includes(type))
-      reject('Sync or Local as type allowed')
+    if (!['sync', 'local'].includes(type)) reject('Sync or Local as type allowed')
     if (!browser.runtime.lastError) {
-      browser.storage[type].set(items, (result) => resolve(result))
+      browser.storage[type].set(items, result => resolve(result))
     } else {
       console.error(browser.runtime.lastError.message)
       reject(`Error while setting items to the ${type} storage`)
@@ -52,11 +49,10 @@ export const setBrowserStorage = (type, items) =>
  */
 export const getBrowserStorage = (type, items = []) =>
   new Promise((resolve, reject) => {
-    if (!['sync', 'local'].includes(type))
-      reject('Sync or Local as type allowed')
+    if (!['sync', 'local'].includes(type)) reject('Sync or Local as type allowed')
     if (!browser.runtime.lastError) {
-      const keys = items.map((item) => item.key)
-      browser.storage[type].get(keys, (result) => {
+      const keys = items.map(item => item.key)
+      browser.storage[type].get(keys, result => {
         for (const item of items) {
           if (result[item.key] === undefined) result[item.key] = item.default
         }

@@ -12,7 +12,7 @@ class Template {
   }
 
   get label() {
-    return labels.find((l) => l.value === this.reason).title
+    return labels.find(l => l.value === this.reason).title
   }
 }
 

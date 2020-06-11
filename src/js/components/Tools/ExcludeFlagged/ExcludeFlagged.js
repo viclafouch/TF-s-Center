@@ -8,7 +8,7 @@ export class ExcludeFlagged extends Component {
     super()
     this.state = {
       isExcluded: true,
-      redirectTo: null,
+      redirectTo: null
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -42,18 +42,12 @@ export class ExcludeFlagged extends Component {
   render() {
     if (this.state.redirectTo) return <Redirect to={this.state.redirectTo} />
     return (
-      <div
-        className={`tool tools-exclude-flagged ${
-          this.props.disabled ? 'tool-disabled' : ''
-        }`}
-      >
+      <div className={`tool tools-exclude-flagged ${this.props.disabled ? 'tool-disabled' : ''}`}>
         <label
           className="yt-uix-button yt-uix-button-size-default yt-uix-button-primary flex-me flex-align"
           htmlFor="excluded-flagged"
         >
-          <span className="mgi--right-6">
-            Exclude previously flagged videos
-          </span>
+          <span className="mgi--right-6">Exclude previously flagged videos</span>
           <Checkbox
             disabled={this.props.disabled}
             checked={this.state.isExcluded}

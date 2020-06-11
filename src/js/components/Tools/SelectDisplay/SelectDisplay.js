@@ -14,13 +14,13 @@ export class SelectDisplay extends Component {
         >
           <span className="mgi--right-6">Change display</span>
           <YouTubeContext.Consumer>
-            {(context) => (
+            {context => (
               <>
                 <Checkbox
                   checked={context.state.displaying === 'column'}
-                  onChange={(e) =>
+                  onChange={e =>
                     context.setState({
-                      displaying: e.target.checked ? 'column' : 'row',
+                      displaying: e.target.checked ? 'column' : 'row'
                     })
                   }
                   name="chooseDisplayed"

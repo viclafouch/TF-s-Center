@@ -19,9 +19,7 @@ export class FlagButton extends Component {
     e.preventDefault()
     const { watchedVideo } = this.props
     const { videosToFlag } = await getStorages('local')
-    const existingIndex = videosToFlag.findIndex(
-      (x) => x.id === watchedVideo.id
-    )
+    const existingIndex = videosToFlag.findIndex(x => x.id === watchedVideo.id)
     if (existingIndex === -1) videosToFlag.push(watchedVideo)
     else videosToFlag.splice(existingIndex, 1)
     return this.props.setContextState({ videosToFlag })
@@ -31,12 +29,7 @@ export class FlagButton extends Component {
     const { watchedVideo, videosToFlag } = this.props
 
     return (
-      <button
-        onClick={this.onFlag}
-        className={
-          videosToFlag.find((x) => x.id === watchedVideo.id) ? 'active' : ''
-        }
-      >
+      <button onClick={this.onFlag} className={videosToFlag.find(x => x.id === watchedVideo.id) ? 'active' : ''}>
         <span className="span-icon">
           <FontAwesomeIcon icon={faCheck} size="1x" fixedWidth />
         </span>

@@ -11,7 +11,7 @@ export class TemplateListItem extends Component {
     super()
 
     this.state = {
-      active: false,
+      active: false
     }
   }
 
@@ -25,8 +25,8 @@ export class TemplateListItem extends Component {
           notification: {
             id: randomId(),
             type: 'removeTemplate',
-            params: { level: 'success', message: 'Template removed !' },
-          },
+            params: { level: 'success', message: 'Template removed !' }
+          }
         })
       }
     } catch (error) {
@@ -34,21 +34,21 @@ export class TemplateListItem extends Component {
         notification: {
           id: randomId(),
           type: 'removeTemplate',
-          params: { level: 'error', message: error.message },
-        },
+          params: { level: 'error', message: error.message }
+        }
       })
     }
   }
 
   render() {
     const { template } = this.props
-    const label = labels.find((x) => x.value === template.type)
+    const label = labels.find(x => x.value === template.type)
 
     return (
       <div>
         <article
           className={`template-item ${this.state.active ? 'active' : ''}`}
-          onClick={(e) => {
+          onClick={e => {
             e.preventDefault()
             this.setState({ active: !this.state.active })
           }}
@@ -63,10 +63,10 @@ export class TemplateListItem extends Component {
           </div>
         </article>
         <YouTubeContext.Consumer>
-          {(context) => (
+          {context => (
             <div
               className="action-temp flex-me flex-justify-center flex-align"
-              onClick={(e) => this.actionOnSelected(e, context, template)}
+              onClick={e => this.actionOnSelected(e, context, template)}
             >
               <span style={{ cursor: 'pointer' }}>
                 <FontAwesomeIcon icon={faTrashAlt} size="2x" fixedWidth />

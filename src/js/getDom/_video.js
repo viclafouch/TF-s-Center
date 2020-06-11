@@ -18,14 +18,8 @@ const video = function getVideo(idWatch, container) {
     description = document.getElementById('description').textContent.trim()
     videoAddedTime = document.getElementsByClassName('date')[0].textContent
     channelUrl = document.getElementById('avatar').parentElement.href
-    channelTitle = document
-      .getElementById('meta-contents')
-      .querySelector('#channel-name')
-      .textContent.trim()
-    channelId = document
-      .getElementById('meta-contents')
-      .querySelector('#upload-info')
-      .previousSibling.href.split('/channel/')[1]
+    channelTitle = document.getElementById('meta-contents').querySelector('#channel-name').textContent.trim()
+    channelId = document.getElementById('meta-contents').querySelector('#upload-info').previousSibling.href.split('/channel/')[1]
     viewCount = document.getElementsByClassName('view-count')[0]
       ? document.getElementsByClassName('view-count')[0].textContent
       : ''
@@ -34,23 +28,16 @@ const video = function getVideo(idWatch, container) {
     if (container.querySelector('#description-text')) {
       description = container.querySelector('#description-text').textContent
       channelTitle = container.querySelector('.ytd-channel-name').textContent
-      channelUrl = container.querySelector('.ytd-channel-name')
-        .firstElementChild.href
+      channelUrl = container.querySelector('.ytd-channel-name').firstElementChild.href
     } else {
       description = ''
       channelTitle = document.getElementById('channel-name').textContent
-      channelUrl = document
-        .getElementById('menu')
-        .firstElementChild.href.split('/videos')[0]
+      channelUrl = document.getElementById('menu').firstElementChild.href.split('/videos')[0]
     }
 
-    viewCount = container.querySelector('#metadata-line').firstElementChild
-      .textContent
-    videoAddedTime = container.querySelector('#metadata-line').firstElementChild
-      .nextSibling.textContent
-    idWatch = new URL(
-      container.querySelector('#video-title').href
-    ).searchParams.get('v')
+    viewCount = container.querySelector('#metadata-line').firstElementChild.textContent
+    videoAddedTime = container.querySelector('#metadata-line').firstElementChild.nextSibling.textContent
+    idWatch = new URL(container.querySelector('#video-title').href).searchParams.get('v')
   }
   return {
     watchedVideo: new Video({
@@ -61,8 +48,8 @@ const video = function getVideo(idWatch, container) {
       videoAddedTime,
       channelUrl,
       channelTitle,
-      channelId,
-    }),
+      channelId
+    })
   }
 }
 

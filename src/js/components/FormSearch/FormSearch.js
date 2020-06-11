@@ -12,7 +12,7 @@ export class FormSearch extends Component {
     this.state = {
       redirectTo: null,
       showLastSearches: false,
-      foundSearchesOnTap: [],
+      foundSearchesOnTap: []
     }
 
     this.handleClickOutside = this.handleClickOutside.bind(this)
@@ -46,9 +46,7 @@ export class FormSearch extends Component {
   foundWords(value) {
     if (value.length > 2) {
       const wordsInput = value.split(' ')
-      const foundSearchesOnTap = this.props.context.state.lastSearches.filter(
-        (e) => e.split(' ').some((u) => wordsInput.includes(u))
-      )
+      const foundSearchesOnTap = this.props.context.state.lastSearches.filter(e => e.split(' ').some(u => wordsInput.includes(u)))
       this.setState({ foundSearchesOnTap })
     } else {
       this.setState({ foundSearchesOnTap: [] })
@@ -73,7 +71,7 @@ export class FormSearch extends Component {
       this.setState({ redirectTo, showLastSearches: false })
       const { lastSearches } = await getStorages('local')
       if (lastSearches.includes(value)) {
-        const lastSearchIndex = lastSearches.findIndex((x) => x === value)
+        const lastSearchIndex = lastSearches.findIndex(x => x === value)
         lastSearches.splice(lastSearchIndex, 1)
       }
       lastSearches.unshift(value)
@@ -84,12 +82,7 @@ export class FormSearch extends Component {
   render() {
     if (this.state.redirectTo) return <Redirect to={this.state.redirectTo} />
     return (
-      <form
-        className="flex-me form-search"
-        id="search-form"
-        action="GET"
-        onSubmit={this.handleSubmit}
-      >
+      <form className="flex-me form-search" id="search-form" action="GET" onSubmit={this.handleSubmit}>
         <div className="container-search-action">
           <input
             className="input-colored flex-one"
@@ -104,28 +97,21 @@ export class FormSearch extends Component {
             onChange={this.handleChange}
             value={this.props.context.state.search}
           />
-          {this.state.showLastSearches &&
-            this.props.context.state.lastSearches.length > 0 && (
-              <div className="lastSearches-container">
-                <ul className="list-last-searches">
-                  {this.props.context.state.lastSearches.map((elem, index) => (
-                    <li
-                      key={index}
-                      className={`item-last-search ${
-                        this.state.foundSearchesOnTap.includes(elem)
-                          ? 'bold'
-                          : ''
-                      }`}
-                      onClick={(event) =>
-                        this.handleClickLastSearch(event, elem)
-                      }
-                    >
-                      {elem}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+          {this.state.showLastSearches && this.props.context.state.lastSearches.length > 0 && (
+            <div className="lastSearches-container">
+              <ul className="list-last-searches">
+                {this.props.context.state.lastSearches.map((elem, index) => (
+                  <li
+                    key={index}
+                    className={`item-last-search ${this.state.foundSearchesOnTap.includes(elem) ? 'bold' : ''}`}
+                    onClick={event => this.handleClickLastSearch(event, elem)}
+                  >
+                    {elem}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
         <button className="button-search">
           <span className="span-icon">
