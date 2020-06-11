@@ -55,7 +55,13 @@ export const getBrowserStorage = (type, items = []) =>
     if (!['sync', 'local'].includes(type))
       reject('Sync or Local as type allowed')
     if (!browser.runtime.lastError) {
-      browser.storage[type].get(items, (result) => resolve(result))
+      const keys = items.map((item) => item.key)
+      browser.storage[type].get(keys, (result) => {
+        for (const item of items) {
+          if (result[item.key] === undefined) result[item.key] = item.default
+        }
+        resolve(result)
+      })
     } else {
       console.error(browser.runtime.lastError.message)
       reject(`Error when loading ${type} storage`)

@@ -9,7 +9,10 @@ const startDeputy = async () => {
   div.setAttribute('id', 'TFsCenter')
   document.body.innerHTML = ''
   document.body.appendChild(div)
-  const localStorage = await getBrowserStorage('local', ['searches'])
+  const localStorage = await getBrowserStorage('local', [
+    { key: 'searches', default: [] },
+    { key: 'templates', default: [] },
+  ])
   ReactDOM.render(<App initialData={localStorage} />, div)
   document.body.classList.add('TFs-ready')
 }

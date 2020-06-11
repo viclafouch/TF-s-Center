@@ -1,5 +1,10 @@
 import produce from 'immer'
-import { ADD_SEARCH, REMOVE_SEARCHES } from './constants'
+import {
+  ADD_SEARCH,
+  REMOVE_SEARCHES,
+  ADD_TEMPLATE,
+  REMOVE_TEMPLATE,
+} from './constants'
 
 export default (state = {}, action) =>
   produce(state, (draft) => {
@@ -11,6 +16,15 @@ export default (state = {}, action) =>
         draft.searches = state.searches.filter((search) =>
           action.payload.searchesId.some((s) => s !== search.id)
         )
+        break
+      case ADD_TEMPLATE:
+        draft.templates.push(action.payload.template)
+        break
+      case REMOVE_TEMPLATE:
+        draft.templates = state.templates.filter(
+          (template) => template.id !== action.payload.templateId
+        )
+
         break
       default:
         break

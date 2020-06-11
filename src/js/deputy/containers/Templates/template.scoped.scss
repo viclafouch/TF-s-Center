@@ -1,0 +1,43 @@
+.templates {
+
+  .templates-add-box {
+    .add-placeholder {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      .add-template-field {
+        padding: 15px 0;
+
+        input,
+        textarea,
+        select:valid {
+          color: var(--text-color);
+        }
+
+        input::placeholder,
+        textarea::placeholder,
+        select:invalid {
+          color: rgb(148, 148, 148);
+        }
+
+        textarea {
+          min-height: 150px;
+          max-height: 500px;
+          resize: vertical;
+          overflow-y: auto;
+        }
+      }
+
+      button {
+        align-self: flex-end;
+      }
+    }
+
+
+  }
+}
