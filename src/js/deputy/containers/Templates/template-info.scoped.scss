@@ -1,0 +1,31 @@
+.template-info {
+  color: var(--text-color);
+
+  .template-edit-fields {
+    padding: 50px;
+    .template-title {
+      font-size: 30px;
+    }
+
+    .template-description {
+      resize: none;
+    }
+
+    input,
+    textarea,
+    select {
+      margin-bottom: 20px;
+      border-bottom-color: transparent;
+
+      &:hover {
+        resize: vertical;
+        border-bottom-color: var(--input-border);
+      }
+    }
+  }
+
+  .remove-button {
+    float: right;
+    margin: 20px;
+  }
+}

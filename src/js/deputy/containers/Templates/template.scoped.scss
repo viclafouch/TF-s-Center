@@ -1,6 +1,8 @@
 .templates {
 
   .templates-add-box {
+    margin-bottom: 60px;
+
     .add-placeholder {
       display: flex;
       justify-content: space-between;
@@ -37,7 +39,11 @@
         align-self: flex-end;
       }
     }
+  }
 
-
+  .templates-list-container {
+    .template-item {
+      margin-top: 17px;
+    }
   }
 }

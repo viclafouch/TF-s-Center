@@ -15,7 +15,8 @@ module.exports = {
     }
   },
   rules: {
-    'react/prop-types': 'off'
+    'react/prop-types': 'off',
+    'no-case-declarations': 'off'
   },
   env: {
     browser: true,

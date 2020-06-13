@@ -14,12 +14,7 @@ function Page(props) {
     <div className="page">
       <Sidebar />
       <main>
-        <Route
-          {...rest}
-          render={(routeProps) =>
-            renderMergedProps(component, routeProps, rest)
-          }
-        />
+        <Route {...rest} render={routeProps => renderMergedProps(component, routeProps, rest)} />
       </main>
     </div>
   )

@@ -10,15 +10,11 @@ function DefaultProvider({ children, initialState }) {
   useEffect(() => {
     setBrowserStorage('local', {
       searches: state.searches,
-      templates: state.templates,
+      templates: state.templates
     })
   }, [state.searches, state.templates])
 
-  return (
-    <DefaultContext.Provider value={[state, updater]}>
-      {children}
-    </DefaultContext.Provider>
-  )
+  return <DefaultContext.Provider value={[state, updater]}>{children}</DefaultContext.Provider>
 }
 
 export default DefaultProvider

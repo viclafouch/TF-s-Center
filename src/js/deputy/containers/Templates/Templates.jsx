@@ -1,17 +1,13 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useCallback,
-  useContext,
-} from 'react'
+import React, { useState, useEffect, useRef, useCallback, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus'
 import Template from '@shared/models/Template.model'
 import Button from '@deputy/components/Button/Button'
 import { labels } from '@/js/config/config'
 import { DefaultContext } from '@deputy/store/DefaultContext'
 import { ADD_TEMPLATE } from '@deputy/store/reducer/constants'
+import { Link } from 'react-router-dom'
 import './template.scoped.scss'
 
 function Templates() {
@@ -19,7 +15,7 @@ function Templates() {
   const [{ templates }, dispatch] = useContext(DefaultContext)
   const addContainerRef = useRef(null)
 
-  const handleAddTemplate = (e) => {
+  const handleAddTemplate = e => {
     e.preventDefault()
     const form = new FormData(e.target)
     const title = form.get('title')
@@ -29,18 +25,18 @@ function Templates() {
     const template = new Template({
       title,
       reason,
-      description,
+      description
     })
 
     dispatch({
       type: ADD_TEMPLATE,
-      payload: { template },
+      payload: { template }
     })
 
     setIsExpended(false)
   }
 
-  const handleClickOutside = useCallback((e) => {
+  const handleClickOutside = useCallback(e => {
     if (!addContainerRef.current.contains(e.target)) setIsExpended(false)
   }, [])
 
@@ -54,10 +50,7 @@ function Templates() {
   return (
     <div className="templates">
       <div className="templates-add-container" ref={addContainerRef}>
-        <div
-          className="templates-add-box box-material"
-          onClick={() => (isExpended ? null : setIsExpended(true))}
-        >
+        <div className="templates-add-box box-material" onClick={() => (isExpended ? null : setIsExpended(true))}>
           {!isExpended ? (
             <div className="add-placeholder">
               <p>Add template</p>
@@ -87,13 +80,7 @@ function Templates() {
                 </select>
               </div>
               <div className="add-template-field">
-                <textarea
-                  name="description"
-                  className="form-element"
-                  spellCheck="false"
-                  required
-                  placeholder="Description"
-                />
+                <textarea name="description" className="form-element" spellCheck="false" required placeholder="Description" />
               </div>
               <Button color="blue" type="submit">
                 Create
@@ -101,6 +88,24 @@ function Templates() {
             </form>
           )}
         </div>
+      </div>
+      <div className="templates-list-container">
+        <TransitionGroup>
+          {templates.map(template => (
+            <CSSTransition key={template.id} timeout={500}>
+              <Link
+                to={{
+                  pathname: '/deputy',
+                  search: `?context=templates&id=${template.id}`
+                }}
+              >
+                <li className="box-material template-item">
+                  <div className="">{template.title}</div>
+                </li>
+              </Link>
+            </CSSTransition>
+          ))}
+        </TransitionGroup>
       </div>
     </div>
   )

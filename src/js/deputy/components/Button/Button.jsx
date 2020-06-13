@@ -1,14 +1,15 @@
 import React from 'react'
 import './button.scoped.scss'
 
-const colors = ['blue', 'white']
+const colors = ['blue', 'white', 'red']
 
 function Button(props) {
-  const className = ['button']
-  const { color, ...rest } = props
-  if (colors.includes(color)) className.push(`button-${color}`)
+  let classNames = ['button']
+  const { color, className, ...rest } = props
+  if (colors.includes(color)) classNames.push(`button-${color}`)
+  classNames = classNames.concat(className || [])
   return (
-    <button {...rest} className={className.join(' ')} onClick={props.onClick}>
+    <button {...rest} className={classNames.join(' ')} onClick={props.onClick}>
       {props.children}
     </button>
   )
