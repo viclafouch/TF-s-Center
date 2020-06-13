@@ -15,8 +15,6 @@ function transformLocation(inputLocation) {
   if (contextQuery === 'templates' && parsedQuery.get('id')) {
     contextQuery = `${contextQuery}/${parsedQuery.get('id')}`
   }
-  console.log(contextQuery)
-
   return {
     ...inputLocation,
     pathname: '/' + contextQuery

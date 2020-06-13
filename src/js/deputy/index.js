@@ -9,6 +9,7 @@ const startDeputy = async () => {
   div.setAttribute('id', 'TFsCenter')
   document.body.innerHTML = ''
   document.body.appendChild(div)
+  document.querySelector('[name="www-core"]').remove()
   const localStorage = await getBrowserStorage('local', [
     { key: 'searches', default: [] },
     { key: 'templates', default: [] }

@@ -1,7 +1,7 @@
 .templates {
-
   .templates-add-box {
     margin-bottom: 60px;
+    cursor: pointer;
 
     .add-placeholder {
       display: flex;
@@ -41,7 +41,11 @@
     }
   }
 
-  .templates-list-container {
+  .templates-list-container ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
     .template-item {
       margin-top: 17px;
     }

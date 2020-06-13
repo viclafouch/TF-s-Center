@@ -8,7 +8,7 @@ import { labels } from '@/js/config/config'
 import { DefaultContext } from '@deputy/store/DefaultContext'
 import { ADD_TEMPLATE } from '@deputy/store/reducer/constants'
 import { Link } from 'react-router-dom'
-import './template.scoped.scss'
+import './templates.scoped.scss'
 
 function Templates() {
   const [isExpended, setIsExpended] = useState(false)
@@ -90,19 +90,20 @@ function Templates() {
         </div>
       </div>
       <div className="templates-list-container">
-        <TransitionGroup>
+        <TransitionGroup component="ul">
           {templates.map(template => (
             <CSSTransition key={template.id} timeout={500}>
-              <Link
-                to={{
-                  pathname: '/deputy',
-                  search: `?context=templates&id=${template.id}`
-                }}
-              >
-                <li className="box-material template-item">
+              <li className="template-item">
+                <Link
+                  className="box-material"
+                  to={{
+                    pathname: '/deputy',
+                    search: `?context=templates&id=${template.id}`
+                  }}
+                >
                   <div className="">{template.title}</div>
-                </li>
-              </Link>
+                </Link>
+              </li>
             </CSSTransition>
           ))}
         </TransitionGroup>

@@ -1,6 +1,20 @@
 @import '/global/variables';
 @import '/loading';
 
+html {
+  height: 100%;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 body,
 .isLoading {
   overflow: hidden;
@@ -23,6 +37,8 @@ body,
     0 2px 1px -1px rgba(0, 0, 0, 0.12);
   margin-left: auto;
   margin-right: auto;
+  display: block;
+  text-decoration: none;
 }
 
 table.table-material {
@@ -31,6 +47,7 @@ table.table-material {
   border-collapse: collapse;
   margin-bottom: 1rem;
   display: table;
+  font-size: 14px;
 
   td,
   th {
