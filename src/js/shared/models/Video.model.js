@@ -12,6 +12,10 @@ class Video {
     this.channel = video.channel || {}
   }
 
+  get url() {
+    return `https://www.youtube.com/watch?v=${this.id}`
+  }
+
   thumbnail(size = 'default') {
     if (size === 'default') {
       return {

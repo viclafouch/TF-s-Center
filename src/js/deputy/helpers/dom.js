@@ -16,7 +16,7 @@ export const transformLabelToVideo = label => {
   }
 
   if (!video.removedAt) {
-    const title = label.querySelector('.deputy-item-description > h3').textContent.trim()
+    const title = label.querySelector('.deputy-item-description > h3 > a').textContent.trim()
     video.title = title
 
     const summary = sanitizeHtml(label.querySelector('.deputy-item-description > .deputy-item-description-summary').innerHTML)

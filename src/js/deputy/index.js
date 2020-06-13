@@ -14,11 +14,15 @@ const startDeputy = async ({ currentUrl }) => {
   document.body.appendChild(div)
   document.querySelector('[name="www-core"]').remove()
 
-  const videosHistory = await getVideosHistory({
-    page: currentUrl.searchParams.get('page'),
-    startTime: currentUrl.searchParams.get('start_time'),
-    endTime: currentUrl.searchParams.get('end_time')
-  })
+  const videosHistory = await getVideosHistory(
+    currentUrl.pathname === '/flagging_history'
+      ? {
+          page: currentUrl.searchParams.get('page'),
+          startTime: currentUrl.searchParams.get('start_time'),
+          endTime: currentUrl.searchParams.get('end_time')
+        }
+      : {}
+  )
 
   const localStorage = await getBrowserStorage('local', [
     { key: 'searches', default: [], parser: searches => searches.map(s => new Search(s)) },

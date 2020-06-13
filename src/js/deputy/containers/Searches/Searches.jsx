@@ -12,14 +12,14 @@ function Searches() {
   const [selectedSearches, setSelectedSearches] = useState([])
   const [{ searches }, dispatch] = useContext(DefaultContext)
 
-  const handleAddSearch = (e) => {
+  const handleAddSearch = e => {
     e.preventDefault()
     if (search.value) {
       dispatch({
         type: ADD_SEARCH,
         payload: {
-          search,
-        },
+          search
+        }
       })
 
       setSearch(new Search())
@@ -30,14 +30,13 @@ function Searches() {
     dispatch({
       type: REMOVE_SEARCHES,
       payload: {
-        searchesId: selectedSearches,
-      },
+        searchesId: selectedSearches
+      }
     })
     setSelectedSearches([])
   }
 
-  const isAllChecked =
-    searches.length === selectedSearches.length && searches.length > 0
+  const isAllChecked = searches.length === selectedSearches.length && searches.length > 0
 
   return (
     <div className="searches">
@@ -53,11 +52,11 @@ function Searches() {
                   placeholder="New search"
                   value={search.value}
                   spellCheck="false"
-                  onChange={(e) => {
+                  onChange={e => {
                     e.persist()
-                    setSearch((prevState) => ({
+                    setSearch(prevState => ({
                       ...prevState,
-                      value: e.target.value,
+                      value: e.target.value
                     }))
                   }}
                 />
@@ -71,16 +70,16 @@ function Searches() {
               <select
                 className="form-element"
                 value={search.templateId}
-                onChange={(e) => {
+                onChange={e => {
                   e.persist()
-                  setSearch((prevState) => ({
+                  setSearch(prevState => ({
                     ...prevState,
-                    templateId: e.target.value,
+                    templateId: e.target.value
                   }))
                 }}
               >
                 <option value="">Choose template</option>
-                {[].map((template) => (
+                {[].map(template => (
                   <option key={template.id} value={template.id}>
                     {template.title}
                   </option>
@@ -94,11 +93,7 @@ function Searches() {
         <div className="box-material table-searches">
           <div className="list-actions-top">
             <h3>Vos recherches ({searches.length})</h3>
-            <Button
-              color="white"
-              disabled={selectedSearches.length === 0}
-              onClick={handleRemoveSearch}
-            >
+            <Button color="white" disabled={selectedSearches.length === 0} onClick={handleRemoveSearch}>
               Remove
             </Button>
           </div>
@@ -109,11 +104,7 @@ function Searches() {
                   <input
                     type="checkbox"
                     checked={isAllChecked}
-                    onChange={() =>
-                      setSelectedSearches(
-                        isAllChecked ? [] : searches.map((s) => s.id)
-                      )
-                    }
+                    onChange={() => setSelectedSearches(isAllChecked ? [] : searches.map(s => s.id))}
                   />
                 </th>
                 <th>#</th>
@@ -129,14 +120,12 @@ function Searches() {
                   <th>
                     <input
                       type="checkbox"
-                      checked={selectedSearches.some((s) => s === search.id)}
+                      checked={selectedSearches.some(s => s === search.id)}
                       onChange={() =>
-                        setSelectedSearches((prevState) => {
+                        setSelectedSearches(prevState => {
                           let prevStateSearches = [...prevState]
-                          if (prevState.some((s) => s === search.id)) {
-                            prevStateSearches = prevStateSearches.filter(
-                              (s) => s !== search.id
-                            )
+                          if (prevState.some(s => s === search.id)) {
+                            prevStateSearches = prevStateSearches.filter(s => s !== search.id)
                           } else {
                             prevStateSearches.push(search.id)
                           }
@@ -148,11 +137,7 @@ function Searches() {
                   <th scope="row">{index}</th>
                   <td>{search.value}</td>
                   <td>Template title</td>
-                  <td>
-                    {search.isEnableAutoSelect && (
-                      <FontAwesomeIcon icon={faCheck} size="1x" fixedWidth />
-                    )}
-                  </td>
+                  <td>{search.isEnableAutoSelect && <FontAwesomeIcon icon={faCheck} size="1x" fixedWidth />}</td>
                   <td>
                     <Button color="white">Go</Button>
                   </td>
