@@ -48,6 +48,50 @@
 
     .template-item {
       margin-top: 17px;
+
+      a {
+        display: flex;
+        flex-direction: column;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+
+      &-top {
+        display: flex;
+        justify-content: space-between;
+
+        h2.template-item-title {
+          line-height: 1.1;
+          padding-bottom: 18px;
+          max-width: 80%;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-size: 18px;
+          font-weight: 600;
+          overflow: hidden;
+          margin: 0;
+        }
+
+        span.template-item-reason {
+          font-size: 11px;
+          text-align: right;
+          color: var(--color-notes);
+        }
+      }
+    }
+
+    p.template-item-description {
+      white-space: pre-wrap;
+      min-height: 120px;
+    }
+
+    time.template-item-created {
+      align-self: flex-end;
+      text-align: right;
+      color: var(--color-notes);
+      font-size: 11px;
     }
   }
 }

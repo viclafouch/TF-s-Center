@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { format } from 'date-fns'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus'
 import Template from '@shared/models/Template.model'
@@ -46,6 +47,8 @@ function Templates() {
       return () => document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [isExpended, handleClickOutside])
+
+  console.log(templates)
 
   return (
     <div className="templates">
@@ -101,7 +104,12 @@ function Templates() {
                     search: `?context=templates&id=${template.id}`
                   }}
                 >
-                  <div className="">{template.title}</div>
+                  <div className="template-item-top">
+                    <h2 className="template-item-title">{template.title}</h2>
+                    <span className="template-item-reason">{template.label}</span>
+                  </div>
+                  <p className="template-item-description">{template.description}</p>
+                  <time className="template-item-created">{format(new Date(template.createdAt), 'MM/dd/yyyy')}</time>
                 </Link>
               </li>
             </CSSTransition>

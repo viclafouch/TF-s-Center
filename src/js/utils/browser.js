@@ -54,7 +54,13 @@ export const getBrowserStorage = (type, items = []) =>
       const keys = items.map(item => item.key)
       browser.storage[type].get(keys, result => {
         for (const item of items) {
-          if (result[item.key] === undefined) result[item.key] = item.default
+          if (result[item.key] === undefined) {
+            result[item.key] = item.default
+          }
+
+          if (typeof item.parser === 'function') {
+            result[item.key] = item.parser(result[item.key])
+          }
         }
         resolve(result)
       })

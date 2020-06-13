@@ -34,6 +34,7 @@
     "@fortawesome/react-fontawesome": "0.1.10",
     "@simple-contacts/react-router-async-routes": "^0.6.0",
     "chart.js": "^2.9.3",
+    "date-fns": "^2.14.0",
     "immer": "^6.0.9",
     "query-string": "^6.13.0",
     "react": "^16.13.1",
