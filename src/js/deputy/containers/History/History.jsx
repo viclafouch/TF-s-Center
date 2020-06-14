@@ -63,6 +63,7 @@ function History(props) {
         onScroll={handleScroll}
       >
         {isLoading && videos.length === 0 ? <Loader /> : <VideoList videos={videos} />}
+        {isLoading && videos.length > 0 && <Loader spinner />}
       </div>
     </div>
   )

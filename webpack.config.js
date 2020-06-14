@@ -30,6 +30,14 @@ module.exports = (env, argv, IS_DEV = argv.mode !== 'production') => {
           exclude: /node_modules/
         },
         {
+          test: /\.(png|jpg|gif|svg)$/i,
+          use: [
+            {
+              loader: 'url-loader'
+            }
+          ]
+        },
+        {
           test: /\.(sc|c|sa)ss$/,
           use: [MiniCssExtractPlugin.loader, 'css-loader', 'scoped-css-loader', 'sass-loader']
         }

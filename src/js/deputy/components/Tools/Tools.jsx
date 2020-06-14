@@ -4,10 +4,10 @@ import Button from '../Button/Button'
 import 'react-datepicker/dist/react-datepicker.min.css'
 import { withRouter } from 'react-router'
 import './tools.scoped.scss'
-import { getUnixFromDate } from '@utils/date'
+import { getUnixFromDate, copyDate } from '@utils/date'
 
 const defaultEndDate = new Date()
-const defaultStartDate = new Date().setDate(defaultEndDate.getDate() - 7)
+const defaultStartDate = new Date(copyDate(defaultEndDate).setDate(defaultEndDate.getDate() - 7))
 
 function Tools(props) {
   const [rangeDate, setRangeDate] = useState(() => {
@@ -32,6 +32,8 @@ function Tools(props) {
       search: `?${searchParams.toString()}`
     })
   }
+
+  console.log(rangeDate)
 
   return (
     <div className={`tools ${props.isHistory ? 'tools-history' : ''}`}>
