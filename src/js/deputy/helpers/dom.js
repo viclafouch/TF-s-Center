@@ -1,6 +1,13 @@
 import sanitizeHtml from 'sanitize-html'
 import Video from '@shared/models/Video.model'
 
+export const pageLoaded = async () => {
+  while (document.querySelector('body.page-loaded') === null) {
+    await new Promise(resolve => requestAnimationFrame(resolve))
+  }
+  return true
+}
+
 export const transformLabelToVideo = label => {
   const video = new Video()
 
@@ -48,4 +55,16 @@ export const transformLabelToVideo = label => {
   }
 
   return video
+}
+
+export const getUserInfos = () => {
+  const image = document.querySelector('.yt-thumb-27 img')
+  const username = document.querySelector('.yt-masthead-picker-name').textContent
+  const sessionToken = document.querySelector('input[name="session_token"]').value
+
+  return {
+    username,
+    pictureUrl: image.src,
+    sessionToken
+  }
 }

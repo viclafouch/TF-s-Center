@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { NavLink, useLocation } from 'react-router-dom'
 import { faComment } from '@fortawesome/free-solid-svg-icons/faComment'
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons/faSignOutAlt'
 import { links } from '@/js/config/config'
 import './sidebar.scoped.scss'
+import { DefaultContext } from '@deputy/store/DefaultContext'
 
 function Sidebar() {
+  const [{ user }] = useContext(DefaultContext)
   const { pathname, search } = useLocation()
 
   const currentPath = pathname + search
@@ -14,7 +16,7 @@ function Sidebar() {
   return (
     <aside className="sidebar">
       <div className="profile-wrapper">
-        <img src="https://via.placeholder.com/112x112" alt="" />
+        <img src={user.pictureUrl} alt={user.username} width="112" height="112" />
       </div>
       <nav className="navbar">
         <ul className="nav-link">

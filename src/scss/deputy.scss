@@ -7,6 +7,12 @@ html {
   body {
     font-size: 14px;
     color: var(--text-color);
+    font-family: 'Roboto', 'Noto', sans-serif;
+    height: 100vh;
+
+    #TFsCenter {
+      height: 100%;
+    }
   }
 }
 
