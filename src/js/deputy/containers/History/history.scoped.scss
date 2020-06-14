@@ -1,120 +1,18 @@
 .history {
-  height: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  padding: 0;
 
   .history-list-container {
     flex: 1;
     overflow-y: auto;
     padding: 0 10px;
-  }
 
-  .video-list {
-    padding: 10px 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-row-gap: 15px;
-
-    .video-item {
+    &.history-list-container-loading {
       display: flex;
-      padding: 5px;
-
-      .video-thumbnail a {
-        &, img {
-          border: 0;
-          display: block;
-        }
-      }
-
-      &:hover {
-        background-color: var(--lighten-hover);
-      }
+      justify-content: center;
+      align-items: center;
     }
-  }
-}
-
-.video-content {
-  display: flex;
-  flex-direction: column;
-  margin-left: 10px;
-  flex: 1;
-
-  .video-title {
-    font-size: 13px;
-    margin: 0 0 10px;
-
-    a {
-      color: inherit;
-      text-decoration: none;
-      text-overflow: ellipsis;
-      line-height: 1;
-      max-height: 16px;
-      display: inline-block;
-      overflow: hidden;
-    }
-  }
-
-  .video-summary p {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    line-height: 16px;
-    max-height: 32px;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-  }
-
-  .video-notes {
-    font-size: 11px;
-    color: var(--color-notes);
-    margin-top: auto;
-
-    a {
-      color: inherit;
-      text-decoration: none;
-      &:hover {
-        color: #15c;
-        text-decoration: underline;
-      }
-    }
-  }
-}
-
-.video-actions {
-  margin-left: 20px;
-
-  span {
-    font-size: 11px;
-    display: block;
-    text-align: right;
-    margin-bottom: 6px;
-
-    &.video-id {
-      color: var(--color-notes);
-    }
-  }
-  .video-status {
-    &.video-is-removed {
-      color: #921f1f;
-    }
-    &.video-is-reviewed {
-      color: #0f570f;
-    }
-  }
-}
-
-.video-item.video-removed {
-  .video-title a {
-    color: #ff0000;
-  }
-  .video-id {
-    opacity: 0.65;
-  }
-}
-
-.video-item.video-reviewed {
-  .video-title a {
-    color: green;
   }
 }

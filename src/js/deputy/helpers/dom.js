@@ -26,7 +26,11 @@ export const transformLabelToVideo = label => {
     }
   }
 
-  if (video.isValidReviewedAt) {
+  if (video.isValidReviewedAt && !label.contains(label.querySelector('.yt-notes'))) {
+    video.removedAt = 'unknown' // Video private ?
+  }
+
+  if (video.isValidReviewedAt && !video.removedAt) {
     const title = label.querySelector('.deputy-item-description > h3 > a').textContent.trim()
     video.title = title
 
@@ -40,6 +44,8 @@ export const transformLabelToVideo = label => {
       label.querySelectorAll('.deputy-item-description > .deputy-item-description-tags > span.deputy-video-tag')
     )
     video.tags = tags.map(tagElement => tagElement.getAttribute('title'))
+
+    console.log(video)
 
     const nbViews = label.querySelector('.yt-notes > .viewcount').textContent.trim()
     video.nbViews = parseInt(nbViews.replace(/\D/g, ''))

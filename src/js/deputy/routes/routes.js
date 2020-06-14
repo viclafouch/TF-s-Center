@@ -7,6 +7,7 @@ import Templates from '../containers/Templates/Templates'
 import Searches from '../containers/Searches/Searches'
 import TemplateInfo from '@deputy/containers/Templates/TemplateInfo'
 import History from '@deputy/containers/History/History'
+import Flagger from '@deputy/containers/Flagger/Flagger'
 
 function transformLocation(inputLocation) {
   const parsedQuery = new URLSearchParams(inputLocation.search)
@@ -30,6 +31,7 @@ function Routes() {
       render={routeProps => (
         <Switch location={transformLocation(routeProps.location)}>
           <Page path="/flagging_history" component={History} />
+          <Page path="/deputy" exact component={Flagger} />
           <Page path="/analytics" exact component={Analytics} />
           <Page path="/targets" exact component={Targets} />
           <Page path="/templates" exact component={Templates} />

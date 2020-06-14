@@ -8,12 +8,6 @@
     height: 100%;
     overflow: hidden;
 
-    & > div {
-      padding: 10px;
-      height: 100%;
-      overflow-y: auto;
-    }
-
     &::-webkit-scrollbar {
       width: 8px;
       background-color: var(--color-scrollbar);

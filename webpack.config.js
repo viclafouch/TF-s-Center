@@ -30,9 +30,8 @@ module.exports = (env, argv, IS_DEV = argv.mode !== 'production') => {
           exclude: /node_modules/
         },
         {
-          test: /\.scss$/,
-          use: [MiniCssExtractPlugin.loader, 'css-loader', { loader: 'scoped-css-loader' }, 'sass-loader'],
-          exclude: /node_modules/
+          test: /\.(sc|c|sa)ss$/,
+          use: [MiniCssExtractPlugin.loader, 'css-loader', 'scoped-css-loader', 'sass-loader']
         }
       ]
     },

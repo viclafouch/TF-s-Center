@@ -20,6 +20,10 @@ class Video {
     return !!this.reviewedAt && !isNaN(this.reviewedAt)
   }
 
+  get isValidRemovedAt() {
+    return !!this.removedAt && !isNaN(this.removedAt)
+  }
+
   thumbnail(size = 'default') {
     if (size === 'default') {
       return {
