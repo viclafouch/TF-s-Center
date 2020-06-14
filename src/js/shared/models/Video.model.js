@@ -16,6 +16,10 @@ class Video {
     return `https://www.youtube.com/watch?v=${this.id}`
   }
 
+  get isValidReviewedAt() {
+    return !!this.reviewedAt && !isNaN(this.reviewedAt)
+  }
+
   thumbnail(size = 'default') {
     if (size === 'default') {
       return {

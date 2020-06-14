@@ -10,6 +10,13 @@ export const getVideosHistory = async ({ page, startTime, endTime }) => {
   const text = await response.text()
   const div = document.createElement('div')
   div.innerHTML = text
-  const videosDOM = Array.from(div.querySelectorAll('#video-search-results > label')).map(transformLabelToVideo)
-  return videosDOM
+  const videos = Array.from(div.querySelectorAll('#video-search-results > label')).map(transformLabelToVideo)
+  const paginationDOM = div.querySelector('#deputy-flag-pager')
+  let hasMore = false
+
+  if (paginationDOM) {
+    hasMore = paginationDOM.contains(div.querySelector("[data-link-type='next']"))
+  }
+
+  return { videos, hasMore }
 }

@@ -11,11 +11,15 @@ export const transformLabelToVideo = label => {
     const dataTimezone = label.querySelector('.removed-on-text > .client-timezone-time').getAttribute('data')
     video.removedAt = new Date(1e3 * dataTimezone).getTime()
   } else if (label.contains(label.querySelector('.reviewed-on-text'))) {
-    const dataTimezone = label.querySelector('.reviewed-on-text > .client-timezone-time').getAttribute('data')
-    video.reviewedAt = new Date(1e3 * dataTimezone).getTime()
+    const dataTimezone = label.querySelector('.reviewed-on-text > .client-timezone-time')
+    if (dataTimezone) {
+      video.reviewedAt = new Date(1e3 * dataTimezone.getAttribute('data')).getTime()
+    } else {
+      video.reviewedAt = 'unknown'
+    }
   }
 
-  if (!video.removedAt) {
+  if (video.isValidReviewedAt) {
     const title = label.querySelector('.deputy-item-description > h3 > a').textContent.trim()
     video.title = title
 
