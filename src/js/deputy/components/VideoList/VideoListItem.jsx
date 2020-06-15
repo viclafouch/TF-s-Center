@@ -25,7 +25,7 @@ function VideoListItem(props) {
       <div className="video-content">
         <h3 className="video-title">
           <a href={video.url} target="_blank" rel="noreferrer">
-            {!video.isValidReviewedAt || video.removedAt ? 'This video is not longer avalaible' : video.title}
+            {video.removedAt ? 'This video is not longer avalaible' : video.title}
           </a>
         </h3>
         <div className="video-summary">
@@ -35,15 +35,20 @@ function VideoListItem(props) {
             }}
           />
         </div>
-        {video.isValidReviewedAt && !video.removedAt && (
+        {!video.removedAt && (
           <p className="video-notes">
             <a className="video-channel" href={video.channel.url} target="_blank" rel="noreferrer">
               {video.channel.name}
             </a>
             {' | '}
             <span className="video-created">{video.createdAt}</span>
-            {' | '}
-            <span>{video.nbViews} views</span>
+
+            {video.nbViews && (
+              <>
+                {' | '}
+                <span>{video.nbViews.toLocaleString()} views</span>
+              </>
+            )}
           </p>
         )}
       </div>
@@ -63,7 +68,7 @@ function VideoListItem(props) {
               ? formatDistance(new Date(video.reviewedAt), new Date(), {
                   addSuffix: true
                 })
-              : 'Arleady examined'}
+              : 'Already examined'}
           </span>
         )}
         <span className="video-id">

@@ -8,7 +8,7 @@ function Loader({ spinner = false }) {
   return (
     <div className="loader loader-spinner" aria-busy="true">
       {spinner ? (
-        <img src={spinnerImg} alt="loading" width="36" height="36" />
+        <img src={spinnerImg} alt="loading" width="28" height="28" />
       ) : (
         <img src={darkSheriff} alt="loading" width="140" height="140" />
       )}

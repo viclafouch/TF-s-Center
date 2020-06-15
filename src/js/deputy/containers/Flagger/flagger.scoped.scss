@@ -4,9 +4,17 @@
   flex-direction: column;
   padding: 0;
 
-  .list-videos-container {
+  .flagger-list-container {
     flex: 1;
     overflow-y: auto;
     padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &.flagger-list-container-loading,
+    &.flagger-list-container-empty {
+      justify-content: center;
+    }
   }
 }

@@ -4,11 +4,12 @@ class Video {
     this.title = video.title || ''
     this.summary = video.summary || null
     this.description = video.description || null
-    this.nbViews = video.nbViews || 0
+    this.nbViews = video.nbViews || null
     this.tags = video.tags || []
     this.removedAt = video.removedAt || null
     this.reviewedAt = video.reviewedAt || null
     this.createdAt = video.createdAt || null
+    this.time = video.time || null
     this.channel = video.channel || {}
   }
 

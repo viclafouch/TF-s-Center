@@ -15,6 +15,11 @@ export const labels = [
 
 export const links = [
   {
+    label: 'Flagger',
+    icon: faHistory,
+    href: '/deputy'
+  },
+  {
     label: 'History',
     icon: faHistory,
     href: '/flagging_history'

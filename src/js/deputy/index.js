@@ -2,9 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 import { getBrowserStorage } from '@utils/browser'
-import { getUserInfos, pageLoaded } from './helpers/dom'
+import { pageLoaded, extractUserInfos } from './helpers/dom'
 import Template from '@shared/models/Template.model'
 import Search from '@shared/models/Search.model'
+import { getAnalytics } from './helpers/api'
 
 const startDeputy = async ({ currentUrl }) => {
   try {
@@ -19,9 +20,10 @@ const startDeputy = async ({ currentUrl }) => {
       { key: 'templates', default: [], parser: templates => templates.map(t => new Template(t)) }
     ])
 
-    const user = await getUserInfos()
+    const user = extractUserInfos()
+    const analytics = await getAnalytics()
 
-    const initialData = Object.assign({}, localStorage, { user })
+    const initialData = Object.assign({}, localStorage, { user, analytics })
 
     ReactDOM.render(<App initialData={initialData} />, div)
     document.body.classList.add('TFs-ready')

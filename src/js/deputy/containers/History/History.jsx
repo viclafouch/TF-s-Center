@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react'
-import './history.scoped.scss'
 import { getVideosHistory } from '@deputy/helpers/api'
 import VideoList from '@deputy/components/VideoList/VideoList'
 import Tools from '@deputy/components/Tools/Tools'
 import Loader from '@deputy/components/Loader/Loader'
+import useQuery from '@deputy/hooks/use-query'
+import './history.scoped.scss'
 
-function History(props) {
+function History({ history }) {
+  const query = useQuery()
+  const startTime = query.get('start_time')
+  const endTime = query.get('end_time')
   const [videos, setVideos] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [isError, setIsError] = useState(false)
@@ -42,10 +46,10 @@ function History(props) {
     setVideos([])
     fetchHistory({
       page: 1,
-      startTime: new URLSearchParams(props.location.search).get('start_time') || null,
-      endTime: new URLSearchParams(props.location.search).get('end_time') || null
+      startTime: startTime || null,
+      endTime: endTime || null
     })
-  }, [fetchHistory, props.location])
+  }, [fetchHistory, startTime, endTime])
 
   const handleScroll = useCallback(async () => {
     const isAtBottom = scrollerRef.current.offsetHeight + scrollerRef.current.scrollTop >= scrollerRef.current.scrollHeight - 450
@@ -54,9 +58,24 @@ function History(props) {
     }
   }, [fetchHistory, isLoading, isError, hasMore])
 
+  const handleSubmit = useCallback(
+    ({ startTime, endTime }) => {
+      const searchParams = new URLSearchParams({
+        start_time: startTime,
+        end_time: endTime
+      })
+
+      history.replace({
+        pathname: '/flagging_history',
+        search: `?${searchParams.toString()}`
+      })
+    },
+    [history]
+  )
+
   return (
     <div className="history">
-      <Tools isHistory />
+      <Tools isHistory onSubmit={handleSubmit} />
       <div
         className={`history-list-container ${isLoading && videos.length === 0 ? 'history-list-container-loading' : ''} ${
           !isLoading && videos.length === 0 ? 'history-list-container-empty' : ''
