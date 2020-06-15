@@ -4,7 +4,7 @@ const fetchVideos = async url => {
   const response = await fetch(url)
   const text = await response.text()
   const document = new DOMParser().parseFromString(text, 'text/html')
-  const videos = Array.from(document.querySelectorAll('.deputy-flag-item')).map(extractVideoInfos)
+  const videos = Array.from(document.querySelectorAll('div.deputy-flag-item')).map(extractVideoInfos)
   const paginationDOM = document.querySelector('#deputy-flag-pager')
   let hasMore = false
 
@@ -39,3 +39,19 @@ export const getAnalytics = async () => {
   const document = new DOMParser().parseFromString(text, 'text/html')
   return extractAnalyticsInfos(document.querySelector('body'))
 }
+
+// export const flagVideos = params =>
+//   fetch('/deputy?action_submit', {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+//     body: queryString.stringify({
+//       selected_vid: params.selected_vid,
+//       video_report_reason: params.video_report_reason,
+//       flag_comments: params.flag_comments,
+//       session_token: params.session_token,
+//       search_query: params.search_query || '',
+//       page: params.page,
+//       filters: params.filters || '',
+//       video_ids: params.video_ids.join(',')
+//     })
+//   })

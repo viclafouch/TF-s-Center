@@ -26,7 +26,8 @@
     {
       "matches": [
         "https://www.youtube.com/deputy",
-        "https://www.youtube.com/deputy?context=*",
+        "https://www.youtube.com/deputy?*",
+        "https://www.youtube.com/report_dashboard",
         "https://www.youtube.com/flagging_history*"
       ],
       "js": ["content_script.bundle.js"],

@@ -19,7 +19,7 @@ body {
 
 body::before {
   content: '';
-  z-index: 101;
+  z-index: 2999999999;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -32,7 +32,7 @@ body::before {
 
 body::after {
   content: '';
-  z-index: 102;
+  z-index: 3999999999;
   width: 200px;
   height: 200px;
   position: absolute;

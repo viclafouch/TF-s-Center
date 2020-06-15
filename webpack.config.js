@@ -18,7 +18,6 @@ module.exports = (env, argv, IS_DEV = argv.mode !== 'production') => {
       popup: path.join(__dirname, 'src', 'js', 'popup.js'),
       content_script: path.join(__dirname, 'src', 'js', 'content_script.js'),
       background: path.join(__dirname, 'src', 'js', 'background.js'),
-      styles: path.join(__dirname, 'src', 'scss', 'styles.scss'),
       popupcss: path.join(__dirname, 'src', 'scss', 'popup.scss'),
       deputy: path.join(__dirname, 'src', 'scss', 'deputy.scss')
     },
@@ -54,8 +53,7 @@ module.exports = (env, argv, IS_DEV = argv.mode !== 'production') => {
         '@scss': path.resolve(__dirname, './src/scss'),
         '@img': path.resolve(__dirname, './src/img'),
         '@deputy': path.resolve(__dirname, './src/js/deputy'),
-        '@': path.resolve(__dirname, './src'),
-        '@private': path.resolve(__dirname, 'private.js')
+        '@': path.resolve(__dirname, './src')
       }
     },
     output: {

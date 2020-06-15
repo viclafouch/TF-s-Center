@@ -1,4 +1,4 @@
-import { faHistory } from '@fortawesome/free-solid-svg-icons/faHistory'
+import { faTachometerAlt } from '@fortawesome/free-solid-svg-icons/faTachometerAlt'
 import { faFlag } from '@fortawesome/free-solid-svg-icons/faFlag'
 import { faBullseye } from '@fortawesome/free-solid-svg-icons/faBullseye'
 import { faChartLine } from '@fortawesome/free-solid-svg-icons/faChartLine'
@@ -16,6 +16,11 @@ export const labels = [
 ]
 
 export const links = [
+  {
+    label: 'Dashboard',
+    icon: faTachometerAlt,
+    href: '/report_dashboard'
+  },
   {
     label: 'Flagger',
     icon: faFlag,

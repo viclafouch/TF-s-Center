@@ -12,8 +12,6 @@
 /build
 /dist
 
-/private.js
-
 # misc
 .DS_Store
 .env.local

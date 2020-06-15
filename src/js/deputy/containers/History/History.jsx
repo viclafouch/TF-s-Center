@@ -32,6 +32,8 @@ function History({ history }) {
         startTime: params.startTime,
         endTime: params.endTime
       }
+      console.log(response)
+
       currentParams.current = newParams
       setVideos(prevState => [...prevState, ...response.videos])
     } catch (error) {
