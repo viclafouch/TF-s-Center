@@ -31,7 +31,8 @@ function Tools(props) {
     } else {
       const form = new FormData(e.target)
       props.onSubmit({
-        searchQuery: form.get('search-query')
+        searchQuery: form.get('search-query'),
+        filters: form.get('filters')
       })
     }
   }
@@ -84,17 +85,29 @@ function Tools(props) {
       {!props.isHistory && (
         <form className="tools-form-filter" onSubmit={handleSubmit}>
           <div className="tools-filter">
-            <input
-              className="flagger-search-input"
-              placeholder="Search"
-              type="text"
-              spellCheck="false"
-              defaultValue={query.get('search_query')}
-              aria-label="Search"
-              autoComplete="off"
-              autoCorrect="off"
-              name="search-query"
-            />
+            <div className="tools-field">
+              <input
+                className="flagger-search-input tools-form-element"
+                placeholder="Search"
+                type="text"
+                spellCheck="false"
+                defaultValue={query.get('search_query')}
+                aria-label="Search"
+                autoComplete="off"
+                autoCorrect="off"
+                name="search-query"
+              />
+            </div>
+            <div className="tools-field">
+              <select className="tools-form-element" name="filters" defaultValue={query.get('filters')}>
+                <option value="anytime">Anytime</option>
+                <option value="hour">Last hour</option>
+                <option value="today">Today</option>
+                <option value="week">This week</option>
+                <option value="month">This month</option>
+                <option value="year">This year</option>
+              </select>
+            </div>
           </div>
           <Button color="blue" type="submit">
             Search

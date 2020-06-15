@@ -27,13 +27,19 @@
   }
 }
 
+.tools-form-element {
+  padding: 4px 3px;
+  outline: none;
+  height: 28px;
+  font-family: 'Roboto', 'Noto', sans-serif;
+  margin-right: 10px;
+}
 
 .tools-flagger {
   form.tools-form-filter {
-    .flagger-search-input {
-      padding: 4px 3px;
-      outline: none;
-      font-family: 'Roboto', 'Noto', sans-serif;
+    .tools-filter {
+      display: flex;
+      align-items: center;
     }
   }
 }

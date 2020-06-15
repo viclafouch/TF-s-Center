@@ -1,8 +1,10 @@
 import { faHistory } from '@fortawesome/free-solid-svg-icons/faHistory'
 import { faFlag } from '@fortawesome/free-solid-svg-icons/faFlag'
-import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch'
 import { faBullseye } from '@fortawesome/free-solid-svg-icons/faBullseye'
 import { faChartLine } from '@fortawesome/free-solid-svg-icons/faChartLine'
+import { faPaste } from '@fortawesome/free-solid-svg-icons/faPaste'
+import { faHourglassEnd } from '@fortawesome/free-solid-svg-icons/faHourglassEnd'
+import { faSearchengin } from '@fortawesome/free-brands-svg-icons/faSearchengin'
 
 export const labels = [
   { value: 'P', title: 'Sexual Content' },
@@ -16,22 +18,22 @@ export const labels = [
 export const links = [
   {
     label: 'Flagger',
-    icon: faHistory,
+    icon: faFlag,
     href: '/deputy'
   },
   {
     label: 'History',
-    icon: faHistory,
+    icon: faHourglassEnd,
     href: '/flagging_history'
   },
   {
     label: 'Templates',
-    icon: faFlag,
+    icon: faPaste,
     href: '/deputy?context=templates'
   },
   {
     label: 'Searches',
-    icon: faSearch,
+    icon: faSearchengin,
     href: '/deputy?context=searches'
   },
   {

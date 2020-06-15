@@ -5,6 +5,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash'
 import { faFlag } from '@fortawesome/free-solid-svg-icons/faFlag'
 import { faHashtag } from '@fortawesome/free-solid-svg-icons/faHashtag'
 import Video from '@shared/models/Video.model'
+import greyScreen from '@/img/grey-screen.jpg'
 import './video-list-item.scoped.scss'
 
 function VideoListItem(props) {
@@ -19,7 +20,13 @@ function VideoListItem(props) {
     >
       <div className="video-thumbnail">
         <a href={video.url} target="_blank" rel="noreferrer">
-          <img src={thumbnail.url} alt={video.title} lazy="loading" width={thumbnail.width} height={thumbnail.height} />
+          <img
+            src={!isRemoved ? thumbnail.url : greyScreen}
+            alt={video.title}
+            lazy="loading"
+            width={thumbnail.width}
+            height={thumbnail.height}
+          />
         </a>
       </div>
       <div className="video-content">

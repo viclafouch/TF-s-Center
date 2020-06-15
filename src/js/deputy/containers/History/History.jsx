@@ -86,7 +86,7 @@ function History({ history }) {
         {isLoading && videos.length === 0 ? <Loader /> : <VideoList videos={videos} />}
         {isLoading && videos.length > 0 && <Loader spinner />}
         {!isLoading && videos.length === 0 && <p>No result</p>}
-        {!isLoading && videos.length > 0 && !hasMore && <p>No more result</p>}
+        {!isLoading && videos.length > 0 && !hasMore && <p className="no-more-result">No more result</p>}
       </div>
     </div>
   )

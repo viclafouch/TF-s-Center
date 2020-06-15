@@ -24,10 +24,11 @@ export const getVideosHistory = async ({ page, startTime, endTime }) => {
   return fetchVideos(url)
 }
 
-export const searchVideos = async ({ page, searchQuery }) => {
+export const searchVideos = async ({ page, searchQuery, filters }) => {
   const url = new URL('https://www.youtube.com/deputy')
   url.searchParams.set('search_query', searchQuery)
   if (page) url.searchParams.set('page', page)
+  if (filters) url.searchParams.set('filters', filters)
   console.log(`Fetch ${url.toString()}...`)
   return fetchVideos(url)
 }

@@ -2,13 +2,14 @@ import React, { useCallback, useEffect, useState, useRef } from 'react'
 import Tools from '@deputy/components/Tools/Tools'
 import { searchVideos } from '@deputy/helpers/api'
 import useQuery from '@deputy/hooks/use-query'
-import './flagger.scoped.scss'
 import Loader from '@deputy/components/Loader/Loader'
 import VideoList from '@deputy/components/VideoList/VideoList'
+import './flagger.scoped.scss'
 
 function Flagger({ history }) {
   const query = useQuery()
   const searchQuery = query.get('search_query')
+  const filters = query.get('filters')
   const [videos, setVideos] = useState([])
   const [isLoading, setIsLoading] = useState(!!searchQuery)
   const [isError, setIsError] = useState(false)
@@ -22,14 +23,14 @@ function Flagger({ history }) {
       const page = params.page || currentParams.current.page
       const response = await searchVideos({
         page,
-        searchQuery: params.searchQuery
+        searchQuery: params.searchQuery,
+        filters: params.filters
       })
-      console.log('test')
-
       setHasMore(response.hasMore)
       const newParams = {
         page: page + 1,
-        searchQuery: params.searchQuery
+        searchQuery: params.searchQuery,
+        filters: params.filters
       }
       currentParams.current = newParams
       setVideos(prevState => [...prevState, ...response.videos])
@@ -46,10 +47,11 @@ function Flagger({ history }) {
     if (searchQuery) {
       fetchSearchVideos({
         page: 1,
-        searchQuery: searchQuery
+        searchQuery: searchQuery,
+        filters: filters
       })
     }
-  }, [fetchSearchVideos, searchQuery])
+  }, [fetchSearchVideos, searchQuery, filters])
 
   const handleScroll = useCallback(async () => {
     const isAtBottom = scrollerRef.current.offsetHeight + scrollerRef.current.scrollTop >= scrollerRef.current.scrollHeight - 450
@@ -59,9 +61,10 @@ function Flagger({ history }) {
   }, [fetchSearchVideos, isLoading, isError, hasMore])
 
   const handleSubmit = useCallback(
-    ({ searchQuery }) => {
+    ({ searchQuery, filters }) => {
       const searchParams = new URLSearchParams({
-        search_query: searchQuery
+        search_query: searchQuery,
+        filters: filters
       })
 
       history.replace({
