@@ -18,13 +18,13 @@ function VideoListItem(props) {
       className={`video-list-item ${isRemoved ? 'video-removed' : ''} ${isReviewed ? 'video-reviewed' : ''}`}
     >
       <div className="video-thumbnail">
-        <a href={video.url}>
+        <a href={video.url} target="_blank" rel="noreferrer">
           <img src={thumbnail.url} alt={video.title} lazy="loading" width={thumbnail.width} height={thumbnail.height} />
         </a>
       </div>
       <div className="video-content">
         <h3 className="video-title">
-          <a href={video.url}>
+          <a href={video.url} target="_blank" rel="noreferrer">
             {!video.isValidReviewedAt || video.removedAt ? 'This video is not longer avalaible' : video.title}
           </a>
         </h3>

@@ -2,12 +2,9 @@ import React from 'react'
 import spinnerImg from '@/img/spinner.gif'
 import darkSheriff from '@/img/loader-dark.svg'
 // import lightSheriff from '@/img/loader-light.svg'
-
 import './loader.scoped.scss'
 
 function Loader({ spinner = false }) {
-  console.log(spinner)
-
   return (
     <div className="loader loader-spinner" aria-busy="true">
       {spinner ? (

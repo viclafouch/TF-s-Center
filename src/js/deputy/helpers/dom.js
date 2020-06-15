@@ -45,8 +45,6 @@ export const transformLabelToVideo = label => {
     )
     video.tags = tags.map(tagElement => tagElement.getAttribute('title'))
 
-    console.log(video)
-
     const nbViews = label.querySelector('.yt-notes > .viewcount').textContent.trim()
     video.nbViews = parseInt(nbViews.replace(/\D/g, ''))
 

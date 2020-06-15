@@ -33,8 +33,6 @@ function Tools(props) {
     })
   }
 
-  console.log(rangeDate)
-
   return (
     <div className={`tools ${props.isHistory ? 'tools-history' : ''}`}>
       <form className="tools-form-filter" onSubmit={handleSubmit}>
@@ -46,6 +44,8 @@ function Tools(props) {
               maxDate={rangeDate.endDate}
               showYearDropdown
               scrollableYearDropdown
+              id="start-date"
+              className="input-datepicker"
               onChange={date =>
                 setRangeDate(prevState => ({
                   ...prevState,
@@ -61,6 +61,8 @@ function Tools(props) {
               minDate={rangeDate.startDate}
               showYearDropdown
               scrollableYearDropdown
+              id="end-date"
+              className="input-datepicker"
               onChange={date =>
                 setRangeDate(prevState => ({
                   ...prevState,
