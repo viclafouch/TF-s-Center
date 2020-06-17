@@ -1,6 +1,3 @@
-import { TF_ERROR } from '@utils/index.js'
-import { YOUTUBE_API_KEYS } from '../../private.js'
-
 // const setBadgeText = text =>
 //   chrome.browserAction.setBadgeText({
 //     text: text ? text.toString() : ''
