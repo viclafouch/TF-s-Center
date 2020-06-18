@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, memo } from 'react'
 import DatePicker from 'react-datepicker'
 import Button from '../Button/Button'
-import 'react-datepicker/dist/react-datepicker.min.css'
-import { withRouter } from 'react-router'
 import { getUnixFromDate, copyDate } from '@utils/date'
 import useQuery from '@deputy/hooks/use-query'
+import 'react-datepicker/dist/react-datepicker.min.css'
 import './tools.scoped.scss'
 
 const defaultEndDate = new Date()
@@ -30,9 +29,12 @@ function Tools(props) {
       })
     } else {
       const form = new FormData(e.target)
+      console.log(form.get('exclude_flagged_videos'))
+
       props.onSubmit({
         searchQuery: form.get('search-query'),
-        filters: form.get('filters')
+        filters: form.get('filters'),
+        excludeFlaggedVideos: form.get('exclude_flagged_videos')
       })
     }
   }
@@ -108,6 +110,16 @@ function Tools(props) {
                 <option value="year">This year</option>
               </select>
             </div>
+            <div className="tools-field">
+              <label className="tools-form-element">
+                <input
+                  type="checkbox"
+                  name="exclude_flagged_videos"
+                  defaultChecked={query.get('exclude_flagged_videos') === 'true'}
+                />
+                Exclude previously flagged videos
+              </label>
+            </div>
           </div>
           <Button color="blue" type="submit">
             Search
@@ -118,4 +130,4 @@ function Tools(props) {
   )
 }
 
-export default withRouter(Tools)
+export default memo(Tools)

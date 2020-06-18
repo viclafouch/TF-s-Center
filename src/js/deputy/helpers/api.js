@@ -24,11 +24,17 @@ export const getVideosHistory = async ({ page, startTime, endTime }) => {
   return fetchVideos(url)
 }
 
-export const searchVideos = async ({ page, searchQuery, filters }) => {
-  const url = new URL('https://www.youtube.com/deputy')
-  url.searchParams.set('search_query', searchQuery)
-  if (page) url.searchParams.set('page', page)
-  if (filters) url.searchParams.set('filters', filters)
+export const getParamsSearchVideos = ({ page, searchQuery, filters, excludeFlaggedVideos }) => {
+  const searchParams = new URLSearchParams()
+  searchParams.set('search_query', searchQuery)
+  if (page) searchParams.set('page', page)
+  if (filters) searchParams.set('filters', filters)
+  if (excludeFlaggedVideos) searchParams.set('exclude_flagged_videos', 'true')
+  return searchParams.toString()
+}
+
+export const searchVideos = async searchParamsString => {
+  const url = new URL(`https://www.youtube.com/deputy?${searchParamsString}`)
   console.log(`Fetch ${url.toString()}...`)
   return fetchVideos(url)
 }

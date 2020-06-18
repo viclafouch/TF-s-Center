@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react'
 import Tools from '@deputy/components/Tools/Tools'
-import { searchVideos } from '@deputy/helpers/api'
+import { searchVideos, getParamsSearchVideos } from '@deputy/helpers/api'
 import useQuery from '@deputy/hooks/use-query'
 import Loader from '@deputy/components/Loader/Loader'
 import VideoList from '@deputy/components/VideoList/VideoList'
@@ -10,6 +10,7 @@ function Flagger({ history }) {
   const query = useQuery()
   const searchQuery = query.get('search_query')
   const filters = query.get('filters')
+  const excludeFlaggedVideos = query.get('exclude_flagged_videos')
   const [videos, setVideos] = useState([])
   const [isLoading, setIsLoading] = useState(!!searchQuery)
   const [isError, setIsError] = useState(false)
@@ -20,19 +21,10 @@ function Flagger({ history }) {
   const fetchSearchVideos = useCallback(async params => {
     try {
       setIsLoading(true)
-      const page = params.page || currentParams.current.page
-      const response = await searchVideos({
-        page,
-        searchQuery: params.searchQuery,
-        filters: params.filters
-      })
+      const searchParams = getParamsSearchVideos(params)
+      const response = await searchVideos(searchParams)
       setHasMore(response.hasMore)
-      const newParams = {
-        page: page + 1,
-        searchQuery: params.searchQuery,
-        filters: params.filters
-      }
-      currentParams.current = newParams
+      currentParams.current = { ...params, page: params.page + 1 }
       setVideos(prevState => [...prevState, ...response.videos])
     } catch (error) {
       console.error(error)
@@ -48,10 +40,11 @@ function Flagger({ history }) {
       fetchSearchVideos({
         page: 1,
         searchQuery: searchQuery,
-        filters: filters
+        filters: filters,
+        excludeFlaggedVideos: excludeFlaggedVideos
       })
     }
-  }, [fetchSearchVideos, searchQuery, filters])
+  }, [fetchSearchVideos, searchQuery, filters, excludeFlaggedVideos])
 
   const handleScroll = useCallback(async () => {
     const isAtBottom = scrollerRef.current.offsetHeight + scrollerRef.current.scrollTop >= scrollerRef.current.scrollHeight - 450
@@ -61,15 +54,13 @@ function Flagger({ history }) {
   }, [fetchSearchVideos, isLoading, isError, hasMore])
 
   const handleSubmit = useCallback(
-    ({ searchQuery, filters }) => {
-      const searchParams = new URLSearchParams({
-        search_query: searchQuery,
-        filters: filters
-      })
+    (...params) => {
+      console.log(params)
 
+      const searchParamsString = `?${getParamsSearchVideos(...params)}`
       history.replace({
         pathname: '/deputy',
-        search: `?${searchParams.toString()}`
+        search: searchParamsString
       })
     },
     [history]

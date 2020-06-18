@@ -32,8 +32,6 @@ function History({ history }) {
         startTime: params.startTime,
         endTime: params.endTime
       }
-      console.log(response)
-
       currentParams.current = newParams
       setVideos(prevState => [...prevState, ...response.videos])
     } catch (error) {
@@ -88,7 +86,7 @@ function History({ history }) {
         {isLoading && videos.length === 0 ? <Loader /> : <VideoList videos={videos} />}
         {isLoading && videos.length > 0 && <Loader spinner />}
         {!isLoading && videos.length === 0 && <p>No result</p>}
-        {!isLoading && videos.length > 0 && !hasMore && <p className="no-more-result">No more result</p>}
+        {!isLoading && videos.length > 7 && !hasMore && <p className="no-more-result">No more result</p>}
       </div>
     </div>
   )

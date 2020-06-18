@@ -4,8 +4,8 @@ import { NavLink, useLocation } from 'react-router-dom'
 import { faComment } from '@fortawesome/free-solid-svg-icons/faComment'
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons/faSignOutAlt'
 import { links } from '@/js/config/config'
-import './sidebar.scoped.scss'
 import { DefaultContext } from '@deputy/store/DefaultContext'
+import './sidebar.scoped.scss'
 
 function Sidebar() {
   const [{ user }] = useContext(DefaultContext)
@@ -45,7 +45,7 @@ function Sidebar() {
               rel="noreferrer"
               className="youtube-link"
             >
-              <span className="span-icon mgi--right-16">
+              <span className="span-icon">
                 <FontAwesomeIcon icon={faComment} size="1x" fixedWidth />
               </span>
               <span className="text-link">Help</span>
@@ -53,7 +53,7 @@ function Sidebar() {
           </li>
           <li>
             <a href="/" className="youtube-link">
-              <span className="span-icon mgi--right-16">
+              <span className="span-icon">
                 <FontAwesomeIcon icon={faSignOutAlt} size="1x" fixedWidth />
               </span>
               <span className="text-link">Exit</span>
