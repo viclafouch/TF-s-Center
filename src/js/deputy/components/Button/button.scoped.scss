@@ -24,6 +24,9 @@
     color: #ffffff;
     border-color: #167ac6;
     background-color: #167ac6;
+    &:disabled {
+      opacity: 0.5;
+    }
   }
 
   &.button-white {
@@ -41,7 +44,6 @@
     color: #ffffff;
     border-color: #b50707;
     background-color: #b50707;
-
     &:disabled {
       background-color: #b9b9b9;
       color: #7d7d7d;

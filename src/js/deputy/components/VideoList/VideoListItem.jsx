@@ -1,18 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { formatDistance } from 'date-fns'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash'
 import { faFlag } from '@fortawesome/free-solid-svg-icons/faFlag'
 import { faHashtag } from '@fortawesome/free-solid-svg-icons/faHashtag'
-import Video from '@shared/models/Video.model'
 import greyScreen from '@/img/grey-screen.jpg'
 import './video-list-item.scoped.scss'
 
-function VideoListItem(props) {
-  const video = new Video(props)
+function VideoListItem({ video }) {
+  const [check, setCheck] = useState('none')
   const thumbnail = video.thumbnail('default')
   const isRemoved = !!video.removedAt
   const isReviewed = !!video.reviewedAt
+
   return (
     <li
       data-id={video.id}
@@ -82,6 +82,26 @@ function VideoListItem(props) {
           <FontAwesomeIcon icon={faHashtag} size="1x" fixedWidth />
           {video.id}
         </span>
+        <label htmlFor={`video-${video.id}`}>
+          Video
+          <input
+            id={`video-${video.id}`}
+            name={`video-${video.id}`}
+            type="checkbox"
+            onChange={() => setCheck(prevState => (prevState === 'video' ? 'none' : 'video'))}
+            checked={check === 'video'}
+          />
+        </label>
+        <label htmlFor={`channel-${video.id}`}>
+          Channel
+          <input
+            id={`channel-${video.id}`}
+            name={`channel-${video.id}`}
+            type="checkbox"
+            onChange={() => setCheck(prevState => (prevState === 'channel' ? 'none' : 'channel'))}
+            checked={check === 'channel'}
+          />
+        </label>
       </div>
     </li>
   )

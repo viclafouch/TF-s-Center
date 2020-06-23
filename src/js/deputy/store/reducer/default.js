@@ -21,7 +21,6 @@ export default (state = {}, action) =>
         break
       case REMOVE_TEMPLATE:
         draft.templates = state.templates.filter(template => template.id !== action.payload.templateId)
-
         break
       default:
         break

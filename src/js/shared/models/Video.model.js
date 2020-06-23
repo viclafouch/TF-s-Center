@@ -1,6 +1,9 @@
+import { randomId } from '@utils/index'
+
 class Video {
   constructor(video = {}) {
     this.id = video.id
+    this.uuid = randomId()
     this.title = video.title || ''
     this.summary = video.summary || null
     this.description = video.description || null

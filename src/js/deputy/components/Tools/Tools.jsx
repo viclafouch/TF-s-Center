@@ -29,8 +29,6 @@ function Tools(props) {
       })
     } else {
       const form = new FormData(e.target)
-      console.log(form.get('exclude_flagged_videos'))
-
       props.onSubmit({
         searchQuery: form.get('search-query'),
         filters: form.get('filters'),
@@ -121,9 +119,22 @@ function Tools(props) {
               </label>
             </div>
           </div>
-          <Button color="blue" type="submit">
-            Search
-          </Button>
+          <div>
+            <Button color="blue" type="submit">
+              Search
+            </Button>
+            <Button
+              color="blue"
+              type="button"
+              disabled={!props.canFlag}
+              onClick={e => {
+                e.preventDefault()
+                props.onFlag()
+              }}
+            >
+              Flag
+            </Button>
+          </div>
         </form>
       )}
     </div>

@@ -59,6 +59,7 @@ export const extractVideoInfos = item => {
       name: item.querySelector('.yt-notes > a.yt-user-name').textContent,
       url: item.querySelector('.yt-notes > a.yt-user-name').href
     }
+
     video.channel = channel
 
     const createdAt = item.querySelector('.yt-notes > .video-date-added').textContent
