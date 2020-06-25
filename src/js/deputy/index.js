@@ -25,10 +25,15 @@ const startDeputy = async ({ currentUrl }) => {
 
     const initialData = Object.assign({}, localStorage, { user, analytics })
 
+    document.body.innerHTML = ''
+
+    const modal = document.createElement('div')
+    modal.setAttribute('id', 'root-modal')
+    document.body.appendChild(modal)
+
     ReactDOM.render(<App initialData={initialData} />, div)
     document.body.classList.add('TFs-ready')
 
-    document.body.innerHTML = ''
     document.body.appendChild(div)
     document.querySelector('[name="www-core"]').remove()
   } catch (error) {
