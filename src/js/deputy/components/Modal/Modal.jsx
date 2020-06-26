@@ -10,6 +10,10 @@ export function Modal({ children, fade = false, defaultOpened = false }, ref) {
 
   const close = useCallback(force => (!isBlock || force) && setIsOpen(false), [isBlock])
 
+  useEffect(() => {
+    if (!isOpen) setIsBlock(false)
+  }, [isOpen])
+
   useImperativeHandle(
     ref,
     () => ({

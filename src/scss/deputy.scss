@@ -171,6 +171,14 @@ main > div {
   padding: 0 10px;
 }
 
+.Toastify__toast-container {
+  border-radius: 3px!important;
+}
+
+.Toastify__toast {
+  min-height: 50px!important;
+}
+
 .Toastify__toast--success {
-  background-color: green;
+  background-color: green!important;
 }

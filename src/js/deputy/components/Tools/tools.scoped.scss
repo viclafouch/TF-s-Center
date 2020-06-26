@@ -11,13 +11,13 @@
 
 .tools-history > form,
 .tools-flagger > form {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    button {
-      margin-left: 10px;
-    }
+  button {
+    margin-left: 10px;
+  }
 }
 
 .tools-history {
@@ -42,6 +42,10 @@
 }
 
 .tools-flagger {
+  .flagger-search-input {
+    width: 207px;
+  }
+
   form.tools-form-filter {
     .tools-filter {
       display: flex;

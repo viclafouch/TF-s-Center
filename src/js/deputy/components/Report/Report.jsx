@@ -1,13 +1,14 @@
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useCallback, useRef, useState, useContext } from 'react'
 import { toast } from 'react-toastify'
 import Button from '../Button/Button'
 import { videoLabels } from '@/js/config/config'
 import { serializeForm } from '@utils/index'
-import { withDomContext } from '@deputy/store/DomContext'
 import { reportEntities } from '@deputy/helpers/dom'
+import { DomContext } from '@deputy/store/DomContext'
 import './report.scoped.scss'
 
-function Report({ entities = [], domContext, modalRef }) {
+function Report({ entities = [], modalRef }) {
+  const [{ user }] = useContext(DomContext)
   const reportForm = useRef(null)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -21,17 +22,20 @@ function Report({ entities = [], domContext, modalRef }) {
       formData.set('filters', '') // For redirection, but we don't need
       formData.set('page', '1') // For redirection, but we don't need
       formData.set('search_query', '') // For redirection, but we don't need
-      formData.set('session_token', domContext.user.sessionToken)
-      formData.set('video_ids', Object.keys(entities).join(','))
+      formData.set('session_token', user.sessionToken)
+      formData.set('video_ids', entities.map(e => e.id).join(','))
 
       let nbChannels = 0
       let nbVideos = 0
 
-      for (const id in entities) {
-        const type = entities[id]
-        if (type === 'video') nbVideos++
-        else if (type === 'channel') nbChannels++
-        formData.set(`selected_entity_${id}`, type)
+      for (const entity of entities) {
+        if (entity.type === 'video') nbVideos++
+        else if (entity.type === 'channel') nbChannels++
+        formData.set(`selected_entity_${entity.id}`, entity.type)
+      }
+
+      for (var pair of formData.entries()) {
+        console.log(pair[0] + ', ' + pair[1])
       }
 
       try {
@@ -54,12 +58,11 @@ function Report({ entities = [], domContext, modalRef }) {
         if (modalRef) modalRef.current.close({ force: true })
       } catch (error) {
         console.log(error)
-      } finally {
         setIsLoading(false)
         if (modalRef) modalRef.current.unBlockClose()
       }
     },
-    [entities, domContext.user.sessionToken, modalRef]
+    [entities, user.sessionToken, modalRef]
   )
 
   return (
@@ -102,4 +105,4 @@ function Report({ entities = [], domContext, modalRef }) {
   )
 }
 
-export default withDomContext(Report)
+export default Report

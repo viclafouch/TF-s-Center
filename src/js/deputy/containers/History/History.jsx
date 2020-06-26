@@ -17,15 +17,18 @@ function History({ history }) {
   const currentParams = useRef(null)
   const scrollerRef = useRef(null)
 
-  const fetchHistory = useCallback(async params => {
+  const fetchHistory = useCallback(async (params, signal) => {
     try {
       setIsLoading(true)
       const page = params.page || currentParams.current.page
-      const response = await getVideosHistory({
-        page,
-        startTime: params.startTime,
-        endTime: params.endTime
-      })
+      const response = await getVideosHistory(
+        {
+          page,
+          startTime: params.startTime,
+          endTime: params.endTime
+        },
+        signal
+      )
       setHasMore(response.hasMore)
       const newParams = {
         page: page + 1,
@@ -34,21 +37,32 @@ function History({ history }) {
       }
       currentParams.current = newParams
       setVideos(prevState => [...prevState, ...response.videos])
-    } catch (error) {
-      console.error(error)
-      setIsError(true)
-    } finally {
       setIsLoading(false)
+    } catch (error) {
+      if (error.name !== 'AbortError') {
+        console.error(error)
+        setIsError(true)
+      }
+    } finally {
+      !signal.aborted && setIsLoading(false)
     }
   }, [])
 
   useEffect(() => {
     setVideos([])
-    fetchHistory({
-      page: 1,
-      startTime: startTime || null,
-      endTime: endTime || null
-    })
+    const controller = new AbortController()
+    fetchHistory(
+      {
+        page: 1,
+        startTime: startTime || null,
+        endTime: endTime || null
+      },
+      controller.signal
+    )
+
+    return () => {
+      controller.abort()
+    }
   }, [fetchHistory, startTime, endTime])
 
   const handleScroll = useCallback(async () => {

@@ -7,7 +7,7 @@ import { faHashtag } from '@fortawesome/free-solid-svg-icons/faHashtag'
 import greyScreen from '@/img/grey-screen.jpg'
 import './video-list-item.scoped.scss'
 
-function VideoListItem({ video }) {
+function VideoListItem({ video, showCheckbox = false }) {
   const [check, setCheck] = useState('none')
   const thumbnail = video.thumbnail('default')
   const isRemoved = !!video.removedAt
@@ -82,26 +82,30 @@ function VideoListItem({ video }) {
           <FontAwesomeIcon icon={faHashtag} size="1x" fixedWidth />
           {video.id}
         </span>
-        <label htmlFor={`video-${video.id}`}>
-          Video
-          <input
-            id={`video-${video.id}`}
-            name={`video-${video.id}`}
-            type="checkbox"
-            onChange={() => setCheck(prevState => (prevState === 'video' ? 'none' : 'video'))}
-            checked={check === 'video'}
-          />
-        </label>
-        <label htmlFor={`channel-${video.id}`}>
-          Channel
-          <input
-            id={`channel-${video.id}`}
-            name={`channel-${video.id}`}
-            type="checkbox"
-            onChange={() => setCheck(prevState => (prevState === 'channel' ? 'none' : 'channel'))}
-            checked={check === 'channel'}
-          />
-        </label>
+        {showCheckbox && (
+          <>
+            <label htmlFor={`video-${video.id}`}>
+              Video
+              <input
+                id={`video-${video.id}`}
+                name={`video-${video.id}`}
+                type="checkbox"
+                onChange={() => setCheck(prevState => (prevState === 'video' ? 'none' : 'video'))}
+                checked={check === 'video'}
+              />
+            </label>
+            <label htmlFor={`channel-${video.id}`}>
+              Channel
+              <input
+                id={`channel-${video.id}`}
+                name={`channel-${video.id}`}
+                type="checkbox"
+                onChange={() => setCheck(prevState => (prevState === 'channel' ? 'none' : 'channel'))}
+                checked={check === 'channel'}
+              />
+            </label>
+          </>
+        )}
       </div>
     </li>
   )

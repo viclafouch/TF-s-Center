@@ -1,7 +1,7 @@
 import { extractAnalyticsInfos, extractVideoInfos } from './dom'
 
-const fetchVideos = async url => {
-  const response = await fetch(url)
+const fetchVideos = async (url, signal) => {
+  const response = await fetch(url, { signal })
   const text = await response.text()
   const document = new DOMParser().parseFromString(text, 'text/html')
   const videos = Array.from(document.querySelectorAll('div.deputy-flag-item')).map(extractVideoInfos)
@@ -15,13 +15,13 @@ const fetchVideos = async url => {
   return { videos, hasMore }
 }
 
-export const getVideosHistory = async ({ page, startTime, endTime }) => {
+export const getVideosHistory = async ({ page, startTime, endTime }, signal) => {
   const url = new URL('https://www.youtube.com/flagging_history')
   if (page) url.searchParams.set('page', page)
   if (startTime) url.searchParams.set('start_time', startTime)
   if (endTime) url.searchParams.set('end_time', endTime)
   console.log(`Fetch ${url.toString()}...`)
-  return fetchVideos(url)
+  return fetchVideos(url, signal)
 }
 
 export const getParamsSearchVideos = ({ page, searchQuery, filters, excludeFlaggedVideos }) => {

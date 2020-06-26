@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState, useRef } from 'react'
+import React, { useCallback, useEffect, useState, useRef, useMemo } from 'react'
 import Tools from '@deputy/components/Tools/Tools'
 import { searchVideos, getParamsSearchVideos } from '@deputy/helpers/api'
 import useQuery from '@deputy/hooks/use-query'
@@ -70,12 +70,24 @@ function Flagger({ history }) {
     [history]
   )
 
+  const handleCheck = useCallback(() => {
+    const selected = Object.keys(serializeForm(form.current)).map(key => {
+      const type = key.startsWith('video-') ? 'video' : 'channel'
+      const id = type === 'video' ? key.split('video-')[1] : key.split('channel-')[1]
+      return {
+        id,
+        type
+      }
+    })
+    setEntitiesSelected(selected)
+  }, [])
+
   return (
     <div className="flagger">
       <Modal ref={modal} fade>
         <Report entities={entitiesSelected} />
       </Modal>
-      <Tools onSubmit={handleSubmit} onFlag={() => modal.current.open()} canFlag />
+      <Tools onSubmit={handleSubmit} onFlag={() => modal.current.open()} canFlag={entitiesSelected.length > 0} />
       <div
         className={`flagger-list-container ${isLoading && videos.length === 0 ? 'flagger-list-container-loading' : ''} ${
           !isLoading && videos.length === 0 ? 'flagger-list-container-empty' : ''
@@ -86,28 +98,8 @@ function Flagger({ history }) {
         {isLoading && videos.length === 0 ? (
           <Loader />
         ) : (
-          <form
-            ref={form}
-            id="form-flagger"
-            onChange={() => {
-              const formValue = serializeForm(form.current)
-              setEntitiesSelected(() => {
-                const entities = videos.reduce((previousValue, currentValue) => {
-                  previousValue[currentValue.id] = 'none'
-                  return previousValue
-                }, [])
-                for (const value of Object.keys(formValue)) {
-                  if (value.startsWith('video-')) {
-                    entities[value.split('video-')[1]] = 'video'
-                  } else {
-                    entities[value.split('channel-')[1]] = 'channel'
-                  }
-                }
-                return entities
-              })
-            }}
-          >
-            <VideoList videos={videos} />
+          <form ref={form} id="form-flagger" onChange={handleCheck}>
+            <VideoList videos={videos} showCheckbox />
           </form>
         )}
         {isLoading && videos.length > 0 && <Loader spinner />}
