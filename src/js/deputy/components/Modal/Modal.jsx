@@ -6,14 +6,17 @@ import './modal.scoped.scss'
 
 export function Modal({ children, fade = false, defaultOpened = false }, ref) {
   const [isOpen, setIsOpen] = useState(defaultOpened)
+  const [isBlock, setIsBlock] = useState(false)
 
-  const close = useCallback(() => setIsOpen(false), [])
+  const close = useCallback(force => (!isBlock || force) && setIsOpen(false), [isBlock])
 
   useImperativeHandle(
     ref,
     () => ({
       open: () => setIsOpen(true),
-      close
+      close: ({ force } = {}) => close(force),
+      blockClose: () => setIsBlock(true),
+      unBlockClose: () => setIsBlock(false)
     }),
     [close]
   )
@@ -39,7 +42,7 @@ export function Modal({ children, fade = false, defaultOpened = false }, ref) {
         <span role="button" className="modal-close" aria-label="close" onClick={close}>
           <FontAwesomeIcon icon={faTimes} size="1x" fixedWidth />
         </span>
-        <div className="modal-body">{children}</div>
+        <div className="modal-body">{React.cloneElement(children, { modalRef: ref })}</div>
       </div>
     ) : null,
     document.getElementById('root-modal')

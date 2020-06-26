@@ -1,13 +1,15 @@
-import React, { useCallback, useRef } from 'react'
-import { videoLabels } from '@/js/config/config'
+import React, { useCallback, useRef, useState } from 'react'
+import { toast } from 'react-toastify'
 import Button from '../Button/Button'
+import { videoLabels } from '@/js/config/config'
 import { serializeForm } from '@utils/index'
 import { withDomContext } from '@deputy/store/DomContext'
 import { reportEntities } from '@deputy/helpers/dom'
 import './report.scoped.scss'
 
-function Report({ entities = [], domContext }) {
+function Report({ entities = [], domContext, modalRef }) {
   const reportForm = useRef(null)
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = useCallback(
     async e => {
@@ -22,19 +24,42 @@ function Report({ entities = [], domContext }) {
       formData.set('session_token', domContext.user.sessionToken)
       formData.set('video_ids', Object.keys(entities).join(','))
 
+      let nbChannels = 0
+      let nbVideos = 0
+
       for (const id in entities) {
         const type = entities[id]
+        if (type === 'video') nbVideos++
+        else if (type === 'channel') nbChannels++
         formData.set(`selected_entity_${id}`, type)
       }
 
       try {
+        setIsLoading(true)
+        if (modalRef) modalRef.current.blockClose()
         await reportEntities(formData)
-        console.log('success')
+
+        if (nbChannels > 0 && nbVideos > 0) {
+          toast.success(
+            `You have successfully flagged ${nbVideos} video${nbVideos > 1 ? 's' : ''} and ${nbChannels} channel${
+              nbChannels > 1 ? 's' : ''
+            }.`
+          )
+        } else if (nbChannels > 0) {
+          toast.success(`You have successfully flagged ${nbChannels} channel${nbChannels > 1 ? 's' : ''}.`)
+        } else {
+          toast.success(`You have successfully flagged ${nbVideos} video${nbVideos > 1 ? 's' : ''}.`)
+        }
+
+        if (modalRef) modalRef.current.close({ force: true })
       } catch (error) {
         console.log(error)
+      } finally {
+        setIsLoading(false)
+        if (modalRef) modalRef.current.unBlockClose()
       }
     },
-    [entities, domContext.user.sessionToken]
+    [entities, domContext.user.sessionToken, modalRef]
   )
 
   return (
@@ -68,7 +93,7 @@ function Report({ entities = [], domContext }) {
           <textarea className="comment-textarea" name="comment"></textarea>
         </fieldset>
         <div className="report-bottom">
-          <Button color="blue" type="submit">
+          <Button color="blue" type="submit" disabled={isLoading}>
             Submit
           </Button>
         </div>
