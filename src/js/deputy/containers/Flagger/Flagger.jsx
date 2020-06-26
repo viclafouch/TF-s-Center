@@ -4,7 +4,9 @@ import { searchVideos, getParamsSearchVideos } from '@deputy/helpers/api'
 import useQuery from '@deputy/hooks/use-query'
 import Loader from '@deputy/components/Loader/Loader'
 import VideoList from '@deputy/components/VideoList/VideoList'
+import Modal from '@deputy/components/Modal/Modal'
 import { serializeForm } from '@utils/index'
+import Report from '@deputy/components/Report/Report'
 import './flagger.scoped.scss'
 
 function Flagger({ history }) {
@@ -16,10 +18,11 @@ function Flagger({ history }) {
   const [isLoading, setIsLoading] = useState(!!searchQuery)
   const [isError, setIsError] = useState(false)
   const [hasMore, setHasMore] = useState(false)
-  const [canFlag, setCanFlag] = useState(false)
+  const [entitiesSelected, setEntitiesSelected] = useState([])
   const currentParams = useRef(null)
   const scrollerRef = useRef(null)
   const form = useRef(null)
+  const modal = useRef(null)
 
   const fetchSearchVideos = useCallback(async params => {
     try {
@@ -67,14 +70,12 @@ function Flagger({ history }) {
     [history]
   )
 
-  const handleFlag = useCallback(() => {
-    const formValue = serializeForm(form.current)
-    console.log({ formValue })
-  }, [])
-
   return (
     <div className="flagger">
-      <Tools onSubmit={handleSubmit} onFlag={handleFlag} canFlag={canFlag} />
+      <Modal ref={modal} fade>
+        <Report entities={entitiesSelected} />
+      </Modal>
+      <Tools onSubmit={handleSubmit} onFlag={() => modal.current.open()} canFlag />
       <div
         className={`flagger-list-container ${isLoading && videos.length === 0 ? 'flagger-list-container-loading' : ''} ${
           !isLoading && videos.length === 0 ? 'flagger-list-container-empty' : ''
@@ -90,7 +91,20 @@ function Flagger({ history }) {
             id="form-flagger"
             onChange={() => {
               const formValue = serializeForm(form.current)
-              setCanFlag(Object.keys(formValue).length > 0)
+              setEntitiesSelected(() => {
+                const entities = videos.reduce((previousValue, currentValue) => {
+                  previousValue[currentValue.id] = 'none'
+                  return previousValue
+                }, [])
+                for (const value of Object.keys(formValue)) {
+                  if (value.startsWith('video-')) {
+                    entities[value.split('video-')[1]] = 'video'
+                  } else {
+                    entities[value.split('channel-')[1]] = 'channel'
+                  }
+                }
+                return entities
+              })
             }}
           >
             <VideoList videos={videos} />

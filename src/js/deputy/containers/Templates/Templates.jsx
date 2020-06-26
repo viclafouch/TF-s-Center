@@ -5,7 +5,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus'
 import Template from '@shared/models/Template.model'
 import Button from '@deputy/components/Button/Button'
-import { labels } from '@/js/config/config'
+import { videoLabels } from '@/js/config/config'
 import { DefaultContext } from '@deputy/store/DefaultContext'
 import { ADD_TEMPLATE } from '@deputy/store/reducer/constants'
 import { Link } from 'react-router-dom'
@@ -75,7 +75,7 @@ function Templates() {
               <div className="add-template-field">
                 <select className="form-element" required name="reason">
                   <option value="">Select the issue</option>
-                  {labels.map((label, index) => (
+                  {videoLabels.map((label, index) => (
                     <option key={index} value={label.value}>
                       {label.title}
                     </option>

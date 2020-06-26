@@ -17,7 +17,7 @@
 }
 
 .modal.modal-fade {
-  animation: fade-in 1s 1 linear;
+  animation: fade-in 0.3s 1 linear;
   animation-fill-mode: forwards;
   opacity: 0;
 }
@@ -67,6 +67,7 @@
   max-height: 100%;
   padding: 15px 20px;
   color: #c3c0c0;
+  max-width: 700px;
 }
 
 

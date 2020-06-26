@@ -6,13 +6,18 @@ import { faPaste } from '@fortawesome/free-solid-svg-icons/faPaste'
 import { faHourglassEnd } from '@fortawesome/free-solid-svg-icons/faHourglassEnd'
 import { faSearchengin } from '@fortawesome/free-brands-svg-icons/faSearchengin'
 
-export const labels = [
+export const videoLabels = [
   { value: 'P', title: 'Sexual Content' },
   { value: 'G', title: 'Violent or Repulsive Content' },
   { value: 'R', title: 'Hateful or Abusive Content' },
   { value: 'X', title: 'Harmful Dangerous Acts' },
   { value: 'J', title: 'Child Abuse' },
   { value: 'Z', title: 'Spam' }
+]
+
+export const channelLabels = [
+  { value: '1', title: 'Child endangerment' },
+  { value: '6', title: 'Spam and scams' }
 ]
 
 export const links = [

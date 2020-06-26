@@ -15,7 +15,7 @@ const startDeputy = async ({ currentUrl }) => {
 
     await pageLoaded()
 
-    const localStorage = await getBrowserStorage('local', [
+    const defaultData = await getBrowserStorage('local', [
       { key: 'searches', default: [], parser: searches => searches.map(s => new Search(s)) },
       { key: 'templates', default: [], parser: templates => templates.map(t => new Template(t)) }
     ])
@@ -23,7 +23,7 @@ const startDeputy = async ({ currentUrl }) => {
     const user = extractUserInfos()
     const analytics = await getAnalytics()
 
-    const initialData = Object.assign({}, localStorage, { user, analytics })
+    const domData = { user, analytics }
 
     document.body.innerHTML = ''
 
@@ -31,7 +31,7 @@ const startDeputy = async ({ currentUrl }) => {
     modal.setAttribute('id', 'root-modal')
     document.body.appendChild(modal)
 
-    ReactDOM.render(<App initialData={initialData} />, div)
+    ReactDOM.render(<App defaultData={defaultData} domData={domData} />, div)
     document.body.classList.add('TFs-ready')
 
     document.body.appendChild(div)

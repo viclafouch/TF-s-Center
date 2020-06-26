@@ -1,5 +1,5 @@
 import { randomId } from '@utils/index'
-import { labels } from '@/js/config/config'
+import { videoLabels } from '@/js/config/config'
 
 class Template {
   constructor(template = {}) {
@@ -12,7 +12,7 @@ class Template {
   }
 
   get label() {
-    return labels.find(l => l.value === this.reason).title
+    return videoLabels.find(l => l.value === this.reason).title
   }
 }
 

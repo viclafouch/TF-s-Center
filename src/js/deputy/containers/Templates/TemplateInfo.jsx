@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { DefaultContext } from '@deputy/store/DefaultContext'
 import { Redirect } from 'react-router'
-import { labels, links } from '@/js/config/config'
+import { videoLabels, links } from '@/js/config/config'
 import { EDIT_TEMPLATE, REMOVE_TEMPLATE } from '@deputy/store/reducer/constants'
 import Template from '@shared/models/Template.model'
 import Button from '@deputy/components/Button/Button'
@@ -92,7 +92,7 @@ function TemplateInfo(props) {
           <option value="" disabled>
             Select the issue
           </option>
-          {labels.map((label, index) => (
+          {videoLabels.map((label, index) => (
             <option key={index} value={label.value}>
               {label.title}
             </option>
