@@ -3,13 +3,13 @@ import { toast } from 'react-toastify'
 import Button from '../Button/Button'
 import { videoLabels } from '@/js/config/config'
 import { serializeForm } from '@utils/index'
-import { reportEntities } from '@deputy/helpers/dom'
 import { DomContext } from '@deputy/store/DomContext'
 import { DefaultContext } from '@deputy/store/DefaultContext'
 import { ADD_ENTITIES_TO_THIS_DAY } from '@deputy/store/reducer/constants'
+import { reportEntities } from '@deputy/helpers/dom'
 import './report.scoped.scss'
 
-function Report({ entities = [], modalRef }) {
+function Report({ entities = [], modalRef, onReport }) {
   const [{ user }] = useContext(DomContext)
   const [, dispatch] = useContext(DefaultContext)
   const reportForm = useRef(null)
@@ -62,6 +62,8 @@ function Report({ entities = [], modalRef }) {
           }
         })
 
+        onReport()
+
         if (modalRef) modalRef.current.close({ force: true })
       } catch (error) {
         console.log(error)
@@ -69,7 +71,7 @@ function Report({ entities = [], modalRef }) {
         if (modalRef) modalRef.current.unBlockClose()
       }
     },
-    [entities, user.sessionToken, modalRef, dispatch]
+    [entities, user.sessionToken, modalRef, dispatch, onReport]
   )
 
   return (

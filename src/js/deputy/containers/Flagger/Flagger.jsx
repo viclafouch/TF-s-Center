@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState, useRef, useMemo } from 'react'
+import React, { useCallback, useEffect, useState, useRef } from 'react'
 import Tools from '@deputy/components/Tools/Tools'
 import { searchVideos, getParamsSearchVideos } from '@deputy/helpers/api'
 import useQuery from '@deputy/hooks/use-query'
@@ -19,12 +19,16 @@ function Flagger({ history }) {
   const [isError, setIsError] = useState(false)
   const [hasMore, setHasMore] = useState(false)
   const [entitiesSelected, setEntitiesSelected] = useState([])
-  const currentParams = useRef(null)
+  const currentParams = useRef({
+    searchQuery,
+    filters,
+    excludeFlaggedVideos
+  })
   const scrollerRef = useRef(null)
   const form = useRef(null)
   const modal = useRef(null)
 
-  const fetchSearchVideos = useCallback(async (params, signal) => {
+  const fetchSearchVideos = useCallback(async (params, signal = new AbortController().signal) => {
     try {
       setIsLoading(true)
       const searchParams = getParamsSearchVideos(params)
@@ -42,10 +46,9 @@ function Flagger({ history }) {
     }
   }, [])
 
-  useEffect(() => {
-    setVideos([])
+  const firstFetch = useCallback(() => {
+    const controller = new AbortController()
     if (searchQuery) {
-      const controller = new AbortController()
       fetchSearchVideos(
         {
           page: 1,
@@ -55,12 +58,17 @@ function Flagger({ history }) {
         },
         controller.signal
       )
-
-      return () => {
-        controller.abort()
-      }
     }
+    return controller
   }, [fetchSearchVideos, searchQuery, filters, excludeFlaggedVideos])
+
+  useEffect(() => {
+    setVideos([])
+    const controller = firstFetch()
+    return () => {
+      controller.abort()
+    }
+  }, [firstFetch])
 
   const handleScroll = useCallback(async () => {
     const isAtBottom = scrollerRef.current.offsetHeight + scrollerRef.current.scrollTop >= scrollerRef.current.scrollHeight - 450
@@ -95,7 +103,7 @@ function Flagger({ history }) {
   return (
     <div className="flagger">
       <Modal ref={modal} fade>
-        <Report entities={entitiesSelected} />
+        <Report entities={entitiesSelected} onReport={firstFetch} />
       </Modal>
       <Tools onSubmit={handleSubmit} onFlag={() => modal.current.open()} canFlag={entitiesSelected.length > 0} />
       <div
@@ -114,7 +122,7 @@ function Flagger({ history }) {
         )}
         {isLoading && videos.length > 0 && <Loader spinner />}
         {!isLoading && videos.length === 0 && <p>No result</p>}
-        {!isLoading && videos.length > 7 && !hasMore && <p>No more result</p>}
+        {!isLoading && videos.length > 7 && !hasMore && <p className="no-more-result">No more result</p>}
       </div>
     </div>
   )
