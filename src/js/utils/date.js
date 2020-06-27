@@ -1,15 +1,11 @@
+import { eachDayOfInterval, sub } from 'date-fns'
+
 export const getDateFormat = date => `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
 
-export const sevenLastDays = Array(7)
-  .fill()
-  .map((e, i) => {
-    const date = new Date()
-    date.setDate(date.getDate() - i)
-    return {
-      date: getDateFormat(date),
-      videos: 0
-    }
-  })
+export const lastSevenDays = eachDayOfInterval({
+  start: sub(new Date(), { days: 7 }),
+  end: new Date()
+})
 
 const months = Array.from({ length: 12 }, (x, index) => new Date(0, index).toLocaleDateString('en-US', { month: 'short' }))
 

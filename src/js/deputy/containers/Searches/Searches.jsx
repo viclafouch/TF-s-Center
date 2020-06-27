@@ -1,13 +1,16 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useCallback } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck'
 import { DefaultContext } from '@deputy/store/DefaultContext'
 import { ADD_SEARCH, REMOVE_SEARCHES } from '@deputy/store/reducer/constants'
 import Button from '@deputy/components/Button/Button'
 import Search from '@shared/models/Search.model'
+import { useHistory } from 'react-router'
+import { getParamsSearchVideos } from '@deputy/helpers/api'
 import './searches.scoped.scss'
 
 function Searches() {
+  const history = useHistory()
   const [search, setSearch] = useState(() => new Search())
   const [selectedSearches, setSelectedSearches] = useState([])
   const [{ searches }, dispatch] = useContext(DefaultContext)
@@ -35,6 +38,17 @@ function Searches() {
     })
     setSelectedSearches([])
   }
+
+  const handleTestSearch = useCallback(
+    searchQuery => {
+      const searchParamsString = `?${getParamsSearchVideos({ searchQuery })}`
+      history.push({
+        pathname: '/deputy',
+        search: searchParamsString
+      })
+    },
+    [history]
+  )
 
   const isAllChecked = searches.length === selectedSearches.length && searches.length > 0
 
@@ -64,7 +78,9 @@ function Searches() {
               <Button color="blue" type="submit">
                 Add
               </Button>
-              <Button color="blue">Test</Button>
+              <Button color="blue" onClick={() => handleTestSearch(search.value)}>
+                Test
+              </Button>
             </div>
             <div className="bottom-search-action">
               <select
@@ -139,7 +155,9 @@ function Searches() {
                   <td>Template title</td>
                   <td>{search.isEnableAutoSelect && <FontAwesomeIcon icon={faCheck} size="1x" fixedWidth />}</td>
                   <td>
-                    <Button color="white">Go</Button>
+                    <Button color="white" onClick={() => handleTestSearch(search.value)}>
+                      Go
+                    </Button>
                   </td>
                 </tr>
               ))}

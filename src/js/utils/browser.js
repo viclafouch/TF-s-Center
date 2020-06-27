@@ -5,8 +5,6 @@ export const browser = browser || chrome
 export const clearStorages = async () => {
   chrome.storage.local.clear()
   chrome.storage.sync.clear()
-  await wait(200)
-  window.location.reload()
 }
 
 export function openInNewTab(url, newTab = false) {

@@ -1,5 +1,5 @@
 import produce from 'immer'
-import { ADD_SEARCH, REMOVE_SEARCHES, ADD_TEMPLATE, REMOVE_TEMPLATE, EDIT_TEMPLATE } from './constants'
+import { ADD_SEARCH, REMOVE_SEARCHES, ADD_TEMPLATE, REMOVE_TEMPLATE, EDIT_TEMPLATE, ADD_ENTITIES_TO_THIS_DAY } from './constants'
 
 export default (state = {}, action) =>
   produce(state, draft => {
@@ -21,6 +21,11 @@ export default (state = {}, action) =>
         break
       case REMOVE_TEMPLATE:
         draft.templates = state.templates.filter(template => template.id !== action.payload.templateId)
+        break
+      case ADD_ENTITIES_TO_THIS_DAY:
+        const { nbChannels, nbVideos } = action.payload
+        draft.lastReportedEntities[draft.lastReportedEntities.length - 1].videos += nbVideos
+        draft.lastReportedEntities[draft.lastReportedEntities.length - 1].nbChannels += nbChannels
         break
       default:
         break

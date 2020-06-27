@@ -1,11 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { formatISO } from 'date-fns'
 import App from './App'
 import { getBrowserStorage } from '@utils/browser'
 import { pageLoaded, extractUserInfos } from './helpers/dom'
 import Template from '@shared/models/Template.model'
 import Search from '@shared/models/Search.model'
 import { getAnalytics } from './helpers/api'
+import { randomId } from '@utils/index'
+import { lastSevenDays } from '@utils/date'
 
 const startDeputy = async ({ currentUrl }) => {
   try {
@@ -17,7 +20,30 @@ const startDeputy = async ({ currentUrl }) => {
 
     const defaultData = await getBrowserStorage('local', [
       { key: 'searches', default: [], parser: searches => searches.map(s => new Search(s)) },
-      { key: 'templates', default: [], parser: templates => templates.map(t => new Template(t)) }
+      { key: 'templates', default: [], parser: templates => templates.map(t => new Template(t)) },
+      {
+        key: 'lastReportedEntities',
+        default: lastSevenDays.map(date => ({
+          date: formatISO(date),
+          videos: 0,
+          channels: 0,
+          id: randomId()
+        })),
+        parser: lastReported =>
+          lastSevenDays.map(date => {
+            const report = lastReported.find(reported => reported.date === formatISO(date))
+            if (report) {
+              return report
+            } else {
+              return {
+                date: formatISO(date),
+                videos: 0,
+                channels: 0,
+                id: randomId()
+              }
+            }
+          })
+      }
     ])
 
     const user = extractUserInfos()

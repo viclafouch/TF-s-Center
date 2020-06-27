@@ -4,7 +4,6 @@ export const DomContext = React.createContext()
 
 function DomProvider({ children, initialState }) {
   const [state] = useState(initialState)
-
   return <DomContext.Provider value={[state]}>{children}</DomContext.Provider>
 }
 

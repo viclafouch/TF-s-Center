@@ -5,10 +5,13 @@ import { videoLabels } from '@/js/config/config'
 import { serializeForm } from '@utils/index'
 import { reportEntities } from '@deputy/helpers/dom'
 import { DomContext } from '@deputy/store/DomContext'
+import { DefaultContext } from '@deputy/store/DefaultContext'
+import { ADD_ENTITIES_TO_THIS_DAY } from '@deputy/store/reducer/constants'
 import './report.scoped.scss'
 
 function Report({ entities = [], modalRef }) {
   const [{ user }] = useContext(DomContext)
+  const [, dispatch] = useContext(DefaultContext)
   const reportForm = useRef(null)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -34,10 +37,6 @@ function Report({ entities = [], modalRef }) {
         formData.set(`selected_entity_${entity.id}`, entity.type)
       }
 
-      for (var pair of formData.entries()) {
-        console.log(pair[0] + ', ' + pair[1])
-      }
-
       try {
         setIsLoading(true)
         if (modalRef) modalRef.current.blockClose()
@@ -55,6 +54,14 @@ function Report({ entities = [], modalRef }) {
           toast.success(`You have successfully flagged ${nbVideos} video${nbVideos > 1 ? 's' : ''}.`)
         }
 
+        dispatch({
+          type: ADD_ENTITIES_TO_THIS_DAY,
+          payload: {
+            nbVideos,
+            nbChannels
+          }
+        })
+
         if (modalRef) modalRef.current.close({ force: true })
       } catch (error) {
         console.log(error)
@@ -62,7 +69,7 @@ function Report({ entities = [], modalRef }) {
         if (modalRef) modalRef.current.unBlockClose()
       }
     },
-    [entities, user.sessionToken, modalRef]
+    [entities, user.sessionToken, modalRef, dispatch]
   )
 
   return (

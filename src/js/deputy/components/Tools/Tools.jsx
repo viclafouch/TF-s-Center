@@ -64,6 +64,7 @@ function Tools(props) {
               <DatePicker
                 selected={rangeDate.endDate}
                 minDate={rangeDate.startDate}
+                maxDate={new Date()}
                 showYearDropdown
                 scrollableYearDropdown
                 id="end-date"
