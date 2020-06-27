@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react'
+import React, { useReducer, useEffect, useCallback } from 'react'
 import DefaultReducer from './reducer/default'
 import { setBrowserStorage } from '@utils/browser'
 
@@ -20,7 +20,14 @@ function DefaultProvider({ children, initialState }) {
     })
   }, [state.searches, state.templates, state.lastReportedEntities])
 
-  return <DefaultContext.Provider value={[state, updater]}>{children}</DefaultContext.Provider>
+  const getTemplate = useCallback(
+    templateId => {
+      return state.templates.find(t => t.id === templateId)
+    },
+    [state.templates]
+  )
+
+  return <DefaultContext.Provider value={[{ ...state, getTemplate }, updater]}>{children}</DefaultContext.Provider>
 }
 
 export default DefaultProvider

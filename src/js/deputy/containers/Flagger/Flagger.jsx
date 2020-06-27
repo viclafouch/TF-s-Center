@@ -114,7 +114,7 @@ function Flagger({ history }) {
         )}
         {isLoading && videos.length > 0 && <Loader spinner />}
         {!isLoading && videos.length === 0 && <p>No result</p>}
-        {!isLoading && videos.length > 0 && !hasMore && <p>No more result</p>}
+        {!isLoading && videos.length > 7 && !hasMore && <p>No more result</p>}
       </div>
     </div>
   )

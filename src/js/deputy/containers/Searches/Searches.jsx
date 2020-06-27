@@ -13,7 +13,7 @@ function Searches() {
   const history = useHistory()
   const [search, setSearch] = useState(() => new Search())
   const [selectedSearches, setSelectedSearches] = useState([])
-  const [{ searches, templates }, dispatch] = useContext(DefaultContext)
+  const [{ searches, templates, getTemplate }, dispatch] = useContext(DefaultContext)
 
   const handleAddSearch = e => {
     e.preventDefault()
@@ -30,6 +30,8 @@ function Searches() {
   }
 
   const handleRemoveSearch = () => {
+    console.log(selectedSearches)
+
     dispatch({
       type: REMOVE_SEARCHES,
       payload: {
@@ -87,10 +89,10 @@ function Searches() {
                 className="form-element"
                 value={search.templateId}
                 onChange={e => {
-                  e.persist()
+                  const templateId = parseInt(e.target.value)
                   setSearch(prevState => ({
                     ...prevState,
-                    templateId: e.target.value
+                    templateId
                   }))
                 }}
               >
@@ -152,7 +154,11 @@ function Searches() {
                   </th>
                   <th scope="row">{index}</th>
                   <td>{search.value}</td>
-                  <td>Template title</td>
+                  <td>
+                    {search.templateId && templates.some(t => t.id === search.templateId)
+                      ? getTemplate(search.templateId).title
+                      : 'test'}
+                  </td>
                   <td>{search.isEnableAutoSelect && <FontAwesomeIcon icon={faCheck} size="1x" fixedWidth />}</td>
                   <td>
                     <Button color="white" onClick={() => handleTestSearch(search.value)}>

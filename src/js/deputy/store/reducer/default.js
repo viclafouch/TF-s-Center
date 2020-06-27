@@ -8,7 +8,7 @@ export default (state = {}, action) =>
         draft.searches.push(action.payload.search)
         break
       case REMOVE_SEARCHES:
-        draft.searches = state.searches.filter(search => action.payload.searchesId.some(s => s !== search.id))
+        draft.searches = state.searches.filter(search => action.payload.searchesId.findIndex(s => s === search.id) === -1)
         break
       case ADD_TEMPLATE:
         draft.templates.push(action.payload.template)

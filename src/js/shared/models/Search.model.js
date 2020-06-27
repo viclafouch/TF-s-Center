@@ -6,7 +6,7 @@ class Search {
     this.value = search.value || ''
     this.flaggedWith = search.flaggedWith || 0
     this.isEnableAutoSelect = search.isEnableAutoSelect || false
-    this.templateId = search.templateId
+    this.templateId = search.templateId || ''
     this.createdAt = search.createdAt || Date.now()
   }
 }
