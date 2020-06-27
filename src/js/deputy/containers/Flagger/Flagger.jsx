@@ -24,31 +24,41 @@ function Flagger({ history }) {
   const form = useRef(null)
   const modal = useRef(null)
 
-  const fetchSearchVideos = useCallback(async params => {
+  const fetchSearchVideos = useCallback(async (params, signal) => {
     try {
       setIsLoading(true)
       const searchParams = getParamsSearchVideos(params)
-      const response = await searchVideos(searchParams)
+      const response = await searchVideos(searchParams, signal)
       setHasMore(response.hasMore)
       currentParams.current = { ...params, page: params.page + 1 }
       setVideos(prevState => [...prevState, ...response.videos])
     } catch (error) {
-      console.error(error)
-      setIsError(true)
+      if (error.name !== 'AbortError') {
+        console.error(error)
+        setIsError(true)
+      }
     } finally {
-      setIsLoading(false)
+      !signal.aborted && setIsLoading(false)
     }
   }, [])
 
   useEffect(() => {
     setVideos([])
     if (searchQuery) {
-      fetchSearchVideos({
-        page: 1,
-        searchQuery: searchQuery,
-        filters: filters,
-        excludeFlaggedVideos: excludeFlaggedVideos
-      })
+      const controller = new AbortController()
+      fetchSearchVideos(
+        {
+          page: 1,
+          searchQuery: searchQuery,
+          filters: filters,
+          excludeFlaggedVideos: excludeFlaggedVideos
+        },
+        controller.signal
+      )
+
+      return () => {
+        controller.abort()
+      }
     }
   }, [fetchSearchVideos, searchQuery, filters, excludeFlaggedVideos])
 

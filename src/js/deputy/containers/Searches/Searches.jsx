@@ -13,7 +13,7 @@ function Searches() {
   const history = useHistory()
   const [search, setSearch] = useState(() => new Search())
   const [selectedSearches, setSelectedSearches] = useState([])
-  const [{ searches }, dispatch] = useContext(DefaultContext)
+  const [{ searches, templates }, dispatch] = useContext(DefaultContext)
 
   const handleAddSearch = e => {
     e.preventDefault()
@@ -95,7 +95,7 @@ function Searches() {
                 }}
               >
                 <option value="">Choose template</option>
-                {[].map(template => (
+                {templates.map(template => (
                   <option key={template.id} value={template.id}>
                     {template.title}
                   </option>

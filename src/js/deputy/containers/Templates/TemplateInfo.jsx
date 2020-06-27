@@ -1,13 +1,13 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { DefaultContext } from '@deputy/store/DefaultContext'
 import { Redirect } from 'react-router'
-import { videoLabels, links } from '@/js/config/config'
+import { videoLabels, links, channelLabels } from '@/js/config/config'
 import { EDIT_TEMPLATE, REMOVE_TEMPLATE } from '@deputy/store/reducer/constants'
 import Template from '@shared/models/Template.model'
 import Button from '@deputy/components/Button/Button'
 import './template-info.scoped.scss'
 
-const templatesPath = links[1]
+const templatesPath = links[3]
 
 function TemplateInfo(props) {
   const [{ templates }, dispatch] = useContext(DefaultContext)
@@ -79,13 +79,13 @@ function TemplateInfo(props) {
         <select
           className="form-element"
           required
-          name="reason"
-          value={template.reason}
+          name="videos-reason"
+          value={template.videosReason}
           onChange={e => {
-            const reason = e.target.value
+            const videosReason = e.target.value
             setTemplate(prevState => ({
               ...prevState,
-              reason
+              videosReason
             }))
           }}
         >
@@ -94,7 +94,29 @@ function TemplateInfo(props) {
           </option>
           {videoLabels.map((label, index) => (
             <option key={index} value={label.value}>
-              {label.title}
+              {label.title} (videos)
+            </option>
+          ))}
+        </select>
+        <select
+          className="form-element"
+          required
+          name="channels-reason"
+          value={template.channelsReason}
+          onChange={e => {
+            const channelsReason = e.target.value
+            setTemplate(prevState => ({
+              ...prevState,
+              channelsReason
+            }))
+          }}
+        >
+          <option value="" disabled>
+            Select the issue
+          </option>
+          {channelLabels.map((label, index) => (
+            <option key={index} value={label.value}>
+              {label.title} (channels)
             </option>
           ))}
         </select>

@@ -33,10 +33,10 @@ export const getParamsSearchVideos = ({ page, searchQuery, filters, excludeFlagg
   return searchParams.toString()
 }
 
-export const searchVideos = async searchParamsString => {
+export const searchVideos = async (searchParamsString, signal) => {
   const url = new URL(`https://www.youtube.com/deputy?${searchParamsString}`)
   console.log(`Fetch ${url.toString()}...`)
-  return fetchVideos(url)
+  return fetchVideos(url, signal)
 }
 
 export const getAnalytics = async () => {

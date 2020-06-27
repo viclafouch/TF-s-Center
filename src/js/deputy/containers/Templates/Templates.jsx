@@ -5,7 +5,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus'
 import Template from '@shared/models/Template.model'
 import Button from '@deputy/components/Button/Button'
-import { videoLabels } from '@/js/config/config'
+import { videoLabels, channelLabels } from '@/js/config/config'
 import { DefaultContext } from '@deputy/store/DefaultContext'
 import { ADD_TEMPLATE } from '@deputy/store/reducer/constants'
 import { Link } from 'react-router-dom'
@@ -20,12 +20,14 @@ function Templates() {
     e.preventDefault()
     const form = new FormData(e.target)
     const title = form.get('title')
-    const reason = form.get('reason')
+    const videosReason = form.get('videos-reason')
+    const channelsReason = form.get('channels-reason')
     const description = form.get('description')
 
     const template = new Template({
       title,
-      reason,
+      videosReason,
+      channelsReason,
       description
     })
 
@@ -47,8 +49,6 @@ function Templates() {
       return () => document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [isExpended, handleClickOutside])
-
-  console.log(templates)
 
   return (
     <div className="templates">
@@ -73,9 +73,19 @@ function Templates() {
                 />
               </div>
               <div className="add-template-field">
-                <select className="form-element" required name="reason">
-                  <option value="">Select the issue</option>
+                <select className="form-element" required name="videos-reason">
+                  <option value="">Select the issue for the videos</option>
                   {videoLabels.map((label, index) => (
+                    <option key={index} value={label.value}>
+                      {label.title}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="add-template-field">
+                <select className="form-element" required name="channels-reason">
+                  <option value="">Select the issue for the channels</option>
+                  {channelLabels.map((label, index) => (
                     <option key={index} value={label.value}>
                       {label.title}
                     </option>
@@ -106,7 +116,7 @@ function Templates() {
                 >
                   <div className="template-item-top">
                     <h2 className="template-item-title">{template.title}</h2>
-                    <span className="template-item-reason">{template.label}</span>
+                    <span className="template-item-reason">{template.videosLabel}</span>
                   </div>
                   <p className="template-item-description">{template.description}</p>
                   <time className="template-item-created">{format(new Date(template.createdAt), 'MM/dd/yyyy')}</time>

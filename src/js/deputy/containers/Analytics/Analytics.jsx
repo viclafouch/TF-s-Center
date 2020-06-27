@@ -1,11 +1,9 @@
 import React, { useContext } from 'react'
-import { DefaultContext } from '@deputy/store/DefaultContext'
+import { DomContext } from '@deputy/store/DomContext'
 import './analytics.scoped.scss'
 
 function Analytics() {
-  const [{ analytics }] = useContext(DefaultContext)
-
-  console.log(analytics)
+  const [{ analytics }] = useContext(DomContext)
 
   return (
     <div className="analytics">
