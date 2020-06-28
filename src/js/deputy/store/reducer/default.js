@@ -36,7 +36,7 @@ export default (state = {}, action) =>
       case ADD_ENTITIES_TO_THIS_DAY:
         const { nbChannels, nbVideos } = action.payload
         draft.lastReportedEntities[draft.lastReportedEntities.length - 1].videos += nbVideos
-        draft.lastReportedEntities[draft.lastReportedEntities.length - 1].nbChannels += nbChannels
+        draft.lastReportedEntities[draft.lastReportedEntities.length - 1].channels += nbChannels
         break
       default:
         break

@@ -17,7 +17,7 @@ function History({ history }) {
   const currentParams = useRef(null)
   const scrollerRef = useRef(null)
 
-  const fetchHistory = useCallback(async (params, signal) => {
+  const fetchHistory = useCallback(async (params, signal = new AbortController().signal) => {
     try {
       setIsLoading(true)
       const page = params.page || currentParams.current.page

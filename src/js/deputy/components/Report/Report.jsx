@@ -7,6 +7,7 @@ import { DefaultContext } from '@deputy/store/DefaultContext'
 import { ADD_ENTITIES_TO_THIS_DAY } from '@deputy/store/reducer/constants'
 import { reportEntities } from '@deputy/helpers/dom'
 import './report.scoped.scss'
+import { wait } from '@utils/index'
 
 function Report({ entities = [], modalRef, onReport }) {
   const [{ user }] = useContext(DomContext)
@@ -46,7 +47,8 @@ function Report({ entities = [], modalRef, onReport }) {
       try {
         setIsLoading(true)
         if (modalRef) modalRef.current.blockClose()
-        await reportEntities(formData)
+        // await reportEntities(formData)
+        await wait()
 
         if (nbChannels > 0 && nbVideos > 0) {
           toast.success(
@@ -69,15 +71,14 @@ function Report({ entities = [], modalRef, onReport }) {
         })
 
         onReport()
+        setIsLoading(false)
+        modalRef.current.unBlockClose()
         if (modalRef) modalRef.current.close({ force: true })
       } catch (error) {
         toast.error('An unknown error has occurred')
         console.log(error)
-      } finally {
-        if (modalRef) {
-          setIsLoading(false)
-          modalRef.current.unBlockClose()
-        }
+        setIsLoading(false)
+        modalRef.current.unBlockClose()
       }
     },
     [entities, user.sessionToken, modalRef, dispatch, onReport, values]
