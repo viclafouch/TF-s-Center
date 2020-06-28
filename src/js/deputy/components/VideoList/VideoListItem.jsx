@@ -6,9 +6,9 @@ import { faFlag } from '@fortawesome/free-solid-svg-icons/faFlag'
 import { faPlayCircle } from '@fortawesome/free-solid-svg-icons/faPlayCircle'
 import { faHashtag } from '@fortawesome/free-solid-svg-icons/faHashtag'
 import greyScreen from '@/img/grey-screen.jpg'
-import './video-list-item.scoped.scss'
 import Player from '../Player/Player'
 import Modal from '../Modal/Modal'
+import './video-list-item.scoped.scss'
 
 function VideoListItem({ video, showCheckbox = false }) {
   const [check, setCheck] = useState('none')
@@ -19,8 +19,8 @@ function VideoListItem({ video, showCheckbox = false }) {
 
   return (
     <>
-      <Modal ref={player} fade>
-        <Player videoId={video.id} />
+      <Modal ref={player} fade id="player">
+        <Player video={video} />
       </Modal>
       <li
         data-id={video.id}

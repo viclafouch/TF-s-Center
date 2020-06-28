@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes'
 import './modal.scoped.scss'
 
-export function Modal({ children, fade = false, defaultOpened = false }, ref) {
+export function Modal({ children, fade = false, defaultOpened = false, ...rest }, ref) {
   const [isOpen, setIsOpen] = useState(defaultOpened)
   const [isBlock, setIsBlock] = useState(false)
 
@@ -41,7 +41,7 @@ export function Modal({ children, fade = false, defaultOpened = false }, ref) {
 
   return createPortal(
     isOpen ? (
-      <div className={`modal ${fade ? 'modal-fade' : ''}`}>
+      <div className={`modal ${fade ? 'modal-fade' : ''}`} {...rest}>
         <div className="modal-overlay" onClick={close} />
         <span role="button" className="modal-close" aria-label="close" onClick={close}>
           <FontAwesomeIcon icon={faTimes} size="1x" fixedWidth />
