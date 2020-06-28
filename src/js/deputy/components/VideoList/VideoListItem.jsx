@@ -23,7 +23,7 @@ function VideoListItem({ video, showCheckbox = false }) {
           <img
             src={!isRemoved ? thumbnail.url : greyScreen}
             alt={video.title}
-            lazy="loading"
+            loading="lazy"
             width={thumbnail.width}
             height={thumbnail.height}
           />

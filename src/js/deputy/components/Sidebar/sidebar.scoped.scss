@@ -37,33 +37,31 @@
       & > li {
         width: 100%;
         font-size: 13px;
-        font-weight: 500;
         white-space: nowrap;
         a {
           display: block;
           padding: 12px 24px 12px 16px;
+          font-weight: 500;
           line-height: 24px;
           width: 100%;
           box-sizing: border-box;
           &:hover {
             background-color: var(--lighten-hover);
           }
-          &.active {
-            background-color: var(--lighten-hover) !important;
-            span.text-link {
-              font-weight: 600;
-            }
-            span.span-icon path {
-              fill: red !important;
+
+          span {
+            display: inline-block;
+            color: var(--text-color);
+            &.span-icon {
+              margin-right: 16px;
             }
           }
-        }
 
-        span {
-          display: inline-block;
-          color: var(--text-color);
-          &.span-icon {
-            margin-right: 16px;
+          &.active {
+            background-color: var(--lighten-hover);
+            span.span-icon svg {
+              color: #CC0000;
+            }
           }
         }
       }

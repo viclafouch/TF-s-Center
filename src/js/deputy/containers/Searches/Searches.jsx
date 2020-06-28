@@ -30,8 +30,6 @@ function Searches() {
   }
 
   const handleRemoveSearch = () => {
-    console.log(selectedSearches)
-
     dispatch({
       type: REMOVE_SEARCHES,
       payload: {

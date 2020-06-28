@@ -1,8 +1,7 @@
-import React, { useCallback, useRef, useState, useContext } from 'react'
+import React, { useCallback, useState, useContext, useMemo } from 'react'
 import { toast } from 'react-toastify'
 import Button from '../Button/Button'
-import { videoLabels } from '@/js/config/config'
-import { serializeForm } from '@utils/index'
+import { videoLabels, channelLabels } from '@/js/config/config'
 import { DomContext } from '@deputy/store/DomContext'
 import { DefaultContext } from '@deputy/store/DefaultContext'
 import { ADD_ENTITIES_TO_THIS_DAY } from '@deputy/store/reducer/constants'
@@ -12,16 +11,23 @@ import './report.scoped.scss'
 function Report({ entities = [], modalRef, onReport }) {
   const [{ user }] = useContext(DomContext)
   const [, dispatch] = useContext(DefaultContext)
-  const reportForm = useRef(null)
   const [isLoading, setIsLoading] = useState(false)
+  const [values, setValues] = useState({
+    videosReason: '',
+    channelsReason: '',
+    comment: ''
+  })
+  const someChannels = useMemo(() => entities.some(e => e.type === 'channel'), [entities])
+  const someVideos = useMemo(() => entities.some(e => e.type === 'video'), [entities])
 
   const handleSubmit = useCallback(
     async e => {
       e.preventDefault()
-      const reportFormValues = serializeForm(reportForm.current)
+      const { comment, videosReason, channelsReason } = values
       const formData = new FormData()
-      formData.set('flag_comments', reportFormValues.comment)
-      formData.set('video_report_reason', reportFormValues.reason)
+      if (videosReason) formData.set('video_report_reason', videosReason)
+      if (channelsReason) formData.set('channel_report_reason', channelsReason)
+      formData.set('flag_comments', comment)
       formData.set('filters', '') // For redirection, but we don't need
       formData.set('page', '1') // For redirection, but we don't need
       formData.set('search_query', '') // For redirection, but we don't need
@@ -63,49 +69,110 @@ function Report({ entities = [], modalRef, onReport }) {
         })
 
         onReport()
-
         if (modalRef) modalRef.current.close({ force: true })
       } catch (error) {
+        toast.error('An unknown error has occurred')
         console.log(error)
-        setIsLoading(false)
-        if (modalRef) modalRef.current.unBlockClose()
+      } finally {
+        if (modalRef) {
+          setIsLoading(false)
+          modalRef.current.unBlockClose()
+        }
       }
     },
-    [entities, user.sessionToken, modalRef, dispatch, onReport]
+    [entities, user.sessionToken, modalRef, dispatch, onReport, values]
   )
 
   return (
     <div className="report">
       <h2>Report videos</h2>
-      <form ref={reportForm} name="report" onSubmit={handleSubmit}>
-        <fieldset>
-          <p className="report-description-reason">
-            Please select the category that most closely reflects your concern about the video or the channel you selected, so
-            that we can review it and determine whether it violates our Community Guidelines or isn&#39;t appropriate for all
-            viewers.
-          </p>
-          <ul className="reason-list">
-            {videoLabels.map(label => (
-              <li key={label.value}>
-                <label className="report-radio-labdio">
-                  <span className="report-radio">
-                    <input type="radio" className="report-radio-input" name="reason" value={label.value} />
-                    <span className="report-radio-element"></span>
-                  </span>
-                  {label.title}
-                </label>
-              </li>
-            ))}
-          </ul>
-        </fieldset>
+      <form name="report" onSubmit={handleSubmit}>
+        <p className="report-description-reason">
+          Please select the category that most closely reflects your concern about the video or the channel you selected, so that
+          we can review it and determine whether it violates our Community Guidelines or isn&#39;t appropriate for all viewers.
+          (*)
+        </p>
+        {someVideos && (
+          <fieldset>
+            {someChannels && <legend className="reason-legend">Category for videos:</legend>}
+            <ul className="reason-list">
+              {videoLabels.map(label => (
+                <li key={label.value}>
+                  <label className="report-radio-labdio">
+                    <span className="report-radio">
+                      <input
+                        type="radio"
+                        onChange={() =>
+                          setValues(prevState => ({
+                            ...prevState,
+                            videosReason: label.value
+                          }))
+                        }
+                        className="report-radio-input"
+                        name="videos-reason"
+                        value={label.value}
+                      />
+                      <span className="report-radio-element"></span>
+                    </span>
+                    {label.title}
+                  </label>
+                </li>
+              ))}
+            </ul>
+          </fieldset>
+        )}
+        {someChannels && (
+          <fieldset>
+            {someVideos && <legend className="reason-legend">Category for channels:</legend>}
+            <ul className="reason-list">
+              {channelLabels.map(label => (
+                <li key={label.value}>
+                  <label className="report-radio-labdio">
+                    <span className="report-radio">
+                      <input
+                        type="radio"
+                        onChange={() =>
+                          setValues(prevState => ({
+                            ...prevState,
+                            channelsReason: label.value
+                          }))
+                        }
+                        className="report-radio-input"
+                        name="channels-reason"
+                        value={label.value}
+                      />
+                      <span className="report-radio-element"></span>
+                    </span>
+                    {label.title}
+                  </label>
+                </li>
+              ))}
+            </ul>
+          </fieldset>
+        )}
         <fieldset>
           <p className="report-description-comment">
             Please also provide any additional information which you think could help us verify the issue as quickly as possible:
           </p>
-          <textarea className="comment-textarea" name="comment"></textarea>
+          <textarea
+            className="comment-textarea"
+            onChange={e => {
+              const value = e.target.value
+              setValues(prevState => ({
+                ...prevState,
+                comment: value
+              }))
+            }}
+            name="comment"
+          ></textarea>
         </fieldset>
         <div className="report-bottom">
-          <Button color="blue" type="submit" disabled={isLoading}>
+          <Button
+            color="blue"
+            type="submit"
+            isLoading={isLoading}
+            disabled={isLoading || (someVideos && !values.videosReason) || (someChannels && !values.channelsReason)}
+          >
             Submit
           </Button>
         </div>

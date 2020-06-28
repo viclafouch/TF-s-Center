@@ -114,7 +114,7 @@ function Tools(props) {
                 <input
                   type="checkbox"
                   name="exclude_flagged_videos"
-                  defaultChecked={query.get('exclude_flagged_videos') === 'true'}
+                  defaultChecked={['true', null].includes(query.get('exclude_flagged_videos'))}
                 />
                 Exclude previously flagged videos
               </label>

@@ -15,10 +15,32 @@
   cursor: pointer;
   border-radius: 2px;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
-  font-family: 'YouTube Noto', Roboto, arial, sans-serif;
+  font-family: 'YT Sans', 'Roboto', 'Arial', sans-serif;
   margin: 0;
   float: none;
   color: #000000;
+
+  .button-is-loading {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: #ffffff;
+    display: inline-block;
+    margin-top: -1px;
+    vertical-align: middle;
+    margin-left: 5px;
+    animation: rotate 1s infinite ease;
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 
   &.button-blue {
     color: #ffffff;

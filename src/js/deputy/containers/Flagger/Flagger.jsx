@@ -7,6 +7,7 @@ import VideoList from '@deputy/components/VideoList/VideoList'
 import Modal from '@deputy/components/Modal/Modal'
 import { serializeForm } from '@utils/index'
 import Report from '@deputy/components/Report/Report'
+import searchImg from '@/img/search.svg'
 import './flagger.scoped.scss'
 
 function Flagger({ history }) {
@@ -49,6 +50,7 @@ function Flagger({ history }) {
   const firstFetch = useCallback(() => {
     const controller = new AbortController()
     if (searchQuery) {
+      setVideos([])
       fetchSearchVideos(
         {
           page: 1,
@@ -63,7 +65,6 @@ function Flagger({ history }) {
   }, [fetchSearchVideos, searchQuery, filters, excludeFlaggedVideos])
 
   useEffect(() => {
-    setVideos([])
     const controller = firstFetch()
     return () => {
       controller.abort()
@@ -121,7 +122,13 @@ function Flagger({ history }) {
           </form>
         )}
         {isLoading && videos.length > 0 && <Loader spinner />}
-        {!isLoading && videos.length === 0 && <p>No result</p>}
+        {!isLoading && videos.length === 0 && searchQuery && <p>No result</p>}
+        {!isLoading && videos.length === 0 && !searchQuery && (
+          <div className="make-search">
+            <img src={searchImg} alt="Make a search" />
+            <h3>Make a search</h3>
+          </div>
+        )}
         {!isLoading && videos.length > 7 && !hasMore && <p className="no-more-result">No more result</p>}
       </div>
     </div>

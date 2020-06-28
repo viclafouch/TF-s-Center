@@ -12,6 +12,10 @@ import { lastSevenDays } from '@utils/date'
 
 const startDeputy = async ({ currentUrl }) => {
   try {
+    const fontLink = document.createElement('link')
+    fontLink.rel = 'stylesheet'
+    fontLink.href = 'https://fonts.googleapis.com/css?family=YT+Sans:300,500,700'
+    document.head.append(fontLink)
     document.documentElement.setAttribute('data-theme', 'dark')
     const div = document.createElement('div')
     div.setAttribute('id', 'TFsCenter')
@@ -21,6 +25,7 @@ const startDeputy = async ({ currentUrl }) => {
     const defaultData = await getBrowserStorage('local', [
       { key: 'searches', default: [], parser: searches => searches.map(s => new Search(s)) },
       { key: 'templates', default: [], parser: templates => templates.map(t => new Template(t)) },
+      { key: 'lastSearches', default: [] },
       {
         key: 'lastReportedEntities',
         default: lastSevenDays.map(date => ({
