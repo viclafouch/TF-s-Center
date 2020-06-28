@@ -6,20 +6,32 @@ import { DomContext } from '@deputy/store/DomContext'
 import { DefaultContext } from '@deputy/store/DefaultContext'
 import { ADD_ENTITIES_TO_THIS_DAY } from '@deputy/store/reducer/constants'
 import { reportEntities } from '@deputy/helpers/dom'
-import './report.scoped.scss'
 import { wait } from '@utils/index'
+import './report.scoped.scss'
 
-function Report({ entities = [], modalRef, onReport }) {
+function Report({ entities = [], modalRef, onReport, searchId }) {
   const [{ user }] = useContext(DomContext)
-  const [, dispatch] = useContext(DefaultContext)
+  const [{ templates, searches }, dispatch] = useContext(DefaultContext)
   const [isLoading, setIsLoading] = useState(false)
-  const [values, setValues] = useState({
-    videosReason: '',
-    channelsReason: '',
-    comment: ''
-  })
   const someChannels = useMemo(() => entities.some(e => e.type === 'channel'), [entities])
   const someVideos = useMemo(() => entities.some(e => e.type === 'video'), [entities])
+  const currentTemplate = useMemo(() => {
+    if (searchId) {
+      const currentSearch = searches.find(s => s.id == searchId)
+      if (currentSearch) {
+        const currentTemplate = templates.find(t => t.id === currentSearch.templateId)
+        if (currentTemplate) {
+          return currentTemplate
+        }
+      }
+    }
+    return null
+  }, [templates, searchId, searches])
+  const [values, setValues] = useState({
+    videosReason: currentTemplate ? currentTemplate.videosReason : '',
+    channelsReason: currentTemplate ? currentTemplate.channelsReason : '',
+    comment: currentTemplate ? currentTemplate.description : ''
+  })
 
   const handleSubmit = useCallback(
     async e => {
@@ -84,9 +96,46 @@ function Report({ entities = [], modalRef, onReport }) {
     [entities, user.sessionToken, modalRef, dispatch, onReport, values]
   )
 
+  const handleSelectTemplate = useCallback(
+    e => {
+      const value = e.target.value
+      if (value) {
+        const template = templates.find(t => t.id === parseInt(value))
+        if (template) {
+          setValues({
+            videosReason: template.videosReason,
+            channelsReason: template.channelsReason,
+            comment: template.description
+          })
+        }
+      } else {
+        setValues({
+          videosReason: '',
+          channelsReason: '',
+          comment: ''
+        })
+      }
+    },
+    [templates]
+  )
+
   return (
     <div className="report">
-      <h2>Report videos</h2>
+      <div className="report-top">
+        <h2 className="report-title">Report videos</h2>
+        <select
+          className="report-select-template form-element"
+          onChange={handleSelectTemplate}
+          defaultValue={currentTemplate ? currentTemplate.id : ''}
+        >
+          <option value="">Select template</option>
+          {templates.map(template => (
+            <option key={template.id} value={template.id}>
+              {template.title}
+            </option>
+          ))}
+        </select>
+      </div>
       <form name="report" onSubmit={handleSubmit}>
         <p className="report-description-reason">
           Please select the category that most closely reflects your concern about the video or the channel you selected, so that
@@ -109,6 +158,7 @@ function Report({ entities = [], modalRef, onReport }) {
                             videosReason: label.value
                           }))
                         }
+                        checked={label.value === values.videosReason}
                         className="report-radio-input"
                         name="videos-reason"
                         value={label.value}
@@ -138,6 +188,7 @@ function Report({ entities = [], modalRef, onReport }) {
                             channelsReason: label.value
                           }))
                         }
+                        checked={label.value === values.channelsReason}
                         className="report-radio-input"
                         name="channels-reason"
                         value={label.value}
@@ -164,6 +215,7 @@ function Report({ entities = [], modalRef, onReport }) {
                 comment: value
               }))
             }}
+            value={values.comment}
             name="comment"
           ></textarea>
         </fieldset>

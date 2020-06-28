@@ -1,7 +1,18 @@
 .report {
-  h2 {
-    padding-bottom: 20px;
+
+  .report-top {
+    display: flex;
+    justify-content: space-between;
+
+    .report-title {
+      padding-bottom: 20px;
+    }
+    .report-select-template {
+      width: auto;
+      border-bottom: 1px solid rgba(140, 140, 140, 0.141);
+    }
   }
+
 
   fieldset {
     border: 0;

@@ -16,9 +16,10 @@ function DefaultProvider({ children, initialState }) {
     setBrowserStorage('local', {
       searches: state.searches,
       templates: state.templates,
-      lastReportedEntities: state.lastReportedEntities
+      lastReportedEntities: state.lastReportedEntities,
+      lastSearches: state.lastSearches
     })
-  }, [state.searches, state.templates, state.lastReportedEntities])
+  }, [state.searches, state.templates, state.lastReportedEntities, state.lastSearches])
 
   const getTemplate = useCallback(
     templateId => {

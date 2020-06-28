@@ -31,7 +31,7 @@ export default (state = {}, action) =>
         draft.templates = state.templates.filter(template => template.id !== action.payload.templateId)
         break
       case ADD_LAST_SEARCH:
-        draft.lastSearches.push(action.payload.lastSearch)
+        draft.lastSearches = [...new Set([action.payload.lastSearch].concat(draft.lastSearches))]
         break
       case ADD_ENTITIES_TO_THIS_DAY:
         const { nbChannels, nbVideos } = action.payload

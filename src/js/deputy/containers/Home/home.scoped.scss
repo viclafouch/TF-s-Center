@@ -1,3 +1,5 @@
+$gap: 30px;
+
 .home {
   padding: 18px;
 
@@ -8,48 +10,24 @@
 
   .container-box {
     display: grid;
-    grid-row-gap: 40px;
-    grid-column-gap: 40px;
+    grid-row-gap: $gap;
+    grid-column-gap: $gap;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(12, 1fr);
 
-    & > div.big-box {
-      grid-column: span 8;
-      grid-row: span 6;
+    .box-material {
       max-width: none;
     }
 
+    & > div.big-box {
+      grid-column: span 8;
+    }
+
+    & > div.full-box {
+      grid-column: span 12;
+    }
+
     & > div.mini-box {
-      grid-row: span 2;
       grid-column: span 4;
-      display: flex;
-      align-items: center;
-
-      .icon-mini-box {
-        margin-right: 50px;
-        svg {
-          font-size: 1.5em;
-        }
-      }
-
-      .detail-mini-box {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .title-box {
-          font-weight: 400;
-          margin: 0;
-
-          span {
-            font-weight: 500;
-            font-size: 1.1em;
-            padding-right: 5px;
-            display: inline-block;
-            width: 26px;
-          }
-        }
-      }
     }
   }
 }
@@ -57,4 +35,39 @@
 h4.title-box {
   margin: 0 0 20px;
   font-size: 14px;
+}
+
+.summary-numbers {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: $gap;
+
+  .box-summary-numbers {
+    display: flex;
+    align-items: center;
+
+    .icon-mini-box {
+      margin-right: 50px;
+      svg {
+        color: #CC0000;
+        font-size: 1.5em;
+      }
+    }
+
+    .title-box {
+      font-weight: 400;
+      margin: 0;
+
+      span {
+        font-weight: 500;
+        font-size: 1.1em;
+        padding-right: 5px;
+        display: inline-block;
+      }
+    }
+  }
+}
+
+.chart-container {
+  width: 100%;
 }

@@ -1,5 +1,6 @@
 import React, { useState, useContext, useCallback } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from 'react-router-dom'
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck'
 import { DefaultContext } from '@deputy/store/DefaultContext'
 import { ADD_SEARCH, REMOVE_SEARCHES } from '@deputy/store/reducer/constants'
@@ -155,13 +156,25 @@ function Searches() {
                   <td>
                     {search.templateId && templates.some(t => t.id === search.templateId)
                       ? getTemplate(search.templateId).title
-                      : 'test'}
+                      : ''}
                   </td>
                   <td>{search.isEnableAutoSelect && <FontAwesomeIcon icon={faCheck} size="1x" fixedWidth />}</td>
                   <td>
-                    <Button color="white" onClick={() => handleTestSearch(search.value)}>
-                      Go
-                    </Button>
+                    <Link
+                      to={{
+                        pathname: '/deputy',
+                        search: `?${getParamsSearchVideos({
+                          searchId: search.id,
+                          searchQuery: search.value,
+                          excludeFlaggedVideos: true,
+                          filters: 'anytime'
+                        })}`
+                      }}
+                    >
+                      <Button color="white" tabIndex="-1">
+                        Go
+                      </Button>
+                    </Link>
                   </td>
                 </tr>
               ))}

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState, useRef } from 'react'
+import React, { useCallback, useEffect, useState, useRef, useMemo, useContext } from 'react'
 import Tools from '@deputy/components/Tools/Tools'
 import { searchVideos, getParamsSearchVideos } from '@deputy/helpers/api'
 import useQuery from '@deputy/hooks/use-query'
@@ -8,15 +8,13 @@ import Modal from '@deputy/components/Modal/Modal'
 import { serializeForm } from '@utils/index'
 import Report from '@deputy/components/Report/Report'
 import searchImg from '@/img/search.svg'
+import { DefaultContext } from '@deputy/store/DefaultContext'
+import { ADD_LAST_SEARCH } from '@deputy/store/reducer/constants'
 import './flagger.scoped.scss'
 
 function Flagger({ history }) {
   const query = useQuery()
-  const searchQuery = query.get('search_query')
-  const filters = query.get('filters')
-  const excludeFlaggedVideos = query.get('exclude_flagged_videos')
   const [videos, setVideos] = useState([])
-  const [isLoading, setIsLoading] = useState(!!searchQuery)
   const [isError, setIsError] = useState(false)
   const [hasMore, setHasMore] = useState(false)
   const [entitiesSelected, setEntitiesSelected] = useState([])
@@ -25,9 +23,20 @@ function Flagger({ history }) {
     filters,
     excludeFlaggedVideos
   })
+  const [, dispatch] = useContext(DefaultContext)
   const scrollerRef = useRef(null)
   const form = useRef(null)
   const modal = useRef(null)
+  const { filters, searchQuery, excludeFlaggedVideos, searchId } = useMemo(
+    () => ({
+      filters: query.get('filters'),
+      searchQuery: query.get('search_query'),
+      excludeFlaggedVideos: query.get('exclude_flagged_videos'),
+      searchId: query.get('search_id')
+    }),
+    [query]
+  )
+  const [isLoading, setIsLoading] = useState(!!searchQuery)
 
   const fetchSearchVideos = useCallback(async (params, signal = new AbortController().signal) => {
     try {
@@ -63,6 +72,17 @@ function Flagger({ history }) {
     }
     return controller
   }, [fetchSearchVideos, searchQuery, filters, excludeFlaggedVideos])
+
+  useEffect(() => {
+    if (query.get('search_query')) {
+      dispatch({
+        type: ADD_LAST_SEARCH,
+        payload: {
+          lastSearch: query.toString()
+        }
+      })
+    }
+  }, [query, dispatch])
 
   useEffect(() => {
     const controller = firstFetch()
@@ -104,7 +124,7 @@ function Flagger({ history }) {
   return (
     <div className="flagger">
       <Modal ref={modal} fade>
-        <Report entities={entitiesSelected} onReport={firstFetch} />
+        <Report entities={entitiesSelected} onReport={firstFetch} searchId={searchId} />
       </Modal>
       <Tools onSubmit={handleSubmit} onFlag={() => modal.current.open()} canFlag={entitiesSelected.length > 0} />
       <div

@@ -111,6 +111,10 @@ table.table-material {
     border-top: none;
     border-bottom: 2px solid #dee2e6;
   }
+
+  tbody tr td:last-child {
+    text-align: right;
+  }
 }
 
 .form-element {

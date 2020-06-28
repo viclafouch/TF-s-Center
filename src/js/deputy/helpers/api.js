@@ -24,12 +24,13 @@ export const getVideosHistory = async ({ page, startTime, endTime }, signal) => 
   return fetchVideos(url, signal)
 }
 
-export const getParamsSearchVideos = ({ page, searchQuery, filters, excludeFlaggedVideos }) => {
+export const getParamsSearchVideos = ({ page, searchQuery, filters, excludeFlaggedVideos, searchId }) => {
   const searchParams = new URLSearchParams()
   searchParams.set('search_query', searchQuery)
   if (page) searchParams.set('page', page)
   if (filters) searchParams.set('filters', filters)
   if (excludeFlaggedVideos) searchParams.set('exclude_flagged_videos', 'true')
+  if (searchId) searchParams.set('search_id', searchId)
   return searchParams.toString()
 }
 

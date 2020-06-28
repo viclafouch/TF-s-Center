@@ -1,11 +1,16 @@
 import React, { useContext, useMemo } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Line } from 'react-chartjs-2'
+import { Link } from 'react-router-dom'
 import { faPaste } from '@fortawesome/free-solid-svg-icons/faPaste'
 import { faSearchengin } from '@fortawesome/free-brands-svg-icons/faSearchengin'
 import { faBullseye } from '@fortawesome/free-solid-svg-icons/faBullseye'
+import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck'
+import { faFlag } from '@fortawesome/free-solid-svg-icons/faFlag'
 import { DefaultContext } from '@deputy/store/DefaultContext'
 import { format } from 'date-fns'
+import Button from '@deputy/components/Button/Button'
+import { DomContext } from '@deputy/store/DomContext'
 import './home.scoped.scss'
 
 const lastSevenData = lastReportedEntities => ({
@@ -57,7 +62,8 @@ const lastSevenData = lastReportedEntities => ({
 })
 
 function Home() {
-  const [{ templates, searches, lastReportedEntities }] = useContext(DefaultContext)
+  const [{ templates, searches, lastReportedEntities, lastSearches }] = useContext(DefaultContext)
+  const [{ analytics }] = useContext(DomContext)
   const lastReportedData = useMemo(() => lastSevenData(lastReportedEntities), [lastReportedEntities])
   const lastReportedOptions = useMemo(
     () => ({
@@ -77,47 +83,97 @@ function Home() {
     []
   )
 
+  const lastSearchesParams = useMemo(() => lastSearches.map(l => new URLSearchParams(l)), [lastSearches])
+
   return (
     <div className="home">
       <div className="header-home">
         <h1 className="title-box">Dashboard</h1>
       </div>
       <div className="container-box">
-        <div className="big-box box-material">
-          <h4 className="title-box">Last content reported with TF Center</h4>
-          <div className="chart-container">
-            <Line data={lastReportedData} options={lastReportedOptions} />
+        <div className="big-box">
+          <div className="box-material box-summary-numbers">
+            <h4 className="title-box">Last content reported with TF Center</h4>
+            <div className="chart-container">
+              <Line data={lastReportedData} options={lastReportedOptions} />
+            </div>
           </div>
         </div>
-        <div className="mini-box box-material">
-          <div className="icon-box icon-mini-box">
-            <FontAwesomeIcon icon={faBullseye} size="2x" fixedWidth />
-          </div>
-          <div className="detail-box detail-mini-box">
+        <div className="mini-box summary-numbers">
+          <div className="box-material box-summary-numbers">
+            <div className="icon-box icon-mini-box">
+              <FontAwesomeIcon icon={faBullseye} size="2x" fixedWidth />
+            </div>
             <h4 className="title-box">
               <span className="number-box">67</span> Targets
             </h4>
           </div>
-        </div>
-        <div className="mini-box box-material">
-          <div className="icon-box icon-mini-box">
-            <FontAwesomeIcon icon={faPaste} size="2x" fixedWidth />
-          </div>
-          <div className="detail-box detail-mini-box">
+          <div className="box-material box-summary-numbers">
+            <div className="icon-box icon-mini-box">
+              <FontAwesomeIcon icon={faPaste} size="2x" fixedWidth />
+            </div>
             <h4 className="title-box">
               <span className="number-box">{templates.length}</span> {templates.length > 1 ? 'Templates' : 'Template'}
             </h4>
           </div>
-        </div>
-        <div className="mini-box box-material">
-          <div className="icon-box icon-mini-box">
-            <FontAwesomeIcon icon={faSearchengin} size="2x" fixedWidth />
-          </div>
-          <div className="detail-box detail-mini-box">
+          <div className="box-material box-summary-numbers">
+            <div className="icon-box icon-mini-box">
+              <FontAwesomeIcon icon={faSearchengin} size="2x" fixedWidth />
+            </div>
             <h4 className="title-box">
-              <span className="number-box">{searches.length}</span> {searches.length > 1 ? 'Searches' : 'Search'}
+              <span className="number-box">{searches.length}</span> Custom {searches.length > 1 ? 'searches' : 'search'}
             </h4>
           </div>
+          <div className="box-material box-summary-numbers">
+            <div className="icon-box icon-mini-box">
+              <FontAwesomeIcon icon={faFlag} size="2x" fixedWidth />
+            </div>
+            <h4 className="title-box">
+              <span className="number-box">{analytics.nbActioned}</span> Videos removed
+            </h4>
+          </div>
+        </div>
+        <div className="full-box box-material last-searches">
+          <h4 className="title-box">Last searches</h4>
+          <table className="table-material">
+            <thead>
+              <tr>
+                <th>Search</th>
+                <th>Filters</th>
+                <th>Excluded</th>
+                <th>Search ID</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {lastSearchesParams.map((lastSearch, index) => (
+                <tr key={index}>
+                  <td>{lastSearch.get('search_query')}</td>
+                  <td>{lastSearch.get('filters')}</td>
+                  <td>
+                    {['true', null].includes(lastSearch.get('exclude_flagged_videos')) ? (
+                      <FontAwesomeIcon icon={faCheck} size="1x" fixedWidth />
+                    ) : (
+                      ''
+                    )}
+                  </td>
+                  <td>{lastSearch.get('search_id')}</td>
+                  <td>
+                    <Link
+                      to={{
+                        pathname: '/deputy',
+                        search: `?${lastSearch.toString()}`
+                      }}
+                    >
+                      <Button color="blue" tabIndex="-1">
+                        Go
+                      </Button>
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
