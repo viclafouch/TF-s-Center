@@ -4,13 +4,8 @@ import { setBrowserStorage } from '@utils/browser'
 
 export const DefaultContext = React.createContext()
 
-const defaultState = {
-  selectedVideosId: [],
-  selectedChannelsId: []
-}
-
 function DefaultProvider({ children, initialState }) {
-  const [state, updater] = useReducer(DefaultReducer, Object.assign({}, { ...initialState, ...defaultState }))
+  const [state, updater] = useReducer(DefaultReducer, initialState)
 
   useEffect(() => {
     setBrowserStorage('local', {
@@ -21,14 +16,24 @@ function DefaultProvider({ children, initialState }) {
     })
   }, [state.searches, state.templates, state.lastReportedEntities, state.lastSearches])
 
-  const getTemplate = useCallback(
-    templateId => {
-      return state.templates.find(t => t.id === templateId)
+  const getTemplate = useCallback(templateId => state.templates.find(t => t.id === templateId), [state.templates])
+
+  const getSearch = useCallback(searchId => state.searches.find(t => t.id === searchId), [state.searches])
+
+  const getTemplateBySearch = useCallback(
+    searchId => {
+      const currentSearch = getSearch(searchId)
+      if (currentSearch) return getTemplate(currentSearch.templateId)
+      return null
     },
-    [state.templates]
+    [getTemplate, getSearch]
   )
 
-  return <DefaultContext.Provider value={[{ ...state, getTemplate }, updater]}>{children}</DefaultContext.Provider>
+  return (
+    <DefaultContext.Provider value={[{ ...state, getTemplate, getSearch, getTemplateBySearch }, updater]}>
+      {children}
+    </DefaultContext.Provider>
+  )
 }
 
 export default DefaultProvider

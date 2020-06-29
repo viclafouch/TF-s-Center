@@ -1,14 +1,16 @@
 import React, { useContext, useMemo } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Line } from 'react-chartjs-2'
+import { Line, Doughnut } from 'react-chartjs-2'
 import { Link } from 'react-router-dom'
 import { faPaste } from '@fortawesome/free-solid-svg-icons/faPaste'
 import { faSearchengin } from '@fortawesome/free-brands-svg-icons/faSearchengin'
+import { faGithub } from '@fortawesome/free-brands-svg-icons/faGithub'
 import { faBullseye } from '@fortawesome/free-solid-svg-icons/faBullseye'
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck'
 import { faFlag } from '@fortawesome/free-solid-svg-icons/faFlag'
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons/faExternalLinkAlt'
 import { DefaultContext } from '@deputy/store/DefaultContext'
-import { format } from 'date-fns'
+import { format, formatDistance } from 'date-fns'
 import Button from '@deputy/components/Button/Button'
 import { DomContext } from '@deputy/store/DomContext'
 import './home.scoped.scss'
@@ -61,10 +63,26 @@ const lastSevenData = lastReportedEntities => ({
   ]
 })
 
+const bestTemplatesData = templates => {
+  const bests = templates
+    .sort((a, b) => a.nbVideosFlagged + a.nbChannelsFlagged - (b.nbVideosFlagged + b.nbChannelsFlagged))
+    .slice(0, 5)
+  return {
+    labels: bests.map(t => t.title),
+    datasets: [
+      {
+        data: bests.map(t => t.nbVideosFlagged + t.nbChannelsFlagged),
+        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED', '#4BC0C0']
+      }
+    ]
+  }
+}
+
 function Home() {
   const [{ templates, searches, lastReportedEntities, lastSearches }] = useContext(DefaultContext)
   const [{ analytics }] = useContext(DomContext)
-  const lastReportedData = useMemo(() => lastSevenData(lastReportedEntities), [lastReportedEntities])
+  const lastReported = useMemo(() => lastSevenData(lastReportedEntities), [lastReportedEntities])
+  const bestTemplates = useMemo(() => bestTemplatesData(templates), [templates])
   const lastReportedOptions = useMemo(
     () => ({
       scales: {
@@ -74,16 +92,47 @@ function Home() {
               beginAtZero: true,
               stepSize: 150,
               min: 0,
+              fontColor: '#949494',
               max: 100
             }
           }
+        ],
+        xAxes: [
+          {
+            ticks: {
+              fontColor: '#949494'
+            }
+          }
         ]
+      },
+      legend: {
+        labels: {
+          fontColor: '#949494'
+        }
       }
     }),
     []
   )
 
-  const lastSearchesParams = useMemo(() => lastSearches.map(l => new URLSearchParams(l)), [lastSearches])
+  const bestTemplatesOptions = useMemo(
+    () => ({
+      legend: {
+        labels: {
+          fontColor: '#949494'
+        }
+      }
+    }),
+    []
+  )
+
+  const lastSearchesParams = useMemo(
+    () =>
+      lastSearches.map(l => ({
+        ...l,
+        value: new URLSearchParams(l.value)
+      })),
+    [lastSearches]
+  )
 
   return (
     <div className="home">
@@ -92,10 +141,10 @@ function Home() {
       </div>
       <div className="container-box">
         <div className="big-box">
-          <div className="box-material box-summary-numbers">
+          <div className="box-material">
             <h4 className="title-box">Last content reported with TF Center</h4>
             <div className="chart-container">
-              <Line data={lastReportedData} options={lastReportedOptions} />
+              <Line data={lastReported} options={lastReportedOptions} />
             </div>
           </div>
         </div>
@@ -133,36 +182,38 @@ function Home() {
             </h4>
           </div>
         </div>
-        <div className="full-box box-material last-searches">
+        <div className="big-box box-material last-searches">
           <h4 className="title-box">Last searches</h4>
           <table className="table-material">
             <thead>
               <tr>
                 <th>Search</th>
                 <th>Filters</th>
-                <th>Excluded</th>
+                <th>Exclude previously flagged videos</th>
                 <th>Search ID</th>
+                <th>Created</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
               {lastSearchesParams.map((lastSearch, index) => (
                 <tr key={index}>
-                  <td>{lastSearch.get('search_query')}</td>
-                  <td>{lastSearch.get('filters')}</td>
+                  <td>{lastSearch.value.get('search_query')}</td>
+                  <td className="td-filters">{lastSearch.value.get('filters') || 'Anytime'}</td>
                   <td>
-                    {['true', null].includes(lastSearch.get('exclude_flagged_videos')) ? (
+                    {lastSearch.value.get('exclude_flagged_videos') === 'true' ? (
                       <FontAwesomeIcon icon={faCheck} size="1x" fixedWidth />
                     ) : (
                       ''
                     )}
                   </td>
-                  <td>{lastSearch.get('search_id')}</td>
+                  <td>{lastSearch.value.get('search_id')}</td>
+                  <td>{formatDistance(new Date(lastSearch.createdAt), new Date(), { addSuffix: true })}</td>
                   <td>
                     <Link
                       to={{
                         pathname: '/deputy',
-                        search: `?${lastSearch.toString()}`
+                        search: `?${lastSearch.value.toString()}`
                       }}
                     >
                       <Button color="blue" tabIndex="-1">
@@ -174,6 +225,27 @@ function Home() {
               ))}
             </tbody>
           </table>
+        </div>
+        <div className="mini-box templates-support">
+          <div className="box-material">
+            <h4 className="title-box">Best templates</h4>
+            <div className="chart-container">
+              {templates.length > 0 && <Doughnut data={bestTemplates} options={bestTemplatesOptions} />}
+              {templates.length === 0 && <p className="note">No template yet</p>}
+            </div>
+          </div>
+          <div className="box-material overview-program">
+            <a target="_blank" rel="noreferrer" href="https://support.google.com/youtube/contact/trustedflagging">
+              <p className="title-box">Trusted Flagger Escalations</p>
+              <FontAwesomeIcon icon={faExternalLinkAlt} />
+            </a>
+          </div>
+          <div className="box-material overview-version">
+            <a target="_blank" rel="noreferrer" href="https://github.com/viclafouch/TFs-Center">
+              <p className="title-box">TF Center V1.5</p>
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
+          </div>
         </div>
       </div>
     </div>

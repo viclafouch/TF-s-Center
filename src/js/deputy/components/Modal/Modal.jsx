@@ -42,8 +42,8 @@ export function Modal({ children, fade = false, defaultOpened = false, ...rest }
   return createPortal(
     isOpen ? (
       <div className={`modal ${fade ? 'modal-fade' : ''}`} {...rest}>
-        <div className="modal-overlay" onClick={close} />
-        <span role="button" className="modal-close" aria-label="close" onClick={close}>
+        <div className="modal-overlay" onClick={() => close(false)} />
+        <span role="button" className="modal-close" aria-label="close" onClick={() => close(false)}>
           <FontAwesomeIcon icon={faTimes} size="1x" fixedWidth />
         </span>
         <div className="modal-body">{React.cloneElement(children, { modalRef: ref })}</div>

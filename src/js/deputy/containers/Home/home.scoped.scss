@@ -68,6 +68,42 @@ h4.title-box {
   }
 }
 
-.chart-container {
+.templates-support {
+  display: grid;
+  grid-template-rows: 0.5fr 0.25fr 0.25fr;
+  grid-gap: $gap;
+}
+
+.chart-container,
+.chart-container canvas {
   width: 100%;
+}
+
+.td-filters::first-letter {
+  text-transform: uppercase;
+}
+
+.overview-program,
+.overview-version {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    color: #167ac6;
+    font-size: 16px;
+    text-decoration: none;
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+
+  p, svg {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  svg {
+    margin-left: 10px;
+  }
 }

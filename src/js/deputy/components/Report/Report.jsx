@@ -4,39 +4,33 @@ import Button from '../Button/Button'
 import { videoLabels, channelLabels } from '@/js/config/config'
 import { DomContext } from '@deputy/store/DomContext'
 import { DefaultContext } from '@deputy/store/DefaultContext'
-import { ADD_ENTITIES_TO_THIS_DAY } from '@deputy/store/reducer/constants'
+import { FLAG_ENTITIES } from '@deputy/store/reducer/constants'
 import { reportEntities } from '@deputy/helpers/dom'
 import { wait } from '@utils/index'
 import './report.scoped.scss'
 
 function Report({ entities = [], modalRef, onReport, searchId }) {
   const [{ user }] = useContext(DomContext)
-  const [{ templates, searches }, dispatch] = useContext(DefaultContext)
+  const [{ templates, getTemplateBySearch }, dispatch] = useContext(DefaultContext)
   const [isLoading, setIsLoading] = useState(false)
   const someChannels = useMemo(() => entities.some(e => e.type === 'channel'), [entities])
   const someVideos = useMemo(() => entities.some(e => e.type === 'video'), [entities])
-  const currentTemplate = useMemo(() => {
-    if (searchId) {
-      const currentSearch = searches.find(s => s.id == searchId)
-      if (currentSearch) {
-        const currentTemplate = templates.find(t => t.id === currentSearch.templateId)
-        if (currentTemplate) {
-          return currentTemplate
-        }
-      }
-    }
+  const templateBySearchId = useMemo(() => {
+    if (searchId) return getTemplateBySearch(parseInt(searchId))
     return null
-  }, [templates, searchId, searches])
+  }, [getTemplateBySearch, searchId])
   const [values, setValues] = useState({
-    videosReason: currentTemplate ? currentTemplate.videosReason : '',
-    channelsReason: currentTemplate ? currentTemplate.channelsReason : '',
-    comment: currentTemplate ? currentTemplate.description : ''
+    videosReason: templateBySearchId ? templateBySearchId.videosReason : '',
+    channelsReason: templateBySearchId ? templateBySearchId.channelsReason : '',
+    comment: templateBySearchId ? templateBySearchId.description : '',
+    templateId: templateBySearchId ? templateBySearchId.id : null,
+    searchId
   })
 
   const handleSubmit = useCallback(
     async e => {
       e.preventDefault()
-      const { comment, videosReason, channelsReason } = values
+      const { comment, videosReason, channelsReason, templateId, searchId } = values
       const formData = new FormData()
       if (videosReason) formData.set('video_report_reason', videosReason)
       if (channelsReason) formData.set('channel_report_reason', channelsReason)
@@ -60,7 +54,7 @@ function Report({ entities = [], modalRef, onReport, searchId }) {
         setIsLoading(true)
         if (modalRef) modalRef.current.blockClose()
         // await reportEntities(formData)
-        await wait()
+        await wait(7000)
 
         if (nbChannels > 0 && nbVideos > 0) {
           toast.success(
@@ -75,10 +69,12 @@ function Report({ entities = [], modalRef, onReport, searchId }) {
         }
 
         dispatch({
-          type: ADD_ENTITIES_TO_THIS_DAY,
+          type: FLAG_ENTITIES,
           payload: {
             nbVideos,
-            nbChannels
+            nbChannels,
+            templateId,
+            searchId
           }
         })
 
@@ -102,18 +98,22 @@ function Report({ entities = [], modalRef, onReport, searchId }) {
       if (value) {
         const template = templates.find(t => t.id === parseInt(value))
         if (template) {
-          setValues({
+          setValues(prevState => ({
             videosReason: template.videosReason,
             channelsReason: template.channelsReason,
-            comment: template.description
-          })
+            comment: template.description,
+            templateId: template.id,
+            searchId: prevState.searchId
+          }))
         }
       } else {
-        setValues({
+        setValues(prevState => ({
           videosReason: '',
           channelsReason: '',
-          comment: ''
-        })
+          comment: '',
+          templateId: '',
+          searchId: prevState.searchId
+        }))
       }
     },
     [templates]
@@ -126,7 +126,7 @@ function Report({ entities = [], modalRef, onReport, searchId }) {
         <select
           className="report-select-template form-element"
           onChange={handleSelectTemplate}
-          defaultValue={currentTemplate ? currentTemplate.id : ''}
+          defaultValue={templateBySearchId ? templateBySearchId.id : ''}
         >
           <option value="">Select template</option>
           {templates.map(template => (

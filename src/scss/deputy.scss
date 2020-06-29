@@ -186,3 +186,9 @@ main > div {
 .Toastify__toast--success {
   background-color: green!important;
 }
+
+.note {
+  font-size: 11px;
+  color: var(--color-notes);
+  font-family: 'Roboto', 'Noto', sans-serif;
+}

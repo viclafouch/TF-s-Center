@@ -78,7 +78,7 @@ function Flagger({ history }) {
       dispatch({
         type: ADD_LAST_SEARCH,
         payload: {
-          lastSearch: query.toString()
+          lastSearchValue: query.toString()
         }
       })
     }

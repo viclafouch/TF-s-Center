@@ -8,7 +8,8 @@ class Template {
     this.description = template.description || ''
     this.videosReason = template.videosReason
     this.channelsReason = template.channelsReason
-    this.flaggedWith = template.flaggedWith || 0
+    this.nbVideosFlagged = template.nbVideosFlagged || 0
+    this.nbChannelsFlagged = template.nbChannelsFlagged || 0
     this.createdAt = template.createdAt || Date.now()
   }
 
