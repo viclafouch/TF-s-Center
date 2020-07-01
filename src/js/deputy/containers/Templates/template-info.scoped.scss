@@ -1,14 +1,32 @@
+.template-edit-fields,
+.template-details {
+  padding: 50px;
+}
+
+.template-details {
+  padding-top: 30px;
+  border-top: 1px solid #ffffff;
+
+  p {
+    margin-bottom: 10px;
+  }
+}
+
 .template-info {
   color: var(--text-color);
 
   .template-edit-fields {
-    padding: 50px;
+    padding-bottom: 30px;
     .template-title {
       font-size: 30px;
     }
 
     .template-description {
       resize: none;
+    }
+
+    textarea {
+      min-height: 150px;
     }
 
     input,
@@ -27,5 +45,9 @@
   .remove-button {
     float: right;
     margin: 20px;
+  }
+
+  .template-info-bottom {
+    text-align: right;
   }
 }

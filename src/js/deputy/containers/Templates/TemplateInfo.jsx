@@ -1,4 +1,6 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState } from 'react'
+import { formatRelative } from 'date-fns'
+import { toast } from 'react-toastify'
 import { DefaultContext } from '@deputy/store/DefaultContext'
 import { Redirect } from 'react-router'
 import { videoLabels, links, channelLabels } from '@/js/config/config'
@@ -17,16 +19,25 @@ function TemplateInfo(props) {
     else return null
   })
 
-  useEffect(() => {
-    if (template) {
-      dispatch({
-        type: EDIT_TEMPLATE,
-        payload: {
-          template: new Template(template)
-        }
-      })
-    }
-  }, [template, dispatch])
+  const handleRemove = () => {
+    dispatch({
+      type: REMOVE_TEMPLATE,
+      payload: {
+        templateId: template.id
+      }
+    })
+    toast.success('The template has been removed!')
+  }
+
+  const handleUpdate = () => {
+    dispatch({
+      type: EDIT_TEMPLATE,
+      payload: {
+        template: new Template(template)
+      }
+    })
+    toast.success('The template has been updated!')
+  }
 
   if (!templates.some(t => t.id == props.match.params.id)) {
     return <Redirect to={templatesPath.href} />
@@ -34,18 +45,7 @@ function TemplateInfo(props) {
 
   return (
     <div className="template-info">
-      <Button
-        color="red"
-        className="remove-button"
-        onClick={() => {
-          dispatch({
-            type: REMOVE_TEMPLATE,
-            payload: {
-              templateId: template.id
-            }
-          })
-        }}
-      >
+      <Button color="red" className="remove-button" onClick={handleRemove}>
         Remove
       </Button>
       <div className="template-edit-fields">
@@ -120,6 +120,16 @@ function TemplateInfo(props) {
             </option>
           ))}
         </select>
+        <div className="template-info-bottom">
+          <Button color="blue" onClick={handleUpdate}>
+            Update
+          </Button>
+        </div>
+      </div>
+      <div className="template-details">
+        <p>Channels flagged with: {template.nbChannelsFlagged}</p>
+        <p>Videos flagged with: {template.nbVideosFlagged}</p>
+        <p className="note">Created {formatRelative(new Date(template.createdAt), new Date())}</p>
       </div>
     </div>
   )

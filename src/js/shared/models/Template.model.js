@@ -4,7 +4,7 @@ import { videoLabels, channelLabels } from '@/js/config/config'
 class Template {
   constructor(template = {}) {
     this.id = template.id || randomId()
-    this.title = template.title || ''
+    this.title = template.title || 'No title'
     this.description = template.description || ''
     this.videosReason = template.videosReason
     this.channelsReason = template.channelsReason

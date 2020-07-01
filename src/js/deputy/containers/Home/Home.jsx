@@ -64,7 +64,7 @@ const lastSevenData = lastReportedEntities => ({
 })
 
 const bestTemplatesData = templates => {
-  const bests = templates
+  const bests = [...templates]
     .sort((a, b) => a.nbVideosFlagged + a.nbChannelsFlagged - (b.nbVideosFlagged + b.nbChannelsFlagged))
     .slice(0, 5)
   return {

@@ -11,3 +11,5 @@ export const serializeForm = formElement => {
     Array.from(formData.keys()).map(key => [key, formData.getAll(key).length > 1 ? formData.getAll(key) : formData.get(key)])
   )
 }
+
+export const orderByDesc = (templates, key) => [...templates].sort((a, b) => new Date(b[key]) - new Date(a[key]))

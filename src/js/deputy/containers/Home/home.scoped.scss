@@ -74,10 +74,14 @@ h4.title-box {
   grid-gap: $gap;
 }
 
-.chart-container,
-.chart-container canvas {
-  width: 100%;
+.big-box .box-material {
+  height: 100%;
 }
+
+// .chart-container,
+// .chart-container canvas {
+//   width: 100%;
+// }
 
 .td-filters::first-letter {
   text-transform: uppercase;
@@ -105,5 +109,12 @@ h4.title-box {
 
   svg {
     margin-left: 10px;
+  }
+}
+
+.last-searches {
+  overflow-x: auto;
+  table {
+    min-width: 600px;
   }
 }
