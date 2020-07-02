@@ -10,11 +10,6 @@
   }
 
   .templates-add-box {
-    cursor: pointer;
-    @media (max-width: 960px) {
-      max-width: none;
-    }
-
     .add-placeholder {
       display: flex;
       justify-content: space-between;
@@ -54,6 +49,7 @@
   }
 
   .templates-list-container {
+    padding-bottom: 18px;
     @media (min-width: 960px) {
       height: 100%;
       overflow-y: auto;
@@ -66,10 +62,13 @@
       list-style: none;
 
       .template-item {
-        margin-top: 17px;
+        margin-bottom: 17px;
 
         a {
           display: flex;
+          word-break: break-word;
+          cursor: pointer;
+          text-decoration: none;
           flex-direction: column;
 
           &:hover {
@@ -98,6 +97,7 @@
             color: var(--color-notes);
             svg {
               margin-right: 5px;
+              color: #b50707;
             }
             span.template-item-reason {
               font-size: 11px;
@@ -111,6 +111,7 @@
         white-space: pre-wrap;
         min-height: 120px;
         margin-top: 20px;
+        word-wrap: break-word;
       }
 
       time.template-item-created {
@@ -125,5 +126,11 @@
 
 .template-list-title,
 .template-add-title {
-  text-align: center;
+  &, & + p {
+    text-align: center;
+  }
+}
+.templates-add-box,
+.template-item a {
+  max-width: none;
 }

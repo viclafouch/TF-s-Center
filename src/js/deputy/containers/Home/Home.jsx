@@ -190,7 +190,6 @@ function Home() {
                 <th>Search</th>
                 <th>Filters</th>
                 <th>Exclude previously flagged videos</th>
-                <th>Search ID</th>
                 <th>Created</th>
                 <th></th>
               </tr>
@@ -207,7 +206,6 @@ function Home() {
                       ''
                     )}
                   </td>
-                  <td>{lastSearch.value.get('search_id')}</td>
                   <td>{formatDistance(new Date(lastSearch.createdAt), new Date(), { addSuffix: true })}</td>
                   <td>
                     <Link

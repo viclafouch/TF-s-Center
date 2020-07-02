@@ -89,6 +89,7 @@ function Templates() {
       </div>
       <div className="templates-list-container">
         <h1 className="template-list-title">Templates ({templates.length})</h1>
+        {templates.length === 0 && <p className="note">No template yet</p>}
         <TransitionGroup component="ul">
           {orderByDesc(templates, 'createdAt').map(template => (
             <CSSTransition key={template.id} timeout={500}>
