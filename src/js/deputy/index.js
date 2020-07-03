@@ -9,8 +9,13 @@ import Search from '@shared/models/Search.model'
 import { getAnalytics } from './helpers/api'
 import { randomId } from '@utils/index'
 import { lastSevenDays } from '@utils/date'
+import '@scss/deputy.scss'
 
-const startDeputy = async ({ currentUrl }) => {
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max))
+}
+
+const startDeputy = async () => {
   try {
     const fontLink = document.createElement('link')
     fontLink.rel = 'stylesheet'
@@ -30,8 +35,8 @@ const startDeputy = async ({ currentUrl }) => {
         key: 'lastReportedEntities',
         default: lastSevenDays.map(date => ({
           date: formatISO(date),
-          videos: 0,
-          channels: 0,
+          videos: getRandomInt(100),
+          channels: getRandomInt(100),
           id: randomId()
         })),
         parser: lastReported =>
@@ -71,5 +76,7 @@ const startDeputy = async ({ currentUrl }) => {
     console.error(error)
   }
 }
+
+startDeputy()
 
 export default startDeputy

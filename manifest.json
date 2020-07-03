@@ -4,7 +4,7 @@
   "manifest_version": 2,
   "author": "Victor de la Fouchardiere",
   "background": {
-    "scripts": ["background.bundle.js"]
+    "scripts": []
   },
   "icons": {
     "16": "icon16.png",
@@ -20,17 +20,16 @@
   "content_scripts": [
     {
       "matches": ["https://www.youtube.com/*"],
-      "js": ["content_script.bundle.js"]
+      "js": ["target.bundle.js"]
     },
     {
       "matches": [
-        "https://www.youtube.com/deputy",
-        "https://www.youtube.com/deputy?*",
+        "https://www.youtube.com/deputy*",
         "https://www.youtube.com/report_dashboard",
         "https://www.youtube.com/flagging_history*"
       ],
-      "js": ["content_script.bundle.js"],
-      "css": ["deputy.css", "content_script.css"]
+      "js": ["deputy.bundle.js"],
+      "css": ["deputy.css"]
     }
   ],
   "content_security_policy": "script-src 'self'; object-src 'self'"

@@ -16,10 +16,9 @@ module.exports = (env, argv, IS_DEV = argv.mode !== 'production') => {
     devtool: IS_DEV ? 'inline-source-map' : false,
     entry: {
       popup: path.join(__dirname, 'src', 'js', 'popup.js'),
-      content_script: path.join(__dirname, 'src', 'js', 'content_script.js'),
-      background: path.join(__dirname, 'src', 'js', 'background.js'),
       popupcss: path.join(__dirname, 'src', 'scss', 'popup.scss'),
-      deputy: path.join(__dirname, 'src', 'scss', 'deputy.scss')
+      deputy: path.join(__dirname, 'src', 'js', 'deputy', 'index.js'),
+      target: path.join(__dirname, 'src', 'js', 'target', 'index.js')
     },
     module: {
       rules: [
