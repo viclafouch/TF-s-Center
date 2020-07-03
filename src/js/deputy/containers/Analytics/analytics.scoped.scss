@@ -1,19 +1,48 @@
 .analytics {
-  .container-table-resum {
-    h1.resum-title {
-      padding: 15px;
-      text-align: center;
-    }
+  padding: var(--gap);
+}
 
-    table.resum-table tr td:last-child,
-    table.resum-table tr th:last-child {
-      text-align: right;
-    }
+.header-analytics {
+  width: 100%;
+  margin-bottom: 20px;
+}
 
-    .success-rate {
-      text-align: right;
-      font-size: 12px;
-      color: var(--color-notes);
-    }
+.container-box {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: minmax(min-content, max-content);
+  grid-gap: var(--gap);
+}
+
+.box-material {
+  max-width: none;
+}
+
+.container-summary {
+  .title-box {
+    text-align: center;
   }
+
+  table tr td:last-child,
+  table tr th:last-child {
+    text-align: right;
+  }
+  .success-rate {
+    text-align: right;
+    font-size: 12px;
+    color: var(--color-notes);
+  }
+}
+
+.templates-searches {
+  display: grid;
+  grid-gap: var(--gap);
+  @media (min-width: 960px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+h2.title-box {
+  margin: 0 0 20px;
+  font-size: 14px;
 }

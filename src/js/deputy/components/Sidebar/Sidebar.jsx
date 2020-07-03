@@ -38,12 +38,7 @@ function Sidebar({ domContext }) {
         </ul>
         <ul className="nav-link">
           <li>
-            <a
-              href="https://hangouts.google.com/webchat/start?action=chat&pi=100070124377981205858"
-              target="_blank"
-              rel="noreferrer"
-              className="youtube-link"
-            >
+            <a href="https://twitter.com/TrustedSheriff" target="_blank" rel="noreferrer" className="youtube-link">
               <span className="span-icon">
                 <FontAwesomeIcon icon={faComment} size="1x" fixedWidth />
               </span>

@@ -1,7 +1,5 @@
-$gap: 30px;
-
 .home {
-  padding: 18px;
+  padding: var(--gap);
 
   .header-home {
     width: 100%;
@@ -10,8 +8,8 @@ $gap: 30px;
 
   .container-box {
     display: grid;
-    grid-row-gap: $gap;
-    grid-column-gap: $gap;
+    grid-row-gap: var(--gap);
+    grid-column-gap: var(--gap);
     grid-template-columns: 1fr;
 
     @media (min-width: 960px) {
@@ -46,7 +44,7 @@ h4.title-box {
 .summary-numbers {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: $gap;
+  grid-gap: var(--gap);
 
   .box-summary-numbers {
     display: flex;
@@ -77,7 +75,7 @@ h4.title-box {
 .templates-support {
   display: grid;
   grid-template-rows: 0.5fr 0.25fr 0.25fr;
-  grid-gap: $gap;
+  grid-gap: var(--gap);
 }
 
 .big-box .box-material {

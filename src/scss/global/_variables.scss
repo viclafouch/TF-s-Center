@@ -16,6 +16,10 @@ html[data-theme='dark'] {
   --logo-youtube-text: #ffffff;
 }
 
+html {
+  --gap: 18px;
+}
+
 html[data-theme='light'] {
   --text-color: rgb(17, 17, 17);
   --background-container: #FAFAFA;

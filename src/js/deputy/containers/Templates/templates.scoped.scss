@@ -1,11 +1,12 @@
 .templates {
   display: grid;
-  padding: 18px;
+  padding: var(--gap);
   grid-template-columns: 1fr;
   grid-gap: 20px;
 
   @media (min-width: 960px) {
-    padding: 18px 0 18px 18px;
+    padding: var(--gap);
+    padding-right: 0;
     grid-template-columns: 500px auto;
   }
 
@@ -49,11 +50,11 @@
   }
 
   .templates-list-container {
-    padding-bottom: 18px;
+    padding-bottom: var(--gap);
     @media (min-width: 960px) {
       height: 100%;
       overflow-y: auto;
-      padding-right: 18px;
+      padding-right: var(--gap);
     }
 
     ul {
@@ -82,7 +83,7 @@
 
           h2.template-item-title {
             line-height: 1.1;
-            padding-bottom: 18px;
+            padding-bottom: var(--gap);
             max-width: 80%;
             text-overflow: ellipsis;
             white-space: nowrap;
