@@ -1,0 +1,28 @@
+.selection {
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  & > img.selection-img {
+    width: 10px;
+    margin-left: 5px;
+    display: inline-block;
+  }
+
+  & > svg.selection-svg {
+    margin-left: 5px;
+    display: inline-block;
+    color: aqua;
+  }
+
+  &[data-name="search"] {
+    color: var(--yt-spec-text-primary);
+  }
+
+  &[data-name="home"] {
+    color: var(--yt-spec-text-primary);
+  }
+}

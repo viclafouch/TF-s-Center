@@ -20,7 +20,8 @@
   "content_scripts": [
     {
       "matches": ["https://www.youtube.com/*"],
-      "js": ["target.bundle.js"]
+      "js": ["target.bundle.js"],
+      "css": ["target.css"]
     },
     {
       "matches": [
