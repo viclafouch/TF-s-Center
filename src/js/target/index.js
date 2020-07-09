@@ -4,7 +4,7 @@ import Video from '@shared/models/Video.model'
 import Selection from './Selection/Selection'
 import { getBrowserStorage } from '@utils/browser'
 
-const getTargets = () =>
+export const getTargets = () =>
   getBrowserStorage('local', [
     {
       key: 'targets',
@@ -137,7 +137,10 @@ const watchingDOM = () => {
     })
 
     getTargets().then(targets => {
-      ReactDOM.render(<Selection name={name} targets={targets} ref={ref} video={video} />, el)
+      ReactDOM.render(
+        <Selection name={name} isDefaultSelected={targets.some(t => t.id === video.id)} ref={ref} video={video} />,
+        el
+      )
       container.appendChild(el)
     })
   })

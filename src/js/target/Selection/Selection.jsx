@@ -1,32 +1,36 @@
-import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react'
+import React, { useState, forwardRef, useImperativeHandle, useCallback } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck'
 import sheriffImg from '@img/sheriff.svg'
+import { getTargets } from '../index'
 import { setBrowserStorage } from '@utils/browser'
 import './selection.scoped.scss'
 
-function Selection({ video, targets, name }, ref) {
-  const [isSelected, setIsSelected] = useState(targets.some(t => t.id === video.id))
+function Selection({ video, isDefaultSelected, name }, ref) {
+  const [isSelected, setIsSelected] = useState(isDefaultSelected)
 
   useImperativeHandle(
     ref,
     () => ({
-      select: () => setIsSelected(prevState => !prevState)
+      select: toggleStatus
     }),
-    []
+    [toggleStatus]
   )
 
-  useEffect(() => {
-    const currentTargets = [...targets]
-    if (isSelected) currentTargets.push(video)
-    else {
-      const index = currentTargets.findIndex(t => t.id === video.id)
-      currentTargets.splice(index, 1)
+  const toggleStatus = useCallback(async () => {
+    try {
+      const currentTargets = await getTargets()
+      if (!currentTargets.some(t => t.id === video.id)) currentTargets.push(video)
+      else {
+        const index = currentTargets.findIndex(t => t.id === video.id)
+        currentTargets.splice(index, 1)
+      }
+      await setBrowserStorage('local', { targets: currentTargets })
+      setIsSelected(prevState => !prevState)
+    } catch (error) {
+      console.warn(error)
     }
-    setBrowserStorage('local', {
-      targets: currentTargets
-    })
-  }, [isSelected, video, targets])
+  }, [video])
 
   return (
     <span className="selection" data-name={name}>

@@ -6,6 +6,7 @@ import { getBrowserStorage } from '@utils/browser'
 import { pageLoaded, extractUserInfos } from './helpers/dom'
 import Template from '@shared/models/Template.model'
 import Search from '@shared/models/Search.model'
+import Video from '@shared/models/Video.model'
 import { getAnalytics } from './helpers/api'
 import { randomId } from '@utils/index'
 import { lastSevenDays } from '@utils/date'
@@ -31,6 +32,7 @@ const startDeputy = async () => {
       { key: 'searches', default: [], parser: searches => searches.map(s => new Search(s)) },
       { key: 'templates', default: [], parser: templates => templates.map(t => new Template(t)) },
       { key: 'lastSearches', default: [] },
+      { key: 'targets', default: [], parser: targets => targets.map(t => new Video(t)) },
       {
         key: 'lastReportedEntities',
         default: lastSevenDays.map(date => ({
