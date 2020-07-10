@@ -27,6 +27,8 @@ function Tools(props) {
         startTime: getUnixFromDate(rangeDate.startDate),
         endTime: getUnixFromDate(rangeDate.endDate)
       })
+    } else if (props.isTargets) {
+      props.onSubmit()
     } else {
       const form = new FormData(e.target)
       props.onSubmit({
@@ -83,7 +85,30 @@ function Tools(props) {
           </Button>
         </form>
       )}
-      {!props.isHistory && (
+      {props.isTargets && (
+        <div className="tools-targets">
+          <div>
+            <h2>Targets ({props.targets})</h2>
+            <div>
+              <Button color="blue" type="button" onClick={handleSubmit}>
+                Refresh
+              </Button>
+              <Button
+                color="blue"
+                type="button"
+                disabled={!props.canFlag}
+                onClick={e => {
+                  e.preventDefault()
+                  props.onFlag()
+                }}
+              >
+                Flag
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+      {!props.isHistory && !props.isTargets && (
         <form className="tools-form-filter" onSubmit={handleSubmit}>
           <div className="tools-filter">
             <div className="tools-field">

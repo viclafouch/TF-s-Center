@@ -12,9 +12,10 @@ function DefaultProvider({ children, initialState }) {
       searches: state.searches,
       templates: state.templates,
       lastReportedEntities: state.lastReportedEntities,
-      lastSearches: state.lastSearches
+      lastSearches: state.lastSearches,
+      targets: state.targets
     })
-  }, [state.searches, state.templates, state.lastReportedEntities, state.lastSearches])
+  }, [state.searches, state.templates, state.lastReportedEntities, state.lastSearches, state.targets])
 
   const getTemplate = useCallback(templateId => state.templates.find(t => t.id === templateId), [state.templates])
 

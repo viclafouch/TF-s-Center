@@ -7,6 +7,8 @@ import { DefaultContext } from '@deputy/store/DefaultContext'
 import { FLAG_ENTITIES } from '@deputy/store/reducer/constants'
 import { reportEntities } from '@deputy/helpers/dom'
 import { wait } from '@utils/index'
+import { getBrowserStorage } from '@utils/browser'
+import Video from '@shared/models/Video.model'
 import './report.scoped.scss'
 
 function Report({ entities = [], modalRef, onReport, searchId }) {
@@ -56,6 +58,17 @@ function Report({ entities = [], modalRef, onReport, searchId }) {
         // await reportEntities(formData)
         await wait(7000)
 
+        const { targets } = await getBrowserStorage('local', [
+          {
+            key: 'targets',
+            default: [],
+            parser: videos => videos.map(v => new Video(v))
+          }
+        ])
+
+        const newTargets = targets.filter(t => entities.every(e => e.id !== t.id))
+        await wait(300)
+
         if (nbChannels > 0 && nbVideos > 0) {
           toast.success(
             `You have successfully flagged ${nbVideos} video${nbVideos > 1 ? 's' : ''} and ${nbChannels} channel${
@@ -74,7 +87,8 @@ function Report({ entities = [], modalRef, onReport, searchId }) {
             nbVideos,
             nbChannels,
             templateId,
-            searchId
+            searchId,
+            newTargets
           }
         })
 
