@@ -62,9 +62,13 @@ function VideoListItem({ video, showCheckbox = false }) {
           </div>
           {!video.removedAt && (
             <p className="video-notes">
-              <a className="video-channel" href={video.channel.url} target="_blank" rel="noreferrer">
-                {video.channel.name}
-              </a>
+              {video.channel.url && (
+                <a className="video-channel" href={video.channel.url} target="_blank" rel="noreferrer">
+                  {video.channel.name}
+                </a>
+              )}
+              {!video.channel.url && <span className="video-channel">{video.channel.name}</span>}
+
               {' | '}
               <span className="video-created">{video.createdAt}</span>
 

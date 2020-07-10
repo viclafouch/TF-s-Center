@@ -7,22 +7,28 @@
   position: relative;
 
   & > img.selection-img {
-    width: 10px;
+    width: 13px;
     margin-left: 5px;
     display: inline-block;
   }
 
   & > svg.selection-svg {
     margin-left: 5px;
+    width: 13px;
     display: inline-block;
     color: aqua;
   }
 
-  &[data-name="search"] {
+  &[data-name="watch-list"] {
     color: var(--yt-spec-text-primary);
   }
 
   &[data-name="home"] {
     color: var(--yt-spec-text-primary);
+  }
+
+  &[data-name="watch"] {
+    padding-top: 11px;
+    color: var(--yt-spec-text-secondary);
   }
 }

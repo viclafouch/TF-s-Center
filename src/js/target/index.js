@@ -1,5 +1,6 @@
 import React, { createRef } from 'react'
 import ReactDOM from 'react-dom'
+import { throttle } from 'throttle-debounce'
 import Video from '@shared/models/Video.model'
 import Selection from './Selection/Selection'
 import { getBrowserStorage } from '@utils/browser'
@@ -18,7 +19,7 @@ function createObserver() {
     childList: true,
     subtree: true
   }
-  const observer = new MutationObserver(watchingDOM)
+  const observer = new MutationObserver(throttle(750, false, watchingDOM))
   observer.observe(document.body, config)
 }
 
@@ -75,6 +76,24 @@ const selectors = [
       el: 'span',
       classNames: ['style-scope', 'ytd-menu-renderer', 'force-icon-button', 'style-default', 'size-default']
     }
+  },
+  {
+    name: 'watch-list',
+    listItem: 'ytd-app[is-watch-page] #related #items ytd-compact-video-renderer',
+    data: {
+      title: 'h3 #video-title',
+      videoUrl: 'a#thumbnail',
+      channelName: '#metadata #channel-name',
+      time: '#overlays > ytd-thumbnail-overlay-time-status-renderer',
+      nbViews: '#metadata > #metadata-line > span.ytd-video-meta-block:first-child',
+      createdAt: '#metadata > #metadata-line > span.ytd-video-meta-block + span.ytd-video-meta-block'
+    },
+    root: {
+      container: '.details > .metadata',
+      el: 'span',
+      classNames: ['style-scope', 'ytd-video-meta-block'],
+      id: 'metadata-line'
+    }
   }
 ]
 
@@ -100,16 +119,19 @@ const watchingDOM = () => {
       if (selectorItem) previousValue.push(selectorItem)
       return previousValue
     }, [])
-
   selectorItems.forEach(selectorItem => {
     const { item, data, name, root } = selectorItem
-    let id
+    let id, el
     if (name !== 'watch') {
       const link = item.querySelector(data.videoUrl).href
       const paramsLink = new URL(link)
       id = paramsLink.searchParams.get('v')
+      el = document.createElement(root.el)
     } else {
       id = document.querySelector('[video-id]').getAttribute('video-id')
+      const container = item.querySelector(root.container)
+      el = container.querySelector('ytd-button-renderer').cloneNode(true)
+      container.appendChild(el)
     }
 
     item.setAttribute('data-tf', id)
@@ -121,15 +143,15 @@ const watchingDOM = () => {
       nbViews: item.querySelector(data.nbViews).textContent.split(' ')[0].trim(),
       createdAt: item.querySelector(data.createdAt).textContent.trim(),
       channel: {
-        url: item.querySelector(data.channelUrl).href,
+        url: data.channelUrl ? item.querySelector(data.channelUrl).href : '',
         name: item.querySelector(data.channelName).textContent.trim()
       }
     })
 
     const container = item.querySelector(root.container)
-    const el = document.createElement('div')
 
     el.classList.add('tf-root', ...(root.classNames || []))
+    if (root.id) el.id = root.id
     const ref = createRef()
     el.addEventListener('click', e => {
       e.stopPropagation()

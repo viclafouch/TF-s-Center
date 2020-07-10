@@ -43,7 +43,8 @@
     "react-router-dom": "^5.2.0",
     "react-toastify": "^6.0.6",
     "react-transition-group": "^4.4.1",
-    "sanitize-html": "^1.27.0"
+    "sanitize-html": "^1.27.0",
+    "throttle-debounce": "^2.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",
