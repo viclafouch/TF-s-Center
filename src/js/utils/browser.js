@@ -1,5 +1,3 @@
-import { wait } from '@utils'
-
 export const browser = browser || chrome
 
 export const clearStorages = async () => {
@@ -7,7 +5,12 @@ export const clearStorages = async () => {
   chrome.storage.sync.clear()
 }
 
-export function openInNewTab(url, newTab = false) {
+export const setBadgeText = text =>
+  browser.browserAction.setBadgeText({
+    text: text ? text.toString() : ''
+  })
+
+export const openInNewTab = (url, newTab = false) => {
   if (chrome.tabs) {
     return chrome.tabs.create({ active: true, url, pinned: false })
   }
@@ -16,10 +19,10 @@ export function openInNewTab(url, newTab = false) {
   win.focus()
 }
 
-export const sendMessageToBackground = (type, items) =>
+export const sendMessageToBackground = (type, payload = {}) =>
   new Promise((resolve, reject) => {
     if (!chrome.runtime.lastError) {
-      chrome.runtime.sendMessage({ type, items }, response => resolve(response))
+      chrome.runtime.sendMessage({ type, payload }, response => resolve(response))
     } else {
       reject(`Error when sending message ${type}`)
     }

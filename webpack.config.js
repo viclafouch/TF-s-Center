@@ -18,7 +18,8 @@ module.exports = (env, argv, IS_DEV = argv.mode !== 'production') => {
       popup: path.join(__dirname, 'src', 'js', 'popup.js'),
       popupcss: path.join(__dirname, 'src', 'scss', 'popup.scss'),
       deputy: path.join(__dirname, 'src', 'js', 'deputy', 'index.js'),
-      target: path.join(__dirname, 'src', 'js', 'target', 'index.js')
+      target: path.join(__dirname, 'src', 'js', 'target', 'index.js'),
+      background: path.join(__dirname, 'src', 'js', 'background.js')
     },
     module: {
       rules: [

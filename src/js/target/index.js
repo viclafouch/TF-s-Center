@@ -195,10 +195,8 @@ const watchingDOM = () => {
     })
 
     getTargets().then(targets => {
-      ReactDOM.render(
-        <Selection name={name} isDefaultSelected={targets.some(t => t.id === video.id)} ref={ref} video={video} />,
-        el
-      )
+      const defaultSelected = targets.some(t => t.id === video.id)
+      ReactDOM.render(<Selection defaultSelected={defaultSelected} name={name} ref={ref} video={video} />, el)
       container.appendChild(el)
     })
   })
