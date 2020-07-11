@@ -25,24 +25,6 @@ function createObserver() {
 
 const selectors = [
   {
-    name: 'home',
-    listItem: '#contents > ytd-rich-item-renderer',
-    data: {
-      title: '#video-title-link > #video-title',
-      videoUrl: '#video-title-link',
-      channelUrl: '#channel-name a',
-      channelName: '#channel-name a',
-      time: 'ytd-thumbnail-overlay-time-status-renderer',
-      nbViews: '#metadata-line > span:first-child',
-      createdAt: '#metadata-line > span:first-child + span'
-    },
-    root: {
-      container: '#byline-container + #metadata-line',
-      el: 'span',
-      classNames: ['style-scope', 'ytd-video-meta-block']
-    }
-  },
-  {
     name: 'search',
     listItem: '#contents ytd-video-renderer > .ytd-video-renderer#dismissable',
     data: {
@@ -58,6 +40,36 @@ const selectors = [
       container: '#metadata-line',
       el: 'span',
       classNames: ['style-scope', 'ytd-video-meta-block']
+    }
+  },
+  {
+    name: 'channel-videos',
+    listItem: '#page-manager ytd-browse #contents .ytd-grid-video-renderer#dismissable',
+    data: {
+      title: '#meta #video-title',
+      videoUrl: 'a#video-title',
+      time: 'ytd-thumbnail-overlay-time-status-renderer',
+      nbViews: '#metadata-line > span:first-child',
+      createdAt: '#metadata-line > span:first-child + span'
+    },
+    root: {
+      container: '#metadata-line',
+      el: 'span',
+      classNames: ['style-scope', 'ytd-video-meta-block']
+    }
+  },
+  {
+    name: 'videos-playlist',
+    listItem: '#items > ytd-playlist-panel-video-renderer#playlist-items',
+    data: {
+      title: '#meta #video-title',
+      videoUrl: 'a#wc-endpoint',
+      channelName: '#byline-containerz > span#byline'
+    },
+    root: {
+      el: 'span',
+      styles: 'align-self: flex-start;',
+      classNames: ['style-scope', 'ytd-playlist-panel-video-renderer']
     }
   },
   {
@@ -134,21 +146,45 @@ const watchingDOM = () => {
       container.appendChild(el)
     }
 
+    const badgeNew = item.querySelector(
+      'ytd-video-meta-block + ytd-badge-supported-renderer > .badge.badge-style-type-simple.style-scope.ytd-badge-supported-renderer'
+    )
+    if (name === 'watch-list' && badgeNew) badgeNew.parentNode.removeChild(badgeNew)
+
     item.setAttribute('data-tf', id)
 
     const video = new Video({
       id,
-      title: item.querySelector(data.title).textContent.trim(),
-      time: item.querySelector(data.time).textContent.trim(),
-      nbViews: item.querySelector(data.nbViews).textContent.split(' ')[0].trim(),
-      createdAt: item.querySelector(data.createdAt).textContent.trim(),
+      title: data.title ? item.querySelector(data.title).textContent.trim() : '',
+      time: data.time ? item.querySelector(data.time).textContent.trim() : '',
+      nbViews: data.nbViews ? item.querySelector(data.nbViews).textContent.split(' ')[0].trim() : '',
+      createdAt: data.createdAt ? item.querySelector(data.createdAt).textContent.trim() : '',
       channel: {
         url: data.channelUrl ? item.querySelector(data.channelUrl).href : '',
-        name: item.querySelector(data.channelName).textContent.trim()
+        name: data.channelName ? item.querySelector(data.channelName).textContent.trim() : ''
       }
     })
 
-    const container = item.querySelector(root.container)
+    if (name === 'channel-videos') {
+      const url = new URL('https://www.youtube.com')
+      url.pathname = document.getElementById('form').getAttribute('action')
+      url.pathname = url.pathname.replace('/search', '')
+      video.channel.url = url.toString()
+
+      const name = document.querySelector('#inner-header-container #channel-name').textContent
+      video.channel.name = name
+    }
+
+    let container
+    if (name === 'videos-playlist') {
+      container = item
+    } else {
+      container = item.querySelector(root.container)
+    }
+
+    if (root.styles) {
+      el.setAttribute('style', root.styles)
+    }
 
     el.classList.add('tf-root', ...(root.classNames || []))
     if (root.id) el.id = root.id

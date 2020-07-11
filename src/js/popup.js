@@ -18,10 +18,8 @@ function Popup() {
         {links.map((link, index) => (
           <li key={index}>
             <a href={link.href} data-href={link.href} className="youtube-link" onClick={redirectToTabs}>
-              <span className="span-icon">
-                <FontAwesomeIcon icon={link.icon} size="1x" fixedWidth />
-              </span>
-              <span className="text-link">{link.label}</span>
+              <FontAwesomeIcon icon={link.icon} size="1x" fixedWidth />
+              {link.label}
             </a>
           </li>
         ))}
