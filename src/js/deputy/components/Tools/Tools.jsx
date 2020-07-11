@@ -93,6 +93,12 @@ function Tools(props) {
               <Button color="blue" type="button" onClick={handleSubmit}>
                 Refresh
               </Button>
+              <Button color="blue" type="button" onClick={() => props.handleSelectAll('video')}>
+                Select all videos
+              </Button>
+              <Button color="blue" type="button" onClick={() => props.handleSelectAll('channel')}>
+                Select all channels
+              </Button>
               <Button
                 color="blue"
                 type="button"
@@ -148,6 +154,12 @@ function Tools(props) {
           <div>
             <Button color="blue" type="submit">
               Search
+            </Button>
+            <Button color="blue" type="button" onClick={() => props.handleSelectAll('video')}>
+              Select all videos
+            </Button>
+            <Button color="blue" type="button" onClick={() => props.handleSelectAll('channel')}>
+              Select all channels
             </Button>
             <Button
               color="blue"

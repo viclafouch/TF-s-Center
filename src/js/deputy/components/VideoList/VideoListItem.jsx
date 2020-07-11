@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef, memo } from 'react'
 import { formatDistance } from 'date-fns'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash'
@@ -10,8 +10,7 @@ import Player from '../Player/Player'
 import Modal from '../Modal/Modal'
 import './video-list-item.scoped.scss'
 
-function VideoListItem({ video, showCheckbox = false }) {
-  const [check, setCheck] = useState('none')
+function VideoListItem({ video, showCheckbox = false, checkedType, onCheck }) {
   const player = useRef(null)
   const thumbnail = video.thumbnail('default')
   const isRemoved = !!video.removedAt
@@ -112,8 +111,13 @@ function VideoListItem({ video, showCheckbox = false }) {
                   id={`video-${video.id}`}
                   name={`video-${video.id}`}
                   type="checkbox"
-                  onChange={() => setCheck(prevState => (prevState === 'video' ? 'none' : 'video'))}
-                  checked={check === 'video'}
+                  onChange={() =>
+                    onCheck({
+                      type: checkedType === 'video' ? null : 'video',
+                      id: video.id
+                    })
+                  }
+                  checked={checkedType === 'video'}
                 />
               </label>
               <label htmlFor={`channel-${video.id}`}>
@@ -122,8 +126,13 @@ function VideoListItem({ video, showCheckbox = false }) {
                   id={`channel-${video.id}`}
                   name={`channel-${video.id}`}
                   type="checkbox"
-                  onChange={() => setCheck(prevState => (prevState === 'channel' ? 'none' : 'channel'))}
-                  checked={check === 'channel'}
+                  onChange={() =>
+                    onCheck({
+                      type: checkedType === 'channel' ? null : 'channel',
+                      id: video.id
+                    })
+                  }
+                  checked={checkedType === 'channel'}
                 />
               </label>
             </>
@@ -134,4 +143,4 @@ function VideoListItem({ video, showCheckbox = false }) {
   )
 }
 
-export default VideoListItem
+export default memo(VideoListItem)

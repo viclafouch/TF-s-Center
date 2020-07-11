@@ -60,6 +60,7 @@ function Flagger({ history }) {
     const controller = new AbortController()
     if (searchQuery) {
       setVideos([])
+      setEntitiesSelected([])
       fetchSearchVideos(
         {
           page: 1,
@@ -98,6 +99,18 @@ function Flagger({ history }) {
     }
   }, [fetchSearchVideos, isLoading, isError, hasMore])
 
+  const handleSelectAll = useCallback(
+    type => {
+      setEntitiesSelected(
+        videos.map(v => ({
+          id: v.id,
+          type
+        }))
+      )
+    },
+    [videos]
+  )
+
   const handleSubmit = useCallback(
     (...params) => {
       const searchParamsString = `?${getParamsSearchVideos(...params)}`
@@ -109,16 +122,12 @@ function Flagger({ history }) {
     [history]
   )
 
-  const handleCheck = useCallback(() => {
-    const selected = Object.keys(serializeForm(form.current)).map(key => {
-      const type = key.startsWith('video-') ? 'video' : 'channel'
-      const id = type === 'video' ? key.split('video-')[1] : key.split('channel-')[1]
-      return {
-        id,
-        type
-      }
+  const handleCheck = useCallback(({ id, type }) => {
+    setEntitiesSelected(prevState => {
+      const entities = prevState.filter(e => e.id !== id)
+      if (type) entities.push({ type, id })
+      return entities
     })
-    setEntitiesSelected(selected)
   }, [])
 
   return (
@@ -126,7 +135,12 @@ function Flagger({ history }) {
       <Modal ref={modal} fade>
         <Report entities={entitiesSelected} onReport={firstFetch} searchId={searchId} />
       </Modal>
-      <Tools onSubmit={handleSubmit} onFlag={() => modal.current.open()} canFlag={entitiesSelected.length > 0} />
+      <Tools
+        onSubmit={handleSubmit}
+        onFlag={() => modal.current.open()}
+        canFlag={entitiesSelected.length > 0}
+        handleSelectAll={handleSelectAll}
+      />
       <div
         className={`flagger-list-container ${isLoading && videos.length === 0 ? 'flagger-list-container-loading' : ''} ${
           !isLoading && videos.length === 0 ? 'flagger-list-container-empty' : ''
@@ -137,8 +151,8 @@ function Flagger({ history }) {
         {isLoading && videos.length === 0 ? (
           <Loader />
         ) : (
-          <form ref={form} id="form-flagger" onChange={handleCheck}>
-            <VideoList videos={videos} showCheckbox />
+          <form ref={form} id="form-flagger">
+            <VideoList videos={videos} showCheckbox entitiesSelected={entitiesSelected} onCheck={handleCheck} />
           </form>
         )}
         {isLoading && videos.length > 0 && <Loader spinner />}

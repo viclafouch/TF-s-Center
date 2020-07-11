@@ -28,7 +28,7 @@ export const getParamsSearchVideos = ({ page, searchQuery, filters, excludeFlagg
   const searchParams = new URLSearchParams()
   searchParams.set('search_query', searchQuery)
   if (page) searchParams.set('page', page)
-  if (filters) searchParams.set('filters', filters)
+  if (filters && filters !== 'anytime') searchParams.set('filters', filters) // NOT ANYTIME NOT SAME RESULT
   if (excludeFlaggedVideos) searchParams.set('exclude_flagged_videos', 'true')
   if (searchId) searchParams.set('search_id', searchId)
   return searchParams.toString()

@@ -3,7 +3,7 @@ import Tools from '@deputy/components/Tools/Tools'
 import Loader from '@deputy/components/Loader/Loader'
 import VideoList from '@deputy/components/VideoList/VideoList'
 import Modal from '@deputy/components/Modal/Modal'
-import { serializeForm } from '@utils/index'
+import { wait } from '@utils/index'
 import Report from '@deputy/components/Report/Report'
 import { getBrowserStorage } from '@utils/browser'
 import Video from '@shared/models/Video.model'
@@ -16,11 +16,14 @@ function Targets() {
   const [isLoading, setIsLoading] = useState(true)
   const form = useRef(null)
   const modal = useRef(null)
+  const unmounted = useRef(false)
 
   const fetchBrowserTargets = useCallback(async () => {
     try {
       setIsLoading(true)
       setIsError(false)
+      await wait(300)
+      if (unmounted.current) return
       const videos = await getBrowserStorage('local', [
         {
           key: 'targets',
@@ -33,25 +36,36 @@ function Targets() {
       setIsError(true)
       console.warn(error)
     } finally {
-      setIsLoading(false)
+      if (!unmounted.current) setIsLoading(false)
     }
   }, [])
 
   useEffect(() => {
     fetchBrowserTargets()
+    return () => {
+      unmounted.current = true
+    }
   }, [fetchBrowserTargets])
 
-  const handleCheck = useCallback(() => {
-    const selected = Object.keys(serializeForm(form.current)).map(key => {
-      const type = key.startsWith('video-') ? 'video' : 'channel'
-      const id = type === 'video' ? key.split('video-')[1] : key.split('channel-')[1]
-      return {
-        id,
-        type
-      }
+  const handleCheck = useCallback(({ id, type }) => {
+    setEntitiesSelected(prevState => {
+      const entities = prevState.filter(e => e.id !== id)
+      if (type) entities.push({ type, id })
+      return entities
     })
-    setEntitiesSelected(selected)
   }, [])
+
+  const handleSelectAll = useCallback(
+    type => {
+      setEntitiesSelected(
+        videos.map(v => ({
+          id: v.id,
+          type
+        }))
+      )
+    },
+    [videos]
+  )
 
   const handleRefresh = useCallback(() => {
     setEntitiesSelected([])
@@ -69,9 +83,10 @@ function Targets() {
         targets={videos.length}
         onFlag={() => modal.current.open()}
         canFlag={entitiesSelected.length > 0}
+        handleSelectAll={handleSelectAll}
       />
       <div
-        className={`targets-list-container ${isLoading && videos.length === 0 ? 'targets-list-container-loading' : ''} ${
+        className={`targets-list-container ${isLoading ? 'targets-list-container-loading' : ''} ${
           !isLoading && videos.length === 0 ? 'targets-list-container-empty' : ''
         }`}
       >
@@ -82,8 +97,8 @@ function Targets() {
         ) : videos.length === 0 ? (
           <p>No target</p>
         ) : (
-          <form ref={form} id="form-targets" onChange={handleCheck}>
-            <VideoList videos={videos} showCheckbox />
+          <form ref={form} id="form-targets">
+            <VideoList videos={videos} showCheckbox entitiesSelected={entitiesSelected} onCheck={handleCheck} />
           </form>
         )}
       </div>
