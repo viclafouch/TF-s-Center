@@ -28,8 +28,8 @@ const selectors = [
     name: 'search',
     listItem: '#contents ytd-video-renderer > .ytd-video-renderer#dismissable',
     data: {
-      title: '#video-title',
-      videoUrl: '#video-title',
+      title: '#meta > #title-wrapper > h3 #video-title',
+      videoUrl: '#meta > #title-wrapper > h3 #video-title',
       channelUrl: '#channel-name a',
       channelName: '#channel-name a',
       time: 'ytd-thumbnail-overlay-time-status-renderer',
@@ -124,6 +124,19 @@ const isValidItem = item => {
 const listItems = selectors.map(s => s.listItem).join(', ')
 
 const watchingDOM = () => {
+  const currentUrl = new URL(window.location.href)
+
+  // Debug watch page not reconstructed
+  if (document.querySelector('ytd-watch-flexy[video-id][hidden][data-tf]')) {
+    document.querySelector('ytd-watch-flexy[video-id][hidden][data-tf]').removeAttribute('data-tf')
+  } else if (currentUrl.pathname.startsWith('/watch') && document.querySelector('ytd-watch-flexy[video-id][data-tf]')) {
+    const newVideoId = document.querySelector('ytd-watch-flexy[video-id][data-tf]').getAttribute('video-id')
+    const oldVideoId = document.querySelector('ytd-watch-flexy[video-id][data-tf]').getAttribute('data-tf')
+    if (oldVideoId !== newVideoId) {
+      document.querySelector('ytd-watch-flexy[video-id][data-tf]').removeAttribute('data-tf')
+    }
+  }
+
   const selectorItems = Array.from(document.querySelectorAll(listItems))
     .filter(element => !element.getAttribute('data-tf'))
     .reduce((previousValue, currentValue) => {
@@ -131,6 +144,9 @@ const watchingDOM = () => {
       if (selectorItem) previousValue.push(selectorItem)
       return previousValue
     }, [])
+
+  console.log(selectorItems)
+
   selectorItems.forEach(selectorItem => {
     const { item, data, name, root } = selectorItem
     let id, el
@@ -140,7 +156,8 @@ const watchingDOM = () => {
       id = paramsLink.searchParams.get('v')
       el = document.createElement(root.el)
     } else {
-      id = document.querySelector('[video-id]').getAttribute('video-id')
+      id = new URL(window.location.href).searchParams.get('v')
+      if (document.querySelector('[video-id]').getAttribute('video-id') !== id) return
       const container = item.querySelector(root.container)
       el = container.querySelector('ytd-button-renderer').cloneNode(true)
       container.appendChild(el)

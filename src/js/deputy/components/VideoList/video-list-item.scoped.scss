@@ -2,6 +2,23 @@
   display: flex;
   padding: 5px;
   font-family: 'Roboto', 'Noto', sans-serif;
+  position: relative;
+
+  .video-remove-from {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    background-color: #e02525;
+    color: #ffffff;
+    z-index: 10;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.5em;
+  }
 
   .video-thumbnail {
     position: relative;
@@ -67,7 +84,6 @@
 }
 
 .video-actions {
-  margin-left: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;

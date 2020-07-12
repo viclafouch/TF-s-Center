@@ -2,7 +2,7 @@ import React from 'react'
 import VideoListItem from './VideoListItem'
 import './video-list.scoped.scss'
 
-function VideoList({ videos, showCheckbox = false, entitiesSelected, onCheck }) {
+function VideoList({ videos, showCheckbox = false, entitiesSelected, onCheck, onRemove }) {
   const getCheckedType = video => {
     const entity = entitiesSelected.find(e => e.id === video.id)
     if (entity) return entity.type
@@ -16,6 +16,7 @@ function VideoList({ videos, showCheckbox = false, entitiesSelected, onCheck }) 
           video={video}
           key={video.uuid}
           onCheck={onCheck}
+          onRemove={onRemove}
           checkedType={showCheckbox ? getCheckedType(video) : null}
           showCheckbox={showCheckbox}
         />

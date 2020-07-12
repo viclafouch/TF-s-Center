@@ -5,7 +5,7 @@ import VideoList from '@deputy/components/VideoList/VideoList'
 import Modal from '@deputy/components/Modal/Modal'
 import { wait } from '@utils/index'
 import Report from '@deputy/components/Report/Report'
-import { getBrowserStorage } from '@utils/browser'
+import { getBrowserStorage, setBrowserStorage, sendMessageToBackground } from '@utils/browser'
 import Video from '@shared/models/Video.model'
 import './target.scoped.scss'
 
@@ -67,6 +67,17 @@ function Targets() {
     [videos]
   )
 
+  const handleRemove = useCallback(
+    id => {
+      const newVideos = [...videos].filter(v => v.id !== id)
+      setVideos(newVideos)
+      setEntitiesSelected(newVideos)
+      setBrowserStorage('local', { targets: newVideos })
+      sendMessageToBackground('update-nb-targets', { nbTargets: newVideos.length })
+    },
+    [videos]
+  )
+
   const handleRefresh = useCallback(() => {
     setEntitiesSelected([])
     fetchBrowserTargets()
@@ -98,7 +109,13 @@ function Targets() {
           <p>No target</p>
         ) : (
           <form ref={form} id="form-targets">
-            <VideoList videos={videos} showCheckbox entitiesSelected={entitiesSelected} onCheck={handleCheck} />
+            <VideoList
+              videos={videos}
+              showCheckbox
+              entitiesSelected={entitiesSelected}
+              onCheck={handleCheck}
+              onRemove={handleRemove}
+            />
           </form>
         )}
       </div>

@@ -1,6 +1,7 @@
 import React, { useRef, memo } from 'react'
 import { formatDistance } from 'date-fns'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes'
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash'
 import { faFlag } from '@fortawesome/free-solid-svg-icons/faFlag'
 import { faPlayCircle } from '@fortawesome/free-solid-svg-icons/faPlayCircle'
@@ -10,7 +11,7 @@ import Player from '../Player/Player'
 import Modal from '../Modal/Modal'
 import './video-list-item.scoped.scss'
 
-function VideoListItem({ video, showCheckbox = false, checkedType, onCheck }) {
+function VideoListItem({ video, showCheckbox = false, checkedType, onCheck, onRemove }) {
   const player = useRef(null)
   const thumbnail = video.thumbnail('default')
   const isRemoved = !!video.removedAt
@@ -25,6 +26,17 @@ function VideoListItem({ video, showCheckbox = false, checkedType, onCheck }) {
         data-id={video.id}
         className={`video-list-item ${isRemoved ? 'video-removed' : ''} ${isReviewed ? 'video-reviewed' : ''}`}
       >
+        {onRemove && (
+          <span
+            onClick={() => onRemove(video.id)}
+            title="Remove from list"
+            className="video-remove-from"
+            role="button"
+            aria-label="remove from list"
+          >
+            <FontAwesomeIcon icon={faTimes} size="1x" fixedWidth />
+          </span>
+        )}
         <div
           className="video-thumbnail"
           onClick={() => {
