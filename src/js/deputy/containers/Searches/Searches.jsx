@@ -127,7 +127,6 @@ function Searches() {
                 <th>#</th>
                 <th>Value</th>
                 <th>Template</th>
-                <th>AS</th>
                 <th />
               </tr>
             </thead>
@@ -158,7 +157,6 @@ function Searches() {
                       ? getTemplate(search.templateId).title
                       : ''}
                   </td>
-                  <td>{search.isEnableAutoSelect && <FontAwesomeIcon icon={faCheck} size="1x" fixedWidth />}</td>
                   <td>
                     <Link
                       to={{

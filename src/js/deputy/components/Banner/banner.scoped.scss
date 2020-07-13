@@ -1,0 +1,16 @@
+.banner {
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+  background-color: #ff2222;
+  padding: 5px;
+
+  a {
+    text-decoration: underline;
+    color: inherit;
+  }
+
+  svg {
+    margin-right: 5px;
+  }
+}

@@ -5,6 +5,7 @@ import Tools from '@deputy/components/Tools/Tools'
 import Loader from '@deputy/components/Loader/Loader'
 import useQuery from '@deputy/hooks/use-query'
 import './history.scoped.scss'
+import Banner from '@deputy/components/Banner/Banner'
 
 function History({ history }) {
   const query = useQuery()
@@ -89,6 +90,7 @@ function History({ history }) {
 
   return (
     <div className="history">
+      <Banner />
       <Tools isHistory onSubmit={handleSubmit} />
       <div
         className={`history-list-container ${isLoading && videos.length === 0 ? 'history-list-container-loading' : ''} ${
