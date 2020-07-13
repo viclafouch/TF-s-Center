@@ -54,3 +54,30 @@
     }
   }
 }
+
+.tools-targets {
+  &-title {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.dialog-targets-button {
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: default;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  background-color: #858585;
+  border: 0;
+  padding: 3px 5px;
+  outline: none;
+
+  & > img {
+    width: 13px;
+    height: 13px;
+    margin-left: 5px;
+    display: inline-block;
+  }
+}

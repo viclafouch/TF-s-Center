@@ -1,12 +1,9 @@
 .button {
   font: initial;
   display: inline-block;
-  height: 28px;
   border: solid 1px transparent;
-  padding: 0 10px;
   outline: 0;
   font-weight: 500;
-  font-size: 11px;
   text-decoration: none;
   white-space: nowrap;
   word-wrap: normal;
@@ -42,6 +39,24 @@
     }
   }
 
+  &.button-small {
+    height: 20px;
+    padding: 0 5px;
+    font-size: 9px;
+  }
+
+  &.button-medium {
+    height: 28px;
+    padding: 0 10px;
+    font-size: 11px;
+  }
+
+  &.button-big {
+    height: 36px;
+    padding: 0 15px;
+    font-size: 13px;
+  }
+
   &.button-blue {
     color: #ffffff;
     border-color: #167ac6;
@@ -66,6 +81,16 @@
     color: #ffffff;
     border-color: #b50707;
     background-color: #b50707;
+    &:disabled {
+      background-color: #b9b9b9;
+      color: #7d7d7d;
+    }
+  }
+
+  &.button-orange {
+    color: #ffffff;
+    border-color: #f17c1c;
+    background-color: #f17c1c;
     &:disabled {
       background-color: #b9b9b9;
       color: #7d7d7d;

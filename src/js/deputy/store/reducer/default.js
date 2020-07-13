@@ -6,13 +6,17 @@ import {
   REMOVE_TEMPLATE,
   EDIT_TEMPLATE,
   ADD_LAST_SEARCH,
-  FLAG_ENTITIES
+  FLAG_ENTITIES,
+  TOGGLE_ENABLE_TARGETS
 } from './constants'
 
 export default (state = {}, action) =>
   produce(state, draft => {
     let templateIndex, searchIndex
     switch (action.type) {
+      case TOGGLE_ENABLE_TARGETS:
+        draft.enableTargets = !state.enableTargets
+        break
       case ADD_SEARCH:
         draft.searches.push(action.payload.search)
         break

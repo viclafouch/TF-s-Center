@@ -33,6 +33,7 @@ const startDeputy = async () => {
       { key: 'templates', default: [], parser: templates => templates.map(t => new Template(t)) },
       { key: 'lastSearches', default: [] },
       { key: 'targets', default: [], parser: targets => targets.map(t => new Video(t)) },
+      { key: 'enableTargets', default: true },
       {
         key: 'lastReportedEntities',
         default: lastSevenDays.map(date => ({

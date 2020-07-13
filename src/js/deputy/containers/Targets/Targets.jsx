@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState, useRef } from 'react'
+import React, { useCallback, useEffect, useState, useRef, useContext } from 'react'
 import Tools from '@deputy/components/Tools/Tools'
 import Loader from '@deputy/components/Loader/Loader'
 import VideoList from '@deputy/components/VideoList/VideoList'
@@ -7,9 +7,11 @@ import { wait } from '@utils/index'
 import Report from '@deputy/components/Report/Report'
 import { getBrowserStorage, setBrowserStorage, sendMessageToBackground } from '@utils/browser'
 import Video from '@shared/models/Video.model'
+import { DefaultContext } from '@deputy/store/DefaultContext'
 import './target.scoped.scss'
 
 function Targets() {
+  const [{ enableTargets }, dispatch] = useContext(DefaultContext)
   const [videos, setVideos] = useState([])
   const [isError, setIsError] = useState(false)
   const [entitiesSelected, setEntitiesSelected] = useState([])
@@ -95,6 +97,8 @@ function Targets() {
         onFlag={() => modal.current.open()}
         canFlag={entitiesSelected.length > 0}
         handleSelectAll={handleSelectAll}
+        dispatch={dispatch}
+        enableTargets={enableTargets}
       />
       <div
         className={`targets-list-container ${isLoading ? 'targets-list-container-loading' : ''} ${
@@ -106,7 +110,7 @@ function Targets() {
         ) : isError ? (
           <p>An error occured</p>
         ) : videos.length === 0 ? (
-          <p>No target</p>
+          <p>{enableTargets ? 'No target' : 'The target feature is paused'}</p>
         ) : (
           <form ref={form} id="form-targets">
             <VideoList

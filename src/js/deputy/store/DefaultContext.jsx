@@ -12,9 +12,10 @@ function DefaultProvider({ children, initialState }) {
       searches: state.searches,
       templates: state.templates,
       lastReportedEntities: state.lastReportedEntities,
-      lastSearches: state.lastSearches
+      lastSearches: state.lastSearches,
+      enableTargets: state.enableTargets
     })
-  }, [state.searches, state.templates, state.lastReportedEntities, state.lastSearches])
+  }, [state.searches, state.templates, state.lastReportedEntities, state.lastSearches, state.enableTargets])
 
   useEffect(() => {
     setBrowserStorage('local', { targets: state.targets })

@@ -1,15 +1,23 @@
-import React, { useState, memo } from 'react'
+import React, { useState, memo, useRef, useCallback } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPause } from '@fortawesome/free-solid-svg-icons/faPause'
+import { faPlay } from '@fortawesome/free-solid-svg-icons/faPlay'
 import DatePicker from 'react-datepicker'
+import { toast } from 'react-toastify'
 import Button from '../Button/Button'
+import sheriffImg from '@img/sheriff.svg'
 import { getUnixFromDate, copyDate } from '@utils/date'
 import useQuery from '@deputy/hooks/use-query'
+import { TOGGLE_ENABLE_TARGETS } from '@deputy/store/reducer/constants'
+import Dialog from '../Dialog/Dialog'
 import 'react-datepicker/dist/react-datepicker.min.css'
 import './tools.scoped.scss'
 
 const defaultEndDate = new Date()
 const defaultStartDate = new Date(copyDate(defaultEndDate).setDate(defaultEndDate.getDate() - 7))
 
-function Tools(props) {
+function Tools({ dispatch, enableTargets, onSubmit, isHistory, isTargets, targets, canFlag, onFlag, handleSelectAll }) {
+  const dialogRef = useRef(null)
   const query = useQuery()
   const [rangeDate, setRangeDate] = useState(() => {
     const endTime = query.get('end_time')
@@ -20,18 +28,28 @@ function Tools(props) {
     }
   })
 
+  const updateEnableTargets = useCallback(async () => {
+    const isOk = await dialogRef.current.ask()
+    if (isOk) {
+      dispatch({
+        type: TOGGLE_ENABLE_TARGETS
+      })
+      toast.success(!enableTargets ? 'Feature reactivated!' : 'Feature desactivated')
+    }
+  }, [enableTargets, dispatch])
+
   const handleSubmit = e => {
     e.preventDefault()
-    if (props.isHistory) {
-      props.onSubmit({
+    if (isHistory) {
+      onSubmit({
         startTime: getUnixFromDate(rangeDate.startDate),
         endTime: getUnixFromDate(rangeDate.endDate)
       })
-    } else if (props.isTargets) {
-      props.onSubmit()
+    } else if (isTargets) {
+      onSubmit()
     } else {
       const form = new FormData(e.target)
-      props.onSubmit({
+      onSubmit({
         searchQuery: form.get('search-query'),
         filters: form.get('filters'),
         excludeFlaggedVideos: form.get('exclude_flagged_videos')
@@ -40,8 +58,29 @@ function Tools(props) {
   }
 
   return (
-    <div className={`tools ${props.isHistory ? 'tools-history' : 'tools-flagger'}`}>
-      {props.isHistory && (
+    <div className={`tools ${isHistory ? 'tools-history' : 'tools-flagger'}`}>
+      {isTargets && (
+        <Dialog ref={dialogRef}>
+          {enableTargets ? (
+            <>
+              Are you sure to pause the target feature ? The button{' '}
+              <button className="dialog-targets-button" tabIndex="-1">
+                Add <img src={sheriffImg} />{' '}
+              </button>{' '}
+              will not appear on youtube.com until you reactivate it.
+            </>
+          ) : (
+            <>
+              Are you sure to reactivate the target feature ? The button{' '}
+              <button className="dialog-targets-button" tabIndex="-1">
+                Add <img src={sheriffImg} />{' '}
+              </button>{' '}
+              will appear on youtube.com until you desactivate it.
+            </>
+          )}
+        </Dialog>
+      )}
+      {isHistory && (
         <form className="tools-form-filter" onSubmit={handleSubmit}>
           <div className="tools-select-time">
             View flagging history from to
@@ -85,27 +124,32 @@ function Tools(props) {
           </Button>
         </form>
       )}
-      {props.isTargets && (
+      {isTargets && (
         <div className="tools-targets">
           <div>
-            <h2>Targets ({props.targets})</h2>
+            <div className="tools-targets-title">
+              <h2>Targets ({targets})</h2>
+              <Button color={enableTargets ? 'orange' : 'green'} size="small" onClick={updateEnableTargets}>
+                <FontAwesomeIcon icon={enableTargets ? faPause : faPlay} size="1x" fixedWidth />
+              </Button>
+            </div>
             <div>
               <Button color="blue" type="button" onClick={handleSubmit}>
                 Refresh
               </Button>
-              <Button color="blue" type="button" onClick={() => props.handleSelectAll('video')}>
+              <Button color="blue" type="button" onClick={() => handleSelectAll('video')}>
                 Select all videos
               </Button>
-              <Button color="blue" type="button" onClick={() => props.handleSelectAll('channel')}>
+              <Button color="blue" type="button" onClick={() => handleSelectAll('channel')}>
                 Select all channels
               </Button>
               <Button
                 color="blue"
                 type="button"
-                disabled={!props.canFlag}
+                disabled={!canFlag}
                 onClick={e => {
                   e.preventDefault()
-                  props.onFlag()
+                  onFlag()
                 }}
               >
                 Flag
@@ -114,7 +158,7 @@ function Tools(props) {
           </div>
         </div>
       )}
-      {!props.isHistory && !props.isTargets && (
+      {!isHistory && !isTargets && (
         <form className="tools-form-filter" onSubmit={handleSubmit}>
           <div className="tools-filter">
             <div className="tools-field">
@@ -155,19 +199,19 @@ function Tools(props) {
             <Button color="blue" type="submit">
               Search
             </Button>
-            <Button color="blue" type="button" onClick={() => props.handleSelectAll('video')}>
+            <Button color="blue" type="button" onClick={() => handleSelectAll('video')}>
               Select all videos
             </Button>
-            <Button color="blue" type="button" onClick={() => props.handleSelectAll('channel')}>
+            <Button color="blue" type="button" onClick={() => handleSelectAll('channel')}>
               Select all channels
             </Button>
             <Button
               color="blue"
               type="button"
-              disabled={!props.canFlag}
+              disabled={!canFlag}
               onClick={e => {
                 e.preventDefault()
-                props.onFlag()
+                onFlag()
               }}
             >
               Flag

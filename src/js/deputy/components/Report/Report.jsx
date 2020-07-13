@@ -11,7 +11,7 @@ import { getBrowserStorage } from '@utils/browser'
 import Video from '@shared/models/Video.model'
 import './report.scoped.scss'
 
-function Report({ entities = [], modalRef, onReport, searchId }) {
+function Report({ entities = [], modalref, onReport, searchId }) {
   const [{ user }] = useContext(DomContext)
   const [{ templates, getTemplateBySearch }, dispatch] = useContext(DefaultContext)
   const [isLoading, setIsLoading] = useState(false)
@@ -54,7 +54,7 @@ function Report({ entities = [], modalRef, onReport, searchId }) {
 
       try {
         setIsLoading(true)
-        if (modalRef) modalRef.current.blockClose()
+        if (modalref) modalref.current.blockClose()
         // await reportEntities(formData)
         await wait(7000)
 
@@ -94,16 +94,16 @@ function Report({ entities = [], modalRef, onReport, searchId }) {
 
         onReport()
         setIsLoading(false)
-        modalRef.current.unBlockClose()
-        if (modalRef) modalRef.current.close({ force: true })
+        modalref.current.unBlockClose()
+        if (modalref) modalref.current.close({ force: true })
       } catch (error) {
         toast.error('An unknown error has occurred')
         console.log(error)
         setIsLoading(false)
-        modalRef.current.unBlockClose()
+        modalref.current.unBlockClose()
       }
     },
-    [entities, user.sessionToken, modalRef, dispatch, onReport, values]
+    [entities, user.sessionToken, modalref, dispatch, onReport, values]
   )
 
   const handleSelectTemplate = useCallback(

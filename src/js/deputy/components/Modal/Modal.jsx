@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes'
 import './modal.scoped.scss'
 
-export function Modal({ children, fade = false, defaultOpened = false, ...rest }, ref) {
+export function Modal({ children, fade = false, defaultOpened = false, onClose, ...rest }, ref) {
   const [isOpen, setIsOpen] = useState(defaultOpened)
   const [isBlock, setIsBlock] = useState(false)
 
@@ -34,10 +34,11 @@ export function Modal({ children, fade = false, defaultOpened = false, ...rest }
 
   useEffect(() => {
     if (isOpen) document.addEventListener('keydown', handleEscape, false)
+    else if (onClose) onClose()
     return () => {
       document.removeEventListener('keydown', handleEscape, false)
     }
-  }, [handleEscape, isOpen])
+  }, [handleEscape, isOpen, onClose])
 
   return createPortal(
     isOpen ? (
@@ -46,7 +47,7 @@ export function Modal({ children, fade = false, defaultOpened = false, ...rest }
         <span role="button" className="modal-close" aria-label="close" onClick={() => close(false)}>
           <FontAwesomeIcon icon={faTimes} size="1x" fixedWidth />
         </span>
-        <div className="modal-body">{React.cloneElement(children, { modalRef: ref })}</div>
+        <div className="modal-body">{React.cloneElement(children, { modalref: ref })}</div>
       </div>
     ) : null,
     document.getElementById('root-modal')

@@ -145,8 +145,6 @@ const watchingDOM = () => {
       return previousValue
     }, [])
 
-  console.log(selectorItems)
-
   selectorItems.forEach(selectorItem => {
     const { item, data, name, root } = selectorItem
     let id, el
@@ -220,5 +218,14 @@ const watchingDOM = () => {
 }
 
 window.addEventListener('load', function () {
-  createObserver()
+  getBrowserStorage('local', [
+    {
+      key: 'enableTargets',
+      default: true
+    }
+  ]).then(({ enableTargets }) => {
+    if (enableTargets) {
+      createObserver()
+    }
+  })
 })
