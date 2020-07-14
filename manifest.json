@@ -16,7 +16,7 @@
     "default_icon": "icon16.png",
     "default_title": "TF Center"
   },
-  "permissions": ["activeTab", "tabs", "storage"],
+  "permissions": ["tabs", "storage"],
   "content_scripts": [
     {
       "matches": ["https://www.youtube.com/*"],

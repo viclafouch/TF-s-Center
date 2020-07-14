@@ -1,11 +1,11 @@
 {
-  "name": "tfs-center",
+  "name": "tf-center",
   "description": "A Chrome extension that remakes a new design for the TF tools.",
-  "version": "1.5.0",
+  "version": "1.50.0",
   "homepage": "https://chrome.google.com/webstore/detail/tfs-center/meicobcngeebgonpcpnmajigmikcicgn",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/viclafouch/TFs-Center.git"
+    "url": "git+https://github.com/viclafouch/TF-Center.git"
   },
   "keywords": [
     "javascript",
@@ -16,7 +16,7 @@
   "author": "Victor de la Fouchardiere",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/viclafouch/TFs-Center/issues"
+    "url": "https://github.com/viclafouch/TF-Center/issues"
   },
   "scripts": {
     "dev": "webpack -d",
