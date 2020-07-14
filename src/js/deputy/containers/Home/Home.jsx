@@ -79,7 +79,7 @@ const bestTemplatesData = templates => {
 }
 
 function Home() {
-  const [{ templates, searches, lastReportedEntities, lastSearches }] = useContext(DefaultContext)
+  const [{ templates, searches, lastReportedEntities, lastSearches, targets }] = useContext(DefaultContext)
   const [{ analytics }] = useContext(DomContext)
   const lastReported = useMemo(() => lastSevenData(lastReportedEntities), [lastReportedEntities])
   const bestTemplates = useMemo(() => bestTemplatesData(templates), [templates])
@@ -164,7 +164,7 @@ function Home() {
               <FontAwesomeIcon icon={faBullseye} size="2x" fixedWidth />
             </div>
             <h4 className="title-box">
-              <span className="number-box">67</span> Targets
+              <span className="number-box">{targets.length}</span> {targets.length > 1 ? 'Targets' : 'Target'}
             </h4>
           </div>
           <div className="box-material box-summary-numbers">

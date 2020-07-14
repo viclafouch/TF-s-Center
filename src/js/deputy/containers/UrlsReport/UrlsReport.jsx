@@ -9,6 +9,8 @@ import { randomId } from '@utils/index'
 import { DomContext } from '@deputy/store/DomContext'
 import { reportUrls } from '@deputy/helpers/api'
 import './urls-report.scoped.scss'
+import { DefaultContext } from '@deputy/store/DefaultContext'
+import { FLAG_ENTITIES } from '@deputy/store/reducer/constants'
 
 const checkValidation = infos => {
   if (infos.type === 'video') {
@@ -68,6 +70,7 @@ const initialState = {
 
 function UrlsReport() {
   const [{ user }] = useContext(DomContext)
+  const [, dispatch] = useContext(DefaultContext)
   const [isLoading, setIsLoading] = useState(false)
   const [infos, setInfos] = useImmer(initialState)
   const isFormValid = useMemo(() => checkValidation(infos), [infos])
@@ -127,18 +130,26 @@ function UrlsReport() {
           formData.append('reason_entities', issue)
         }
       }
+
+      const reportLinks = infos.urls.filter(link => link.value.trim() !== '')
+
       formData.set(
         'report_links',
-        infos.urls.reduce((previousValue, currentValue) => {
-          if (currentValue.value.trim() !== '') {
-            previousValue = previousValue + '\n' + currentValue.value
-            return previousValue
-          }
+        reportLinks.reduce((previousValue, currentValue) => {
+          previousValue = previousValue + '\n' + currentValue.value
+          return previousValue
         }, '')
       )
-      // const { success, error } = await reportUrls(formData)
-      // if (success) toast.success(success)
-      // if (error) toast.error(error)
+      const { success, error } = await reportUrls(formData)
+      if (success) toast.success(success)
+      if (error) toast.error(error)
+      dispatch({
+        type: FLAG_ENTITIES,
+        payload: {
+          nbVideos: infos.type === 'video' ? reportLinks.length : 0,
+          nbChannels: infos.type === 'channel' ? reportLinks.length : 0
+        }
+      })
       setInfos(draft => {
         draft = initialState
         return draft
@@ -307,7 +318,9 @@ function UrlsReport() {
                       autoComplete="off"
                       value={value}
                       id={id}
-                      placeholder="https://www.youtube.com/watch?v="
+                      placeholder={
+                        infos.type === 'video' ? 'https://www.youtube.com/watch?v=' : 'https://www.youtube.com/channel/'
+                      }
                       onChange={updateUrl}
                     />
                     {index > 0 && (

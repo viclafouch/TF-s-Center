@@ -55,8 +55,7 @@ function Report({ entities = [], modalref, onReport, searchId }) {
       try {
         setIsLoading(true)
         if (modalref) modalref.current.blockClose()
-        // await reportEntities(formData)
-        await wait(7000)
+        await reportEntities(formData)
 
         const { targets } = await getBrowserStorage('local', [
           {

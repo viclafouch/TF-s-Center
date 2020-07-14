@@ -1,5 +1,7 @@
+/* eslint-disable no-useless-escape */
 const path = require('path')
 const webpack = require('webpack')
+const TerserPlugin = require('terser-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
@@ -20,6 +22,20 @@ module.exports = (env, argv, IS_DEV = argv.mode !== 'production') => {
       deputy: path.join(__dirname, 'src', 'js', 'deputy', 'index.js'),
       target: path.join(__dirname, 'src', 'js', 'target', 'index.js'),
       background: path.join(__dirname, 'src', 'js', 'background.js')
+    },
+    optimization: {
+      minimize: !IS_DEV,
+      minimizer: [
+        new TerserPlugin({
+          parallel: true,
+          terserOptions: {
+            ecma: 6,
+            output: {
+              ascii_only: true
+            }
+          }
+        })
+      ]
     },
     module: {
       rules: [
@@ -63,6 +79,7 @@ module.exports = (env, argv, IS_DEV = argv.mode !== 'production') => {
     plugins: [
       new FixStyleOnlyEntriesPlugin(),
       new CleanWebpackPlugin(),
+      new webpack.ContextReplacementPlugin(/date\-fns[\/\\]/, new RegExp(`[/\\\\\](${['en-US'].join('|')})[/\\\\\]index\.js$`)),
       new CopyPlugin({
         patterns: [
           {

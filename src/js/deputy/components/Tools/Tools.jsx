@@ -34,7 +34,7 @@ function Tools({ dispatch, enableTargets, onSubmit, isHistory, isTargets, target
       dispatch({
         type: TOGGLE_ENABLE_TARGETS
       })
-      toast.success(!enableTargets ? 'Feature reactivated!' : 'Feature desactivated')
+      toast.success(!enableTargets ? 'Functionality enabled' : 'Functionality disabled')
     }
   }, [enableTargets, dispatch])
 

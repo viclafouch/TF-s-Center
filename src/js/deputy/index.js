@@ -12,10 +12,6 @@ import { randomId } from '@utils/index'
 import { lastSevenDays } from '@utils/date'
 import '@scss/deputy.scss'
 
-function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max))
-}
-
 const startDeputy = async () => {
   try {
     const fontLink = document.createElement('link')
@@ -38,8 +34,8 @@ const startDeputy = async () => {
         key: 'lastReportedEntities',
         default: lastSevenDays.map(date => ({
           date: formatISO(date),
-          videos: getRandomInt(100),
-          channels: getRandomInt(100),
+          videos: 0,
+          channels: 0,
           id: randomId()
         })),
         parser: lastReported =>

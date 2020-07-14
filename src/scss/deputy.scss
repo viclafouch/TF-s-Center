@@ -139,7 +139,12 @@ table.table-material {
 select.form-element {
 	-moz-appearance: none;
 	-webkit-appearance: none;
-	appearance: none;
+  appearance: none;
+
+  & > option {
+    color: var(--input-text);
+    background-color: var(--background-container);
+  }
 }
 
 .input-datepicker {
