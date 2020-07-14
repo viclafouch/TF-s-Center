@@ -104,14 +104,18 @@ function Templates() {
                   <div className="template-item-top">
                     <h2 className="template-item-title">{template.title}</h2>
                     <div>
-                      <div className="template-item-reasons">
-                        <FontAwesomeIcon icon={faVideo} />
-                        <span className="template-item-reason">{template.videosLabel}</span>
-                      </div>
-                      <div className="template-item-reasons">
-                        <FontAwesomeIcon icon={faUser} />
-                        <span className="template-item-reason">{template.channelsLabel}</span>
-                      </div>
+                      {template.videosLabel && (
+                        <div className="template-item-reasons">
+                          <FontAwesomeIcon icon={faVideo} />
+                          <span className="template-item-reason">{template.videosLabel}</span>
+                        </div>
+                      )}
+                      {template.channelsLabel && (
+                        <div className="template-item-reasons">
+                          <FontAwesomeIcon icon={faUser} />
+                          <span className="template-item-reason">{template.channelsLabel}</span>
+                        </div>
+                      )}
                     </div>
                   </div>
                   <p className="template-item-description">{template.description}</p>

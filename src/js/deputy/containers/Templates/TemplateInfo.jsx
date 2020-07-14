@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { formatRelative } from 'date-fns'
 import { toast } from 'react-toastify'
-import { DefaultContext } from '@deputy/store/DefaultContext'
 import { Redirect } from 'react-router'
+import { DefaultContext } from '@deputy/store/DefaultContext'
 import { videoLabels, channelLabels } from '@/js/config/config'
 import { EDIT_TEMPLATE, REMOVE_TEMPLATE } from '@deputy/store/reducer/constants'
 import Template from '@shared/models/Template.model'
@@ -35,6 +35,7 @@ function TemplateInfo(props) {
       }
     })
     toast.success('The template has been updated!')
+    props.history.push('/deputy?context=templates')
   }
 
   if (!templates.some(t => t.id == props.match.params.id)) {

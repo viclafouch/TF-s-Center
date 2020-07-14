@@ -95,6 +95,9 @@
 
           .template-item-reasons {
             text-align: right;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
             color: var(--color-notes);
             svg {
               margin-right: 5px;

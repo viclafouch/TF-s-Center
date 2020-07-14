@@ -26,7 +26,7 @@ function Report({ entities = [], modalref, onReport, searchId }) {
     channelsReason: templateBySearchId ? templateBySearchId.channelsReason : '',
     comment: templateBySearchId ? templateBySearchId.description : '',
     templateId: templateBySearchId ? templateBySearchId.id : null,
-    searchId
+    searchId: parseInt(searchId)
   })
 
   const handleSubmit = useCallback(

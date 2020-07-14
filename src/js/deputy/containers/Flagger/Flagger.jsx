@@ -5,7 +5,6 @@ import useQuery from '@deputy/hooks/use-query'
 import Loader from '@deputy/components/Loader/Loader'
 import VideoList from '@deputy/components/VideoList/VideoList'
 import Modal from '@deputy/components/Modal/Modal'
-import { serializeForm } from '@utils/index'
 import Report from '@deputy/components/Report/Report'
 import searchImg from '@/img/search.svg'
 import { DefaultContext } from '@deputy/store/DefaultContext'
@@ -140,6 +139,7 @@ function Flagger({ history }) {
         onFlag={() => modal.current.open()}
         canFlag={entitiesSelected.length > 0}
         handleSelectAll={handleSelectAll}
+        nbSelected={entitiesSelected.length}
       />
       <div
         className={`flagger-list-container ${isLoading && videos.length === 0 ? 'flagger-list-container-loading' : ''} ${

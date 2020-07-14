@@ -2,6 +2,7 @@ import React, { useContext, useMemo } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Line, Doughnut } from 'react-chartjs-2'
 import { Link } from 'react-router-dom'
+import { format, formatDistance } from 'date-fns'
 import { faPaste } from '@fortawesome/free-solid-svg-icons/faPaste'
 import { faSearchengin } from '@fortawesome/free-brands-svg-icons/faSearchengin'
 import { faGithub } from '@fortawesome/free-brands-svg-icons/faGithub'
@@ -10,7 +11,6 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck'
 import { faFlag } from '@fortawesome/free-solid-svg-icons/faFlag'
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons/faExternalLinkAlt'
 import { DefaultContext } from '@deputy/store/DefaultContext'
-import { format, formatDistance } from 'date-fns'
 import Button from '@deputy/components/Button/Button'
 import { DomContext } from '@deputy/store/DomContext'
 import './home.scoped.scss'
@@ -188,7 +188,7 @@ function Home() {
               <FontAwesomeIcon icon={faFlag} size="2x" fixedWidth />
             </div>
             <h4 className="title-box">
-              <span className="number-box">{analytics.nbActioned}</span> Videos removed
+              <span className="number-box">{analytics.nbActioned.toLocaleString()}</span> Videos removed
             </h4>
           </div>
         </div>

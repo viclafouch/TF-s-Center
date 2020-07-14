@@ -111,6 +111,7 @@ function Targets() {
         canFlag={targets.selected.length > 0}
         handleSelectAll={handleSelectAll}
         dispatch={dispatch}
+        nbSelected={targets.selected.length}
         enableTargets={enableTargets}
       />
       <div

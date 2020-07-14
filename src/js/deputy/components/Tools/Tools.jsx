@@ -16,7 +16,18 @@ import './tools.scoped.scss'
 const defaultEndDate = new Date()
 const defaultStartDate = new Date(copyDate(defaultEndDate).setDate(defaultEndDate.getDate() - 7))
 
-function Tools({ dispatch, enableTargets, onSubmit, isHistory, isTargets, targets, canFlag, onFlag, handleSelectAll }) {
+function Tools({
+  dispatch,
+  enableTargets,
+  onSubmit,
+  isHistory,
+  isTargets,
+  targets,
+  canFlag,
+  onFlag,
+  handleSelectAll,
+  nbSelected
+}) {
   const dialogRef = useRef(null)
   const query = useQuery()
   const [rangeDate, setRangeDate] = useState(() => {
@@ -154,7 +165,7 @@ function Tools({ dispatch, enableTargets, onSubmit, isHistory, isTargets, target
                   onFlag()
                 }}
               >
-                Flag
+                Flag {nbSelected > 0 && `(${nbSelected})`}
               </Button>
             </div>
           </div>
@@ -216,7 +227,7 @@ function Tools({ dispatch, enableTargets, onSubmit, isHistory, isTargets, target
                 onFlag()
               }}
             >
-              Flag
+              Flag {nbSelected > 0 && `(${nbSelected})`}
             </Button>
           </div>
         </form>
