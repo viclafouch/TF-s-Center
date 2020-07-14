@@ -3,6 +3,7 @@ import { Doughnut } from 'react-chartjs-2'
 import { DomContext } from '@deputy/store/DomContext'
 import { DefaultContext } from '@deputy/store/DefaultContext'
 import './analytics.scoped.scss'
+import { shuffle } from '@utils/index'
 
 export const colors = [
   'rgb(147, 52, 230)',
@@ -25,7 +26,7 @@ const getTemplatesData = templates => ({
   datasets: [
     {
       data: templates.map(template => template.nbVideosFlagged + template.nbChannelsFlagged),
-      backgroundColor: colors
+      backgroundColor: shuffle(colors)
     }
   ]
 })
@@ -35,7 +36,7 @@ const getSearchesData = searches => ({
   datasets: [
     {
       data: searches.map(template => template.nbVideosFlagged + template.nbChannelsFlagged),
-      backgroundColor: colors
+      backgroundColor: shuffle(colors)
     }
   ]
 })

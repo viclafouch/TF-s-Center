@@ -112,7 +112,6 @@ module.exports = (env, argv, IS_DEV = argv.mode !== 'production') => {
         'process.env.NODE_ENV': JSON.stringify(argv.mode),
         homepage_url: process.env.npm_package_homepage
       }),
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
       new MiniCssExtractPlugin({
         filename: '[name].css'
       }),

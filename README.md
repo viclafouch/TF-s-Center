@@ -1,11 +1,11 @@
 # TF's Center (v1.5)
 
-Welcome to the repository of this fabulous extension : __TF's Center__ !
-If you're not a YouTube Trusted Flagger, this extension is useless on your browser.
+Welcome to the repository of this fabulous extension : __TF Center__ !
+If you're not a YouTube Trusted Flagger, this extension is not very useful for you.
 
 ![YouTube Deputy](https://pbs.twimg.com/media/DdJoNEYW4AAdRkk.jpg)
 
-Only available on [Google Chrome](http://www.google.fr/chrome), this extension is only for YouTube Trusted Flagger, so it's private.
+Only available on [Google Chrome](http://www.google.fr/chrome), this extension is only for YouTube Trusted Flagger.
 
 ## I don't know what is the Trusted Flagger Program, what is it ?
 
