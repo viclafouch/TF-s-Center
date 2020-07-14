@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState, useRef, useContext } from 'react'
+import { useImmer } from 'use-immer'
 import Tools from '@deputy/components/Tools/Tools'
 import Loader from '@deputy/components/Loader/Loader'
 import VideoList from '@deputy/components/VideoList/VideoList'
@@ -12,9 +13,11 @@ import './target.scoped.scss'
 
 function Targets() {
   const [{ enableTargets }, dispatch] = useContext(DefaultContext)
-  const [videos, setVideos] = useState([])
+  const [targets, setTargets] = useImmer({
+    list: [],
+    selected: []
+  })
   const [isError, setIsError] = useState(false)
-  const [entitiesSelected, setEntitiesSelected] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const form = useRef(null)
   const modal = useRef(null)
@@ -26,21 +29,24 @@ function Targets() {
       setIsError(false)
       await wait(300)
       if (unmounted.current) return
-      const videos = await getBrowserStorage('local', [
+      const { targets } = await getBrowserStorage('local', [
         {
           key: 'targets',
           default: [],
           parser: videos => videos.map(v => new Video(v))
         }
-      ]).then(({ targets }) => targets)
-      setVideos(videos)
+      ])
+      setTargets(draft => {
+        draft.list = targets
+        draft.selected = []
+      })
     } catch (error) {
       setIsError(true)
       console.warn(error)
     } finally {
       if (!unmounted.current) setIsLoading(false)
     }
-  }, [])
+  }, [setTargets])
 
   useEffect(() => {
     fetchBrowserTargets()
@@ -49,74 +55,81 @@ function Targets() {
     }
   }, [fetchBrowserTargets])
 
-  const handleCheck = useCallback(({ id, type }) => {
-    setEntitiesSelected(prevState => {
-      const entities = prevState.filter(e => e.id !== id)
-      if (type) entities.push({ type, id })
-      return entities
-    })
-  }, [])
+  const handleCheck = useCallback(
+    ({ id, type }) => {
+      setTargets(draft => {
+        draft.selected = draft.selected.filter(s => s.id !== id)
+        if (type) draft.selected.push({ type, id })
+      })
+    },
+    [setTargets]
+  )
 
   const handleSelectAll = useCallback(
     type => {
-      setEntitiesSelected(
-        videos.map(v => ({
+      setTargets(draft => {
+        draft.selected = draft.list.map(v => ({
           id: v.id,
           type
         }))
-      )
+      })
     },
-    [videos]
+    [setTargets]
   )
 
   const handleRemove = useCallback(
     id => {
-      const newVideos = [...videos].filter(v => v.id !== id)
-      setVideos(newVideos)
-      setEntitiesSelected(newVideos)
-      setBrowserStorage('local', { targets: newVideos })
-      sendMessageToBackground('update-nb-targets', { nbTargets: newVideos.length })
+      const list = [...targets.list].filter(v => v.id !== id)
+      setTargets(draft => {
+        draft.list = list
+        draft.selected = draft.selected.filter(s => s.id !== id)
+      })
+      setBrowserStorage('local', { targets: list })
+      sendMessageToBackground('update-nb-targets', { nbTargets: list.length })
     },
-    [videos]
+    [setTargets, targets.list]
   )
 
   const handleRefresh = useCallback(() => {
-    setEntitiesSelected([])
+    setTargets(draft => {
+      draft.list = []
+      draft.selected = []
+    })
     fetchBrowserTargets()
-  }, [fetchBrowserTargets])
+  }, [fetchBrowserTargets, setTargets])
 
   return (
     <div className="targets">
       <Modal ref={modal} fade>
-        <Report entities={entitiesSelected} onReport={handleRefresh} />
+        <Report entities={targets.selected} onReport={handleRefresh} />
       </Modal>
       <Tools
         isTargets
         onSubmit={handleRefresh}
-        targets={videos.length}
+        targets={targets.list.length}
         onFlag={() => modal.current.open()}
-        canFlag={entitiesSelected.length > 0}
+        canFlag={targets.selected.length > 0}
         handleSelectAll={handleSelectAll}
         dispatch={dispatch}
         enableTargets={enableTargets}
       />
       <div
         className={`targets-list-container ${isLoading ? 'targets-list-container-loading' : ''} ${
-          !isLoading && videos.length === 0 ? 'targets-list-container-empty' : ''
+          !isLoading && targets.list.length === 0 ? 'targets-list-container-empty' : ''
         }`}
       >
         {isLoading ? (
           <Loader />
         ) : isError ? (
           <p>An error occured</p>
-        ) : videos.length === 0 ? (
+        ) : targets.list.length === 0 ? (
           <p>{enableTargets ? 'No target' : 'The target feature is paused'}</p>
         ) : (
           <form ref={form} id="form-targets">
             <VideoList
-              videos={videos}
+              videos={targets.list}
               showCheckbox
-              entitiesSelected={entitiesSelected}
+              entitiesSelected={targets.selected}
               onCheck={handleCheck}
               onRemove={handleRemove}
             />
