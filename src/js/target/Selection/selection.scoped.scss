@@ -22,6 +22,12 @@
   }
 
   &[data-name="watch-list"] {
+    font-family: inherit;
+    color: var(--yt-spec-text-primary);
+  }
+
+  &[data-name="videos-playlist"] {
+    font-family: inherit;
     color: var(--yt-spec-text-primary);
   }
 

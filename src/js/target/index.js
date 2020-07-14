@@ -95,7 +95,7 @@ const selectors = [
     data: {
       title: 'h3 #video-title',
       videoUrl: 'a#thumbnail',
-      channelName: '#metadata #channel-name',
+      channelName: '#metadata #channel-name #text-container',
       time: '#overlays > ytd-thumbnail-overlay-time-status-renderer',
       nbViews: '#metadata > #metadata-line > span.ytd-video-meta-block:first-child',
       createdAt: '#metadata > #metadata-line > span.ytd-video-meta-block + span.ytd-video-meta-block'
@@ -186,7 +186,7 @@ const watchingDOM = () => {
       url.pathname = url.pathname.replace('/search', '')
       video.channel.url = url.toString()
 
-      const name = document.querySelector('#inner-header-container #channel-name').textContent
+      const name = document.querySelector('#inner-header-container #channel-name #text-container').textContent.trim()
       video.channel.name = name
     }
 

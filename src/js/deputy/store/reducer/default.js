@@ -42,7 +42,6 @@ export default (state = {}, action) =>
             value: action.payload.lastSearchValue
           }
         ]
-
         draft.lastSearches = lastSearchValue.concat(draft.lastSearches).reduce((previousValue, currentValue) => {
           if (!previousValue.some(s => s.value === currentValue.value) && previousValue.length < 5) {
             previousValue.push(currentValue)
@@ -54,18 +53,21 @@ export default (state = {}, action) =>
         const { nbChannels, nbVideos, searchId, templateId, newTargets } = action.payload
         draft.lastReportedEntities[draft.lastReportedEntities.length - 1].videos += nbVideos
         draft.lastReportedEntities[draft.lastReportedEntities.length - 1].channels += nbChannels
-        templateIndex = draft.templates.findIndex(t => t.id === templateId)
-        searchIndex = draft.searches.findIndex(s => s.id === searchId)
-        if (templateIndex !== -1) {
-          draft.templates[templateIndex].nbVideosFlagged += nbVideos
-          draft.templates[templateIndex].nbChannelsFlagged += nbChannels
+        if (searchId) {
+          searchIndex = draft.searches.findIndex(s => s.id === searchId)
+          if (searchIndex !== -1) {
+            draft.searches[searchIndex].nbVideosFlagged += nbVideos
+            draft.searches[searchIndex].nbChannelsFlagged += nbChannels
+          }
         }
-        if (searchIndex !== -1) {
-          draft.searches[searchIndex].nbVideosFlagged += nbVideos
-          draft.searches[searchIndex].nbChannelsFlagged += nbChannels
+        if (templateId) {
+          templateIndex = draft.templates.findIndex(t => t.id === templateId)
+          if (templateIndex !== -1) {
+            draft.templates[templateIndex].nbVideosFlagged += nbVideos
+            draft.templates[templateIndex].nbChannelsFlagged += nbChannels
+          }
         }
-
-        draft.targets = newTargets
+        if (newTargets) draft.targets = newTargets
         break
       default:
         break

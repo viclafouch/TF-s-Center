@@ -80,8 +80,12 @@ function VideoListItem({ video, showCheckbox = false, checkedType, onCheck, onRe
               )}
               {!video.channel.url && <span className="video-channel">{video.channel.name}</span>}
 
-              {' | '}
-              <span className="video-created">{video.createdAt}</span>
+              {video.createdAt && (
+                <>
+                  {' | '}
+                  <span className="video-created">{video.createdAt}</span>
+                </>
+              )}
 
               {video.nbViews && (
                 <>

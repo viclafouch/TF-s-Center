@@ -49,11 +49,13 @@ function Tools({ dispatch, enableTargets, onSubmit, isHistory, isTargets, target
       onSubmit()
     } else {
       const form = new FormData(e.target)
-      onSubmit({
-        searchQuery: form.get('search-query'),
-        filters: form.get('filters'),
-        excludeFlaggedVideos: form.get('exclude_flagged_videos')
-      })
+      if (form.get('search-query')) {
+        onSubmit({
+          searchQuery: form.get('search-query'),
+          filters: form.get('filters'),
+          excludeFlaggedVideos: form.get('exclude_flagged_videos')
+        })
+      }
     }
   }
 
