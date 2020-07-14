@@ -1,0 +1,82 @@
+.urls-report {
+  padding: var(--gap);
+
+  form fieldset {
+    margin-top: 20px;
+    padding: 20px 18px 17px 18px;
+
+    p {
+      padding-top: 1.5em;
+      padding-bottom: 1em;
+    }
+  }
+
+  button {
+    float: right;
+    margin-top: 20px;
+  }
+}
+
+.fieldset-video,
+.fieldset-channel {
+  p:first-of-type {
+    padding-top: 0;
+  }
+}
+
+.list-input-url {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .input-wrapper-url {
+    position: relative;
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  input {
+    width: 19.5rem;
+  }
+
+  span.remove-url {
+    position: absolute;
+    z-index: 2;
+    padding: 5px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, .38);
+    font-size: 1.1em;
+    right: .75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+  }
+}
+
+a.add-additionnal {
+  display: inline-block;
+  margin-top: 5px;
+  text-decoration: none;
+}
+
+.comment-textarea {
+  resize: none;
+  border: 1px solid rgba(255, 255, 255, .38);
+  box-sizing: border-box;
+  width: 100%;
+  height: 126px;
+  padding: 12px 12px 32px;
+  border-radius: 2px;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  color: #f0f0f0;
+  background-color: transparent;
+  font-family: 'YouTube Noto', Roboto, arial, sans-serif;
+  font-size: 12px;
+  outline: none;
+
+  &:focus {
+    border-color: #ffffff;
+  }
+}

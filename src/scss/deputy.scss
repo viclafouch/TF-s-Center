@@ -22,7 +22,7 @@ html {
 }
 
 a {
-  color: #15c;
+  color: #8ab4f8;
 }
 
 p {
@@ -123,16 +123,23 @@ table.table-material {
   height: 100%;
   color: var(--input-text);
   background-color: transparent;
-  padding: 2px 5px;
   outline: none;
+  font-size: 0.875rem;
   font-family: 'YouTube Noto', Roboto, arial, sans-serif;
   transition: border-color 0.3s ease 0s;
-  border: 0;
-  border-bottom: 1px solid var(--input-border);
+  border: .0625rem solid rgba(255, 255, 255, .38);
+  padding: .75rem 1rem;
+  border-radius: 0.25em;
+
+  &:focus {
+    border-color: #ffffff;
+  }
 }
 
 select.form-element {
-  padding-left: 0;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
 }
 
 .input-datepicker {
@@ -176,19 +183,102 @@ main > div {
 }
 
 .Toastify__toast-container {
-  border-radius: 3px!important;
+  border-radius: 3px !important;
 }
 
 .Toastify__toast {
-  min-height: 50px!important;
+  min-height: 50px !important;
 }
 
 .Toastify__toast--success {
-  background-color: green!important;
+  background-color: green !important;
 }
 
 .note {
   font-size: 11px;
   color: var(--color-notes);
   font-family: 'Roboto', 'Noto', sans-serif;
+}
+
+.report-radio-labdio {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 0.875rem;
+
+  .report-radio {
+    height: 20px;
+    width: 20px;
+    display: block;
+    position: relative;
+    border-radius: 50%;
+    margin-right: 12px;
+    border: 2px solid rgba(255, 255, 255, .38);
+
+    .report-radio-input {
+      position: absolute;
+      width: 0;
+      height: 0;
+    }
+
+    .report-radio-element {
+      transform: translate(-50%, -50%) scale(0);
+      height: inherit;
+      width: inherit;
+      background-color: #8ab4f8;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      transition: transform 0.3s;
+    }
+
+    .report-radio-input:checked + .report-radio-element {
+      transform: translate(-50%, -50%) scale(0.5);
+    }
+  }
+}
+
+.report-checkbox-ladbox {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 0.875rem;
+
+  .report-checkbox {
+    height: 20px;
+    width: 20px;
+    display: block;
+    position: relative;
+    margin-right: 12px;
+    border: 2px solid rgba(255, 255, 255, .38);
+
+    .report-checkbox-input {
+      position: absolute;
+      width: 0;
+      height: 0;
+    }
+
+    .report-checkbox-element {
+      transform: translate(-50%, -50%) scale(0);
+      height: inherit;
+      width: inherit;
+      background-color: #8ab4f8;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transition: transform 0.3s;
+    }
+
+    .report-checkbox-input:checked + .report-checkbox-element {
+      transform: translate(-50%, -50%) scale(0.5);
+    }
+  }
+}
+
+
+.required-star {
+  color: #b50707;
 }

@@ -2,6 +2,7 @@ import { faTachometerAlt } from '@fortawesome/free-solid-svg-icons/faTachometerA
 import { faFlag } from '@fortawesome/free-solid-svg-icons/faFlag'
 import { faBullseye } from '@fortawesome/free-solid-svg-icons/faBullseye'
 import { faChartLine } from '@fortawesome/free-solid-svg-icons/faChartLine'
+import { faLink } from '@fortawesome/free-solid-svg-icons/faLink'
 import { faPaste } from '@fortawesome/free-solid-svg-icons/faPaste'
 import { faHourglassEnd } from '@fortawesome/free-solid-svg-icons/faHourglassEnd'
 import { faSearchengin } from '@fortawesome/free-brands-svg-icons/faSearchengin'
@@ -20,6 +21,16 @@ export const channelLabels = [
   { value: '6', title: 'Spam and scams' }
 ]
 
+export const channelIssues = [
+  { value: 'Metadata (video titles, descriptions)', title: 'Metadata (video titles, descriptions)' },
+  { value: 'Playlists', title: 'Playlists' },
+  { value: 'Comments', title: 'Comments' },
+  { value: 'Thumbnails', title: 'Thumbnails' },
+  { value: 'Channel Art/Icon', title: 'Channel Art/Icon' },
+  { value: "Links in the user's content", title: "Links in the user's content" },
+  { value: 'Live chat', title: 'Live chat' }
+]
+
 export const links = [
   {
     label: 'Dashboard',
@@ -30,6 +41,11 @@ export const links = [
     label: 'Flagger',
     icon: faFlag,
     href: '/deputy'
+  },
+  {
+    label: 'URLs report',
+    icon: faLink,
+    href: '/deputy/url_report'
   },
   {
     label: 'History',
@@ -57,5 +73,3 @@ export const links = [
     href: '/deputy?context=analytics'
   }
 ]
-
-export const MAX_TEMPLATES = 8

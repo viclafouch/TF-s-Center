@@ -55,6 +55,11 @@
     height: 36px;
     padding: 0 15px;
     font-size: 13px;
+
+    .button-is-loading {
+      width: 12px;
+      height: 12px;
+    }
   }
 
   &.button-blue {

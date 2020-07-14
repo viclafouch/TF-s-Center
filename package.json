@@ -44,7 +44,8 @@
     "react-toastify": "^6.0.6",
     "react-transition-group": "^4.4.1",
     "sanitize-html": "^1.27.0",
-    "throttle-debounce": "^2.2.1"
+    "throttle-debounce": "^2.2.1",
+    "use-immer": "^0.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",

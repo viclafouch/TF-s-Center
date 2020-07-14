@@ -94,14 +94,3 @@ export const extractAnalyticsInfos = body => {
     nbFlagged: parseInt(nbFlagged)
   }
 }
-
-export const reportEntities = async formData => {
-  const response = await fetch('/deputy?action_search_channel_submit', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams(formData)
-  })
-  const text = await response.text()
-  const document = new DOMParser().parseFromString(text, 'text/html')
-  if (!document.getElementById('confirmBox')) throw new Error('unknown')
-}

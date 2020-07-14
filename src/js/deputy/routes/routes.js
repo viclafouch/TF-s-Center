@@ -9,6 +9,7 @@ import TemplateInfo from '@deputy/containers/Templates/TemplateInfo'
 import History from '@deputy/containers/History/History'
 import Flagger from '@deputy/containers/Flagger/Flagger'
 import Home from '@deputy/containers/Home/Home'
+import UrlsReport from '@deputy/containers/UrlsReport/UrlsReport'
 
 function transformLocation(inputLocation) {
   const parsedQuery = new URLSearchParams(inputLocation.search)
@@ -34,6 +35,7 @@ function Routes() {
           <Page path="/report_dashboard" component={Home} />
           <Page path="/flagging_history" component={History} />
           <Page path="/deputy" exact component={Flagger} />
+          <Page path="/deputy/url_report" exact component={UrlsReport} />
           <Page path="/analytics" exact component={Analytics} />
           <Page path="/targets" exact component={Targets} />
           <Page path="/templates" exact component={Templates} />

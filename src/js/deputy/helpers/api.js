@@ -47,18 +47,36 @@ export const getAnalytics = async () => {
   return extractAnalyticsInfos(document.querySelector('body'))
 }
 
-// export const flagVideos = params =>
-//   fetch('/deputy?action_submit', {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-//     body: queryString.stringify({
-//       selected_vid: params.selected_vid,
-//       video_report_reason: params.video_report_reason,
-//       flag_comments: params.flag_comments,
-//       session_token: params.session_token,
-//       search_query: params.search_query || '',
-//       page: params.page,
-//       filters: params.filters || '',
-//       video_ids: params.video_ids.join(',')
-//     })
-//   })
+export const reportEntities = async formData => {
+  const response = await fetch('/deputy?action_search_channel_submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(formData)
+  })
+  const text = await response.text()
+  const document = new DOMParser().parseFromString(text, 'text/html')
+  if (!document.getElementById('confirmBox')) throw new Error('unknown')
+}
+
+export const reportUrls = async formData => {
+  const response = await fetch('/deputy/url_report', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(formData)
+  })
+  const text = await response.text()
+  const document = new DOMParser().parseFromString(text, 'text/html')
+  const data = {
+    success: '',
+    error: ''
+  }
+
+  if (document.getElementById('confirmBox')) {
+    data.success = document.getElementById('confirmBox').textContent
+  }
+  if (document.getElementById('error-box')) {
+    data.error = document.getElementById('error-box').textContent
+  }
+
+  return data
+}

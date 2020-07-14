@@ -1,7 +1,5 @@
 import React, { useState, useContext, useCallback } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
-import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck'
 import { DefaultContext } from '@deputy/store/DefaultContext'
 import { ADD_SEARCH, REMOVE_SEARCHES } from '@deputy/store/reducer/constants'
 import Button from '@deputy/components/Button/Button'
