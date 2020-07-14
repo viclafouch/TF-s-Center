@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries')
 
 module.exports = (env, argv, IS_DEV = argv.mode !== 'production') => {
@@ -77,8 +78,10 @@ module.exports = (env, argv, IS_DEV = argv.mode !== 'production') => {
       path: path.join(__dirname, 'build')
     },
     plugins: [
+      // new BundleAnalyzerPlugin(),
       new FixStyleOnlyEntriesPlugin(),
       new CleanWebpackPlugin(),
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
       new webpack.ContextReplacementPlugin(/date\-fns[\/\\]/, new RegExp(`[/\\\\\](${['en-US'].join('|')})[/\\\\\]index\.js$`)),
       new CopyPlugin({
         patterns: [
