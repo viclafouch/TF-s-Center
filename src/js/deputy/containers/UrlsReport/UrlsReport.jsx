@@ -342,6 +342,7 @@ function UrlsReport() {
                 className="comment-textarea"
                 name="comment"
                 value={infos.comment}
+                placeholder="Details"
                 onChange={e => {
                   const value = e.target.value
                   setInfos(draft => {

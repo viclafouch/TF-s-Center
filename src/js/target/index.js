@@ -26,7 +26,7 @@ function createObserver() {
 const selectors = [
   {
     name: 'search',
-    listItem: '#contents ytd-video-renderer > .ytd-video-renderer#dismissable',
+    listItem: '#contents ytd-video-renderer > .ytd-video-renderer#dismissable:not([data-tf])',
     data: {
       title: '#meta > #title-wrapper > h3 #video-title',
       videoUrl: '#meta > #title-wrapper > h3 #video-title',
@@ -44,7 +44,7 @@ const selectors = [
   },
   {
     name: 'channel-videos',
-    listItem: '#page-manager ytd-browse #contents .ytd-grid-video-renderer#dismissable',
+    listItem: '#page-manager ytd-browse #contents .ytd-grid-video-renderer#dismissable:not([data-tf])',
     data: {
       title: '#meta #video-title',
       videoUrl: 'a#video-title',
@@ -59,22 +59,8 @@ const selectors = [
     }
   },
   {
-    name: 'videos-playlist',
-    listItem: '#items > ytd-playlist-panel-video-renderer#playlist-items',
-    data: {
-      title: '#meta #video-title',
-      videoUrl: 'a#wc-endpoint',
-      channelName: '#byline-containerz > span#byline'
-    },
-    root: {
-      el: 'span',
-      styles: 'align-self: flex-start;',
-      classNames: ['style-scope', 'ytd-playlist-panel-video-renderer']
-    }
-  },
-  {
     name: 'watch',
-    listItem: 'ytd-app[is-watch-page] ytd-watch-flexy',
+    listItem: 'ytd-app[is-watch-page] ytd-watch-flexy:not([data-tf])',
     data: {
       title: '#info-contents h1.title',
       channelUrl: '#upload-info > #channel-name a',
@@ -90,8 +76,22 @@ const selectors = [
     }
   },
   {
+    name: 'videos-playlist',
+    listItem: '#items > ytd-playlist-panel-video-renderer#playlist-items:not([data-tf])',
+    data: {
+      title: '#meta #video-title',
+      videoUrl: 'a#wc-endpoint',
+      channelName: '#byline-containerz > span#byline'
+    },
+    root: {
+      el: 'span',
+      styles: 'align-self: flex-start;',
+      classNames: ['style-scope', 'ytd-playlist-panel-video-renderer']
+    }
+  },
+  {
     name: 'watch-list',
-    listItem: 'ytd-app[is-watch-page] #related #items ytd-compact-video-renderer',
+    listItem: 'ytd-app[is-watch-page] #related #items ytd-compact-video-renderer:not([data-tf])',
     data: {
       title: 'h3 #video-title',
       videoUrl: 'a#thumbnail',

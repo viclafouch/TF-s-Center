@@ -40,7 +40,7 @@ function Searches() {
 
   const handleTestSearch = useCallback(
     searchQuery => {
-      const searchParamsString = `?${getParamsSearchVideos({ searchQuery })}`
+      const searchParamsString = `?${getParamsSearchVideos({ searchQuery, excludeFlaggedVideos: true })}`
       history.push({
         pathname: '/deputy',
         search: searchParamsString
@@ -107,7 +107,7 @@ function Searches() {
       <div className="searches-list-container">
         <div className="box-material table-searches">
           <div className="list-actions-top">
-            <h3>Vos recherches ({searches.length})</h3>
+            <h3>You custom searches ({searches.length})</h3>
             <Button color="white" disabled={selectedSearches.length === 0} onClick={handleRemoveSearch}>
               Remove
             </Button>

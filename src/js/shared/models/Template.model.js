@@ -14,11 +14,17 @@ class Template {
   }
 
   get videosLabel() {
-    return videoLabels.find(l => l.value === this.videosReason).title
+    if (this.videosReason) {
+      return videoLabels.find(l => l.value === this.videosReason).title
+    }
+    return null
   }
 
   get channelsLabel() {
-    return channelLabels.find(l => l.value === this.channelsReason).title
+    if (this.channelsReason) {
+      return channelLabels.find(l => l.value === this.channelsReason).title
+    }
+    return null
   }
 }
 

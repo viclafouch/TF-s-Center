@@ -59,7 +59,7 @@ function Templates() {
               />
             </div>
             <div className="add-template-field">
-              <select className="form-element" required name="videos-reason">
+              <select className="form-element" name="videos-reason">
                 <option value="">Select the issue for the videos</option>
                 {videoLabels.map((label, index) => (
                   <option key={index} value={label.value}>
@@ -69,7 +69,7 @@ function Templates() {
               </select>
             </div>
             <div className="add-template-field">
-              <select className="form-element" required name="channels-reason">
+              <select className="form-element" name="channels-reason">
                 <option value="">Select the issue for the channels</option>
                 {channelLabels.map((label, index) => (
                   <option key={index} value={label.value}>
@@ -79,7 +79,7 @@ function Templates() {
               </select>
             </div>
             <div className="add-template-field">
-              <textarea name="description" className="form-element" spellCheck="false" required placeholder="Description" />
+              <textarea name="description" className="form-element" spellCheck="false" required placeholder="Details" />
             </div>
             <Button color="blue" type="submit">
               Create
