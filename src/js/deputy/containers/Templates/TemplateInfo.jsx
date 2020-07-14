@@ -3,13 +3,11 @@ import { formatRelative } from 'date-fns'
 import { toast } from 'react-toastify'
 import { DefaultContext } from '@deputy/store/DefaultContext'
 import { Redirect } from 'react-router'
-import { videoLabels, links, channelLabels } from '@/js/config/config'
+import { videoLabels, channelLabels } from '@/js/config/config'
 import { EDIT_TEMPLATE, REMOVE_TEMPLATE } from '@deputy/store/reducer/constants'
 import Template from '@shared/models/Template.model'
 import Button from '@deputy/components/Button/Button'
 import './template-info.scoped.scss'
-
-const templatesPath = links[3]
 
 function TemplateInfo(props) {
   const [{ templates }, dispatch] = useContext(DefaultContext)
@@ -40,7 +38,7 @@ function TemplateInfo(props) {
   }
 
   if (!templates.some(t => t.id == props.match.params.id)) {
-    return <Redirect to={templatesPath.href} />
+    return <Redirect to="/deputy?context=templates" />
   }
 
   return (

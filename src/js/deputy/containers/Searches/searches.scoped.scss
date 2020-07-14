@@ -3,6 +3,7 @@
     .top-search-action {
       display: flex;
       margin-bottom: 10px;
+      align-items: flex-end;
 
       .input-container-search {
         flex: 1;
@@ -11,6 +12,13 @@
       .button {
         margin-left: 10px;
       }
+    }
+
+    input,
+    select {
+      border-width: 0 0 1px 0;
+      border-radius: 0;
+      padding-left: 0;
     }
   }
 

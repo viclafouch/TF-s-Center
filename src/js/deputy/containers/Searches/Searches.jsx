@@ -74,10 +74,10 @@ function Searches() {
                   }}
                 />
               </div>
-              <Button color="blue" type="submit">
+              <Button color="blue" size="big" type="submit" disabled={!search.value}>
                 Add
               </Button>
-              <Button color="blue" onClick={() => handleTestSearch(search.value)}>
+              <Button color="blue" size="big" disabled={!search.value} onClick={() => handleTestSearch(search.value)}>
                 Test
               </Button>
             </div>

@@ -140,6 +140,16 @@ function Home() {
         <h1 className="title-box">Dashboard</h1>
       </div>
       <div className="container-box">
+        <div className="full-box">
+          <div className="box-material">
+            <p className="summary-text">
+              If you would like to contact the Trusted Flagger team to report an urgent case, provide additional context about
+              flagged content, or ask a question, please reach out to us using this{' '}
+              <a href="https://support.google.com/youtube/contact/trustedflagging?hl=en">form</a> . If you do not have access to
+              the form, reach out to <a href="mailto:tf-training@google.com">tf-training@google.com</a>.
+            </p>
+          </div>
+        </div>
         <div className="big-box">
           <div className="box-material">
             <h4 className="title-box">Last content reported with TF Center</h4>

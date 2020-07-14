@@ -153,8 +153,9 @@ function Report({ entities = [], modalref, onReport, searchId }) {
       <form name="report" onSubmit={handleSubmit}>
         <p className="report-description-reason">
           Please select the category that most closely reflects your concern about the video or the channel you selected, so that
-          we can review it and determine whether it violates our Community Guidelines or isn&#39;t appropriate for all viewers.
-          (*)
+          we can review it and determine whether it violates our{' '}
+          <a href="https://www.youtube.com/t/community_guidelines">Community Guidelines</a> or isn&#39;t appropriate for all
+          viewers. (<span className="required-star">*</span>)
         </p>
         {someVideos && (
           <fieldset>

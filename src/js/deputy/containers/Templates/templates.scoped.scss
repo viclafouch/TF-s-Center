@@ -7,7 +7,7 @@
   @media (min-width: 960px) {
     padding: var(--gap);
     padding-right: 0;
-    grid-template-columns: 500px auto;
+    grid-template-columns: 1fr 1fr;
   }
 
   .templates-add-box {

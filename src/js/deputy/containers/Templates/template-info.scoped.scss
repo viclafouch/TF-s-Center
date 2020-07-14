@@ -33,11 +33,9 @@
     textarea,
     select {
       margin-bottom: 20px;
-      border-bottom-color: transparent;
 
       &:hover {
         resize: vertical;
-        border-bottom-color: var(--input-border);
       }
     }
   }
