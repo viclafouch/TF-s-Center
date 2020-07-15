@@ -20,6 +20,15 @@
       border-radius: 0;
       padding-left: 0;
     }
+
+    .search-patterns {
+      display: block;
+      margin-top: 20px;
+
+      textarea {
+        margin-top: 1em;
+      }
+    }
   }
 
   .searches-list-container {

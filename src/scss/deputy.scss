@@ -127,8 +127,8 @@ table.table-material {
   font-size: 0.875rem;
   font-family: 'YouTube Noto', Roboto, arial, sans-serif;
   transition: border-color 0.3s ease 0s;
-  border: .0625rem solid rgba(255, 255, 255, .38);
-  padding: .75rem 1rem;
+  border: 0.0625rem solid rgba(255, 255, 255, 0.38);
+  padding: 0.75rem 1rem;
   border-radius: 0.25em;
 
   &:focus {
@@ -137,14 +137,22 @@ table.table-material {
 }
 
 select.form-element {
-	-moz-appearance: none;
-	-webkit-appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
   appearance: none;
 
   & > option {
     color: var(--input-text);
     background-color: var(--background-container);
   }
+}
+
+textarea.form-element {
+  resize: none;
+  height: 126px;
+  padding-bottom: 32px;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
 
 .input-datepicker {
@@ -219,7 +227,7 @@ main > div {
     position: relative;
     border-radius: 50%;
     margin-right: 12px;
-    border: 2px solid rgba(255, 255, 255, .38);
+    border: 2px solid rgba(255, 255, 255, 0.38);
 
     .report-radio-input {
       position: absolute;
@@ -258,7 +266,7 @@ main > div {
     display: block;
     position: relative;
     margin-right: 12px;
-    border: 2px solid rgba(255, 255, 255, .38);
+    border: 2px solid rgba(255, 255, 255, 0.38);
 
     .report-checkbox-input {
       position: absolute;
@@ -282,7 +290,6 @@ main > div {
     }
   }
 }
-
 
 .required-star {
   color: #b50707;

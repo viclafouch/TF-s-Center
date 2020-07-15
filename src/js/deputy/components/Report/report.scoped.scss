@@ -36,27 +36,6 @@
     padding: 5px 0 17px;
   }
 
-  .comment-textarea {
-    resize: none;
-    border: 1px solid rgba(255, 255, 255, .38);
-    box-sizing: border-box;
-    width: 100%;
-    height: 126px;
-    padding: 12px 12px 32px;
-    border-radius: 2px;
-    white-space: pre-wrap;
-    overflow-wrap: break-word;
-    color: #f0f0f0;
-    background-color: transparent;
-    font-family: 'YouTube Noto', Roboto, arial, sans-serif;
-    font-size: 12px;
-    outline: none;
-
-    &:focus {
-      border-color: #ffffff;
-    }
-  }
-
   .report-bottom {
     display: flex;
     justify-content: flex-end;

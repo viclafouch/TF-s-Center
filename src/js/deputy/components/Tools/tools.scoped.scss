@@ -15,9 +15,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column;
 
-  button {
+  .end-side button {
+    margin-top: 20px;
     margin-left: 10px;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  @media (min-width: 1170px) {
+    flex-direction: row;
+
+    .end-side button {
+      margin-top: 0;
+    }
   }
 }
 
@@ -59,6 +72,10 @@
   &-title {
     display: flex;
     align-items: center;
+
+    h2 {
+      margin-right: 10px;
+    }
   }
 }
 

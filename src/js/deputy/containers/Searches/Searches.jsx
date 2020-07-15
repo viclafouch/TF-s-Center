@@ -1,5 +1,7 @@
 import React, { useState, useContext, useCallback } from 'react'
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import { useImmer } from 'use-immer'
 import { DefaultContext } from '@deputy/store/DefaultContext'
 import { ADD_SEARCH, REMOVE_SEARCHES } from '@deputy/store/reducer/constants'
 import Button from '@deputy/components/Button/Button'
@@ -10,7 +12,7 @@ import './searches.scoped.scss'
 
 function Searches() {
   const history = useHistory()
-  const [search, setSearch] = useState(() => new Search())
+  const [search, setSearch] = useImmer(new Search())
   const [selectedSearches, setSelectedSearches] = useState([])
   const [{ searches, templates, getTemplate }, dispatch] = useContext(DefaultContext)
 
@@ -24,7 +26,11 @@ function Searches() {
         }
       })
 
-      setSearch(new Search())
+      setSearch(draft => {
+        draft = new Search()
+        return draft
+      })
+      toast.success('The custom search has been created!')
     }
   }
 
@@ -62,15 +68,14 @@ function Searches() {
                   type="text"
                   className="form-element"
                   autoComplete="off"
-                  placeholder="New search"
+                  placeholder="Search value"
                   value={search.value}
                   spellCheck="false"
                   onChange={e => {
-                    e.persist()
-                    setSearch(prevState => ({
-                      ...prevState,
-                      value: e.target.value
-                    }))
+                    const value = e.target.value
+                    setSearch(draft => {
+                      draft.value = value
+                    })
                   }}
                 />
               </div>
@@ -87,10 +92,9 @@ function Searches() {
                 value={search.templateId}
                 onChange={e => {
                   const templateId = parseInt(e.target.value)
-                  setSearch(prevState => ({
-                    ...prevState,
-                    templateId
-                  }))
+                  setSearch(draft => {
+                    draft.templateId = templateId
+                  })
                 }}
               >
                 <option value="">Choose template</option>
@@ -100,6 +104,21 @@ function Searches() {
                   </option>
                 ))}
               </select>
+              <label className="search-patterns">
+                If you want to <u>enable automatic videos selection</u>, please add a pattern that can be included in the title or
+                description of the videos you want to report (OPTIONAL).
+                <textarea
+                  className="form-element"
+                  value={search.patterns}
+                  placeholder="Separate expressions with comma (eg: 'How to get Unlimited GEMS, How to get FREE gems, hack clash of clans')."
+                  onChange={e => {
+                    const patterns = e.target.value
+                    setSearch(draft => {
+                      draft.patterns = patterns
+                    })
+                  }}
+                ></textarea>
+              </label>
             </div>
           </form>
         </div>

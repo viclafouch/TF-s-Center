@@ -1,3 +1,4 @@
+import { immerable } from 'immer'
 import { randomId } from '@utils/index'
 
 class Search {
@@ -8,6 +9,8 @@ class Search {
     this.nbVideosFlagged = search.nbVideosFlagged || 0
     this.nbChannelsFlagged = search.nbChannelsFlagged || 0
     this.createdAt = search.createdAt || Date.now()
+    this.patterns = search.patterns || ''
+    this[immerable] = true
   }
 }
 

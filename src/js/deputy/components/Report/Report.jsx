@@ -221,7 +221,7 @@ function Report({ entities = [], modalref, onReport, searchId }) {
             Please also provide any additional information which you think could help us verify the issue as quickly as possible:
           </p>
           <textarea
-            className="comment-textarea"
+            className="form-element"
             onChange={e => {
               const value = e.target.value
               setValues(prevState => ({

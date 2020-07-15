@@ -339,7 +339,7 @@ function UrlsReport() {
                 possible:
               </p>
               <textarea
-                className="comment-textarea"
+                className="form-element"
                 name="comment"
                 value={infos.comment}
                 placeholder="Details"

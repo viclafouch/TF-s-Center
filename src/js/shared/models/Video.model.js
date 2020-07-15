@@ -6,7 +6,7 @@ class Video {
     this.uuid = randomId()
     this.title = video.title || ''
     this.summary = video.summary || null
-    this.description = video.description || null
+    this.description = video.description || ''
     this.nbViews = video.nbViews || null
     this.tags = video.tags || []
     this.removedAt = video.removedAt || null

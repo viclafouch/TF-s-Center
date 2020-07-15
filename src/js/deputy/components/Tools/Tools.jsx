@@ -132,9 +132,11 @@ function Tools({
               />
             </div>
           </div>
-          <Button color="blue" type="submit">
-            Search
-          </Button>
+          <div className="end-side">
+            <Button color="blue" type="submit">
+              Search
+            </Button>
+          </div>
         </form>
       )}
       {isTargets && (
@@ -146,7 +148,7 @@ function Tools({
                 <FontAwesomeIcon icon={enableTargets ? faPause : faPlay} size="1x" fixedWidth />
               </Button>
             </div>
-            <div>
+            <div className="end-side">
               <Button color="blue" type="button" onClick={handleSubmit}>
                 Refresh
               </Button>
@@ -208,7 +210,7 @@ function Tools({
               </label>
             </div>
           </div>
-          <div>
+          <div className="end-side">
             <Button color="blue" type="submit">
               Search
             </Button>

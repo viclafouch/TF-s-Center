@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState, useRef, useMemo, useContext } from 'react'
+import { useImmer } from 'use-immer'
 import Tools from '@deputy/components/Tools/Tools'
 import { searchVideos, getParamsSearchVideos } from '@deputy/helpers/api'
 import useQuery from '@deputy/hooks/use-query'
@@ -13,16 +14,14 @@ import './flagger.scoped.scss'
 
 function Flagger({ history }) {
   const query = useQuery()
-  const [videos, setVideos] = useState([])
-  const [isError, setIsError] = useState(false)
-  const [hasMore, setHasMore] = useState(false)
-  const [entitiesSelected, setEntitiesSelected] = useState([])
-  const currentParams = useRef({
-    searchQuery,
-    filters,
-    excludeFlaggedVideos
+  const [videos, setVideos] = useImmer({
+    list: [],
+    selected: []
   })
-  const [, dispatch] = useContext(DefaultContext)
+  const [isError, setIsError] = useState(false)
+  const [isLoading, setIsLoading] = useState(!!query.get('search_id'))
+  const [hasMore, setHasMore] = useState(false)
+  const [{ searches }, dispatch] = useContext(DefaultContext)
   const scrollerRef = useRef(null)
   const form = useRef(null)
   const modal = useRef(null)
@@ -35,43 +34,76 @@ function Flagger({ history }) {
     }),
     [query]
   )
-  const [isLoading, setIsLoading] = useState(!!searchQuery)
+  const currentParams = useRef({
+    searchQuery,
+    filters,
+    excludeFlaggedVideos
+  })
 
-  const fetchSearchVideos = useCallback(async (params, signal = new AbortController().signal) => {
-    try {
-      setIsLoading(true)
-      const searchParams = getParamsSearchVideos(params)
-      const response = await searchVideos(searchParams, signal)
-      setHasMore(response.hasMore)
-      currentParams.current = { ...params, page: params.page + 1 }
-      setVideos(prevState => [...prevState, ...response.videos])
-    } catch (error) {
-      if (error.name !== 'AbortError') {
-        console.error(error)
-        setIsError(true)
+  const currentCustomSearch = useMemo(() => {
+    const id = parseInt(searchId)
+    if (!isNaN(id)) return searches.find(s => s.id === id)
+    return null
+  }, [searchId, searches])
+
+  const fetchSearchVideos = useCallback(
+    async (params, signal = new AbortController().signal) => {
+      try {
+        setIsLoading(true)
+        const customSearch = params.currentCustomSearch
+        const searchParams = getParamsSearchVideos(params)
+        const response = await searchVideos(searchParams, signal)
+        setHasMore(response.hasMore)
+        currentParams.current = { ...params, page: params.page + 1 }
+        setVideos(draft => {
+          draft.list = [...draft.list, ...response.videos]
+          if (customSearch && customSearch.patterns.trim() !== '') {
+            const patterns = customSearch.patterns.split(',').map(p => p.toLowerCase().trim())
+            for (const video of response.videos) {
+              const title = video.title.toLowerCase()
+              const description = video.description.toLowerCase()
+              const isMatching = patterns.some(pattern => title.includes(pattern) || description.includes(pattern))
+              if (isMatching) {
+                draft.selected.push({
+                  type: 'video',
+                  id: video.id
+                })
+              }
+            }
+          }
+        })
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          console.error(error)
+          setIsError(true)
+        }
+      } finally {
+        !signal.aborted && setIsLoading(false)
       }
-    } finally {
-      !signal.aborted && setIsLoading(false)
-    }
-  }, [])
+    },
+    [setVideos]
+  )
 
   const firstFetch = useCallback(() => {
     const controller = new AbortController()
     if (searchQuery) {
-      setVideos([])
-      setEntitiesSelected([])
+      setVideos(() => ({
+        list: [],
+        selected: []
+      }))
       fetchSearchVideos(
         {
           page: 1,
           searchQuery: searchQuery,
           filters: filters,
-          excludeFlaggedVideos: excludeFlaggedVideos
+          excludeFlaggedVideos: excludeFlaggedVideos,
+          currentCustomSearch
         },
         controller.signal
       )
     }
     return controller
-  }, [fetchSearchVideos, searchQuery, filters, excludeFlaggedVideos])
+  }, [fetchSearchVideos, searchQuery, filters, excludeFlaggedVideos, currentCustomSearch, setVideos])
 
   useEffect(() => {
     if (query.get('search_query')) {
@@ -98,18 +130,6 @@ function Flagger({ history }) {
     }
   }, [fetchSearchVideos, isLoading, isError, hasMore])
 
-  const handleSelectAll = useCallback(
-    type => {
-      setEntitiesSelected(
-        videos.map(v => ({
-          id: v.id,
-          type
-        }))
-      )
-    },
-    [videos]
-  )
-
   const handleSubmit = useCallback(
     (...params) => {
       const searchParamsString = `?${getParamsSearchVideos(...params)}`
@@ -121,49 +141,63 @@ function Flagger({ history }) {
     [history]
   )
 
-  const handleCheck = useCallback(({ id, type }) => {
-    setEntitiesSelected(prevState => {
-      const entities = prevState.filter(e => e.id !== id)
-      if (type) entities.push({ type, id })
-      return entities
-    })
-  }, [])
+  const handleCheck = useCallback(
+    ({ id, type }) => {
+      setVideos(draft => {
+        draft.selected = draft.selected.filter(s => s.id !== id)
+        if (type) draft.selected.push({ type, id })
+      })
+    },
+    [setVideos]
+  )
+
+  const handleSelectAll = useCallback(
+    type => {
+      setVideos(draft => {
+        draft.selected = draft.list.map(v => ({
+          id: v.id,
+          type
+        }))
+      })
+    },
+    [setVideos]
+  )
 
   return (
     <div className="flagger">
       <Modal ref={modal} fade>
-        <Report entities={entitiesSelected} onReport={firstFetch} searchId={searchId} />
+        <Report entities={videos.selected} onReport={firstFetch} searchId={searchId} />
       </Modal>
       <Tools
         onSubmit={handleSubmit}
         onFlag={() => modal.current.open()}
-        canFlag={entitiesSelected.length > 0}
+        canFlag={videos.selected.length > 0}
         handleSelectAll={handleSelectAll}
-        nbSelected={entitiesSelected.length}
+        nbSelected={videos.selected.length}
       />
       <div
-        className={`flagger-list-container ${isLoading && videos.length === 0 ? 'flagger-list-container-loading' : ''} ${
-          !isLoading && videos.length === 0 ? 'flagger-list-container-empty' : ''
+        className={`flagger-list-container ${isLoading && videos.list.length === 0 ? 'flagger-list-container-loading' : ''} ${
+          !isLoading && videos.list.length === 0 ? 'flagger-list-container-empty' : ''
         }`}
         ref={scrollerRef}
         onScroll={handleScroll}
       >
-        {isLoading && videos.length === 0 ? (
+        {isLoading && videos.list.length === 0 ? (
           <Loader />
         ) : (
           <form ref={form} id="form-flagger">
-            <VideoList videos={videos} showCheckbox entitiesSelected={entitiesSelected} onCheck={handleCheck} />
+            <VideoList videos={videos.list} showCheckbox entitiesSelected={videos.selected} onCheck={handleCheck} />
           </form>
         )}
-        {isLoading && videos.length > 0 && <Loader spinner />}
-        {!isLoading && videos.length === 0 && searchQuery && <p>No result</p>}
-        {!isLoading && videos.length === 0 && !searchQuery && (
+        {isLoading && videos.list.length > 0 && <Loader spinner />}
+        {!isLoading && videos.list.length === 0 && searchQuery && <p>No result</p>}
+        {!isLoading && videos.list.length === 0 && !searchQuery && (
           <div className="make-search">
             <img src={searchImg} alt="Make a search" />
             <h3>Make a search</h3>
           </div>
         )}
-        {!isLoading && videos.length > 7 && !hasMore && <p className="no-more-result">No more result</p>}
+        {!isLoading && videos.list.length > 7 && !hasMore && <p className="no-more-result">No more result</p>}
       </div>
     </div>
   )
