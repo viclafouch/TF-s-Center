@@ -1,7 +1,7 @@
 {
   "name": "tf-center",
   "description": "A Chrome extension that remakes a new design for the TF tools.",
-  "version": "1.50.1",
+  "version": "1.50.2",
   "homepage": "https://chrome.google.com/webstore/detail/tfs-center/meicobcngeebgonpcpnmajigmikcicgn",
   "repository": {
     "type": "git",
