@@ -67,10 +67,13 @@ const startDeputy = async () => {
     document.body.appendChild(modal)
 
     ReactDOM.render(<App defaultData={defaultData} domData={domData} />, div)
+    document.body.removeAttribute('class')
     document.body.classList.add('TFs-ready')
 
+    document.querySelectorAll('link[rel="stylesheet"]').forEach(item => {
+      if (!item.href.startsWith('https://fonts.googleapis.com')) item.remove()
+    })
     document.body.appendChild(div)
-    document.querySelector('[name="www-core"]').remove()
   } catch (error) {
     console.error(error)
   }
