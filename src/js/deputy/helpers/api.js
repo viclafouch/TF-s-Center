@@ -4,7 +4,7 @@ const fetchVideos = async (url, signal) => {
   const response = await fetch(url, { signal })
   const text = await response.text()
   const document = new DOMParser().parseFromString(text, 'text/html')
-  const videos = Array.from(document.querySelectorAll('div.deputy-flag-item')).map(extractVideoInfos)
+  const videos = Array.from(document.querySelectorAll('.yt-tile-default.clearfix.deputy-flag-item')).map(extractVideoInfos)
   const paginationDOM = document.querySelector('#deputy-flag-pager')
   let hasMore = false
 
