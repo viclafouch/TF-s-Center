@@ -43,7 +43,6 @@
     "react-router-dom": "^5.2.0",
     "react-toastify": "^6.0.8",
     "react-transition-group": "^4.4.1",
-    "sanitize-html": "^1.27.1",
     "throttle-debounce": "^2.2.1",
     "use-immer": "^0.4.1"
   },

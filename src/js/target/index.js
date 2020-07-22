@@ -1,6 +1,5 @@
 import React, { createRef } from 'react'
 import ReactDOM from 'react-dom'
-import sanitizeHtml from 'sanitize-html'
 import { throttle } from 'throttle-debounce'
 import Video from '@shared/models/Video.model'
 import Selection from './Selection/Selection'
@@ -270,7 +269,9 @@ const watchingDOM = async () => {
     const watchVideoId = searchParams.get('v')
     watchItem.setAttribute('data-tf', watchVideoId)
 
-    const description = sanitizeHtml(watchItem.querySelector(data.description).innerHTML)
+    const description = watchItem
+      .querySelector(data.description)
+      .outerText.replace(/\bhttps?:\/\/\S+/gi, '<a href="$&" target="_blank" rel="nofollow">$&</a>')
 
     const video = new Video({
       id: watchVideoId,

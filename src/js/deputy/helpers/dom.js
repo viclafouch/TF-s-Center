@@ -1,4 +1,3 @@
-import sanitizeHtml from 'sanitize-html'
 import Video from '@shared/models/Video.model'
 
 export const pageLoaded = async () => {
@@ -31,39 +30,31 @@ export const extractVideoInfos = item => {
   }
 
   if (!video.removedAt) {
-    const title = item.querySelector('.deputy-item-description > h3 > a').textContent.trim()
-    video.title = title
+    video.title = item.querySelector('.deputy-item-description > h3 > a').textContent.trim()
 
-    const summary = sanitizeHtml(item.querySelector('.deputy-item-description > .deputy-item-description-summary').innerHTML)
-    video.summary = summary
+    video.summary = item.querySelector('.deputy-item-description > .deputy-item-description-summary').innerHTML
 
-    const description = sanitizeHtml(item.querySelector('.deputy-item-description > .deputy-item-description-full').innerHTML)
-    video.description = description
+    video.description = item.querySelector('.deputy-item-description > .deputy-item-description-full').innerHTML
 
-    const tags = Array.from(
+    video.tags = Array.from(
       item.querySelectorAll('.deputy-item-description > .deputy-item-description-tags > span.deputy-video-tag')
-    )
-    video.tags = tags.map(tagElement => tagElement.getAttribute('title'))
+    ).map(tagElement => tagElement.getAttribute('title'))
 
+    // Live ?
     if (item.contains(item.querySelector('.yt-notes > .viewcount'))) {
       const nbViews = item.querySelector('.yt-notes > .viewcount').textContent.trim()
       video.nbViews = parseInt(nbViews.replace(/\D/g, ''))
-    } // Live ?
+    }
 
+    // Live ?
     if (item.contains(item.querySelector('.video-time'))) {
-      const time = item.querySelector('.video-time').textContent.trim()
-      video.time = time
-    } // Live ?
-
-    const channel = {
+      video.time = item.querySelector('.video-time').textContent.trim()
+    }
+    video.channel = {
       name: item.querySelector('.yt-notes > a.yt-user-name').textContent,
       url: item.querySelector('.yt-notes > a.yt-user-name').href
     }
-
-    video.channel = channel
-
-    const createdAt = item.querySelector('.yt-notes > .video-date-added').textContent
-    video.createdAt = createdAt
+    video.createdAt = item.querySelector('.yt-notes > .video-date-added').textContent
   }
 
   return video
