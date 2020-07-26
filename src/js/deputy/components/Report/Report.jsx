@@ -7,7 +7,7 @@ import { DefaultContext } from '@deputy/store/DefaultContext'
 import { FLAG_ENTITIES } from '@deputy/store/reducer/constants'
 import { reportEntities } from '@deputy/helpers/api'
 import { wait } from '@utils/index'
-import { getBrowserStorage } from '@utils/browser'
+import { getBrowserStorage, setBrowserStorage, sendMessageToBackground } from '@utils/browser'
 import Video from '@shared/models/Video.model'
 import './report.scoped.scss'
 
@@ -86,10 +86,12 @@ function Report({ entities = [], modalref, onReport, searchId }) {
             nbVideos,
             nbChannels,
             templateId,
-            searchId,
-            newTargets
+            searchId
           }
         })
+
+        setBrowserStorage('local', { targets: newTargets })
+        sendMessageToBackground('update-nb-targets', { nbTargets: newTargets.length })
 
         onReport()
         setIsLoading(false)

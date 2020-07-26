@@ -1,6 +1,6 @@
 import React, { useReducer, useEffect, useCallback } from 'react'
 import DefaultReducer from './reducer/default'
-import { setBrowserStorage, sendMessageToBackground } from '@utils/browser'
+import { setBrowserStorage } from '@utils/browser'
 
 export const DefaultContext = React.createContext()
 
@@ -16,11 +16,6 @@ function DefaultProvider({ children, initialState }) {
       enableTargets: state.enableTargets
     })
   }, [state.searches, state.templates, state.lastReportedEntities, state.lastSearches, state.enableTargets])
-
-  useEffect(() => {
-    setBrowserStorage('local', { targets: state.targets })
-    sendMessageToBackground('update-nb-targets', { nbTargets: state.targets.length })
-  }, [state.targets])
 
   const getTemplate = useCallback(templateId => state.templates.find(t => t.id === templateId), [state.templates])
 

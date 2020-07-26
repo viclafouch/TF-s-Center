@@ -50,7 +50,7 @@ export default (state = {}, action) =>
         }, [])
         break
       case FLAG_ENTITIES:
-        const { nbChannels, nbVideos, searchId, templateId, newTargets } = action.payload
+        const { nbChannels, nbVideos, searchId, templateId } = action.payload
         draft.lastReportedEntities[draft.lastReportedEntities.length - 1].videos += nbVideos
         draft.lastReportedEntities[draft.lastReportedEntities.length - 1].channels += nbChannels
         if (searchId) {
@@ -67,7 +67,6 @@ export default (state = {}, action) =>
             draft.templates[templateIndex].nbChannelsFlagged += nbChannels
           }
         }
-        if (newTargets) draft.targets = newTargets
         break
       default:
         break
