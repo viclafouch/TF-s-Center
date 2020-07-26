@@ -23,7 +23,7 @@ async function removeFiles(directory) {
   })
 }
 
-async function published() {
+async function publish() {
   try {
     await removeFiles(directory)
 
@@ -37,4 +37,4 @@ async function published() {
   }
 }
 
-published()
+publish()
