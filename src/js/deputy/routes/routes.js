@@ -31,8 +31,8 @@ function Routes() {
     <Route
       render={routeProps => (
         <Switch location={transformLocation(routeProps.location)}>
-          <Page path="/report_dashboard" component={Home} />
           <Page path="/deputy" exact component={Flagger} />
+          <Page path="/dashboard" component={Home} />
           <Page path="/deputy/url_report" exact component={UrlsReport} />
           <Page path="/analytics" exact component={Analytics} />
           <Page path="/targets" exact component={Targets} />

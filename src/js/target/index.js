@@ -181,7 +181,7 @@ const watchingDOM = async () => {
     const el = document.createElement('p')
     el.style =
       'color: var(--yt-spec-text-secondary); font-size: var(--ytd-user-comment_-_font-size); font-weight: var(--ytd-user-comment_-_font-weight); line-height: var(--ytd-user-comment_-_line-height);letter-spacing: var(--ytd-user-comment_-_letter-spacing); margin-top: 8px; display: flex; align-items: center;'
-    el.innerHTML = `<a class="yt-simple-endpoint style-scope yt-formatted-string" spellcheck="false" href="https://www.youtube.com/report_dashboard" dir="auto">TF Center</a><img style="width: 12px; display: inline-block; margin-left: 5px;" src="${sheriffImg}" />`
+    el.innerHTML = `<a class="yt-simple-endpoint style-scope yt-formatted-string" spellcheck="false" href="/deputy?context=dashboard" dir="auto">TF Center</a><img style="width: 12px; display: inline-block; margin-left: 5px;" src="${sheriffImg}" />`
     document.getElementById('introduction-text').appendChild(el)
     return
   }

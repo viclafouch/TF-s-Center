@@ -24,10 +24,7 @@
       "css": ["target.css"]
     },
     {
-      "matches": [
-        "https://www.youtube.com/deputy*",
-        "https://www.youtube.com/report_dashboard"
-      ],
+      "matches": ["https://www.youtube.com/deputy*"],
       "js": ["deputy.bundle.js"],
       "css": ["deputy.css"]
     }

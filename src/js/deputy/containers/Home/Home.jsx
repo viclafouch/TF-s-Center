@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react'
+import React, { useContext, useMemo, useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Line, Doughnut } from 'react-chartjs-2'
 import { Link } from 'react-router-dom'
@@ -13,6 +13,8 @@ import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons/faExternalL
 import { DefaultContext } from '@deputy/store/DefaultContext'
 import Button from '@deputy/components/Button/Button'
 import { DomContext } from '@deputy/store/DomContext'
+import { getBrowserStorage } from '@utils/browser'
+import Video from '@shared/models/Video.model'
 import './home.scoped.scss'
 
 const lastSevenData = lastReportedEntities => ({
@@ -79,10 +81,11 @@ const bestTemplatesData = templates => {
 }
 
 function Home() {
-  const [{ templates, searches, lastReportedEntities, lastSearches, targets }] = useContext(DefaultContext)
+  const [{ templates, searches, lastReportedEntities, lastSearches }] = useContext(DefaultContext)
   const [{ analytics }] = useContext(DomContext)
   const lastReported = useMemo(() => lastSevenData(lastReportedEntities), [lastReportedEntities])
   const bestTemplates = useMemo(() => bestTemplatesData(templates), [templates])
+  const [targets, setTargets] = useState([])
   const lastReportedOptions = useMemo(
     () => ({
       scales: {
@@ -133,6 +136,16 @@ function Home() {
       })),
     [lastSearches]
   )
+
+  useEffect(() => {
+    getBrowserStorage('local', [
+      {
+        key: 'targets',
+        default: [],
+        parser: videos => videos.map(v => new Video(v))
+      }
+    ]).then(({ targets }) => setTargets(targets))
+  }, [])
 
   return (
     <div className="home">

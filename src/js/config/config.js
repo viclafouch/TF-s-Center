@@ -35,7 +35,7 @@ export const links = [
   {
     label: 'Dashboard',
     icon: faTachometerAlt,
-    href: '/report_dashboard'
+    href: '/deputy?context=dashboard'
   },
   {
     label: 'Flagger',
