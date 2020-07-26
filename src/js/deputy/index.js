@@ -80,5 +80,3 @@ const startDeputy = async () => {
 }
 
 startDeputy()
-
-export default startDeputy

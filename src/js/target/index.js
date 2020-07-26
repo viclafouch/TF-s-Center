@@ -5,6 +5,7 @@ import Video from '@shared/models/Video.model'
 import Selection from './Selection/Selection'
 import { getBrowserStorage } from '@utils/browser'
 import { wait } from '@utils/index'
+import sheriffImg from '@img/sheriff.svg'
 
 export const getTargets = () =>
   getBrowserStorage('local', [
@@ -45,7 +46,7 @@ const selectors = [
   },
   {
     name: 'channel-videos',
-    listItem: '#page-manager ytd-browse #contents .ytd-grid-video-renderer#dismissable:not([data-tf])',
+    listItem: '#page-manager [page-subtype="channels"] #contents .ytd-grid-video-renderer#dismissable:not([data-tf])',
     data: {
       title: '#meta #video-title',
       videoUrl: 'a#video-title',
@@ -169,6 +170,21 @@ const watchingDOM = async () => {
   const watchItem = document.querySelector('ytd-watch-flexy[video-id]:not([hidden])')
   const isOnWatchPage = pathname.startsWith('/watch') && !!watchItem
   const alreadyExtensionInstalled = isOnWatchPage && !!document.querySelector('[data-name="watch"]')
+
+  // Maybe on resportHistory
+
+  if (
+    document.querySelector('ytd-report-history-section-renderer') &&
+    !document.querySelector('ytd-report-history-section-renderer').getAttribute('tf-report-history')
+  ) {
+    document.querySelector('ytd-report-history-section-renderer').setAttribute('tf-report-history', true)
+    const el = document.createElement('p')
+    el.style =
+      'color: var(--yt-spec-text-secondary); font-size: var(--ytd-user-comment_-_font-size); font-weight: var(--ytd-user-comment_-_font-weight); line-height: var(--ytd-user-comment_-_line-height);letter-spacing: var(--ytd-user-comment_-_letter-spacing); margin-top: 8px; display: flex; align-items: center;'
+    el.innerHTML = `<a class="yt-simple-endpoint style-scope yt-formatted-string" spellcheck="false" href="https://www.youtube.com/report_dashboard" dir="auto">TF Center</a><img style="width: 12px; display: inline-block; margin-left: 5px;" src="${sheriffImg}" />`
+    document.getElementById('introduction-text').appendChild(el)
+    return
+  }
 
   // You leave the /watch page. So we have to clean
   if (document.querySelector('ytd-watch-flexy[video-id][hidden][data-tf]')) {
