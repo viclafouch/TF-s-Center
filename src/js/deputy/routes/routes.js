@@ -6,7 +6,6 @@ import Targets from '../containers/Targets/Targets'
 import Templates from '../containers/Templates/Templates'
 import Searches from '../containers/Searches/Searches'
 import TemplateInfo from '@deputy/containers/Templates/TemplateInfo'
-import History from '@deputy/containers/History/History'
 import Flagger from '@deputy/containers/Flagger/Flagger'
 import Home from '@deputy/containers/Home/Home'
 import UrlsReport from '@deputy/containers/UrlsReport/UrlsReport'
@@ -33,7 +32,6 @@ function Routes() {
       render={routeProps => (
         <Switch location={transformLocation(routeProps.location)}>
           <Page path="/report_dashboard" component={Home} />
-          <Page path="/flagging_history" component={History} />
           <Page path="/deputy" exact component={Flagger} />
           <Page path="/deputy/url_report" exact component={UrlsReport} />
           <Page path="/analytics" exact component={Analytics} />

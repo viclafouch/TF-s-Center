@@ -21,18 +21,27 @@ function Sidebar({ domContext }) {
         <ul className="nav-link">
           {links.map((link, index) => (
             <li key={index}>
-              <NavLink
-                exact
-                to={link.href}
-                className="youtube-link"
-                isActive={() => link.href === currentPath}
-                activeClassName="active"
-              >
-                <span className="span-icon">
-                  <FontAwesomeIcon icon={link.icon} size="1x" fixedWidth />
-                </span>
-                <span className="text-link">{link.label}</span>
-              </NavLink>
+              {link.external ? (
+                <a href={link.href}>
+                  <span className="span-icon">
+                    <FontAwesomeIcon icon={link.icon} size="1x" fixedWidth />
+                  </span>
+                  <span className="text-link">{link.label}</span>
+                </a>
+              ) : (
+                <NavLink
+                  exact
+                  to={link.href}
+                  className="youtube-link"
+                  isActive={() => link.href === currentPath}
+                  activeClassName="active"
+                >
+                  <span className="span-icon">
+                    <FontAwesomeIcon icon={link.icon} size="1x" fixedWidth />
+                  </span>
+                  <span className="text-link">{link.label}</span>
+                </NavLink>
+              )}
             </li>
           ))}
         </ul>

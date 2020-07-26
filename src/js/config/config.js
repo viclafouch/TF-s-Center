@@ -50,7 +50,8 @@ export const links = [
   {
     label: 'History',
     icon: faHourglassEnd,
-    href: '/flagging_history'
+    href: 'https://www.youtube.com/reporthistory',
+    external: true
   },
   {
     label: 'Templates',

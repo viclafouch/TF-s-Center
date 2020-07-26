@@ -15,15 +15,6 @@ const fetchVideos = async (url, signal) => {
   return { videos, hasMore }
 }
 
-export const getVideosHistory = async ({ page, startTime, endTime }, signal) => {
-  const url = new URL('https://www.youtube.com/flagging_history')
-  if (page) url.searchParams.set('page', page)
-  if (startTime) url.searchParams.set('start_time', startTime)
-  if (endTime) url.searchParams.set('end_time', endTime)
-  console.log(`Fetch ${url.toString()}...`)
-  return fetchVideos(url, signal)
-}
-
 export const getParamsSearchVideos = ({ page, searchQuery, filters, excludeFlaggedVideos, searchId }) => {
   const searchParams = new URLSearchParams()
   searchParams.set('search_query', searchQuery)

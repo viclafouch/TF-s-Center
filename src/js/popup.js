@@ -8,8 +8,9 @@ function Popup() {
   const redirectToTabs = e => {
     e.preventDefault()
     const to = e.currentTarget.getAttribute('data-href')
-    const url = `https://www.youtube.com${to}`
-    return openInNewTab(url, true)
+    const external = e.currentTarget.getAttribute('data-external')
+    const url = external ? to : `https://www.youtube.com${to}`
+    openInNewTab(url, true)
   }
 
   return (
@@ -17,7 +18,13 @@ function Popup() {
       <ul className="nav-link">
         {links.map((link, index) => (
           <li key={index}>
-            <a href={link.href} data-href={link.href} className="youtube-link" onClick={redirectToTabs}>
+            <a
+              href={link.href}
+              data-href={link.href}
+              data-external={link.external}
+              className="youtube-link"
+              onClick={redirectToTabs}
+            >
               <FontAwesomeIcon icon={link.icon} size="1x" fixedWidth />
               {link.label}
             </a>
