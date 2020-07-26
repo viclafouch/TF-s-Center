@@ -16,12 +16,21 @@ export const getTargets = () =>
     }
   ]).then(({ targets }) => targets)
 
-function createObserver() {
+function observeTargets() {
   const config = {
     childList: true,
     subtree: true
   }
-  const observer = new MutationObserver(throttle(750, false, watchingDOM))
+  const observer = new MutationObserver(throttle(750, false, watchingTargets))
+  observer.observe(document.body, config)
+}
+
+function observeReportHistory() {
+  const config = {
+    childList: true,
+    subtree: true
+  }
+  const observer = new MutationObserver(watchingReportHistory)
   observer.observe(document.body, config)
 }
 
@@ -165,26 +174,11 @@ const initReactApp = ({ el, video, container, name }) => {
 
 const listItems = selectors.map(s => s.listItem).join(', ')
 
-const watchingDOM = async () => {
+const watchingTargets = async () => {
   const { pathname, searchParams } = new URL(window.location.href)
   const watchItem = document.querySelector('ytd-watch-flexy[video-id]:not([hidden])')
   const isOnWatchPage = pathname.startsWith('/watch') && !!watchItem
   const alreadyExtensionInstalled = isOnWatchPage && !!document.querySelector('[data-name="watch"]')
-
-  // Maybe on resportHistory
-
-  if (
-    document.querySelector('ytd-report-history-section-renderer') &&
-    !document.querySelector('ytd-report-history-section-renderer').getAttribute('tf-report-history')
-  ) {
-    document.querySelector('ytd-report-history-section-renderer').setAttribute('tf-report-history', true)
-    const el = document.createElement('p')
-    el.style =
-      'color: var(--yt-spec-text-secondary); font-size: var(--ytd-user-comment_-_font-size); font-weight: var(--ytd-user-comment_-_font-weight); line-height: var(--ytd-user-comment_-_line-height);letter-spacing: var(--ytd-user-comment_-_letter-spacing); margin-top: 8px; display: flex; align-items: center;'
-    el.innerHTML = `<a class="yt-simple-endpoint style-scope yt-formatted-string" spellcheck="false" href="/deputy?context=dashboard" dir="auto">TF Center</a><img style="width: 12px; display: inline-block; margin-left: 5px;" src="${sheriffImg}" />`
-    document.getElementById('introduction-text').appendChild(el)
-    return
-  }
 
   // You leave the /watch page. So we have to clean
   if (document.querySelector('ytd-watch-flexy[video-id][hidden][data-tf]')) {
@@ -320,15 +314,29 @@ const watchingDOM = async () => {
   }
 }
 
+const watchingReportHistory = () => {
+  if (
+    document.querySelector('ytd-report-history-section-renderer') &&
+    !document.querySelector('ytd-report-history-section-renderer').getAttribute('tf-report-history')
+  ) {
+    document.querySelector('ytd-report-history-section-renderer').setAttribute('tf-report-history', true)
+    const el = document.createElement('p')
+    el.style =
+      'color: var(--yt-spec-text-secondary); font-size: var(--ytd-user-comment_-_font-size); font-weight: var(--ytd-user-comment_-_font-weight); line-height: var(--ytd-user-comment_-_line-height);letter-spacing: var(--ytd-user-comment_-_letter-spacing); margin-top: 8px; display: flex; align-items: center;'
+    el.innerHTML = `<a class="yt-simple-endpoint style-scope yt-formatted-string" spellcheck="false" href="/deputy?context=dashboard" dir="auto">TF Center</a><img style="width: 12px; display: inline-block; margin-left: 5px;" src="${sheriffImg}" />`
+    document.getElementById('introduction-text').appendChild(el)
+    return
+  }
+}
+
 window.addEventListener('load', function () {
+  observeReportHistory()
   getBrowserStorage('local', [
     {
       key: 'enableTargets',
       default: true
     }
   ]).then(({ enableTargets }) => {
-    if (enableTargets) {
-      createObserver()
-    }
+    if (enableTargets) observeTargets()
   })
 })
